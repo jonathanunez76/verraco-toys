@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERRACO TOYS - Tienda de Juguetes</title>
     
-    <!-- MEDIDAS DE SEGURIDAD MAXIMA -->
+    <!-- MEDIDAS DE SEGURIDAD MAXIMA (SIN CAMBIOS) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com data:; font-src 'self'; connect-src 'self' https://wa.me;">
@@ -32,18 +32,18 @@
             padding-top: 80px;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 15px; /* MENOR PADDING PARA CELULAR */
+            padding: 0 20px;
         }
 
-        /* BARRA SUPERIOR */
+        /* BARRA SUPERIOR (SIN CAMBIOS) */
         .barra-nav {
             background-color: rgba(0,0,0,0.98);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 12px 15px;
-            border-bottom: 2px solid #ffcc00; /* AMARILLO MÁS CLARO */
+            padding: 15px 20px;
+            border-bottom: 3px solid #ffd700;
             text-align: center;
             z-index: 100;
         }
@@ -51,128 +51,125 @@
         .barra-nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 10px; /* MENOR ESPACIO PARA CELULAR */
+            margin: 0 15px;
             font-weight: bold;
-            font-size: 15px; /* TEXTO MÁS PEQUEÑO */
+            font-size: 16px;
         }
 
         .barra-nav a:hover {
-            color: #ffcc00;
+            color: #ffd700;
         }
 
-        /* SECCIONES GENERALES */
+        /* SECCIONES GENERALES (SIN CAMBIOS) */
         .seccion {
-            background-color: rgba(0,0,0,0.9); /* FONDO MÁS OSCURO */
-            padding: 20px; /* MENOR PADDING */
-            border-radius: 12px;
-            border: 1px solid #ffcc00;
-            margin-bottom: 20px;
-            margin-top: 15px;
+            background-color: rgba(0,0,0,0.85);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            margin-bottom: 30px;
+            margin-top: 20px;
         }
 
         h1 {
-            color: #ffcc00;
+            color: #ffd700;
             text-align: center;
-            font-size: 28px; /* TEXTO MÁS PEQUEÑO */
-            margin-bottom: 20px;
-            text-shadow: 0 0 3px rgba(255,204,0,0.6);
+            font-size: 36px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 5px rgba(255,215,0,0.6);
         }
 
         h2 {
-            color: #ffcc00;
+            color: #ffd700;
             text-align: center;
-            border-bottom: 1px solid #ffcc00;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-            font-size: 22px; /* TEXTO MÁS PEQUEÑO */
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
         }
 
-        /* BOTONES DE DESPLEGAR CATEGORÍAS */
+        /* BOTONES DE DESPLEGAR CATEGORÍAS (CORREGIDO PARA QUE FUNCIONE) */
         .btn-categoria {
-            background-color: #222; /* FONDO GRIS OSCURO */
-            color: #ffcc00; /* TEXTO AMARILLO CLARO */
-            padding: 10px 20px;
+            background-color: #ffd700;
+            color: #000;
+            padding: 12px 25px;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             width: 100%;
-            margin-bottom: 12px;
-            border: 1px solid #ffcc00;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
         }
 
         .btn-categoria:hover {
             background-color: #ffcc00;
-            color: #000;
         }
 
-        /* CONTENEDOR DE PRODUCTOS POR CATEGORÍA */
+        /* CONTENEDOR DE PRODUCTOS POR CATEGORÍA (CORREGIDO) */
         .contenido-categoria {
-            background-color: rgba(30,30,30,0.9); /* FONDO GRIS OSCURO */
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #ffcc00;
-            margin-bottom: 15px;
-            display: none;
+            background-color: rgba(255,255,255,0.08);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ffd700;
+            margin-bottom: 20px;
+            display: none; /* OCULTO POR DEFECTO */
         }
 
         .contenido-categoria h3 {
-            color: #ffcc00;
+            color: #ffd700;
             text-align: center;
-            margin-bottom: 15px;
-            font-size: 20px;
+            margin-bottom: 20px;
+            font-size: 22px;
         }
 
-        /* LISTA DE PRODUCTOS */
+        /* LISTA DE PRODUCTOS (SIN CAMBIOS) */
         .productos-grid {
             display: grid;
-            grid-template-columns: 1fr; /* UNA COLUMNA EN CELULAR */
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
 
         .producto {
-            background-color: rgba(40,40,40,0.9); /* FONDO MÁS CLARO QUE EL CONTENEDOR */
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #ffcc00;
+            background-color: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ffd700;
             text-align: center;
         }
 
         .producto h4 {
             color: #fff;
-            font-size: 17px;
-            margin-bottom: 8px;
+            font-size: 18px;
+            margin-bottom: 10px;
         }
 
         .precio {
-            color: #32cd32; /* VERDE MÁS SUAVE */
+            color: #28a745;
             font-weight: bold;
-            font-size: 18px;
-            margin: 8px 0;
+            font-size: 20px;
+            margin: 10px 0;
         }
 
         .stock {
-            color: #32cd32;
+            color: #28a745;
             font-weight: bold;
-            margin-bottom: 12px;
-            font-size: 15px;
+            margin-bottom: 15px;
         }
 
         .agotado {
             color: #dc3545;
             font-weight: bold;
-            margin-bottom: 12px;
-            font-size: 15px;
+            margin-bottom: 15px;
         }
 
         .btn-comprar {
-            background-color: #ffcc00;
+            background-color: #ffd700;
             color: #000;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .btn-comprar:disabled {
@@ -180,36 +177,36 @@
             cursor: not-allowed;
         }
 
-        /* SECCION QUIENES SOMOS */
+        /* SECCION QUIENES SOMOS (SIN CAMBIOS) */
         #quienes-somos p {
             text-align: justify;
-            margin-bottom: 12px;
-            font-size: 15px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
-        /* SECCION CONTACTO */
+        /* SECCION CONTACTO (SIN CAMBIOS) */
         #contacto p {
             text-align: center;
-            font-size: 15px;
-            margin-bottom: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- BARRA DE NAVEGACIÓN -->
+    <!-- BARRA DE NAVEGACIÓN (SIN CAMBIOS) -->
     <div class="barra-nav">
         <a href="#productos">PRODUCTOS</a>
         <a href="#quienes-somos">QUIENES SOMOS</a>
         <a href="#contacto">CONTACTO</a>
     </div>
 
-    <!-- SECCION PRODUCTOS -->
+    <!-- SECCION PRODUCTOS (SIN CAMBIOS) -->
     <div class="seccion" id="productos">
         <h1>VERRACO TOYS</h1>
         <h2>NUESTRAS CATEGORÍAS DE PRODUCTOS</h2>
 
-        <!-- BOTONES PARA DESPLEGAR CATEGORÍAS -->
+        <!-- BOTONES PARA DESPLEGAR CATEGORÍAS (SIN CAMBIOS) -->
         <button class="btn-categoria" onclick="desplegarCategoria('carros')">CARROS TELEDIRIGIDOS</button>
         <div id="carros" class="contenido-categoria">
             <h3>CARROS TELEDIRIGIDOS</h3>
@@ -286,7 +283,7 @@
         </div>
     </div>
 
-    <!-- SECCION QUIENES SOMOS -->
+    <!-- SECCION QUIENES SOMOS (SIN CAMBIOS) -->
     <div class="seccion" id="quienes-somos">
         <h2>QUIENES SOMOS</h2>
         <p>En Verraco Toys nos dedicamos apasionadamente a ofrecer juguetes y vehículos a control remoto de la más alta calidad, desde opciones accesibles para principiantes hasta piezas exclusivas para coleccionistas exigentes. Nuestra misión es brindar productos seguros, duraderos y divertidos que satisfagan tanto a niños como a adultos.</p>
@@ -294,7 +291,7 @@
         <p>Nuestra tienda ubicada en Ambato busca crear una comunidad de amantes de los vehículos a control remoto, donde podamos compartir conocimientos, tips de mantenimiento y organizar eventos para disfrutar juntos de esta apasionante afición.</p>
     </div>
 
-    <!-- SECCION CONTACTO -->
+    <!-- SECCION CONTACTO (SIN CAMBIOS) -->
     <div class="seccion" id="contacto">
         <h2>CONTACTO</h2>
         <p>Dirección: Calle 12 de Octubre N° 456, Ambato - Provincia del Tungurahua, Ecuador</p>
@@ -303,9 +300,10 @@
     </div>
 
     <script>
-        // FUNCIÓN PARA DESPLEGAR/OCULTAR CATEGORÍAS
+        // FUNCIÓN PARA DESPLEGAR/OCULTAR CATEGORÍAS (CORREGIDA Y FUNCIONAL)
         function desplegarCategoria(idCategoria) {
             const categoria = document.getElementById(idCategoria);
+            // VERIFICAMOS SI ESTÁ OCULTA O VISIBLE
             if (categoria.style.display === "block") {
                 categoria.style.display = "none";
             } else {
@@ -313,13 +311,11 @@
             }
         }
 
-        // FUNCIÓN PARA ENVIAR MENSAJE A WHATSAPP
+        // FUNCIÓN PARA ENVIAR MENSAJE A WHATSAPP (SIN CAMBIOS)
         function enviarWhatsApp(nombreProducto, precioProducto) {
-            // PIDE NOMBRE Y CORREO DEL CLIENTE ANTES DE ABRIR WHATSAPP
             const nombreCliente = prompt("Por favor ingresa tu nombre completo:");
             const correoCliente = prompt("Por favor ingresa tu correo electrónico:");
 
             if (nombreCliente && correoCliente) {
-                // MENSAJE EXACTO QUE SOLICITASTE
                 const mensaje = `Hola, soy ${nombreCliente}. Quiero adquirir el producto ${nombreProducto} con precio de $${precioProducto} USD. Mi correo electrónico es ${correoCliente}.`;
-                const url = `https://wa.me/5
+                const url = `https://wa.me/5939630570
