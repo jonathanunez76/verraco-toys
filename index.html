@@ -81,17 +81,24 @@
             border-radius: 5px;
             margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: grid
+            grid-template-columns: repeat(3,1fr);
+            gap:20px;
         }
 
         /* PRODUCTOS */
         .product-box {
-            border-bottom: 1px solid #ddd;
-            padding: 15px 0;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            background-color: #fff;
         }
 
         /* ESTILO PARA LAS IMÁGENES DE PRODUCTOS */
         .product-img {
-            width: 200px;
+            width: 1000px;
+            max-width: 200px;
             height: auto;
             margin-bottom: 15px;
             border-radius: 5px;
@@ -100,7 +107,8 @@
 
         .product-box h3 {
             color: #2c3e50;
-            font-size: 19px;
+            font-size: 17px;
+            margin-bottom: 10px;
         }
 
         .product-price {
@@ -128,12 +136,24 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
+            width:100%;
+        
         }
 
         .buy-button:disabled {
             background-color: #bdc3c7;
             cursor: not-allowed;
         }
+        @media (max-width: 800px) {
+    .category-content {
+        grid-template-columns: repeat(2, 1fr); /* En tablets: 2 productos por fila */
+    }
+}
+
+@media (max-width: 500px) {
+    .category-content {
+        grid-template-columns: 1fr; /* En celulares: 1 producto por fila */
+    }
 
         /* SECCIONES DE INFORMACIÓN */
         .info-section {
