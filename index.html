@@ -43,7 +43,12 @@
             --sombra: rgba(0, 0, 0, 0.3);
             --radio-bordes: 15px;
         }
-
+        
+        /* CODIGO PARA QUE VAYA MAS RAPIDO */
+        img {loading: lazy; max-width: 100%; height: auto;}
+        .category-button, .buy-button, .product-box {transform: translateZ(0); will-change: transform;}
+        .section {contain: layout paint size;}
+        
         * {
             margin: 0;
             padding: 0;
