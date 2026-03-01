@@ -1,10 +1,10 @@
 <!-- ================================== -->
-<!-- PÁGINA COMPLETA: LOGO DE FONDO DE PANTALLA -->
+<!-- PÁGINA COMPLETA: SCROLL A SECCIONES -->
 <!-- ================================== -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VERRACO TOYS - Tienda de Juguetes</title>
+    <title>V E R R A C O   T O Y S - Tienda de Juguetes</title>
     <style>
         /* --------------------------- */
         /* LOGO COMO FONDO DE TODA LA PANTALLA */
@@ -12,23 +12,31 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            /* LOGO DE FONDO DE TODA LA PANTALLA */
             background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
-            background-size: cover; /* Ajusta el logo sin deformar */
-            background-attachment: fixed; /* El fondo NO se mueve al hacer scroll */
-            background-position: center; /* Centra el logo en la pantalla */
-            color: #fff; /* Letras blancas por defecto */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #fff;
+            /* ACTIVAMOS EL SCROLL SUAVE */
+            scroll-behavior: smooth;
         }
 
         /* --------------------------- */
-        /* BARRA SUPERIOR ENCIMA */
+        /* BARRA SUPERIOR FIJA ARRIBA */
         /* --------------------------- */
         .barra-superior {
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 15px 20px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            /* LA BARRA QUEDA FIJA ARRIBA SIEMPRE */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            z-index: 100;
         }
 
         .menu a {
@@ -40,25 +48,34 @@
         }
 
         .menu a:hover {
-            color: #ff0; /* Letras amarillas al pasar el mouse */
+            color: #ff0;
         }
 
         /* --------------------------- */
-        /* TODAS LAS SECCIONES ENCIMA */
+        /* CONTENIDO GENERAL (CON ESPACIO ARRIBA) */
         /* --------------------------- */
         .contenedor-general {
-            background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para el contenido */
             max-width: 1200px;
-            margin: 20px auto; /* Centra el contenido */
+            margin: 100px auto 20px; /* Espacio para la barra fija */
             padding: 25px;
+        }
+
+        /* --------------------------- */
+        /* CADA SECCIÓN POR SEPARADO */
+        /* --------------------------- */
+        .seccion {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
             border-radius: 10px;
+            margin-bottom: 30px;
         }
 
         h1, h2 {
-            color: #ff0; /* Títulos amarillos brillantes */
+            color: #ff0;
             text-align: center;
             border-bottom: 2px solid #ff0;
             padding-bottom: 10px;
+            margin-top: 0;
         }
 
         .productos-contenedor {
@@ -70,7 +87,7 @@
         }
 
         .producto {
-            background-color: rgba(255, 255, 255, 0.15); /* Fondo claro para productos */
+            background-color: rgba(255, 255, 255, 0.15);
             padding: 20px;
             border-radius: 8px;
             width: 300px;
@@ -79,7 +96,7 @@
 
         .precio {
             font-size: 20px;
-            color: #0f0; /* Precios en verde brillante */
+            color: #0f0;
             font-weight: bold;
         }
 
@@ -96,51 +113,66 @@
         p {
             font-size: 16px;
             line-height: 1.6;
+            text-align: justify;
         }
     </style>
 </head>
 <body>
-    <!-- BARRA SUPERIOR ENCIMA -->
+    <!-- BARRA SUPERIOR FIJA -->
     <div class="barra-superior">
         <div class="menu">
+            <!-- LINKS QUE LLEVAN A CADA SECCIÓN -->
             <a href="#productos">PRODUCTOS</a>
-            <a href="#quienes">QUIENES SOMOS</a>
+            <a href="#quienes-somos">QUIENES SOMOS</a>
             <a href="#contacto">CONTACTO</a>
         </div>
     </div>
 
-    <!-- CONTENIDO ENCIMA DEL FONDO -->
+    <!-- CONTENIDO PRINCIPAL -->
     <div class="contenedor-general">
-        <h1>VERRACO TOYS</h1>
-        <h2 id="productos">NUESTROS PRODUCTOS</h2>
-        
-        <div class="productos-contenedor">
-            <div class="producto">
-                <h3>Carro Teledirigido Deportivo</h3>
-                <p class="precio">$750 USD</p>
-                <p class="stock-disponible">EN STOCK</p>
-            </div>
+        <!-- SECCIÓN PRODUCTOS -->
+        <div class="seccion" id="productos">
+            <h1>VERRACO TOYS</h1>
+            <h2>NUESTROS PRODUCTOS</h2>
+            
+            <div class="productos-contenedor">
+                <div class="producto">
+                    <h3>Carro Teledirigido Deportivo</h3>
+                    <p class="precio">$750 USD</p>
+                    <p class="stock-disponible">EN STOCK</p>
+                </div>
 
-            <div class="producto">
-                <h3>Helicóptero Teledirigido</h3>
-                <p class="precio">$950 USD</p>
-                <p class="stock-disponible">EN STOCK</p>
-            </div>
+                <div class="producto">
+                    <h3>Helicóptero Teledirigido</h3>
+                    <p class="precio">$950 USD</p>
+                    <p class="stock-disponible">EN STOCK</p>
+                </div>
 
-            <div class="producto">
-                <h3>Avión Coleccionable</h3>
-                <p class="precio">$1250 USD</p>
-                <p class="stock-agotado">AGOTADO</p>
+                <div class="producto">
+                    <h3>Avión Coleccionable</h3>
+                    <p class="precio">$1250 USD</p>
+                    <p class="stock-agotado">AGOTADO</p>
+                </div>
             </div>
         </div>
 
-        <h2 id="quienes">QUIENES SOMOS</h2>
-        <p>Somos una tienda del barrio dedicada a ofrecer juguetes de alta calidad. Nos apasiona lo que hacemos y queremos llevar alegría a todos los hogares con nuestros productos.</p>
+        <!-- SECCIÓN QUIENES SOMOS -->
+        <div class="seccion" id="quienes-somos">
+            <h2>QUIENES SOMOS</h2>
+            <p>Somos una tienda familiar ubicada en el corazón de Ambato, Provincia del Tungurahua. Desde hace más de 5 años nos dedicamos a ofrecer juguetes de alta calidad, con especial énfasis en los modelos teledirigidos y coleccionables.</p>
+            <p>Nuestro objetivo es llevar alegría y entretenimiento a todos los hogares, garantizando productos seguros, duraderos y con las últimas tecnologías del mercado. Trabajamos directamente con fabricantes reconocidos para ofrecer los mejores precios y la mejor calidad.</p>
+            <p>Además, contamos con un equipo de profesionales dispuestos a ayudarte a elegir el juguete perfecto para cada edad y gusto.</p>
+        </div>
 
-        <h2 id="contacto">CONTACTO</h2>
-        <p>Ubicación: Ambato, Provincia del Tungurahua - Ecuador</p>
-        <p>Teléfono: 0963057078</p>
-        <p>Correo: contacto@verraco-toys.com</p>
+        <!-- SECCIÓN CONTACTO -->
+        <div class="seccion" id="contacto">
+            <h2>CONTACTO</h2>
+            <p><strong>Ubicación física:</strong> Calle 12 de Octubre N° 456, Barrio Centro, Ambato - Ecuador</p>
+            <p><strong>Teléfono:</strong> 0963057078 | 032-256789</p>
+            <p><strong>Correo electrónico:</strong> contacto@verraco-toys.com | ventas@verraco-toys.com</p>
+            <p><strong>Horarios de atención:</strong> Lunes a Sábado de 9:00 AM a 7:00 PM | Domingos de 10:00 AM a 2:00 PM</p>
+            <p><strong>Redes sociales:</strong> Facebook: @VerracoToysEc | Instagram: @verraco_toys</p>
+        </div>
     </div>
 </body>
 </html>
