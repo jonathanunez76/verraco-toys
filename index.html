@@ -3,71 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERRACO TOYS - Tienda Online</title>
+    <title>VERRACO TOYS - Tienda de Juguetes Teledirigidos</title>
     <style>
+        /* -------------------------- */
+        /* ESTILOS GENERALES - MODIFICABLES */
+        /* -------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
         body {
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* -------------------------- */
+        /* CABECERA */
+        /* -------------------------- */
+        .cabecera {
+            background-color: #d62828;
+            padding: 20px 0;
             text-align: center;
-            padding: 50px;
         }
-        .tienda {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            max-width: 500px;
-            margin: 0 auto;
+        .cabecera .logo {
+            max-width: 180px;
+            margin-bottom: 10px;
         }
-        .logo-verraco {
-            max-width: 200px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: #d62828;
+        .cabecera h1 {
+            color: white;
             text-transform: uppercase;
-            margin-top: 10px;
+            letter-spacing: 2px;
+            font-size: 28px;
+        }
+
+        /* -------------------------- */
+        /* MENÚ NAVEGACIÓN */
+        /* -------------------------- */
+        .menu-nav {
+            background-color: #222;
+            text-align: center;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .menu-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .menu-nav a:hover {
+            color: #fca311;
+        }
+
+        /* -------------------------- */
+        /* CONTENEDOR PRINCIPAL */
+        /* -------------------------- */
+        .contenedor {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* -------------------------- */
+        /* TÍTULOS Y TEXTOS */
+        /* -------------------------- */
+        .titulo-seccion {
+            color: #d62828;
+            font-size: 24px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #d62828;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        .bienvenida {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        /* -------------------------- */
+        /* GRID DE PRODUCTOS */
+        /* -------------------------- */
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
         .producto {
-            margin: 20px 0;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
         }
-        img {
+        .producto:hover {
+            transform: translateY(-5px);
+        }
+        .producto img {
             max-width: 100%;
+            height: 200px;
+            object-fit: cover;
             border-radius: 5px;
+            margin: 15px 0;
+        }
+        .producto h3 {
+            color: #222;
+            font-size: 18px;
+            margin-bottom: 10px;
         }
         .precio {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             color: #003049;
+            margin-bottom: 10px;
         }
         .stock {
-            font-size: 20px;
-            color: #2a9d8f;
+            padding: 5px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .stock-disponible {
+            background-color: #2a9d8f;
+            color: white;
+        }
+        .stock-agotado {
+            background-color: #e63946;
+            color: white;
+        }
+        .btn-comprar {
+            background-color: #d62828;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn-comprar:hover {
+            background-color: #9d0208;
+        }
+
+        /* -------------------------- */
+        /* MODALES (VENTANAS EMERGENTES) */
+        /* -------------------------- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        .modal-contenido {
+            background-color: white;
+            margin: 8% auto;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            position: relative;
+        }
+        .cerrar-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        .cerrar-modal:hover {
+            color: #d62828;
+        }
+
+        /* -------------------------- */
+        /* FORMULARIO DE COMPRA */
+        /* -------------------------- */
+        .form-compra label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: 500;
+        }
+        .form-compra input, .form-compra select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .btn-enviar-pedido {
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .btn-enviar-pedido:hover {
+            background-color: #21867a;
+        }
+        .btn-cancelar-pedido {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .btn-cancelar-pedido:hover {
+            background-color: #c1121f;
+        }
+
+        /* -------------------------- */
+        /* MENSAJES DE CONFIRMACIÓN */
+        /* -------------------------- */
+        .mensaje {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            z-index: 200;
+        }
+        .mensaje-exito {
+            background-color: #2a9d8f;
+        }
+        .mensaje-error {
+            background-color: #e63946;
+        }
+
+        /* -------------------------- */
+        /* PIE DE PÁGINA */
+        /* -------------------------- */
+        .pie-pagina {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 50px;
+        }
+        .pie-pagina p {
+            margin: 5px 0;
+            font-size: 15px;
+        }
+        .ubicacion {
+            color: #fca311;
             font-weight: bold;
         }
-        .contacto {
-            margin-top: 30px;
-            color: #555;
+
+        /* -------------------------- */
+        /* RESPONSIVE */
+        /* -------------------------- */
+        @media (max-width: 768px) {
+            .menu-nav a {
+                margin: 0 10px;
+                font-size: 14px;
+            }
+            .modal-contenido {
+                margin: 15% auto;
+                max-width: 90%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="tienda">
-        <img src="https://cdn.pixabay.com/photo/2018/05/27/14/22/eagle-3434845_1280.png" alt="Logo VERRACO TOYS con águila" class="logo-verraco">
+    <!-- -------------------------- -->
+    <!-- CABECERA -->
+    <!-- -------------------------- -->
+    <header class="cabecera">
+        <img src="https://cdn.pixabay.com/photo/2018/05/27/14/22/eagle-3430556_1280.png" alt="Logo VERRACO TOYS" class="logo">
         <h1>VERRACO TOYS</h1>
-        <h2>Tu tienda de coches teledirigidos</h2>
+    </header>
 
-        <div class="producto">
-            <h3>Coche Teledirigido HOSHI N518</h3>
-            <img src="https://cdn.pixabay.com/photo/2017/01/06/19/16/radio-controlled-toy-1958637_1280.jpg" alt="Coche Teledirigido HOSHI N518">
-            <p class="precio">PRECIO: $650 USD</p>
-            <p class="stock">✅ EN STOCK</p>
-        </div>
+    <!-- -------------------------- -->
+    <!-- MENÚ NAVEGACIÓN -->
+    <!-- -------------------------- -->
+    <nav class="menu-nav">
+        <a href="#inicio">INICIO</a>
+        <a href="#carros">CARROS</a>
+        <a href="#helicopteros">HELICÓPTEROS</a>
+        <a href="#aviones">AVIONES</a>
+        <a href="#contacto">CONTACTO</a>
+    </nav>
 
-        <div class="contacto">
-            <p>📱 Contáctanos por WhatsApp: +593 9XXXXXXXXX</p>
-            <p>📍 Ubicación: Ambato - Ecuador</p>
-        </div>
-    </div>
-</body>
-</html>
+    <!-- -------------------------- -->
+    <!-- CONTENEDOR PRINCIPAL -->
+    <!-- -------------------------- -->
+    <main class="contenedor">
+        <!-- SECCIÓN INICIO -->
+        <section id="inicio">
+            <h2 class="titulo-seccion">Bienvenidos a VERRACO TOYS</h2>
+            <div class="bienvenida">
+                <p>Tu tienda especializada en juguetes teledirigidos de alta calidad en Ambato - Ecuador.</p>
+                <p>Selecciona un producto y haz clic en "Comprar ahora" para realizar tu pedido!</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CARROS -->
+        <section id="carros">
+            <h2 class="titulo-seccion">Carros Teledirigidos</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <img src="https://cdn.pixabay.com/photo/2017/01/06/19/16/radio-controlled-toy-1958637_1280.jpg" alt="Coche HOSHI N518">
+                    <h3>Coche Teledirigido HOSHI N518</h3>
+                    <p class="precio">$650 USD</p>
+                    <span class="stock stock-disponible">EN STOCK</span>
+                    <button class="btn-comprar" onclick="abrirFormulario('Coche Teledirigido HOSHI N518', '$650 USD')">Comprar ahora</button>
+                </div>
+                <div class="producto">
+                    <img src="https://cdn.pixabay.com/photo/2019/08/09/15/50/rc-car-4395792_1280.jpg" alt="Coche SPEED GT-200">
+                    <h3>Coche Teledirigido SPEED GT-200</h3>
+                    <p class="precio">$780 USD</p>
+                    <span class="stock stock-disponible">EN STOCK</span>
+                    <button class="btn-comprar" onclick="abrirFormulario('Coche Teledirigido SPEED GT-200', '$780 USD')">Comprar ahora</button>
+                </div>
+                <div class="producto">
+                    <img src="https://cdn.pixabay.com/photo/2018/02/03/16/53/toy-car-3126277_1280.jpg" alt="Coche OFF-ROAD X-45">
+                    <h3>Coche Teledirigido OFF-ROAD X-45</h3>
+                    <p class="precio">$820 USD</p>
+                    <span class="stock stock-agotado">AGOTADO</span>
+                    <button class="btn-comprar" disabled>Comprar ahora</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN HELICÓPTEROS -->
+        <section id="helicopteros">
+            <h2 class="titulo-seccion">Helicópteros Teledirigidos</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <img src="https://cdn.pixabay.com/photo/2017/09/01/17/55/helicopter-2705647_1280.jpg" alt="Helicóptero SKY MASTER">
+                    <h3>Helicóptero Teledirigido SKY MASTER</h3>
+                    <p class="precio">$950 USD</p>
+                    <span class="stock stock-disponible">EN STOCK</span>
+                    <button class="btn-comprar" onclick="abrirFormulario('Helicóptero Teledirigido SKY MASTER', '$950 USD')">Comprar ahora</button>
+                </div>
+                <div class="producto">
+                    <img src="https://cdn.pixabay.com/photo/2016/03/31/19/50/radio-controlled-toy-1296045_1280.jpg" alt="Helicóptero MINI DRONE HX-15">
+                    <h3>Helicóptero Teledirigido MINI DRONE HX-15</h3>
+                    <p class="precio">$520 USD</p>
+                    <span class="stock stock-agotado">AGOTADO</span>
+                    <button class="btn-comprar" disabled>Comprar ahora</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN AVIONES -->
+        <section id="aviones">
+            <h2 class="titulo-seccion">Aviones Teledirigidos</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/29/04/41/radio-controlled-toy-1868727_1280.jpg" alt="Avión JET FIGHTER F-16">
+                    <h3>Avión Teledirigido JET FIGHTER F-16</h3>
+                    <p class="precio">$1250 USD</p>
+                    <span class="stock stock-disponible">EN STOCK</span>
+                    <button class="btn-comprar" onclick="abrirFormulario('Avión Teledirigido JET FIGHTER F-16', '$1250 USD')">Comprar ahora</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto">
+            <h2 class="titulo-seccion">Contacto</h2>
+            <div class="bienvenida">
+                <p><span class="ubicacion">Ubicación:</span> Ambato - Ecuador, Calle 12 N° 45-67</p>
+                <p><span class="ubicacion">Teléfono:
