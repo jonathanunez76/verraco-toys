@@ -337,19 +337,34 @@
     </footer>
 
     <!-- FUNCIONES JAVASCRIPT COMPLETAS -->
-    <script>
-        
-// PEGA AQUÍ EL CÓDIGO QUE TE MANDÉ
+    
+<script>
+// FUNCIÓN PARA MOSTRAR/OCULTAR CATEGORÍAS (AHORA SÍ FUNCIONA)
+function mostrarCategoria(id) {
+    const todasCategorias = document.querySelectorAll('.category-content');
+    todasCategorias.forEach(contenido => {
+        contenido.style.display = 'none';
+    });
+    const categoriaSeleccionada = document.getElementById(id);
+    if (categoriaSeleccionada) {
+        categoriaSeleccionada.style.display = 'grid';
+    }
+}
+
+// FUNCIÓN PARA ENVIAR MENSAJE POR WHATSAPP (CORREGIDA)
 function enviarWhatsApp(producto, precio) {
     const nombreCliente = prompt('Por favor, ingresa tu nombre:');
     const correoCliente = prompt('Por favor, ingresa tu correo electrónico:');
+
     if (!nombreCliente || !correoCliente || nombreCliente.trim() === "" || correoCliente.trim() === "") {
         alert('Debes ingresar tu nombre y correo válidos para continuar.');
         return;
     }
-    const numeroWhatsApp = '593963057078'; // CAMBIA ESTE NÚMERO
-    const mensaje = `Hola! Mi nombre es ${nombreCliente}. Quiero comprar el producto: ${producto} con precio de ${precio} USD. Mi correo es: ${correoCliente}`;
+
+    const numeroWhatsApp = '593987654321'; // CAMBIA ESTE NÚMERO POR EL TUYO
+    const mensaje = `Hola! Mi nombre es ${nombreCliente}. Quiero comprar el producto: ${producto} con precio de $${precio} USD. Mi correo es: ${correoCliente}`;
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
     const enlace = document.createElement('a');
     enlace.href = urlWhatsApp;
     enlace.target = '_blank';
@@ -357,7 +372,6 @@ function enviarWhatsApp(producto, precio) {
     enlace.click();
     document.body.removeChild(enlace);
 }
-
-    </script>
+</script>
 </body>
 </html>
