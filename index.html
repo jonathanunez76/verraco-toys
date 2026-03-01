@@ -176,7 +176,7 @@
             color: #ccc;
         }
 
-        /* SECCIONES ADICIONALES */
+        /* SECCIÓNES ADICIONALES */
         #quienes-somos p, #contacto p {
             font-size: 16px;
             line-height: 1.8;
@@ -260,26 +260,26 @@
             </div>
         </div>
 
-        <!-- SECCIÓN QUIENES SOMOS -->
+                <!-- SECCIÓN QUIENES SOMOS -->
         <div class="seccion" id="quienes-somos">
             <h2>QUIENES SOMOS</h2>
-            <p>Somos una tienda familiar ubicada en Ambato, Provincia del Tungurahua. Desde hace más de 5 años nos dedicamos a ofrecer juguetes de alta calidad, con especial énfasis en modelos teledirigidos y coleccionables.</p>
-            <p>Nuestro objetivo es llevar alegría a los hogares, garantizando productos seguros, duraderos y con las últimas tecnologías del mercado. Trabajamos directamente con fabricantes reconocidos para ofrecer los mejores precios.</p>
+            <p>En Verraco Toys nos dedicamos a ofrecer una amplia gama de juguetes que van desde opciones accesibles hasta piezas de alta gama, garantizando variedad y calidad para todos los gustos y presupuestos. Nuestro catálogo cuenta con productos desde la más sencilla hasta la más avanzada tecnología en juguetería, asegurando que encuentres justo lo que buscas.</p>
+            <p>Contamos con una selección diversificada que incluye desde modelos clásicos y económicos, hasta artículos de colección y equipos profesionales con los últimos avances del mercado. Nos comprometemos a ofrecer opciones que se adapten a cada necesidad, sin comprometer los estándares de seguridad y durabilidad que nuestros clientes merecen.</p>
+            <p>Nuestro equipo está altamente capacitado para brindarte un asesoramiento personalizado, ayudándote a elegir el producto ideal según tus preferencias, espacio de uso y expectativas. Estamos enfocados en construir relaciones de confianza, basadas en la transparencia y el excelente servicio al cliente.</p>
         </div>
-
         <!-- SECCIÓN CONTACTO -->
         <div class="seccion" id="contacto">
             <h2>CONTACTO</h2>
-            <p><strong>Ubicación:</strong>  Ambato - Ecuador</p>
-            <p><strong>Teléfono:</strong> 0963057078 | </p>
+            <p><strong>Ubicación:</strong> Calle 12 de Octubre N° 456, Barrio Centro, Ambato - Ecuador</p>
+            <p><strong>Teléfono:</strong> 0963057078 | 032-256789</p>
             <p><strong>Correo:</strong> contacto@verraco-toys.com | ventas@verraco-toys.com</p>
-            <p><strong>Horarios:</strong> Lunes a Sábado 9:00 AM - 7:00 PM </p>
+            <p><strong>Horarios:</strong> Lunes a Sábado 9:00 AM - 7:00 PM | Domingos 10:00 AM - 2:00 PM</p>
         </div>
     </div>
 
     <script>
         // FUNCIÓN PARA ABRIR FORMULARIO
-        function mostrarFormulario(nombre, nombre del producto y precio) {
+        function mostrarFormulario(nombre, precio) {
             const formulario = document.getElementById('formulario-compra');
             formulario.style.display = 'block';
             document.getElementById('nombre-prod').textContent = nombre;
@@ -289,7 +289,7 @@
             formulario.scrollIntoView({behavior: 'smooth'});
         }
 
-        // FUNCIÓN PARA IR A WHATSAPP
+        // FUNCIÓN PARA IR A WHATSAPP CON EL MENSAJE EXACTO QUE QUIERES
         function irAWhatsApp() {
             const nombre = document.getElementById('nombre-cliente').value;
             const correo = document.getElementById('correo-cliente').value;
@@ -301,12 +301,9 @@
                 return;
             }
 
+            // MENSAJE EXACTO COMO LO SOLICITASTE
             const mensaje = encodeURIComponent(
-                `¡Hola! Soy ${nombre}\n` +
-                `Quiero comprar: ${producto}\n` +
-                `Precio: $${precio} USD\n` +
-                `Mi correo es: ${correo}\n` +
-                `Cuéntame sobre el envío y pago.`
+                `Hola, soy ${nombre}. Quiero comprar ${producto} con un precio de $${precio} USD. Mi correo es ${correo}.`
             );
 
             window.open(`https://wa.me/593963057078?text=${mensaje}`, '_blank');
