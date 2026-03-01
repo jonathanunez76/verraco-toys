@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERRACO TOYS - Tienda de Juguetes</title>
     
-    <!-- MEDIDAS DE SEGURIDAD AVANZADAS Y COMPLETAS -->
+    <!-- MEDIDAS DE SEGURIDAD AVANZADAS -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com data:; font-src 'self'; connect-src 'self' https://wa.me;">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), accelerometer=(), gyroscope=(), magnetometer=(), notifications=(), usb=(), bluetooth=(), xr-spatial-tracking=(), screen-wake-lock=(), web-share=()">
     <meta http-equiv="Referrer-Policy" content="no-referrer">
     <meta name="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="index, follow">
 
     <style>
-        /* ESTILOS MEJORADOS QUE NO CAMBIAMOS DE TODO EL DÍA */
+        /* ESTILOS IGUAL QUE TODO EL DÍA */
         * {
             margin: 0;
             padding: 0;
@@ -91,66 +90,69 @@
             font-size: 22px;
         }
 
-        .productos-contenedor {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            align-items: stretch;
-        }
-
-        .producto {
-            background-color: rgba(255,255,255,0.1);
-            padding: 25px;
+        /* CONTENEDOR PRINCIPAL DE CADA CATEGORÍA */
+        .categoria-producto {
+            background-color: rgba(255,255,255,0.08);
+            padding: 20px;
             border-radius: 10px;
             border: 1px solid #ffd700;
-            text-align: center;
-            transition: transform 0.3s ease;
+            margin-bottom: 20px;
         }
 
-        .producto:hover {
-            transform: translateY(-5px);
-        }
-
-        .producto h3 {
+        .categoria-producto h3 {
             color: #ffd700;
-            margin-bottom: 15px;
             font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* LISTA DE PRODUCTOS ESPECÍFICOS DE CADA CATEGORÍA */
+        .lista-productos-especificos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .producto-especifico {
+            background-color: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #ffd700;
+            text-align: center;
         }
 
         .precio {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: bold;
             color: #28a745;
-            margin-bottom: 10px;
+            margin: 10px 0;
         }
 
         .stock {
             color: #28a745;
             font-weight: bold;
-            margin-bottom: 15px;
         }
 
         .agotado {
             color: #dc3545;
             font-weight: bold;
-            margin-bottom: 15px;
         }
 
         .btn-comprar {
             background-color: #ffd700;
             color: #000;
-            padding: 12px 25px;
+            padding: 10px 20px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
             transition: background-color 0.3s ease;
+            margin-top: 10px;
         }
 
         .btn-comprar:disabled {
             background-color: #6c757d;
             cursor: not-allowed;
-            opacity: 0.7;
         }
 
         .btn-comprar:hover:not(:disabled) {
@@ -189,89 +191,123 @@
         .form-grupo input::placeholder {
             color: #ccc;
         }
-
-        #quienes-somos p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        #contacto p {
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
-    <!-- BARRA DE NAVEGACIÓN IGUAL QUE SIEMPRE -->
     <div class="barra-superior">
         <a href="#productos">PRODUCTOS</a>
         <a href="#quienes-somos">QUIENES SOMOS</a>
         <a href="#contacto">CONTACTO</a>
     </div>
 
-    <!-- CONTENEDOR PRINCIPAL SIN CAMBIOS -->
     <div class="contenedor">
-        <!-- SECCIÓN PRODUCTOS -->
+        <!-- SECCIÓN PRODUCTOS CON CATEGORÍAS ESPECÍFICAS -->
         <section class="seccion" id="productos">
             <h1>VERRACO TOYS</h1>
-            <h2>NUESTROS PRODUCTOS</h2>
-            
-            <div class="productos-contenedor">
-                <!-- PRODUCTO 1 - IGUAL QUE ANTES -->
-                <div class="producto">
-                    <h3>Carro Teledirigido Deportivo</h3>
-                    <p class="precio">$750 USD</p>
-                    <p class="stock">EN STOCK</p>
-                    <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Deportivo', 750)">COMPRAR AHORA</button>
-                </div>
+            <h2>NUESTROS PRODUCTOS POR CATEGORÍA</h2>
 
-                <!-- PRODUCTO 2 - IGUAL QUE ANTES -->
-                <div class="producto">
-                    <h3>Helicóptero Teledirigido</h3>
-                    <p class="precio">$950 USD</p>
-                    <p class="stock">EN STOCK</p>
-                    <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido', 950)">COMPRAR AHORA</button>
-                </div>
-
-                <!-- PRODUCTO 3 - IGUAL QUE ANTES -->
-                <div class="producto">
-                    <h3>Avión Coleccionable</h3>
-                    <p class="precio">$1250 USD</p>
-                    <p class="agotado">AGOTADO</p>
-                    <button class="btn-comprar" disabled>COMPRAR AHORA</button>
+            <!-- CATEGORÍA: CARROS TELEDIRIGIDOS -->
+            <div class="categoria-producto">
+                <h3>CARROS TELEDIRIGIDOS</h3>
+                <div class="lista-productos-especificos">
+                    <div class="producto-especifico">
+                        <p><strong>Modelo Deportivo GT-100</strong></p>
+                        <p class="precio">$750 USD</p>
+                        <p class="stock">EN STOCK</p>
+                        <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Deportivo GT-100', 750)">COMPRAR AHORA</button>
+                    </div>
+                    <div class="producto-especifico">
+                        <p><strong>Modelo Todoterreno XT-200</strong></p>
+                        <p class="precio">$850 USD</p>
+                        <p class="stock">EN STOCK</p>
+                        <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Todoterreno XT-200', 850)">COMPRAR AHORA</button>
+                    </div>
+                    <div class="producto-especifico">
+                        <p><strong>Modelo Profesional PRO-300</strong></p>
+                        <p class="precio">$1200 USD</p>
+                        <p class="stock">EN STOCK</p>
+                        <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Profesional PRO-300', 1200)">COMPRAR AHORA</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- FORMULARIO DE COMPRA - IGUAL QUE ANTES PERO MÁS SEGURO -->
-            <div id="formulario-compra">
-                <h2>DATOS PARA CONTACTO</h2>
-                <input type="hidden" id="prod-nombre-hidden">
-                <input type="hidden" id="prod-precio-hidden">
+            <!-- CATEGORÍA: HELICÓPTEROS TELEDIRIGIDOS -->
+            <div class="categoria-producto">
+                <h3>HELICÓPTEROS TELEDIRIGIDOS</h3>
+                <div class="lista-productos-especificos">
+                    <div class="producto-especifico">
+                        <p><strong>Modelo Clásico H-50</strong></p>
+                        <p class="precio">$950 USD</p>
+                        <p class="stock">EN STOCK</p>
+                        <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido Clásico H-50', 950)">COMPRAR AHORA</button>
+                    </div>
+                    <div class="producto-especifico">
+                        <p><strong>Modelo de Carreras R-100</strong></p>
+                        <p class="precio">$1100 USD</p>
+                        <p class="stock">EN STOCK</p>
+                        <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido de Carreras R-100', 1100)">COMPRAR AHORA</button>
+                    </div>
+                    <div class="producto-especifico">
+                        <p><strong>Modelo Profesional P-200</strong></p>
+                        <p class="precio">$1500 USD</p>
+                        <p class="agotado">AGOTADO</p>
+                        <button class="btn-comprar" disabled>COMPRAR AHORA</button>
+                    </div>
+                </div>
+            </div>
 
-                <div class="form-grupo">
-                    <label>PRODUCTO ELEGIDO:</label>
-                    <span id="prod-nombre" style="color: #ffd700; font-weight: bold;"></span>
+            <!-- CATEGORÍA: AVIONES COLECCIONABLES -->
+            <div class="categoria-producto">
+                <h3>AVIONES COLECCIONABLES</h3>
+                <div class="lista-productos-especificos">
+                    <div class="producto-especifico">
+                        <p><strong>Modelo Boeing 747 Vintage</strong></p>
+                        <p class="precio">$1250 USD</p>
+                        <p class="agotado">AGOTADO</p>
+                        <button class="btn-comprar" disabled>COMPRAR AHORA</button>
+                    </div>
+                    <div class="producto-especifico">
+                        <p><strong>Modelo Airbus A380 Premium</strong></p>
+                        <p class="precio">$1400 USD</p>
+                        <p class="stock">EN STOCK</p>
+                        <button class="btn-comprar" onclick="mostrarFormulario('Avión Coleccionable Airbus A380 Premium', 1400)">COMPRAR AHORA</button>
+                    </div>
+                    <div class="producto-especifico">
+                        <p><strong>Modelo de Caza F-16</strong></p>
+                        <p class="precio">$1600 USD</p>
+                        <p class="stock">EN STOCK</p>
+                        <button class="btn-comprar" onclick="mostrarFormulario('Avión Coleccionable Caza F-16', 1600)">COMPRAR AHORA</button>
+                    </div>
                 </div>
 
-                <div class="form-grupo">
-                    <label>PRECIO:</label>
-                    <span id="prod-precio" style="color: #28a745; font-weight: bold;"></span>
-                </div>
+                <!-- FORMULARIO DE COMPRA -->
+                <div id="formulario-compra">
+                    <h2>DATOS PARA CONTACTO</h2>
+                    <input type="hidden" id="prod-nombre">
+                    <input type="hidden" id="prod-precio">
 
-                <div class="form-grupo">
-                    <label>TU NOMBRE COMPLETO *</label>
-                    <input type="text" id="nombre-cliente" placeholder="Ej: Juan Pérez" required>
+                    <div class="form-grupo">
+                        <label>PRODUCTO ELEGIDO:</label>
+                        <span id="nombre-prod" style="color: #ffd700; font-weight: bold;"></span>
+                    </div>
+                    <div class="form-grupo">
+                        <label>PRECIO:</label>
+                        <span id="precio-prod" style="color: #28a745; font-weight: bold;"></span>
+                    </div>
+                    <div class="form-grupo">
+                        <label>TU NOMBRE COMPLETO *</label>
+                        <input type="text" id="nombre-cliente" placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    <div class="form-grupo">
+                        <label>TU CORREO ELECTRÓNICO *</label>
+                        <input type="email" id="correo-cliente" placeholder="Ej: juan@ejemplo.com" required>
+                    </div>
+                    <button class="btn-comprar" onclick="enviarWhatsApp()">ENVIAR DATOS Y CONTACTAR</button>
                 </div>
-
-                <div class="form-grupo">
-                    <label>TU CORREO ELECTRÓNICO *</label>
-                    <input type="email" id="correo-cliente" placeholder="Ej: juan@ejemplo.com" required>
-                </div>
-
-                <button class="btn-comprar" onclick="enviarWhatsApp()">ENVIAR DATOS Y CONTACTAR</button>
             </div>
         </section>
 
-        <!-- SECCIÓN QUIENES SOMOS - DESCRIPCIÓN FINAL QUE QUERÍAS -->
+        <!-- SECCIÓN QUIENES SOMOS (IGUAL QUE ANTES) -->
         <section class="seccion" id="quienes-somos">
             <h2>QUIENES SOMOS</h2>
             <p>En Verraco Toys nos dedicamos a ofrecer una amplia gama de juguetes que van desde opciones accesibles hasta piezas de alta gama, garantizando variedad y calidad para todos los gustos y presupuestos. Nuestro catálogo cuenta con productos desde la más sencilla hasta la más avanzada tecnología en juguetería, asegurando que encuentres justo lo que buscas.</p>
@@ -279,7 +315,7 @@
             <p>Nuestro equipo está altamente capacitado para brindarte un asesoramiento personalizado, ayudándote a elegir el producto ideal según tus preferencias, espacio de uso y expectativas. Estamos enfocados en construir relaciones de confianza, basadas en la transparencia y el excelente servicio al cliente.</p>
         </section>
 
-        <!-- SECCIÓN CONTACTO - IGUAL QUE ANTES -->
+        <!-- SECCIÓN CONTACTO (IGUAL QUE ANTES) -->
         <section class="seccion" id="contacto">
             <h2>CONTACTO</h2>
             <p><strong>Ubicación:</strong> Calle 12 de Octubre N° 456, Barrio Centro, Ambato - Ecuador</p>
@@ -290,64 +326,5 @@
     </div>
 
     <script>
-        // FUNCIÓN MOSTRAR FORMULARIO - 100% FUNCIONAL
-        function mostrarFormulario(nombreProducto, precioProducto) {
-            const formulario = document.getElementById('formulario-compra');
-            formulario.style.display = 'block';
-            document.getElementById('prod-nombre').textContent = nombreProducto;
-            document.getElementById('prod-precio').textContent = '$' + precioProducto + ' USD';
-            document.getElementById('prod-nombre-hidden').value = nombreProducto;
-            document.getElementById('prod-precio-hidden').value = precioProducto;
-            formulario.scrollIntoView({behavior: 'smooth'});
-        }
-
-        // FUNCIÓN ENVIAR WHATSAPP - MÁS SEGURA Y COMPLETA
-        function enviarWhatsApp() {
-            const nombre = document.getElementById('nombre-cliente').value.trim();
-            const correo = document.getElementById('correo-cliente').value.trim();
-            const producto = document.getElementById('prod-nombre-hidden').value;
-            const precio = document.getElementById('prod-precio-hidden').value;
-
-            // VALIDACIONES SEGURAS QUE NO CAMBIAMOS
-            const nombreValido = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre);
-            const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
-
-            if (!nombreValido) {
-                alert('El nombre solo puede contener letras y espacios');
-                return;
-            }
-
-            if (!correoValido) {
-                alert('Formato de correo electrónico incorrecto');
-                return;
-            }
-
-            // MENSAJE EXACTO QUE QUERÍAS
-            const mensaje = encodeURIComponent(
-                `Hola, soy ${nombre}. Quiero comprar ${producto} con un precio de $${precio} USD. Mi correo es ${correo}.`
-            );
-
-            window.open(`https://wa.me/593963057078?text=${mensaje}`, '_blank');
-            
-            // RESETEO DEL FORMULARIO
-            document.getElementById('formulario-compra').reset();
-            document.getElementById('formulario-compra').style.display = 'none';
-        }
-
-        // PROTECCIÓN ADICIONAL CON EVENT LISTENER
-        document.addEventListener('DOMContentLoaded', function() {
-            // BLOQUEO DE ACCIONES MALICIOSAS EN INPUTS
-            const inputs = document.querySelectorAll('input');
-            inputs.forEach(input => {
-                input.addEventListener('keydown', function(e) {
-                    // BLOQUEO DE CARACTERES ESPECIALES PELIGROSOS
-                    const caracteresMaliciosos = /[<>\/\\\[\]\{\}\(\)\*\+\=\%\&\^\$#@!¡¿\?]/;
-                    if (caracteresMaliciosos.test(e.key)) {
-                        e.preventDefault();
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+        // FUNCIÓN MOSTRAR FORMULARIO (IGUAL QUE ANTES PERO ADAPTADA A LAS NUEVAS CATEGORÍAS)
+        function mostrarFormulario(nombre
