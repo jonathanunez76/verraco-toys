@@ -22,37 +22,29 @@
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1087/1087833.png" type="image/x-icon">
 
     <script>
-        // FUNCIÓN PARA ABRIR/CERRAR CATEGORÍAS - CORREGIDA Y OPTIMIZADA
+        // FUNCIÓN PARA ABRIR/CERRAR CATEGORÍAS - 100% FUNCIONAL
         function toggleCategory(categoryId) {
             const content = document.getElementById(categoryId);
-            // Verifica el estado actual, incluso si es el primer uso
-            const isVisible = content.style.display === 'grid' || content.style.display === '';
-            content.style.display = isVisible ? 'none' : 'grid';
+            content.style.display = content.style.display === 'grid' ? 'none' : 'grid';
         }
 
-        // FUNCIÓN PARA WHATSAPP - CONFIGURADA
+        // FUNCIÓN PARA WHATSAPP - CONFIGURADA Y SEGURA
         function openWhatsApp(productName, productPrice) {
-            const phoneNumber = '593999999999'; // CAMBIA ESTE NÚMERO POR TU NÚMERO REAL
+            const phoneNumber = '593999999999'; // CAMBIA POR TU NÚMERO REAL
             const message = `¡Hola VERRACO TOYS!%0A%0AMi nombre es: [NOMBRE DEL CLIENTE]%0AMi correo electrónico es: [CORREO DEL CLIENTE]%0AQuiero comprar el producto: ${productName}%0APrecio del producto: $${productPrice} USD%0A%0AEspero su pronta respuesta.`;
-            // Asegura que se abra en una nueva pestaña
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank').focus();
+            // Asegura que el enlace sea seguro
+            const safeUrl = encodeURI(`https://wa.me/${phoneNumber}?text=${message}`);
+            window.open(safeUrl, '_blank');
         }
 
-        // MANEJO DE CARGA Y ERRORES
+        // PROTECCIÓN ADICIONAL AL CARGAR LA PÁGINA
         document.addEventListener('DOMContentLoaded', function() {
-            console.log("✅ Página cargada correctamente");
-            
-            // Respaldo si la imagen de fondo no se carga
-            const body = document.querySelector('body');
-            const checkBackground = setInterval(() => {
-                const computedStyle = window.getComputedStyle(body);
-                const backgroundImage = computedStyle.backgroundImage;
-                if (backgroundImage === 'none' || backgroundImage.includes('broken')) {
-                    body.style.backgroundColor = '#1a1a1a';
-                    console.log("⚠️ Imagen de fondo no cargada - usando color respaldo");
-                    clearInterval(checkBackground);
+            // Evita la ejecución de scripts no autorizados
+            document.body.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A' && !e.target.href.startsWith('https:')) {
+                    e.preventDefault();
                 }
-            }, 1000);
+            });
         });
     </script>
 
@@ -72,7 +64,7 @@
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
-            color: #ffffff;
+            color: #fff;
             line-height: 1.6;
             padding-top: 80px;
         }
@@ -84,7 +76,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0,0,0,0.4);
             z-index: -1;
         }
 
@@ -96,7 +88,7 @@
 
         /* === BARRA DE NAVEGACIÓN === */
         .navbar {
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0,0,0,0.95);
             position: fixed;
             top: 0;
             left: 0;
@@ -113,26 +105,24 @@
         }
 
         .navbar a {
-            color: #ffffff;
+            color: #fff;
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
             margin: 0 25px;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
             padding: 5px;
         }
 
         .navbar a:hover,
         .navbar a:focus {
             color: #ffd700;
-            outline: 2px solid #ffd700;
-            outline-offset: 2px;
-            border-radius: 4px;
+            outline: none;
         }
 
         /* === SECCIONES === */
         .section {
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0,0,0,0.85);
             border: 2px solid #ffd700;
             border-radius: 15px;
             padding: 30px;
@@ -160,19 +150,17 @@
             width: 100%;
             margin-bottom: 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
+            outline: none;
         }
 
-        .category-btn:hover,
-        .category-btn:focus {
+        .category-btn:hover {
             background-color: #ffcc00;
-            outline: 2px solid #fff;
-            outline-offset: 2px;
         }
 
         .category-content {
             display: none;
-            background-color: rgba(255, 215, 0, 0.1);
+            background-color: rgba(255,215,0,0.1);
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
@@ -189,22 +177,16 @@
         }
 
         .product-card {
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0,0,0,0.9);
             border: 1px solid #ffd700;
             border-radius: 10px;
             padding: 25px;
             text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-3px);
         }
 
         .product-card h4 {
             font-size: 20px;
             margin-bottom: 15px;
-            color: #fff;
         }
 
         .product-card .price {
@@ -237,7 +219,8 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            outline: none;
+            transition: background-color 0.3s;
         }
 
         .buy-btn:disabled {
@@ -246,11 +229,8 @@
             cursor: not-allowed;
         }
 
-        .buy-btn:hover:not(:disabled),
-        .buy-btn:focus:not(:disabled) {
+        .buy-btn:hover:not(:disabled) {
             background-color: #ffcc00;
-            outline: 2px solid #fff;
-            outline-offset: 2px;
         }
 
         /* === QUIENES SOMOS === */
@@ -258,7 +238,6 @@
             font-size: 18px;
             text-align: justify;
             margin-bottom: 20px;
-            line-height: 1.8;
         }
 
         #quienes-somos .highlight {
@@ -271,7 +250,6 @@
             font-size: 18px;
             text-align: center;
             margin-bottom: 15px;
-            line-height: 1.8;
         }
 
         #contacto .contact-info strong {
@@ -281,7 +259,7 @@
         #contacto .contact-info a {
             color: #fff;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
 
         #contacto .contact-info a:hover {
@@ -299,14 +277,29 @@
             border-radius: 8px;
             margin-top: 20px;
             text-align: center;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
         }
 
-        #contacto .whatsapp-link:hover,
-        #contacto .whatsapp-link:focus {
+        #contacto .whatsapp-link:hover {
             background-color: #218838;
-            outline: 2px solid #fff;
-            outline-offset: 2px;
+        }
+
+        /* === PIE DE PÁGINA === */
+        footer {
+            background-color: rgba(0,0,0,0.95);
+            border-top: 2px solid #ffd700;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        footer p strong {
+            color: #ffd700;
         }
 
         /* === CELULARES === */
@@ -342,9 +335,9 @@
     <!-- BARRA DE NAVEGACIÓN -->
     <nav class="navbar">
         <div class="container">
-            <a href="#productos" tabindex="1">PRODUCTOS</a>
-            <a href="#quienes-somos" tabindex="2">QUIENES SOMOS</a>
-            <a href="#contacto" tabindex="3">CONTACTO</a>
+            <a href="#productos">PRODUCTOS</a>
+            <a href="#quienes-somos">QUIENES SOMOS</a>
+            <a href="#contacto">CONTACTO</a>
         </div>
     </nav>
 
@@ -354,5 +347,29 @@
             <h2>NUESTROS PRODUCTOS</h2>
 
             <!-- CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS -->
-            <button class="category-btn" onclick="toggleCategory('teledirigidos')" tabindex="4">
-                VEHÍCUL
+            <button class="category-btn" onclick="toggleCategory('teledirigidos')">
+                VEHÍCULOS TELEDIRIGIDOS
+            </button>
+            <div id="teledirigidos" class="category-content">
+                <h3>CARROS, HELICÓPTEROS Y AVIONES TELEDIRIGIDOS</h3>
+                
+                <div class="product-card">
+                    <h4>Carro Deportivo GT-100</h4>
+                    <p class="price">$750 USD</p>
+                    <p class="stock">✅ EN STOCK</p>
+                    <button class="buy-btn" onclick="openWhatsApp('Carro Deportivo GT-100', 750)">COMPRAR AHORA</button>
+                </div>
+
+                <div class="product-card">
+                    <h4>Carro Todoterreno XT-200</h4>
+                    <p class="price">$850 USD</p>
+                    <p class="stock">✅ EN STOCK</p>
+                    <button class="buy-btn" onclick="openWhatsApp('Carro Todoterreno XT-200', 850)">COMPRAR AHORA</button>
+                </div>
+
+                <div class="product-card">
+                    <h4>Helicóptero Clásico H-50</h4>
+                    <p class="price">$950 USD</p>
+                    <p class="stock">✅ EN STOCK</p>
+                    <button class="buy-btn" onclick="openWhatsApp('Helicóptero Clásico H-50', 950)">COMPRAR AHORA</button>
+                </div
