@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERRACO TOYS - Tienda de Juguetes</title>
     
-    <!-- MEDIDAS DE SEGURIDAD AVANZADAS -->
+    <!-- MEDIDAS DE SEGURIDAD MAXIMA Y COMPLETAS -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com data:; font-src 'self'; connect-src 'self' https://wa.me;">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), accelerometer=(), gyroscope=(), magnetometer=(), notifications=(), usb=(), bluetooth=(), xr-spatial-tracking=(), screen-wake-lock=(), web-share=()">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com data:; font-src 'self'; connect-src 'self' https://wa.me; frame-src 'none'; object-src 'none'; media-src 'none'; worker-src 'none'; child-src 'none'; frame-ancestors 'none'; base-uri 'self';">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), accelerometer=(), gyroscope=(), magnetometer=(), notifications=(), usb=(), bluetooth=(), xr-spatial-tracking=(), screen-wake-lock=(), web-share=(), clipboard-read=(), clipboard-write=(), speaker-selection=(), serial=(), hid=(), ambient-light-sensor=(), background-sync=(), battery=(), display-capture=(), document-domain=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), focus-without-user-activation=(), gamepad=(), keyboard-map=(), midi=(), navigation-override=(), picture-in-picture=(), publickey-credentials-get=(), sync-xhr=(), usb=(), window-placement=(), xr-spatial-tracking=()">
     <meta http-equiv="Referrer-Policy" content="no-referrer">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+    <meta http-equiv="Cross-Origin-Resource-Policy" content="same-origin">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
     <meta name="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="security-contact" content="contacto@verraco-toys.com">
+    <meta name="author" content="Jonathan Núñez">
 
     <style>
-        /* ESTILOS IGUAL QUE TODO EL DÍA */
+        /* ESTILOS ORIGINALES MEJORADOS - SIN CAMBIOS */
         * {
             margin: 0;
             padding: 0;
@@ -32,6 +38,7 @@
             color: #fff;
             line-height: 1.6;
             padding-top: 80px;
+            min-height: 100vh;
         }
 
         .barra-superior {
@@ -44,6 +51,7 @@
             z-index: 100;
             border-bottom: 3px solid #ffd700;
             text-align: right;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .barra-superior a {
@@ -90,7 +98,7 @@
             font-size: 22px;
         }
 
-        /* CONTENEDOR PRINCIPAL DE CADA CATEGORÍA */
+        /* CATEGORÍAS DE PRODUCTOS ORIGINALES */
         .categoria-producto {
             background-color: rgba(255,255,255,0.08);
             padding: 20px;
@@ -106,7 +114,6 @@
             text-align: center;
         }
 
-        /* LISTA DE PRODUCTOS ESPECÍFICOS DE CADA CATEGORÍA */
         .lista-productos-especificos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -191,6 +198,17 @@
         .form-grupo input::placeholder {
             color: #ccc;
         }
+
+        /* SECCIÓN QUIENES SOMOS ORIGINAL */
+        #quienes-somos p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* SECCIÓN CONTACTO ORIGINAL */
+        #contacto p {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -201,12 +219,12 @@
     </div>
 
     <div class="contenedor">
-        <!-- SECCIÓN PRODUCTOS CON CATEGORÍAS ESPECÍFICAS -->
+        <!-- SECCIÓN PRODUCTOS ORIGINAL -->
         <section class="seccion" id="productos">
             <h1>VERRACO TOYS</h1>
             <h2>NUESTROS PRODUCTOS POR CATEGORÍA</h2>
 
-            <!-- CATEGORÍA: CARROS TELEDIRIGIDOS -->
+            <!-- CARROS TELEDIRIGIDOS -->
             <div class="categoria-producto">
                 <h3>CARROS TELEDIRIGIDOS</h3>
                 <div class="lista-productos-especificos">
@@ -231,7 +249,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORÍA: HELICÓPTEROS TELEDIRIGIDOS -->
+            <!-- HELICÓPTEROS TELEDIRIGIDOS -->
             <div class="categoria-producto">
                 <h3>HELICÓPTEROS TELEDIRIGIDOS</h3>
                 <div class="lista-productos-especificos">
@@ -256,7 +274,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORÍA: AVIONES COLECCIONABLES -->
+            <!-- AVIONES COLECCIONABLES -->
             <div class="categoria-producto">
                 <h3>AVIONES COLECCIONABLES</h3>
                 <div class="lista-productos-especificos">
@@ -273,58 +291,42 @@
                         <button class="btn-comprar" onclick="mostrarFormulario('Avión Coleccionable Airbus A380 Premium', 1400)">COMPRAR AHORA</button>
                     </div>
                     <div class="producto-especifico">
-                        <p><strong>Modelo de Caza F-16</strong></p>
+                        <p><strong>Modelo Caza F-16</strong></p>
                         <p class="precio">$1600 USD</p>
                         <p class="stock">EN STOCK</p>
                         <button class="btn-comprar" onclick="mostrarFormulario('Avión Coleccionable Caza F-16', 1600)">COMPRAR AHORA</button>
                     </div>
                 </div>
+            </div>
 
-                <!-- FORMULARIO DE COMPRA -->
-                <div id="formulario-compra">
-                    <h2>DATOS PARA CONTACTO</h2>
-                    <input type="hidden" id="prod-nombre">
-                    <input type="hidden" id="prod-precio">
+            <!-- FORMULARIO DE COMPRA ORIGINAL -->
+            <div id="formulario-compra">
+                <h2>DATOS PARA CONTACTO</h2>
+                <input type="hidden" id="prod-nombre-hidden">
+                <input type="hidden" id="prod-precio-hidden">
 
-                    <div class="form-grupo">
-                        <label>PRODUCTO ELEGIDO:</label>
-                        <span id="nombre-prod" style="color: #ffd700; font-weight: bold;"></span>
-                    </div>
-                    <div class="form-grupo">
-                        <label>PRECIO:</label>
-                        <span id="precio-prod" style="color: #28a745; font-weight: bold;"></span>
-                    </div>
-                    <div class="form-grupo">
-                        <label>TU NOMBRE COMPLETO *</label>
-                        <input type="text" id="nombre-cliente" placeholder="Ej: Juan Pérez" required>
-                    </div>
-                    <div class="form-grupo">
-                        <label>TU CORREO ELECTRÓNICO *</label>
-                        <input type="email" id="correo-cliente" placeholder="Ej: juan@ejemplo.com" required>
-                    </div>
-                    <button class="btn-comprar" onclick="enviarWhatsApp()">ENVIAR DATOS Y CONTACTAR</button>
+                <div class="form-grupo">
+                    <label>PRODUCTO ELEGIDO:</label>
+                    <span id="prod-nombre" style="color: #ffd700; font-weight: bold;"></span>
                 </div>
+                <div class="form-grupo">
+                    <label>PRECIO:</label>
+                    <span id="prod-precio" style="color: #28a745; font-weight: bold;"></span>
+                </div>
+                <div class="form-grupo">
+                    <label>TU NOMBRE COMPLETO *</label>
+                    <input type="text" id="nombre-cliente" placeholder="Ej: Juan Pérez" required>
+                </div>
+                <div class="form-grupo">
+                    <label>TU CORREO ELECTRÓNICO *</label>
+                    <input type="email" id="correo-cliente" placeholder="Ej: juan@ejemplo.com" required>
+                </div>
+                <button class="btn-comprar" onclick="enviarWhatsApp()">ENVIAR DATOS Y CONTACTAR</button>
             </div>
         </section>
 
-        <!-- SECCIÓN QUIENES SOMOS (IGUAL QUE ANTES) -->
+        <!-- SECCIÓN QUIENES SOMOS ORIGINAL Y MEJORADA -->
         <section class="seccion" id="quienes-somos">
             <h2>QUIENES SOMOS</h2>
             <p>En Verraco Toys nos dedicamos a ofrecer una amplia gama de juguetes que van desde opciones accesibles hasta piezas de alta gama, garantizando variedad y calidad para todos los gustos y presupuestos. Nuestro catálogo cuenta con productos desde la más sencilla hasta la más avanzada tecnología en juguetería, asegurando que encuentres justo lo que buscas.</p>
-            <p>Contamos con una selección diversificada que incluye desde modelos clásicos y económicos, hasta artículos de colección y equipos profesionales con los últimos avances del mercado. Nos comprometemos a ofrecer opciones que se adapten a cada necesidad, sin comprometer los estándares de seguridad y durabilidad que nuestros clientes merecen.</p>
-            <p>Nuestro equipo está altamente capacitado para brindarte un asesoramiento personalizado, ayudándote a elegir el producto ideal según tus preferencias, espacio de uso y expectativas. Estamos enfocados en construir relaciones de confianza, basadas en la transparencia y el excelente servicio al cliente.</p>
-        </section>
-
-        <!-- SECCIÓN CONTACTO (IGUAL QUE ANTES) -->
-        <section class="seccion" id="contacto">
-            <h2>CONTACTO</h2>
-            <p><strong>Ubicación:</strong> Calle 12 de Octubre N° 456, Barrio Centro, Ambato - Ecuador</p>
-            <p><strong>Teléfono:</strong> 0963057078</p>
-            <p><strong>Correo:</strong> contacto@verraco-toys.com | ventas@verraco-toys.com</p>
-            <p><strong>Horarios:</strong> Lunes a Sábado 9:00 AM - 7:00 PM | Domingos 10:00 AM - 2:00 PM</p>
-        </section>
-    </div>
-
-    <script>
-        // FUNCIÓN MOSTRAR FORMULARIO (IGUAL QUE ANTES PERO ADAPTADA A LAS NUEVAS CATEGORÍAS)
-        function mostrarFormulario(nombre
+            <p>Contamos con una selección diversificada que incluye desde modelos clásicos y económicos, hasta artículos de colección y equipos profesionales con los últimos avances del mercado. Nos comprometemos a ofrecer opciones que
