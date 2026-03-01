@@ -350,8 +350,6 @@
         
        // FUNCIÓN PARA ENVIAR MENSAJE POR WHATSAPP
     function enviarWhatsApp(producto, precio) {
-    const nombreCliente = prompt('Por favor, ingresa tu nombre:');
-    const correoCliente = prompt('Por favor, ingresa tu correo electrónico:');
 
     if (nombreCliente && correoCliente) {
         const mensaje = `Hola! Mi nombre es ${nombreCliente}. Quiero comprar el producto: ${producto} con precio de $${precio} USD. Mi correo es: ${correoCliente}`;
