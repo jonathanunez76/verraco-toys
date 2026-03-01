@@ -347,22 +347,22 @@
                 contenido.style.display = 'block';
             }
         }
+        
+       // FUNCIÓN PARA ENVIAR MENSAJE POR WHATSAPP
+    function enviarWhatsApp(producto, precio) {
+    const nombreCliente = prompt('Por favor, ingresa tu nombre:');
+    const correoCliente = prompt('Por favor, ingresa tu correo electrónico:');
 
-        // FUNCIÓN PARA ENVIAR MENSAJE POR WHATSAPP
-        function enviarWhatsApp(producto, precio) {
-            const nombreCliente = prompt('Por favor, ingresa tu nombre:');
-            const correoCliente = prompt('Por favor, ingresa tu correo electrónico:');
-
-            if (nombreCliente && correoCliente) {
-                const mensaje = `Hola! Mi nombre es ${nombreCliente}. Quiero comprar el producto: ${producto} con precio de $${precio} USD. Mi correo electrónico es: ${correoCliente}.`;
-                const numeroWhatsApp = '593963057078'; // CAMBIA ESTE NÚMERO POR EL TUYO
-                const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-                
-                window.open(urlWhatsApp, '_blank');
-            } else {
-                alert('Debes ingresar tu nombre y correo para continuar con la compra.');
-            }
-        }
+    if (nombreCliente && correoCliente) {
+        const mensaje = `Hola! Mi nombre es ${nombreCliente}. Quiero comprar el producto: ${producto} con precio de $${precio} USD. Mi correo es: ${correoCliente}`;
+        const numeroWhatsApp = '593 0963057078'; // CAMBIA ESTE NÚMERO POR EL TUYO (debe tener código país completo)
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+        
+        window.open(urlWhatsApp, '_blank');
+    } else {
+        alert('Debes ingresar tu nombre y correo para continuar con la compra.');
+    }
+}
     </script>
 </body>
 </html>
