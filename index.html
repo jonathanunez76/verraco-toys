@@ -355,7 +355,7 @@
 
     if (nombreCliente && correoCliente) {
         const mensaje = `Hola! Mi nombre es ${nombreCliente}. Quiero comprar el producto: ${producto} con precio de $${precio} USD. Mi correo es: ${correoCliente}`;
-        const numeroWhatsApp = '593 0963057078'; // CAMBIA ESTE NÚMERO POR EL TUYO (debe tener código país completo)
+        const numeroWhatsApp = '593963057078'; // CAMBIA ESTE NÚMERO POR EL TUYO (debe tener código país completo)
         const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
         
         window.open(urlWhatsApp, '_blank');
