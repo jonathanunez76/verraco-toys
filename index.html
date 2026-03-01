@@ -5,22 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERRACO TOYS - Tienda de Juguetes</title>
     
-    <!-- MEDIDAS DE SEGURIDAD MAXIMA Y COMPLETAS -->
+    <!-- MEDIDAS DE SEGURIDAD MAXIMA -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com data:; font-src 'self'; connect-src 'self' https://wa.me; frame-src 'none'; object-src 'none'; media-src 'none'; worker-src 'none'; child-src 'none'; frame-ancestors 'none'; base-uri 'self';">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), accelerometer=(), gyroscope=(), magnetometer=(), notifications=(), usb=(), bluetooth=(), xr-spatial-tracking=(), screen-wake-lock=(), web-share=(), clipboard-read=(), clipboard-write=(), speaker-selection=(), serial=(), hid=(), ambient-light-sensor=(), background-sync=(), battery=(), display-capture=(), document-domain=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), focus-without-user-activation=(), gamepad=(), keyboard-map=(), midi=(), navigation-override=(), picture-in-picture=(), publickey-credentials-get=(), sync-xhr=(), usb=(), window-placement=(), xr-spatial-tracking=()">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com data:; font-src 'self'; connect-src 'self' https://wa.me; frame-src 'none'; object-src 'none'; media-src 'none'; worker-src 'none';">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), accelerometer=(), gyroscope=(), magnetometer=(), notifications=(), usb=(), bluetooth=(), xr-spatial-tracking=(), screen-wake-lock=(), web-share=(), clipboard-read=(), clipboard-write=()">
     <meta http-equiv="Referrer-Policy" content="no-referrer">
     <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
     <meta http-equiv="Cross-Origin-Resource-Policy" content="same-origin">
     <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
-    <meta name="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="index, follow">
-    <meta name="security-contact" content="contacto@verraco-toys.com">
-    <meta name="author" content="Jonathan Núñez">
 
     <style>
-        /* ESTILOS ORIGINALES MEJORADOS - SIN CAMBIOS */
+        /* ESTILOS COMPLETOS */
         * {
             margin: 0;
             padding: 0;
@@ -38,7 +34,9 @@
             color: #fff;
             line-height: 1.6;
             padding-top: 80px;
-            min-height: 100vh;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .barra-superior {
@@ -59,18 +57,11 @@
             text-decoration: none;
             margin: 0 15px;
             font-weight: bold;
-            font-size: 16px;
             transition: color 0.3s ease;
         }
 
         .barra-superior a:hover {
             color: #ffd700;
-        }
-
-        .contenedor {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
         }
 
         .seccion {
@@ -79,6 +70,7 @@
             border-radius: 12px;
             border: 2px solid #ffd700;
             margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         h1 {
@@ -95,10 +87,9 @@
             border-bottom: 2px solid #ffd700;
             padding-bottom: 10px;
             margin-bottom: 20px;
-            font-size: 22px;
         }
 
-        /* CATEGORÍAS DE PRODUCTOS ORIGINALES */
+        /* CATEGORÍAS DE PRODUCTOS */
         .categoria-producto {
             background-color: rgba(255,255,255,0.08);
             padding: 20px;
@@ -109,19 +100,18 @@
 
         .categoria-producto h3 {
             color: #ffd700;
-            font-size: 20px;
-            margin-bottom: 15px;
             text-align: center;
+            margin-bottom: 15px;
+            font-size: 20px;
         }
 
-        .lista-productos-especificos {
+        .lista-productos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
-            margin-top: 15px;
         }
 
-        .producto-especifico {
+        .producto {
             background-color: rgba(255,255,255,0.05);
             padding: 15px;
             border-radius: 6px;
@@ -153,8 +143,8 @@
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
             margin-top: 10px;
+            transition: background-color 0.3s ease;
         }
 
         .btn-comprar:disabled {
@@ -166,6 +156,7 @@
             background-color: #ffcc00;
         }
 
+        /* FORMULARIO DE COMPRA */
         #formulario-compra {
             background-color: rgba(0, 0, 0, 0.95);
             padding: 30px;
@@ -182,7 +173,6 @@
         .form-grupo label {
             display: block;
             margin-bottom: 8px;
-            font-size: 16px;
         }
 
         .form-grupo input {
@@ -195,17 +185,12 @@
             font-size: 16px;
         }
 
-        .form-grupo input::placeholder {
-            color: #ccc;
-        }
-
-        /* SECCIÓN QUIENES SOMOS ORIGINAL */
+        /* SECCIONES QUIENES SOMOS Y CONTACTO */
         #quienes-somos p {
             margin-bottom: 15px;
             text-align: justify;
         }
 
-        /* SECCIÓN CONTACTO ORIGINAL */
         #contacto p {
             margin-bottom: 10px;
         }
@@ -218,115 +203,118 @@
         <a href="#contacto">CONTACTO</a>
     </div>
 
-    <div class="contenedor">
-        <!-- SECCIÓN PRODUCTOS ORIGINAL -->
-        <section class="seccion" id="productos">
-            <h1>VERRACO TOYS</h1>
-            <h2>NUESTROS PRODUCTOS POR CATEGORÍA</h2>
+    <div class="seccion" id="productos">
+        <h1>VERRACO TOYS</h1>
+        <h2>NUESTROS PRODUCTOS POR CATEGORÍA</h2>
 
-            <!-- CARROS TELEDIRIGIDOS -->
-            <div class="categoria-producto">
-                <h3>CARROS TELEDIRIGIDOS</h3>
-                <div class="lista-productos-especificos">
-                    <div class="producto-especifico">
-                        <p><strong>Modelo Deportivo GT-100</strong></p>
-                        <p class="precio">$750 USD</p>
-                        <p class="stock">EN STOCK</p>
-                        <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Deportivo GT-100', 750)">COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-especifico">
-                        <p><strong>Modelo Todoterreno XT-200</strong></p>
-                        <p class="precio">$850 USD</p>
-                        <p class="stock">EN STOCK</p>
-                        <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Todoterreno XT-200', 850)">COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-especifico">
-                        <p><strong>Modelo Profesional PRO-300</strong></p>
-                        <p class="precio">$1200 USD</p>
-                        <p class="stock">EN STOCK</p>
-                        <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Profesional PRO-300', 1200)">COMPRAR AHORA</button>
-                    </div>
+        <!-- CARROS TELEDIRIGIDOS -->
+        <div class="categoria-producto">
+            <h3>CARROS TELEDIRIGIDOS</h3>
+            <div class="lista-productos">
+                <div class="producto">
+                    <p><strong>Modelo Deportivo GT-100</strong></p>
+                    <p class="precio">$750 USD</p>
+                    <p class="stock">EN STOCK</p>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Deportivo GT-100', 750)">COMPRAR AHORA</button>
+                </div>
+                <div class="producto">
+                    <p><strong>Modelo Todoterreno XT-200</strong></p>
+                    <p class="precio">$850 USD</p>
+                    <p class="stock">EN STOCK</p>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Todoterreno XT-200', 850)">COMPRAR AHORA</button>
+                </div>
+                <div class="producto">
+                    <p><strong>Modelo Profesional PRO-300</strong></p>
+                    <p class="precio">$1200 USD</p>
+                    <p class="stock">EN STOCK</p>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Profesional PRO-300', 1200)">COMPRAR AHORA</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- HELICÓPTEROS TELEDIRIGIDOS -->
+        <div class="categoria-producto">
+            <h3>HELICÓPTEROS TELEDIRIGIDOS</h3>
+            <div class="lista-productos">
+                <div class="producto">
+                    <p><strong>Modelo Clásico H-50</strong></p>
+                    <p class="precio">$950 USD</p>
+                    <p class="stock">EN STOCK</p>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido Clásico H-50', 950)">COMPRAR AHORA</button>
+                </div>
+                <div class="producto">
+                    <p><strong>Modelo Carreras R-100</strong></p>
+                    <p class="precio">$1100 USD</p>
+                    <p class="stock">EN STOCK</p>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido Carreras R-100', 1100)">COMPRAR AHORA</button>
+                </div>
+                <div class="producto">
+                    <p><strong>Modelo Profesional P-200</strong></p>
+                    <p class="precio">$1500 USD</p>
+                    <p class="agotado">AGOTADO</p>
+                    <button class="btn-comprar" disabled>COMPRAR AHORA</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AVIONES COLECCIONABLES -->
+        <div class="categoria-producto">
+            <h3>AVIONES COLECCIONABLES</h3>
+            <div class="lista-productos">
+                <div class="producto">
+                    <p><strong>Modelo Boeing 747 Vintage</strong></p>
+                    <p class="precio">$1250 USD</p>
+                    <p class="agotado">AGOTADO</p>
+                    <button class="btn-comprar" disabled>COMPRAR AHORA</button>
+                </div>
+                <div class="producto">
+                    <p><strong>Modelo Airbus A380 Premium</strong></p>
+                    <p class="precio">$1400 USD</p>
+                    <p class="stock">EN STOCK</p>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Avión Coleccionable Airbus A380 Premium', 1400)">COMPRAR AHORA</button>
+                </div>
+                <div class="producto">
+                    <p><strong>Modelo Caza F-16</strong></p>
+                    <p class="precio">$1600 USD</p>
+                    <p class="stock">EN STOCK</p>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Avión Coleccionable Caza F-16', 1600)">COMPRAR AHORA</button>
                 </div>
             </div>
 
-            <!-- HELICÓPTEROS TELEDIRIGIDOS -->
-            <div class="categoria-producto">
-                <h3>HELICÓPTEROS TELEDIRIGIDOS</h3>
-                <div class="lista-productos-especificos">
-                    <div class="producto-especifico">
-                        <p><strong>Modelo Clásico H-50</strong></p>
-                        <p class="precio">$950 USD</p>
-                        <p class="stock">EN STOCK</p>
-                        <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido Clásico H-50', 950)">COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-especifico">
-                        <p><strong>Modelo de Carreras R-100</strong></p>
-                        <p class="precio">$1100 USD</p>
-                        <p class="stock">EN STOCK</p>
-                        <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido de Carreras R-100', 1100)">COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-especifico">
-                        <p><strong>Modelo Profesional P-200</strong></p>
-                        <p class="precio">$1500 USD</p>
-                        <p class="agotado">AGOTADO</p>
-                        <button class="btn-comprar" disabled>COMPRAR AHORA</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AVIONES COLECCIONABLES -->
-            <div class="categoria-producto">
-                <h3>AVIONES COLECCIONABLES</h3>
-                <div class="lista-productos-especificos">
-                    <div class="producto-especifico">
-                        <p><strong>Modelo Boeing 747 Vintage</strong></p>
-                        <p class="precio">$1250 USD</p>
-                        <p class="agotado">AGOTADO</p>
-                        <button class="btn-comprar" disabled>COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-especifico">
-                        <p><strong>Modelo Airbus A380 Premium</strong></p>
-                        <p class="precio">$1400 USD</p>
-                        <p class="stock">EN STOCK</p>
-                        <button class="btn-comprar" onclick="mostrarFormulario('Avión Coleccionable Airbus A380 Premium', 1400)">COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-especifico">
-                        <p><strong>Modelo Caza F-16</strong></p>
-                        <p class="precio">$1600 USD</p>
-                        <p class="stock">EN STOCK</p>
-                        <button class="btn-comprar" onclick="mostrarFormulario('Avión Coleccionable Caza F-16', 1600)">COMPRAR AHORA</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FORMULARIO DE COMPRA ORIGINAL -->
+            <!-- FORMULARIO DE COMPRA -->
             <div id="formulario-compra">
                 <h2>DATOS PARA CONTACTO</h2>
-                <input type="hidden" id="prod-nombre-hidden">
-                <input type="hidden" id="prod-precio-hidden">
+                <input type="hidden" id="prod-nombre">
+                <input type="hidden" id="prod-precio">
 
                 <div class="form-grupo">
                     <label>PRODUCTO ELEGIDO:</label>
-                    <span id="prod-nombre" style="color: #ffd700; font-weight: bold;"></span>
+                    <span style="color: #ffd700; font-weight: bold;" id="prod-nombre-mostrar"></span>
                 </div>
                 <div class="form-grupo">
                     <label>PRECIO:</label>
-                    <span id="prod-precio" style="color: #28a745; font-weight: bold;"></span>
+                    <span style="color: #28a745; font-weight: bold;" id="prod-precio-mostrar"></span>
                 </div>
                 <div class="form-grupo">
-                    <label>TU NOMBRE COMPLETO *</label>
+                    <label>NOMBRE COMPLETO *</label>
                     <input type="text" id="nombre-cliente" placeholder="Ej: Juan Pérez" required>
                 </div>
                 <div class="form-grupo">
-                    <label>TU CORREO ELECTRÓNICO *</label>
+                    <label>CORREO ELECTRÓNICO *</label>
                     <input type="email" id="correo-cliente" placeholder="Ej: juan@ejemplo.com" required>
                 </div>
                 <button class="btn-comprar" onclick="enviarWhatsApp()">ENVIAR DATOS Y CONTACTAR</button>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- SECCIÓN QUIENES SOMOS ORIGINAL Y MEJORADA -->
-        <section class="seccion" id="quienes-somos">
-            <h2>QUIENES SOMOS</h2>
-            <p>En Verraco Toys nos dedicamos a ofrecer una amplia gama de juguetes que van desde opciones accesibles hasta piezas de alta gama, garantizando variedad y calidad para todos los gustos y presupuestos. Nuestro catálogo cuenta con productos desde la más sencilla hasta la más avanzada tecnología en juguetería, asegurando que encuentres justo lo que buscas.</p>
-            <p>Contamos con una selección diversificada que incluye desde modelos clásicos y económicos, hasta artículos de colección y equipos profesionales con los últimos avances del mercado. Nos comprometemos a ofrecer opciones que
+    <!-- SECCIÓN QUIENES SOMOS -->
+    <div class="seccion" id="quienes-somos">
+        <h2>QUIENES SOMOS</h2>
+        <p>En Verraco Toys nos dedicamos a ofrecer una amplia gama de juguetes que van desde opciones accesibles hasta piezas de alta gama, garantizando variedad y calidad para todos los gustos y presupuestos. Nuestro catálogo cuenta con productos desde la más sencilla hasta la más avanzada tecnología en juguetería, asegurando que encuentres justo lo que buscas.</p>
+        <p>Contamos con una selección diversificada que incluye desde modelos clásicos y económicos, hasta artículos de colección y equipos profesionales con los últimos avances del mercado. Nos comprometemos a ofrecer opciones que se adapten a cada necesidad, sin comprometer los estándares de seguridad y durabilidad que nuestros clientes merecen.</p>
+        <p>Nuestro equipo está altamente capacitado para brindarte un asesoramiento personalizado, ayudándote a elegir el producto ideal según tus preferencias, espacio de uso y expectativas. Estamos enfocados en construir relaciones de confianza, basadas en la transparencia y el excelente servicio al cliente.</p>
+    </div>
+
+    <!-- SECCIÓN CONTACTO -->
+    <div class="seccion" id="contacto">
