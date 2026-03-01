@@ -338,29 +338,26 @@
 
     <!-- FUNCIONES JAVASCRIPT COMPLETAS -->
     <script>
-        // FUNCIÓN PARA MOSTRAR/OCULTAR CATEGORÍAS
-        function mostrarCategoria(id) {
-            const contenido = document.getElementById(id);
-            if (contenido.style.display === 'block') {
-                contenido.style.display = 'none';
-            } else {
-                contenido.style.display = 'block';
-            }
-        }
         
-       // FUNCIÓN PARA ENVIAR MENSAJE POR WHATSAPP
-    function enviarWhatsApp(producto, precio) {
-
-    if (nombreCliente && correoCliente) {
-        const mensaje = `Hola! Mi nombre es ${nombreCliente}. Quiero comprar el producto: ${producto} con precio de $${precio} USD. Mi correo es: ${correoCliente}`;
-        const numeroWhatsApp = '593963057078'; // CAMBIA ESTE NÚMERO POR EL TUYO (debe tener código país completo)
-        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-        
-        window.open(urlWhatsApp, '_blank');
-    } else {
-        alert('Debes ingresar tu nombre y correo para continuar con la compra.');
+// PEGA AQUÍ EL CÓDIGO QUE TE MANDÉ
+function enviarWhatsApp(producto, precio) {
+    const nombreCliente = prompt('Por favor, ingresa tu nombre:');
+    const correoCliente = prompt('Por favor, ingresa tu correo electrónico:');
+    if (!nombreCliente || !correoCliente || nombreCliente.trim() === "" || correoCliente.trim() === "") {
+        alert('Debes ingresar tu nombre y correo válidos para continuar.');
+        return;
     }
+    const numeroWhatsApp = '593963057078'; // CAMBIA ESTE NÚMERO
+    const mensaje = `Hola! Mi nombre es ${nombreCliente}. Quiero comprar el producto: ${producto} con precio de ${precio} USD. Mi correo es: ${correoCliente}`;
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    const enlace = document.createElement('a');
+    enlace.href = urlWhatsApp;
+    enlace.target = '_blank';
+    document.body.appendChild(enlace);
+    enlace.click();
+    document.body.removeChild(enlace);
 }
+
     </script>
 </body>
 </html>
