@@ -175,96 +175,105 @@
             <p>Tu tienda de confianza en Ambato, Provincia del Tungurahua, especializada en juguetes teledirigidos y productos coleccionables de alta calidad.</p>
             <p>Contamos con modelos exclusivos, garantía oficial y atención personalizada para cada cliente.</p>
         </section>
+        
+    <!-- SECCIÓN PRODUCTOS -->
+<section id="productos">
+    <h2>NUESTROS PRODUCTOS</h2>
 
-        <!-- SECCIÓN PRODUCTOS -->
-        <section id="productos">
-            <h2>NUESTROS PRODUCTOS</h2>
+    <!-- CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS -->
+    <button class="category-button" onclick="mostrarCategoria('vehiculos')">
+        🚗 VEHÍCULOS TELEDIRIGIDOS
+    </button>
+    <div id="vehiculos" class="category-content">
+        <div class="product-box">
+            <img src="https://via.placeholder.com/200x150?text=Carro+GT-100" alt="Carro Deportivo GT-100" style="width:200px; height:auto; margin-bottom:10px; border-radius:5px;">
+            <h3>CARRO DEPORTIVO GT-100</h3>
+            <p class="product-price">$750 USD</p>
+            <p class="in-stock">✅ EN STOCK</p>
+            <button class="buy-button" onclick="enviarWhatsApp('CARRO DEPORTIVO GT-100', 750)">COMPRAR AHORA</button>
+        </div>
 
-            <!-- CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS -->
-            <button class="category-button" onclick="mostrarCategoria('vehiculos')">
-                🚗 VEHÍCULOS TELEDIRIGIDOS
-            </button>
-            <div id="vehiculos" class="category-content">
-                <div class="product-box">
-                    <h3>CARRO DEPORTIVO GT-100</h3>
-                    <p class="product-price">$750 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <button class="buy-button" onclick="enviarWhatsApp('CARRO DEPORTIVO GT-100', 750)">COMPRAR AHORA</button>
-                </div>
+        <div class="product-box">
+            <img src="https://via.placeholder.com/200x150?text=Helicóptero+H-50" alt="Helicóptero Clásico H-50" style="width:200px; height:auto; margin-bottom:10px; border-radius:5px;">
+            <h3>HELICÓPTERO CLÁSICO H-50</h3>
+            <p class="product-price">$950 USD</p>
+            <p class="in-stock">✅ EN STOCK</p>
+            <button class="buy-button" onclick="enviarWhatsApp('HELICÓPTERO CLÁSICO H-50', 950)">COMPRAR AHORA</button>
+        </div>
 
-                <div class="product-box">
-                    <h3>HELICÓPTERO CLÁSICO H-50</h3>
-                    <p class="product-price">$950 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <button class="buy-button" onclick="enviarWhatsApp('HELICÓPTERO CLÁSICO H-50', 950)">COMPRAR AHORA</button>
-                </div>
+        <div class="product-box">
+            <img src="https://via.placeholder.com/200x150?text=Moto+MX-200" alt="Moto Cross MX-200" style="width:200px; height:auto; margin-bottom:10px; border-radius:5px;">
+            <h3>MOTO CROSS MX-200</h3>
+            <p class="product-price">$680 USD</p>
+            <p class="out-stock">❌ NO EN STOCK</p>
+            <button class="buy-button" disabled>COMPRAR AHORA</button>
+        </div>
+    </div>
 
-                <div class="product-box">
-                    <h3>MOTO CROSS MX-200</h3>
-                    <p class="product-price">$680 USD</p>
-                    <p class="out-stock">❌ NO EN STOCK</p>
-                    <button class="buy-button" disabled>COMPRAR AHORA</button>
-                </div>
-            </div>
+    <!-- CATEGORÍA 2: PRODUCTOS COLECCIONABLES -->
+    <button class="category-button" onclick="mostrarCategoria('coleccionables')">
+        🎁 PRODUCTOS COLECCIONABLES
+    </button>
+    <div id="coleccionables" class="category-content">
+        <div class="product-box">
+            <img src="https://via.placeholder.com/200x150?text=Avión+A380" alt="Avión Airbus A380 Premium" style="width:200px; height:auto; margin-bottom:10px; border-radius:5px;">
+            <h3>AVIÓN AIRBUS A380 PREMIUM</h3>
+            <p class="product-price">$1400 USD</p>
+            <p class="out-stock">❌ NO EN STOCK</p>
+            <button class="buy-button" disabled>COMPRAR AHORA</button>
+        </div>
 
-            <!-- CATEGORÍA 2: PRODUCTOS COLECCIONABLES -->
-            <button class="category-button" onclick="mostrarCategoria('coleccionables')">
-                🎁 PRODUCTOS COLECCIONABLES
-            </button>
-            <div id="coleccionables" class="category-content">
-                <div class="product-box">
-                    <h3>AVIÓN AIRBUS A380 PREMIUM</h3>
-                    <p class="product-price">$1400 USD</p>
-                    <p class="out-stock">❌ NO EN STOCK</p>
-                    <button class="buy-button" disabled>COMPRAR AHORA</button>
-                </div>
+        <div class="product-box">
+            <img src="https://via.placeholder.com/200x150?text=Tren+Express" alt="Tren de Lujo Express" style="width:200px; height:auto; margin-bottom:10px; border-radius:5px;">
+            <h3>TREN DE LUJO EXPRESS</h3>
+            <p class="product-price">$1250 USD</p>
+            <p class="in-stock">✅ EN STOCK</p>
+            <button class="buy-button" onclick="enviarWhatsApp('TREN DE LUJO EXPRESS', 1250)">COMPRAR AHORA</button>
+        </div>
 
-                <div class="product-box">
-                    <h3>TREN DE LUJO EXPRESS</h3>
-                    <p class="product-price">$1250 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <button class="buy-button" onclick="enviarWhatsApp('TREN DE LUJO EXPRESS', 1250)">COMPRAR AHORA</button>
-                </div>
+        <div class="product-box">
+            <img src="https://via.placeholder.com/200x150?text=Yate+Oceanic" alt="Barco Yate Oceanic" style="width:200px; height:auto; margin-bottom:10px; border-radius:5px;">
+            <h3>BARCO YATE OCEANIC</h3>
+            <p class="product-price">$1550 USD</p>
+            <p class="in-stock">✅ EN STOCK</p>
+            <button class="buy-button" onclick="enviarWhatsApp('BARCO YATE OCEANIC', 1550)">COMPRAR AHORA</button>
+        </div>
+    </div>
 
-                <div class="product-box">
-                    <h3>BARCO YATE OCEANIC</h3>
-                    <p class="product-price">$1550 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <button class="buy-button" onclick="enviarWhatsApp('BARCO YATE OCEANIC', 1550)">COMPRAR AHORA</button>
-                </div>
-            </div>
+   <!-- CATEGORÍA 3: NUEVOS LANZAMIENTOS -->
+<button class="category-button" onclick="mostrarCategoria('nuevos')">
+    ⭐ NUEVOS LANZAMIENTOS
+</button>
+<div id="nuevos" class="category-content">
+    <div class="product-box">
+        <img src="https://via.placeholder.com/200x150?text=Dron+Explorer" alt="Dron Pro Explorer" style="width:200px; height:auto; margin-bottom:10px; border-radius:5px;">
+        <h3>DRON PRO EXPLORER</h3>
+        <p class="product-price">$1100 USD</p>
+        <p class="in-stock">✅ EN STOCK</p>
+        <button class="buy-button" onclick="enviarWhatsApp('DRON PRO EXPLORER', 1100)">COMPRAR AHORA</button>
+    </div>
 
-            <!-- CATEGORÍA 3: NUEVOS LANZAMIENTOS -->
-            <button class="category-button" onclick="mostrarCategoria('nuevos')">
-                ⭐ NUEVOS LANZAMIENTOS
-            </button>
-            <div id="nuevos" class="category-content">
-                <div class="product-box">
-                    <h3>DRON PRO EXPLORER</h3>
-                    <p class="product-price">$1100 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <button class="buy-button" onclick="enviarWhatsApp('DRON PRO EXPLORER', 1100)">COMPRAR AHORA</button>
-                </div>
+    <div class="product-box">
+        <img src="https://via.placeholder.com/200x150?text=Carro+F1" alt="Carro F1 Réplica" style="width:200px; height:auto; margin-bottom:10px; border-radius:5px;">
+        <h3>CARRO F1 RÉPLICA</h3>
+        <p class="product-price">$850 USD</p>
+        <p class="in-stock">✅ EN STOCK</p>
+        <button class="buy-button" onclick="enviarWhatsApp('CARRO F1 RÉPLICA', 850)">COMPRAR AHORA</button>
+    </div>
 
-                <div class="product-box">
-                    <h3>CARRO F1 RÉPLICA</h3>
-                    <p class="product-price">$850 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <button class="buy-button" onclick="enviarWhatsApp('CARRO F1 RÉPLICA', 850)">COMPRAR AHORA</button>
-                </div>
+    <div class="product-box">
+        <img src="https://via.placeholder.com/200x150?text=Camión+Off-Road" alt="Camión Off-Road X-300" style="width:200px; height:auto; margin-bottom:10px; border-radius:5px;">
+        <h3>CAMION OFF-ROAD X-300</h3>
+        <p class="product-price">$990 USD</p>
+        <p class="out-stock">❌ NO EN STOCK</p>
+        <button class="buy-button" disabled>COMPRAR AHORA</button>
+    </div>
+</div>
+</section>
 
-                <div class="product-box">
-                    <h3>CAMION OFF-ROAD X-300</h3>
-                    <p class="product-price">$990 USD</p>
-                    <p class="out-stock">❌ NO EN STOCK</p>
-                    <button class="buy-button" disabled>COMPRAR AHORA</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN QUIENES SOMOS -->
-        <section id="quienes" class="info-section">
-            <h2>QUIENES SOMOS</h2>
+<!-- SECCIÓN QUIENES SOMOS -->
+<section id="quienes" class="info-section">
+    <h2>QUIENES SOMOS</h2>
             <p>Verraco Toys nace en 2020 en la ciudad de Ambato, fruto de la gran pasión por los juguetes de calidad y los productos coleccionables.</p>
             <p>Nuestro objetivo es ofrecer artículos únicos, con garantía oficial y un servicio al cliente cálido y profesional.</p>
             <p>Contamos con un equipo de expertos que conocen cada detalle de los productos que vendemos, para poder asesorarte de la mejor manera.</p>
