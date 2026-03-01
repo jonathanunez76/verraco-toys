@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- 🔒 SEGURIDAD MAXIMA - METATAGS -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://www.whatsapp.com; /* Solo permite scripts de tu sitio y WhatsApp */
+        style-src 'self' 'unsafe-inline'; /* Permite estilos internos que ya tienes */
+        img-src 'self' data: https://via.placeholder.com https://*.picsum.photos; /* Permite tus imágenes */
+        font-src 'self';
+        connect-src 'self';
+        object-src 'none'; /* No permite archivos ejecutables peligrosos */
+        frame-src 'self' https://www.whatsapp.com; /* Permite el enlace de WhatsApp */
+        base-uri 'self';
+        form-action 'self';
+    ">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- Evita que tu sitio se vea dentro de otro -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block"> <!-- Bloquea ataques XSS -->
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"> <!-- Fuerza HTTPS -->
+    <meta name="referrer" content="no-referrer"> <!-- No envía información de navegación -->
+    <meta name="robots" content="noindex, nofollow"> <!-- Opcional: si no quieres que buscadores indexen la página mientras la preparas -->
+
+    <!-- RESTO DE TU CÓDIGO (no lo modifiques) -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verraco Toys - Tienda Oficial</title>
