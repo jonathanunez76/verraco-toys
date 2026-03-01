@@ -146,6 +146,7 @@
             border-radius: 6px;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
+            overflow: hidden;
         }
 
         /* PRODUCTOS */
@@ -356,25 +357,37 @@
 
     <!-- FUNCIONES JAVASCRIPT -->
     <script>
-        function toggleCategoria(idCategoria) {
-            const contenedorProductos = document.getElementById(idCategoria);
-            const flecha = document.getElementById(`flecha-${idCategoria}`);
-            
-            if (contenedorProductos.style.display === 'none' || contenedorProductos.style.display === '') {
-                contenedorProductos.style.display = 'grid';
-                flecha.textContent = '▲';
-            } else {
-                contenedorProductos.style.display = 'none';
-                flecha.textContent = '▼';
-            }
+    // FUNCIÓN PARA ABRIR/CERRAR CATEGORÍAS - 100% FUNCIONAL
+    function toggleCategoria(idCategoria) {
+        const contenedorProductos = document.getElementById(idCategoria);
+        const flecha = document.getElementById(`flecha-${idCategoria}`);
+        
+        if (!contenedorProductos.classList.contains('abierta')) {
+            contenedorProductos.classList.add('abierta');
+            contenedorProductos.style.display = 'grid';
+            flecha.textContent = '▲';
+        } else {
+            contenedorProductos.classList.remove('abierta');
+            contenedorProductos.style.display = 'none';
+            flecha.textContent = '▼';
         }
+    }
 
-        function enviarWhatsApp(nombreProducto, precioProducto) {
-            const numeroWhatsApp = '593987654321'; // CAMBIA ESTE NÚMERO POR TU WHATSAPP
-            const mensaje = `Hola! Mi nombre es [NOMBRE DEL CLIENTE]. Quiero solicitar información sobre el producto: ${nombreProducto} con precio de ${precioProducto}. Mi correo electrónico es [CORREO DEL CLIENTE].`;
-            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-            window.open(urlWhatsApp, '_blank');
-        }
+    // FUNCIÓN PARA WHATSAPP
+    function enviarWhatsApp(nombreProducto, precioProducto) {
+        const numeroWhatsApp = '593987654321'; // CAMBIA POR TU NÚMERO REAL
+        const mensaje = `Hola! Mi nombre es [NOMBRE DEL CLIENTE]. Quiero solicitar información sobre el producto: ${nombreProducto} con precio de ${precioProducto}. Mi correo electrónico es [CORREO DEL CLIENTE].`;
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+        window.open(urlWhatsApp, '_blank');
+    }
+
+    // INICIALIZAMOS LAS CATEGORÍAS CERRADAS AL CARGAR LA PÁGINA
+    window.onload = function() {
+        document.getElementById('teledirigidos').style.display = 'none';
+        document.getElementById('coleccionables').style.display = 'none';
+        document.getElementById('flecha-teledirigidos').textContent = '▼';
+        document.getElementById('flecha-coleccionables').textContent = '▼';
+    };
     </script>
 </body>
 </html>
