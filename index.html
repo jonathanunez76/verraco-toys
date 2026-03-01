@@ -1,5 +1,5 @@
 <!-- ================================== -->
-<!-- PÁGINA COMPLETA CON COMPRAS Y PAGOS -->
+<!-- PÁGINA COMPLETA: SOLO TRANSFERENCIA BANCARIA -->
 <!-- ================================== -->
 <!DOCTYPE html>
 <html>
@@ -146,7 +146,7 @@
             font-weight: bold;
         }
 
-        input, select, textarea {
+        input, textarea {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
@@ -156,28 +156,20 @@
         }
 
         /* --------------------------- */
-        /* OPCIONES DE PAGO SEGURO */
+        /* DATOS DE TRANSFERENCIA BANCARIA */
         /* --------------------------- */
-        .opciones-pago {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-            justify-content: center;
-        }
-
-        .metodo-pago {
+        .datos-bancarios {
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 5px;
+            padding: 20px;
+            border-radius: 8px;
             text-align: center;
-            width: 150px;
+            margin: 20px 0;
+            border: 2px solid #0f0;
         }
 
-        .metodo-pago img {
-            width: 50px;
-            height: auto;
-            margin-bottom: 10px;
+        .datos-bancarios h3 {
+            color: #0f0;
+            margin-top: 0;
         }
 
         /* --------------------------- */
@@ -258,7 +250,7 @@
                 </div>
 
                 <div class="form-grupo">
-                    <label>Precio total:</label>
+                    <label>Precio total a pagar:</label>
                     <span id="precio-producto" style="color: #0f0; font-weight: bold;"></span>
                 </div>
 
@@ -282,30 +274,19 @@
                     <textarea id="direccion-cliente" required placeholder="Ej: Calle Principal N° 123, Barrio Centro, Ambato"></textarea>
                 </div>
 
-                <div class="form-grupo">
-                    <label>Método de pago:</label>
-                    <div class="opciones-pago">
-                        <div class="metodo-pago">
-                            <img src="https://cdn-icons-png.flaticon.com/512/826/826002.png" alt="Tarjeta de crédito">
-                            <p>Tarjeta de Crédito/Débito</p>
-                        </div>
-                        <div class="metodo-pago">
-                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968876.png" alt="PayPal">
-                            <p>PayPal</p>
-                        </div>
-                        <div class="metodo-pago">
-                            <img src="https://cdn-icons-png.flaticon.com/512/733/733566.png" alt="Transferencia bancaria">
-                            <p>Transferencia Bancaria</p>
-                        </div>
-                        <div class="metodo-pago">
-                            <img src="https://cdn-icons-png.flaticon.com/512/927/927591.png" alt="Efectivo en entrega">
-                            <p>Efectivo en Entrega</p>
-                        </div>
-                    </div>
-                    <p style="text-align: center; color: #ff0; margin-top: 10px;">Todos los pagos están protegidos por seguridad SSL</p>
+                <!-- DATOS DE TRANSFERENCIA BANCARIA -->
+                <div class="datos-bancarios">
+                    <h3>DATOS PARA TRANSFERENCIA BANCARIA</h3>
+                    <p><strong>Banco:</strong> Banco Pichincha</p>
+                    <p><strong>Número de cuenta:</strong> 123-456789-01-2</p>
+                    <p><strong>Nombre del titular:</strong> Jonathan Núñez (VERRACO TOYS)</p>
+                    <p><strong>Referencia:</strong> Escribe el nombre del producto + tu nombre</p>
+                    <p style="color: #ff0; font-weight: bold;">*Después de pagar, envía el comprobante a ventas@verraco-toys.com o por WhatsApp*</p>
                 </div>
 
-                <button class="btn-confirmar" onclick="enviarNotificacion()">CONFIRMAR COMPRA Y PAGAR</button>
+                <p style="text-align: center; color: #0f0; font-weight: bold;">LA TRANSACCIÓN ES 100% SEGURA - TE CONTACTAMOS DESPUÉS DE CONFIRMAR EL PAGO</p>
+
+                <button class="btn-confirmar" onclick="enviarNotificacion()">CONFIRMAR COMPRA Y ENVIAR DATOS</button>
             </div>
         </div>
 
@@ -352,19 +333,18 @@
             const precio = document.getElementById('precio-seleccionado').value;
 
             // MENSAJE QUE LLEGARÁ A TI (se puede conectar a correo o WhatsApp)
-            const mensaje = `NUEVA COMPRA!\n\nCliente: ${nombreCliente}\nCorreo: ${correoCliente}\nTeléfono: ${telefonoCliente}\nDirección: ${direccionCliente}\nProducto: ${producto}\nPrecio: $${precio} USD`;
+            const mensaje = `NUEVA COMPRA SOLICITADA!\n\nCliente: ${nombreCliente}\nCorreo: ${correoCliente}\nTeléfono: ${telefonoCliente}\nDirección de entrega: ${direccionCliente}\nProducto: ${producto}\nPrecio: $${precio} USD\nMétodo de pago: Transferencia Bancaria`;
 
             // MUESTRA MENSAJE DE CONFIRMACIÓN AL CLIENTE
-            alert(`¡GRACIAS POR TU COMPRA ${nombreCliente}! \n\n- Recibirás un correo con los pasos de pago y envío.\n- También te contactaremos al teléfono ${telefonoCliente} en menos de 24 horas.\n- Todos tus datos están protegidos y el producto será entregado en tu dirección.`);
+            alert(`¡GRACIAS POR TU SOLICITUD ${nombreCliente}! \n\n- Envía el comprobante de transferencia a ventas@verraco-toys.com o al WhatsApp 0963057078.\n- Te contactaremos en menos de 24 horas para confirmar el pago y coordinar la entrega.\n- El producto será entregado en tu dirección una vez confirmado el pago.`);
 
-            // AQUÍ SE PUEDE CONFIGURAR PARA QUE TE LLEGUE EL MENSAJE A TU CORREO O WHATSAPP
-            // Por ahora, muestra el mensaje en la consola para que lo veas
-            console.log(mensaje);
-            // Ejemplo para WhatsApp (solo cambia el número por el tuyo):
-            // window.open(`https://wa.me/593${TU_NUMERO_AQUI}?text=${encodeURIComponent(mensaje)}`, '_blank');
+            // ENVÍA EL MENSAJE A TU WHATSAPP (CAMBIA EL NÚMERO POR EL TUYO SI QUIERES QUE LLEGUE DIRECTO)
+            window.open(`https://wa.me/593963057078?text=${encodeURIComponent(mensaje)}`, '_blank');
 
             // RESETEA EL FORMULARIO
             document.getElementById('formulario-compra').reset();
             document.getElementById('formulario-compra').style.display = 'none';
         }
     </script>
+</body>
+</html>
