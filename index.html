@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERRACO TOYS - Tienda Oficial</title>
 
-    <!-- SEGURIDAD -->
+    <!-- SEGURIDAD BASICA -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -19,16 +19,14 @@
         }
 
         body {
-            /* ============================================== */
-            /* CAMBIA ESTE ENLACE POR EL DE TU IMAGEN */
+            /* ACA PONES TU ENLACE DE IMAGEN */
             background: url('TU_ENLACE_DE_LA_IMAGEN_AQUI') fixed center/cover no-repeat;
-            /* ============================================== */
             color: white;
             min-height: 100vh;
             padding-top: 80px;
         }
 
-        /* BARRA DE NAVEGACIÓN TRANSPARENTE */
+        /* BARRA DE NAVEGACION */
         header {
             background: rgba(0, 0, 0, 0.2);
             border-bottom: 2px solid #ffd700;
@@ -65,7 +63,7 @@
             padding: 0 20px;
         }
 
-        /* TODAS LAS SECCIONES TRANSPARENTES */
+        /* SECCIONES TRANSPARENTES */
         .section {
             background: rgba(0, 0, 0, 0.1);
             border: 2px solid #ffd700;
@@ -84,7 +82,7 @@
             text-shadow: 2px 2px 3px #000;
         }
 
-        /* BOTONES DE CATEGORÍA */
+        /* BOTONES DE CATEGORIA */
         .category-button {
             background: rgba(255, 215, 0, 0.7);
             color: black;
@@ -102,7 +100,7 @@
             background: rgba(255, 204, 0, 0.9);
         }
 
-        /* GRID DE PRODUCTOS TRANSPARENTE */
+        /* GRID DE PRODUCTOS */
         .products-grid {
             display: none;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -162,7 +160,7 @@
             cursor: not-allowed;
         }
 
-        /* TEXTO DE QUIENES SOMOS Y CONTACTO */
+        /* TEXTO QUIENES SOMOS Y CONTACTO */
         #nosotros p {
             font-size: 17px;
             line-height: 1.8;
@@ -212,7 +210,7 @@
             background: rgba(33, 136, 56, 0.9);
         }
 
-        /* PIE DE PÁGINA TRANSPARENTE */
+        /* PIE DE PAGINA */
         footer {
             background: rgba(0, 0, 0, 0.2);
             border-top: 2px solid #ffd700;
@@ -229,7 +227,7 @@
             color: #ffd700;
         }
 
-        /* AJUSTES PARA CELULARES */
+        /* AJUSTES CELULARES */
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -263,11 +261,11 @@
     </header>
 
     <div class="container">
-        <!-- SECCIÓN PRODUCTOS -->
+        <!-- SECCION PRODUCTOS -->
         <div class="section" id="productos">
             <h2>NUESTROS PRODUCTOS</h2>
 
-            <!-- CATEGORÍA VEHÍCULOS TELEDIRIGIDOS -->
+            <!-- CATEGORIA TELEDIRIGIDOS -->
             <button class="category-button" onclick="mostrarCategoria('teledirigidos')">
                 VEHÍCULOS TELEDIRIGIDOS
             </button>
@@ -310,7 +308,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORÍA PRODUCTOS COLECCIONABLES -->
+            <!-- CATEGORIA COLECCIONABLES -->
             <button class="category-button" onclick="mostrarCategoria('coleccionables')">
                 PRODUCTOS COLECCIONABLES
             </button>
@@ -354,7 +352,7 @@
             </div>
         </div>
 
-        <!-- SECCIÓN QUIENES SOMOS -->
+        <!-- SECCION QUIENES SOMOS -->
         <div class="section" id="nosotros">
             <h2>QUIENES SOMOS</h2>
             <p>En <strong>VERRACO TOYS</strong> somos apasionados por los vehículos a escala y los juguetes de calidad. Desde 2015, hemos estado llevando las mejores opciones de teledirigidos y productos coleccionables a los hogares de Ambato y toda Ecuador.</p>
@@ -362,7 +360,25 @@
             <p>Contamos con un equipo de expertos que están siempre dispuestos a ayudarte a encontrar el producto perfecto para ti o para regalar a tus seres queridos.</p>
         </div>
 
-        <!-- SECCIÓN CONTACTO -->
+        <!-- SECCION CONTACTO -->
         <div class="section" id="contacto">
             <h2>CONTACTO</h2>
             <div id="contacto-info">
+                <p><strong>Dirección:</strong> Calle Principal #123, Centro Comercial Plaza, Ambato - Ecuador</p>
+                <p><strong>Teléfono:</strong> <a href="tel:+593999999999">+593 99 999 9999</a></p>
+                <p><strong>Correo:</strong> <a href="mailto:ventas@verracotoys.com">ventas@verracotoys.com</a></p>
+                <p><strong>Horario:</strong> Lunes a Sábado - 9:00 AM a 7:00 PM</p>
+                <a href="https://wa.me/593999999999?text=Hola! Quiero consultar sobre un producto." class="whatsapp-button">ESCRIBENOS POR WHATSAPP</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 <strong>VERRACO TOYS</strong> - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- FUNCIONES NECESARIAS PARA QUE FUNCIONE TODO -->
+    <script>
+        // FUNCION PARA MOSTRAR Y OCULTAR CATEGORIAS
+        function mostrarCategoria(id) {
+            const grid = document.getElementById(id     
