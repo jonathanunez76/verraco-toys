@@ -291,52 +291,53 @@
 
     <!-- CONTENEDOR PRINCIPAL -->
     <main class="contenedor-principal">
-        <!-- SECCIÓN PRODUCTOS -->
-        <section class="seccion" id="productos">
-            <h2 class="seccion-titulo">NUESTROS PRODUCTOS</h2>
+       
+<!-- SECCIÓN PRODUCTOS -->
+<section class="seccion" id="productos">
+    <h2 class="seccion-titulo">NUESTROS PRODUCTOS</h2>
 
-            <!-- CATEGORÍA VEHÍCULOS TELEDIRIGIDOS -->
-            <div class="categoria-contenedor">
-                <button class="btn-categoria" onclick="toggleCategoria('teledirigidos')">
-                    VEHÍCULOS TELEDIRIGIDOS
-                    <span class="icono-flecha" id="flecha-teledirigidos">▼</span>
-                </button>
-                <div class="productos-contenedor" id="teledirigidos">
-                    <div class="producto-tarjeta">
-                        <img src="imágenes/productos/carro-gt100.jpg" alt="Carro Teledirigido Deportivo" class="producto-imagen">
-                        <h3 class="producto-nombre">Carro Teledirigido Deportivo</h3>
-                        <p class="producto-precio">$750 USD</p>
-                        <p class="producto-stock stock-disponible">✅ EN STOCK</p>
-                        <button class="btn-comprar" onclick="enviarWhatsApp('Carro Teledirigido Deportivo', '$750 USD')">COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-tarjeta">
-                        <img src="imágenes/productos/helicoptero-h50.jpg" alt="Helicóptero Teledirigido" class="producto-imagen">
-                        <h3 class="producto-nombre">Helicóptero Teledirigido</h3>
-                        <p class="producto-precio">$950 USD</p>
-                        <p class="producto-stock stock-disponible">✅ EN STOCK</p>
-                        <button class="btn-comprar" onclick="enviarWhatsApp('Helicóptero Teledirigido', '$950 USD')">COMPRAR AHORA</button>
-                    </div>
-                </div>
+    <!-- CATEGORIA 1 - VEHÍCULOS TELEDIRIGIDOS -->
+    <button onclick="document.getElementById('cat1').style.display = (document.getElementById('cat1').style.display == 'block') ? 'none' : 'block'" style="width:100%; background-color:#FFD700; color:#222; border:none; border-radius:6px; padding:18px; font-size:20px; font-weight:bold; text-align:left; cursor:pointer; margin-bottom:10px;">
+        🚗 VEHÍCULOS TELEDIRIGIDOS ▼
+    </button>
+    <div id="cat1" style="display:none; padding:20px; border:1px solid #EEE; border-radius:6px; margin-bottom:15px;">
+        <div style="display:flex; flex-wrap:wrap; gap:25px; justify-content:space-around;">
+            <!-- PRODUCTO 1 -->
+            <div style="border:1px solid #EEE; border-radius:6px; padding:20px; text-align:center; width:280px; transition:transform 0.3s ease;">
+                <img src="imágenes/productos/carro-gt100.jpg" alt="Carro Teledirigido Deportivo" style="height:200px; object-fit:contain; margin-bottom:15px; background-color:#F8F9FA; border-radius:4px; padding:10px;">
+                <h3 style="font-size:18px; margin-bottom:10px; font-weight:500;">Carro Teledirigido Deportivo</h3>
+                <p style="font-size:22px; font-weight:bold; color:#28A745; margin-bottom:10px;">$750 USD</p>
+                <p style="font-size:16px; margin-bottom:15px; color:#28A745; font-weight:500;">✅ EN STOCK</p>
+                <button onclick="window.open('https://wa.me/593987654321?text=Hola! Quiero solicitar información sobre el Carro Teledirigido Deportivo de $750 USD. Mi nombre es [NOMBRE DEL CLIENTE] y mi correo electrónico es [CORREO DEL CLIENTE].', '_blank')" style="background-color:#FFD700; color:#222; border:none; border-radius:4px; padding:12px 20px; font-size:16px; font-weight:bold; cursor:pointer; width:100%;">COMPRAR AHORA</button>
             </div>
-
-            <!-- CATEGORÍA PRODUCTOS COLECCIONABLES -->
-            <div class="categoria-contenedor">
-                <button class="btn-categoria" onclick="toggleCategoria('coleccionables')">
-                    PRODUCTOS COLECCIONABLES
-                    <span class="icono-flecha" id="flecha-coleccionables">▼</span>
-                </button>
-                <div class="productos-contenedor" id="coleccionables">
-                    <div class="producto-tarjeta">
-                        <img src="imágenes/productos/avion-a380.jpg" alt="Avión Coleccionable" class="producto-imagen">
-                        <h3 class="producto-nombre">Avión Coleccionable</h3>
-                        <p class="producto-precio">$1250 USD</p>
-                        <p class="producto-stock stock-agotado">❌ AGOTADO</p>
-                        <button class="btn-comprar" disabled>COMPRAR AHORA</button>
-                    </div>
-                </div>
+            <!-- PRODUCTO 2 -->
+            <div style="border:1px solid #EEE; border-radius:6px; padding:20px; text-align:center; width:280px; transition:transform 0.3s ease;">
+                <img src="imágenes/productos/helicoptero-h50.jpg" alt="Helicóptero Teledirigido" style="height:200px; object-fit:contain; margin-bottom:15px; background-color:#F8F9FA; border-radius:4px; padding:10px;">
+                <h3 style="font-size:18px; margin-bottom:10px; font-weight:500;">Helicóptero Teledirigido</h3>
+                <p style="font-size:22px; font-weight:bold; color:#28A745; margin-bottom:10px;">$950 USD</p>
+                <p style="font-size:16px; margin-bottom:15px; color:#28A745; font-weight:500;">✅ EN STOCK</p>
+                <button onclick="window.open('https://wa.me/593987654321?text=Hola! Quiero solicitar información sobre el Helicóptero Teledirigido de $950 USD. Mi nombre es [NOMBRE DEL CLIENTE] y mi correo electrónico es [CORREO DEL CLIENTE].', '_blank')" style="background-color:#FFD700; color:#222; border:none; border-radius:4px; padding:12px 20px; font-size:16px; font-weight:bold; cursor:pointer; width:100%;">COMPRAR AHORA</button>
             </div>
-        </section>
+        </div>
+    </div>
 
+    <!-- CATEGORIA 2 - PRODUCTOS COLECCIONABLES -->
+    <button onclick="document.getElementById('cat2').style.display = (document.getElementById('cat2').style.display == 'block') ? 'none' : 'block'" style="width:100%; background-color:#FFD700; color:#222; border:none; border-radius:6px; padding:18px; font-size:20px; font-weight:bold; text-align:left; cursor:pointer; margin-bottom:10px;">
+        🎁 PRODUCTOS COLECCIONABLES ▼
+    </button>
+    <div id="cat2" style="display:none; padding:20px; border:1px solid #EEE; border-radius:6px; margin-bottom:15px;">
+        <div style="display:flex; flex-wrap:wrap; gap:25px; justify-content:space-around;">
+            <!-- PRODUCTO 3 -->
+            <div style="border:1px solid #EEE; border-radius:6px; padding:20px; text-align:center; width:280px; transition:transform 0.3s ease;">
+                <img src="imágenes/productos/avion-a380.jpg" alt="Avión Coleccionable" style="height:200px; object-fit:contain; margin-bottom:15px; background-color:#F8F9FA; border-radius:4px; padding:10px;">
+                <h3 style="font-size:18px; margin-bottom:10px; font-weight:500;">Avión Coleccionable</h3>
+                <p style="font-size:22px; font-weight:bold; color:#28A745; margin-bottom:10px;">$1250 USD</p>
+                <p style="font-size:16px; margin-bottom:15px; color:#DC3545; font-weight:500;">❌ AGOTADO</p>
+                <button style="background-color:#CCC; color:#222; border:none; border-radius:4px; padding:12px 20px; font-size:16px; font-weight:bold; cursor:not-allowed; width:100%;" disabled>COMPRAR AHORA</button>
+            </div>
+        </div>
+    </div>
+</section>
         <!-- SECCIÓN QUIENES SOMOS -->
         <section class="seccion" id="quienes-somos">
             <h2 class="seccion-titulo">QUIENES SOMOS</h2>
