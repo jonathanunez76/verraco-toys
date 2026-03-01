@@ -21,35 +21,35 @@
         }
 
         body {
-            background-color: #f5f5f5;
-            /* IMAGEN DE FONDO PROFESIONAL */
-            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/logo-verraco-toys-oficial.jpg');
+            /* ===================== URL CORRECTA Y FUNCIONAL ===================== */
+            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
+            /* ===================================================================== */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            background-repeat: no-repeat;
             padding: 20px 0;
         }
 
-        /* CONTENEDOR PRINCIPAL PROFESIONAL */
+        /* CONTENEDOR PRINCIPAL SEMITRANSPARENTE */
         .contenedor-principal {
             max-width: 1100px;
             width: 90%;
             margin: 0 auto;
-            background-color: rgba(30, 30, 30, 0.9);
+            background-color: rgba(30, 30, 30, 0.7); /* SEMITRANSPARENTE PARA VER LA IMAGEN */
             border-radius: 20px;
             padding: 25px;
+            border: 3px solid #ffd700;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            border: 2px solid #ffd700;
         }
 
-        /* BARRA NAVEGACIÓN HORIZONTAL PROFESIONAL */
+        /* BARRA NAVEGACIÓN HORIZONTAL */
         .barra-navegacion {
             display: flex;
-            flex-direction: row;
             gap: 15px;
             justify-content: center;
             margin-bottom: 30px;
-            flex-wrap: nowrap; /* NO SE ROMPEN EN CELULAR */
+            flex-wrap: nowrap;
         }
 
         .barra-navegacion button {
@@ -74,10 +74,10 @@
             box-shadow: 0 6px 8px rgba(0,0,0,0.3);
         }
 
-        /* TÍTULOS PROFESIONALES */
+        /* TÍTULOS */
         .titulo-principal {
             color: #ffd700;
-            font-size: 36px;
+            font-size: 32px;
             text-align: center;
             margin-bottom: 10px;
             text-transform: uppercase;
@@ -87,7 +87,7 @@
 
         .subtitulo {
             color: #ffc107;
-            font-size: 22px;
+            font-size: 20px;
             text-align: center;
             margin-bottom: 25px;
             padding-bottom: 10px;
@@ -100,7 +100,6 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-top: 20px;
         }
 
         .categoria-btn {
@@ -123,8 +122,23 @@
             box-shadow: 0 6px 8px rgba(0,0,0,0.3);
         }
 
-        /* AJUSTES PARA CELULAR */
-        @media (max-width: 768px) {
+        /* SECCIONES DINÁMICAS */
+        .seccion {
+            display: none;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 10px;
+        }
+
+        .seccion.activa {
+            display: block;
+        }
+
+        /* AJUSTES PARA CELULAR PEQUEÑO */
+        @media (max-width: 576px) {
             .barra-navegacion {
                 gap: 10px;
             }
@@ -135,7 +149,7 @@
             }
 
             .titulo-principal {
-                font-size: 28px;
+                font-size: 26px;
             }
 
             .subtitulo {
@@ -154,28 +168,29 @@
         </div>
 
         <!-- TÍTULOS -->
-        <h1 class="titulo-principal">VERRACO TOYS</h1>
-        <h2 class="subtitulo">NUESTROS PRODUCTOS</h2>
+        <h1 class="titulo-principal">Verraco Toys</h1>
+        <h2 class="subtitulo">Nuestros Productos</h2>
 
         <!-- CATEGORÍAS DE PRODUCTOS -->
         <div class="categorias-productos">
-            <button class="categoria-btn" onclick="mostrarCategoria('carros')">Carro Teledirigido Deportivo</button>
-            <button class="categoria-btn" onclick="mostrarCategoria('helicopteros')">Helicóptero Teledirigido</button>
-            <button class="categoria-btn" onclick="mostrarCategoria('aviones')">Avión Coleccionable</button>
+            <button class="categoria-btn" onclick="mostrarCategoria('carros')">Carros Teledirigidos</button>
+            <button class="categoria-btn" onclick="mostrarCategoria('helicopteros')">Helicópteros Teledirigidos</button>
+            <button class="categoria-btn" onclick="mostrarCategoria('aviones')">Aviones Coleccionables</button>
         </div>
 
         <!-- SECCIONES DINÁMICAS -->
-        <div id="productos" class="seccion">
-            <p style="color: #fff; text-align: center; margin: 15px 0;">Carro Teledirigido Deportivo - $750 USD - EN STOCK</p>
-            <p style="color: #fff; text-align: center; margin: 15px 0;">Helicóptero Teledirigido - $950 USD - EN STOCK</p>
-            <p style="color: #fff; text-align: center; margin: 15px 0;">Avión Coleccionable - $1250 USD - AGOTADO</p>
+        <div id="productos" class="seccion activa">
+            <p>Carro Teledirigido Deportivo - $750 USD - EN STOCK</p>
+            <p>Helicóptero Teledirigido - $950 USD - EN STOCK</p>
+            <p>Avión Coleccionable - $1250 USD - AGOTADO</p>
         </div>
 
-        <div id="quienes" class="seccion" style="display: none; color: #fff; text-align: center; padding: 20px;">
-            <p>En Verraco Toys nos dedicamos a ofrecer vehículos a control remoto y artículos coleccionables de alta calidad, con años de experiencia en el mercado.</p>
+        <div id="quienes" class="seccion">
+            <p>En Verraco Toys nos dedicamos a ofrecer vehículos a control remoto y artículos coleccionables de alta calidad desde 2024.</p>
+            <p>Nuestro objetivo es brindar productos duraderos y divertidos para toda la familia.</p>
         </div>
 
-        <div id="contacto" class="seccion" style="display: none; color: #fff; text-align: center; padding: 20px;">
+        <div id="contacto" class="seccion">
             <p>Dirección: Calle 12 de Octubre N°456 - Ambato, Ecuador</p>
             <p>Teléfono: 0963057078</p>
             <p>Correo: contacto@verraco-toys.com</p>
@@ -185,12 +200,13 @@
     <script>
         // FUNCIONES DE NAVEGACIÓN
         function mostrarSeccion(id) {
-            document.querySelectorAll('.seccion').forEach(sec => sec.style.display = 'none');
-            document.getElementById(id).style.display = 'block';
+            document.querySelectorAll('.seccion').forEach(sec => sec.classList.remove('activa'));
+            document.getElementById(id).classList.add('activa');
         }
 
-        // MUESTRA PRODUCTOS AL INICIO
-        window.onload = () => mostrarSeccion('productos');
+        function mostrarCategoria(id) {
+            alert(`Has seleccionado la categoría: ${id}`);
+        }
     </script>
 </body>
 </html>
