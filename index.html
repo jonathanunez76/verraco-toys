@@ -5,33 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERRACO TOYS - Tienda Oficial</title>
 
-    <!-- 🔒 MEDIDAS DE SEGURIDAD -->
+    <!-- MEDIDAS DE SEGURIDAD -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://wa.me;">
 
-    <!-- 📊 SEO Y COMPATIBILIDAD -->
+    <!-- SEO Y COMPATIBILIDAD -->
     <meta name="description" content="VERRACO TOYS - Tienda de juguetes, vehículos teledirigidos y productos coleccionables en Ambato, Ecuador">
     <meta name="keywords" content="juguetes, teledirigidos, coleccionables, Ambato, Ecuador">
     <meta name="author" content="VERRACO TOYS">
-    <link rel="canonical" href="https://TU-USUARIO.github.io/verraco-toys/">
-    <link rel="shortcut icon" href="imágenes/favicon.png" type="image/x-icon">
+    <link rel="canonical" href="https://jonathanunez76.github.io/verraco-toys/">
 
     <style>
-        /* VARIABLES GLOBALES */
         :root {
-            --color-principal: #FFD700; /* Dorado */
-            --color-secundario: #222222; /* Negro oscuro */
-            --color-fondo: #F8F9FA; /* Gris claro */
-            --color-blanco: #FFFFFF; /* Blanco */
-            --color-verde: #28A745; /* Verde stock */
-            --color-rojo: #DC3545; /* Rojo agotado */
+            --color-principal: #FFD700;
+            --color-secundario: #222222;
+            --color-fondo: #F8F9FA;
+            --color-blanco: #FFFFFF;
+            --color-verde: #28A745;
+            --color-rojo: #DC3545;
             --sombra: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        /* RESETEO Y BASE */
         * {
             margin: 0;
             padding: 0;
@@ -43,9 +40,10 @@
             background-color: var(--color-fondo);
             color: var(--color-secundario);
             line-height: 1.6;
+            padding-top: 100px;
         }
 
-        /* 🔝 BARRA SUPERIOR FIJA */
+        /* BARRA SUPERIOR FIJA */
         header {
             background-color: var(--color-blanco);
             box-shadow: var(--sombra);
@@ -84,14 +82,14 @@
             color: var(--color-principal);
         }
 
-        /* 📦 CONTENEDOR PRINCIPAL */
+        /* CONTENEDOR PRINCIPAL */
         .contenedor-principal {
             max-width: 1200px;
-            margin: 100px auto 50px;
+            margin: 0 auto 50px;
             padding: 0 20px;
         }
 
-        /* 📑 SECCIONES GENERALES */
+        /* SECCIONES GENERALES */
         .seccion {
             background-color: var(--color-blanco);
             box-shadow: var(--sombra);
@@ -109,7 +107,7 @@
             border-bottom: 2px solid var(--color-principal);
         }
 
-        /* 📋 CATEGORÍAS DE PRODUCTOS (FIJAS, DESPLIEGAN HACIA ABAJO) */
+        /* CATEGORÍAS */
         .categoria-contenedor {
             margin-bottom: 20px;
         }
@@ -141,7 +139,7 @@
         }
 
         .productos-contenedor {
-            display: none; /* OCULTO POR DEFECTO */
+            display: none;
             padding: 20px;
             margin-top: 10px;
             border: 1px solid #EEE;
@@ -150,7 +148,7 @@
             gap: 25px;
         }
 
-        /* 🛒 TARJETAS DE PRODUCTOS */
+        /* PRODUCTOS */
         .producto-tarjeta {
             border: 1px solid #EEE;
             border-radius: 6px;
@@ -222,7 +220,7 @@
             background-color: #E6C800;
         }
 
-        /* ℹ️ SECCIÓN QUIENES SOMOS */
+        /* QUIENES SOMOS */
         #quienes-somos p {
             font-size: 17px;
             margin-bottom: 15px;
@@ -233,7 +231,7 @@
             color: var(--color-principal);
         }
 
-        /* 📞 SECCIÓN CONTACTO */
+        /* CONTACTO */
         #contacto .contacto-item {
             font-size: 17px;
             margin-bottom: 10px;
@@ -255,7 +253,7 @@
             text-decoration: underline;
         }
 
-        /* 📱 RESPONSIVO */
+        /* RESPONSIVO */
         @media (max-width: 768px) {
             .header-contenido {
                 flex-direction: column;
@@ -267,8 +265,8 @@
                 margin-right: 15px;
             }
 
-            .contenedor-principal {
-                margin-top: 150px;
+            body {
+                padding-top: 150px;
             }
 
             .productos-contenedor {
@@ -278,7 +276,7 @@
     </style>
 </head>
 <body>
-    <!-- 🔝 BARRA SUPERIOR FIJA -->
+    <!-- BARRA SUPERIOR FIJA -->
     <header>
         <div class="header-contenido">
             <a href="#" class="logo">VERRACO TOYS</a>
@@ -290,13 +288,13 @@
         </div>
     </header>
 
-    <!-- 📦 CONTENEDOR PRINCIPAL -->
+    <!-- CONTENEDOR PRINCIPAL -->
     <main class="contenedor-principal">
-        <!-- 📋 SECCIÓN PRODUCTOS -->
+        <!-- SECCIÓN PRODUCTOS -->
         <section class="seccion" id="productos">
             <h2 class="seccion-titulo">NUESTROS PRODUCTOS</h2>
 
-            <!-- CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS -->
+            <!-- CATEGORÍA VEHÍCULOS TELEDIRIGIDOS -->
             <div class="categoria-contenedor">
                 <button class="btn-categoria" onclick="toggleCategoria('teledirigidos')">
                     VEHÍCULOS TELEDIRIGIDOS
@@ -304,30 +302,23 @@
                 </button>
                 <div class="productos-contenedor" id="teledirigidos">
                     <div class="producto-tarjeta">
-                        <img src="imágenes/productos/carro-gt100.jpg" alt="Carro Deportivo GT-100" class="producto-imagen">
-                        <h3 class="producto-nombre">Carro Deportivo GT-100</h3>
+                        <img src="imágenes/productos/carro-gt100.jpg" alt="Carro Teledirigido Deportivo" class="producto-imagen">
+                        <h3 class="producto-nombre">Carro Teledirigido Deportivo</h3>
                         <p class="producto-precio">$750 USD</p>
                         <p class="producto-stock stock-disponible">✅ EN STOCK</p>
-                        <button class="btn-comprar" onclick="enviarWhatsApp('Carro Deportivo GT-100', '$750 USD')">COMPRAR AHORA</button>
+                        <button class="btn-comprar" onclick="enviarWhatsApp('Carro Teledirigido Deportivo', '$750 USD')">COMPRAR AHORA</button>
                     </div>
                     <div class="producto-tarjeta">
-                        <img src="imágenes/productos/carro-xt200.jpg" alt="Carro Todoterreno XT-200" class="producto-imagen">
-                        <h3 class="producto-nombre">Carro Todoterreno XT-200</h3>
-                        <p class="producto-precio">$850 USD</p>
-                        <p class="producto-stock stock-disponible">✅ EN STOCK</p>
-                        <button class="btn-comprar" onclick="enviarWhatsApp('Carro Todoterreno XT-200', '$850 USD')">COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-tarjeta">
-                        <img src="imágenes/productos/helicoptero-h50.jpg" alt="Helicóptero Clásico H-50" class="producto-imagen">
-                        <h3 class="producto-nombre">Helicóptero Clásico H-50</h3>
+                        <img src="imágenes/productos/helicoptero-h50.jpg" alt="Helicóptero Teledirigido" class="producto-imagen">
+                        <h3 class="producto-nombre">Helicóptero Teledirigido</h3>
                         <p class="producto-precio">$950 USD</p>
-                        <p class="producto-stock stock-agotado">❌ AGOTADO</p>
-                        <button class="btn-comprar" disabled>COMPRAR AHORA</button>
+                        <p class="producto-stock stock-disponible">✅ EN STOCK</p>
+                        <button class="btn-comprar" onclick="enviarWhatsApp('Helicóptero Teledirigido', '$950 USD')">COMPRAR AHORA</button>
                     </div>
                 </div>
             </div>
 
-            <!-- CATEGORÍA 2: PRODUCTOS COLECCIONABLES -->
+            <!-- CATEGORÍA PRODUCTOS COLECCIONABLES -->
             <div class="categoria-contenedor">
                 <button class="btn-categoria" onclick="toggleCategoria('coleccionables')">
                     PRODUCTOS COLECCIONABLES
@@ -335,23 +326,9 @@
                 </button>
                 <div class="productos-contenedor" id="coleccionables">
                     <div class="producto-tarjeta">
-                        <img src="imágenes/productos/avion-a380.jpg" alt="Avión Airbus A380 Premium" class="producto-imagen">
-                        <h3 class="producto-nombre">Avión Airbus A380 Premium</h3>
-                        <p class="producto-precio">$1400 USD</p>
-                        <p class="producto-stock stock-disponible">✅ EN STOCK</p>
-                        <button class="btn-comprar" onclick="enviarWhatsApp('Avión Airbus A380 Premium', '$1400 USD')">COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-tarjeta">
-                        <img src="imágenes/productos/moto-harley.jpg" alt="Moto Harley-Davidson Clásica" class="producto-imagen">
-                        <h3 class="producto-nombre">Moto Harley-Davidson Clásica</h3>
-                        <p class="producto-precio">$900 USD</p>
-                        <p class="producto-stock stock-disponible">✅ EN STOCK</p>
-                        <button class="btn-comprar" onclick="enviarWhatsApp('Moto Harley-Davidson Clásica', '$900 USD')">COMPRAR AHORA</button>
-                    </div>
-                    <div class="producto-tarjeta">
-                        <img src="imágenes/productos/carro-ferrari.jpg" alt="Carro Ferrari 250 GTO" class="producto-imagen">
-                        <h3 class="producto-nombre">Carro Ferrari 250 GTO</h3>
-                        <p class="producto-precio">$1350 USD</p>
+                        <img src="imágenes/productos/avion-a380.jpg" alt="Avión Coleccionable" class="producto-imagen">
+                        <h3 class="producto-nombre">Avión Coleccionable</h3>
+                        <p class="producto-precio">$1250 USD</p>
                         <p class="producto-stock stock-agotado">❌ AGOTADO</p>
                         <button class="btn-comprar" disabled>COMPRAR AHORA</button>
                     </div>
@@ -359,7 +336,7 @@
             </div>
         </section>
 
-        <!-- ℹ️ SECCIÓN QUIENES SOMOS -->
+        <!-- SECCIÓN QUIENES SOMOS -->
         <section class="seccion" id="quienes-somos">
             <h2 class="seccion-titulo">QUIENES SOMOS</h2>
             <p>En <strong>VERRACO TOYS</strong> somos apasionados por los vehículos a escala y los juguetes de calidad. Desde 2015, llevamos las mejores opciones de teledirigidos y productos coleccionables a los hogares de Ambato y toda Ecuador.</p>
@@ -367,33 +344,37 @@
             <p>Contamos con un equipo de expertos dispuestos a ayudarte a encontrar el producto perfecto para ti o para regalar. Ofrecemos asesoramiento personalizado según tus gustos y necesidades.</p>
         </section>
 
-        <!-- 📞 SECCIÓN CONTACTO -->
+        <!-- SECCIÓN CONTACTO -->
         <section class="seccion" id="contacto">
             <h2 class="seccion-titulo">CONTACTO</h2>
-            <div class="contacto-item"><strong>Dirección:</strong> Calle 10 de Agosto N° 456, Edificio Plaza
-                        <!-- FUNCIONES PARA LAS CATEGORÍAS Y WHATSAPP -->
-        <script>
-    // FUNCIÓN PARA ABRIR/CERRAR CATEGORÍAS (DESPLIEGA HACIA ABAJO)
-    function toggleCategoria(idCategoria) {
-        const contenedorProductos = document.getElementById(idCategoria);
-        const flecha = document.getElementById(`flecha-${idCategoria}`);
-        
-        if (contenedorProductos.style.display === 'none' || contenedorProductos.style.display === '') {
-            contenedorProductos.style.display = 'grid';
-            flecha.textContent = '▲';
-        } else {
-            contenedorProductos.style.display = 'none';
-            flecha.textContent = '▼';
-        }
-    }
+            <div class="contacto-item"><strong>Dirección:</strong> Calle 10 de Agosto N° 456, Edificio Plaza, Ambato - Tungurahua</div>
+            <div class="contacto-item"><strong>Teléfono:</strong> 03-225-6789</div>
+            <div class="contacto-item"><strong>Correo:</strong> contacto@verraco-toys.ec</div>
+            <div class="contacto-item"><strong>WhatsApp:</strong> <a href="https://wa.me/593987654321">+593 987654321</a></div>
+        </section>
+    </main>
 
-    // FUNCIÓN PARA ENVIAR MENSAJE A WHATSAPP
-    function enviarWhatsApp(nombreProducto, precioProducto) {
-        const numeroWhatsApp = '593963057078'; // CAMBIA ESTE NÚMERO POR TU WHATSAPP
-        const mensaje = `Hola! Mi nombre es [NOMBRE DEL CLIENTE]. Quiero solicitar información sobre el producto: ${nombreProducto} con precio de ${precioProducto}. Mi correo electrónico es [CORREO DEL CLIENTE].`;
-        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-        window.open(urlWhatsApp, '_blank');
-    }
-</script>
-    </body>
+    <!-- FUNCIONES JAVASCRIPT -->
+    <script>
+        function toggleCategoria(idCategoria) {
+            const contenedorProductos = document.getElementById(idCategoria);
+            const flecha = document.getElementById(`flecha-${idCategoria}`);
+            
+            if (contenedorProductos.style.display === 'none' || contenedorProductos.style.display === '') {
+                contenedorProductos.style.display = 'grid';
+                flecha.textContent = '▲';
+            } else {
+                contenedorProductos.style.display = 'none';
+                flecha.textContent = '▼';
+            }
+        }
+
+        function enviarWhatsApp(nombreProducto, precioProducto) {
+            const numeroWhatsApp = '593987654321'; // CAMBIA ESTE NÚMERO POR TU WHATSAPP
+            const mensaje = `Hola! Mi nombre es [NOMBRE DEL CLIENTE]. Quiero solicitar información sobre el producto: ${nombreProducto} con precio de ${precioProducto}. Mi correo electrónico es [CORREO DEL CLIENTE].`;
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+</body>
 </html>
