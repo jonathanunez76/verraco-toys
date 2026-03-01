@@ -1,13 +1,13 @@
 <!-- ================================== -->
-<!-- PÁGINA COMPLETA: SCROLL A SECCIONES -->
+<!-- PÁGINA COMPLETA CON COMPRAS Y PAGOS -->
 <!-- ================================== -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>V E R R A C O   T O Y S - Tienda de Juguetes</title>
+    <title>VERRACO TOYS - Tienda de Juguetes</title>
     <style>
         /* --------------------------- */
-        /* LOGO COMO FONDO DE TODA LA PANTALLA */
+        /* ESTILOS GENERALES Y FONDO */
         /* --------------------------- */
         body {
             margin: 0;
@@ -17,12 +17,11 @@
             background-attachment: fixed;
             background-position: center;
             color: #fff;
-            /* ACTIVAMOS EL SCROLL SUAVE */
             scroll-behavior: smooth;
         }
 
         /* --------------------------- */
-        /* BARRA SUPERIOR FIJA ARRIBA */
+        /* BARRA SUPERIOR FIJA */
         /* --------------------------- */
         .barra-superior {
             background-color: rgba(0, 0, 0, 0.8);
@@ -30,7 +29,6 @@
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            /* LA BARRA QUEDA FIJA ARRIBA SIEMPRE */
             position: fixed;
             width: 100%;
             top: 0;
@@ -52,17 +50,14 @@
         }
 
         /* --------------------------- */
-        /* CONTENIDO GENERAL (CON ESPACIO ARRIBA) */
+        /* CONTENIDO GENERAL */
         /* --------------------------- */
         .contenedor-general {
             max-width: 1200px;
-            margin: 100px auto 20px; /* Espacio para la barra fija */
+            margin: 100px auto 20px;
             padding: 25px;
         }
 
-        /* --------------------------- */
-        /* CADA SECCIÓN POR SEPARADO */
-        /* --------------------------- */
         .seccion {
             background-color: rgba(0, 0, 0, 0.6);
             padding: 30px;
@@ -78,6 +73,9 @@
             margin-top: 0;
         }
 
+        /* --------------------------- */
+        /* PRODUCTOS CON BOTÓN DE COMPRA */
+        /* --------------------------- */
         .productos-contenedor {
             display: flex;
             gap: 30px;
@@ -110,6 +108,94 @@
             font-weight: bold;
         }
 
+        .btn-comprar {
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn-comprar:disabled {
+            background-color: #888;
+            cursor: not-allowed;
+        }
+
+        /* --------------------------- */
+        /* FORMULARIO DE COMPRA */
+        /* --------------------------- */
+        #formulario-compra {
+            display: none; /* Se ve solo cuando el cliente elige un producto */
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .form-grupo {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        /* --------------------------- */
+        /* OPCIONES DE PAGO SEGURO */
+        /* --------------------------- */
+        .opciones-pago {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .metodo-pago {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            width: 150px;
+        }
+
+        .metodo-pago img {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        /* --------------------------- */
+        /* BOTÓN DE CONFIRMAR COMPRA */
+        /* --------------------------- */
+        .btn-confirmar {
+            background-color: #ff0;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+        }
+
         p {
             font-size: 16px;
             line-height: 1.6;
@@ -121,7 +207,6 @@
     <!-- BARRA SUPERIOR FIJA -->
     <div class="barra-superior">
         <div class="menu">
-            <!-- LINKS QUE LLEVAN A CADA SECCIÓN -->
             <a href="#productos">PRODUCTOS</a>
             <a href="#quienes-somos">QUIENES SOMOS</a>
             <a href="#contacto">CONTACTO</a>
@@ -136,23 +221,91 @@
             <h2>NUESTROS PRODUCTOS</h2>
             
             <div class="productos-contenedor">
+                <!-- PRODUCTO 1 -->
                 <div class="producto">
                     <h3>Carro Teledirigido Deportivo</h3>
                     <p class="precio">$750 USD</p>
                     <p class="stock-disponible">EN STOCK</p>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Deportivo', 750)">COMPRAR AHORA</button>
                 </div>
 
+                <!-- PRODUCTO 2 -->
                 <div class="producto">
                     <h3>Helicóptero Teledirigido</h3>
                     <p class="precio">$950 USD</p>
                     <p class="stock-disponible">EN STOCK</p>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido', 950)">COMPRAR AHORA</button>
                 </div>
 
+                <!-- PRODUCTO 3 -->
                 <div class="producto">
                     <h3>Avión Coleccionable</h3>
                     <p class="precio">$1250 USD</p>
                     <p class="stock-agotado">AGOTADO</p>
+                    <button class="btn-comprar" disabled>COMPRAR AHORA</button>
                 </div>
+            </div>
+
+            <!-- FORMULARIO DE COMPRA (SE VE CUANDO SE ELIGE UN PRODUCTO) -->
+            <div id="formulario-compra">
+                <h2>COMPRA TU PRODUCTO</h2>
+                <input type="hidden" id="producto-seleccionado" value="">
+                <input type="hidden" id="precio-seleccionado" value="">
+
+                <div class="form-grupo">
+                    <label>Producto elegido:</label>
+                    <span id="nombre-producto" style="color: #ff0; font-weight: bold;"></span>
+                </div>
+
+                <div class="form-grupo">
+                    <label>Precio total:</label>
+                    <span id="precio-producto" style="color: #0f0; font-weight: bold;"></span>
+                </div>
+
+                <div class="form-grupo">
+                    <label>Tu nombre completo:</label>
+                    <input type="text" id="nombre-cliente" required placeholder="Ej: Juan Pérez">
+                </div>
+
+                <div class="form-grupo">
+                    <label>Tu correo electrónico:</label>
+                    <input type="email" id="correo-cliente" required placeholder="Ej: juan@ejemplo.com">
+                </div>
+
+                <div class="form-grupo">
+                    <label>Tu teléfono:</label>
+                    <input type="tel" id="telefono-cliente" required placeholder="Ej: 0987654321">
+                </div>
+
+                <div class="form-grupo">
+                    <label>Dirección de entrega:</label>
+                    <textarea id="direccion-cliente" required placeholder="Ej: Calle Principal N° 123, Barrio Centro, Ambato"></textarea>
+                </div>
+
+                <div class="form-grupo">
+                    <label>Método de pago:</label>
+                    <div class="opciones-pago">
+                        <div class="metodo-pago">
+                            <img src="https://cdn-icons-png.flaticon.com/512/826/826002.png" alt="Tarjeta de crédito">
+                            <p>Tarjeta de Crédito/Débito</p>
+                        </div>
+                        <div class="metodo-pago">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968876.png" alt="PayPal">
+                            <p>PayPal</p>
+                        </div>
+                        <div class="metodo-pago">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733566.png" alt="Transferencia bancaria">
+                            <p>Transferencia Bancaria</p>
+                        </div>
+                        <div class="metodo-pago">
+                            <img src="https://cdn-icons-png.flaticon.com/512/927/927591.png" alt="Efectivo en entrega">
+                            <p>Efectivo en Entrega</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center; color: #ff0; margin-top: 10px;">Todos los pagos están protegidos por seguridad SSL</p>
+                </div>
+
+                <button class="btn-confirmar" onclick="enviarNotificacion()">CONFIRMAR COMPRA Y PAGAR</button>
             </div>
         </div>
 
@@ -174,5 +327,44 @@
             <p><strong>Redes sociales:</strong> Facebook: @VerracoToysEc | Instagram: @verraco_toys</p>
         </div>
     </div>
-</body>
-</html>
+
+    <!-- CÓDIGO PARA QUE FUNCIONEN LAS COMPRAS Y NOTIFICACIONES -->
+    <script>
+        // FUNCIÓN PARA MOSTRAR EL FORMULARIO CUANDO SE ELIGE UN PRODUCTO
+        function mostrarFormulario(nombreProducto, precioProducto) {
+            document.getElementById('formulario-compra').style.display = 'block';
+            document.getElementById('nombre-producto').textContent = nombreProducto;
+            document.getElementById('precio-producto').textContent = '$' + precioProducto + ' USD';
+            document.getElementById('producto-seleccionado').value = nombreProducto;
+            document.getElementById('precio-seleccionado').value = precioProducto;
+            // Desplaza suavemente hasta el formulario
+            document.getElementById('formulario-compra').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // FUNCIÓN PARA ENVIAR NOTIFICACIÓN A TI Y CONFIRMAR AL CLIENTE
+        function enviarNotificacion() {
+            // DATOS DEL CLIENTE Y PRODUCTO
+            const nombreCliente = document.getElementById('nombre-cliente').value;
+            const correoCliente = document.getElementById('correo-cliente').value;
+            const telefonoCliente = document.getElementById('telefono-cliente').value;
+            const direccionCliente = document.getElementById('direccion-cliente').value;
+            const producto = document.getElementById('producto-seleccionado').value;
+            const precio = document.getElementById('precio-seleccionado').value;
+
+            // MENSAJE QUE LLEGARÁ A TI (se puede conectar a correo o WhatsApp)
+            const mensaje = `NUEVA COMPRA!\n\nCliente: ${nombreCliente}\nCorreo: ${correoCliente}\nTeléfono: ${telefonoCliente}\nDirección: ${direccionCliente}\nProducto: ${producto}\nPrecio: $${precio} USD`;
+
+            // MUESTRA MENSAJE DE CONFIRMACIÓN AL CLIENTE
+            alert(`¡GRACIAS POR TU COMPRA ${nombreCliente}! \n\n- Recibirás un correo con los pasos de pago y envío.\n- También te contactaremos al teléfono ${telefonoCliente} en menos de 24 horas.\n- Todos tus datos están protegidos y el producto será entregado en tu dirección.`);
+
+            // AQUÍ SE PUEDE CONFIGURAR PARA QUE TE LLEGUE EL MENSAJE A TU CORREO O WHATSAPP
+            // Por ahora, muestra el mensaje en la consola para que lo veas
+            console.log(mensaje);
+            // Ejemplo para WhatsApp (solo cambia el número por el tuyo):
+            // window.open(`https://wa.me/593${TU_NUMERO_AQUI}?text=${encodeURIComponent(mensaje)}`, '_blank');
+
+            // RESETEA EL FORMULARIO
+            document.getElementById('formulario-compra').reset();
+            document.getElementById('formulario-compra').style.display = 'none';
+        }
+    </script>
