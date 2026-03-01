@@ -1,6 +1,5 @@
-
 <!-- ================================== -->
-<!-- PÁGINA WEB COMPLETA AJUSTADA PARA VERRACO TOYS -->
+<!-- PÁGINA COMPLETA: LOGO DE FONDO DE PANTALLA -->
 <!-- ================================== -->
 <!DOCTYPE html>
 <html>
@@ -8,192 +7,140 @@
     <title>VERRACO TOYS - Tienda de Juguetes</title>
     <style>
         /* --------------------------- */
-        /* ESTILOS GENERALES */
+        /* LOGO COMO FONDO DE TODA LA PANTALLA */
         /* --------------------------- */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            color: #333;
+            /* LOGO DE FONDO DE TODA LA PANTALLA */
+            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
+            background-size: cover; /* Ajusta el logo sin deformar */
+            background-attachment: fixed; /* El fondo NO se mueve al hacer scroll */
+            background-position: center; /* Centra el logo en la pantalla */
+            color: #fff; /* Letras blancas por defecto */
         }
 
         /* --------------------------- */
-        /* BARRA SUPERIOR CON LOGO DE FONDO */
+        /* BARRA SUPERIOR ENCIMA */
         /* --------------------------- */
         .barra-superior {
-            width: 100%;
-            height: 130px; /* Alto de la barra */
-            /* LOGO COMO FONDO DE LA BARRA */
-            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
-            background-size: cover; /* Ajusta el logo para cubrir toda la barra */
-            background-position: center; /* Centra el logo en la barra */
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
+            padding: 15px 20px;
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* Mueve el menú a la derecha */
-            padding: 0 20px;
-            box-sizing: border-box;
-            border-bottom: 4px solid #000;
-        }
-
-        /* MENÚ ENCIMA DE LA BARRA */
-        .menu {
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente para ver bien las letras */
-            padding: 8px 15px;
-            border-radius: 5px;
+            justify-content: flex-end;
         }
 
         .menu a {
+            color: #fff;
             text-decoration: none;
-            color: #000;
             font-weight: bold;
-            font-size: 16px;
-            margin: 0 18px;
+            margin: 0 20px;
+            font-size: 18px;
         }
 
         .menu a:hover {
-            color: #ff0000; /* Letras rojas cuando pasas el mouse */
+            color: #ff0; /* Letras amarillas al pasar el mouse */
         }
 
         /* --------------------------- */
-        /* SECCIONES DE LA PÁGINA */
+        /* TODAS LAS SECCIONES ENCIMA */
         /* --------------------------- */
-        .seccion {
-            max-width: 1100px;
-            margin: 0 auto; /* Centra las secciones */
+        .contenedor-general {
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para el contenido */
+            max-width: 1200px;
+            margin: 20px auto; /* Centra el contenido */
             padding: 25px;
+            border-radius: 10px;
         }
 
-        h1 {
-            font-size: 28px;
-            border-bottom: 2px solid #ff0000;
+        h1, h2 {
+            color: #ff0; /* Títulos amarillos brillantes */
+            text-align: center;
+            border-bottom: 2px solid #ff0;
             padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        /* --------------------------- */
-        /* SECCIÓN PRODUCTOS */
-        /* --------------------------- */
-        #productos {
-            background-color: #f9f9f9;
         }
 
         .productos-contenedor {
             display: flex;
-            gap: 25px; /* Espacio entre productos */
-            flex-wrap: wrap; /* Para que bajen los productos si no cabe en la línea */
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-top: 20px;
         }
 
         .producto {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.15); /* Fondo claro para productos */
             padding: 20px;
-            border: 1px solid #ddd;
             border-radius: 8px;
             width: 300px;
             text-align: center;
         }
 
-        .producto img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-            border-radius: 5px;
-        }
-
         .precio {
             font-size: 20px;
+            color: #0f0; /* Precios en verde brillante */
             font-weight: bold;
-            color: #008000;
         }
 
         .stock-disponible {
-            color: #008000;
+            color: #0f0;
             font-weight: bold;
         }
 
         .stock-agotado {
-            color: #ff0000;
+            color: #f00;
             font-weight: bold;
         }
 
-        /* --------------------------- */
-        /* SECCIÓN QUIENES SOMOS */
-        /* --------------------------- */
-        #quienes-somos {
-            background-color: #fff;
+        p {
+            font-size: 16px;
             line-height: 1.6;
         }
-
-        /* --------------------------- */
-        /* SECCIÓN CONTACTO */
-        /* --------------------------- */
-        #contacto {
-            background-color: #f9f9f9;
-        }
-
     </style>
 </head>
 <body>
-
-<!-- ================================== -->
-<!-- BARRA SUPERIOR CON LOGO DE FONDO -->
-<!-- ================================== -->
-<div class="barra-superior">
-    <div class="menu">
-        <a href="#productos">PRODUCTOS</a>
-        <a href="#quienes-somos">QUIENES SOMOS</a>
-        <a href="#contacto">CONTACTO</a>
-    </div>
-</div>
-
-
-<!-- ================================== -->
-<!-- SECCIÓN PRODUCTOS -->
-<!-- ================================== -->
-<div class="seccion" id="productos">
-    <h1>NUESTROS PRODUCTOS</h1>
-    <div class="productos-contenedor">
-        <div class="producto">
-            <img src="" alt="Carro Teledirigido Deportivo"> <!-- Aquí pondrás la imagen cuando la tengas -->
-            <h2>Carro Teledirigido Deportivo</h2>
-            <p class="precio">$750 USD</p>
-            <p class="stock-disponible">EN STOCK</p>
-        </div>
-
-        <div class="producto">
-            <img src="" alt="Helicóptero Teledirigido"> <!-- Aquí pondrás la imagen -->
-            <h2>Helicóptero Teledirigido</h2>
-            <p class="precio">$950 USD</p>
-            <p class="stock-disponible">EN STOCK</p>
-        </div>
-
-        <div class="producto">
-            <img src="" alt="Avión Coleccionable"> <!-- Aquí pondrás la imagen -->
-            <h2>Avión Coleccionable</h2>
-            <p class="precio">$1250 USD</p>
-            <p class="stock-agotado">AGOTADO</p>
+    <!-- BARRA SUPERIOR ENCIMA -->
+    <div class="barra-superior">
+        <div class="menu">
+            <a href="#productos">PRODUCTOS</a>
+            <a href="#quienes">QUIENES SOMOS</a>
+            <a href="#contacto">CONTACTO</a>
         </div>
     </div>
-</div>
 
+    <!-- CONTENIDO ENCIMA DEL FONDO -->
+    <div class="contenedor-general">
+        <h1>VERRACO TOYS</h1>
+        <h2 id="productos">NUESTROS PRODUCTOS</h2>
+        
+        <div class="productos-contenedor">
+            <div class="producto">
+                <h3>Carro Teledirigido Deportivo</h3>
+                <p class="precio">$750 USD</p>
+                <p class="stock-disponible">EN STOCK</p>
+            </div>
 
-<!-- ================================== -->
-<!-- SECCIÓN QUIENES SOMOS -->
-<!-- ================================== -->
-<div class="seccion" id="quienes-somos">
-    <h1>QUIENES SOMOS</h1>
-    <p>Somos una tienda del barrio dedicada a ofrecer juguetes de alta calidad. Nos apasiona lo que hacemos y queremos llevar alegría a todos los hogares con nuestros productos. Nos enfocamos en juguetes teledirigidos y coleccionables para todas las edades.</p>
-</div>
+            <div class="producto">
+                <h3>Helicóptero Teledirigido</h3>
+                <p class="precio">$950 USD</p>
+                <p class="stock-disponible">EN STOCK</p>
+            </div>
 
+            <div class="producto">
+                <h3>Avión Coleccionable</h3>
+                <p class="precio">$1250 USD</p>
+                <p class="stock-agotado">AGOTADO</p>
+            </div>
+        </div>
 
-<!-- ================================== -->
-<!-- SECCIÓN CONTACTO -->
-<!-- ================================== -->
-<div class="seccion" id="contacto">
-    <h1>CONTACTO</h1>
-    <p>Ubicación: Ambato, Provincia del Tungurahua - Ecuador</p>
-    <p>Teléfono: 0963057078</p>
-    <p>Correo: contacto@verraco-toys.com</p>
-</div>
+        <h2 id="quienes">QUIENES SOMOS</h2>
+        <p>Somos una tienda del barrio dedicada a ofrecer juguetes de alta calidad. Nos apasiona lo que hacemos y queremos llevar alegría a todos los hogares con nuestros productos.</p>
 
+        <h2 id="contacto">CONTACTO</h2>
+        <p>Ubicación: Ambato, Provincia del Tungurahua - Ecuador</p>
+        <p>Teléfono: 0963057078</p>
+        <p>Correo: contacto@verraco-toys.com</p>
+    </div>
 </body>
 </html>
