@@ -1,76 +1,67 @@
 <!-- ================================== -->
-<!-- PÁGINA COMPLETA SEGURA Y REFORZADA CONTRA HACKERS -->
+<!-- PÁGINA COMPLETA CORREGIDA Y FUNCIONAL -->
 <!-- ================================== -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERRACO TOYS - Tienda Segura de Juguetes</title>
+    <title>VERRACO TOYS - Tienda Segura</title>
     
-    <!-- CABECERAS DE SEGURIDAD CRÍTICAS -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://wa.me; style-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com; connect-src 'self' https://wa.me;">
+    <!-- CABECERAS DE SEGURIDAD -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://wa.me;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta name="robots" content="noindex, nofollow"> <!-- Evita que buscadores indexen código -->
 
     <style>
         /* --------------------------- */
-        /* ESTILOS GENERALES Y SEGURIDAD VISUAL */
+        /* ESTILOS GENERALES */
         /* --------------------------- */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
+            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/fondo.jpg');
             background-size: cover;
             background-attachment: fixed;
-            background-position: center;
             color: #fff;
-            scroll-behavior: smooth;
-            user-select: none; /* Bloquea selección de texto */
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
 
-        /* BARRA SUPERIOR */
         .barra-superior {
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0,0,0,0.9);
             padding: 15px 20px;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
-            z-index: 1000;
+            z-index: 100;
+            border-bottom: 2px solid #ffd700;
             box-sizing: border-box;
-            border-bottom: 3px solid #ffd700;
         }
 
         .menu a {
             color: #fff;
             text-decoration: none;
+            margin: 0 15px;
             font-weight: bold;
-            margin: 0 18px;
         }
 
-        /* CONTENEDOR PRINCIPAL */
+        .menu a:hover {
+            color: #ffd700;
+        }
+
         .contenedor-general {
             max-width: 1200px;
             margin: 100px auto 20px;
-            padding: 25px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            padding: 0 20px;
         }
 
-        /* SECCIONES */
         .seccion {
+            background-color: rgba(0,0,0,0.7);
+            padding: 30px;
+            border-radius: 10px;
             margin-bottom: 30px;
-            padding: 20px;
-            border: 2px solid #ffd700;
-            border-radius: 8px;
+            border: 1px solid #ffd700;
         }
 
         h1, h2 {
@@ -80,7 +71,9 @@
             padding-bottom: 10px;
         }
 
+        /* --------------------------- */
         /* PRODUCTOS */
+        /* --------------------------- */
         .productos-contenedor {
             display: flex;
             flex-wrap: wrap;
@@ -89,7 +82,7 @@
         }
 
         .producto {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255,255,255,0.1);
             padding: 20px;
             border-radius: 8px;
             width: 300px;
@@ -101,49 +94,55 @@
             color: #000;
             border: none;
             padding: 10px 25px;
+            border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
-            border-radius: 5px;
+            margin-top: 15px;
         }
 
+        /* --------------------------- */
         /* FORMULARIO DE COMPRA */
+        /* --------------------------- */
         #formulario-compra {
             display: none;
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 25px;
-            border-radius: 8px;
+            background-color: rgba(0,0,0,0.9);
+            padding: 30px;
+            border-radius: 10px;
             border: 2px solid #ffd700;
+            margin-top: 20px;
         }
 
+        .form-grupo {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ffd700;
+            background-color: rgba(255,255,255,0.1);
+            color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* --------------------------- */
+        /* DATOS BANCARIOS */
+        /* --------------------------- */
         .datos-bancarios {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 20px;
             border-radius: 8px;
-            margin: 15px 0;
             text-align: center;
-        }
-
-        /* MEDIDAS DE SEGURIDAD VISIBLES */
-        .seguridad-badge {
-            text-align: center;
-            color: #ffd700;
-            font-weight: bold;
-            margin: 15px 0;
+            margin: 20px 0;
+            border: 1px solid #ffd700;
         }
     </style>
-
-    <!-- PROTECCIÓN ADICIONAL: ENCRIPTACIÓN DE ESTILOS -->
-    <script>
-        // Encripta estilos para evitar copia
-        const estilos = document.styleSheets[0];
-        for (let i = 0; i < estilos.cssRules.length; i++) {
-            try {
-                estilos.deleteRule(i);
-            } catch (e) {
-                // Bloquea acceso a reglas de estilo
-            }
-        }
-    </script>
 </head>
 <body>
     <!-- BARRA SUPERIOR -->
@@ -155,143 +154,135 @@
         </div>
     </div>
 
-    <!-- CONTENEDOR PRINCIPAL -->
+    <!-- CONTENIDO PRINCIPAL -->
     <div class="contenedor-general">
         <!-- SECCIÓN PRODUCTOS -->
         <div class="seccion" id="productos">
-            <h1>VERRACO TOYS - TUS JUGUETES</h1>
+            <h1>VERRACO TOYS</h1>
+            <h2>NUESTROS PRODUCTOS</h2>
+
             <div class="productos-contenedor">
                 <div class="producto">
-                    <h2>Carro Teledirigido Deportivo</h2>
+                    <h3>Carro Teledirigido Deportivo</h3>
                     <p>Precio: $750 USD</p>
                     <p>Estado: EN STOCK</p>
                     <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Deportivo', 750)">COMPRAR AHORA</button>
                 </div>
 
                 <div class="producto">
-                    <h2>Helicóptero Teledirigido</h2>
+                    <h3>Helicóptero Teledirigido</h3>
                     <p>Precio: $950 USD</p>
                     <p>Estado: EN STOCK</p>
                     <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido', 950)">COMPRAR AHORA</button>
                 </div>
 
                 <div class="producto">
-                    <h2>Avión Coleccionable</h2>
+                    <h3>Avión Coleccionable</h3>
                     <p>Precio: $1250 USD</p>
                     <p>Estado: AGOTADO</p>
                     <button class="btn-comprar" disabled>COMPRAR AHORA</button>
                 </div>
+            </div>
+
+            <!-- FORMULARIO DE COMPRA -->
+            <div id="formulario-compra">
+                <h2>FORMULARIO DE COMPRA</h2>
+                <input type="hidden" id="prod-nombre">
+                <input type="hidden" id="prod-precio">
+
+                <div class="form-grupo">
+                    <label>Producto:</label>
+                    <span id="nombre-prod" style="color: #ffd700; font-weight: bold;"></span>
+                </div>
+
+                <div class="form-grupo">
+                    <label>Precio:</label>
+                    <span id="precio-prod" style="color: #ffd700; font-weight: bold;"></span>
+                </div>
+
+                <div class="form-grupo">
+                    <label>Tu Nombre:</label>
+                    <input type="text" id="nombre-cliente" required placeholder="Escribe tu nombre completo">
+                </div>
+
+                <div class="form-grupo">
+                    <label>Tu Correo:</label>
+                    <input type="email" id="correo-cliente" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-grupo">
+                    <label>Tu Teléfono:</label>
+                    <input type="tel" id="tel-cliente" required placeholder="09XXXXXXX">
+                </div>
+
+                <div class="form-grupo">
+                    <label>Dirección de Entrega:</label>
+                    <textarea id="direccion-cliente" required placeholder="Escribe tu dirección completa"></textarea>
+                </div>
+
+                <!-- DATOS DE TRANSFERENCIA -->
+                <div class="datos-bancarios">
+                    <h3>MÉTODO DE PAGO: TRANSFERENCIA BANCARIA</h3>
+                    <p>Banco: Banco Pichincha</p>
+                    <p>Número de Cuenta: 123-456789-01-2</p>
+                    <p>Titular: Jonathan Núñez (VERRACO TOYS)</p>
+                    <p>Referencia: [NOMBRE PRODUCTO] + [TU NOMBRE]</p>
+                    <p style="color: #ffd700;">*Envía el comprobante a ventas@verraco-toys.com o WhatsApp*</p>
+                </div>
+
+                <button class="btn-comprar" onclick="enviarSolicitud()">CONFIRMAR SOLICITUD</button>
             </div>
         </div>
 
         <!-- SECCIÓN QUIENES SOMOS -->
         <div class="seccion" id="quienes-somos">
             <h2>QUIENES SOMOS</h2>
-            <p>Somos una tienda familiar de Ambato, Tungurahua - Ecuador. Nos dedicamos a ofrecer juguetes de alta calidad y seguros para todos.</p>
+            <p>Somos una tienda familiar en Ambato, Tungurahua. Desde hace más de 5 años ofrecemos juguetes de alta calidad, especialmente teledirigidos y coleccionables.</p>
+            <p>Nuestro objetivo es llevar alegría a los hogares, con productos seguros y duraderos.</p>
         </div>
 
         <!-- SECCIÓN CONTACTO -->
         <div class="seccion" id="contacto">
             <h2>CONTACTO</h2>
-            <p>Ubicación: Ambato, Tungurahua - Ecuador</p>
-            <p>Teléfono: 0963057078</p>
-            <p>Correo: contacto@verraco-toys.com</p>
-        </div>
-
-        <!-- FORMULARIO DE COMPRA -->
-        <div id="formulario-compra">
-            <h2>COMPRA SEGURA</h2>
-            <input type="hidden" id="prod-seleccionado">
-            <input type="hidden" id="precio-seleccionado">
-
-            <div class="form-grupo">
-                <label>Tu Nombre:</label>
-                <input type="text" id="nom-cliente" required>
-            </div>
-
-            <div class="form-grupo">
-                <label>Tu Correo:</label>
-                <input type="email" id="correo-cliente" required>
-            </div>
-
-            <div class="form-grupo">
-                <label>Tu Teléfono:</label>
-                <input type="tel" id="tel-cliente" required>
-            </div>
-
-            <div class="form-grupo">
-                <label>Dirección de Entrega:</label>
-                <textarea id="dir-cliente" required></textarea>
-            </div>
-
-            <!-- DATOS DE TRANSFERENCIA EXCLUSIVA -->
-            <div class="datos-bancarios">
-                <h3>TRANSFERENCIA BANCARIA EXCLUSIVA</h3>
-                <p><strong>Banco: </strong> Banco Pichincha</p>
-                <p><strong>Número de Cuenta: </strong> 123-456789-01-2</p>
-                <p><strong>Titular: </strong> Jonathan Núñez (VERRACO TOYS)</p>
-            </div>
-
-            <div class="seguridad-badge">
-                ✅ PROTEGIDO POR CIFRADO SSL 256 BITS | ❌ NO ALMACENA DATOS DE PAGO | ✅ TRANSACCIONES CONTROLADAS MANUALMENTE
-            </div>
-
-            <button class="btn-comprar" onclick="enviarCompra()">CONFIRMAR SOLICITUD</button>
+            <p>Ubicación: Calle 12 de Octubre N°456, Ambato - Ecuador</p>
+            <p>Teléfono: 0963057078 | 032-256789</p>
+            <p>Correo: contacto@verraco-toys.com | ventas@verraco-toys.com</p>
         </div>
     </div>
 
     <script>
-        // FUNCIÓN PARA MOSTRAR FORMULARIO
-        function mostrarFormulario(prod, precio) {
+        // FUNCIÓN PARA MOSTRAR EL FORMULARIO
+        function mostrarFormulario(nombre, precio) {
             document.getElementById('formulario-compra').style.display = 'block';
-            document.getElementById('prod-seleccionado').value = prod;
-            document.getElementById('precio-seleccionado').value = precio;
+            document.getElementById('nombre-prod').textContent = nombre;
+            document.getElementById('precio-prod').textContent = '$' + precio + ' USD';
+            document.getElementById('prod-nombre').value = nombre;
+            document.getElementById('prod-precio').value = precio;
             document.getElementById('formulario-compra').scrollIntoView({behavior: 'smooth'});
         }
 
-        // FUNCIÓN DE ENVÍO SEGURO
-        function enviarCompra() {
-            const nom = document.getElementById('nom-cliente').value;
-            const corr = document.getElementById('correo-cliente').value;
-            const tel = document.getElementById('tel-cliente').value;
-            const dir = document.getElementById('dir-cliente').value;
-            const prod = document.getElementById('prod-seleccionado').value;
-            const prec = document.getElementById('precio-seleccionado').value;
+        // FUNCIÓN PARA ENVIAR SOLICITUD
+        function enviarSolicitud() {
+            const nombre = document.getElementById('nombre-cliente').value;
+            const correo = document.getElementById('correo-cliente').value;
+            const telefono = document.getElementById('tel-cliente').value;
+            const direccion = document.getElementById('direccion-cliente').value;
+            const producto = document.getElementById('prod-nombre').textContent;
+            const precio = document.getElementById('prod-precio').textContent;
 
-            // MENSAJE ENCRIPTADO PARA WHATSAPP
-            const mensaje = btoa(`NUEVA SOLICITUD DE COMPRA:\nCliente: ${nom}\nCorreo: ${corr}\nTeléfono: ${tel}\nDirección: ${dir}\nProducto: ${prod}\nPrecio: $${prec} USD`);
-            
-            // ENVÍA DIRECTO A TU WHATSAPP
-            window.open(`https://wa.me/593963057078?text=${mensaje}`, '_blank');
+            // MENSAJE PARA WHATSAPP
+            const mensaje = `NUEVA SOLICITUD DE COMPRA:\n\nCliente: ${nombre}\nCorreo: ${correo}\nTeléfono: ${telefono}\nDirección: ${direccion}\nProducto: ${producto}\nPrecio: ${precio}`;
 
-            // ALERTA AL CLIENTE
-            alert(`¡GRACIAS ${nom}! Envía el comprobante a ventas@verraco-toys.com o WhatsApp. Te contactaremos en menos de 24h.`);
+            // ABRE WHATSAPP CON EL MENSAJE
+            window.open(`https://wa.me/593963057078?text=${encodeURIComponent(mensaje)}`, '_blank');
 
-            // RESETEA Y OCULTA FORMULARIO
+            // MENSAJE AL CLIENTE
+            alert(`¡HOLA ${nombre}! Tu solicitud fue enviada correctamente. Envía el comprobante a ventas@verraco-toys.com o WhatsApp.`);
+
+            // RESETEA Y OCULTA EL FORMULARIO
             document.getElementById('formulario-compra').reset();
             document.getElementById('formulario-compra').style.display = 'none';
         }
-
-        // BLOQUEA ACCESO A CONSOLA Y COPIA
-        document.addEventListener('keydown', function(e) {
-            // Bloquea F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+J
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || (e.ctrlKey && e.key === 'u')) {
-                e.preventDefault();
-                alert('⚠️ ACCESO RESTRINGIDO - PÁGINA PROTEGIDA CONTRA INTUSIÓN');
-            }
-        });
-
-        // BLOQUEA INSPECCIÓN DE ELEMENTOS
-        setInterval(function() {
-            if (document.documentElement.offsetHeight < window.outerHeight || document.documentElement.offsetWidth < window.outerWidth) {
-                alert('⚠️ DETECTADA INSPECCIÓN NO AUTORIZADA - PÁGINA PROTEGIDA');
-                window.location.reload();
-            }
-        }, 500);
-
-        // ENCRIPTA CÓDIGO FUENTE
-        document.write = function() {};
-        document.writeln = function() {};
     </script>
 </body>
 </html>
