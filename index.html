@@ -1,6 +1,3 @@
-<!-- ================================== -->
-<!-- PÁGINA VERRACO TOYS - FUNCIONANDO AL 100% -->
-<!-- ================================== -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERRACO TOYS - Tienda de Juguetes</title>
     
-    <!-- MEDIDAS DE SEGURIDAD -->
+    <!-- SEGURIDAD -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
 
     <style>
-        /* --------------------------- */
-        /* ESTILOS GENERALES */
-        /* --------------------------- */
         * {
             margin: 0;
             padding: 0;
@@ -27,6 +21,7 @@
             background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
             background-size: cover;
             background-attachment: fixed;
+            background-position: center;
             color: #fff;
             padding-top: 80px;
         }
@@ -40,7 +35,7 @@
             left: 0;
             width: 100%;
             z-index: 100;
-            border-bottom: 2px solid #ffd700;
+            border-bottom: 3px solid #ffd700;
             text-align: right;
         }
 
@@ -49,6 +44,7 @@
             text-decoration: none;
             margin: 0 15px;
             font-weight: bold;
+            font-size: 16px;
         }
 
         .barra-superior a:hover {
@@ -59,100 +55,137 @@
         .contenedor {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
         /* SECCIONES */
         .seccion {
             background-color: rgba(0,0,0,0.8);
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            border: 1px solid #ffd700;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
         }
 
-        h1, h2 {
+        h1 {
             color: #ffd700;
             text-align: center;
-            padding-bottom: 10px;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #ffd700;
+            text-align: center;
             border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
             margin-bottom: 20px;
+            font-size: 22px;
         }
 
         /* PRODUCTOS */
-        .productos {
+        .productos-contenedor {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .producto {
             background-color: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 10px;
             width: 280px;
             text-align: center;
+            border: 1px solid #ffd700;
         }
 
         .producto h3 {
             color: #ffd700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 20px;
         }
 
         .precio {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            margin: 10px 0;
+            color: #28a745;
+            margin-bottom: 10px;
         }
 
         .stock {
             color: #28a745;
-            margin: 10px 0;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
 
         .agotado {
             color: #dc3545;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
 
-        /* BOTÓN COMPRAR */
+        /* BOTÓN COMPRAR FUNCIONAL */
         .btn-comprar {
             background-color: #ffd700;
             color: #000;
             border: none;
-            padding: 10px 25px;
+            padding: 12px 25px;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .btn-comprar:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
         }
 
         /* FORMULARIO */
-        #formulario {
-            background-color: rgba(0,0,0,0.9);
-            padding: 25px;
-            border-radius: 10px;
-            border: 2px solid #ffd700;
-            margin-top: 20px;
+        #formulario-compra {
+            background-color: rgba(0,0,0,0.95);
+            padding: 30px;
+            border-radius: 12px;
+            border: 3px solid #ffd700;
+            margin-top: 30px;
             display: none;
         }
 
         .form-grupo {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        label {
+        .form-grupo label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 16px;
         }
 
-        input, textarea {
+        .form-grupo input {
             width: 100%;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 6px;
             border: 1px solid #ffd700;
             background-color: rgba(255,255,255,0.1);
             color: #fff;
+            font-size: 16px;
+        }
+
+        .form-grupo input::placeholder {
+            color: #ccc;
+        }
+
+        /* SECCIONES ADICIONALES */
+        #quienes-somos p, #contacto p {
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        #contacto strong {
+            color: #ffd700;
         }
     </style>
 </head>
@@ -160,7 +193,7 @@
     <!-- BARRA SUPERIOR -->
     <div class="barra-superior">
         <a href="#productos">PRODUCTOS</a>
-        <a href="#quienes">QUIENES SOMOS</a>
+        <a href="#quienes-somos">QUIENES SOMOS</a>
         <a href="#contacto">CONTACTO</a>
     </div>
 
@@ -169,106 +202,117 @@
         <!-- SECCIÓN PRODUCTOS -->
         <div class="seccion" id="productos">
             <h1>VERRACO TOYS</h1>
-            <div class="productos">
+            <h2>NUESTROS PRODUCTOS</h2>
+
+            <div class="productos-contenedor">
                 <!-- PRODUCTO 1 -->
                 <div class="producto">
-                    <h3>CARRO TELEDIRIGIDO</h3>
+                    <h3>Carro Teledirigido Deportivo</h3>
                     <p class="precio">$750 USD</p>
                     <p class="stock">EN STOCK</p>
-                    <!-- BOTÓN QUE SÍ FUNCIONA -->
-                    <button class="btn-comprar" onclick="abrirFormulario('Carro Teledirigido', 750)">COMPRAR AHORA</button>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Carro Teledirigido Deportivo', 750)">COMPRAR AHORA</button>
                 </div>
 
                 <!-- PRODUCTO 2 -->
                 <div class="producto">
-                    <h3>HELICÓPTERO TELEDIRIGIDO</h3>
+                    <h3>Helicóptero Teledirigido</h3>
                     <p class="precio">$950 USD</p>
                     <p class="stock">EN STOCK</p>
-                    <button class="btn-comprar" onclick="abrirFormulario('Helicóptero Teledirigido', 950)">COMPRAR AHORA</button>
+                    <button class="btn-comprar" onclick="mostrarFormulario('Helicóptero Teledirigido', 950)">COMPRAR AHORA</button>
                 </div>
 
                 <!-- PRODUCTO 3 -->
                 <div class="producto">
-                    <h3>AVIÓN COLECCIONABLE</h3>
+                    <h3>Avión Coleccionable</h3>
                     <p class="precio">$1250 USD</p>
                     <p class="agotado">AGOTADO</p>
                     <button class="btn-comprar" disabled>COMPRAR AHORA</button>
                 </div>
             </div>
 
-            <!-- FORMULARIO -->
-            <div id="formulario">
-                <h2>DATOS PARA COMPRA</h2>
+            <!-- FORMULARIO COMPRA -->
+            <div id="formulario-compra">
+                <h2>DATOS PARA CONTACTO</h2>
                 <input type="hidden" id="prod-nombre">
                 <input type="hidden" id="prod-precio">
 
                 <div class="form-grupo">
                     <label>PRODUCTO ELEGIDO:</label>
-                    <span id="nombre-prod" style="color: #ffd700;"></span>
+                    <span id="nombre-prod" style="color: #ffd700; font-weight: bold;"></span>
                 </div>
 
                 <div class="form-grupo">
                     <label>PRECIO:</label>
-                    <span id="precio-prod" style="color: #ffd700;"></span>
+                    <span id="precio-prod" style="color: #28a745; font-weight: bold;"></span>
                 </div>
 
                 <div class="form-grupo">
-                    <label>TU NOMBRE COMPLETO:</label>
-                    <input type="text" id="nombre" required>
+                    <label>TU NOMBRE COMPLETO *</label>
+                    <input type="text" id="nombre-cliente" placeholder="Ej: Juan Pérez" required>
                 </div>
 
                 <div class="form-grupo">
-                    <label>TU CORREO:</label>
-                    <input type="email" id="correo" required>
+                    <label>TU CORREO ELECTRÓNICO *</label>
+                    <input type="email" id="correo-cliente" placeholder="Ej: juan@ejemplo.com" required>
                 </div>
 
-                <div class="form-grupo">
-                    <label>TRANSFERENCIA BANCARIA:</label>
-                    <p>Banco Pichincha | Cuenta: 123-456789-01-2 | Titular: Jonathan Núñez</p>
-                </div>
-
-                <button class="btn-comprar" onclick="enviarWhatsApp()">ENVIAR Y CONTACTARME</button>
+                <button class="btn-comprar" onclick="irAWhatsApp()">ENVIAR DATOS Y HABLAR</button>
             </div>
         </div>
 
         <!-- SECCIÓN QUIENES SOMOS -->
-        <div class="seccion" id="quienes">
+        <div class="seccion" id="quienes-somos">
             <h2>QUIENES SOMOS</h2>
-            <p>Tienda familiar en Ambato - Tungurahua, especializada en juguetes teledirigidos y coleccionables desde hace 5 años.</p>
+            <p>Somos una tienda familiar ubicada en Ambato, Provincia del Tungurahua. Desde hace más de 5 años nos dedicamos a ofrecer juguetes de alta calidad, con especial énfasis en modelos teledirigidos y coleccionables.</p>
+            <p>Nuestro objetivo es llevar alegría a los hogares, garantizando productos seguros, duraderos y con las últimas tecnologías del mercado. Trabajamos directamente con fabricantes reconocidos para ofrecer los mejores precios.</p>
         </div>
 
         <!-- SECCIÓN CONTACTO -->
         <div class="seccion" id="contacto">
             <h2>CONTACTO</h2>
-            <p>Teléfono: 0963057078 | Correo: contacto@verraco-toys.com</p>
+            <p><strong>Ubicación:</strong>  Ambato - Ecuador</p>
+            <p><strong>Teléfono:</strong> 0963057078 | </p>
+            <p><strong>Correo:</strong> contacto@verraco-toys.com | ventas@verraco-toys.com</p>
+            <p><strong>Horarios:</strong> Lunes a Sábado 9:00 AM - 7:00 PM </p>
         </div>
     </div>
 
     <script>
-        // FUNCIÓN QUE ABRE EL FORMULARIO
-        function abrirFormulario(nombre, precio) {
-            document.getElementById('formulario').style.display = 'block';
+        // FUNCIÓN PARA ABRIR FORMULARIO
+        function mostrarFormulario(nombre, nombre del producto y precio) {
+            const formulario = document.getElementById('formulario-compra');
+            formulario.style.display = 'block';
             document.getElementById('nombre-prod').textContent = nombre;
             document.getElementById('precio-prod').textContent = '$' + precio + ' USD';
             document.getElementById('prod-nombre').value = nombre;
             document.getElementById('prod-precio').value = precio;
+            formulario.scrollIntoView({behavior: 'smooth'});
         }
 
-        // FUNCIÓN QUE ENVÍA A WHATSAPP
-        function enviarWhatsApp() {
-            const nombre = document.getElementById('nombre').value;
-            const correo = document.getElementById('correo').value;
-            const producto = document.getElementById('prod-nombre').textContent;
-            const precio = document.getElementById('precio-prod').textContent;
+        // FUNCIÓN PARA IR A WHATSAPP
+        function irAWhatsApp() {
+            const nombre = document.getElementById('nombre-cliente').value;
+            const correo = document.getElementById('correo-cliente').value;
+            const producto = document.getElementById('prod-nombre').value;
+            const precio = document.getElementById('prod-precio').value;
 
-            const mensaje = `Hola! Soy ${nombre}, quiero comprar ${producto} por ${precio}. Mi correo es ${correo}.`;
-            
-            // ABRE WHATSAPP DIRECTO
-            window.open(`https://wa.me/593963057078?text=${encodeURIComponent(mensaje)}`, '_blank');
+            if (!nombre || !correo) {
+                alert('Por favor, llena todos los campos obligatorios');
+                return;
+            }
 
-            // RESETEA EL FORMULARIO
-            document.getElementById('formulario').reset();
-            document.getElementById('formulario').style.display = 'none';
+            const mensaje = encodeURIComponent(
+                `¡Hola! Soy ${nombre}\n` +
+                `Quiero comprar: ${producto}\n` +
+                `Precio: $${precio} USD\n` +
+                `Mi correo es: ${correo}\n` +
+                `Cuéntame sobre el envío y pago.`
+            );
+
+            window.open(`https://wa.me/593963057078?text=${mensaje}`, '_blank');
+
+            document.getElementById('formulario-compra').reset();
+            document.getElementById('formulario-compra').style.display = 'none';
         }
     </script>
 </body>
