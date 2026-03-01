@@ -371,18 +371,30 @@
     </footer>
 
     <script>
-        // Función para mostrar/ocultar categorías (despliega hacia abajo)
-     function mostrarCategoria(id) {
-    const contenido = document.getElementById(id);
-    // Si está oculto o sin estilo definido, lo mostramos
-    if (contenido.style.display === "none" || contenido.style.display === "") {
-        contenido.style.display = "block";
-    } else {
-        // Si está visible, lo ocultamos
+
+// ========== PARTE QUE ABRE LAS CATEGORÍAS ==========
+function mostrarCategoria(id) {
+    var contenido = document.getElementById(id);
+    if (contenido.style.display == "block") {
         contenido.style.display = "none";
+    } else {
+        contenido.style.display = "block";
     }
 }
 
+// ========== PARTE DEL WHATSAPP ==========
+function abrirWhatsApp(producto, precio) {
+    const nombreCliente = prompt("Por favor, ingresa tu nombre:");
+    const correoCliente = prompt("Por favor, ingresa tu correo electrónico:");
+    
+    if (nombreCliente && correoCliente) {
+        const mensaje = "Hola! Mi nombre es " + nombreCliente + ". Quiero comprar el producto: " + producto + " con precio de $" + precio + " USD. Mi correo electrónico es: " + correoCliente + ".";
+        const url = "https://wa.me/593TUNUMERO?text=" + encodeURIComponent(mensaje);
+        window.open(url, '_blank');
+    } else {
+        alert("Debes ingresar tu nombre y correo para continuar con la compra!");
+    }
+}
        // Función para abrir WhatsApp con mensaje completo
 function abrirWhatsApp(producto, precio) {
     // Solicita nombre y correo del cliente antes de enviar
