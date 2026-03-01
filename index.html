@@ -371,3 +371,29 @@
         <section class="seccion" id="contacto">
             <h2 class="seccion-titulo">CONTACTO</h2>
             <div class="contacto-item"><strong>Dirección:</strong> Calle 10 de Agosto N° 456, Edificio Plaza
+                        <!-- FUNCIONES PARA LAS CATEGORÍAS Y WHATSAPP -->
+        <script>
+    // FUNCIÓN PARA ABRIR/CERRAR CATEGORÍAS (DESPLIEGA HACIA ABAJO)
+    function toggleCategoria(idCategoria) {
+        const contenedorProductos = document.getElementById(idCategoria);
+        const flecha = document.getElementById(`flecha-${idCategoria}`);
+        
+        if (contenedorProductos.style.display === 'none' || contenedorProductos.style.display === '') {
+            contenedorProductos.style.display = 'grid';
+            flecha.textContent = '▲';
+        } else {
+            contenedorProductos.style.display = 'none';
+            flecha.textContent = '▼';
+        }
+    }
+
+    // FUNCIÓN PARA ENVIAR MENSAJE A WHATSAPP
+    function enviarWhatsApp(nombreProducto, precioProducto) {
+        const numeroWhatsApp = '593963057078'; // CAMBIA ESTE NÚMERO POR TU WHATSAPP
+        const mensaje = `Hola! Mi nombre es [NOMBRE DEL CLIENTE]. Quiero solicitar información sobre el producto: ${nombreProducto} con precio de ${precioProducto}. Mi correo electrónico es [CORREO DEL CLIENTE].`;
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+        window.open(urlWhatsApp, '_blank');
+    }
+</script>
+    </body>
+</html>
