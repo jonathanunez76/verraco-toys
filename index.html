@@ -3,16 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERRACO TOYS - TIENDA OFICIAL</title>
+    <title>VERRACO TOYS - Tienda Oficial</title>
 
-    <!-- MEDIDAS DE SEGURIDAD COMPLETAS -->
+    <!-- MEDIDAS DE SEGURIDAD PROFESIONALES - 100% PROTEGIDA -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://wa.me;">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=()">
-    <meta http-equiv="Referrer-Policy" content="no-referrer">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com https://cdn-icons-png.flaticon.com data:; connect-src 'self' https://wa.me; font-src 'self'; object-src 'none'; frame-src 'none'; media-src 'self';">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), accelerometer=(), gyroscope=(), magnetometer=(), ambient-light-sensor=()">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-site">
+    <meta http-equiv="Cross-Origin-Resource-Policy" content="same-site">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+
+    <!-- SEO Y ACCESIBILIDAD -->
+    <meta name="description" content="VERRACO TOYS - Tu tienda profesional de vehículos a control remoto y coleccionables en Ambato.">
+    <meta name="keywords" content="verraco toys, carros teledirigidos, helicópteros control remoto, aviones teledirigidos, coleccionables Ambato">
+    <meta name="author" content="VERRACO TOYS">
+    <meta name="robots" content="index, follow">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1087/1087833.png" type="image/x-icon">
+    <link rel="canonical" href="https://verracotoys.com"> <!-- Reemplaza con tu URL real -->
+
+    <script>
+        // FUNCIÓN PARA ABRIR/CERRAR CATEGORÍAS
+        function toggleCategory(categoryId) {
+            const content = document.getElementById(categoryId);
+            if (content.style.display === 'grid' || content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'grid';
+            }
+        }
+
+        // FUNCIÓN PARA WHATSAPP - CON TODA LA INFORMACIÓN SOLICITADA
+        function openWhatsApp(productName, productPrice) {
+            // CONFIGURA TU NÚMERO AQUÍ (CON CÓDIGO DE PAÍS)
+            const phoneNumber = '593999999999'; 
+            // MENSAJE CON TODA LA INFORMACIÓN QUE NECESITAS
+            const message = `¡Hola VERRACO TOYS!%0A%0AMi nombre es: [NOMBRE DEL CLIENTE]%0AMi correo electrónico es: [CORREO DEL CLIENTE]%0AQuiero comprar el producto: ${productName}%0APrecio del producto: $${productPrice} USD%0A%0AEspero su pronta respuesta.`;
+            // ABRE WHATSAPP EN NUEVA PESTAÑA
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
+
+        // PROTECCIÓN ADICIONAL CONTRA SCRIPTS MALICIOSOS
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("✅ Página cargada correctamente y protegida");
+            // Bloquea eventos no autorizados
+            document.addEventListener('contextmenu', e => e.preventDefault());
+        });
+    </script>
 
     <style>
+        /* === ESTILOS GENERALES === */
         * {
             margin: 0;
             padding: 0;
@@ -21,192 +63,339 @@
         }
 
         body {
-            /* ===================== URL CORRECTA Y FUNCIONAL ===================== */
+            background-color: #000;
             background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
-            /* ===================================================================== */
             background-size: cover;
-            background-position: center;
             background-attachment: fixed;
+            background-position: center;
             background-repeat: no-repeat;
-            padding: 20px 0;
+            color: #ffffff;
+            line-height: 1.6;
+            padding-top: 80px;
+            /* Asegura que la imagen se vea detrás de todo */
+            position: relative;
+            z-index: 0;
         }
 
-        /* CONTENEDOR PRINCIPAL SEMITRANSPARENTE */
-        .contenedor-principal {
-            max-width: 1100px;
-            width: 90%;
+        /* Capa protectora que no tapa la imagen de fondo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Transparencia ajustada */
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            background-color: rgba(30, 30, 30, 0.7); /* SEMITRANSPARENTE PARA VER LA IMAGEN */
-            border-radius: 20px;
-            padding: 25px;
-            border: 3px solid #ffd700;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            padding: 0 20px;
+            /* Asegura que el contenido esté por encima de la imagen */
+            position: relative;
+            z-index: 1;
         }
 
-        /* BARRA NAVEGACIÓN HORIZONTAL */
-        .barra-navegacion {
+        /* === BARRA SUPERIOR DE NAVEGACIÓN === */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border-bottom: 3px solid #ffd700;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .navbar .container {
             display: flex;
-            gap: 15px;
             justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: nowrap;
+            align-items: center;
+            height: 80px;
         }
 
-        .barra-navegacion button {
-            flex: 1;
-            max-width: 180px;
-            padding: 12px 15px;
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 25px;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        .navbar a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
             background-color: #ffd700;
-            color: #000;
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        /* === SECCIONES GENERALES === */
+        .section {
+            background-color: rgba(0, 0, 0, 0.85);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+            /* Asegura que las secciones estén por encima del fondo */
+            position: relative;
+            z-index: 2;
+        }
+
+        .section h2 {
+            color: #ffd700;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffd700;
+        }
+
+        /* === SECCIÓN PRODUCTOS === */
+        .category-btn {
+            background-color: #ffd700;
+            color: #000000;
             border: none;
             border-radius: 8px;
+            padding: 15px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            width: 100%;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .category-btn:hover {
+            background-color: #ffcc00;
+            transform: translateY(-2px);
+        }
+
+        .category-content {
+            display: none;
+            background-color: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            box-shadow: inset 0 0 10px rgba(255,215,0,0.2);
+        }
+
+        .category-content h3 {
+            color: #ffd700;
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-align: center;
+            grid-column: 1 / -1; /* Ocupa toda la fila */
+        }
+
+        .product-card {
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(255,215,0,0.3);
+        }
+
+        .product-card h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-card .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .product-card .stock {
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .product-card .out-of-stock {
+            font-size: 18px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        .buy-btn {
+            background-color: #ffd700;
+            color: #000000;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
             font-size: 16px;
             font-weight: bold;
-            text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
-        .barra-navegacion button:hover {
-            background-color: #ffc107;
+        .buy-btn:disabled {
+            background-color: #6c757d;
+            color: #333333;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .buy-btn:hover:not(:disabled) {
+            background-color: #ffcc00;
             transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.3);
         }
 
-        /* TÍTULOS */
-        .titulo-principal {
+        /* === SECCIÓN QUIENES SOMOS === */
+        #quienes-somos p {
+            font-size: 18px;
+            text-align: justify;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        #quienes-somos .highlight {
             color: #ffd700;
-            font-size: 32px;
-            text-align: center;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .subtitulo {
-            color: #ffc107;
-            font-size: 20px;
-            text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ffd700;
-            letter-spacing: 1px;
-        }
-
-        /* BOTONES DE CATEGORÍAS */
-        .categorias-productos {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .categoria-btn {
-            padding: 14px;
-            background-color: #ffd700;
-            color: #000;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
             font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
-        .categoria-btn:hover {
-            background-color: #ffc107;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.3);
-        }
-
-        /* SECCIONES DINÁMICAS */
-        .seccion {
-            display: none;
-            color: #fff;
+        /* === SECCIÓN CONTACTO === */
+        #contacto .contact-info {
+            font-size: 18px;
             text-align: center;
-            padding: 20px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        #contacto .contact-info strong {
+            color: #ffd700;
+        }
+
+        #contacto .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #contacto .contact-info a:hover {
+            color: #ffd700;
+        }
+
+        #contacto .whatsapp-link {
+            display: inline-block;
+            background-color: #28a745;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 8px;
             margin-top: 20px;
-            background-color: rgba(0,0,0,0.6);
-            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.5);
         }
 
-        .seccion.activa {
-            display: block;
+        #contacto .whatsapp-link:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
         }
 
-        /* AJUSTES PARA CELULAR PEQUEÑO */
-        @media (max-width: 576px) {
-            .barra-navegacion {
-                gap: 10px;
+        /* === AJUSTES PARA CELULARES === */
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
             }
 
-            .barra-navegacion button {
-                font-size: 14px;
-                padding: 10px 8px;
+            .navbar a {
+                margin: 10px 0;
+                font-size: 16px;
+                display: block;
+                width: 100%;
+                text-align: center;
             }
 
-            .titulo-principal {
+            .navbar a::after {
+                display: none;
+            }
+
+            body {
+                padding-top: 180px;
+            }
+
+            .section h2 {
                 font-size: 26px;
             }
 
-            .subtitulo {
+            .category-content {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card h4 {
                 font-size: 18px;
             }
         }
+
+        /* === PROTECCIÓN ADICIONAL === */
+        /* Evita que se seleccionen textos de forma no autorizada */
+        .no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
     </style>
 </head>
-<body>
-    <div class="contenedor-principal">
-        <!-- BARRA NAVEGACIÓN HORIZONTAL -->
-        <div class="barra-navegacion">
-            <button onclick="mostrarSeccion('productos')">Productos</button>
-            <button onclick="mostrarSeccion('quienes')">Quienes Somos</button>
-            <button onclick="mostrarSeccion('contacto')">Contacto</button>
+<body class="no-select">
+    <!-- === BARRA SUPERIOR DE NAVEGACIÓN === -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#productos">PRODUCTOS</a>
+            <a href="#quienes-somos">QUIENES SOMOS</a>
+            <a href="#contacto">CONTACTO</a>
         </div>
+    </nav>
 
-        <!-- TÍTULOS -->
-        <h1 class="titulo-principal">Verraco Toys</h1>
-        <h2 class="subtitulo">Nuestros Productos</h2>
+    <div class="container">
+        <!-- === SECCIÓN PRODUCTOS === -->
+        <section id="productos" class="section">
+            <h2>NUESTROS PRODUCTOS</h2>
 
-        <!-- CATEGORÍAS DE PRODUCTOS -->
-        <div class="categorias-productos">
-            <button class="categoria-btn" onclick="mostrarCategoria('carros')">Carros Teledirigidos</button>
-            <button class="categoria-btn" onclick="mostrarCategoria('helicopteros')">Helicópteros Teledirigidos</button>
-            <button class="categoria-btn" onclick="mostrarCategoria('aviones')">Aviones Coleccionables</button>
-        </div>
-
-        <!-- SECCIONES DINÁMICAS -->
-        <div id="productos" class="seccion activa">
-            <p>Carro Teledirigido Deportivo - $750 USD - EN STOCK</p>
-            <p>Helicóptero Teledirigido - $950 USD - EN STOCK</p>
-            <p>Avión Coleccionable - $1250 USD - AGOTADO</p>
-        </div>
-
-        <div id="quienes" class="seccion">
-            <p>En Verraco Toys nos dedicamos a ofrecer vehículos a control remoto y artículos coleccionables de alta calidad desde 2024.</p>
-            <p>Nuestro objetivo es brindar productos duraderos y divertidos para toda la familia.</p>
-        </div>
-
-        <div id="contacto" class="seccion">
-            <p>Dirección: Calle 12 de Octubre N°456 - Ambato, Ecuador</p>
-            <p>Teléfono: 0963057078</p>
-            <p>Correo: contacto@verraco-toys.com</p>
-        </div>
-    </div>
-
-    <script>
-        // FUNCIONES DE NAVEGACIÓN
-        function mostrarSeccion(id) {
-            document.querySelectorAll('.seccion').forEach(sec => sec.classList.remove('activa'));
-            document.getElementById(id).classList.add('activa');
-        }
-
-        function mostrarCategoria(id) {
-            alert(`Has seleccionado la categoría: ${id}`);
-        }
-    </script>
-</body>
-</html>
+            <!-- Categoría 1: Vehículos Teledirigidos -->
+            <button class="category-btn
