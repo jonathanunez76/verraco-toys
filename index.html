@@ -372,14 +372,16 @@
 
     <script>
         // Función para mostrar/ocultar categorías (despliega hacia abajo)
-        function mostrarCategoria(id) {
-            const contenido = document.getElementById(id);
-            if (contenido.style.display === "block") {
-                contenido.style.display = "none";
-            } else {
-                contenido.style.display = "block";
-            }
-        }
+     function mostrarCategoria(id) {
+    const contenido = document.getElementById(id);
+    // Si está oculto o sin estilo definido, lo mostramos
+    if (contenido.style.display === "none" || contenido.style.display === "") {
+        contenido.style.display = "block";
+    } else {
+        // Si está visible, lo ocultamos
+        contenido.style.display = "none";
+    }
+}
 
        // Función para abrir WhatsApp con mensaje completo
 function abrirWhatsApp(producto, precio) {
