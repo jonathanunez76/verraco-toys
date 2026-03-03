@@ -362,8 +362,34 @@
                 style="padding: 8px 15px; background-color: #f1c40f; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
             Buscar
         </button>
-    </div>
+    
+ }
 
+        // Función para buscar productos
+        function buscarProducto() {
+            const textoBusqueda = document.getElementById('barra-busqueda').value.toLowerCase().trim();
+            const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
+            todasCategorias.forEach(categoria => categoria.style.display = 'grid');
+            
+            const todosProductos = document.querySelectorAll('.product-box');
+            todosProductos.forEach(producto => {
+                const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
+                const nombreCategoria = producto.parentElement.id.toLowerCase();
+               if (!nombreProducto.includes(textoBusqueda) && !nombreCategoria.includes(textoBusqueda)) {
+                   producto.style.display= 'none';
+                } else {
+                producto.style.display = 'block';
+                   producto.parentElement.style.display= 'grid';
+                }
+            });
+
+            if (textoBusqueda === '') {
+                toggleCategory('vehiculos');
+            }
+        }
+            </button>       
+        </div>
+            
             <!-- ================== CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS ================== -->
 <button class="category-button" onclick="toggleCategory('vehiculos')">
   🚗 VEHÍCULOS TELEDIRIGIDOS
@@ -432,9 +458,9 @@
 </div>
 
 
-<!-- ================== CATEGORÍA 2: PRODUCTOS COLECCIONABLES ================== -->
+<!-- ================== CATEGORÍA 2: AVIONES Y DRONES TELEDIRIGIDOS ================== -->
 <button class="category-button" onclick="toggleCategory('coleccionables')">
-  🎁 PRODUCTOS COLECCIONABLES
+  🎁 AVIONES Y DRONES TELEDIRIGIDOS
 </button>
 
 <div id="coleccionables" class="category-content" style="display:none;">
@@ -504,9 +530,9 @@
 </div>
 
 
-<!-- ================== CATEGORÍA 3: JUGUETES DE CONSTRUCCIÓN ================== -->
+<!-- ================== CATEGORÍA 3: VEHICULOS  DE CONSTRUCCIÓN TELEDIRIGIDOS  ================== -->
 <button class="category-button" onclick="toggleCategory('construccion')">
-  🧱 JUGUETES DE CONSTRUCCIÓN
+  🧱 VEHICULOS  DE CONSTRUCCIÓN TELEDIRIGIDOS
 </button>
 
 <div id="construccion" class="category-content" style="display:none;">
