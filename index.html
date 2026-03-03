@@ -1,35 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self' https:;
-        script-src 'self' 'unsafe-inline';
-        style-src 'self' 'unsafe-inline' https:;
-        img-src 'self' data: https:;
-        font-src 'self' https:;
-        connect-src 'self' https:;
-        frame-src 'self' https://www.whatsapp.com;
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-    ">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="X-UA-Compatible" content="IE=edge">
-
-    <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Verraco Toys - Tienda Oficial</title>
-    <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
-    <meta name="robots" content="index, follow">
-
-    <!-- 🎨 ESTILOS - SOLO AÑADIDO EL FONDO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verraco Toys - Juguetes y Coleccionables</title>
     <style>
-        /* RESET Y BASE */
         * {
             margin: 0;
             padding: 0;
@@ -38,342 +13,345 @@
         }
 
         body {
-            padding-top: 80px;
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
-            /* ↓↓↓↓↓ ENLACE DIRECTO CORRECTO A TU IMAGEN DE GITHUB ↓↓↓↓↓ */
-            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
-            /* ↑↑↑↑↑ ENLACE CORREGIDO - YA DEBE VERSE LA IMAGEN ↑↑↑↑↑ */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-blend-mode: normal;                         ;
-         }
-        
-        /* BARRA DE NAVEGACIÓN */
-        .top-nav {
-            position: fixed;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            background-color: #222;
+            padding: 1rem;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(44, 62, 80, 0.9);
-            padding: 15px 20px;
-            text-align: center;
-            z-index: 1000;
+            z-index: 100;
         }
 
-        .top-nav a {
-            color: #f1c40f;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 16px;
-            font-weight: bold;
-            white-space: normal;
-        }
-
-        .top-nav a:hover {
-            color: white;
-        }
-
-        /* CONTENEDOR PRINCIPAL */
-        .container {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* TÍTULOS */
-        h1, h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            text-align: center;
-            padding: 0 10px;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        h2 {
+        .logo {
+            color: #fff;
             font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
         }
 
-        /* BOTONES DE CATEGORÍA */
-        .category-button {
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 1rem;
+            display: flex;
+        }
+
+        .search-bar input {
             width: 100%;
-            background-color: #f1c40f; 
+            padding: 0.5rem;
             border: none;
-            padding: 15px 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: left;
-            margin: 10px 0;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .search-btn {
+            background-color: #ff6b00;
+            color: #fff;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 4px 4px 0;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Banner principal */
+        .hero-banner {
+            background: url('https://via.placeholder.com/1200x300') center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Contenedor principal */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Menú lateral */
+        .sidebar {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .category-button:hover {
-            background-color: #f39c12;
+        .sidebar h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #222;
+            border-bottom: 2px solid #ff6b00;
+            padding-bottom: 0.5rem;
         }
 
-        /* CONTENIDO DE CATEGORÍAS */
-        .category-content {
-            display: none;
-            background-color: #f1c40f;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+        .sidebar ul {
+            list-style: none;
         }
 
-        /* CAJAS DE PRODUCTOS */
-        .product-box {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
+        .sidebar li {
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            color: #ff6b00;
+        }
+
+        /* Sección de productos */
+        .products-section {
             background-color: #fff;
-            transition: box-shadow 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .product-box:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #222;
+            border-bottom: 2px solid #ff6b00;
+            padding-bottom: 0.5rem;
         }
 
-        /* IMÁGENES DE PRODUCTOS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
         .product-img {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 2px solid #f1c40f;
-            object-fit: cover;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            background: url('https://via.placeholder.com/200x150') center/cover no-repeat;
+            height: 150px;
+            margin-bottom: 1rem;
+            border-radius: 4px;
         }
 
-        .product-box h3 {
-            color: white;
+        .product-name {
             font-size: 1.1rem;
-            margin-bottom: 10px;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-shadow: 1px 1px 2px black;
+            margin-bottom: 0.5rem;
+            color: #222;
         }
 
         .product-price {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #f1c40f;
-            margin: 10px 0;
-            text-shadow: 1px 1px 2px black;
+            color: #ff6b00;
+            margin-bottom: 1rem;
+        }
+
+        .stock-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
 
         .in-stock {
-            color: #27ae60;
-            font-weight: bold;
-            margin-bottom: 15px;
-             text-shadow: 1px 1px 2px black;
+            background-color: #28a745;
+            color: #fff;
         }
 
-        .out-stock {
-            color: #2ecc71;
-            font-weight: bold;
-            margin-bottom: 15px;
+        .out-of-stock {
+            background-color: #dc3545;
+            color: #fff;
         }
 
-        /* BOTÓN DE COMPRA */
-        .buy-button {
-            background-color: #f1c40f;
+        .add-to-cart {
+            background-color: #ff6b00;
+            color: #fff;
             border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            border-radius: 5px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
             cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s ease;
-            font-size: 1rem;
+            transition: background-color 0.2s ease;
         }
 
-        .buy-button:hover {
-            background-color: #f39c12;
+        .add-to-cart:hover {
+            background-color: #e05a00;
         }
 
-        .buy-button:disabled {
-            background-color: #bdc3c7;
-            cursor: not-allowed;
-        }
-
-        /* SECCIONES DE INFORMACIÓN */
-        .info-section {
-            background-color: rgba(225, 225, 225, 0.9);
-            padding: 25px;
-            border-radius: 5px;
-            margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .info-section p {
-            font-size: 1rem;
-            margin-bottom: 15px;
-            padding: 0 10px;
-        }
-
-        /* PIE DE PÁGINA */
-        footer {
-            background-color: #2c3e50;
-            color:  rgba(225, 225, 225, 0.2);
+        /* Pie de página */
+        .footer {
+            background-color: #222;
+            color: #fff;
+            padding: 2rem 1rem;
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            width: 100%;
         }
 
-        /* 📱 AJUSTES PARA CELULARES PEQUEÑOS */
-        @media (max-width: 480px) {
-            body {
-                padding-top: 120px;
-            }
-
-            .top-nav {
-                padding: 15px 10px;
-            }
-
-            .top-nav a {
-                display: block;
-                margin: 5px 0;
-                font-size: 15px;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            h2 {
-                font-size: 1.2rem;
-            }
-
-            .category-button {
-                font-size: 1rem;
-                padding: 12px 15px;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
-            .info-section {
-                padding: 20px 15px;
-                background-color: rgba(225, 225, 225, 0.9);
-            }
+        .footer-links {
+            margin-bottom: 1rem;
         }
 
-        /* 💻 AJUSTES PARA TABLETS Y COMPUTADORAS CHICAS */
-        @media (min-width: 481px) and (max-width: 800px) {
-            .top-nav a {
-                margin: 0 8px;
-                font-size: 15px;
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Adaptación a móviles */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-         .category-content {
-         grid-template-columns: repeat(2, 1fr);
-         background-color: rgba(255, 255, 255, 0.9); 
-         padding: 20px; 
-         border-radius: 5px; 
-          gap: 25px;         
+            .search-bar {
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-banner h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- BARRA DE NAVEGACIÓN -->
-    <div class="top-nav">
-        <a href="#inicio">INICIO</a>
-        <a href="#productos">PRODUCTOS</a>
-        <a href="#quienes">QUIENES SOMOS</a>
-        <a href="#contacto">CONTACTO</a>
-    </div>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">VERRACO TOYS</a>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar juguetes...">
+                <button class="search-btn">Buscar</button>
+            </div>
+            <div class="nav-links">
+                <a href="#">Inicio</a>
+                <a href="#">Productos</a>
+                <a href="#">Novedades</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- CONTENEDOR PRINCIPAL -->
-    <div class="container">
-        <!-- SECCIÓN INICIO -->
-        <section id="inicio" class="info-section">
-            <h1>BIENVENIDOS A VERRACO TOYS</h1>
-            <p>Tu tienda de confianza en Ambato, Provincia del Tungurahua, especializada en juguetes teledirigidos y productos coleccionables de alta calidad.</p>
-            <p>Contamos con modelos exclusivos, garantía oficial y atención personalizada para cada cliente.</p>
-        </section>
+    <!-- Banner principal -->
+    <section class="hero-banner">
+        <h1>¡Descubre Nuestra Colección de Juguetes!</h1>
+        <p>Teledirigidos, coleccionables y mucho más - calidad garantizada para toda la familia.</p>
+    </section>
 
-        <!-- SECCIÓN PRODUCTOS -->
-        <section id="productos">
-            <h2>NUESTROS PRODUCTOS</h2>
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Menú lateral -->
+        <aside class="sidebar">
+            <h3>Categorías</h3>
+            <ul>
+                <li><a href="#">Teledirigidos</a></li>
+                <li><a href="#">Coleccionables</a></li>
+                <li><a href="#">Juguetes Educativos</a></li>
+                <li><a href="#">Juegos de Mesa</a></li>
+                <li><a href="#">Muñecos y Figuras</a></li>
+            </ul>
 
-            <!-- CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS -->
-            <button class="category-button" onclick="toggleCategory('vehiculos')">
-                🚗 VEHÍCULOS TELEDIRIGIDOS
-            </button>
-            <div id="vehiculos" class="category-content">
-                <div class="product-box">
-                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg" alt="Carro Deportivo GT-115" class="product-img">
-                    <h3>CARRO DEPORTIVO GT-115</h3>
-                    <p class="product-price">650 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <a href="https://wa.me/593963057078?text=Hola! VERRACOTOYS Quiero comprar el CARRO DEPORTIVO GT-115 por 650 USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
+            <h3>Filtrar por</h3>
+            <ul>
+                <li><a href="#">Precio</a></li>
+                <li><a href="#">Disponibilidad</a></li>
+                <li><a href="#">Marca</a></li>
+                <li><a href="#">Edad Recomendada</a></li>
+            </ul>
+        </aside>
+
+        <!-- Sección de productos -->
+        <section class="products-section">
+            <h2 class="section-title">NUESTROS PRODUCTOS</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img"></div>
+                    <h3 class="product-name">Carro Teledirigido Deportivo</h3>
+                    <p class="product-price">$750 USD</p>
+                    <span class="stock-status in-stock">EN STOCK</span>
+                    <button class="add-to-cart">Añadir al Carrito</button>
                 </div>
 
-                <div class="product-box">
-                    <img src="https://via.placeholder.com/200x150.png?text=HELICOPTERO+H-50" alt="Helicóptero Clásico H-50" class="product-img">
-                    <h3>HELICÓPTERO CLÁSICO H-50</h3>
+                <div class="product-card">
+                    <div class="product-img"></div>
+                    <h3 class="product-name">Helicóptero Teledirigido</h3>
                     <p class="product-price">$950 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <a href="https://wa.me/593963057078?text=Hola! VERRACOTOYS  Quiero comprar  el HELICÓPTERO CLÁSICO H-50 por $950 USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
+                    <span class="stock-status in-stock">EN STOCK</span>
+                    <button class="add-to-cart">Añadir al Carrito</button>
                 </div>
 
-                <div class="product-box">
-                    <img src="https://via.placeholder.com/200x150.png?text=MOTO+MX-200" alt="Moto Cross MX-200" class="product-img">
-                    <h3>MOTO CROSS MX-200</h3>
-                    <p class="product-price">$680 USD</p>
-                    <p class="out-stock">❌ NO EN STOCK</p>
-                    <button class="buy-button" disabled>COMPRAR AHORA</button>
+                <div class="product-card">
+                    <div class="product-img"></div>
+                    <h3 class="product-name">Avión Coleccionable</h3>
+                    <p class="product-price">$1250 USD</p>
+                    <span class="stock-status out-of-stock">AGOTADO</span>
+                    <button class="add-to-cart" disabled>Agotado</button>
                 </div>
             </div>
+        </section>
+    </div>
 
-            <!-- CATEGORÍA 2: PRODUCTOS COLECCIONABLES -->
-            <button class="category-button" onclick="toggleCategory('coleccionables')">
-                🎁 PRODUCTOS COLECCIONABLES
-            </button>
-            <div id="coleccionables" class="category-content">
-                <div class="product-box">
-                    <img src="https://via.placeholder.com/200x150.png?text=AVION+A380" alt="Avión Airbus A380 Premium" class="product-img">
-                    <h3>AVIÓN AIRBUS A380 PREMIUM</h3>
-                    <p class="product-price">$1400 USD</p>
-                    <p class="out-stock">❌ NO EN STOCK</p>
-                    <button class="buy-button" disabled>COMPRAR AHORA</button>
-                </div>
-
-                <div class="product-box">
-                    <img src="https://via.placeholder.com/200x150.png?text=TREN+EXPRESS" alt="Tren de Lujo Express" class="product-img">
-                    <h3>TREN DE LUJO EXPRESS</h3>
-                    <p class="product-price">$1250 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <a href="https://wa.me/593963057078?text=Hola! Quiero información sobre el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
-                </div>
-
-                <div class="product-box">
-                    <img src="https://via.placeholder.com/200x150.png?text=BARCO+OCEANIC" alt="Barco Yate Oceanic" class="product-img">
-                    <h3>BARCO YATE OCEANIC</h3>
-                    <p class="product-price">$1550 USD</p>
-                    <p class="in-stock">✅ EN STOCK</p>
-                    <a href="https://wa
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Envíos y Devoluciones</a>
+        </div>
+        <p>© 2026 Verraco Toys - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
