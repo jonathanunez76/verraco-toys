@@ -369,7 +369,6 @@
                 🚗 VEHÍCULOS TELEDIRIGIDOS
             </button>
             <div id="vehiculos" class="category-content">
-               <!-- ================== PRODUCTO 1: HOSHI NS18 RAPTOR 2 ================== -->
 <div class="product-box">
   <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
     <button onclick="cambiarImagen('izq', 1)" 
@@ -398,8 +397,6 @@
     <button class="buy-button">COMPRAR AHORA</button>
   </a>
 </div>
-
-<!-- ================== PRODUCTO 2: HELICÓPTERO CLÁSICO H-50 ================== -->
 <div class="product-box">
   <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
     <button onclick="cambiarImagen('izq', 2)" 
@@ -456,56 +453,49 @@
   <p class="out-stock">❌ NO EN STOCK</p>
   <button class="buy-button" disabled>COMPRAR AHORA</button>
 </div>
-    
-                <!-- ================== CATEGORÍA 2: PRODUCTOS COLECCIONABLES ================== -->
-<button class="category-button" onclick="document.querySelectorAll('.category-content').forEach(c=>c.style.display='none'); document.getElementById('coleccionables').style.display='block';">
+       <!-- CATEGORÍA 2: COLECCIONABLES-->
+        <!-- ================== BOTÓN DE CATEGORÍA 2 ================== -->
+<button class="category-button" onclick="toggleCategory('coleccionables')">
   🛡️ PRODUCTOS COLECCIONABLES
 </button>
 
-<div id="coleccionables" class="category-content">
+<!-- ================== CATEGORÍA 2: PRODUCTOS COLECCIONABLES ================== -->
+<div id="coleccionables" class="category-content" style="display:none;">
 
-  <!-- ================== PRODUCTO 4: AVIÓN AIRBUS A380 PREMIUM ================== -->
+  <!-- PRODUCTO 4: AVIÓN AIRBUS A380 PREMIUM -->
   <div class="product-box">
     <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 4)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">←</button>
-      
       <div style="border:3px solid #F1C40F; padding:5px;">
-        <img id="imgPrincipal-4" src="TU-URL-IMAGEN-AVION-A380-PRINCIPAL" alt="Avión Airbus A380 Premium - Vista frontal" style="width:220px; height:auto;">
+        <img id="imgPrincipal-4" src="https://via.placeholder.com/220x165?text=Avión+A380" alt="Avión Airbus A380" style="width:220px; height:auto;">
       </div>
-      
       <button onclick="cambiarImagen('der', 4)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">→</button>
     </div>
-
     <div id="todasLasImagenes-4" style="display:none;">
-      <img src="TU-URL-IMAGEN-AVION-A380-PRINCIPAL" alt="Vista frontal">
-      <img src="TU-URL-IMAGEN-AVION-A380-ALAS" alt="Vista de alas">
-      <img src="TU-URL-IMAGEN-AVION-A380-CABINA" alt="Vista de cabina">
+      <img src="https://via.placeholder.com/220x165?text=Avión+A380" alt="Vista frontal">
+      <img src="https://via.placeholder.com/220x165?text=A380+Alas" alt="Vista de alas">
+      <img src="https://via.placeholder.com/220x165?text=A380+Cabina" alt="Vista de cabina">
     </div>
-
     <h3>AVIÓN AIRBUS A380 PREMIUM</h3>
     <p class="product-price">$1400 USD</p>
     <p class="out-stock">❌ NO EN STOCK</p>
     <button class="buy-button" disabled>COMPRAR AHORA</button>
   </div>
 
-  <!-- ================== PRODUCTO 5: TREN DE LUJO EXPRESS ================== -->
+  <!-- PRODUCTO 5: TREN DE LUJO EXPRESS -->
   <div class="product-box">
     <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 5)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">←</button>
-      
       <div style="border:3px solid #F1C40F; padding:5px;">
-        <img id="imgPrincipal-5" src="TU-URL-IMAGEN-TREN-PRINCIPAL" alt="Tren de Lujo Express - Vista frontal" style="width:220px; height:auto;">
+        <img id="imgPrincipal-5" src="https://via.placeholder.com/220x165?text=Tren+Express" alt="Tren de Lujo Express" style="width:220px; height:auto;">
       </div>
-      
       <button onclick="cambiarImagen('der', 5)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">→</button>
     </div>
-
     <div id="todasLasImagenes-5" style="display:none;">
-      <img src="TU-URL-IMAGEN-TREN-PRINCIPAL" alt="Vista frontal">
-      <img src="TU-URL-IMAGEN-TREN-VAGONES" alt="Vista de vagones">
-      <img src="TU-URL-IMAGEN-TREN-MOTOR" alt="Vista de motor">
+      <img src="https://via.placeholder.com/220x165?text=Tren+Express" alt="Vista frontal">
+      <img src="https://via.placeholder.com/220x165?text=Tren+Vagones" alt="Vista de vagones">
+      <img src="https://via.placeholder.com/220x165?text=Tren+Motor" alt="Vista de motor">
     </div>
-
     <h3>TREN DE LUJO EXPRESS</h3>
     <p class="product-price">$1250 USD</p>
     <p class="in-stock">🟢 EN STOCK</p>
@@ -514,24 +504,20 @@
     </a>
   </div>
 
-  <!-- ================== PRODUCTO 6: BARCO YATE OCEANIC ================== -->
+  <!-- PRODUCTO 6: BARCO YATE OCEANIC -->
   <div class="product-box">
     <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 6)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">←</button>
-      
       <div style="border:3px solid #F1C40F; padding:5px;">
-        <img id="imgPrincipal-6" src="TU-URL-IMAGEN-BARCO-PRINCIPAL" alt="Barco Yate Oceanic - Vista frontal" style="width:220px; height:auto;">
+        <img id="imgPrincipal-6" src="https://via.placeholder.com/220x165?text=Barco+Oceanic" alt="Barco Yate Oceanic" style="width:220px; height:auto;">
       </div>
-      
       <button onclick="cambiarImagen('der', 6)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">→</button>
     </div>
-
     <div id="todasLasImagenes-6" style="display:none;">
-      <img src="TU-URL-IMAGEN-BARCO-PRINCIPAL" alt="Vista frontal">
-      <img src="TU-URL-IMAGEN-BARCO-POPA" alt="Vista de popa">
-      <img src="TU-URL-IMAGEN-BARCO-DECK" alt="Vista de deck">
+      <img src="https://via.placeholder.com/220x165?text=Barco+Oceanic" alt="Vista frontal">
+      <img src="https://via.placeholder.com/220x165?text=Barco+Popa" alt="Vista de popa">
+      <img src="https://via.placeholder.com/220x165?text=Barco+Deck" alt="Vista de deck">
     </div>
-
     <h3>BARCO YATE OCEANIC</h3>
     <p class="product-price">$1550 USD</p>
     <p class="in-stock">🟢 EN STOCK</p>
@@ -541,8 +527,7 @@
   </div>
 
 </div>
-<!-- ================== FIN CATEGORÍA 2: PRODUCTOS COLECCIONABLES ================== -->
-        
+<!-- ================== FIN DE LA CATEGORÍA 2 ================== -->
             <!-- CATEGORÍA 3: NUEVOS LANZAMIENTOS -->
            <button class="category-button" onclick="document.querySelectorAll('.category-content').forEach(c=>c.style.display='none'); document.getElementById('nuevos').style.display='grid'">
                 ⭐ NUEVOS LANZAMIENTOS
