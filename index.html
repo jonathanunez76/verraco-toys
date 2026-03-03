@@ -451,47 +451,186 @@
             margin-bottom: 15px;
             padding: 0 10px;
         }
+ /* PIE DE PÁGINA */
+        footer {
+            background-color: #2c3e50;
+            color:  rgba(225, 225, 225, 0.2);
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            width: 100%;
+        }
+   .footer-links {
+            margin-bottom: 1rem;
+        }
 
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-size: 0.9rem;
+        /* Adaptación a móviles */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
 
-        <!-- Sección de productos -->
-        <section class="products-section">
-            <h2 class="section-title">NUESTROS PRODUCTOS</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-img"></div>
-                    <h3 class="product-name">Carro Teledirigido Deportivo</h3>
-                    <p class="product-price">$750 USD</p>
-                    <span class="stock-status in-stock">EN STOCK</span>
-                    <button class="add-to-cart">Añadir al Carrito</button>
-                </div>
+         .category-content {
+         grid-template-columns: repeat(2, 1fr);
+         background-color: rgba(255, 255, 255, 0.9); 
+         padding: 20px; 
+         border-radius: 5px; 
+          gap: 25px;         
+        }
+    </style>
+</head>
+<body>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <div class="top-nav">
+        <a href="#inicio">INICIO</a>
+        <a href="#productos">PRODUCTOS</a>
+        <a href="#quienes">QUIENES SOMOS</a>
+        <a href="#contacto">CONTACTO</a>
+    </div>
 
-                <div class="product-card">
-                    <div class="product-img"></div>
-                    <h3 class="product-name">Helicóptero Teledirigido</h3>
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="container">
+        <!-- SECCIÓN INICIO -->
+        <section id="inicio" class="info-section">
+            <h1>BIENVENIDOS A VERRACO TOYS</h1>
+            <p>Tu tienda de confianza en Ambato, Provincia del Tungurahua, especializada en juguetes teledirigidos y productos coleccionables de alta calidad.</p>
+            <p>Contamos con modelos exclusivos, garantía oficial y atención personalizada para cada cliente.</p>
+        </section>
+
+        <!-- SECCIÓN PRODUCTOS -->
+        <section id="productos">
+            <h2>NUESTROS PRODUCTOS</h2>
+
+            <!-- CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS -->
+            <button class="category-button" onclick="document.querySelectorAll('.category-content').forEach(c=>c.style.display='none'); document.getElementById('vehiculos').style.display='grid'">
+                🚗 VEHÍCULOS TELEDIRIGIDOS
+            </button>
+            <div id="vehiculos" class="category-content">
+                <div class="product-box">
+     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg" alt="Carro Deportivo GT-115" class="product-img">
+    <h3>CARRO DEPORTIVO GT-115</h3>
+    <p class="product-price">650 USD</p>
+    <p class="in-stock">✅ EN STOCK</p>
+    <a href="https://wa.me/593963057078?text=Hola! VERRACOTOYS Quiero comprar el CARRO DEPORTIVO GT-115 por 650 USD." target="_blank" rel="noopener noreferrer">
+    <button class="buy-button">COMPRAR AHORA</button>
+    </a>
+</div>
+
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=HELICOPTERO+H-50" alt="Helicóptero Clásico H-50" class="product-img">
+                    <h3>HELICÓPTERO CLÁSICO H-50</h3>
                     <p class="product-price">$950 USD</p>
-                    <span class="stock-status in-stock">EN STOCK</span>
-                    <button class="add-to-cart">Añadir al Carrito</button>
+                    <p class="in-stock">✅ EN STOCK</p>
+                    <a href="https://wa.me/593963057078?text=Hola! VERRACOTOYS  Quiero comprar  el HELICÓPTERO CLÁSICO H-50 por $950 USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-img"></div>
-                    <h3 class="product-name">Avión Coleccionable</h3>
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=MOTO+MX-200" alt="Moto Cross MX-200" class="product-img">
+                    <h3>MOTO CROSS MX-200</h3>
+                    <p class="product-price">$680 USD</p>
+                    <p class="out-stock">❌ NO EN STOCK</p>
+                    <button class="buy-button" disabled>COMPRAR AHORA</button>
+                </div>
+            </div>
+
+            <!-- CATEGORÍA 2: PRODUCTOS COLECCIONABLES -->
+            <button class="category-button" onclick="document.querySelectorAll('.category-content').forEach(c=>c.style.display='none'); document.getElementById('coleccionables').style.display='grid'">
+                🎁 PRODUCTOS COLECCIONABLES
+            </button>
+            <div id="coleccionables" class="category-content">
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=AVION+A380" alt="Avión Airbus A380 Premium" class="product-img">
+                    <h3>AVIÓN AIRBUS A380 PREMIUM</h3>
+                    <p class="product-price">$1400 USD</p>
+                    <p class="out-stock">❌ NO EN STOCK</p>
+                    <button class="buy-button" disabled>COMPRAR AHORA</button>
+                </div>
+
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=TREN+EXPRESS" alt="Tren de Lujo Express" class="product-img">
+                    <h3>TREN DE LUJO EXPRESS</h3>
                     <p class="product-price">$1250 USD</p>
-                    <span class="stock-status out-of-stock">AGOTADO</span>
-                    <button class="add-to-cart" disabled>Agotado</button>
+                    <p class="in-stock">✅ EN STOCK</p>
+                    <a href="https://wa.me/593963057078?text=Hola! Quiero información sobre el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=BARCO+OCEANIC" alt="Barco Yate Oceanic" class="product-img">
+                    <h3>BARCO YATE OCEANIC</h3>
+                    <p class="product-price">$1550 USD</p>
+                    <p class="in-stock">✅ EN STOCK</p>
+                    <a href="https://wa.me/593963057078?text=Hola! Quiero información sobre el BARCO YATE OCEANIC por $1550 USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CATEGORÍA 3: NUEVOS LANZAMIENTOS -->
+           <button class="category-button" onclick="document.querySelectorAll('.category-content').forEach(c=>c.style.display='none'); document.getElementById('nuevos').style.display='grid'">
+                ⭐ NUEVOS LANZAMIENTOS
+            </button>
+            <div id="nuevos" class="category-content">
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=DRON+EXPLORER" alt="Dron Pro Explorer" class="product-img">
+                    <h3>DRON PRO EXPLORER</h3>
+                    <p class="product-price">$1100 USD</p>
+                    <p class="in-stock">✅ EN STOCK</p>
+                    <a href="https://wa.me/593963057078?text=Hola! Quiero el DRON PRO EXPLORER" target="_blank">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=CARRO+F1" alt="Carro F1 Réplica" class="product-img">
+                    <h3>CARRO F1 RÉPLICA</h3>
+                    <p class="product-price">$850 USD</p>
+                    <p class="in-stock">✅ EN STOCK</p>
+                    <a href="https://wa.me/593963057078?text=Hola! Quiero el CARRO F1 RÉPLICA" target="_blank">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=CAMION+X-300" alt="Camión Off-Road X-300" class="product-img">
+                    <h3>CAMION OFF-ROAD X-300</h3>
+                    <p class="product-price">$990 USD</p>
+                    <p class="out-stock">❌ NO EN STOCK</p>
+                    <button class="buy-button" disabled>COMPRAR AHORA</button>
                 </div>
             </div>
         </section>
+
+        <section id="quienes" class="info-section">
+            <h2>QUIENES SOMOS</h2>
+            <p>Verraco Toys nace en 2020 en la ciudad de Ambato, fruto de la gran pasión por los juguetes de calidad y los productos coleccionables.</p>
+            <p>Nuestro objetivo es ofrecer artículos únicos, con garantía oficial y un servicio al cliente cálido y profesional.</p>
+            <p>Contamos con un equipo de expertos que conocen cada detalle de los productos que vendemos, para poder asesorarte de la mejor manera.</p>
+            <p>Trabajamos directamente con marcas reconocidas a nivel mundial para brindarte la mejor calidad y precios competitivos.</p>
+        </section>
+
+        <section id="contacto" class="info-section">
+            <h2>CONTACTO</h2>
+            <p><strong>Dirección:</strong> Calle 123 #45-67, Local 105 - Centro Comercial Plaza Norte, Ambato - Tungurahua</p>
+            <p><strong>Teléfono fijo:</strong> 03-256-7890</p>
+            <p><strong>Celular/WhatsApp:</strong> 0963057078</p>
+            <p><strong>Correo:</strong> contacto@verracotoys.com.ec</p>
+        </section>
     </div>
 
-    <!-- Pie de página -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="#">Términos y Condiciones</a>
-            <a href="#">Política de Privacidad</a>
-            <a href="#">Envíos y Devoluciones</a>
-        </div>
-        <p>© 2026 Verraco Toys - Todos los derechos reservados</p>
+    <footer>
+        <p>© 2024 Verraco Toys - Todos los derechos reservados</p>
     </footer>
 </body>
 </html>
+      
+     
