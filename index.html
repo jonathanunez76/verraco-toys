@@ -50,280 +50,56 @@
             background-blend-mode: normal;                         ;
          }
         
-        /* Barra de navegación */
-        .navbar {
-            background-color: #222;
-            padding: 1rem;
-            position: sticky;
+       
+        /* BARRA DE NAVEGACIÓN */
+        .top-nav {
+            position: fixed;
             top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .search-bar {
-            flex: 1;
-            max-width: 500px;
-            margin: 0 1rem;
-            display: flex;
-        }
-
-        .search-bar input {
+            left: 0;
             width: 100%;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 1rem;
-        }
-
-        .search-btn {
-            background-color: #ff6b00;
-            color: #fff;
-            border: none;
-            padding: 0 1rem;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 1rem;
-            font-size: 0.9rem;
-        }
-
-        /* Banner principal */
-        .hero-banner {
-            background: url('https://via.placeholder.com/1200x300') center/cover no-repeat;
-            color: #fff;
+            background-color: rgba(44, 62, 80, 0.9);
+            padding: 15px 20px;
             text-align: center;
-            padding: 4rem 1rem;
-            margin-bottom: 2rem;
+            z-index: 1000;
         }
 
-        .hero-banner h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .top-nav a {
+            color: #f1c40f;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: normal;
         }
 
-        .hero-banner p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        .top-nav a:hover {
+            color: white;
         }
 
-        /* Contenedor principal */
-        .main-container {
+        /* CONTENEDOR PRINCIPAL */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
+            padding: 20px;
         }
 
-        /* Menú lateral */
-        .sidebar {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        /* TÍTULOS */
+        h1, h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 0 10px;
         }
 
-        .sidebar h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #222;
-            border-bottom: 2px solid #ff6b00;
-            padding-bottom: 0.5rem;
+        h1 {
+            font-size: 2rem;
         }
 
-        .sidebar ul {
-            list-style: none;
-        }
-
-        .sidebar li {
-            margin-bottom: 0.8rem;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: #333;
-            transition: color 0.2s ease;
-        }
-
-        .sidebar a:hover {
-            color: #ff6b00;
-        }
-
-        /* Sección de productos */
-        .products-section {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
+        h2 {
             font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #222;
-            border-bottom: 2px solid #ff6b00;
-            padding-bottom: 0.5rem;
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .product-card {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            transition: box-shadow 0.2s ease;
-        }
-
-        .product-card:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .product-img {
-            background: url('https://via.placeholder.com/200x150') center/cover no-repeat;
-            height: 150px;
-            margin-bottom: 1rem;
-            border-radius: 4px;
-        }
-
-        .product-name {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #222;
-        }
-
-        .product-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #ff6b00;
-            margin-bottom: 1rem;
-        }
-
-        .stock-status {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .in-stock {
-            background-color: #28a745;
-            color: #fff;
-        }
-
-        .out-of-stock {
-            background-color: #dc3545;
-            color: #fff;
-        }
-
-        .add-to-cart {
-            background-color: #ff6b00;
-            color: #fff;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .add-to-cart:hover {
-            background-color: #e05a00;
-        }
-
-        /* Pie de página */
-        .footer {
-            background-color: #222;
-            color: #fff;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        .footer-links {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        /* Adaptación a móviles */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .search-bar {
-                max-width: 100%;
-                margin: 0;
-            }
-
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-banner h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Barra de navegación -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">VERRACO TOYS</a>
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar juguetes...">
-                <button class="search-btn">Buscar</button>
-            </div>
-            <div class="nav-links">
-                <a href="#">Inicio</a>
-                <a href="#">Productos</a>
-                <a href="#">Novedades</a>
-                <a href="#">Contacto</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Banner principal -->
-    <section class="hero-banner">
-        <h1>¡Descubre Nuestra Colección de Juguetes!</h1>
-        <p>Teledirigidos, coleccionables y mucho más - calidad garantizada para toda la familia.</p>
-    </section>
-
-     /* BOTONES DE CATEGORÍA */
+        /* BOTONES DE CATEGORÍA */
         .category-button {
             width: 100%;
             background-color: #f1c40f; 
@@ -451,7 +227,8 @@
             margin-bottom: 15px;
             padding: 0 10px;
         }
- /* PIE DE PÁGINA */
+
+        /* PIE DE PÁGINA */
         footer {
             background-color: #2c3e50;
             color:  rgba(225, 225, 225, 0.2);
@@ -460,20 +237,51 @@
             margin-top: 30px;
             width: 100%;
         }
-   .footer-links {
-            margin-bottom: 1rem;
+
+        /* 📱 AJUSTES PARA CELULARES PEQUEÑOS */
+        @media (max-width: 480px) {
+            body {
+                padding-top: 120px;
+            }
+
+            .top-nav {
+                padding: 15px 10px;
+            }
+
+            .top-nav a {
+                display: block;
+                margin: 5px 0;
+                font-size: 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .category-button {
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .info-section {
+                padding: 20px 15px;
+                background-color: rgba(225, 225, 225, 0.9);
+            }
         }
 
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 0.5rem;
-            font-size: 0.9rem;
-        /* Adaptación a móviles */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
+        /* 💻 AJUSTES PARA TABLETS Y COMPUTADORAS CHICAS */
+        @media (min-width: 481px) and (max-width: 800px) {
+            .top-nav a {
+                margin: 0 8px;
+                font-size: 15px;
             }
 
          .category-content {
@@ -632,5 +440,8 @@
     </footer>
 </body>
 </html>
+      
+
+
       
      
