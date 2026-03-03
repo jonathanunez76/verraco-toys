@@ -453,176 +453,74 @@
   <p class="out-stock">❌ NO EN STOCK</p>
   <button class="buy-button" disabled>COMPRAR AHORA</button>
 </div>
-       <!-- CATEGORÍA 2: COLECCIONABLES-->
-        <!-- ================== BOTÓN DE CATEGORÍA 2 ================== -->
-<button class="category-button" onclick="toggleCategory('coleccionables')">
-  🛡️ PRODUCTOS COLECCIONABLES
-</button>
+        <!-- CATEGORÍA 2: PRODUCTOS COLECCIONABLES -->
+            <button class="category-button" onclick="document.querySelectorAll('.category-content').forEach(c=>c.style.display='none'); document.getElementById('coleccionables').style.display='grid'">
+                🎁 PRODUCTOS COLECCIONABLES
+            </button>
+            <div id="coleccionables" class="category-content">
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=AVION+A380" alt="Avión Airbus A380 Premium" class="product-img">
+                    <h3>AVIÓN AIRBUS A380 PREMIUM</h3>
+                    <p class="product-price">$1400 USD</p>
+                    <p class="out-stock">❌ NO EN STOCK</p>
+                    <button class="buy-button" disabled>COMPRAR AHORA</button>
+                </div>
 
-<!-- ================== CATEGORÍA 2: PRODUCTOS COLECCIONABLES ================== -->
-<div id="coleccionables" class="category-content" style="display:none;">
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=TREN+EXPRESS" alt="Tren de Lujo Express" class="product-img">
+                    <h3>TREN DE LUJO EXPRESS</h3>
+                    <p class="product-price">$1250 USD</p>
+                    <p class="in-stock">✅ EN STOCK</p>
+                    <a href="https://wa.me/593963057078?text=Hola! Quiero información sobre el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
 
-  <!-- PRODUCTO 4: AVIÓN AIRBUS A380 PREMIUM -->
-  <div class="product-box">
-    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
-      <button onclick="cambiarImagen('izq', 4)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">←</button>
-      <div style="border:3px solid #F1C40F; padding:5px;">
-        <img id="imgPrincipal-4" src="https://via.placeholder.com/220x165?text=Avión+A380" alt="Avión Airbus A380" style="width:220px; height:auto;">
-      </div>
-      <button onclick="cambiarImagen('der', 4)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">→</button>
-    </div>
-    <div id="todasLasImagenes-4" style="display:none;">
-      <img src="https://via.placeholder.com/220x165?text=Avión+A380" alt="Vista frontal">
-      <img src="https://via.placeholder.com/220x165?text=A380+Alas" alt="Vista de alas">
-      <img src="https://via.placeholder.com/220x165?text=A380+Cabina" alt="Vista de cabina">
-    </div>
-    <h3>AVIÓN AIRBUS A380 PREMIUM</h3>
-    <p class="product-price">$1400 USD</p>
-    <p class="out-stock">❌ NO EN STOCK</p>
-    <button class="buy-button" disabled>COMPRAR AHORA</button>
-  </div>
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=BARCO+OCEANIC" alt="Barco Yate Oceanic" class="product-img">
+                    <h3>BARCO YATE OCEANIC</h3>
+                    <p class="product-price">$1550 USD</p>
+                    <p class="in-stock">✅ EN STOCK</p>
+                    <a href="https://wa.me/593963057078?text=Hola! Quiero información sobre el BARCO YATE OCEANIC por $1550 USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+            </div>
 
-  <!-- PRODUCTO 5: TREN DE LUJO EXPRESS -->
-  <div class="product-box">
-    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
-      <button onclick="cambiarImagen('izq', 5)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">←</button>
-      <div style="border:3px solid #F1C40F; padding:5px;">
-        <img id="imgPrincipal-5" src="https://via.placeholder.com/220x165?text=Tren+Express" alt="Tren de Lujo Express" style="width:220px; height:auto;">
-      </div>
-      <button onclick="cambiarImagen('der', 5)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">→</button>
-    </div>
-    <div id="todasLasImagenes-5" style="display:none;">
-      <img src="https://via.placeholder.com/220x165?text=Tren+Express" alt="Vista frontal">
-      <img src="https://via.placeholder.com/220x165?text=Tren+Vagones" alt="Vista de vagones">
-      <img src="https://via.placeholder.com/220x165?text=Tren+Motor" alt="Vista de motor">
-    </div>
-    <h3>TREN DE LUJO EXPRESS</h3>
-    <p class="product-price">$1250 USD</p>
-    <p class="in-stock">🟢 EN STOCK</p>
-    <a href="https://wa.me/593963057078?text=Hola! Quiero el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
-      <button class="buy-button">COMPRAR AHORA</button>
-    </a>
-  </div>
-
-  <!-- PRODUCTO 6: BARCO YATE OCEANIC -->
-  <div class="product-box">
-    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
-      <button onclick="cambiarImagen('izq', 6)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">←</button>
-      <div style="border:3px solid #F1C40F; padding:5px;">
-        <img id="imgPrincipal-6" src="https://via.placeholder.com/220x165?text=Barco+Oceanic" alt="Barco Yate Oceanic" style="width:220px; height:auto;">
-      </div>
-      <button onclick="cambiarImagen('der', 6)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">→</button>
-    </div>
-    <div id="todasLasImagenes-6" style="display:none;">
-      <img src="https://via.placeholder.com/220x165?text=Barco+Oceanic" alt="Vista frontal">
-      <img src="https://via.placeholder.com/220x165?text=Barco+Popa" alt="Vista de popa">
-      <img src="https://via.placeholder.com/220x165?text=Barco+Deck" alt="Vista de deck">
-    </div>
-    <h3>BARCO YATE OCEANIC</h3>
-    <p class="product-price">$1550 USD</p>
-    <p class="in-stock">🟢 EN STOCK</p>
-    <a href="https://wa.me/593963057078?text=Hola! Quiero el BARCO YATE OCEANIC por $1550 USD." target="_blank" rel="noopener noreferrer">
-      <button class="buy-button">COMPRAR AHORA</button>
-    </a>
-  </div>
-
-</div>
-<!-- ================== FIN DE LA CATEGORÍA 2 ================== -->
             <!-- CATEGORÍA 3: NUEVOS LANZAMIENTOS -->
            <button class="category-button" onclick="document.querySelectorAll('.category-content').forEach(c=>c.style.display='none'); document.getElementById('nuevos').style.display='grid'">
                 ⭐ NUEVOS LANZAMIENTOS
             </button>
             <div id="nuevos" class="category-content">
-                  <!-- ================== PRODUCTO 7 HOSHI NS18 RAPTOR 2 ================== -->
-<div class="product-box">
-  <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
-    <button onclick="cambiarImagen('izq', 7)" 
-            style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">←</button>
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=DRON+EXPLORER" alt="Dron Pro Explorer" class="product-img">
+                    <h3>DRON PRO EXPLORER</h3>
+                    <p class="product-price">$1100 USD</p>
+                    <p class="in-stock">✅ EN STOCK</p>
+                    <a href="https://wa.me/593963057078?text=Hola! Quiero el DRON PRO EXPLORER" target="_blank">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
 
-    <div style="border:3px solid #F1C40F; padding:5px;">
-      <img id="imgPrincipal-7" 
-           src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44" 
-           alt="HOSHI NS18 RAPTOR 2 - Vista frontal" style="width:220px; height:auto;">
-    </div>
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=CARRO+F1" alt="Carro F1 Réplica" class="product-img">
+                    <h3>CARRO F1 RÉPLICA</h3>
+                    <p class="product-price">$850 USD</p>
+                    <p class="in-stock">✅ EN STOCK</p>
+                    <a href="https://wa.me/593963057078?text=Hola! Quiero el CARRO F1 RÉPLICA" target="_blank">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
 
-    <button onclick="cambiarImagen('der', 7)" 
-            style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">→</button>
-  </div>
-
-  <div id="todasLasImagenes-7" style="display:none;">
-    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44" alt="Vista frontal">
-    <img src="TU-URL-IMAGEN-LATERAL-RAPTOR-AQUI" alt="Vista lateral">
-    <img src="TU-URL-IMAGEN-TRASERA-RAPTOR-AQUI" alt="Vista trasera">
-  </div>
-
-  <h3>HOSHI NS18 RAPTOR 2 a escala 4WD 1/8, 100 km/h, Motor sin escobillas</h3>
-  <p class="product-price">650 USD</p>
-  <p class="in-stock">🟢 EN STOCK</p>
-  <a href="https://wa.me/593963057078?text=Hola! VERRACOTOYS Quiero comprar el HOSHI NS18 RAPTOR 2 por 650 USD." target="_blank" rel="noopener noreferrer">
-    <button class="buy-button">COMPRAR AHORA</button>
-  </a>
-</div>
-
-<!-- ================== PRODUCTO 8: HELICÓPTERO CLÁSICO H-50 ================== -->
-<div class="product-box">
-  <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
-    <button onclick="cambiarImagen('izq', 8)" 
-            style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">←</button>
-
-    <div style="border:3px solid #F1C40F; padding:5px;">
-      <img id="imgPrincipal-8" 
-           src="TU-URL-IMAGEN-PRINCIPAL-HELICOPTERO-AQUI" 
-           alt="Helicóptero Clásico H-50 - Vista superior" style="width:220px; height:auto;">
-    </div>
-
-    <button onclick="cambiarImagen('der', 8)" 
-            style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">→</button>
-  </div>
-
-  <div id="todasLasImagenes-8" style="display:none;">
-    <img src="TU-URL-IMAGEN-PRINCIPAL-HELICOPTERO-AQUI" alt="Vista superior">
-    <img src="TU-URL-IMAGEN-ROTORES-HELICOPTERO-AQUI" alt="Vista de rotores">
-    <img src="TU-URL-IMAGEN-CABINA-HELICOPTERO-AQUI" alt="Vista de cabina">
-  </div>
-
-  <h3>HELICÓPTERO CLÁSICO H-50</h3>
-  <p class="product-price">$950 USD</p>
-  <p class="in-stock">🟢 EN STOCK</p>
-  <a href="https://wa.me/593963057078?text=Hola! VERRACOTOYS Quiero comprar el HELICÓPTERO CLÁSICO H-50 por 950 USD." target="_blank" rel="noopener noreferrer">
-    <button class="buy-button">COMPRAR AHORA</button>
-  </a>
-</div>
-
-<!-- ================== PRODUCTO 9: MOTO CROSS MX-200 ================== -->
-<div class="product-box">
-  <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
-    <button onclick="cambiarImagen('izq', 9)" 
-            style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">←</button>
-
-    <div style="border:3px solid #F1C40F; padding:5px;">
-      <img id="imgPrincipal-9" 
-           src="TU-URL-IMAGEN-PRINCIPAL-MOTO-AQUI" 
-           alt="Moto Cross MX-200 - Vista frontal" style="width:220px; height:auto;">
-    </div>
-
-    <button onclick="cambiarImagen('der', 9)" 
-            style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer; padding:0 8px;">→</button>
-  </div>
-
-  <div id="todasLasImagenes-9" style="display:none;">
-    <img src="TU-URL-IMAGEN-PRINCIPAL-MOTO-AQUI" alt="Vista frontal">
-    <img src="TU-URL-IMAGEN-LATERAL-MOTO-AQUI" alt="Vista lateral">
-    <img src="TU-URL-IMAGEN-RUEDAS-MOTO-AQUI" alt="Vista de ruedas">
-  </div>
-
-  <h3>MOTO CROSS MX-200</h3>
-  <p class="product-price">$680 USD</p>
-  <p class="out-stock">❌ NO EN STOCK</p>
-  <button class="buy-button" disabled>COMPRAR AHORA</button>
-</div>
- </div>
-</section>
-
+                <div class="product-box">
+                    <img src="https://via.placeholder.com/200x150.png?text=CAMION+X-300" alt="Camión Off-Road X-300" class="product-img">
+                    <h3>CAMION OFF-ROAD X-300</h3>
+                    <p class="product-price">$990 USD</p>
+                    <p class="out-stock">❌ NO EN STOCK</p>
+                    <button class="buy-button" disabled>COMPRAR AHORA</button>
+                </div>
+            </div>
+        </section>
         <section id="quienes" class="info-section">
             <h2>QUIENES SOMOS</h2>
             <p>Verraco Toys nace en la ciudad de Ambato, fruto de la gran pasión por los juguetes Teledirigidos  y los productos coleccionables.</p>
