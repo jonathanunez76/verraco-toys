@@ -645,8 +645,9 @@
             const todosProductos = document.querySelectorAll('.product-box');
             todosProductos.forEach(producto => {
                 const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
-                if (!nombreProducto.includes(textoBusqueda)) {
-                    producto.style.display = 'none';
+                const nombreCategoria = producto.parentElement.id.toLowerCase();
+               if (!nombreProducto.includes(textoBusqueda) && !nombreCategoria.includes(textoBusqueda)) {
+                   producto.style.display= 'none';
                 } else {
                     producto.style.display = 'block';
                 }
