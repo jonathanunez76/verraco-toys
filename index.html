@@ -489,39 +489,42 @@
         </div>
         <p>© 2026 Verraco Toys - Todos los derechos reservados</p>
     </footer>
-   <script>
-// Función de búsqueda
-function buscarProducto() {
-    // Obtener el texto que escribió el usuario (sin espacios al inicio/fin y en minúsculas)
-    const textoBusqueda = document.getElementById('barra-busqueda').value.trim().toLowerCase();
-    
-    // Obtener todos los productos de la página
-    const productos = document.querySelectorAll('.product-box'); // Usa la clase que tengas para tus productos
-    
-    // Si el usuario no escribe nada, mostrar todos los productos
-    if (textoBusqueda === '') {
-        productos.forEach(producto => producto.style.display = 'block');
-        return;
-    }
-
-    // Recorrer cada producto para verificar coincidencias
-    productos.forEach(producto => {
-        // Obtener el nombre del producto (busca la etiqueta donde está el nombre)
-        const nombreProducto = producto.querySelector('p:first-child') || producto.querySelector('h3');
-        if (nombreProducto) {
-            const nombre = nombreProducto.textContent.toLowerCase();
-            // Mostrar o ocultar según si hay coincidencia
-            producto.style.display = nombre.includes(textoBusqueda) ? 'block' : 'none';
+ <script>
+        // Función para mostrar/ocultar categorías
+        function toggleCategory(idCategoria) {
+            const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
+            todasCategorias.forEach(categoria => categoria.style.display = 'none');
+            const categoriaSeleccionada = document.getElementById(idCategoria);
+            if (categoriaSeleccionada) categoriaSeleccionada.style.display = 'grid';
         }
-    });
-}
 
-// Añadir búsqueda al presionar la tecla "Enter"
-document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
-    if (event.key === 'Enter') {
-        buscarProducto();
-    }
-});
-</script>
+        // Función para buscar productos
+        function buscarProducto() {
+            const textoBusqueda = document.getElementById('barra-busqueda').value.toLowerCase().trim();
+            const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
+            todasCategorias.forEach(categoria => categoria.style.display = 'grid');
+            
+            const todosProductos = document.querySelectorAll('.product-box');
+            todosProductos.forEach(producto => {
+                const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
+                if (!nombreProducto.includes(textoBusqueda)) {
+                    producto.style.display = 'none';
+                } else {
+                    producto.style.display = 'block';
+                }
+            });
+
+            if (textoBusqueda === '') {
+                toggleCategory('vehiculos');
+            }
+        }
+
+        // Búsqueda en tiempo real
+        document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') buscarProducto();
+            buscarProducto();
+        });
+    </script>
+
 </body>
 </html>
