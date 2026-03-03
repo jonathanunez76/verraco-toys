@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https:;
+        script-src 'self' 'unsafe-inline';
+        style-src 'self' 'unsafe-inline' https:;
+        img-src 'self' data: https:;
+        font-src 'self' https:;
+        connect-src 'self' https:;
+        frame-src 'self' https://www.whatsapp.com;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+    ">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="X-UA-Compatible" content="IE=edge">
+
+    <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verraco Toys - Juguetes y Coleccionables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Verraco Toys - Tienda Oficial</title>
+    <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
+    <meta name="robots" content="index, follow">
+
+    <!-- 🎨 ESTILOS - SOLO AÑADIDO EL FONDO -->
     <style>
+        /* RESET Y BASE */
         * {
             margin: 0;
             padding: 0;
@@ -13,11 +38,18 @@
         }
 
         body {
-            background-color: #f8f9fa;
-            color: #333;
+            padding-top: 80px;
             line-height: 1.6;
-        }
-
+            /* ↓↓↓↓↓ ENLACE DIRECTO CORRECTO A TU IMAGEN DE GITHUB ↓↓↓↓↓ */
+            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
+            /* ↑↑↑↑↑ ENLACE CORREGIDO - YA DEBE VERSE LA IMAGEN ↑↑↑↑↑ */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-blend-mode: normal;                         ;
+         }
+        
         /* Barra de navegación */
         .navbar {
             background-color: #222;
