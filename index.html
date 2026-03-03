@@ -324,21 +324,24 @@
 <body>
       <!-- Barra de navegación -->
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">VERRACO TOYS</a>
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar juguetes...">
-                <button class="search-btn">Buscar</button>
-            </div>
-            <div class="nav-links">
-                <a href="#">Inicio</a>
-                <a href="#">Productos</a>
-                <a href="#">Novedades</a>
-                <a href="#">Contacto</a>
-            </div>
-        </div>
-    </nav>
-    
+    <div style="padding: 10px; text-align: center;">
+        <input type="text" id="barra-busqueda" placeholder="Buscar productos... (ej: carro, dron)" 
+               style="padding: 8px 15px; width: 80%; max-width: 400px; border-radius: 5px; border: none;">
+        <button class="boton-de-busqueda" onclick="buscarProducto()" 
+                style="padding: 8px 15px; background-color: #f1c40f; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+            Buscar
+        </button>
+    </div>
+
+    <!-- Enlaces de navegación -->
+    <div class="enlaces-de-navegacion">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#novedades">Novedades</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+</nav>
+
     <!-- CONTENEDOR PRINCIPAL -->
     <div class="container">
         <!-- SECCIÓN INICIO -->
@@ -481,5 +484,41 @@
         </div>
         <p>© 2026 Verraco Toys - Todos los derechos reservados</p>
     </footer>
+    <script>
+        // Función para mostrar/ocultar categorías
+        function toggleCategory(idCategoria) {
+            const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
+            todasCategorias.forEach(categoria => categoria.style.display = 'none');
+            const categoriaSeleccionada = document.getElementById(idCategoria);
+            if (categoriaSeleccionada) categoriaSeleccionada.style.display = 'grid';
+        }
+
+        // Función para buscar productos
+        function buscarProducto() {
+            const textoBusqueda = document.getElementById('barra-busqueda').value.toLowerCase().trim();
+            const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
+            todasCategorias.forEach(categoria => categoria.style.display = 'grid');
+            
+            const todosProductos = document.querySelectorAll('.product-box');
+            todosProductos.forEach(producto => {
+                const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
+                if (!nombreProducto.includes(textoBusqueda)) {
+                    producto.style.display = 'none';
+                } else {
+                    producto.style.display = 'block';
+                }
+            });
+
+            if (textoBusqueda === '') {
+                toggleCategory('vehiculos');
+            }
+        }
+
+        // Búsqueda en tiempo real
+        document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') buscarProducto();
+            buscarProducto();
+        });
+    </script>
 </body>
 </html>
