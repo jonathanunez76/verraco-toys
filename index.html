@@ -1,357 +1,117 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verraco Toys - Juguetes y Coleccionables</title>
+    <title>Tienda Online</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Barra de navegación */
-        .navbar {
-            background-color: #222;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .search-bar {
-            flex: 1;
-            max-width: 500px;
-            margin: 0 1rem;
-            display: flex;
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 1rem;
-        }
-
-        .search-btn {
-            background-color: #ff6b00;
-            color: #fff;
-            border: none;
-            padding: 0 1rem;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 1rem;
-            font-size: 0.9rem;
-        }
-
-        /* Banner principal */
-        .hero-banner {
-            background: url('https://via.placeholder.com/1200x300') center/cover no-repeat;
-            color: #fff;
-            text-align: center;
-            padding: 4rem 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero-banner h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-banner p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        /* Contenedor principal */
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        /* Menú lateral */
-        .sidebar {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .sidebar h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #222;
-            border-bottom: 2px solid #ff6b00;
-            padding-bottom: 0.5rem;
-        }
-
-        .sidebar ul {
-            list-style: none;
-        }
-
-        .sidebar li {
-            margin-bottom: 0.8rem;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: #333;
-            transition: color 0.2s ease;
-        }
-
-        .sidebar a:hover {
-            color: #ff6b00;
-        }
-
-        /* Sección de productos */
-        .products-section {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #222;
-            border-bottom: 2px solid #ff6b00;
-            padding-bottom: 0.5rem;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .product-card {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            transition: box-shadow 0.2s ease;
-        }
-
-        .product-card:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .product-img {
-            background: url('https://via.placeholder.com/200x150') center/cover no-repeat;
-            height: 150px;
-            margin-bottom: 1rem;
-            border-radius: 4px;
-        }
-
-        .product-name {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #222;
-        }
-
-        .product-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #ff6b00;
-            margin-bottom: 1rem;
-        }
-
-        .stock-status {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .in-stock {
-            background-color: #28a745;
-            color: #fff;
-        }
-
-        .out-of-stock {
-            background-color: #dc3545;
-            color: #fff;
-        }
-
-        .add-to-cart {
-            background-color: #ff6b00;
-            color: #fff;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .add-to-cart:hover {
-            background-color: #e05a00;
-        }
-
-        /* Pie de página */
-        .footer {
-            background-color: #222;
-            color: #fff;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        .footer-links {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        /* Adaptación a móviles */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .search-bar {
-                max-width: 100%;
-                margin: 0;
-            }
-
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-banner h1 {
-                font-size: 2rem;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        nav { background-color: #2c3e50; padding: 1rem; }
+        .nav-botones { display: flex; gap: 1rem; }
+        .nav-btn { padding: 0.5rem 1rem; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .nav-btn:hover { background-color: #2980b9; }
+        #contenido-principal { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        .producto { border: 1px solid #ddd; border-radius: 4px; padding: 1rem; margin: 1rem 0; max-width: 300px; }
+        .btn-carrito { padding: 0.5rem 1rem; background-color: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 1rem; }
+        .btn-carrito:hover { background-color: #27ae60; }
+        .mensaje { padding: 1rem; border-radius: 4px; margin-top: 1rem; }
+        .exito { background-color: #dff0d8; color: #3c763d; border: 1px solid #d6e9c6; }
     </style>
 </head>
 <body>
-    <!-- Barra de navegación -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">VERRACO TOYS</a>
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar juguetes...">
-                <button class="search-btn">Buscar</button>
-            </div>
-            <div class="nav-links">
-                <a href="#">Inicio</a>
-                <a href="#">Productos</a>
-                <a href="#">Novedades</a>
-                <a href="#">Contacto</a>
-            </div>
+    <!-- Navegación -->
+    <nav>
+        <div class="nav-botones">
+            <button class="nav-btn" id="btn-inicio">Inicio</button>
+            <button class="nav-btn" id="btn-productos">Productos</button>
+            <button class="nav-btn" id="btn-novedades">Novedades</button>
+            <button class="nav-btn" id="btn-contactos">Contactos</button>
         </div>
     </nav>
 
-    <!-- Banner principal -->
-    <section class="hero-banner">
-        <h1>¡Descubre Nuestra Colección de Juguetes!</h1>
-        <p>Teledirigidos, coleccionables y mucho más - calidad garantizada para toda la familia.</p>
-    </section>
+    <!-- Espacio donde se carga el contenido -->
+    <div id="contenido-principal"></div>
 
-    <!-- Contenedor principal -->
-    <div class="main-container">
-        <!-- Menú lateral -->
-        <aside class="sidebar">
-            <h3>Categorías</h3>
-            <ul>
-                <li><a href="#">Teledirigidos</a></li>
-                <li><a href="#">Coleccionables</a></li>
-                <li><a href="#">Juguetes Educativos</a></li>
-                <li><a href="#">Juegos de Mesa</a></li>
-                <li><a href="#">Muñecos y Figuras</a></li>
-            </ul>
+    <script>
+        // Referencia al contenedor principal
+        const contenidoPrincipal = document.getElementById('contenido-principal');
 
-            <h3>Filtrar por</h3>
-            <ul>
-                <li><a href="#">Precio</a></li>
-                <li><a href="#">Disponibilidad</a></li>
-                <li><a href="#">Marca</a></li>
-                <li><a href="#">Edad Recomendada</a></li>
-            </ul>
-        </aside>
+        // Función para mostrar contenido en el contenedor
+        function mostrarContenido(html) {
+            contenidoPrincipal.innerHTML = html;
+            // Agregar evento a los botones de "Añadir al carrito" que se carguen dinámicamente
+            const botonesCarrito = document.querySelectorAll('.btn-carrito');
+            botonesCarrito.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const producto = btn.dataset.producto;
+                    mostrarMensaje(`✅ Producto "${producto}" añadido al carrito exitosamente!`, 'exito');
+                });
+            });
+        }
 
-        <!-- Sección de productos -->
-        <section class="products-section">
-            <h2 class="section-title">NUESTROS PRODUCTOS</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-img"></div>
-                    <h3 class="product-name">Carro Teledirigido Deportivo</h3>
-                    <p class="product-price">$750 USD</p>
-                    <span class="stock-status in-stock">EN STOCK</span>
-                    <button class="add-to-cart">Añadir al Carrito</button>
+        // Función para mostrar mensajes de confirmación
+        function mostrarMensaje(texto, clase) {
+            const mensaje = document.createElement('div');
+            mensaje.className = `mensaje ${clase}`;
+            mensaje.textContent = texto;
+            contenidoPrincipal.appendChild(mensaje);
+            // Ocultar mensaje después de 3 segundos
+            setTimeout(() => mensaje.remove(), 3000);
+        }
+
+        // Contenido de cada sección
+        const contenido = {
+            inicio: `
+                <h2>Bienvenido a nuestra Tienda Online</h2>
+                <p>Encuentra los mejores productos al mejor precio.</p>
+                <div class="producto">
+                    <h3>Producto Destacado</h3>
+                    <p>Descripción breve del producto destacado.</p>
+                    <p>Precio: $29.99</p>
+                    <button class="btn-carrito" data-producto="Producto Destacado">Añadir al carrito</button>
                 </div>
-
-                <div class="product-card">
-                    <div class="product-img"></div>
-                    <h3 class="product-name">Helicóptero Teledirigido</h3>
-                    <p class="product-price">$950 USD</p>
-                    <span class="stock-status in-stock">EN STOCK</span>
-                    <button class="add-to-cart">Añadir al Carrito</button>
+            `,
+            productos: `
+                <h2>Nuestros Productos</h2>
+                <div class="producto">
+                    <h3>Camiseta Premium</h3>
+                    <p>100% algodón, disponible en varios colores.</p>
+                    <p>Precio: $19.99</p>
+                    <button class="btn-carrito" data-producto="Camiseta Premium">Añadir al carrito</button>
                 </div>
-
-                <div class="product-card">
-                    <div class="product-img"></div>
-                    <h3 class="product-name">Avión Coleccionable</h3>
-                    <p class="product-price">$1250 USD</p>
-                    <span class="stock-status out-of-stock">AGOTADO</span>
-                    <button class="add-to-cart" disabled>Agotado</button>
+                <div class="producto">
+                    <h3>Zapatos Deportivos</h3>
+                    <p>Amortiguación avanzada para mayor comodidad.</p>
+                    <p>Precio: $49.99</p>
+                    <button class="btn-carrito" data-producto="Zapatos Deportivos">Añadir al carrito</button>
                 </div>
-            </div>
-        </section>
-    </div>
+            `,
+            novedades: `
+                <h2>Últimas Novedades</h2>
+                <div class="producto">
+                    <h3>Tablet Lite</h3>
+                    <p>Pantalla 10.1", 64GB de almacenamiento.</p>
+                    <p>Precio: $149.99</p>
+                    <button class="btn-carrito" data-producto="Tablet Lite">Añadir al carrito</button>
+                </div>
+            `,
+            contactos: `
+                <h2>Contáctanos</h2>
+                <p>Email: contacto@tiendaonline.com</p>
+                <p>Teléfono: 0987 654 321</p>
+                <p>Dirección: Calle Principal #123, Ambato - Ecuador</p>
+            `
+        };
 
-    <!-- Pie de página -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="#">Términos y Condiciones</a>
-            <a href="#">Política de Privacidad</a>
-            <a href="#">Envíos y Devoluciones</a>
-        </div>
-        <p>© 2026 Verraco Toys - Todos los derechos reservados</p>
-    </footer>
+        // Eventos para los botones de navegación
+        document.getElementById('btn-inicio').addEventListener('click', () => mostrarContenido(contenido.inicio));
+        document.getElementById('btn-productos').addEventListener('click', () => mostrarContenido(contenido.productos));
+        document.getElementById('btn-novedades').addEventListener('click', () => mostrarContenido(contenido.novedades));
+        document.getElementById('btn-contactos').addEventListener('click', () => mostrarContenido(contenido.contactos));
+
+        // Cargar el contenido de Inicio por defecto al abrir la página
+        mostrarContenido(contenido.inicio);
+    </script>
 </body>
 </html>
