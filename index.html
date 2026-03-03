@@ -50,55 +50,62 @@
             background-blend-mode: normal;                         ;
          }
         
-       
-        /* BARRA DE NAVEGACIÓN */
-        .top-nav {
-            position: fixed;
+        /* Barra de navegación */
+        .navbar {
+            background-color: #222;
+            padding: 1rem;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(44, 62, 80, 0.9);
-            padding: 15px 20px;
-            text-align: center;
-            z-index: 1000;
+            z-index: 100;
         }
 
-        .top-nav a {
-            color: #f1c40f;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 16px;
-            font-weight: bold;
-            white-space: normal;
-        }
-
-        .top-nav a:hover {
-            color: white;
-        }
-
-        /* CONTENEDOR PRINCIPAL */
-        .container {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* TÍTULOS */
-        h1, h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            text-align: center;
-            padding: 0 10px;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        h2 {
+        .logo {
+            color: #fff;
             font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
         }
 
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 1rem;
+            display: flex;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .search-btn {
+            background-color: #ff6b00;
+            color: #fff;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+        }
+
+       
         /* BOTONES DE CATEGORÍA */
         .category-button {
             width: 100%;
@@ -270,14 +277,23 @@
     </style>
 </head>
 <body>
-    <!-- BARRA DE NAVEGACIÓN -->
-    <div class="top-nav">
-        <a href="#inicio">INICIO</a>
-        <a href="#productos">PRODUCTOS</a>
-        <a href="#quienes">QUIENES SOMOS</a>
-        <a href="#contacto">CONTACTO</a>
-    </div>
-
+      <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">VERRACO TOYS</a>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar juguetes...">
+                <button class="search-btn">Buscar</button>
+            </div>
+            <div class="nav-links">
+                <a href="#">Inicio</a>
+                <a href="#">Productos</a>
+                <a href="#">Novedades</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </nav>
+    
     <!-- CONTENEDOR PRINCIPAL -->
     <div class="container">
         <!-- SECCIÓN INICIO -->
