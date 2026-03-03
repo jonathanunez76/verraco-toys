@@ -649,7 +649,8 @@
                if (!nombreProducto.includes(textoBusqueda) && !nombreCategoria.includes(textoBusqueda)) {
                    producto.style.display= 'none';
                 } else {
-                    producto.style.display = 'block';
+                producto.style.display = 'block';
+                   producto.parentElement.style.display= 'grid';
                 }
             });
 
