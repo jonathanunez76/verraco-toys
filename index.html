@@ -425,10 +425,7 @@
         <li>• Suspensión: Independiente en las 4 ruedas, amortiguadores ajustables</li>
     </ul>
 </div>
-<!-- FIN DEL DIV DE DETALLES -->
-
-<!-- ... (el resto de tu código después de las características, como el enlace de WhatsApp y el botón de comprar) ... -->
-                </div>
+    </div>
 
                 <!-- PRODUCTO 2: Carro de Control Remoto de Alta Velocidad Todoterreno 4x4 -->
                 <div class="product-box" style="background-color: #333; color: white;">
@@ -791,18 +788,14 @@ function buscarProducto() {
   if (!encontrado) {
     resultados.innerHTML = '<p>No hay productos</p>';
   }
-
-  document.querySelectorAll('.category-content').forEach(cat => cat.style.display = 'none');    
-}
+   
+ 
    // Búsqueda en tiempo real
         document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
             if (event.key === 'Enter') buscarProducto();
             buscarProducto();
         });      
-     // =================================================================
-// JAVASCRIPT PARA DESPLEGAR/OCULTAR DETALLES DEL PRODUCTO EN LA TARJETA
-// =================================================================
-
+    
 function toggleProductDetails(productId) {
     const detailsDiv = document.getElementById(`details-${productId}`);
     if (detailsDiv) {
