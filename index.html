@@ -749,6 +749,27 @@ function buscarProducto() {
       const nuevoProd = document.createElement('div');
       nuevoProd.className = prod.className;
       nuevoProd.innerHTML = prod.innerHTML;
+         // Agregamos el evento de WhatsApp MANUALMENTE
+      const botonCompra = nuevoProd.querySelector('button');
+      const nombreProducto = prod.querySelector('h3').textContent;
+      const precioProducto = prod.querySelector('p').textContent;
+      
+      botonCompra.onclick = function() {
+        const mensaje = `Hola! Quiero comprar el producto: ${nombreProducto} - ${precioProducto}`;
+        const url = `https://wa.me/TUNUMERODEWHATSAPP?text=${encodeURIComponent(mensaje)}`;
+        window.open(url, '_blank');
+      };
+
+      resultados.appendChild(nuevoProd);
+      encontrado = true;
+    }
+  });
+
+  if (!encontrado) {
+    resultados.innerHTML = '<p>No hay productos</p>';
+  }
+
+  document.querySelectorAll('.category-content').forEach(cat => cat.style.display = 'none');
                 }
             });
         }
