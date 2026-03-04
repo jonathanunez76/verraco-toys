@@ -658,14 +658,26 @@
         <p>© 2026 Verraco Toys - Todos los derechos reservados</p>
     </footer>
       <script>
-        // Función para mostrar/ocultar categorías
-        function toggleCategory(idCategoria) {
+        // Función para buscar productos
+        function buscarProducto() {
+            const textoBusqueda = document.getElementById('barra-busqueda').value.toLowerCase().trim();
             const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
-            todasCategorias.forEach(categoria => categoria.style.display = 'none');
-            const categoriaSeleccionada = document.getElementById(idCategoria);
-            if (categoriaSeleccionada) categoriaSeleccionada.style.display = 'grid';
-        }
+            todasCategorias.forEach(categoria => categoria.style.display = 'grid');
+            
+            const todosProductos = document.querySelectorAll('.product-box');
+            todosProductos.forEach(producto => {
+                const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
+                if (!nombreProducto.includes(textoBusqueda)) {
+                    producto.style.display = 'none';
+                } else {
+                    producto.style.display = 'block';
+                }
+            });
 
+            if (textoBusqueda === '') {
+                toggleCategory('vehiculos');
+            }
+        }
       // BÚSQUEDA QUE APARECE DEBAJO DE LA BARRA
 function buscarProducto() {
   const barra = document.getElementById('barra-busqueda');
