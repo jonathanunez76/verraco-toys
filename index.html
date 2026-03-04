@@ -318,20 +318,6 @@
                 font-size: 2rem;
             }
         }
-
-/* ESTO ORDENA LOS PRODUCTOS */
-.contenido-de-categoria {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 productos por fila */
-  gap: 20px;
-  text-align: center;
-}
-
-/* ESTO DA TAMAÑO IGUAL A TODOS LOS PRODUCTOS */
-.product-box {
-  width: 250px;
-  margin: 0 auto;
-}
     </style>
 </head>
 <body>
@@ -390,6 +376,7 @@
 <div id="vehiculos" class="category-content" style="display:none;">
   <!-- PRODUCTO 1: HOSHI NS18 RAPTOR 2 -->
   <div class="product-box">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 1)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-1" src="https://picsum.photos/220/165?car=1" alt="HOSHI NS18 RAPTOR 2 - Vista frontal" style="width:220px; height:auto;">
@@ -404,12 +391,12 @@
     <h3>HOSHI NS18 RAPTOR 2 a escala 4WD 1/8</h3>
     <p class="product-price">$650 USD</p>
     <p class="in-stock">🟢 EN STOCK</p>
-      <a href="https://wa.me/593963057078?text=Hola! Quiero el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
     <button class="buy-button">COMPRAR AHORA</button>
   </div>
 
   <!-- PRODUCTO 2: HELICÓPTERO CLÁSICO H-50 -->
   <div class="product-box">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 2)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-2" src="https://picsum.photos/220/165?heli=1" alt="Helicóptero H-50 - Vista superior" style="width:220px; height:auto;">
@@ -424,12 +411,12 @@
     <h3>HELICÓPTERO CLÁSICO H-50</h3>
     <p class="product-price">$950 USD</p>
     <p class="in-stock">🟢 EN STOCK</p>
-      <a href="https://wa.me/593963057078?text=Hola! Quiero el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
     <button class="buy-button">COMPRAR AHORA</button>
   </div>
 
   <!-- PRODUCTO 3: MOTO CROSS MX-200 -->
   <div class="product-box">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 3)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-3" src="https://picsum.photos/220/165?moto=1" alt="Moto MX-200 - Vista frontal" style="width:220px; height:auto;">
@@ -444,7 +431,6 @@
     <h3>MOTO CROSS MX-200</h3>
     <p class="product-price">$680 USD</p>
     <p class="out-stock">❌ NO EN STOCK</p>
-      <a href="https://wa.me/593963057078?text=Hola! Quiero el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
     <button class="buy-button" disabled>COMPRAR AHORA</button>
   </div>
 </div>
@@ -458,6 +444,7 @@
 <div id="coleccionables" class="category-content" style="display:none;">
   <!-- PRODUCTO 4: AVIÓN AIRBUS A380 PREMIUM -->
   <div class="product-box">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 4)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-4" src="https://picsum.photos/220/165?plane=1" alt="Avión A380 - Vista frontal" style="width:220px; height:auto;">
@@ -472,12 +459,12 @@
     <h3>AVIÓN AIRBUS A380 PREMIUM</h3>
     <p class="product-price">$1400 USD</p>
     <p class="out-stock">❌ NO EN STOCK</p>
-      <a href="https://wa.me/593963057078?text=Hola! Quiero el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
     <button class="buy-button" disabled>COMPRAR AHORA</button>
   </div>
 
   <!-- PRODUCTO 5: TREN DE LUJO EXPRESS -->
   <div class="product-box">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 5)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-5" src="https://picsum.photos/220/165?train=1" alt="Tren Express - Vista frontal" style="width:220px; height:auto;">
@@ -499,7 +486,8 @@
 
   <!-- PRODUCTO 6: BARCO YATE OCEANIC -->
   <div class="product-box">
-    <button onclick="cambiarImagen('izq', 6)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
+      <button onclick="cambiarImagen('izq', 6)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-6" src="https://picsum.photos/220/165?boat=1" alt="Barco Oceanic - Vista frontal" style="width:220px; height:auto;">
       </div>
@@ -524,10 +512,11 @@
 <button class="category-button" onclick="toggleCategory('construccion')">
   🧱 VEHICULOS  DE CONSTRUCCIÓN TELEDIRIGIDOS
 </button>
-            
+
 <div id="construccion" class="category-content" style="display:none;">
   <!-- PRODUCTO 7: SET EDIFICIOS CIUDAD -->
   <div class="product-box">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 7)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-7" src="https://picsum.photos/220/165?build=1" alt="Set Ciudad - Vista general" style="width:220px; height:auto;">
@@ -542,32 +531,9 @@
     <h3>SET EDIFICIOS CIUDAD 1200 PIEZAS</h3>
     <p class="product-price">$85 USD</p>
     <p class="in-stock">🟢 EN STOCK</p>
-      <a href="https://wa.me/593963057078?text=Hola! Quiero el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
     <button class="buy-button">COMPRAR AHORA</button>
-   </a>        
   </div>
-    
-    <!-- PRODUCTO 8: BARCO YATT -->
-  <div class="product-box">
-      <button onclick="cambiarImagen('izq', 8)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
-      <div style="border:3px solid #F1C40F; padding:5px;">
-        <img id="imgPrincipal-8" src="https://picsum.photos/220/165?boat=1" alt="Barco Oceanic - Vista frontal" style="width:220px; height:auto;">
-      </div>
-      <button onclick="cambiarImagen('der', 8)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">→</button>
-    </div>
-    <div id="todasLasImagenes-8" style="display:none;">
-      <img src="https://picsum.photos/220/165?boat=1" alt="Vista frontal">
-      <img src="https://picsum.photos/220/165?boat=2" alt="Vista de popa">
-      <img src="https://picsum.photos/220/165?boat=3" alt="Vista de deck">
-    </div>
-    <h3>BARCO YATT</h3>
-    <p class="product-price">$1550 USD</p>
-    <p class="in-stock">🟢 EN STOCK</p>
-    <a href="https://wa.me/593963057078?text=Hola! Quiero el BARCO YATE OCEANIC por $1550 USD." target="_blank" rel="noopener noreferrer">
-      <button class="buy-button">COMPRAR AHORA</button>
-    </a>
- </div>
- </div>
+</div>
     <!-- ================== CATEGORÍA 4: ELECTRÓNICA INFANTIL ================== -->
 <button class="category-button" onclick="toggleCategory('electronica')">
   ⚡ ELECTRÓNICA INFANTIL
@@ -576,6 +542,7 @@
 <div id="electronica" class="category-content" style="display:none;">
   <!-- PRODUCTO 10: DRON EXPLORADOR X-20 -->
   <div class="product-box">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 10)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-10" src="https://github.com/jonathanunez76/verraco-toys/blob/69849c1912ca1a500275227d4957e8428efe4089/imagenes/[NOMBRE-DE-TU-IMAGEN-10].jpg" alt="Dron Explorador X-20 - Vista frontal" style="width:220px; height:auto;">
@@ -597,6 +564,7 @@
 
   <!-- PRODUCTO 11: TABLET EDUCATIVA KID-PAD -->
   <div class="product-box">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 11)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-11" src="https://github.com/jonathanunez76/verraco-toys/blob/69849c1912ca1a500275227d4957e8428efe4089/imagenes/[NOMBRE-DE-TU-IMAGEN-11].jpg" alt="Tablet Educativa Kid-Pad - Vista frontal" style="width:220px; height:auto;">
@@ -618,6 +586,7 @@
 
   <!-- PRODUCTO 12: ROBOT PROGRAMABLE BOTI -->
   <div class="product-box">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; max-width:350px; margin:0 auto;">
       <button onclick="cambiarImagen('izq', 12)" style="background:none; border:none; font-size:30px; color:#F1C40F; cursor:pointer;">←</button>
       <div style="border:3px solid #F1C40F; padding:5px;">
         <img id="imgPrincipal-12" src="https://github.com/jonathanunez76/verraco-toys/blob/69849c1912ca1a500275227d4957e8428efe4089/imagenes/[NOMBRE-DE-TU-IMAGEN-12].jpg" alt="Robot Programable Boti - Vista frontal" style="width:220px; height:auto;">
@@ -632,7 +601,6 @@
     <h3>ROBOT PROGRAMABLE BOTI 50 FUNCIONES</h3>
     <p class="product-price">$250 USD</p>
     <p class="out-stock">❌ NO EN STOCK</p>
-      <a href="https://wa.me/593963057078?text=Hola! Quiero el TREN DE LUJO EXPRESS por $1250 USD." target="_blank" rel="noopener noreferrer">
     <button class="buy-button" disabled>COMPRAR AHORA</button>
   </div>
  </div>
@@ -664,22 +632,14 @@
         <p>© 2026 Verraco Toys - Todos los derechos reservados</p>
     </footer>
       <script>
-        // Función para buscar productos
+        // Función para mostrar/ocultar categorías
         function toggleCategory(idCategoria) {
-  const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
-  todasCategorias.forEach(categoria => {
-    // AÑADE ESTOS ESTILOS PARA ORDENAR LOS PRODUCTOS
-    categoria.style.display = 'none';
-    categoria.style.gridTemplateColumns = 'repeat(auto-fit, minmax(250px, 1fr))';
-    categoria.style.gap = '20px';
-    categoria.style.padding = '10px';
-  });
+            const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
+            todasCategorias.forEach(categoria => categoria.style.display = 'none');
+            const categoriaSeleccionada = document.getElementById(idCategoria);
+            if (categoriaSeleccionada) categoriaSeleccionada.style.display = 'grid';
+        }
 
-  const categoriaSeleccionada = document.getElementById(idCategoria);
-  if (categoriaSeleccionada) {
-    categoriaSeleccionada.style.display = 'grid'; // Así se ven ordenados
-  }
-}
       // BÚSQUEDA QUE APARECE DEBAJO DE LA BARRA
 function buscarProducto() {
   const barra = document.getElementById('barra-busqueda');
