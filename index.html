@@ -403,13 +403,31 @@
                       <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/effac94486a134062aa5c4cfa2353c0db6a794b9/imagenes/H440139590608408e8999890cf44569e7p%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
                      <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/0f3b45db48cbc9e8e76c24de792b276b041f8c17/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
                     </div>
-                    <h3>HOSHI NS18 RAPTOR 2 a escala 4WD 1/8</h3>
-                    <p class="product-price">$650 USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 1 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20HOSHI%20NS18%20RAPTOR%202%20a%20escala%204WD%201/8%20por%20$650%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
+                   <!-- ... (TODO lo que tienes antes del h3 del producto, como la imagen y botones del carrusel) ... -->
+
+<!-- MODIFICAMOS EL H3 PARA QUE SEA CLICKEABLE Y LLAME A LA FUNCIÓN -->
+<h3 style="cursor: pointer;" onclick="toggleProductDetails(1)">HOSHI NS18 RAPTOR 2 a escala 4WD 1/8</h3>
+
+<p class="product-price">$650 USD</p>
+<p class="in-stock">EN STOCK</p>
+
+<!-- AÑADIMOS ESTE DIV CON LA DESCRIPCIÓN Y CARACTERÍSTICAS. ESTARÁ OCULTO POR DEFECTO. -->
+<div id="details-1" style="display: none; margin-top: 10px; border-top: 1px solid #555; padding-top: 10px; color: white; font-size: 0.9em;">
+    <p>El HOSHI NS18 RAPTOR 2 es un carro de control remoto a escala 4WD 1/8, diseñado para el rendimiento todoterreno. Su potente motor y suspensión robusta lo hacen ideal para terrenos difíciles y carreras emocionantes. Construcción duradera y componentes de alta calidad para una experiencia de manejo inigualable.</p>
+    <h4>Detalles Técnicos:</h4>
+    <ul>
+        <li>• Escala: 1/8</li>
+        <li>• Tracción: 4WD (tracción en las cuatro ruedas)</li>
+        <li>• Material: Chasis de aleación, neumáticos de goma de alta tracción</li>
+        <li>• Velocidad Máxima: 60+ km/h</li>
+        <li>• Batería: Lipo de alta capacidad (autonomía de 20-30 min)</li>
+        <li>• Control Remoto: 2.4 GHz, alcance de 100+ metros</li>
+        <li>• Suspensión: Independiente en las 4 ruedas, amortiguadores ajustables</li>
+    </ul>
+</div>
+<!-- FIN DEL DIV DE DETALLES -->
+
+<!-- ... (el resto de tu código después de las características, como el enlace de WhatsApp y el botón de comprar) ... -->
                 </div>
 
                 <!-- PRODUCTO 2: Carro de Control Remoto de Alta Velocidad Todoterreno 4x4 -->
@@ -781,6 +799,20 @@ function buscarProducto() {
             if (event.key === 'Enter') buscarProducto();
             buscarProducto();
         });      
+     // =================================================================
+// JAVASCRIPT PARA DESPLEGAR/OCULTAR DETALLES DEL PRODUCTO EN LA TARJETA
+// =================================================================
+
+function toggleProductDetails(productId) {
+    const detailsDiv = document.getElementById(`details-${productId}`);
+    if (detailsDiv) {
+        // Si está oculto o su display no está definido, lo mostramos
+        if (detailsDiv.style.display === 'none' || detailsDiv.style.display === '') {
+            detailsDiv.style.display = 'block'; // Lo hacemos visible
+        } else {
+            detailsDiv.style.display = 'none'; // Lo volvemos a ocultar
+        }
+}
     </script>
 </body>
 </html>
