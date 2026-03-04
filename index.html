@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
@@ -27,7 +27,7 @@
     <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
     <meta name="robots" content="index, follow">
 
-    <!-- 🎨 ESTILOS - SOLO AÑADIDO EL FONDO -->
+    <!-- 🎨 ESTILOS - AÑADIDOS LOS DEL MODAL -->
     <style>
         /* RESET Y BASE */
         * {
@@ -219,6 +219,7 @@
             align-items: center;
             justify-content: center;
             text-shadow: 1px 1px 2px black;
+            cursor: pointer; /* AHORA EL NOMBRE ES CLICABLE */
         }
 
         .product-price {
@@ -318,361 +319,577 @@
                 font-size: 2rem;
             }
         }
+
+        /* ESTILOS AÑADIDOS PARA EL MODAL */
+        .modal-overlay {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Posición fija para cubrir toda la pantalla */
+            z-index: 200; /* Por encima de todo lo demás */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Para scroll si el contenido es grande */
+            background-color: rgba(0,0,0,0.8); /* Fondo oscuro semitransparente */
+            display: flex; /* Para centrar el contenido */
+            align-items: center; /* Centrado vertical */
+            justify-content: center; /* Centrado horizontal */
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #333;
+            color: white;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #888;
+            border-radius: 10px;
+            max-width: 900px; /* Ancho máximo para el modal */
+            width: 95%; /* Ocupa casi todo el ancho disponible */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+            max-height: 90vh; /* Altura máxima para el modal */
+            overflow-y: auto; /* Scroll dentro del modal si el contenido es largo */
+        }
+
+        @keyframes animatetop {
+            from {top: -300px; opacity: 0}
+            to {top: 0; opacity: 1}
+        }
+
+        .modal-close {
+            color: #aaa;
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding-top: 20px; /* Espacio para el botón de cerrar */
+            text-align: center;
+        }
+
+        .modal-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px; /* Altura máxima para la imagen grande */
+            object-fit: contain;
+            border: 2px solid #f1c40f;
+            border-radius: 5px;
+        }
+        
+        .modal-carrusel-btn {
+            font-size: 40px;
+            background: none;
+            border: none;
+            color: yellow;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 210;
+        }
+        .modal-carrusel-btn.left {
+            left: 5px;
+        }
+        .modal-carrusel-btn.right {
+            right: 5px;
+        }
+
+        .modal-body h3 {
+            font-size: 2rem;
+            color: #f1c40f;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .modal-body h4 {
+            font-size: 1.5rem;
+            color: #f1c40f;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .modal-body p, .modal-body ul {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        .modal-body ul {
+            list-style: inside;
+            padding-left: 20px;
+        }
+        .modal-body li {
+            margin-bottom: 5px;
+        }
+
+        .modal-body .product-price {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal-body .buy-button { /* Estilo para el botón de comprar dentro del modal */
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            margin-top: 20px;
+            width
+        .modal-body .buy-button { /* Estilo para el botón de comprar dentro del modal */
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            margin-top: 20px;
+            width: auto; /* Para que no ocupe todo el ancho si el modal es grande */
+        }
+
+        /* Responsive para el modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 15px;
+                width: 98%;
+                max-height: 95vh;
+            }
+            .modal-body h3 {
+                font-size: 1.5rem;
+            }
+            .modal-body h4 {
+                font-size: 1.2rem;
+            }
+            .modal-body p, .modal-body ul {
+                font-size: 1rem;
+            }
+            .modal-carrusel-btn {
+                font-size: 30px;
+            }
+        }
     </style>
 </head>
 <body>
-  
-    <!-- Barra de navegación -->
-    <nav class="navbar">
+    <header class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Verraco Toys</a>
+            <a href="#" class="logo">VERRACO TOYS</a>
             <div class="search-bar">
+                <input type="text" placeholder="Buscar productos..." id="barra-busqueda">
+                <button class="search-btn" onclick="buscarProducto()">🔍</button>
             </div>
-    <!-- Enlaces de navegación -->
-      <div class="enlaces-de-navegacion" style="text-align: center; padding: 10px; background-color: #222;">   
-        <a href="#inicio" style="margin: 0 10px; text-decoration: none; color: #fff;">Inicio</a>
-        <a href="#productos" style="margin: 0 10px; text-decoration: none; color: #fff;">Productos</a>
-        <a href="#quienes" style="margin: 0 10px; text-decoration: none; color: #fff;">Quienes somos</a>
-        <a href="#contacto" style="margin: 0 10px; text-decoration: none; color: #fff;">Contacto</a>
+            <nav class="nav-links">
+                <a href="#">Inicio</a>
+                <a href="#">Categorías</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="hero-banner">
+            <h1 style="color: yellow;">¡Bienvenidos a Verraco Toys!</h1>
+            <p style="color: white;">Tu destino #1 para juguetes teledirigidos y coleccionables en Ambato, Ecuador.</p>
+        </div>
+
+        <!-- Resultados de búsqueda, oculto por defecto -->
+        <div id="resultados-busqueda" class="category-content" style="display: none; background-color: rgba(255,255,255,0.8);">
+             <!-- Aquí se cargarán los productos encontrados -->
+        </div>
+
+        <!-- Sección de Vehículos Teledirigidos -->
+        <button class="category-button" onclick="toggleCategory('vehiculos')">VEHÍCULOS TELEDIGIDOS</button>
+        <div id="vehiculos" class="category-content">
+            <!-- Producto 1 -->
+            <div class="product-box" id="product-box-1" style="background-color: #333; color: white;">
+                <img id="imgPrincipal-1" src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d (1).jpg" alt="HOSHI NS18 RAPTOR 2" class="product-img">
+                <div id="todasLasImagenes-1" style="display: none;">
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg" alt="HOSHI NS18 RAPTOR 2 - Detalle 1">
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c (1).jpg" alt="HOSHI NS18 RAPTOR 2 - Detalle 2">
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H646cfe20de6a43388b9179776970ffbdY (1).jpg" alt="HOSHI NS18 RAPTOR 2 - Detalle 3">
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/effac94486a134062aa5c4cfa2353c0db6a794b9/imagenes/H440139590608408e8999890cf44569e7p (1).jpg" alt="HOSHI NS18 RAPTOR 2 - Detalle 4">
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/0f3b45db48cbc9e8e76c24de792b276b041f8c17/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b (1).jpg" alt="HOSHI NS18 RAPTOR 2 - Detalle 5">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <button class="buy-button" style="width: 48%; margin-right: 2%; background-color: #555;" onclick="cambiarImagen('izq', 1)">&#10094;</button>
+                    <button class="buy-button" style="width: 48%; background-color: #555;" onclick="cambiarImagen('der', 1)">&#10095;</button>
+                </div>
+                <h3 onclick="openProductModal(1)">HOSHI NS18 RAPTOR 2 a escala 4WD 1/8</h3>
+                <p class="product-price">$650 USD</p>
+                <p class="in-stock">EN STOCK</p>
+                <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20HOSHI%20NS18%20RAPTOR%202%20a%20escala%204WD%201/8%20por%20$650%20USD." target="_blank" rel="noopener noreferrer">
+                    <button class="buy-button">COMPRAR AHORA</button>
+                </a>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-box" id="product-box-2" style="background-color: #333; color: white;">
+                <img id="imgPrincipal-2" src="https://picsum.photos/id/241/200/300" alt="Carro Todoterreno 4x4" class="product-img">
+                <div id="todasLasImagenes-2" style="display: none;">
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/c5e42957aef2207d429dcc7ebe08e31ff00cc2f6/imagenes/fb299bba-499b-440c-ab22-e5c459e276c3.jpg" alt="Carro Todoterreno 4x4 - Detalle 1">
+                    <img src="https://picsum.photos/id/243/200/300" alt="Carro Todoterreno 4x4 - Detalle 2">
+                    <img src="https://picsum.photos/id/244/200/300" alt="Carro Todoterreno 4x4 - Detalle 3">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <button class="buy-button" style="width: 48%; margin-right: 2%; background-color: #555;" onclick="cambiarImagen('izq', 2)">&#10094;</button>
+                    <button class="buy-button" style="width: 48%; background-color: #555;" onclick="cambiarImagen('der', 2)">&#10095;</button>
+                </div>
+                <h3 onclick="openProductModal(2)">Carro de Control Remoto de Alta Velocidad Todoterreno 4x4</h3>
+                <p class="product-price">$150 USD</p>
+                <p class="in-stock">EN STOCK</p>
+                <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Carro%20de%20Control%20Remoto%20de%20Alta%20Velocidad%20Todoterreno%204x4%20por%20$150%20USD." target="_blank" rel="noopener noreferrer">
+                    <button class="buy-button">COMPRAR AHORA</button>
+                </a>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-box" id="product-box-3" style="background-color: #333; color: white;">
+                <img id="imgPrincipal-3" src="https://picsum.photos/id/245/200/300" alt="Drift Car RC" class="product-img">
+                <div id="todasLasImagenes-3" style="display: none;">
+                    <img src="https://picsum.photos/id/246/200/300" alt="Drift Car RC - Detalle 1">
+                    <img src="https://picsum.photos/id/247/200/300" alt="Drift Car RC - Detalle 2">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <button class="buy-button" style="width: 48%; margin-right: 2%; background-color: #555;" onclick="cambiarImagen('izq', 3)">&#10094;</button>
+                    <button class="buy-button" style="width: 48%; background-color: #555;" onclick="cambiarImagen('der', 3)">&#10095;</button>
+                </div>
+                <h3 onclick="openProductModal(3)">Drift Car RC 4WD de alta velocidad</h3>
+                <p class="product-price">$120 USD</p>
+                <p class="in-stock">EN STOCK</p>
+                <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Drift%20Car%20RC%204WD%20de%20alta%20velocidad%20por%20$120%20USD." target="_blank" rel="noopener noreferrer">
+                    <button class="buy-button">COMPRAR AHORA</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Sección de Drones -->
+        <button class="category-button" onclick="toggleCategory('drones')">DRONES</button>
+        <div id="drones" class="category-content">
+            <!-- Producto 4 -->
+            <div class="product-box" id="product-box-4" style="background-color: #333; color: white;">
+                <img id="imgPrincipal-4" src="https://picsum.photos/id/248/200/300" alt="Mini Dron Plegable" class="product-img">
+                <div id="todasLasImagenes-4" style="display: none;">
+                    <img src="https://picsum.photos/id/249/200/300" alt="Mini Dron Plegable - Detalle 1">
+                    <img src="https://picsum.photos/id/250/200/300" alt="Mini Dron Plegable - Detalle 2">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <button class="buy-button" style="width: 48%; margin-right: 2%; background-color: #555;" onclick="cambiarImagen('izq', 4)">&#10094;</button>
+                    <button class="buy-button" style="width: 48%; background-color: #555;" onclick="cambiarImagen('der', 4)">&#10095;</button>
+                </div>
+                <h3 onclick="openProductModal(4)">Mini Dron Plegable con Cámara HD</h3>
+                <p class="product-price">$80 USD</p>
+                <p class="in-stock">EN STOCK</p>
+                <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Mini%20Dron%20Plegable%20con%20Cámara%20HD%20por%20$80%20USD." target="_blank" rel="noopener noreferrer">
+                    <button class="buy-button">COMPRAR AHORA</button>
+                </a>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="product-box" id="product-box-5" style="background-color: #333; color: white;">
+                <img id="imgPrincipal-5" src="https://picsum.photos/id/251/200/300" alt="Dron Profesional con GPS y 4K Cámara" class="product-img">
+                <div id="todasLasImagenes-5" style="display: none;">
+                    <img src="https://picsum.photos/id/252/200/300" alt="Dron Profesional - Detalle 1">
+                    <img src="https://picsum.photos/id/253/200/300" alt="Dron Profesional - Detalle 2">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <button class="buy-button" style="width: 48%; margin-right: 2%; background-color: #555;" onclick="cambiarImagen('izq', 5)">&#10094;</button>
+                    <button class="buy-button" style="width: 48%; background-color: #555;" onclick="cambiarImagen('der', 5)">&#10095;</button>
+                </div>
+                <h3 onclick="openProductModal(5)">Dron Profesional con GPS y 4K Cámara</h3>
+                <p class="product-price">$450 USD</p>
+                <p class="in-stock">EN STOCK</p>
+                <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Dron%20Profesional%20con%20GPS%20y%204K%20Cámara%20por%20$450%20USD." target="_blank" rel="noopener noreferrer">
+                    <button class="buy-button">COMPRAR AHORA</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Sección de Coleccionables -->
+        <button class="category-button" onclick="toggleCategory('coleccionables')">COLECCIONABLES</button>
+        <div id="coleccionables" class="category-content">
+            <!-- Producto 6 -->
+            <div class="product-box" id="product-box-6" style="background-color: #333; color: white;">
+                <img id="imgPrincipal-6" src="https://picsum.photos/id/254/200/300" alt="Optimus Prime Edición Limitada" class="product-img">
+                <div id="todasLasImagenes-6" style="display: none;">
+                    <img src="https://picsum.photos/id/255/200/300" alt="Opt
+                     
+         imus Prime Edición Limitada - Detalle 1">
+                    <img src="https://picsum.photos/id/256/200/300" alt="Optimus Prime Edición Limitada - Detalle 2">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <button class="buy-button" style="width: 48%; margin-right: 2%; background-color: #555;" onclick="cambiarImagen('izq', 6)">&#10094;</button>
+                    <button class="buy-button" style="width: 48%; background-color: #555;" onclick="cambiarImagen('der', 6)">&#10095;</button>
+                </div>
+                <h3 onclick="openProductModal(6)">Figura de Acción Optimus Prime Edición Limitada</h3>
+                <p class="product-price">$250 USD</p>
+                <p class="in-stock">EN STOCK</p>
+                <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20la%20Figura%20de%20Acción%20Optimus%20Prime%20Edición%20Limitada%20por%20$250%20USD." target="_blank" rel="noopener noreferrer">
+                    <button class="buy-button">COMPRAR AHORA</button>
+                </a>
+            </div>
+
+            <!-- Producto 7 -->
+            <div class="product-box" id="product-box-7" style="background-color: #333; color: white;">
+                <img id="imgPrincipal-7" src="https://picsum.photos/id/257/200/300" alt="Set Dragon Ball Z" class="product-img">
+                <div id="todasLasImagenes-7" style="display: none;">
+                    <img src="https://picsum.photos/id/258/200/300" alt="Set Dragon Ball Z - Detalle 1">
+                    <img src="https://picsum.photos/id/259/200/300" alt="Set Dragon Ball Z - Detalle 2">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <button class="buy-button" style="width: 48%; margin-right: 2%; background-color: #555;" onclick="cambiarImagen('izq', 7)">&#10094;</button>
+                    <button class="buy-button" style="width: 48%; background-color: #555;" onclick="cambiarImagen('der', 7)">&#10095;</button>
+                </div>
+                <h3 onclick="openProductModal(7)">Set de Figuras Dragon Ball Z - Goku y Vegeta</h3>
+                <p class="product-price">$180 USD</p>
+                <p class="in-stock">EN STOCK</p>
+                <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Set%20de%20Figuras%20Dragon%20Ball%20Z%20-%20Goku%20y%20Vegeta%20por%20$180%20USD." target="_blank" rel="noopener noreferrer">
+                    <button class="buy-button">COMPRAR AHORA</button>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL PARA DETALLES DEL PRODUCTO -->
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProductModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <button class="modal-carrusel-btn left" onclick="cambiarImagenModal('izq')">&#10094;</button>
+                    <img id="modal-main-image" src="" alt="Imagen del Producto" class="modal-img">
+                    <button class="modal-carrusel-btn right" onclick="cambiarImagenModal('der')">&#10095;</button>
+                </div>
+                <h3 id="modal-title">Nombre del Producto</h3>
+                <p id="modal-description"></p>
+                <p id="modal-characteristics"></p>
+                <p id="modal-price" class="product-price"></p>
+                <a id="modal-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer">
+                    <button class="buy-button">COMPRAR AHORA POR WHATSAPP</button>
+                </a>
+            </div>
+        </div>
     </div>
-    </nav>
-     <!-- Banner principal -->
-    <section id="inicio" class="info-section">
-        <h1>BIENVENIDOS A VERRACO TOYS</h1>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; padding: 0 10px;">
-            Tu tienda de confianza en Ambato, Provincia del Tungurahua, especializada en juguetes teledirigidos y productos coleccionables de alta calidad.
-        </p>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; padding: 0 10px;">
-            Contamos con modelos exclusivos, garantía oficial y atención personalizada para cada cliente.
-        </p>
-    </section>
-     
-    <!-- CONTENEDOR PRINCIPAL -->
-    <div class="container">
-        <!-- SECCIÓN INICIO -->
-         <section class="hero-banner"
-        style="background-color: rgba(225, 225, 225, 0.5);">  
-            <h1>¡Descubre Nuestra Colección de Juguetes!</h1>
-           <h1>Teledirigidos, coleccionables y mucho más - calidad garantizada para toda la familia</h1>   
-        </section>
-       
-        <!-- SECCIÓN PRODUCTOS -->
-        <section id="productos"
-         style="background-color: rgba(225, 225, 225, 0.5);">  
-            <h2>NUESTROS PRODUCTOS</h2>
-            
-             <div style="padding: 10px; text-align: center;">
-                <input type="text" id="barra-busqueda" placeholder="Buscar productos... (ej: carro, dron)" 
-                       style="padding: 8px 15px; width: 80%; max-width: 400px; border-radius: 5px; border: none; margin-right: 5px;">
-                <button class="boton-de-busqueda" onclick="buscarProducto()" 
-                        style="padding: 8px 15px; background-color: #f1c40f; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
-                    Buscar
-                </button>     
-            </div>
-            <!-- CONTENEDOR PARA RESULTADOS DE BÚSQUEDA -->
-            <div id="resultados-busqueda" style="position:absolute; background:white; padding:10px; border:1px solid #ccc; display:none; z-index:100; width:80%; max-width:400px; margin-left:auto; margin-right:auto; left:0; right:0;"> 
-                
-            </div>
 
-            <!-- ================== CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS ================== -->
-            <button class="category-button" onclick="toggleCategory('vehiculos')">
-                🚗 VEHÍCULOS TELEDIRIGIDOS
-            </button>
-
-            <div id="vehiculos" class="category-content">
-      
-                                 <!-- PRODUCTO 1: HOSHI NS18 RAPTOR 2 -->
-                     <div class="product-box" style="background-color: #333; color: white;">
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                        <!-- Botón Izquierda para carrusel del Producto 1 -->
-                        <button onclick="cambiarImagen('izq', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
-                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 1 -->
-                            <img id="imgPrincipal-1" src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d (1).jpg" alt="Nombre que quieras ponerle" class="product-img">
-                        </div>
-                        <!-- Botón Derecha para carrusel del Producto 1 -->
-                        <button onclick="cambiarImagen('der', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
-                    </div>
-                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 1 -->
-                    <div id="todasLasImagenes-1" style="display:none;">
-                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg" alt="Carro Deportivo GT-115" class="product-img">
-                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
-                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
-                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H646cfe20de6a43388b9179776970ffbdY%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
-                      <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/effac94486a134062aa5c4cfa2353c0db6a794b9/imagenes/H440139590608408e8999890cf44569e7p%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
-                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/0f3b45db48cbc9e8e76c24de792b276b041f8c17/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
-                    </div>
-                    <h3>HOSHI NS18 RAPTOR 2 a escala 4WD 1/8</h3>
-                    <p class="product-price">$650 USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 1 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20HOSHI%20NS18%20RAPTOR%202%20a%20escala%204WD%201/8%20por%20$650%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
-                </div>
-
-                <!-- PRODUCTO 2: Carro de Control Remoto de Alta Velocidad Todoterreno 4x4 -->
-                <div class="product-box" style="background-color: #333; color: white;">
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                        <!-- Botón Izquierda para carrusel del Producto 2 -->
-                        <button onclick="cambiarImagen('izq', 2)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
-                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 2 -->
-                            <img id="imgPrincipal-2" src="https://picsum.photos/id/241/200/300" alt="Carro Todoterreno 4x4" class="product-img">
-                        </div>
-                        <!-- Botón Derecha para carrusel del Producto 2 -->
-                        <button onclick="cambiarImagen('der', 2)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
-                    </div>
-                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 2 -->
-                    <div id="todasLasImagenes-2" style="display:none;">
-                       <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/c5e42957aef2207d429dcc7ebe08e31ff00cc2f6/imagenes/fb299bba-499b-440c-ab22-e5c459e276c3.jpg" alt="Dron Explorador X-20" style="width:220px; height:auto;">
-                        <img src="https://picsum.photos/id/243/200/300" alt="Acción Todoterreno 4x4">
-                        <img src="https://picsum.photos/id/244/200/300" alt="Detalle de ruedas Todoterreno 4x4">
-                    </div>
-                    <h3>Carro de Control Remoto de Alta Velocidad Todoterreno 4x4</h3>
-                    <p class="product-price">$150 USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 2 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Carro%20de%20Control%20Remoto%20de%20Alta%20Velocidad%20Todoterreno%204x4%20por%20$150%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
-                </div>
-
-                <!-- PRODUCTO 3: Drift Car RC 4WD de alta velocidad -->
-                <div class="product-box" style="background-color: #333; color: white;">
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                        <!-- Botón Izquierda para carrusel del Producto 3 -->
-                        <button onclick="cambiarImagen('izq', 3)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
-                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 3 -->
-                            <img id="imgPrincipal-3" src="https://picsum.photos/id/245/200/300" alt="Drift Car RC 4WD" class="product-img">
-                        </div>
-                        <!-- Botón Derecha para carrusel del Producto 3 -->
-                        <button onclick="cambiarImagen('der', 3)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
-                    </div>
-                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 3 -->
-                    <div id="todasLasImagenes-3" style="display:none;">
-                        <img src="https://picsum.photos/id/246/200/300" alt="Drift Car RC 4WD en acción">
-                        <img src="https://picsum.photos/id/247/200/300" alt="Vista superior Drift Car RC 4WD">
-                    </div>
-                    <h3>Drift Car RC 4WD de alta velocidad</h3>
-                    <p class="product-price">$120 USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 3 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Drift%20Car%20RC%204WD%20de%20alta%20velocidad%20por%20$120%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
-                </div>
-            </div> <!-- Fin #vehiculos -->
-
-            <!-- ================== CATEGORÍA 2: DRONES ================== -->
-            <button class="category-button" onclick="toggleCategory('drones')">
-                🚁 DRONES
-            </button>
-            <div id="drones" class="category-content">
-                <!-- PRODUCTO 4: Mini Dron Plegable con Cámara HD -->
-                <div class="product-box" style="background-color: #333; color: white;">
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                        <!-- Botón Izquierda para carrusel del Producto 4 -->
-                        <button onclick="cambiarImagen('izq', 4)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
-                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 4 -->
-                            <img id="imgPrincipal-4" src="https://picsum.photos/id/248/200/300" alt="Mini Dron Plegable" class="product-img">
-                        </div>
-                        <!-- Botón Derecha para carrusel del Producto 4 -->
-                        <button onclick="cambiarImagen('der', 4)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
-                    </div>
-                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 4 -->
-                    <div id="todasLasImagenes-4" style="display:none;">
-                        <img src="https://picsum.photos/id/249/200/300" alt="Mini Dron Plegable compacto">
-                        <img src="https://picsum.photos/id/250/200/300" alt="Mini Dron Plegable con mando">
-                    </div>
-                    <h3>Mini Dron Plegable con Cámara HD</h3>
-                    <p class="product-price">$80 USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 4 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Mini%20Dron%20Plegable%20con%20Cámara%20HD%20por%20$80%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
-                </div>
-                
-                <!-- PRODUCTO 5: Dron Profesional con GPS y 4K Cámara -->
-                <div class="product-box" style="background-color: #333; color: white;">
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                        <!-- Botón Izquierda para carrusel del Producto 5 -->
-                        <button onclick="cambiarImagen('izq', 5)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
-                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 5 -->
-                            <img id="imgPrincipal-5" src="https://picsum.photos/id/251/200/300" alt="Dron Profesional 4K" class="product-img">
-                        </div>
-                        <!-- Botón Derecha para carrusel del Producto 5 -->
-                        <button onclick="cambiarImagen('der', 5)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
-                    </div>
-                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 5 -->
-                    <div id="todasLasImagenes-5" style="display:none;">
-                        <img src="https://picsum.photos/id/252/200/300" alt="Dron Profesional 4K en vuelo">
-                        <img src="https://picsum.photos/id/253/200/300" alt="Detalle de la cámara Dron Profesional 4K">
-                    </div>
-                    <h3>Dron Profesional con GPS y 4K Cámara</h3>
-                    <p class="product-price">$450 USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 5 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Dron%20Profesional%20con%20GPS%20y%204K%20Cámara%20por%20$450%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
-                </div>
-            </div> <!-- Fin #drones -->
-
-            <!-- ================== CATEGORÍA 3: COLECCIONABLES ================== -->
-            <button class="category-button" onclick="toggleCategory('coleccionables')">
-                🤖 COLECCIONABLES
-            </button>
-            <div id="coleccionables" class="category-content">
-                <!-- PRODUCTO 6: Figura de Acción Optimus Prime Edición Limitada -->
-                <div class="product-box" style="background-color: #333; color: white;">
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                        <!-- Botón Izquierda para carrusel del Producto 6 -->
-                        <button onclick="cambiarImagen('izq', 6)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
-                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 6 -->
-                            <img id="imgPrincipal-6" src="https://picsum.photos/id/254/200/300" alt="Optimus Prime Edición Limitada" class="product-img">
-                        </div>
-                        <!-- Botón Derecha para carrusel del Producto 6 -->
-                        <button onclick="cambiarImagen('der', 6)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
-                    </div>
-                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 6 -->
-                    <div id="todasLasImagenes-6" style="display:none;">
-                        <img src="https://picsum.photos/id/255/200/300" alt="Optimus Prime pose épica">
-                        <img src="https://picsum.photos/id/256/200
-                                                    <img src="https://picsum.photos/id/256/200/300" alt="Optimus Prime transformado">
-                    </div>
-                    <h3>Figura de Acción Optimus Prime Edición Limitada</h3>
-                    <p class="product-price">$250 USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 6 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20la%20Figura%20de%20Acción%20Optimus%20Prime%20Edición%20Limitada%20por%20$250%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
-                </div>
-
-                <!-- PRODUCTO 7: Set de Figuras Dragon Ball Z - Goku y Vegeta -->
-                <div class="product-box" style="background-color: #333; color: white;">
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                        <!-- Botón Izquierda para carrusel del Producto 7 -->
-                        <button onclick="cambiarImagen('izq', 7)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
-                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 7 -->
-                            <img id="imgPrincipal-7" src="https://picsum.photos/id/257/200/300" alt="Set Dragon Ball Z Goku Vegeta" class="product-img">
-                        </div>
-                        <!-- Botón Derecha para carrusel del Producto 7 -->
-                        <button onclick="cambiarImagen('der', 7)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
-                    </div>
-                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 7 -->
-                    <div id="todasLasImagenes-7" style="display:none;">
-                        <img src="https://picsum.photos/id/258/200/300" alt="Set Dragon Ball Z Goku">
-                        <img src="https://picsum.photos/id/259/200/300" alt="Set Dragon Ball Z Vegeta">
-                    </div>
-                    <h3>Set de Figuras Dragon Ball Z - Goku y Vegeta</h3>
-                    <p class="product-price">$180 USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 7 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Set%20de%20Figuras%20Dragon%20Ball%20Z%20-%20Goku%20y%20Vegeta%20por%20$180%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
-                </div>
-            </div> <!-- Fin #coleccionables -->
-
-            <!-- ================== CATEGORÍA 4: OTROS ================== -->
-            <button class="category-button" onclick="toggleCategory('otros')">
-                🎁 OTROS PRODUCTOS
-            </button>
-            <div id="otros" class="category-content">
-                <!-- PRODUCTO 8: [Nombre de tu Producto 8] -->
-                <div class="product-box" style="background-color: #333; color: white;">
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                        <!-- Botón Izquierda para carrusel del Producto 8 -->
-                        <button onclick="cambiarImagen('izq', 8)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
-                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 8 -->
-                            <img id="imgPrincipal-8" src="[URL_DE_TU_IMAGEN_8]" alt="[Nombre de tu Producto 8]" class="product-img">
-                        </div>
-                        <!-- Botón Derecha para carrusel del Producto 8 -->
-                        <button onclick="cambiarImagen('der', 8)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
-                    </div>
-                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 8 -->
-                    <div id="todasLasImagenes-8" style="display:none;">
-                        <img src="[URL_DE_TU_IMAGEN_8_SECUNDARIA_1]" alt="[Descripción Imagen 8-1]">
-                        <img src="[URL_DE_TU_IMAGEN_8_SECUNDARIA_2]" alt="[Descripción Imagen 8-2]">
-                    </div>
-                    <h3>[Nombre de tu Producto 8]</h3>
-                    <p class="product-price">$PRECIO USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 8 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20[Nombre%20de%20tu%20Producto%208]%20por%20$PRECIO%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
-                    </a>
-                </div>
-            </div> <!-- Fin #otros -->
-        </section> <!-- Fin SECCIÓN PRODUCTOS -->
-
-        <!-- SECCIÓN QUIÉNES SOMOS -->
-        <section id="quienes" class="info-section">
-            <h2>QUIÉNES SOMOS</h2>
-            <p>
-                Somos una empresa dedicada a la venta de juguetes teledirigidos y productos coleccionables de las mejores marcas. Nuestro objetivo es ofrecer diversión y entretenimiento para todas las edades con productos de calidad garantizada y un servicio al cliente excepcional.
-            </p>
-            <p>
-                Ubicados en Ambato, Provincia del Tungurahua, Ecuador, nos esforzamos por ser tu tienda de referencia para encontrar ese regalo especial o ese artículo único que tanto buscas.
-            </p>
-        </section>
-
-        <!-- SECCIÓN CONTACTO -->
-        <section id="contacto" class="info-section">
-            <h2>CONTACTO</h2>
-            <p>¿Tienes alguna pregunta? ¡No dudes en contactarnos!</p>
-            <p>
-                Puedes encontrarnos en nuestra tienda física en [Dirección de la tienda, si aplica] o escribirnos a nuestro WhatsApp: 
-                <a href="https://wa.me/593963057078?text=Hola!%20Tengo%20una%20pregunta." target="_blank" rel="noopener noreferrer" style="color: #25d366; text-decoration: none; font-weight: bold;">+593 963057078</a>
-            </p>
-            <p>
-                Horario de atención: Lunes a Viernes de 9:00 AM a 6:00 PM.
-            </p>
-        </section>
-
-    </div> <!-- Fin .container -->
-
-    <!-- Pie de página -->
     <footer class="footer">
         <div class="footer-links">
-            <a href="#inicio">Inicio</a> | 
-            <a href="#productos">Productos</a> | 
-            <a href="#quienes">Quiénes Somos</a> | 
-            <a href="#contacto">Contacto</a>
+            <a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a> | <a href="#">Preguntas Frecuentes</a>
         </div>
         <p>&copy; 2024 Verraco Toys. Todos los derechos reservados.</p>
     </footer>
 
     <!-- SCRIPT JAVASCRIPT: ¡PÉGALO JUSTO ANTES DE LA ETIQUETA DE CIERRE DEL BODY! -->
     <script>
-        // Función para cambiar las imágenes del carrusel
+        // Array para almacenar la información completa de cada producto para el modal
+        // ESTO ES CLAVE: CADA PRODUCTO DEBE TENER UN OBJETO AQUÍ
+        const productsData = {
+            1: {
+                name: "HOSHI NS18 RAPTOR 2 a escala 4WD 1/8",
+                description: "El HOSHI NS18 RAPTOR 2 es un carro teledirigido de alta velocidad y tracción 4x4, ideal para entusiastas que buscan adrenalina en cualquier terreno. Su diseño robusto y suspensión independiente le permiten sortear obstáculos con facilidad, mientras que su potente motor ofrece una experiencia de manejo inigualable. Perfecto para carreras off-road y acrobacias.",
+                characteristics: "<h4>Características Principales:</h4><ul><li>• Escala: 1/8</li><li>• Tracción: 4WD (tracción en las 4 ruedas)</li><li>• Material: Chasis de aleación de aluminio y PVC resistente a golpes.</li><li>• Velocidad Máxima: Aproximadamente 50 km/h.</li><li>• Batería: Li-Po de alta capacidad (2200 mAh).</li><li>• Tiempo de Uso: 20-30 minutos, dependiendo del uso.</li><li>• Distancia de Control: Hasta 100 metros.</li><li>• Sistema de Suspensión: Independiente en las 4 ruedas.</li><li>• Neumáticos: Antideslizantes y de alta agarre para todo terreno.</li></ul>",
+                price: "$650 USD",
+                whatsappText: "Hola! Quiero el HOSHI NS18 RAPTOR 2 a escala 4WD 1/8 por $650 USD.",
+                images: [
+                    "https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d (1).jpg",
+                    "https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg",
+                    "https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c (1).jpg",
+                    "https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H646cfe20de6a43388b9179776970ffbdY (1).jpg",
+                    "https://raw.githubusercontent.com/jonathanunez76/verraco-toys/effac94486a134062aa5c4cfa2353c0db6a794b9/imagenes/H440139590608408e8999890cf44569e7p (1).jpg",
+                    "https://raw.githubusercontent.com/jonathanunez76/verraco-toys/0f3b45db48cbc9e8e76c24de792b276b041f8c17/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b (1).jpg"
+                ]
+            },
+            2: {
+                name: "Carro de Control Remoto de Alta Velocidad Todoterreno 4x4",
+                description: "Experimenta la emoción del control todoterreno con este carro 4x4 de alta velocidad. Diseñado para superar cualquier obstáculo, desde rocas hasta lodo, con su potente motor y tracción en las cuatro ruedas. Su suspensión independiente garantiza un manejo suave incluso en los terrenos más difíciles. ¡Ideal para aventuras al aire libre!",
+                characteristics: "<h4>Características Destacadas:</h4><ul><li>• Escala: 1/16</li><li>• Tracción: 4WD</li><li>• Material: Plástico ABS de alta resistencia y componentes metálicos.</li><li>• Velocidad Máxima: 30-40 km/h.</li><li>• Batería: Recargable de larga duración.</li><li>• Resistencia: A prueba de salpicaduras y polvo.</li><li>• Control Remoto: 2.4 GHz para un control preciso y sin interferencias.</li></ul>",
+                price: "$150 USD",
+                whatsappText: "Hola! Quiero el Carro de Control Remoto de Alta Velocidad Todoterreno 4x4 por $150 USD.",
+                images: [
+                    "https://picsum.photos/id/241/200/300", // Asumiendo esta es la imagen principal de tu HTML
+                    "https://raw.githubusercontent.com/jonathanunez76/verraco-toys/c5e42957aef2207d429dcc7ebe08e31ff00cc2f6/imagenes/fb299bba-499b-440c-ab22-e5c459e276c3.jpg",
+                    "https://picsum.photos/id/243/200/300",
+                    "https://picsum.photos/id/244/200/300"
+                ]
+            },
+            3: {
+                name: "Drift Car RC 4WD de alta velocidad",
+                description: "Siente la adrenalina del drifting con este impresionante Drift Car RC 4WD. Diseñado específicamente para derrapes controlados, este vehículo combina velocidad y precisión. Sus neumáticos especiales de deriva y su sistema de dirección sensible te permitirán ejecutar trucos espectaculares con facilidad. ¡Conviértete en el rey de la pista!",
+                characteristics: "<h4>Especificaciones:</h4><ul><li>• Escala: 1/10</li><li>• Tracción: 4WD (para drifting óptimo)</li><li>• Velocidad Máxima: 35 km/h.</li><li>• Neumáticos: Intercambiables (incluye neumáticos de agarre y de derrape).</li><li>• Control Remoto: Proporcional de 2.4 GHz.</li><li>• Luces: LED delanteras y traseras para un efecto más realista.</li></ul>",
+                price: "$120 USD",
+                whatsappText: "Hola! Quiero el Drift Car RC 4WD de alta velocidad por $120 USD.",
+                images: [
+                    "https://picsum.photos/id/245/200/300", // Asumiendo esta es la imagen principal
+                    "https://picsum.photos/id/246/200/300",
+                    "https://picsum.photos/id/247/200/300"
+                ]
+            },
+            4: {
+                name: "Mini Dron Plegable con Cámara HD",
+                description: "Compacto y fácil de transportar, este mini dron plegable es perfecto para principiantes y para llevarlo a cualquier aventura. Equipado con una cámara HD, te permite capturar fotos y videos impresionantes desde el aire. Sus funciones de despegue/aterrizaje con un solo botón y modo sin cabeza lo hacen muy fácil de volar. ¡Explora el cielo y graba tus momentos!",
+                characteristics: "<h4>Detalles Técnicos:</h4><ul><li>• Dimensiones: Plegado 8x8x4 cm, Desplegado 12x12x4 cm.</li><li>• Cámara: HD 720p (fotos y videos).</li><li>• Funciones: Modo sin cabeza, retorno automático, mantenimiento de altitud, despegue/aterrizaje con un botón.</li><li>• Batería: 3.7V 500mAh (tiempo de vuelo: 7-9 minutos).</li><li>• Control Remoto: 2.4 GHz.</li></ul>",
+                price: "$80 USD",
+                whatsappText: "Hola! Quiero el Mini Dron Plegable con Cámara HD por $80 USD.",
+                images: [
+                    "https://picsum.photos/id/248/200/300", // Asumiendo esta es la imagen principal
+                    "https://picsum.photos/id/249/200/300",
+                    "https://picsum.photos/id/250/200/300"
+                ]
+            },
+            5: {
+                name: "Dron Profesional con GPS y 4K Cámara",
+                description: "Lleva tus habilidades de fotografía aérea al siguiente nivel con este dron profesional. Equipado con GPS para un vuelo estable y preciso, y una cámara 4K UHD para capturar imágenes y videos de calidad cinematográfica. Incluye funciones avanzadas como seguimiento inteligente, vuelo por puntos de interés y regreso automático a casa. ¡Ideal para creadores de contenido y entusiastas!",
+                characteristics: "<h4>Características Premium:</h4><ul><li>• Cámara: 4K UHD con gimbal de 3 ejes (estabilización).</li><li>• GPS: Posicionamiento preciso y funciones de vuelo inteligente.</li><li>• Batería: Li-Po de alta capacidad (hasta 25 minutos de vuelo).</li><li>• Distancia de Control: 500-1000 metros.</li><li>• Funciones: Retorno automático a casa, seguimiento, órbita, waypoint flight.</li><li>• Motores: Brushless para mayor eficiencia y durabilidad.</li></ul>",
+                price: "$450 USD",
+                whatsappText: "Hola! Quiero el Dron Profesional con GPS y 4K Cámara por $450 USD.",
+                images: [
+                    "https://picsum.photos/id/251/200/300", // Asumiendo esta es la imagen principal
+                    "https://picsum.photos/id/252/200/300",
+                    "https://picsum.photos/id/253/200/300"
+                ]
+            },
+            6: {
+                name: "Figura de Acción Optimus Prime Edición Limitada",
+                description: "Una pieza imprescindible para cualquier coleccionista de Transformers. Esta figura de acción de Optimus Prime de edición limitada cuenta con un nivel de detalle excepcional, múltiples puntos de articulación y accesorios intercambiables. Recrea tus escenas favoritas o exhibe esta majestuosa representación del líder Autobot. ¡Un verdadero tesoro para fans!",
+                characteristics: "<h4>Detalles de Coleccionista:</h4><ul><li>• Altura: 25 cm (aprox.).</li><li>• Material: PVC de alta calidad con partes metálicas.</li><li>• Articulación: Más de 30 puntos de articulación.</li><li>• Accesorios: Incluye Ion Blaster, Battle Axe y manos intercambiables.</li><li>• Edición: Limitada, número de serie único.</li><li>• Empaque: Caja de colección premium.</li></ul>",
+                price: "$250 USD",
+                whatsappText: "Hola! Quiero la Figura de Acción Optimus Prime Edición Limitada por $250 USD
+
+             .`,
+                images: [
+                    "https://picsum.photos/id/254/200/300", // Asumiendo esta es la imagen principal
+                    "https://picsum.photos/id/255/200/300",
+                    "https://picsum.photos/id/256/200/300"
+                ]
+            },
+            7: {
+                name: "Set de Figuras Dragon Ball Z - Goku y Vegeta",
+                description: "Revive las épicas batallas de Dragon Ball Z con este set exclusivo de Goku y Vegeta. Estas figuras de alta calidad capturan la esencia de los dos guerreros Saiyajin en poses dinámicas y con un detalle impresionante. Perfectas para exhibir o para jugar, son un regalo ideal para cualquier fan de la saga.",
+                characteristics: "<h4>Contenido del Set:</h4><ul><li>• Incluye: 1 Figura de Goku Super Saiyajin, 1 Figura de Vegeta Super Saiyajin.</li><li>• Altura: 18 cm (aprox.) cada una.</li><li>• Material: PVC de alta resistencia.</li><li>• Detalles: Pintura de alta calidad, bases individuales.</li><li>• Posabilidad: Puntos de articulación limitados para mantener las poses icónicas.</li></ul>",
+                price: "$180 USD",
+                whatsappText: "Hola! Quiero el Set de Figuras Dragon Ball Z - Goku y Vegeta por $180 USD.",
+                images: [
+                    "https://picsum.photos/id/257/200/300", // Asumiendo esta es la imagen principal
+                    "https://picsum.photos/id/258/200/300",
+                    "https://picsum.photos/id/259/200/300"
+                ]
+            },
+            // AGREGAR AQUÍ LOS DATOS PARA EL PRODUCTO 8, 9, 10, ETC.
+            // Ejemplo para el Producto 8 (si tienes uno):
+            /*
+            8: {
+                name: "[Nombre de tu Producto 8]",
+                description: "Descripción detallada del producto 8...",
+                characteristics: "<h4>Características:</h4><ul><li>• Característica 1</li><li>• Característica 2</li></ul>",
+                price: "$PRECIO USD",
+                whatsappText: "Hola! Quiero el [Nombre de tu Producto 8] por $PRECIO USD.",
+                images: [
+                    "[URL_IMAGEN_PRINCIPAL_8]",
+                    "[URL_IMAGEN_SECUNDARIA_8_1]",
+                    "[URL_IMAGEN_SECUNDARIA_8_2]"
+                ]
+            }
+            */
+        };
+
+
+        // Variables para el carrusel del modal
+        let currentModalImages = [];
+        let currentModalImageIndex = 0;
+
+        // --- FUNCIONES DEL MODAL ---
+        function openProductModal(productId) {
+            const product = productsData[productId];
+            if (!product) return;
+
+            document.getElementById('modal-main-image').src = product.images[0];
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-description').innerHTML = product.description;
+            document.getElementById('modal-characteristics').innerHTML = product.characteristics;
+            document.getElementById('modal-price').innerText = product.price;
+
+            const whatsappLink = `https://wa.me/593963057078?text=${encodeURIComponent(product.whatsappText)}`;
+            document.getElementById('modal-whatsapp-link').href = whatsappLink;
+
+            currentModalImages = product.images;
+            currentModalImageIndex = 0; // Siempre empieza con la primera imagen
+
+            document.getElementById('product-modal').style.display = 'flex'; // Muestra el modal
+            document.body.style.overflow = 'hidden'; // Evita el scroll en el body
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').style.display = 'none'; // Oculta el modal
+            document.body.style.overflow = 'auto'; // Restaura el scroll en el body
+        }
+
+        function cambiarImagenModal(direccion) {
+            if (currentModalImages.length === 0) return;
+
+            if (direccion === 'der') {
+                currentModalImageIndex = (currentModalImageIndex + 1) % currentModalImages.length;
+            } else { // 'izq'
+                currentModalImageIndex = (currentModalImageIndex - 1 + currentModalImages.length) % currentModalImages.length;
+            }
+            document.getElementById('modal-main-image').src = currentModalImages[currentModalImageIndex];
+        }
+
+        // --- EVENT LISTENERS Y CONFIGURACIÓN INICIAL ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configura los h3 de los productos para abrir el modal
+            const productBoxes = document.querySelectorAll('.product-box');
+            productBoxes.forEach((box, index) => {
+                // Extraer el productId del atributo id del product-box (ej: "product-box-1" -> 1)
+                const productId = parseInt(box.id.split('-')[2]); 
+                const productNameH3 = box.querySelector('h3');
+                if (productNameH3 && !isNaN(productId)) { // Asegurarse de que el productId es un número válido
+                    productNameH3.onclick = () => openProductModal(productId);
+                }
+            });
+
+            // Configuración original del carrusel de la página principal
+            // Se ejecuta cuando la página carga para que cada imagen principal sepa cuál es su origen
+            productBoxes.forEach((box, index) => {
+                const productId = parseInt(box.id.split('-')[2]); // Extraer productId del id del div
+                const imgPrincipal = box.querySelector(`#imgPrincipal-${productId}`);
+                if (imgPrincipal && !imgPrincipal.dataset.originalSrc) {
+                    imgPrincipal.dataset.originalSrc = imgPrincipal.src;
+                }
+            });
+        });
+
+        // --- FUNCIONES YA EXISTENTES ---
+        // Función para cambiar las imágenes del carrusel (la que ya tenías)
         function cambiarImagen(direccion, productoId) {
             const imgPrincipal = document.getElementById(`imgPrincipal-${productoId}`);
             const todasLasImagenesDiv = document.getElementById(`todasLasImagenes-${productoId}`);
-            // Si el div de imágenes secundarias no existe, no hacemos nada
             if (!todasLasImagenesDiv) return;
 
             const imagenes = todasLasImagenesDiv.getElementsByTagName('img');
             let currentSrc = imgPrincipal.src;
             let currentIndex = -1;
 
-            // Almacenar el src original de la imagen principal si aún no está guardado
             if (!imgPrincipal.dataset.originalSrc) {
                 imgPrincipal.dataset.originalSrc = currentSrc;
             }
 
-            // Determinar el índice de la imagen actual
             if (currentSrc === imgPrincipal.dataset.originalSrc) {
-                currentIndex = -1; // -1 representa la imagen principal/original
+                currentIndex = -1;
             } else {
                 for (let i = 0; i < imagenes.length; i++) {
                     if (imagenes[i].src === currentSrc) {
@@ -687,38 +904,21 @@
             if (direccion === 'der') {
                 nextIndex++;
                 if (nextIndex >= imagenes.length) {
-                    nextIndex = -1; // Vuelve a la imagen principal original después de la última secundaria
+                    nextIndex = -1;
                 }
             } else { // 'izq'
                 nextIndex--;
                 if (nextIndex < -1) {
-                    nextIndex = imagenes.length - 1; // Va a la última imagen secundaria si se va hacia la izquierda desde la original
+                    nextIndex = imagenes.length - 1;
                 }
             }
 
             if (nextIndex === -1) {
-                imgPrincipal.src = imgPrincipal.dataset.originalSrc; // Restaura la imagen principal original
+                imgPrincipal.src = imgPrincipal.dataset.originalSrc;
             } else {
-                imgPrincipal.src = imagenes[nextIndex].src; // Cambia a la siguiente imagen oculta
+                imgPrincipal.src = imagenes[nextIndex].src;
             }
         }
-
-        // Esta parte es importante para guardar la SRC original de la imagen principal
-        // Se ejecuta cuando la página carga para que cada imagen principal sepa cuál es su origen
-        document.addEventListener('DOMContentLoaded', () => {
-            // Este selector busca todos los divs que son contenedores de producto
-            // Puedes ajustar este selector si tus contenedores de producto tienen una clase o ID más específica
-            const productBoxes = document.querySelectorAll('.product-box');
-            productBoxes.forEach((box, index) => {
-                // Asume que los IDs de tus productos son consecutivos empezando por 1
-                // Si tus IDs no son así (ej. id="productoA", id="productoB"), deberás ajustar la lógica para extraer el ID correcto
-                const productId = index + 1; // Ajustamos el index para que empiece en 1
-                const imgPrincipal = box.querySelector(`#imgPrincipal-${productId}`);
-                if (imgPrincipal && !imgPrincipal.dataset.originalSrc) {
-                    imgPrincipal.dataset.originalSrc = imgPrincipal.src;
-                }
-            });
-        });
 
         // Función para mostrar/ocultar categorías
         function toggleCategory(categoryId) {
@@ -730,56 +930,85 @@
             }
         }
         
-   // BÚSQUEDA QUE APARECE DEBAJO DE LA BARRA
-function buscarProducto() {
-  const barra = document.getElementById('barra-busqueda');
-  const resultados = document.getElementById('resultados-busqueda');
-  const texto = barra.value.toLowerCase().trim();
+        // BÚSQUEDA QUE APARECE DEBAJO DE LA BARRA
+        function buscarProducto() {
+            const barra = document.getElementById('barra-busqueda');
+            const resultados = document.getElementById('resultados-busqueda');
+            const texto = barra.value.toLowerCase().trim();
 
-  if (texto === '') {
-    resultados.style.display = 'none';
-    toggleCategory('vehiculos');
-    return;
-  }
+            if (texto === '') {
+                resultados.style.display = 'none';
+                // Volver a mostrar las categorías si no hay texto de búsqueda
+                document.querySelectorAll('.category-content').forEach(cat => {
+                    // Solo muestra las que inicialmente estaban visibles o tienen un estado por defecto
+                    if (cat.id !== 'resultados-busqueda') { // Asegúrate de no mostrar la de resultados
+                        cat.style.display = 'grid'; // O el display original que tuvieran
+                    }
+                });
+                return;
+            }
 
-  resultados.innerHTML = '';
-  resultados.style.display = 'block';
-  let encontrado = false;
+            resultados.innerHTML = '';
+            resultados.style.display = 'grid'; // Asegúrate de que los resultados se muestren como grid
+            let encontrado = false;
 
-  document.querySelectorAll('.product-box').forEach(prod => {
-    const nombre = prod.querySelector('h3').textContent.toLowerCase().trim();
-    if (nombre.indexOf(texto) !== -1) {
-      // Creamos el producto nuevo
-      const nuevoProd = document.createElement('div');
-      nuevoProd.className = prod.className;
-      nuevoProd.innerHTML = prod.innerHTML;
-         // Agregamos el evento de WhatsApp MANUALMENTE
-      const botonCompra = nuevoProd.querySelector('button');
-      const nombreProducto = prod.querySelector('h3').textContent;
-      const precioProducto = prod.querySelector('p').textContent;
-      
-      botonCompra.onclick = function() {
-        const mensaje = `Hola! Quiero comprar el producto: ${nombreProducto} - ${precioProducto}`;
-        const url = `https://wa.me/TUNUMERODEWHATSAPP?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, '_blank');
-      };
+            document.querySelectorAll('.product-box').forEach(prod => {
+                const nombre = prod.querySelector('h3').textContent.toLowerCase().trim();
+                const productId = parseInt(prod.id.replace('product-box-', '')); // Obtener el ID del producto
 
-      resultados.appendChild(nuevoProd);
-      encontrado = true;
-    }
-  });
+                if (nombre.includes(texto)) {
+                    const nuevoProd = document.createElement('div');
+                    nuevoProd.className = prod.className; // Mantiene las clases CSS originales
+                    nuevoProd.innerHTML = prod.innerHTML; // Copia el contenido HTML
 
-  if (!encontrado) {
-    resultados.innerHTML = '<p>No hay productos</p>';
-  }
+                    // Reconfigurar el clic del h3 para abrir el modal
+                    const searchedProdNameH3 = nuevoProd.querySelector('h3');
+                    if (searchedProdNameH3 && !isNaN(productId)) {
+                        searchedProdNameH3.onclick = () => openProductModal(productId);
+                    }
 
-  document.querySelectorAll('.category-content').forEach(cat => cat.style.display = 'none');    
-}
-   // Búsqueda en tiempo real
+                    // Reconfigurar el botón de comprar para el enlace de WhatsApp
+                    const botonCompra = nuevoProd.querySelector('.buy-button');
+                    if (botonCompra && productsData[productId]) {
+                        botonCompra.onclick = function() {
+                            const productData = productsData[productId];
+                            const whatsappMessage = `Hola! Quiero el ${productData.name} por ${productData.price}.`;
+                            const whatsappUrl = `https://wa.me/593963057078?text=${encodeURIComponent(whatsappMessage)}`;
+                            window.open(whatsappUrl, '_blank');
+                        };
+                    }
+                    resultados.appendChild(nuevoProd);
+                    encontrado = true;
+                }
+            });
+
+            if (!encontrado) {
+                resultados.innerHTML = '<p style="color: black; grid-column: 1 / -1; text-align: center;">No se encontraron productos.</p>';
+            }
+
+            // Oculta todas las demás categorías cuando hay resultados de búsqueda
+            document.querySelectorAll('.category-content').forEach(cat => {
+                if (cat.id !== 'resultados-busqueda') {
+                    cat.style.display = 'none';
+                }
+            });    
+        }
+
+        // Búsqueda en tiempo real
         document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') buscarProducto();
-            buscarProducto();
-        });      
+            // Si presionas enter o si el campo tiene contenido (para buscar en tiempo real)
+            if (event.key === 'Enter' || this.value.trim() !== '') {
+                buscarProducto();
+            } else {
+                // Si el campo está vacío, oculta los resultados y muestra las categorías principales
+                document.getElementById('resultados-busqueda').style.display = 'none';
+                document.querySelectorAll('.category-content').forEach(cat => {
+                    if (cat.id !== 'resultados-busqueda') {
+                        cat.style.display = 'grid'; // O el display original que tuvieran
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
