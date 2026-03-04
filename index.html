@@ -686,34 +686,8 @@
   // Ocultamos todas las categorías para que solo se vean los resultados
   document.querySelectorAll('.category-content').forEach(cat => cat.style.display = 'none');
 }
-     function buscarProducto() {
-            const textoBusqueda = document.getElementById('barra-busqueda').value.toLowerCase().trim();
-            const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
-            todasCategorias.forEach(categoria => categoria.style.display = 'grid');
-            
-            const todosProductos = document.querySelectorAll('.product-box');
-            todosProductos.forEach(producto => {
-                const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
-                const nombreCategoria = producto.parentElement.id.toLowerCase();
-               if (!nombreProducto.includes(textoBusqueda) && !nombreCategoria.includes(textoBusqueda)) {
-                   producto.style.display= 'none';
-                } else {
-                producto.style.display = 'block';
-                   producto.parentElement.style.display= 'grid';
-                }
-            });
-
-            if (textoBusqueda === '') {
-                toggleCategory('vehiculos');
-            }
-        }
-
-        // Búsqueda en tiempo real
-        document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') buscarProducto();
-            buscarProducto();
-        });
-
+    
+       
   // Almacena el índice actual de cada producto
   let indicesImagenes = {};
 
