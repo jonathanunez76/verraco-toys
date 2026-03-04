@@ -650,7 +650,7 @@
   
   // Limpiamos cualquier resultado anterior
   contenedorResultados.innerHTML = '';
-
+           
   // Si no escribiste nada:
   if (textoBusqueda === '') {
     contenedorResultados.style.display = 'none'; // Ocultamos resultados
@@ -696,7 +696,7 @@
     // Obtiene todas las imágenes del producto
     const listaImagenes = document.querySelectorAll(`#todasLasImagenes-${numeroProducto} img`);
     const totalImagenes = listaImagenes.length;
-
+      
     // Inicializa el índice si no existe
     if (!indicesImagenes[numeroProducto]) indicesImagenes[numeroProducto] = 0;
 
@@ -717,11 +717,7 @@
   function toggleCategory(idCategoria) {
     document.querySelectorAll('.category-content').forEach(c => c.style.display = 'none');
     document.getElementById(idCategoria).style.display = 'grid';
-  }
- });
-   if (textoBusqueda === '') {
-                toggleCategory('vehiculos');
-            }
+      
         }
 
         // Búsqueda en tiempo real
