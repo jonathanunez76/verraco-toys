@@ -641,7 +641,7 @@
         }
 
         // Función para buscar productos
-        function buscarProducto() {
+  function buscarProducto() {
             const textoBusqueda = document.getElementById('barra-busqueda').value.toLowerCase().trim();
             const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
             todasCategorias.forEach(categoria => categoria.style.display = 'grid');
@@ -649,10 +649,12 @@
             const todosProductos = document.querySelectorAll('.product-box');
             todosProductos.forEach(producto => {
                 const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
-                if (!nombreProducto.includes(textoBusqueda)) {
-                    producto.style.display = 'none';
+                const nombreCategoria = producto.parentElement.id.toLowerCase();
+               if (!nombreProducto.includes(textoBusqueda) && !nombreCategoria.includes(textoBusqueda)) {
+                   producto.style.display= 'none';
                 } else {
-                    producto.style.display = 'block';
+                producto.style.display = 'block';
+                   producto.parentElement.style.display= 'grid';
                 }
             });
 
