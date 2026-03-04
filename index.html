@@ -769,9 +769,13 @@ function buscarProducto() {
     resultados.innerHTML = '<p>No hay productos</p>';
   }
 
-  document.querySelectorAll('.category-content').forEach(cat => cat.style.display = 'none');
-            
-        }
+  document.querySelectorAll('.category-content').forEach(cat => cat.style.display = 'none');    
+}
+   // Búsqueda en tiempo real
+        document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') buscarProducto();
+            buscarProducto();
+        });      
     </script>
 </body>
 </html>
