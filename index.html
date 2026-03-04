@@ -725,7 +725,8 @@
                 categoryContent.style.display = 'grid';
             }
         }
-  // BÚSQUEDA QUE APARECE DEBAJO DE LA BARRA
+        
+   // BÚSQUEDA QUE APARECE DEBAJO DE LA BARRA
 function buscarProducto() {
   const barra = document.getElementById('barra-busqueda');
   const resultados = document.getElementById('resultados-busqueda');
@@ -748,37 +749,9 @@ function buscarProducto() {
       const nuevoProd = document.createElement('div');
       nuevoProd.className = prod.className;
       nuevoProd.innerHTML = prod.innerHTML;
-
-      // Agregamos el evento de WhatsApp MANUALMENTE
-      const botonCompra = nuevoProd.querySelector('button');
-      const nombreProducto = prod.querySelector('h3').textContent;
-      const precioProducto = prod.querySelector('p').textContent;
-      
-      botonCompra.onclick = function() {
-        const mensaje = `Hola! Quiero comprar el producto: ${nombreProducto} - ${precioProducto}`;
-        const url = `https://wa.me/TUNUMERODEWHATSAPP?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, '_blank');
-      };
-
-      resultados.appendChild(nuevoProd);
-      encontrado = true;
-    }
-  });
-
-  if (!encontrado) {
-    resultados.innerHTML = '<p>No hay productos</p>';
-  }
-
-  document.querySelectorAll('.category-content').forEach(cat => cat.style.display = 'none');
-}
-
-        // Búsqueda en tiempo real
-        document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') buscarProducto();
-            buscarProducto();
-        });
+                }
+            });
         }
     </script>
-
 </body>
 </html>
