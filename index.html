@@ -27,7 +27,7 @@
     <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
     <meta name="robots" content="index, follow">
 
-    <!-- 🎨 ESTILOS - AÑADIDOS LOS DEL MODAL -->
+    <!-- 🎨 ESTILOS -->
     <style>
         /* RESET Y BASE */
         * {
@@ -45,8 +45,8 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
-            background-blend-mode: normal;                         ;
-         }
+            background-blend-mode: normal;
+        }
         
         /* Barra de navegación */
         .navbar {
@@ -74,7 +74,7 @@
         }
 
         .search-bar {
-             color: #fff;
+            color: #fff;
             flex: 1;
             max-width: 500px;
             margin: 0 1rem;
@@ -103,8 +103,6 @@
             text-decoration: none;
             margin-left: 1rem;
             font-size: 0.9rem;
-            
-
         }
  
         /* Banner principal */
@@ -188,7 +186,8 @@
             padding: 20px;
             border-radius: 5px;
             text-align: center;
-            background-color: #fff;
+            background-color: #333; /* Color de fondo oscuro para el producto */
+            color: white; /* Color de texto claro para el producto */
             transition: box-shadow 0.3s ease;
         }
 
@@ -238,7 +237,7 @@
         }
 
         .out-stock {
-            color: #2ecc71;
+            color: #c0392b; /* Rojo para fuera de stock */
             font-weight: bold;
             margin-bottom: 15px;
         }
@@ -254,6 +253,7 @@
             width: 100%;
             transition: background-color 0.3s ease;
             font-size: 1rem;
+            color: #333; /* Color de texto para el botón de compra */
         }
 
         .buy-button:hover {
@@ -278,6 +278,7 @@
             font-size: 1rem;
             margin-bottom: 15px;
             padding: 0 10px;
+            color: #333; /* Texto para secciones de información */
         }
 
     /* Pie de página */
@@ -322,7 +323,7 @@
 
         /* ESTILOS AÑADIDOS PARA EL MODAL */
         .modal-overlay {
-            display: none; /* Oculto por defecto */
+            display: none; /* Oculto por defecto - ¡CORRECCIÓN CLAVE! */
             position: fixed; /* Posición fija para cubrir toda la pantalla */
             z-index: 200; /* Por encima de todo lo demás */
             left: 0;
@@ -331,7 +332,6 @@
             height: 100%;
             overflow: auto; /* Para scroll si el contenido es grande */
             background-color: rgba(0,0,0,0.8); /* Fondo oscuro semitransparente */
-            display: flex; /* Para centrar el contenido */
             align-items: center; /* Centrado vertical */
             justify-content: center; /* Centrado horizontal */
             padding: 20px;
@@ -403,86 +403,6 @@
             font-size: 40px;
             background: none;
             border: none;
-            color: yellow;
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 210;
-        }
-        .modal-carrusel-btn.left {
-            left: 5px;
-        }
-        .modal-carrusel-btn.right {
-            right: 5px;
-        }
-
-        .modal-body h3 {
-            font-size: 2rem;
-            color: #f1c40f;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 2px black;
-        }
-
-        .modal-body h4 {
-            font-size: 1.5rem;
-            color: #f1c40f;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .modal-body p, .modal-body ul {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 10px;
-            text-align: left;
-            padding: 0 10px;
-        }
-
-        .modal-body ul {
-            list-style: inside;
-            padding-left: 20px;
-        }
-        .modal-body li {
-            margin-bottom: 5px;
-        }
-
-        .modal-body .product-price {
-            font-size: 1.5rem;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .modal-body .buy-button { /* Estilo para el botón de comprar dentro del modal */
-            font-size: 1.2rem;
-            padding: 12px 25px;
-            margin-top: 20px;
-            width
-        .modal-body .buy-button { /* Estilo para el botón de comprar dentro del modal */
-            font-size: 1.2rem;
-            padding: 12px 25px;
-            margin-top: 20px;
-            width: auto; /* Para que no ocupe todo el ancho si el modal es grande */
-        }
-
-        /* Responsive para el modal */
-        @media (max-width: 768px) {
-            .modal-content {
-                padding: 15px;
-                width: 98%;
-                max-height: 95vh;
-            }
-            .modal-body h3 {
-                font-size: 1.5rem;
-            }
-            .modal-body h4 {
-                font-size: 1.2rem;
-            }
-            .modal-body p, .modal-body ul {
-                font-size: 1rem;
-            }
-            .modal-carrusel-btn {
-                font-size: 30px;
             }
         }
     </style>
