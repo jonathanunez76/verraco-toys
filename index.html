@@ -640,52 +640,26 @@
             if (categoriaSeleccionada) categoriaSeleccionada.style.display = 'grid';
         }
 
-      // BÚSQUEDA QUE APARECE DEBAJO DE LA BARRA
-function buscarProducto() {
-  const barra = document.getElementById('barra-busqueda');
-  const resultados = document.getElementById('resultados-busqueda');
-  const texto = barra.value.toLowerCase().trim();
+        // Función para buscar productos
+        function buscarProducto() {
+            const textoBusqueda = document.getElementById('barra-busqueda').value.toLowerCase().trim();
+            const todasCategorias = document.querySelectorAll('.contenido-de-categoria');
+            todasCategorias.forEach(categoria => categoria.style.display = 'grid');
+            
+            const todosProductos = document.querySelectorAll('.product-box');
+            todosProductos.forEach(producto => {
+                const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
+                if (!nombreProducto.includes(textoBusqueda)) {
+                    producto.style.display = 'none';
+                } else {
+                    producto.style.display = 'block';
+                }
+            });
 
-  if (texto === '') {
-    resultados.style.display = 'none';
-    toggleCategory('vehiculos');
-    return;
-  }
-
-  resultados.innerHTML = '';
-  resultados.style.display = 'block';
-  let encontrado = false;
-
-  document.querySelectorAll('.product-box').forEach(prod => {
-    const nombre = prod.querySelector('h3').textContent.toLowerCase().trim();
-    if (nombre.indexOf(texto) !== -1) {
-      // Creamos el producto nuevo
-      const nuevoProd = document.createElement('div');
-      nuevoProd.className = prod.className;
-      nuevoProd.innerHTML = prod.innerHTML;
-
-      // Agregamos el evento de WhatsApp MANUALMENTE
-      const botonCompra = nuevoProd.querySelector('button');
-      const nombreProducto = prod.querySelector('h3').textContent;
-      const precioProducto = prod.querySelector('p').textContent;
-      
-      botonCompra.onclick = function() {
-        const mensaje = `Hola! Quiero comprar el producto: ${nombreProducto} - ${precioProducto}`;
-        const url = `https://wa.me/TUNUMERODEWHATSAPP?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, '_blank');
-      };
-
-      resultados.appendChild(nuevoProd);
-      encontrado = true;
-    }
-  });
-
-  if (!encontrado) {
-    resultados.innerHTML = '<p>No hay productos</p>';
-  }
-
-  document.querySelectorAll('.category-content').forEach(cat => cat.style.display = 'none');
-}
+            if (textoBusqueda === '') {
+                toggleCategory('vehiculos');
+            }
+        }
 
         // Búsqueda en tiempo real
         document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
