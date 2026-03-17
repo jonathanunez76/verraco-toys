@@ -438,7 +438,7 @@
                     <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
                         <!-- Botón Izquierda para carrusel del Producto 2 -->
                         <button onclick="cambiarImagen('izq', 2)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px; max-width: 400px;">
+                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
                             <!-- IMAGEN PRINCIPAL DEL PRODUCTO 2 -->
                             <img id="imgPrincipal-2"  src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/c5e42957aef2207d429dcc7ebe08e31ff00cc2f6/imagenes/fb299bba-499b-440c-ab22-e5c459e276c3.jpg" alt="Nombre que quieras ponerle" class="product-img">
                         </div>
@@ -710,7 +710,7 @@
             if (direccion === 'der') {
                 nextIndex++;
                 if (nextIndex >= imagenes.length) {
-                    nextIndex = 0; // Vuelve a la imagen principal original después de la última secundaria
+                    nextIndex = -1; // Vuelve a la imagen principal original después de la última secundaria
                 }
             } else { // 'izq'
                 nextIndex--;
