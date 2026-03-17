@@ -710,11 +710,11 @@
             if (direccion === 'der') {
                 nextIndex++;
                 if (nextIndex >= imagenes.length) {
-                    nextIndex = 0; // Vuelve a la imagen principal original después de la última secundaria
+                    nextIndex = -1; // Vuelve a la imagen principal original después de la última secundaria
                 }
             } else { // 'izq'
                 nextIndex--;
-                if (nextIndex < 0) {
+                if (nextIndex < -1) {
                     nextIndex = imagenes.length - 1; // Va a la última imagen secundaria si se va hacia la izquierda desde la original
                 }
             }
