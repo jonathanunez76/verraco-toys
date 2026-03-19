@@ -420,6 +420,62 @@ body {
             </div>
         </section>
 
+         <section class="products-section" id="products-section">
+            <h2 class="section-title">Nuestros Destacados</h2>
+            <div class="products-grid">
+
+
+
+                <!-- Tarjeta 9 - Camión Volcador -->
+                <div class="product-card">
+                    <a href="#truck-detail" class="product-link">
+                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-name">Camión Volcador Grande</h3>
+                            <p class="product-price">$49.90</p>
+                            <span class="btn">Ver Detalles</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tarjeta 10- Excavadora -->
+                <div class="product-card">
+                    <a href="#excavator-detail" class="product-link">
+                        <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-name">Excavadora con Control</h3>
+                            <p class="product-price">$79.90</p>
+                            <span class="btn">Ver Detalles</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tarjeta 11 - Set de Obras -->
+                <div class="product-card">
+                    <a href="#works-detail" class="product-link">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-name">Set de Obras Viales</h3>
+                            <p class="product-price">$39.90</p>
+                            <span class="btn">Ver Detalles</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tarjeta 12 - Grúa -->
+                <div class="product-card">
+                    <a href="#crane-detail" class="product-link">
+                        <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-name">Grúa Torre Rotativa</h3>
+                            <p class="product-price">$59.90</p>
+                            <span class="btn">Ver Detalles</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         
         <footer>
             <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
@@ -488,6 +544,63 @@ body {
             <p>Ambato - Tungurahua, Ecuador</p>
         </footer>
     </div>
+
+     <!-- Página de detalle: Excavadora -->
+    <div id="#excavator-detail" style="display: none;">
+        <header>
+            <div class="nav-container">
+                <div class="logo">MundoJuguetes</div>
+                <nav class="nav-links">
+                    <a href="#home-page">Inicio</a>
+                    <a href="#products-section">Productos</a>
+                    <a href="#">Categorías</a>
+                    <a href="#">Contacto</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="product-detail">
+            <div class="detail-media">
+                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camión Volcador Grande - Detalle" class="detail-img">
+                
+                <!-- Contenedor de video -->
+                <div class="video-container">
+                    <iframe class="product-video" 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Video de la Excavadora" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    <div class="video-controls">
+                        <button class="btn" onclick="document.querySelector('.product-video').requestFullscreen()">
+                            Ver en Pantalla Completa
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-info">
+                <h2>Camión Volcador Grande</h2>
+                <p class="detail-price">$49.90</p>
+                <p class="detail-description">
+                    Este camión volcador de juguete está diseñado para horas de diversión constructiva. Fabricado con materiales resistentes y seguros para niños mayores de 3 años, cuenta con un sistema de volteo fácil de usar y ruedas con buen agarre para cualquier superficie.
+                </p>
+                <div class="detail-features">
+                    <h3>Características principales:</h3>
+                    <ul>
+                        <li>Medidas: 35 cm de largo x 18 cm de alto</li>
+                        <li>Material: Plástico resistente y no tóxico</li>
+                        <li>Color: Amarillo y negro con detalles rojos</li>
+                        <li>Incluye accesorios: 2 conos de obra y 1 pala pequeña</li>
+                        <li>Recomendado para niños de 3 a 10 años</li>
+                        <li>Fácil de limpiar y mantener</li>
+                    </ul>
+                </div>
+                <button class="btn">Comprar Ahora</button>
+                <button class="btn back-btn" onclick="goBack()">Volver al Catálogo</button>
+            </div>
+        </section>
+    
 
     <!-- Otras páginas de detalle se pueden agregar con su propio video -->
 
