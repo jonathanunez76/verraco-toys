@@ -598,6 +598,131 @@ body {
     <!-- Otras páginas de detalle se pueden agregar con su propio video -->
 
     <script>
+     // Función para cambiar las imágenes del carrusel
+        function cambiarImagen(direccion, productoId) {
+            const imgPrincipal = document.getElementById(`imgPrincipal-${productoId}`);
+            const todasLasImagenesDiv = document.getElementById(`todasLasImagenes-${productoId}`);
+            // Si el div de imágenes secundarias no existe, no hacemos nada
+            if (!todasLasImagenesDiv) return;
+
+            const imagenes = todasLasImagenesDiv.getElementsByTagName('img');
+            let currentSrc = imgPrincipal.src;
+            let currentIndex = -1;
+
+            // Almacenar el src original de la imagen principal si aún no está guardado
+            if (!imgPrincipal.dataset.originalSrc) {
+                imgPrincipal.dataset.originalSrc = currentSrc;
+            }
+
+            // Determinar el índice de la imagen actual
+            if (currentSrc === imgPrincipal.dataset.originalSrc) {
+                currentIndex = -1; // -1 representa la imagen principal/original
+            } else {
+                for (let i = 0; i < imagenes.length; i++) {
+                    if (imagenes[i].src === currentSrc) {
+                        currentIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            let nextIndex = currentIndex;
+
+            if (direccion === 'der') {
+                nextIndex++;
+                if (nextIndex >= imagenes.length) {
+                    nextIndex = -1; // Vuelve a la imagen principal original después de la última secundaria
+                }
+            } else { // 'izq'
+                nextIndex--;
+                if (nextIndex < -1) {
+                    nextIndex = imagenes.length - 1; // Va a la última imagen secundaria si se va hacia la izquierda desde la original
+                }
+            }
+
+            if (nextIndex === -1) {
+                imgPrincipal.src = imgPrincipal.dataset.originalSrc; // Restaura la imagen principal original
+            } else {
+                imgPrincipal.src = imagenes[nextIndex].src; // Cambia a la siguiente imagen oculta
+            }
+        }
+
+        // Esta parte es importante para guardar la SRC original de la imagen principal
+        // Se ejecuta cuando la página carga para que cada imagen principal sepa cuál es su origen
+        document.addEventListener('DOMContentLoaded', () => {
+            // Este selector busca todos los divs que son contenedores de producto
+            // Puedes ajustar este selector si tus contenedores de producto tienen una clase o ID más específica
+            const productBoxes = document.querySelectorAll('.product-box');
+            productBoxes.forEach((box, index) => {
+                // Asume que los IDs de tus productos son consecutivos empezando por 1
+                // Si tus IDs no son así (ej. id="productoA", id="productoB"), deberás ajustar la lógica para extraer el ID correcto
+                const productId = index + 1; // Ajustamos el index para que empiece en 1
+                const imgPrincipal = box.querySelector(`#imgPrincipal-${productId}`);
+                if (imgPrincipal && !imgPrincipal.dataset.originalSrc) {
+                    imgPrincipal.dataset.originalSrc = imgPrincipal.src;
+                }
+            });
+        });
+
+        // Función para mostrar/ocultar categorías
+        function toggleCategory(categoryId) {
+            const categoryContent = document.getElementById(categoryId);
+            if (categoryContent.style.display === 'grid') {
+                categoryContent.style.display = 'none';
+            } else {
+                categoryContent.style.display = 'grid';
+            }
+        }
+        
+   // BÚSQUEDA QUE APARECE DEBAJO DE LA BARRA
+function buscarProducto() {
+  const barra = document.getElementById('barra-busqueda');
+  const resultados = document.getElementById('resultados-busqueda');
+  const texto = barra.value.toLowerCase().trim();
+
+  if (texto === '') {
+    resultados.style.display = 'none';
+    toggleCategory('vehiculos');
+    return;
+  }
+
+  resultados.innerHTML = '';
+  resultados.style.display = 'block';
+  let encontrado = false;
+
+  document.querySelectorAll('.product-box').forEach(prod => {
+    const nombre = prod.querySelector('h3').textContent.toLowerCase().trim();
+    if (nombre.indexOf(texto) !== -1) {
+      // Creamos el producto nuevo
+      const nuevoProd = document.createElement('div');
+      nuevoProd.className = prod.className;
+      nuevoProd.innerHTML = prod.innerHTML;
+         // Agregamos el evento de WhatsApp MANUALMENTE
+      const botonCompra = nuevoProd.querySelector('button');
+      const nombreProducto = prod.querySelector('h3').textContent;
+      const precioProducto = prod.querySelector('p').textContent;
+      
+      botonCompra.onclick = function() {
+        const mensaje = `Hola! Quiero comprar el producto: ${nombreProducto} - ${precioProducto}`;
+        const url = `https://wa.me/TUNUMERODEWHATSAPP?text=${encodeURIComponent(mensaje)}`;
+        window.open(url, '_blank');
+      };
+
+      resultados.appendChild(nuevoProd);
+      encontrado = true;
+    }
+  });
+
+  if (!encontrado) {
+    resultados.innerHTML = '<p>No hay productos</p>';
+  }
+
+  document.querySelectorAll('.category-content').forEach(cat => cat.style.display = 'none');    
+}
+   // Búsqueda en tiempo real
+        document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') buscarProducto();
+            buscarProducto();
         // Navegación entre páginas
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', function(e) {
