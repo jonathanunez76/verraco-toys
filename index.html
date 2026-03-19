@@ -918,16 +918,16 @@
             if (direccion === 'der') {
                 nextIndex++;
                 if (nextIndex >= imagenes.length) {
-                    nextIndex = -1; // Vuelve a la imagen principal original después de la última secundaria
+                    nextIndex = 0; // Vuelve a la imagen principal original después de la última secundaria
                 }
             } else { // 'izq'
                 nextIndex--;
-                if (nextIndex < -1) {
+                if (nextIndex < 0) {
                     nextIndex = imagenes.length - 1; // Va a la última imagen secundaria si se va hacia la izquierda desde la original
                 }
             }
 
-            if (nextIndex === -1) {
+         
                 imgPrincipal.src = imgPrincipal.dataset.originalSrc; // Restaura la imagen principal original
             } else {
                 imgPrincipal.src = imagenes[nextIndex].src; // Cambia a la siguiente imagen oculta
