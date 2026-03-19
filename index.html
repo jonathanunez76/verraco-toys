@@ -432,28 +432,56 @@ body {
            <h1>Teledirigidos, coleccionables y mucho más - calidad garantizada para toda la familia</h1>   
         </section>
         </div>
-        <!-- SECCIÓN PRODUCTOS -->
-        <section id="productos"
-         style="background-color: rgba(225, 225, 225, 0.5);"> 
-        <section class="products-section" id="products-section"> 
-         </section>
-         <h2 class="section-title">Nuestros Destacados</h2>
-            <div class="products-grid">
-                <!-- Tarjeta 1 - Camión Volcador -->
-                <div class="product-card">
-                    <a href="#truck-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Camión Volcador Grande</h3>
-                            <p class="product-price">$49.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
 
-                <!-- Tarjeta 2 - Excavadora -->
-                <div class="product-card">
-                    <a href="#excavator-detail" class="product-link">
+       <!-- SECCIÓN PRODUCTOS -->
+        <section id="productos"
+         style="background-color: rgba(225, 225, 225, 0.5);">  
+            <h2>NUESTROS PRODUCTOS</h2>
+            
+             <div style="padding: 10px; text-align: center;">
+                <input type="text" id="barra-busqueda" placeholder="Buscar productos... (ej: carro, dron)" 
+                       style="padding: 8px 15px; width: 80%; max-width: 400px; border-radius: 5px; border: none; margin-right: 5px;">
+                <button class="boton-de-busqueda" onclick="buscarProducto()" 
+                        style="padding: 8px 15px; background-color: #f1c40f; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                    Buscar
+                </button>     
+            </div>
+         
+            <!-- CONTENEDOR PARA RESULTADOS DE BÚSQUEDA -->
+            <div id="resultados-busqueda" style="position:absolute; background:white; padding:10px; border:1px solid #ccc; display:none; z-index:100; width:80%; max-width:400px; margin-left:auto; margin-right:auto; left:0; right:0;"> 
+                
+            </div>
+ <!-- ================== CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS ================== -->
+            <button class="category-button" onclick="toggleCategory('vehiculos')">
+                🚗 VEHÍCULOS TELEDIRIGIDOS
+            </button>
+
+            <div id="vehiculos" class="category-content">
+      
+                <!-- PRODUCTO 1: HOSHI NS18 RAPTOR 2 -->
+                     <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 1 -->
+                        <button onclick="cambiarImagen('izq', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width: 300px;">
+                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 1 -->
+                            <img id="imgPrincipal-1" src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d (1).jpg" alt="Nombre que quieras ponerle" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto 1 -->
+                        <button onclick="cambiarImagen('der', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 1 -->
+                    <div id="todasLasImagenes-1" style="display:none;">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg" alt="Carro Deportivo GT-115" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H646cfe20de6a43388b9179776970ffbdY%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">               
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/effac94486a134062aa5c4cfa2353c0db6a794b9/imagenes/H440139590608408e8999890cf44569e7p%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/0f3b45db48cbc9e8e76c24de792b276b041f8c17/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                    </div>
+                      
+                  <div class="product-card">
+                 <a href="#excavator-detail" class="product-link">
                         <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
                         <div class="product-info">
                             <h3 class="product-name">Excavadora con Control</h3>
