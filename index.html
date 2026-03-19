@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -77,6 +76,7 @@
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -112,10 +112,16 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.3s;
+            cursor: pointer; /* Indica que es clicable */
         }
 
         .product-card:hover {
             transform: translateY(-5px);
+        }
+
+        .product-link {
+            text-decoration: none; /* Quita subrayado del enlace */
+            color: inherit; /* Mantiene colores originales */
         }
 
         .product-img {
@@ -142,6 +148,60 @@
             margin-bottom: 15px;
         }
 
+        /* Página de detalle de producto */
+        .product-detail {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .detail-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .detail-info h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .detail-price {
+            font-size: 2rem;
+            color: #c0392b;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .detail-description {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .detail-features {
+            margin-bottom: 30px;
+        }
+
+        .detail-features h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .detail-features ul {
+            list-style-position: inside;
+            color: #555;
+        }
+
         /* Pie de página */
         footer {
             background-color: #2c3e50;
@@ -153,67 +213,149 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="nav-container">
-            <div class="logo">MundoJuguetes</div>
-            <nav class="nav-links">
-                <a href="#">Inicio</a>
-                <a href="#">Productos</a>
-                <a href="#">Categorías</a>
-                <a href="#">Contacto</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Página de inicio -->
+    <div id="home-page">
+        <header>
+            <div class="nav-container">
+                <div class="logo">MundoJuguetes</div>
+                <nav class="nav-links">
+                    <a href="#home-page">Inicio</a>
+                    <a href="#products-section">Productos</a>
+                    <a href="#">Categorías</a>
+                    <a href="#">Contacto</a>
+                </nav>
+            </div>
+        </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Juguetes de Construcción que Inspiran</h1>
-            <p>Calidad y diversión para los pequeños constructores</p>
-            <a href="#" class="btn">Ver Catálogo</a>
-        </div>
-    </section>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Juguetes de Construcción que Inspiran</h1>
+                <p>Calidad y diversión para los pequeños constructores</p>
+                <a href="#products-section" class="btn">Ver Catálogo</a>
+            </div>
+        </section>
 
-    <section class="products-section">
-        <h2 class="section-title">Nuestros Destacados</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-name">Camión Volcador Grande</h3>
-                    <p class="product-price">$49.90</p>
-                    <a href="#" class="btn">Comprar Ahora</a>
+        <section class="products-section" id="products-section">
+            <h2 class="section-title">Nuestros Destacados</h2>
+            <div class="products-grid">
+                <!-- Tarjeta 1 - Enlace a página de detalle -->
+                <div class="product-card">
+                    <a href="#truck-detail" class="product-link">
+                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-name">Camión Volcador Grande</h3>
+                            <p class="product-price">$49.90</p>
+                            <span class="btn">Ver Detalles</span>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-name">Excavadora con Control</h3>
-                    <p class="product-price">$79.90</p>
-                    <a href="#" class="btn">Comprar Ahora</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-name">Set de Obras Viales</h3>
-                    <p class="product-price">$39.90</p>
-                    <a href="#" class="btn">Comprar Ahora</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-name">Grúa Torre Rotativa</h3>
-                    <p class="product-price">$59.90</p>
-                    <a href="#" class="btn">Comprar Ahora</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
-        <p>Ambato - Tungurahua, Ecuador</p>
-    </footer>
+                <!-- Tarjeta 2 -->
+                <div class="product-card">
+                    <a href="#excavator-detail" class="product-link">
+                        <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-name">Excavadora con Control</h3>
+                            <p class="product-price">$79.90</p>
+                            <span class="btn">Ver Detalles</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="product-card">
+                    <a href="#works-detail" class="product-link">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-name">Set de Obras Viales</h3>
+                            <p class="product-price">$39.90</p>
+                            <span class="btn">Ver Detalles</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="product-card">
+                    <a href="#crane-detail" class="product-link">
+                        <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-name">Grúa Torre Rotativa</h3>
+                            <p class="product-price">$59.90</p>
+                            <span class="btn">Ver Detalles</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
+            <p>Ambato - Tungurahua, Ecuador</p>
+        </footer>
+    </div>
+
+    <!-- Página de detalle: Camión Volcador Grande -->
+    <div id="truck-detail" style="display: none;">
+        <header>
+            <div class="nav-container">
+                <div class="logo">MundoJuguetes</div>
+                <nav class="nav-links">
+                    <a href="#home-page">Inicio</a>
+                    <a href="#products-section">Productos</a>
+                    <a href="#">Categorías</a>
+                    <a href="#">Contacto</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="product-detail">
+            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camión Volcador Grande - Detalle" class="detail-img">
+            <div class="detail-info">
+                <h2>Camión Volcador Grande</h2>
+                <p class="detail-price">$49.90</p>
+                <p class="detail-description">
+                    Este camión volcador de juguete está diseñado para horas de diversión constructiva. Fabricado con materiales resistentes y seguros para niños mayores de 3 años, cuenta con un sistema de volteo fácil de usar y ruedas con buen agarre para cualquier superficie.
+                </p>
+                <div class="detail-features">
+                    <h3>Características principales:</h3>
+                    <ul>
+                        <li>Medidas: 35 cm de largo x 18 cm de alto</li>
+                        <li>Material: Plástico resistente y no tóxico</li>
+                        <li>Color: Amarillo y negro con detalles rojos</li>
+                        <li>Incluye accesorios: 2 conos de obra y 1 pala pequeña</li>
+                        <li>Recomendado para niños de 3 a 10 años</li>
+                        <li>Fácil de limpiar y mantener</li>
+                    </ul>
+                </div>
+                <a href="#" class="btn">Comprar Ahora</a>
+                <a href="#home-page" class="btn" style="background-color: #2c3e50; color: white; margin-left: 15px;">Volver al Catálogo</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
+            <p>Ambato - Tungurahua, Ecuador</p>
+        </footer>
+    </div>
+
+    <!-- Las otras páginas de detalle (excavadora, set de obras, grúa) se pueden agregar igual que esta -->
+
+    <script>
+        // Script para mostrar/ocultar páginas al hacer clic en los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Oculta todas las páginas
+                document.querySelectorAll('div[id$="-page"], div[id$="-detail"]').forEach(page => {
+                    page.style.display = 'none';
+                });
+                // Muestra la página seleccionada
+                const targetPage = document.querySelector(this.getAttribute('href'));
+                if (targetPage) {
+                    targetPage.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
