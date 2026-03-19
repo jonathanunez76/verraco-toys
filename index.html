@@ -77,6 +77,8 @@
             border-radius: 5px;
             transition: background-color 0.3s;
             display: inline-block;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -112,7 +114,7 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.3s;
-            cursor: pointer; /* Indica que es clicable */
+            cursor: pointer;
         }
 
         .product-card:hover {
@@ -120,8 +122,8 @@
         }
 
         .product-link {
-            text-decoration: none; /* Quita subrayado del enlace */
-            color: inherit; /* Mantiene colores originales */
+            text-decoration: none;
+            color: inherit;
         }
 
         .product-img {
@@ -156,13 +158,35 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: center;
+            align-items: start;
         }
 
         .detail-img {
             width: 100%;
             border-radius: 8px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Contenedor de video */
+        .video-container {
+            width: 100%;
+            margin: 25px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .product-video {
+            width: 100%;
+            height: 250px;
+            border: none;
+        }
+
+        .video-controls {
+            background-color: #2c3e50;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
         }
 
         .detail-info h2 {
@@ -202,6 +226,16 @@
             color: #555;
         }
 
+        .back-btn {
+            background-color: #2c3e50;
+            color: white;
+            margin-left: 15px;
+        }
+
+        .back-btn:hover {
+            background-color: #34495e;
+        }
+
         /* Pie de página */
         footer {
             background-color: #2c3e50;
@@ -238,7 +272,7 @@
         <section class="products-section" id="products-section">
             <h2 class="section-title">Nuestros Destacados</h2>
             <div class="products-grid">
-                <!-- Tarjeta 1 - Enlace a página de detalle -->
+                <!-- Tarjeta 1 - Camión Volcador -->
                 <div class="product-card">
                     <a href="#truck-detail" class="product-link">
                         <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
@@ -250,7 +284,7 @@
                     </a>
                 </div>
 
-                <!-- Tarjeta 2 -->
+                <!-- Tarjeta 2 - Excavadora -->
                 <div class="product-card">
                     <a href="#excavator-detail" class="product-link">
                         <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
@@ -262,7 +296,7 @@
                     </a>
                 </div>
 
-                <!-- Tarjeta 3 -->
+                <!-- Tarjeta 3 - Set de Obras -->
                 <div class="product-card">
                     <a href="#works-detail" class="product-link">
                         <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
@@ -274,7 +308,7 @@
                     </a>
                 </div>
 
-                <!-- Tarjeta 4 -->
+                <!-- Tarjeta 4 - Grúa -->
                 <div class="product-card">
                     <a href="#crane-detail" class="product-link">
                         <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
@@ -309,7 +343,25 @@
         </header>
 
         <section class="product-detail">
-            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camión Volcador Grande - Detalle" class="detail-img">
+            <div class="detail-media">
+                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camión Volcador Grande - Detalle" class="detail-img">
+                
+                <!-- Contenedor de video -->
+                <div class="video-container">
+                    <iframe class="product-video" 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Video del Camión Volcador Grande" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    <div class="video-controls">
+                        <button class="btn" onclick="document.querySelector('.product-video').requestFullscreen()">
+                            Ver en Pantalla Completa
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div class="detail-info">
                 <h2>Camión Volcador Grande</h2>
                 <p class="detail-price">$49.90</p>
@@ -327,8 +379,8 @@
                         <li>Fácil de limpiar y mantener</li>
                     </ul>
                 </div>
-                <a href="#" class="btn">Comprar Ahora</a>
-                <a href="#home-page" class="btn" style="background-color: #2c3e50; color: white; margin-left: 15px;">Volver al Catálogo</a>
+                <button class="btn">Comprar Ahora</button>
+                <button class="btn back-btn" onclick="goBack()">Volver al Catálogo</button>
             </div>
         </section>
 
@@ -338,24 +390,30 @@
         </footer>
     </div>
 
-    <!-- Las otras páginas de detalle (excavadora, set de obras, grúa) se pueden agregar igual que esta -->
+    <!-- Otras páginas de detalle se pueden agregar con su propio video -->
 
     <script>
-        // Script para mostrar/ocultar páginas al hacer clic en los enlaces
+        // Navegación entre páginas
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                // Oculta todas las páginas
                 document.querySelectorAll('div[id$="-page"], div[id$="-detail"]').forEach(page => {
                     page.style.display = 'none';
                 });
-                // Muestra la página seleccionada
                 const targetPage = document.querySelector(this.getAttribute('href'));
                 if (targetPage) {
                     targetPage.style.display = 'block';
                 }
             });
         });
+
+        // Función para volver
+        function goBack() {
+            document.querySelectorAll('div[id$="-page"], div[id$="-detail"]').forEach(page => {
+                page.style.display = 'none';
+            });
+            document.getElementById('home-page').style.display = 'block';
+        }
     </script>
 </body>
 </html>
