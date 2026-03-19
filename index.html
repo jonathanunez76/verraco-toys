@@ -458,10 +458,12 @@ body {
             <button class="category-button" onclick="toggleCategory('vehiculos')">
                 🚗 VEHÍCULOS TELEDIRIGIDOS
             </button>
-
+            
             <div id="vehiculos" class="category-content">
       
                                  <!-- PRODUCTO 1: HOSHI NS18 RAPTOR 2 -->
+                      <div class="product-card">
+                       <a href="#truck-detail" class="product-link">
                      <div class="product-box" style="background-color: #333; color: white;">
                     <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
                         <!-- Botón Izquierda para carrusel del Producto 1 -->
@@ -482,26 +484,11 @@ body {
                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/effac94486a134062aa5c4cfa2353c0db6a794b9/imagenes/H440139590608408e8999890cf44569e7p%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
                      <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/0f3b45db48cbc9e8e76c24de792b276b041f8c17/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
                     </div>
-                    <h3>HOSHI NS18 RAPTOR 2  </h3>
-                      <p class="product-pricez">CARACTERISTICAS:</p>
- <p class="product-price">Camión RC de Alta Velocidad</p>
-                       <p class="product-pricez">ESCALA:</p>
-                      <p class="product-price">1:8</p>
-                      <p class="product-pricez">FUENTE DE ALIMENTACION:</p>
- <p class="product-price">Eléctrico</p>
-                      <p class="product-pricez">ESTADO DEL EMBALAJE:</p>
- <p class="product-price">Listo para Usarlo</p>
-                      <p class="product-pricez">INCLUYE:</p>
- <p class="product-price">el paquete Original Box, Baterías, Instrucciones de funcionamiento, Controlador remoto, Cable USB, Otros</p>
-                      <p class="product-pricez">MATERIAL:</p>
- <p class="product-price">Metal,Plástico</p>
-                      <p class="product-pricez">RANGO DE EDAD:</p>
- <p class="product-price">De 8 a 13 años, 14 años y hasta</p>
-                    <p class="product-price">$650 USD</p>
-                    <p class="in-stock">&#128994; EN STOCK</p>
-                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 1 -->
-                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20HOSHI%20NS18%20RAPTOR%202%20a%20escala%204WD%201/8%20por%20$650%20USD." target="_blank" rel="noopener noreferrer">
-                        <button class="buy-button">COMPRAR AHORA</button>
+                 <div class="product-info"> 
+                    <h3 class="product-name">Camión Volcador Grande</h3>
+                            <p class="product-price">$49.90</p>
+                            <span class="btn">Ver Detalles</span>
+                        </div>
                     </a>
                 </div>
 
@@ -949,7 +936,45 @@ body {
                 </div>
             </div>
         </section>
-    
+
+  <!-- Página de detalle: Camión Volcador Grande -->
+    <div id="truck-detail" style="display: none;">
+        <header>
+            <div class="nav-container">
+                <div class="logo">MundoJuguetes</div>
+                <nav class="nav-links">
+                    <a href="#home-page">Inicio</a>
+                    <a href="#products-section">Productos</a>
+                    <a href="#">Categorías</a>
+                    <a href="#">Contacto</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="product-detail">
+            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camión Volcador Grande - Detalle" class="detail-img">
+            <div class="detail-info">
+                <h2>Camión Volcador Grande</h2>
+                <p class="detail-price">$49.90</p>
+                <p class="detail-description">
+                    Este camión volcador de juguete está diseñado para horas de diversión constructiva. Fabricado con materiales resistentes y seguros para niños mayores de 3 años, cuenta con un sistema de volteo fácil de usar y ruedas con buen agarre para cualquier superficie.
+                </p>
+                <div class="detail-features">
+                    <h3>Características principales:</h3>
+                    <ul>
+                        <li>Medidas: 35 cm de largo x 18 cm de alto</li>
+                        <li>Material: Plástico resistente y no tóxico</li>
+                        <li>Color: Amarillo y negro con detalles rojos</li>
+                        <li>Incluye accesorios: 2 conos de obra y 1 pala pequeña</li>
+                        <li>Recomendado para niños de 3 a 10 años</li>
+                        <li>Fácil de limpiar y mantener</li>
+                    </ul>
+                </div>
+                <a href="#" class="btn">Comprar Ahora</a>
+                <a href="#home-page" class="btn" style="background-color: #2c3e50; color: white; margin-left: 15px;">Volver al Catálogo</a>
+            </div>
+        </section>
+
         <!-- SECCIÓN QUIÉNES SOMOS -->
         <section id="quienes" class="info-section">
             <h2>QUIÉNES SOMOS</h2>
