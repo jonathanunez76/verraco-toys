@@ -13,8 +13,7 @@
         img-src 'self' data: https:;
         font-src 'self' https:;
         connect-src 'self' https:;
-        frame-src 'self' https://www.whatsapp.com https://www.youtube.com https://player.vimeo.com;
-        media-src 'self' https: data:;
+        frame-src 'self' https://www.whatsapp.com;
         object-src 'none';
         base-uri 'self';
         form-action 'self';
@@ -28,14 +27,18 @@
     <title>Verraco Toys - Tienda Oficial</title>
     <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
     <meta name="robots" content="index, follow">
+
+    <!-- 🎨 ESTILOS - SOLO AÑADIDO EL FONDO -->
     <style>
+        /* RESET Y BASE */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-body {
+
+        body {
             padding-top: 80px;
             line-height: 1.6;
             background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
@@ -45,17 +48,14 @@ body {
             background-position: center;
             background-blend-mode: normal;                         ;
          }
-
+        
         /* Barra de navegación */
-        header {
-            background-color: #c0392b;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            position:fixed;
+        .navbar {
+          background-color: #222;
+            padding: 1rem;
+            position: sticky;
             top: 0;
-            left: 0;
-            width:100%;
-             z-index: 1000;
+            z-index: 100;
         }
 
         .nav-container {
@@ -64,67 +64,71 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
 
         .logo {
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #f1c40f;
-        }
-
-        /* Sección principal */
-        .hero {
-            background: url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: #fff;
             text-align: center;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .hero-content p {
             font-size: 1.5rem;
-            margin-bottom: 25px;
+            font-weight: bold;
+            text-decoration: none;
         }
 
-        .btn {
-            background-color: #f1c40f;
-            color: #2c3e50;
-            padding: 12px 25px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            display: inline-block;
+        .search-bar {
+             color: #fff;
+            flex: 1;
+            max-width: 500px;
+            margin: 0 1rem;
+            display: flex;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem;
             border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .search-btn {
+            background-color: #ff6b00;
+            color: #fff;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 4px 4px 0;
             cursor: pointer;
         }
 
-        .btn:hover {
-            background-color: #f39c12;
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            
+
+        }
+ 
+        /* Banner principal */
+        .hero-banner {
+            background: url('https://via.placeholder.com/1200x300') center/cover no-repeat;
+            text-align: center;
+            padding: 4rem 1rem;
+            margin-bottom: 2rem;
         }
 
- /* CONTENEDOR PRINCIPAL */
+        .hero-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        /* CONTENEDOR PRINCIPAL */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -245,23 +249,8 @@ body {
             font-weight: bold;
             margin-bottom: 15px;
         }
-        /* Página de detalle de producto */
-        .product-detail {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
 
-        .detail-img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
-   /* BOTÓN DE COMPRA */
+        /* BOTÓN DE COMPRA */
         .buy-button {
             background-color: #f1c40f;
             border: none;
@@ -297,84 +286,27 @@ body {
             margin-bottom: 15px;
             padding: 0 10px;
         }
-        /* Contenedor de video */
-        .video-container {
-            width: 100%;
-            margin: 25px 0;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
 
-        .product-video {
-            width: 100%;
-            height: 250px;
-            border: none;
-        }
-
-        .video-controls {
-            background-color: #2c3e50;
-            padding: 10px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .detail-info h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-
-        .detail-price {
-            font-size: 2rem;
-            color: #c0392b;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .detail-description {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .detail-features {
-            margin-bottom: 30px;
-        }
-
-        .detail-features h3 {
-            font-size: 1.3rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .detail-features ul {
-            list-style-position: inside;
-            color: #555;
-        }
-
-        .back-btn {
-            background-color: #2c3e50;
-            color: white;
-            margin-left: 15px;
-        }
-
-        .back-btn:hover {
-            background-color: #34495e;
-        }
-
-        /* Pie de página */
-        footer {
-            background-color: #2c3e50;
-            color: white;
+    /* Pie de página */
+        .footer {
+            background-color: #222;
+            color: #fff;
+            padding: 2rem 1rem;
             text-align: center;
-            padding: 25px 0;
-            margin-top: 50px;
         }
-     /* Adaptación a móviles */
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Adaptación a móviles */
         @media (max-width: 468px) {
             .nav-container {
                 flex-direction: column;
@@ -393,10 +325,12 @@ body {
             .hero-banner h1 {
                 font-size: 2rem;
             }
+        }
     </style>
 </head>
 <body>
- <!-- Barra de navegación -->
+  
+    <!-- Barra de navegación -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">Verraco Toys</a>
@@ -420,7 +354,8 @@ body {
             Contamos con modelos exclusivos, garantía oficial y atención personalizada para cada cliente.
         </p>
     </section>
-     <!-- CONTENEDOR PRINCIPAL -->
+     
+    <!-- CONTENEDOR PRINCIPAL -->
     <div class="container">
         <!-- SECCIÓN INICIO -->
          <section class="hero-banner"
@@ -429,8 +364,6 @@ body {
            <h1>Teledirigidos, coleccionables y mucho más - calidad garantizada para toda la familia</h1>   
         </section>
        
-
-        
         <!-- SECCIÓN PRODUCTOS -->
         <section id="productos"
          style="background-color: rgba(225, 225, 225, 0.5);">  
@@ -944,78 +877,46 @@ body {
             </div> <!-- Fin #otros -->
         </section> <!-- Fin SECCIÓN PRODUCTOS -->
 
-        <footer>
-            <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
-            <p>Ambato - Tungurahua, Ecuador</p>
-        </footer>
-    </div>
-
-    <!-- Página de detalle: Camión Volcador Grande -->
-    <div id="truck-detail" style="display: none;">
-        <header>
-            <div class="nav-container">
-                <div class="logo">MundoJuguetes</div>
-                <nav class="nav-links">
-                    <a href="#home-page">Inicio</a>
-                    <a href="#products-section">Productos</a>
-                    <a href="#">Categorías</a>
-                    <a href="#">Contacto</a>
-                </nav>
-            </div>
-        </header>
-
-        <section class="product-detail">
-            <div class="detail-media">
-                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camión Volcador Grande - Detalle" class="detail-img">
-                
-                <!-- Contenedor de video -->
-                <div class="video-container">
-                    <iframe class="product-video" 
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                            title="Video del Camión Volcador Grande" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                    <div class="video-controls">
-                        <button class="btn" onclick="document.querySelector('.product-video').requestFullscreen()">
-                            Ver en Pantalla Completa
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-info">
-                <h2>Camión Volcador Grande</h2>
-                <p class="detail-price">$49.90</p>
-                <p class="detail-description">
-                    Este camión volcador de juguete está diseñado para horas de diversión constructiva. Fabricado con materiales resistentes y seguros para niños mayores de 3 años, cuenta con un sistema de volteo fácil de usar y ruedas con buen agarre para cualquier superficie.
-                </p>
-                <div class="detail-features">
-                    <h3>Características principales:</h3>
-                    <ul>
-                        <li>Medidas: 35 cm de largo x 18 cm de alto</li>
-                        <li>Material: Plástico resistente y no tóxico</li>
-                        <li>Color: Amarillo y negro con detalles rojos</li>
-                        <li>Incluye accesorios: 2 conos de obra y 1 pala pequeña</li>
-                        <li>Recomendado para niños de 3 a 10 años</li>
-                        <li>Fácil de limpiar y mantener</li>
-                    </ul>
-                </div>
-                <button class="btn">Comprar Ahora</button>
-                <button class="btn back-btn" onclick="goBack()">Volver al Catálogo</button>
-            </div>
+        <!-- SECCIÓN QUIÉNES SOMOS -->
+        <section id="quienes" class="info-section">
+            <h2>QUIÉNES SOMOS</h2>
+            <p>
+                Somos una empresa dedicada a la venta de juguetes teledirigidos y productos coleccionables de las mejores marcas. Nuestro objetivo es ofrecer diversión y entretenimiento para todas las edades con productos de calidad garantizada y un servicio al cliente excepcional.
+            </p>
+            <p>
+                Ubicados en Ambato, Provincia del Tungurahua, Ecuador, nos esforzamos por ser tu tienda de referencia para encontrar ese regalo especial o ese artículo único que tanto buscas.
+            </p>
         </section>
 
-        <footer>
-            <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
-            <p>Ambato - Tungurahua, Ecuador</p>
-        </footer>
-    </div>
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto" class="info-section">
+            <h2>CONTACTO</h2>
+            <p>¿Tienes alguna pregunta? ¡No dudes en contactarnos!</p>
+            <p>
+                Puedes encontrarnos en nuestra tienda física en [Dirección de la tienda, si aplica] o escribirnos a nuestro WhatsApp: 
+                <a href="https://wa.me/593963057078?text=Hola!%20Tengo%20una%20pregunta." target="_blank" rel="noopener noreferrer" style="color: #25d366; text-decoration: none; font-weight: bold;">+593 963057078</a>
+            </p>
+            <p>
+                Horario de atención: Lunes a Viernes de 9:00 AM a 6:00 PM.
+            </p>
+        </section>
 
-    <!-- Otras páginas de detalle se pueden agregar con su propio video -->
+    </div> <!-- Fin .container -->
 
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#inicio">Inicio</a> | 
+            <a href="#productos">Productos</a> | 
+            <a href="#quienes">Quiénes Somos</a> | 
+            <a href="#contacto">Contacto</a>
+        </div>
+        <p>&copy; 2024 Verraco Toys. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- SCRIPT JAVASCRIPT: ¡PÉGALO JUSTO ANTES DE LA ETIQUETA DE CIERRE DEL BODY! -->
     <script>
-     // Función para cambiar las imágenes del carrusel
+        // Función para cambiar las imágenes del carrusel
         function cambiarImagen(direccion, productoId) {
             const imgPrincipal = document.getElementById(`imgPrincipal-${productoId}`);
             const todasLasImagenesDiv = document.getElementById(`todasLasImagenes-${productoId}`);
@@ -1140,27 +1041,7 @@ function buscarProducto() {
         document.getElementById('barra-busqueda').addEventListener('keyup', function(event) {
             if (event.key === 'Enter') buscarProducto();
             buscarProducto();
-        // Navegación entre páginas
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('div[id$="-page"], div[id$="-detail"]').forEach(page => {
-                    page.style.display = 'none';
-                });
-                const targetPage = document.querySelector(this.getAttribute('href'));
-                if (targetPage) {
-                    targetPage.style.display = 'block';
-                }
-            });
-        });
-
-        // Función para volver
-        function goBack() {
-            document.querySelectorAll('div[id$="-page"], div[id$="-detail"]').forEach(page => {
-                page.style.display = 'none';
-            });
-            document.getElementById('home-page').style.display = 'block';
-        }
+        });      
     </script>
 </body>
 </html>
