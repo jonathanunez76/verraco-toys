@@ -1,760 +1,96 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self' https:;
-        script-src 'self' 'unsafe-inline';
-        style-src 'self' 'unsafe-inline' https:;
-        img-src 'self' data: https:;
-        font-src 'self' https:;
-        connect-src 'self' https:;
-        frame-src 'self' https://www.whatsapp.com https://www.youtube.com https://player.vimeo.com;
-        media-src 'self' https: data:;
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-    ">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="X-UA-Compatible" content="IE=edge">
-
-    <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Verraco Toys - Tienda Oficial</title>
-    <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
-    <meta name="robots" content="index, follow">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-body {
-            padding-top: 80px;
-            line-height: 1.6;
-            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-blend-mode: normal;                         ;
-         }
-
-         /* Barra de navegación */
-        header {
-            background-color: #c0392b;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            position:fixed;
-            top: 0;
-            left: 0;
-            width:100%;
-             z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #f1c40f;
-        }
-
-        /* Sección principal */
-        .hero {
-            background: url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            background-color: #f1c40f;
-            color: #2c3e50;
-            padding: 12px 25px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #f39c12;
-        }
-
-        /* Sección de productos */
-        .products-section {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 3px solid #c0392b;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-link {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .product-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-name {
-            font-size: 1.2rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .product-price {
-            font-size: 1.5rem;
-            color: #c0392b;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-             /* Página de detalle de producto */
-        .product-detail {
-            
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-           
-            border: 2px solid #f1c40f;
-          
-            
-            margin-left: auto;
-            margin-right: auto;
-          
-        }
-
-        .detail-img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
-
-        /* Contenedor de video */
-
-        .video-container {
-            width: 100%;
-             max-width: 1200px;
-            height: auto;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 2px solid #f1c40f;
-            object-fit: cover;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .product-video {
-            width: 100%;
-            height: 250px;
-            border: none;
-        }
-
-        .video-controls {
-            background-color: #2c3e50;
-            padding: 10px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .detail-info h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-
-        .detail-price {
-            font-size: 2rem;
-            color: #c0392b;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .detail-description {
-            
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .detail-features {
-            margin-bottom: 30px;
-        }
-
-        .detail-features h3 {
-            font-size: 1.3rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .detail-features ul {
-            list-style-position: inside;
-            color: #555;
-        }
-
-        .back-btn {
-            background-color: #2c3e50;
-            color: white;
-            margin-left: 15px;
-        }
-
-        .back-btn:hover {
-            background-color: #34495e;
-        }
-
-        /* Pie de página */
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 25px 0;
-            margin-top: 50px;
-    
-     }
-
-        /* Adaptación a móviles */
-        @media (max-width: 468px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .search-bar {
-                max-width: 100%;
-                margin: 0;
-            }
-
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-banner h1 {
-                font-size: 2rem;
-            }
-                 .nav-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-
-
-  }
-}
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MundoJuguetes - Tienda de Juguetes de Vehículos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Página de inicio -->
-    <div id="home-page">
-        <header>
-            <div class="nav-container"style="text-align: center; padding: 10px;">
-                <div class="logo">MundoJuguetes</div>
-                <nav class="nav-links">
-                    <a href="#home-page">Inicio</a>
-                    <a href="#products-section">Productos</a>
-                    <a href="#">Categorías</a>
-                    <a href="#">Contacto</a>
-                </nav>
-            </div>
-        </header>
+    <!-- Barra de Navegación -->
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">MundoJuguetes</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#categorias">Categorías</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        <section class="hero">
-            <div class="hero-content">
-               <h1>¡Juguetes de Construcción que Inspiran¡<h1>
-                <p>Calidad y diversión para los pequeños constructores</p>
-              
-            </div>
-        </section>
-
-        <section class="products-section" id="products-section">
-            <h2 class="section-title">Nuestros Destacados</h2>
-            <div class="products-grid">
-
-
-
-                <!-- Tarjeta 1 - Camión Volcador -->
-                <div class="product-card">
-                    <a href="#truck-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Camión Volcador Grande</h3>
-                            <p class="product-price">$49.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 2 - Excavadora -->
-                <div class="product-card">
-                    <a href="#excavator-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Excavadora con Control</h3>
-                            <p class="product-price">$79.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 3 - Set de Obras -->
-                <div class="product-card">
-                    <a href="#works-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Set de Obras Viales</h3>
-                            <p class="product-price">$39.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 4 - Grúa -->
-                <div class="product-card">
-                    <a href="#crane-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Grúa Torre Rotativa</h3>
-                            <p class="product-price">$59.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
+    <!-- Sección Hero (Fondo Estilizado) -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="product-highlight">
+                <img src="https://via.placeholder.com/300x200.png?text=Camión+Raptor" alt="Camión Control Remoto Raptor" class="highlight-img">
+                <div class="highlight-video">
+                    <img src="https://via.placeholder.com/200x150.png?text=Video+Producto" alt="Video del Producto">
+                    <button class="video-btn">Ver en Pantalla Completa</button>
                 </div>
             </div>
-        </section>
-        
- <section class="products-section" id="products-section">
-            <h2 class="section-title">Nuestros Destacados</h2>
-            <div class="products-grid">
-
-
-
-                <!-- Tarjeta 5 - Camión Volcador -->
-                <div class="product-card">
-                    <a href="#truck-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Camión Volcador Grande</h3>
-                            <p class="product-price">$49.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 6 - Excavadora -->
-                <div class="product-card">
-                    <a href="#excavator-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Excavadora con Control</h3>
-                            <p class="product-price">$79.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 7 - Set de Obras -->
-                <div class="product-card">
-                    <a href="#works-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Set de Obras Viales</h3>
-                            <p class="product-price">$39.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 8 - Grúa -->
-                <div class="product-card">
-                    <a href="#crane-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Grúa Torre Rotativa</h3>
-                            <p class="product-price">$59.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-         <section class="products-section" id="products-section">
-            <h2 class="section-title">Nuestros Destacados</h2>
-            <div class="products-grid">
-
-
-
-                <!-- Tarjeta 9 - Camión Volcador -->
-                <div class="product-card">
-                    <a href="#truck-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Camión Volcador Grande</h3>
-                            <p class="product-price">$49.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 10- Excavadora -->
-                <div class="product-card">
-                    <a href="#excavator-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Excavadora con Control</h3>
-                            <p class="product-price">$79.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 11 - Set de Obras -->
-                <div class="product-card">
-                    <a href="#works-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Set de Obras Viales</h3>
-                            <p class="product-price">$39.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 12 - Grúa -->
-                <div class="product-card">
-                    <a href="#crane-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Grúa Torre Rotativa</h3>
-                            <p class="product-price">$59.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        
-        <footer>
-            <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
-            <p>Ambato - Tungurahua, Ecuador</p>
-        </footer>
-    </div>
-
-    <!-- Página de detalle: Camión Volcador Grande -->
-                  
-    <div id="truck-detail" style="display: none;">
-        <header>
-            <div class="nav-container"style="text-align: center; padding: 10px;">  
-                <div class="logo">MundoJuguetes</div>
-                <nav class="nav-links">
-                    <a href="#home-page">Inicio</a>
-                    <a href="#products-section">Productos</a>
-                    <a href="#">Categorías</a>
-                    <a href="#">Contacto</a>
-                </nav>
-            </div>
-        </header>
-
-        <section class="product-detail">
-             <div class="product-box" style="background-color: #333; color: white; text-align: center; padding: 10px;">
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                        <!-- Botón Izquierda para carrusel del Producto 1 -->
-                        <button onclick="cambiarImagen('izq', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
-                        <div style="border:3px solid yellow; padding:5px;color: white; text-align: center; padding: 10px;">
-                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 1 -->
-          
-            
-              
-                          <img id="imgPrincipal-1" src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d (1).jpg" alt="Nombre que quieras ponerle" class="detail-img">
-                        </div>
-                        <!-- Botón Derecha para carrusel del Producto 1 -->
-                        <button onclick="cambiarImagen('der', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
-                    </div>
-                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 1 -->
-                    <div id="todasLasImagenes-1" style="display:none;">
-                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg" alt="Carro Deportivo GT-115" class="product-img">
-                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
-                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
-                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H646cfe20de6a43388b9179776970ffbdY%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">               
-                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/effac94486a134062aa5c4cfa2353c0db6a794b9/imagenes/H440139590608408e8999890cf44569e7p%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
-                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/0f3b45db48cbc9e8e76c24de792b276b041f8c17/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
-                    </div>
-                <!-- Contenedor de video -->
-                <div class="video-container">
-                    <iframe class="product-video" 
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                            title="Video del Camión Volcador Grande" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                    <div class="video-controls">
-                        <button class="btn" onclick="document.querySelector('.product-video').requestFullscreen()">
-                            Ver en Pantalla Completa
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-info">
+            <div class="product-info">
                 <h2>Camión Volcador Grande</h2>
-                <p class="detail-price">$49.90</p>
-                <p class="detail-description">
-                    Este camión volcador de juguete está diseñado para horas de diversión constructiva. Fabricado con materiales resistentes y seguros para niños mayores de 3 años, cuenta con un sistema de volteo fácil de usar y ruedas con buen agarre para cualquier superficie.
-                </p>
-                <div class="detail-features">
-                    <h3>Características principales:</h3>
-                    <ul>
-                        <li>Medidas: 35 cm de largo x 18 cm de alto</li>
-                        <li>Material: Plástico resistente y no tóxico</li>
-                        <li>Color: Amarillo y negro con detalles rojos</li>
-                        <li>Incluye accesorios: 2 conos de obra y 1 pala pequeña</li>
-                        <li>Recomendado para niños de 3 a 10 años</li>
-                        <li>Fácil de limpiar y mantener</li>
-                    </ul>
+                <p class="price">$49.90</p>
+                <p>Disfruta de horas de diversión con este vehículo resistente, ideal para niños mayores de 8 años. Cuenta con sistema de control remoto y neumáticos de gran agarre.</p>
+                <div class="cta-buttons">
+                    <a href="#detalle" class="btn primary-btn">Comprar Ahora</a>
+                    <a href="#productos" class="btn secondary-btn">Volver al Catálogo</a>
                 </div>
-                <button class="btn">Comprar Ahora</button>
-                <button class="btn back-btn" onclick="goBack()">Volver al Catálogo</button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <footer>
+    <!-- Sección de Productos -->
+    <section id="productos" class="products-section">
+        <div class="container">
+            <h2>Nuestros Productos</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x200.png?text=Camión+Excavadora" alt="Camión Excavadora">
+                    <h3>Excavadora Caterpillar</h3>
+                    <p>$39.90</p>
+                    <a href="#" class="btn small-btn">Ver Detalles</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x200.png?text=Camión+Volcador" alt="Camión Volcador">
+                    <h3>Volcador Mercedes Benz</h3>
+                    <p>$45.50</p>
+                    <a href="#" class="btn small-btn">Ver Detalles</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250x200.png?text=Auto+Deportivo" alt="Auto Deportivo Control Remoto">
+                    <h3>Auto Deportivo GT</h3>
+                    <p>$34.90</p>
+                    <a href="#" class="btn small-btn">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Categorías -->
+    <section id="categorias" class="categories-section">
+        <div class="container">
+            <h2>Categorías</h2>
+            <div class="categories-list">
+                <a href="#" class="category-item">Camiones de Construcción</a>
+                <a href="#" class="category-item">Autos de Carrera</a>
+                <a href="#" class="category-item">Vehículos a Control Remoto</a>
+                <a href="#" class="category-item">Maquetas a Escala</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer id="contacto" class="main-footer">
+        <div class="container">
             <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
-            <p>Ambato - Tungurahua, Ecuador</p>
-        </footer>
-    </div>
-
-     <!-- Página de detalle: Excavadora -->
-    <div id="excavator-detail" style="display: none;">
-        <header>
-            <div class="nav-container">
-                <div class="logo">MundoJuguetes</div>
-                <nav class="nav-links">
-                    <a href="#home-page">Inicio</a>
-                    <a href="#products-section">Productos</a>
-                    <a href="#">Categorías</a>
-                    <a href="#">Contacto</a>
-                </nav>
-            </div>
-        </header>
-
-        <section class="product-detail">
-            <div class="detail-media">
-                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camión Volcador Grande - Detalle" class="detail-img">
-                
-                <!-- Contenedor de video -->
-                <div class="video-container">
-                    <iframe class="product-video" 
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                            title="Video de la Excavadora" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                    <div class="video-controls">
-                        <button class="btn" onclick="document.querySelector('.product-video').requestFullscreen()">
-                            Ver en Pantalla Completa
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-info">
-                <h2>Camión Volcador Grande</h2>
-                <p class="detail-price">$49.90</p>
-                <p class="detail-description">
-                    Este camión volcador de juguete está diseñado para horas de diversión constructiva. Fabricado con materiales resistentes y seguros para niños mayores de 3 años, cuenta con un sistema de volteo fácil de usar y ruedas con buen agarre para cualquier superficie.
-                </p>
-                <div class="detail-features">
-                    <h3>Características principales:</h3>
-                    <ul>
-                        <li>Medidas: 35 cm de largo x 18 cm de alto</li>
-                        <li>Material: Plástico resistente y no tóxico</li>
-                        <li>Color: Amarillo y negro con detalles rojos</li>
-                        <li>Incluye accesorios: 2 conos de obra y 1 pala pequeña</li>
-                        <li>Recomendado para niños de 3 a 10 años</li>
-                        <li>Fácil de limpiar y mantener</li>
-                    </ul>
-                </div>
-                <button class="btn">Comprar Ahora</button>
-                <button class="btn back-btn" onclick="goBack()">Volver al Catálogo</button>
-            </div>
-        </section>
-    
-
-    <!-- Otras páginas de detalle se pueden agregar con su propio video -->
-
-    <script>
-        // Navegación entre páginas
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('div[id$="-page"], div[id$="-detail"]').forEach(page => {
-                    page.style.display = 'none';
-                });
-                const targetPage = document.querySelector(this.getAttribute('href'));
-                if (targetPage) {
-                    targetPage.style.display = 'block';
-                }
-            });
-        });
- // Función para cambiar las imágenes del carrusel
-        function cambiarImagen(direccion, productoId) {
-            const imgPrincipal = document.getElementById(`imgPrincipal-${productoId}`);
-            const todasLasImagenesDiv = document.getElementById(`todasLasImagenes-${productoId}`);
-            // Si el div de imágenes secundarias no existe, no hacemos nada
-            if (!todasLasImagenesDiv) return;
-
-            const imagenes = todasLasImagenesDiv.getElementsByTagName('img');
-            let currentSrc = imgPrincipal.src;
-            let currentIndex = -1;
-
-            // Almacenar el src original de la imagen principal si aún no está guardado
-            if (!imgPrincipal.dataset.originalSrc) {
-                imgPrincipal.dataset.originalSrc = currentSrc;
-            }
-
-            // Determinar el índice de la imagen actual
-            if (currentSrc === imgPrincipal.dataset.originalSrc) {
-                currentIndex = -1; // -1 representa la imagen principal/original
-            } else {
-                for (let i = 0; i < imagenes.length; i++) {
-                    if (imagenes[i].src === currentSrc) {
-                        currentIndex = i;
-                        break;
-                    }
-                }
-            }
-
-            let nextIndex = currentIndex;
-
-            if (direccion === 'der') {
-                nextIndex++;
-                if (nextIndex >= imagenes.length) {
-                    nextIndex = -1; // Vuelve a la imagen principal original después de la última secundaria
-                }
-            } else { // 'izq'
-                nextIndex--;
-                if (nextIndex < -1) {
-                    nextIndex = imagenes.length - 1; // Va a la última imagen secundaria si se va hacia la izquierda desde la original
-                }
-            }
-
-            if (nextIndex === -1) {
-                imgPrincipal.src = imgPrincipal.dataset.originalSrc; // Restaura la imagen principal original
-            } else {
-                imgPrincipal.src = imagenes[nextIndex].src; // Cambia a la siguiente imagen oculta
-            }
-        }
-
-        // Esta parte es importante para guardar la SRC original de la imagen principal
-        // Se ejecuta cuando la página carga para que cada imagen principal sepa cuál es su origen
-        document.addEventListener('DOMContentLoaded', () => {
-            // Este selector busca todos los divs que son contenedores de producto
-            // Puedes ajustar este selector si tus contenedores de producto tienen una clase o ID más específica
-            const productBoxes = document.querySelectorAll('.product-box');
-            productBoxes.forEach((box, index) => {
-                // Asume que los IDs de tus productos son consecutivos empezando por 1
-                // Si tus IDs no son así (ej. id="productoA", id="productoB"), deberás ajustar la lógica para extraer el ID correcto
-                const productId = index + 1; // Ajustamos el index para que empiece en 1
-                const imgPrincipal = box.querySelector(`#imgPrincipal-${productId}`);
-                if (imgPrincipal && !imgPrincipal.dataset.originalSrc) {
-                    imgPrincipal.dataset.originalSrc = imgPrincipal.src;
-                }
-            });
-        });
-        // Función para volver
-        function goBack() {
-            document.querySelectorAll('div[id$="-page"], div[id$="-detail"]').forEach(page => {
-                page.style.display = 'none';
-            });
-            document.getElementById('home-page').style.display = 'block';
-        }
-    </script>
+            <p>Contacto: contacto@mundojuguetes.com | Teléfono: 03-212-3456</p>
+        </div>
+    </footer>
 </body>
 </html>
