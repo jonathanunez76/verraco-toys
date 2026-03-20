@@ -843,7 +843,19 @@ body {
         }
     });
 });
-    
+    // Función para volver al Catálogo
+function goToCatalog() {
+    // Ocultar todas las páginas de detalle y secciones que no sean el catálogo
+    document.querySelectorAll('div[id$="-detail"], div[id$="-section"]').forEach(page => {
+        page.style.display = 'none';
+    });
+    // Mostrar la sección de categorías (o catálogo)
+    const catalogSection = document.getElementById('categories-section'); // O el ID que tengas para el catálogo
+    if (catalogSection) {
+        catalogSection.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
  // Función para cambiar las imágenes del carrusel
         function cambiarImagen(direccion, productoId) {
             const imgPrincipal = document.getElementById(`imgPrincipal-${productoId}`);
