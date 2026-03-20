@@ -17,6 +17,7 @@
             background-color: #2c6e49;
             padding: 1rem 2rem;
             color: white;
+            position: relative; /* Para posicionar el menú móvil */
         }
 
         .header-container {
@@ -32,21 +33,69 @@
             font-weight: bold;
         }
 
-        nav ul {
+        /* Menú para escritorio */
+        .desktop-nav ul {
             list-style: none;
             display: flex;
             gap: 1.5rem;
         }
 
-        nav a {
+        .desktop-nav a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
 
-        nav a:hover {
+        .desktop-nav a:hover {
             color: #ffd700;
+        }
+
+        /* Botón de hamburguesa (oculto en escritorio) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Menú móvil (oculto por defecto) */
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #2c6e49;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-nav a:hover {
+            color: #ffd700;
+        }
+
+        /* Mostrar menú móvil cuando esté activo */
+        .mobile-nav.active {
+            display: block;
         }
 
         /* Sección Principal */
@@ -155,13 +204,17 @@
             margin-top: 3rem;
         }
 
-        /* Responsivo */
+        /* Responsivo - para pantallas menores a 768px */
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
+            .desktop-nav {
+                display: none; /* Ocultar menú de escritorio */
             }
-
+            .mobile-menu-btn {
+                display: block; /* Mostrar botón de hamburguesa */
+            }
+            .header-container {
+                flex-direction: row; /* Mantener logo y botón en fila */
+            }
             .hero-content h1 {
                 font-size: 2rem;
             }
@@ -173,7 +226,8 @@
     <header>
         <div class="header-container">
             <div class="logo">TractoJuegos</div>
-            <nav>
+            <!-- Menú para escritorio -->
+            <nav class="desktop-nav">
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#productos">Productos</a></li>
@@ -181,7 +235,18 @@
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
+            <!-- Botón de menú móvil -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
+        <!-- Menú móvil -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Sección Hero -->
@@ -241,6 +306,25 @@
         cartButtons.forEach(button => {
             button.addEventListener('click', () => {
                 alert('Producto agregado al carrito!');
+            });
+        });
+
+        // Lógica del menú móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active'); // Mostrar/ocultar menú
+            // Cambiar ícono entre hamburguesa y "X"
+            mobileMenuBtn.textContent = mobileNav.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
             });
         });
     </script>
