@@ -823,18 +823,21 @@ body {
 
     <script>
         // Navegación entre páginas
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('div[id$="-page"], div[id$="-detail"]').forEach(page => {
-                    page.style.display = 'none';
-                });
-                const targetPage = document.querySelector(this.getAttribute('href'));
-                if (targetPage) {
-                    targetPage.style.display = 'block';
-                }
-            });
+       document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('div[id$="-page"], div[id$="-detail"]').forEach(page => {
+            page.style.display = 'none';
         });
+        const targetPage = document.querySelector(this.getAttribute('href'));
+        if (targetPage) {
+            targetPage.style.display = 'block';
+            // ¡AGREGA ESTA LÍNEA AQUÍ!
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+});
+    
  // Función para cambiar las imágenes del carrusel
         function cambiarImagen(direccion, productoId) {
             const imgPrincipal = document.getElementById(`imgPrincipal-${productoId}`);
