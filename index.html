@@ -285,12 +285,13 @@ body {
             padding: 25px 0;
             margin-top: 50px;
         }
-        /* --- ESTILOS GENERALES (PARA DESKTOP Y COMO BASE) --- */
+       /* --- ESTILOS GENERALES (PARA DESKTOP PRINCIPALMENTE) --- */
 
 /* Contenedor principal de la sección de producto */
 .product-detail .product-box {
-  display: grid; /* Layout de dos columnas en desktop */
-  grid-template-columns: 1fr 1fr;
+  display: flex; /* CAMBIO: Ahora usamos Flexbox para el contenedor principal */
+  flex-direction: column; /* Apilar en columna por defecto, y lo cambiaremos con flex-wrap para desktop */
+  align-items: center; /* Centrar el contenido horizontalmente */
   gap: 20px;
   padding: 20px;
   max-width: 1200px;
@@ -299,25 +300,34 @@ body {
   color: white;
 }
 
-/* Alineación de los elementos de media (imágenes y video) en la primera columna */
-.product-images-section,
-.product-video-section {
-  grid-column: 1;
+/* Grupo de Media (Imágenes y Video) - en desktop irá al centro */
+.product-media-group {
+  display: flex; /* Para que la imagen y el video estén uno al lado del otro */
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no caben */
+  justify-content: center; /* Centrar imágenes y video si no ocupan todo el ancho */
+  gap: 20px;
+  width: 100%; /* Ocupar todo el ancho disponible */
 }
 
-/* Alineación de la información (nombre, precio, descripción) en la segunda columna */
-.product-header,
-.product-details-section {
-  grid-column: 2;
+/* Grupo de Información (Nombre, Descripción, Botones) - en desktop irá abajo de la media */
+.product-info-group {
+  display: flex;
+  flex-direction: column; /* Los elementos dentro de este grupo se apilan verticalmente */
+  align-items: center; /* Centra el contenido de este grupo */
+  gap: 15px;
+  width: 100%; /* Ocupar todo el ancho disponible */
 }
+
 
 /* Estilos para el encabezado del producto (nombre y precio) */
+.product-header {
+  text-align: center; /* Centrar el nombre y precio */
+}
 .product-header .product-name {
   font-size: 2.5rem;
   color: #2c3e50; /* Ajusta el color si es necesario */
   margin-bottom: 20px;
 }
-
 .product-header .product-price {
   font-size: 2rem;
   color: #c0392b; /* Ajusta el color si es necesario */
@@ -328,32 +338,40 @@ body {
 }
 
 /* Estilos para la descripción y características */
+.product-details-section {
+    text-align: center; /* Centra el texto de la descripción */
+    width: 100%;
+}
 .product-details-section .product-description {
   font-size: 1.1rem; /* Tamaño para pantallas grandes */
   color: #555; /* Ajusta el color si es necesario */
   line-height: 1.6;
   margin-bottom: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 600px; /* Limita el ancho del texto de descripción */
   margin-left: auto; /* Centra el bloque de texto si es más pequeño que el contenedor */
   margin-right: auto;
 }
-
 .product-details-section .product-characteristics {
   margin-bottom: 30px;
+  text-align: left; /* Alinea las características a la izquierda */
+  width: 100%;
+  max-width: 600px; /* Limita el ancho de las características */
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .product-details-section .product-characteristics h3 {
   font-size: 1.3rem;
+  text-align: center; /* Centra el título de características */
 }
 
 /* Estilos para el contenedor de la imagen principal */
 .main-image-container {
     border: 3px solid yellow; /* Borde original */
     padding: 0;
-    width: 100%;
-    height: auto;
-    max-width: 100%;
+    width: 450px; /* Ancho fijo para la imagen en desktop */
+    height: 300px; /* Altura fija para la imagen en desktop */
+    max-width: 100%; /* Para que no se desborde en pantallas un poco más pequeñas */
     overflow: hidden;
 }
 
@@ -367,8 +385,8 @@ body {
 /* Estilos para el video */
 .video-container {
   position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+  width: 450px; /* Ancho fijo para el video en desktop */
+  padding-bottom: calc(450px * 9 / 16); /* Altura basada en el ancho 450px para 16:9 */
   height: 0;
   overflow: hidden;
   margin-bottom: 10px;
@@ -388,8 +406,9 @@ body {
   display: flex;
   gap: 10px;
   margin-top: 20px;
-  /* En desktop, pueden estar en fila por defecto, o puedes usar justify-content: center */
-  justify-content: center;
+  justify-content: center; /* Centra los botones */
+  width: 100%;
+  max-width: 600px; /* Limita el ancho del grupo de botones */
 }
 
 .product-actions .btn {
@@ -399,7 +418,7 @@ body {
   font-weight: bold;
   text-align: center;
   flex-grow: 1; /* Para que ocupen el espacio disponible equitativamente */
-  max-width: 200px; /* Limita el ancho de los botones en desktop */
+  max-width: 200px; /* Limita el ancho individual de los botones en desktop */
 }
 
 .btn-buy {
@@ -451,16 +470,13 @@ body {
     flex-direction: column;
     gap: 1rem;
   }
-
   .search-bar {
     max-width: 100%;
     margin: 0;
   }
-
   .main-container {
     grid-template-columns: 1fr;
   }
-
   .hero-banner h1 {
     font-size: 2rem;
   }
@@ -470,46 +486,56 @@ body {
   /* --- ESTILOS PARA LA SECCIÓN DE PRODUCTO EN MÓVIL --- */
 
   .product-detail .product-box {
-    display: flex; /* Cambiamos a flexbox para apilar elementos */
     flex-direction: column; /* Apila los elementos verticalmente */
-    gap: 15px; /* Espacio entre los elementos apilados */
-    padding: 10px; /* Menos padding en móviles */
-    grid-template-columns: none; /* Desactiva el grid en móvil */
+    gap: 15px;
+    padding: 10px;
+  }
+
+  /* Los grupos de media e info también se apilan en móvil */
+  .product-media-group,
+  .product-info-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
   }
 
   /* Usamos 'order' para establecer el orden deseado en móvil */
   .product-header {
     order: 1; /* El nombre y precio van primero */
-    text-align: center; /* Centra el texto del encabezado en móvil */
+    text-align: center;
   }
 
   .product-images-section {
     order: 2; /* Las imágenes van después del encabezado */
-    width: 100%; /* Asegura que la sección de imágenes ocupe todo el ancho */
-    padding: 0 10px; /* Pequeño padding horizontal para la sección de imágenes */
+    width: 100%;
+    padding: 0 10px;
   }
 
   .product-video-section {
     order: 3; /* El video va después de las imágenes */
-    width: 100%; /* Asegura que la sección de video ocupe todo el ancho */
-    padding: 0 10px; /* Pequeño padding horizontal para la sección de video */
+    width: 100%;
+    padding: 0 10px;
   }
 
   .product-details-section {
     order: 4; /* La descripción, características y botones van al final */
-    width: 100%; /* Asegura que la descripción ocupe todo el ancho */
-    padding: 0 10px; /* Pequeño padding horizontal para la descripción */
+    width: 100%;
+    padding: 0 10px;
+    text-align: center; /* Centra la descripción también en móvil */
   }
+  .product-details-section .product-characteristics {
+      text-align: left; /* Las listas dentro de la descripción pueden seguir a la izquierda */
+  }
+
 
   /* Ajustes específicos para la imagen principal dentro del carrusel en móvil */
   .main-image-container {
-      width: 100%; /* Ocupa el 100% de su contenedor */
+      width: 100%;
       height: 250px; /* Una altura fija para móviles */
-      border: 2px solid yellow; /* Borde más delgado para móvil */
+      border: 2px solid yellow;
       padding: 0;
-      margin: 0 auto; /* Centra el contenedor de la imagen */
+      margin: 0 auto;
   }
-
   #imgPrincipal-1 {
       width: 100%;
       height: 100%;
@@ -523,12 +549,12 @@ body {
   .carousel-display button {
       font-size: 20px;
       padding: 5px;
-      color: yellow; /* Asegura el color si el product-box es oscuro */
+      color: yellow;
   }
 
   /* Estilos para el video en móvil */
   .video-container {
-    width: 100%; /* Ocupa todo el ancho de su contenedor */
+    width: 100%;
     margin: 0 auto 10px auto;
     padding-bottom: 56.25%;
   }
@@ -543,14 +569,14 @@ body {
     flex-direction: column; /* Apila los botones verticalmente */
     gap: 10px;
     margin-top: 20px;
-    padding: 0; /* Ya la sección tiene padding */
+    padding: 0;
+    width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
   }
-
   .product-actions .btn {
     width: 100%; /* Botones de ancho completo */
     padding: 12px 15px;
     font-size: 1rem;
-  
+    max-width: none; /* Elimina el límite de ancho individual para que ocupe todo el espacio */
   }
 }
     </style>
