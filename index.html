@@ -285,7 +285,7 @@ body {
             padding: 25px 0;
             margin-top: 50px;
         }
-     /* Adaptación a móviles */
+    /* Adaptación a móviles */
 @media (max-width: 468px) {
   /* ... Tus estilos existentes para nav-container, search-bar, main-container, hero-banner h1 ... */
   .nav-container {
@@ -304,6 +304,98 @@ body {
 
   .hero-banner h1 {
     font-size: 2rem;
+  }
+  /* --- FIN DE TUS ESTILOS EXISTENTES --- */
+
+
+  /* --- ESTILOS PARA LA SECCIÓN DE PRODUCTO EN MÓVIL --- */
+
+  /* El contenedor principal de la caja del producto */
+  .product-detail .product-box {
+    display: flex; /* CAMBIO: Usamos flexbox para apilar elementos */
+    flex-direction: column; /* CAMBIO: Apila los elementos verticalmente */
+    /* Elimina o sobrescribe cualquier `grid-template-columns` que pueda venir de desktop */
+    gap: 15px; /* Espacio entre los elementos apilados */
+    padding: 10px; /* Menos padding en móviles para ahorrar espacio */
+  }
+
+  /* Usamos la propiedad 'order' de Flexbox para establecer el orden deseado en móvil */
+  .product-header {
+    order: 1; /* El nombre y precio van primero */
+    text-align: center; /* Centra el texto del encabezado en móvil */
+  }
+
+  .product-images-section {
+    order: 2; /* Las imágenes van después del encabezado */
+    width: 100%; /* Asegura que la sección de imágenes ocupe todo el ancho */
+    /* Puedes añadir padding o margen si quieres un espacio a los lados */
+  }
+
+  .product-video-section {
+    order: 3; /* El video va después de las imágenes */
+    width: 100%; /* Asegura que la sección de video ocupe todo el ancho */
+    /* Puedes añadir padding o margen si quieres un espacio a los lados */
+  }
+
+  .product-details-section {
+    order: 4; /* La descripción, características y botones van al final */
+    width: 100%; /* Asegura que la descripción ocupe todo el ancho */
+    padding: 0 10px; /* Pequeño padding horizontal para la descripción */
+  }
+
+  /* Ajustes específicos para la imagen principal dentro del carrusel en móvil */
+  .main-image-container {
+      width: 100%; /* Ocupa el 100% de su contenedor (`product-images-section`) */
+      /* No necesitas margin auto aquí si el contenedor ya es 100% */
+      height: 250px; /* Una altura fija para móviles, ajusta si es necesario */
+      border: 2px solid yellow; /* Borde más delgado para móvil si lo deseas */
+      padding: 0; /* Quita el padding para maximizar la imagen */
+  }
+
+  #imgPrincipal-1 {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Para que la imagen se vea completa sin recortes */
+      display: block;
+  }
+
+  /* Ajustes para el carrusel y sus botones en móvil */
+  .carousel-display {
+      margin-bottom: 5px; /* Menos margen debajo del carrusel */
+      /* Elimina los estilos inline de los botones y los controla aquí */
+  }
+  .carousel-display button {
+      font-size: 20px; /* Tamaño de icono de botón más pequeño */
+      padding: 5px; /* Menos padding */
+      /* Asegúrate de que el background, border y color sean adecuados para móvil */
+      background: none;
+      border: none;
+      color: yellow;
+      cursor: pointer;
+  }
+
+  /* Estilos para el video en móvil */
+  .video-container {
+    width: 95%; /* Un poco de margen a los lados */
+    margin: 0 auto 10px auto; /* Centra el video y le da margen inferior */
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+  }
+
+  /* Estilos para los botones de acción (Comprar Ahora, Volver al Catálogo) en móvil */
+  .product-actions {
+    display: flex;
+    flex-direction: column; /* Apila los botones verticalmente */
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0 10px; /* Padding para que los botones no se peguen a los bordes */
+  }
+
+  .product-actions .btn {
+    width: 100%; /* Botones de ancho completo */
+    padding: 12px 15px; /* Un poco más de padding para que sean más fáciles de tocar */
+    font-size: 1rem; /* Ajusta el tamaño de la fuente si es necesario */
+  }
+
   }
   /* --- FIN DE TUS ESTILOS EXISTENTES --- */
 
