@@ -395,11 +395,20 @@ body {
                 <h1>Juguetes de Construcción que Inspiran</h1>
                 <p>Calidad y diversión para los pequeños constructores</p>
             
-      
-                <a href="#products-section" class="btn">Ver Catálogo</a>
+        <div style="padding: 10px; text-align: center;">
+                <input type="text" id="barra-busqueda" placeholder="Buscar productos... (ej: carro, dron)" 
+                       style="padding: 8px 15px; width: 80%; max-width: 400px; border-radius: 5px; border: none; margin-right: 5px;">
+                <button class="boton-de-busqueda" onclick="buscarProducto()" 
+                        style="padding: 8px 15px; background-color: #f1c40f; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                    Buscar
+                </button>     
+            </div>
+            <!-- CONTENEDOR PARA RESULTADOS DE BÚSQUEDA -->
+            <div id="resultados-busqueda" style="position:absolute; background:white; padding:10px; border:1px solid #ccc; display:none; z-index:100; width:80%; max-width:400px; margin-left:auto; margin-right:auto; left:0; right:0;"> 
+                
             </div>
     
-   </section>
+
 
 
 
