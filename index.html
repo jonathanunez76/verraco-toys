@@ -287,120 +287,143 @@ body {
         }
     
 
-/* --- MEDIA QUERY PARA PANTALLAS DE CELULAR (ANCHO MÁXIMO DE 468PX) --- */
+/* --- ADAPTACIÓN A MÓVILES PARA LA PÁGINA DEL PRODUCTO --- */
 @media (max-width: 468px) {
-  /* Tus estilos existentes para nav-container, search-bar, main-container, hero-banner h1 */
-  .nav-container {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .search-bar {
-    max-width: 100%;
-    margin: 0;
-  }
-  .main-container {
-    grid-template-columns: 1fr;
-  }
-  .hero-banner h1 {
-    font-size: 2rem;
-  }
-  /* --- FIN DE TUS ESTILOS EXISTENTES --- */
-
-
-  /* --- ESTILOS PARA LA SECCIÓN DE PRODUCTO EN MÓVIL --- */
-
+  /* Restablecer layout principal del product-box a flexbox para apilar */
   .product-detail .product-box {
-    flex-direction: column; /* Apila los elementos verticalmente */
-    gap: 15px;
-    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Apila todos los elementos verticalmente */
+    gap: 15px; /* Espacio entre los bloques */
+    padding: 10px; /* Padding general para el contenido */
+    max-width: 100%; /* Asegura que no tenga un ancho máximo fijo */
+    margin: 0; /* Elimina márgenes extra */
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho/alto */
   }
 
-  /* Los grupos de media e info también se apilan en móvil */
+  /* Resetear layout de grupos (si se usó flex/grid en desktop) */
   .product-media-group,
   .product-info-group {
-    flex-direction: column;
-    width: 100%;
-    gap: 15px;
+    display: flex; /* Asegura que sean flex containers */
+    flex-direction: column; /* Apila sus contenidos */
+    width: 100%; /* Ocupa todo el ancho */
+    gap: 15px; /* Espacio entre elementos del grupo */
   }
 
-  /* Usamos 'order' para establecer el orden deseado en móvil */
-  .product-header {
-    order: 1; /* El nombre y precio van primero */
-    text-align: center;
-  }
+  /* --- ORDEN ESPECÍFICO PARA MÓVILES CON 'order' --- */
 
   .product-images-section {
-    order: 2; /* Las imágenes van después del encabezado */
+    order: 1; /* PRIMERO: La sección de imágenes */
     width: 100%;
-    padding: 0 10px;
+    padding: 0 10px; /* Margen a los lados */
+    box-sizing: border-box;
   }
 
   .product-video-section {
-    order: 3; /* El video va después de las imágenes */
+    order: 2; /* SEGUNDO: La sección del video */
     width: 100%;
-    padding: 0 10px;
+    padding: 0 10px; /* Margen a los lados */
+    box-sizing: border-box;
+  }
+
+  .product-header {
+    order: 3; /* TERCERO: El nombre y precio del producto */
+    width: 100%;
+    text-align: center; /* Centra el texto */
+    padding: 0 10px; /* Margen a los lados */
+    box-sizing: border-box;
   }
 
   .product-details-section {
-    order: 4; /* La descripción, características y botones van al final */
+    order: 4; /* CUARTO: La descripción y características */
     width: 100%;
-    padding: 0 10px;
-    text-align: center; /* Centra la descripción también en móvil */
-  }
-  .product-details-section .product-characteristics {
-      text-align: left; /* Las listas dentro de la descripción pueden seguir a la izquierda */
+    padding: 0 10px; /* Margen a los lados */
+    box-sizing: border-box;
+    text-align: left; /* Alineación del texto de la descripción */
   }
 
+  /* --- AJUSTES DE TAMAÑO PARA ELEMENTOS ESPECÍFICOS EN MÓVIL --- */
 
-  /* Ajustes específicos para la imagen principal dentro del carrusel en móvil */
+  /* Asegurarse que el contenedor de la imagen principal sea más grande */
   .main-image-container {
-      width: 100%;
-      height: 250px; /* Una altura fija para móviles */
-      border: 2px solid yellow;
-      padding: 0;
-      margin: 0 auto;
+    width: 100%; /* Ocupa todo el ancho de su contenedor */
+    height: 280px; /* Altura más grande, ajusta si es necesario */
+    margin: 0 auto; /* Centra el contenedor si su contenido es más pequeño */
+    border: 2px solid yellow; /* Borde más sutil si quieres */
+    padding: 0;
+    box-sizing: border-box;
   }
+
   #imgPrincipal-1 {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recortarla */
+    display: block; /* Elimina espacio extra debajo */
   }
 
-  /* Ajustes para los botones del carrusel en móvil */
-  .carousel-display {
-      margin-bottom: 5px;
-  }
-  .carousel-display button {
-      font-size: 20px;
-      padding: 5px;
-      color: yellow;
-  }
-
-  /* Estilos para el video en móvil */
+  /* Ajustes para el video */
   .video-container {
     width: 100%;
-    margin: 0 auto 10px auto;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    margin-bottom: 10px;
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Ajustar tamaño de fuente para el nombre del producto */
+  .product-header .product-name {
+    font-size: 1.8rem; /* Tamaño de letra más pequeño para el nombre */
+    margin-bottom: 10px;
+  }
+  .product-header .product-price {
+    font-size: 1.5rem; /* Tamaño de letra más pequeño para el precio */
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Borde más fino */
+    padding-bottom: 5px;
   }
 
   /* Reducir el tamaño de la fuente de la descripción en móvil */
   .product-details-section .product-description {
-    font-size: 0.95rem; /* Tamaño más pequeño para celulares */
+    font-size: 0.95rem; /* Tamaño de letra más pequeño para la descripción */
+    line-height: 1.5; /* Ajusta el interlineado */
+    max-width: none; /* Elimina la restricción de ancho máximo para que ocupe todo el espacio */
+    text-align: left; /* Alinea a la izquierda en móvil */
   }
 
-  /* Estilos para los botones de acción (Comprar Ahora, Volver al Catálogo) en móvil */
+  .product-details-section .product-characteristics {
+      max-width: none; /* Elimina la restricción de ancho máximo */
+      text-align: left;
+  }
+  .product-details-section .product-characteristics h3 {
+      font-size: 1.1rem; /* Tamaño más pequeño para el título de características */
+      text-align: left;
+  }
+
+
+  /* Estilos para los botones de acción en móvil */
   .product-actions {
     flex-direction: column; /* Apila los botones verticalmente */
     gap: 10px;
-    margin-top: 20px;
-    padding: 0;
-    width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
+    margin-top: 15px;
+    width: 100%;
+    max-width: none; /* Que los botones ocupen todo el ancho disponible */
   }
   .product-actions .btn {
     width: 100%; /* Botones de ancho completo */
     padding: 12px 15px;
     font-size: 1rem;
-    max-width: none; /* Elimina el límite de ancho individual para que ocupe todo el espacio */
+    max-width: none; /* Elimina el límite de ancho individual */
+  }
+
+  /* Ajustes para los botones del carrusel en móvil */
+  .carousel-display button {
+      font-size: 1.5rem; /* Iconos de botón más grandes para móviles */
+      padding: 0 5px;
   }
 }
     </style>
