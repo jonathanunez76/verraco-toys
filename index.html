@@ -190,17 +190,19 @@ body {
             margin-bottom: 15px;
         }
 
-        /* Página de detalle de producto */
-        .product-detail {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-     
-      }
+         /* IMÁGENES DE PRODUCTOS */
+        .product-img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 2px solid #f1c40f;
+            object-fit: cover;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         .detail-img {
             width: 100%;
@@ -323,146 +325,10 @@ body {
             text-align: center;
             padding: 25px 0;
             margin-top: 50px;
-        }
+    
     
 
-/* --- ADAPTACIÓN A MÓVILES PARA LA PÁGINA DEL PRODUCTO --- */
-@media (max-width: 468px) {
-  /* Restablecer layout principal del product-box a flexbox para apilar */
-  .product-detail .product-box {
-    display: flex;
-    flex-direction: column; /* Apila todos los elementos verticalmente */
-    gap: 15px; /* Espacio entre los bloques */
-    padding: 10px; /* Padding general para el contenido */
-    max-width: 100%; /* Asegura que no tenga un ancho máximo fijo */
-    margin: 0; /* Elimina márgenes extra */
-    box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho/alto */
-  }
 
-  /* Resetear layout de grupos (si se usó flex/grid en desktop) */
-  .product-media-group,
-  .product-info-group {
-    display: flex; /* Asegura que sean flex containers */
-    flex-direction: column; /* Apila sus contenidos */
-    width: 100%; /* Ocupa todo el ancho */
-    gap: 15px; /* Espacio entre elementos del grupo */
-  }
-
-  /* --- ORDEN ESPECÍFICO PARA MÓVILES CON 'order' --- */
-
-  .product-images-section {
-    order: 1; /* PRIMERO: La sección de imágenes */
-    width: 100%;
-    padding: 0 10px; /* Margen a los lados */
-    box-sizing: border-box;
-  }
-
-  .product-video-section {
-    order: 2; /* SEGUNDO: La sección del video */
-    width: 100%;
-    padding: 0 10px; /* Margen a los lados */
-    box-sizing: border-box;
-  }
-
-  .product-header {
-    order: 3; /* TERCERO: El nombre y precio del producto */
-    width: 100%;
-    text-align: center; /* Centra el texto */
-    padding: 0 10px; /* Margen a los lados */
-    box-sizing: border-box;
-  }
-
-  .product-details-section {
-    order: 4; /* CUARTO: La descripción y características */
-    width: 100%;
-    padding: 0 10px; /* Margen a los lados */
-    box-sizing: border-box;
-    text-align: left; /* Alineación del texto de la descripción */
-  }
-
-  /* --- AJUSTES DE TAMAÑO PARA ELEMENTOS ESPECÍFICOS EN MÓVIL --- */
-
-  /* Asegurarse que el contenedor de la imagen principal sea más grande */
-  .main-image-container {
-    width: 100%; /* Ocupa todo el ancho de su contenedor */
-    height: 280px; /* Altura más grande, ajusta si es necesario */
-    margin: 0 auto; /* Centra el contenedor si su contenido es más pequeño */
-    border: 2px solid yellow; /* Borde más sutil si quieres */
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  #imgPrincipal-1 {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recortarla */
-    display: block; /* Elimina espacio extra debajo */
-  }
-
-  /* Ajustes para el video */
-  .video-container {
-    width: 100%;
-    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
-    height: 0;
-    margin-bottom: 10px;
-  }
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Ajustar tamaño de fuente para el nombre del producto */
-  .product-header .product-name {
-    font-size: 1.8rem; /* Tamaño de letra más pequeño para el nombre */
-    margin-bottom: 10px;
-  }
-  .product-header .product-price {
-    font-size: 1.5rem; /* Tamaño de letra más pequeño para el precio */
-    margin-bottom: 10px;
-    border-bottom: 1px solid #eee; /* Borde más fino */
-    padding-bottom: 5px;
-  }
-
-  /* Reducir el tamaño de la fuente de la descripción en móvil */
-  .product-details-section .product-description {
-    font-size: 0.95rem; /* Tamaño de letra más pequeño para la descripción */
-    line-height: 1.5; /* Ajusta el interlineado */
-    max-width: none; /* Elimina la restricción de ancho máximo para que ocupe todo el espacio */
-    text-align: left; /* Alinea a la izquierda en móvil */
-  }
-
-  .product-details-section .product-characteristics {
-      max-width: none; /* Elimina la restricción de ancho máximo */
-      text-align: left;
-  }
-  .product-details-section .product-characteristics h3 {
-      font-size: 1.1rem; /* Tamaño más pequeño para el título de características */
-      text-align: left;
-  }
-
-
-  /* Estilos para los botones de acción en móvil */
-  .product-actions {
-    flex-direction: column; /* Apila los botones verticalmente */
-    gap: 10px;
-    margin-top: 15px;
-    width: 100%;
-    max-width: none; /* Que los botones ocupen todo el ancho disponible */
-  }
-  .product-actions .btn {
-    width: 100%; /* Botones de ancho completo */
-    padding: 12px 15px;
-    font-size: 1rem;
-    max-width: none; /* Elimina el límite de ancho individual */
-  }
-
-  /* Ajustes para los botones del carrusel en móvil */
-  .carousel-display button {
-      font-size: 1.5rem; /* Iconos de botón más grandes para móviles */
-      padding: 0 5px;
   }
 }
     </style>
