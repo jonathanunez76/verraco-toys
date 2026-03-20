@@ -369,11 +369,16 @@ body {
   /* Adaptación a móviles */
         @media (max-width: 400px) {
             .nav-container {
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
+                flex-direction: column;
+                justify-content:center;
                 gap: 0.5rem;
                 padding: 0 5px
+            }
+
+            .nav-limks {
+                display: flex;
+                justify-content: center;
+                gap: 0.8rem;
             }
             .nav-container a {
                 font-size: 0.9rem;
@@ -407,7 +412,7 @@ body {
    
             <div class="nav-container">
                 <div class="logo">MundoJuguetes</div>    
-                <nav class="nav-links" style="text-align: center; padding: 10px;">        
+                <nav class="nav-links">        
                     <a href="#home-page">Inicio</a>
                     <a href="#products-section">Productos</a>
                     <a href="#">Categorías</a>
