@@ -848,6 +848,7 @@ function goToCatalog() {
     // Ocultar todo
     document.querySelectorAll('div[id$="-detail"], section[id$="-section"], div[id$="-page"]').forEach(page => {
         page.style.display = 'none';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
     // ¡PRIMERO HACEMOS SCROLL AL INICIO!
@@ -857,7 +858,7 @@ function goToCatalog() {
     const catalogSection = document.getElementById('categories-section');
     if (catalogSection) {
         catalogSection.style.display = 'block';
-
+ window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
  // Función para cambiar las imágenes del carrusel
