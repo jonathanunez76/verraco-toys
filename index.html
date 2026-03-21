@@ -310,7 +310,34 @@ body {
             object-fit: contain;
             margin: 0 auto;
         }
+.productos-section {
+          width: 100%;
+            max-width: 1200px;
+            height: auto;
+           
+            border-radius: 15px;
+            border: 5px solid #f1c40f;
+            
+        
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            text-align: center;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top:20px;
+          
+        }
 
+        .detail-img {
+            width: 100%;
+            max-width:1200px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            object-fit: contain;
+            margin: 0 auto;
+        }
         /* Contenedor de video */
 
         .video-container {
@@ -839,8 +866,9 @@ body {
     </div>
 
 <!-- SECCIÓN PRODUCTOS -->
- <section class="productos-section">
-      <div class="product-box" style="background-color: #333; color: white;">
+<section id="productos-section" style="display: none;">
+                
+<div class="product-box" style="background-color: #333; color: white;">
                     <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
                         <!-- Botón Izquierda para carrusel del Producto 1 -->
                         <button onclick="cambiarImagen('izq', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
@@ -880,7 +908,6 @@ body {
             <div class="detail-info">
                 <h2>Camión Volcador Grande</h2>
                 <p class="detail-price">$49.90</p>
-                <p class="in-stock">&#128994; EN STOCK</p>
                 <p class="detail-description">
                     Este camión volcador de juguete está diseñado para horas de diversión constructiva. Fabricado con materiales resistentes y seguros para niños mayores de 3 años, cuenta con un sistema de volteo fácil de usar y ruedas con buen agarre para cualquier superficie.
                 </p>
@@ -895,22 +922,10 @@ body {
                         <li>Fácil de limpiar y mantener</li>
                     </ul>
                 </div>
-                <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 2 -->
-                   <button class="btn" onclick="location.href='https://wa.me/593963057078?text=Hola!%20Quiero%20comprar%20el%20Camión%20Volcador%20Grande'">
-                   Comprar Ahora
-                  </button>
-
-         <button class="btn" onclick="window.location.href = 'index.html'">Volver al Catálogo</button>
+                <button class="btn">Comprar Ahora</button>
+                <button class="btn back-btn" onclick="goBack()">Volver al Catálogo</button>
             </div>
         </section>
-
-
-
-
-    
-
-
-
     
 
 <!-- SECCIÓN ¿QUIENES SOMOS? -->
