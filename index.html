@@ -421,6 +421,9 @@ body {
 }
     </style>
 </head>
+
+
+    
 <body>
 
 
@@ -433,12 +436,12 @@ body {
    
             <div class="nav-container">
                 <div class="logo">MundoJuguetes</div>    
-                <nav class="nav-links">        
-                    <a href="#home-page">Inicio</a>
-                    <a href="#products-section">Productos</a>
-                    <a href="#">Categorías</a>
-                    <a href="#">Contacto</a>
-                </nav>
+               <nav class="nav-links">
+  <a href="#home-page" onclick="mostrarSeccion('home-page')">Inicio</a>
+  <a href="#products-section" onclick="mostrarSeccion('products-section')">Productos</a>
+  <a href="#categorias-section" onclick="mostrarSeccion('categorias-section')">Categorías</a>
+  <a href="#contacto-section" onclick="mostrarSeccion('contacto-section')">Contacto</a>
+</nav>
             </div>
                  
       
@@ -821,12 +824,23 @@ body {
         </footer>
     </div>
 
+<!-- SECCIÓN DE CATEGORÍAS -->
+<section id="categorias-section" style="display: none;">
+  <h2>Categorías de Juguetes</h2>
+  <p>• Camiones de Construcción<br>• Maquinarias Pequeñas<br>• Accesorios de Obra</p>
+</section>
 
+<!-- SECCIÓN DE CONTACTO -->
+<section id="contacto-section" style="display: none;">
+  <h2>Contacto</h2>
+  <p>📞 Teléfono: 0987654321<br>📍 Dirección: Ambato - Tungurahua<br>✉️ Correo: contacto@mundojuguetes.com</p>
+</section>
     
 
     <!-- Otras páginas de detalle se pueden agregar con su propio video -->
 
     <script>
+        
         // Navegación entre páginas
        document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -924,6 +938,18 @@ body {
             });
             document.getElementById('home-page').style.display = 'block';
         }
+
+function mostrarSeccion(nombreSeccion) {
+  // Ocultar TODAS las secciones primero
+  document.querySelectorAll('div[id$="-page"], div[id$="-detail"], section[id$="-section"]').forEach(seccion => {
+    seccion.style.display = 'none';
+  });
+  // Mostrar solo la sección seleccionada
+  document.getElementById(nombreSeccion).style.display = 'block';
+  // Ir al inicio de la página
+  window.scrollTo(0, 0);
+}
+       
     </script>
 </body>
 </html>
