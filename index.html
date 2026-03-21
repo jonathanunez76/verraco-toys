@@ -281,65 +281,59 @@ body {
             padding: 0 10px;
         }
     
-             /* Página de detalle de producto */
-        .product-detail {
-            width: 100%;
-            max-width: 1200px;
-            height: auto;
-           
-            border-radius: 15px;
-            border: 5px solid #f1c40f;
-            
-        
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            text-align: center;
-            display: flex;
-            margin-left: auto;
-            margin-right: auto;
-            padding-top:20px;
-          
-        }
+          /* Página de detalle de producto */
+.product-detail {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 15px;
+  border: 5px solid #f1c40f;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+}
 
-        .detail-img {
-            width: 100%;
-            max-width:1200px;
-            border-radius: 8px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            object-fit: contain;
-            margin: 0 auto;
-        }
+.detail-img {
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  object-fit: contain;
+  margin: 0 auto;
+}
 
-        /* Página de detalle de producto */
-.product-section {
-          width: 100%;
-            max-width: 1200px;
-            height: auto;
-           
-            border-radius: 15px;
-            border: 5px solid #f1c40f;
-            
-        
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            text-align: center;
-            display: flex;
-            margin-left: auto;
-            margin-right: auto;
-            padding-top:20px;
-          
-        }
+/* AQUÍ PEGAS LOS NUEVOS ESTILOS */
+/* ESTILO PARA LA SECCIÓN DE PRODUCTOS */
+#products-section {
+  display: none;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px 15px;
+  background-color: white;
+  position: relative;
+  z-index: 1;
+}
 
-        .detail-img {
-            width: 100%;
-            max-width:1200px;
-            border-radius: 8px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            object-fit: contain;
-            margin: 0 auto;
-        }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.product-card {
+  border: 3px solid #f1c40f;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+
         /* Contenedor de video */
 
         .video-container {
@@ -872,180 +866,37 @@ body {
                 
 
         <section class="products-section" id="products-section">
-            <h2 class="section-title">Nuestros Destacados</h2>
-            <div class="products-grid">
-
-
-
-                <!-- Tarjeta 1 - Camión Volcador -->
-                <div class="product-card">
-                    <a href="#truck-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Camión Volcador Grande</h3>
-                            <p class="product-price">$49.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 2 - Excavadora -->
-                <div class="product-card">
-                    <a href="#excavator-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Excavadora con Control</h3>
-                            <p class="product-price">$79.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 3 - Set de Obras -->
-                <div class="product-card">
-                    <a href="#works-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Set de Obras Viales</h3>
-                            <p class="product-price">$39.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 4 - Grúa -->
-                <div class="product-card">
-                    <a href="#crane-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Grúa Torre Rotativa</h3>
-                            <p class="product-price">$59.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-        
- <section class="products-section" id="products-section">
-            <h2 class="section-title">Nuestros Destacados</h2>
-            <div class="products-grid">
-
-
-
-                <!-- Tarjeta 5 - Camión Volcador -->
-                <div class="product-card">
-                    <a href="#truck-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Camión Volcador Grande</h3>
-                            <p class="product-price">$49.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 6 - Excavadora -->
-                <div class="product-card">
-                    <a href="#excavator-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Excavadora con Control</h3>
-                            <p class="product-price">$79.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 7 - Set de Obras -->
-                <div class="product-card">
-                    <a href="#works-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Set de Obras Viales</h3>
-                            <p class="product-price">$39.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 8 - Grúa -->
-                <div class="product-card">
-                    <a href="#crane-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Grúa Torre Rotativa</h3>
-                            <p class="product-price">$59.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-         <section class="products-section" id="products-section">
-            <h2 class="section-title">Nuestros Destacados</h2>
-            <div class="products-grid">
-
-
-
-                <!-- Tarjeta 9 - Camión Volcador -->
-                <div class="product-card">
-                    <a href="#truck-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Camión Volcador Grande</h3>
-                            <p class="product-price">$49.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 10- Excavadora -->
-                <div class="product-card">
-                    <a href="#excavator-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1566305882121-2f41e9414b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Excavadora con Control</h3>
-                            <p class="product-price">$79.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 11 - Set de Obras -->
-                <div class="product-card">
-                    <a href="#works-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de construcción" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Set de Obras Viales</h3>
-                            <p class="product-price">$39.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 12 - Grúa -->
-                <div class="product-card">
-                    <a href="#crane-detail" class="product-link">
-                        <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa juguete" class="product-img">
-                        <div class="product-info">
-                            <h3 class="product-name">Grúa Torre Rotativa</h3>
-                            <p class="product-price">$59.90</p>
-                            <span class="btn">Ver Detalles</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        
-        <footer>
-            <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
-            <p>Ambato - Tungurahua, Ecuador</p>
-        </footer>
+  <h2 class="section-title">Todos Nuestros Productos</h2>
+  
+  <!-- Grid igual que en las categorías -->
+  <div class="products-grid">
+    <!-- Tarjeta 1: Camión Volcador -->
+    <div class="product-card">
+      <a href="#truck-detail" class="product-link">
+        <img src="..." alt="Camión Volcador">
+        <div class="product-info">
+          <h3>Camión Volcador Grande</h3>
+          <p>$49.90</p>
+          <span class="btn">Ver Detalles</span>
+        </div>
+      </a>
     </div>
 
+    <!-- Tarjeta 2: Excavadora -->
+    <div class="product-card">
+      <a href="#excavator-detail" class="product-link">
+        <img src="..." alt="Excavadora">
+        <div class="product-info">
+          <h3>Excavadora con Control</h3>
+          <p>$79.90</p>
+          <span class="btn">Ver Detalles</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- AÑADE MÁS TARJETAS AQUÍ SI QUIERES -->
+  </div>
+</section>
 
 <!-- SECCIÓN ¿QUIENES SOMOS? -->
 <section id="quienes-section" style="display: none;">
