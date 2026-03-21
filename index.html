@@ -266,6 +266,21 @@ body {
             margin-bottom: 15px;
         }
 
+          /* SECCIONES DE INFORMACIÓN */
+        .info-section {
+            background-color: rgba(225, 225, 225, 0.5);
+            padding: 25px;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .info-section p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            padding: 0 10px;
+        }
+
              /* Página de detalle de producto */
         .product-detail {
             width: 100%;
@@ -818,34 +833,31 @@ body {
             </div>
         </section>
 
-        <footer>
+
+           <footer>
             <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
             <p>Ambato - Tungurahua, Ecuador</p>
         </footer>
     </div>
- <!-- SECCIÓN QUIÉNES SOMOS -->
-        <section id="quienes" class="info-section">
-            <h2>QUIÉNES SOMOS</h2>
-            <p>
-                Somos una empresa dedicada a la venta de juguetes teledirigidos y productos coleccionables de las mejores marcas. Nuestro objetivo es ofrecer diversión y entretenimiento para todas las edades con productos de calidad garantizada y un servicio al cliente excepcional.
-            </p>
-            <p>
-                Ubicados en Ambato, Provincia del Tungurahua, Ecuador, nos esforzamos por ser tu tienda de referencia para encontrar ese regalo especial o ese artículo único que tanto buscas.
-            </p>
-        </section>
 
-        <!-- SECCIÓN CONTACTO -->
-        <section id="contacto" class="info-section">
-            <h2>CONTACTO</h2>
-            <p>¿Tienes alguna pregunta? ¡No dudes en contactarnos!</p>
-            <p>
-                Puedes encontrarnos en nuestra tienda física en [Dirección de la tienda, si aplica] o escribirnos a nuestro WhatsApp: 
-                <a href="https://wa.me/593963057078?text=Hola!%20Tengo%20una%20pregunta." target="_blank" rel="noopener noreferrer" style="color: #25d366; text-decoration: none; font-weight: bold;">+593 963057078</a>
-            </p>
-            <p>
-                Horario de atención: Lunes a Viernes de 9:00 AM a 6:00 PM.
-            </p>
-        </section>
+ <!-- SECCIÓN QUIENES SOMOS -->
+<section id="quienes-section" class="info-section" style="display: none;">
+  <h2>QUIENES SOMOS</h2>
+<p>Somos una empresa dedicada a la venta de juguetes teledirigidos y productos coleccionables de las mejores marcas. Nuestro objetivo es ofrecer diversión y entretenimiento para todas las edades con productos de calidad garantizada y un servicio al cliente excepcional.</p>
+  <p>Ubicados en Ambato, Provincia del Tungurahua, Ecuador, nos esforzamos por ser tu tienda de referencia para encontrar ese regalo especial o ese artículo único que tanto buscas.</p>
+</section>
+
+<!-- SECCIÓN CONTACTO -->
+<section id="contacto-section" class="info-section" style="display: none;">
+  <h2>CONTACTO</h2>
+<p>¿Tienes alguna pregunta? ¡No dudes en contactarnos!</p>
+<p>Puedes encontrarnos en nuestra tienda física en [Dirección de la tienda, si aplica] o escribirnos a nuestro WhatsApp: 
+<a href="https://wa.me/593963057078?text=Hola!%20Tengo%20una%20pregunta." target="_blank" rel="noopener noreferrer" style="color: #25d366; text-decoration: none; font-weight: bold;">+593 963057078</a>
+</p>
+<p> Horario de atención: Lunes a Viernes de 9:00 AM a 6:00 PM.</p>
+</section>
+
+    
         <script>
         // Navegación entre páginas
        document.querySelectorAll('a[href^="#"]').forEach(link => {
