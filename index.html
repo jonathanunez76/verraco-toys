@@ -452,7 +452,7 @@ body {
                <nav class="nav-links">
    <a href="#home-page">Inicio</a>
 
-      <a href="#productos" style="margin: 0 10px; text-decoration: none; color: #fff;">Productos</a>
+        <a href="#productos" style="margin: 0 10px; text-decoration: none; color: #fff;">Productos</a>
   <a href="#quienes-section" onclick="mostrarSeccion('quienes-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">¿Quiénes Somos?</a>
   <a href="#contacto-section" onclick="mostrarSeccion('contacto-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">Contacto</a>
 </nav>
@@ -837,6 +837,528 @@ body {
     </div>
 
     
+  <section id="productos"
+         style="background-color: rgba(225, 225, 225, 0.5);">  
+            <h2>NUESTROS PRODUCTOS</h2>
+            
+             <div style="padding: 10px; text-align: center;">
+                <input type="text" id="barra-busqueda" placeholder="Buscar productos... (ej: carro, dron)" 
+                       style="padding: 8px 15px; width: 80%; max-width: 400px; border-radius: 5px; border: none; margin-right: 5px;">
+                <button class="boton-de-busqueda" onclick="buscarProducto()" 
+                        style="padding: 8px 15px; background-color: #f1c40f; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                    Buscar
+                </button>     
+            </div>
+            <!-- CONTENEDOR PARA RESULTADOS DE BÚSQUEDA -->
+            <div id="resultados-busqueda" style="position:absolute; background:white; padding:10px; border:1px solid #ccc; display:none; z-index:100; width:80%; max-width:400px; margin-left:auto; margin-right:auto; left:0; right:0;"> 
+                
+            </div>
+
+            <!-- ================== CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS ================== -->
+            <button class="category-button" onclick="toggleCategory('vehiculos')">
+                🚗 VEHÍCULOS TELEDIRIGIDOS
+            </button>
+
+            <div id="vehiculos" class="category-content">
+      
+                                 <!-- PRODUCTO 1: HOSHI NS18 RAPTOR 2 -->
+                     <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 1 -->
+                        <button onclick="cambiarImagen('izq', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width: 300px;">
+                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 1 -->
+                            <img id="imgPrincipal-1" src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d (1).jpg" alt="Nombre que quieras ponerle" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto 1 -->
+                        <button onclick="cambiarImagen('der', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 1 -->
+                    <div id="todasLasImagenes-1" style="display:none;">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/cd15f89ff471479af7092272e355480ee99c2b4a/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg" alt="Carro Deportivo GT-115" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H646cfe20de6a43388b9179776970ffbdY%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">               
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/effac94486a134062aa5c4cfa2353c0db6a794b9/imagenes/H440139590608408e8999890cf44569e7p%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/0f3b45db48cbc9e8e76c24de792b276b041f8c17/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                    </div>
+                    <h3>HOSHI NS18 RAPTOR 2  </h3>
+                      <p class="product-pricez">CARACTERISTICAS:</p>
+ <p class="product-price">Camión RC de Alta Velocidad</p>
+                       <p class="product-pricez">ESCALA:</p>
+                      <p class="product-price">1:8</p>
+                      <p class="product-pricez">FUENTE DE ALIMENTACION:</p>
+ <p class="product-price">Eléctrico</p>
+                      <p class="product-pricez">ESTADO DEL EMBALAJE:</p>
+ <p class="product-price">Listo para Usarlo</p>
+                      <p class="product-pricez">INCLUYE:</p>
+ <p class="product-price">el paquete Original Box, Baterías, Instrucciones de funcionamiento, Controlador remoto, Cable USB, Otros</p>
+                      <p class="product-pricez">MATERIAL:</p>
+ <p class="product-price">Metal,Plástico</p>
+                      <p class="product-pricez">RANGO DE EDAD:</p>
+ <p class="product-price">De 8 a 13 años, 14 años y hasta</p>
+                    <p class="product-price">$650 USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 1 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20HOSHI%20NS18%20RAPTOR%202%20a%20escala%204WD%201/8%20por%20$650%20USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+
+   
+<!-- PRODUCTO 2: WLTOYS 104020 CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4 -->
+                     <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 2 -->
+                        <button onclick="cambiarImagen('izq', 2)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width:600px;">
+
+                           <!-- IMAGEN PRINCIPAL DEL PRODUCTO 2 -->
+                            <img id="imgPrincipal-2" src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/05476a283ae92cc1bcd3435f82a56273d00522d2/imagenes/fb299bba-499b-440c-ab22-e5c459e276c3.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto 2 -->
+                        <button onclick="cambiarImagen('der', 2)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 2-->
+                    <div id="todasLasImagenes-2" style="display:none;">                                                  
+                   <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/234b3a9d9b5d7d77a60702fe3868ec03fbe8cac8/imagenes/H86e62c49658445a48b767e9ee5cbce3cs.jpg" alt="Carro Deportivo GT-115" class="product-img">               
+                 <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/05476a283ae92cc1bcd3435f82a56273d00522d2/imagenes/fb299bba-499b-440c-ab22-e5c459e276c3%20(1).jpg" alt="Carro Deportivo GT-115" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/c81fb29fe3cf0c9e1735a04d81928b7630fc985c/imagenes/H7ac6f6a39ecc492681b83e74d93c968ds.jpg" alt="Carro Deportivo GT-115" class="product-img"> 
+                     
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/7bf2308ac7d225d0b72b025af76d90840a43e5fd/imagenes/Hfe89e94060204937acdf57396a06ef4as.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/b02de07bba6fa6a8783020892be4d07b8d9ea527/imagenes/H7120e77fb2074b70b2888b4e42ee5fc3v.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                      <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/c948a718ff5b5340101abc3b41bfc5a6e94d83c6/imagenes/He63f46c5c7ee4c5793a3c193a7b10f25k.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/1787c64e3f1907d6b7b63ceff45c298ce13ef265/imagenes/H6643e0ea606a4670b77ed904994a6daeX%20(1).jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/8823e96a57ff53c253a7b98c855f173de70eed71/imagenes/H987f2c95782440cebe51224347af33cbt.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                  <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/66b30eecf11408507e06908c2cf87126c31139d5/imagenes/Sin%20t%C3%ADtulo.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/af6717a63d78381db82358540ea311a8d129b375/imagenes/XVDS.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a548d63e9c80f209233cd29df34ae690b10213e8/imagenes/H5f5c43b9a488436c9e2a5f265f0d3edcG.jpg" alt="Nombre que quieras ponerle" class="product-img1">
+
+                    </div>
+                  
+                <h3>  CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4  </h3>
+                      <p class="product-pricez">CARACTERISTICAS:</p>
+ <p class="product-price">Vehículo eléctrico RC de escalada a tracción integral</p>
+                      <p class="product-pricez">TIPO DE COCHE:</p>
+                      <p class="product-price">Rock Crawlers</p>
+                    
+                       <p class="product-pricez">ESCALA:</p> 
+                      <p class="product-price">1:10</p>
+                      <p class="product-pricez">FUENTE DE ALIMENTACION:</p>
+ <p class="product-price">Eléctrico</p>
+                       <p class="product-pricez">AUTONOMIA:</p>
+                       <p class="product-price"> Aproximadamente 45 minutos</p>
+                      <p class="product-pricez">BATERIA:</p>
+                       <p class="product-price"> batería Li-ion de 7.4V 3000mAh.</p>
+                       <p class="product-pricez">DISTANCIA REMOTA:</p>
+                       <p class="product-pricez">100 metros</p> 
+                      <p class="product-pricez">MOTOR:</p>
+                       <p class="product-price"> motor 550 de escobillas (brushed)</p> 
+                      <p class="product-pricez">ESTADO DEL EMBALAJE:</p>
+ <p class="product-price">Listo para Usarlo</p>
+                      <p class="product-pricez">INCLUYE:</p>
+ <p class="product-price">el paquete Original Box, Baterías,Cabrestante de Metal de doble motor, Instrucciones de funcionamiento, Controlador remoto, Cable USB, Otros</p>
+                      <p class="product-pricez">MATERIAL:</p>
+ <p class="product-price">Metal,Plástico</p>
+                      <p class="product-pricez">RANGO DE EDAD:</p>
+ <p class="product-price">De 8 a 13 años, 14 años y hasta</p>
+                    <p class="product-price">$550 USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 2 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20WLTOYS%20104020%20CARRO%20CRAWLERS%20DE%20CONTROL%20REMOTO%20TODOTERRENO%204X4%20por%20$550%20USD." target="_blank" rel="noopener noreferrer">
+                     
+                   <button class="buy-button">COMPRAR AHORA</button>
+                     
+                 </a>
+                </div>
+
+
+              <!-- PRODUCTO 3: WLTOYS 104010 CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4  -->
+                     <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 3 -->
+                        <button onclick="cambiarImagen('izq', 3)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width: 500px;">
+                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 3 -->
+                            <img id="imgPrincipal-3" src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/5ba12660c8661abaee0489366c76096bf284ed69/imagenes/H8f36010f67784f5cad1bba159f5f1adcW%2520(1).jpg" alt="Nombre que quieras ponerle" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto  3 -->
+                        <button onclick="cambiarImagen('der', 3)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 3 -->
+                    <div id="todasLasImagenes-3" style="display:none;">
+                     
+                   <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/5ba12660c8661abaee0489366c76096bf284ed69/imagenes/H8f36010f67784f5cad1bba159f5f1adcW%2520%281%29.jpg" alt="Carro Deportivo GT-115" class="product-img">
+                  
+     
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/1787c64e3f1907d6b7b63ceff45c298ce13ef265/imagenes/He8ab9f4a6eeb4c30900e4fcbf744b46ak.jpg" alt="Carro Deportivo GT-115" class="product-img">
+           
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/44372bb9e58f4f91e004117ff7fd09b672f13bba/imagenes/H65217b989c4c450aa1b56b18b6111f90t.jpg" alt="Nombre que quieras ponerle" class="product-img">
+               
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/44372bb9e58f4f91e004117ff7fd09b672f13bba/imagenes/H96d17aa216e745ad87d0fa2b3c6dc3a9C.jpg" alt="Nombre que quieras ponerle" class="product-img">
+             
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/44372bb9e58f4f91e004117ff7fd09b672f13bba/imagenes/H7fce31dbd90d489eb6b61cecb78d4cfdT.jpg" alt="Nombre que quieras ponerle" class="product-img">               
+                 
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/44372bb9e58f4f91e004117ff7fd09b672f13bba/imagenes/H6643e0ea606a4670b77ed904994a6daeX.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/5b575dfc0c83d5d76f3e524aeb876f5a70e4a4e8/imagenes/H3dcd7d11fc4146adaff62e20ccacec1cj.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                      <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/5b575dfc0c83d5d76f3e524aeb876f5a70e4a4e8/imagenes/H7ac6f6a39ecc492681b83e74d93c968ds%20(1).jpg" alt="Nombre que quieras ponerle" class="product-img">
+     mg 
+                    </div>
+                    <h3>WLTOYS 104010 CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4</h3>
+                      <p class="product-pricez">CARACTERISTICAS:</p>
+ <p class="product-price">Vehículos en carretera todoterreno</p>
+                       <p class="product-pricez">TIPO DE COCHE:</p>
+                      <p class="product-price">Rock Crawlers</p>
+                       <p class="product-pricez">ESCALA:</p>
+                       <p class="product-price">1:10</p>
+                        <p class="product-pricez">AUTONOMIA:</p>
+                       <p class="product-price"> Aproximadamente 45 minutos</p>
+                      <p class="product-pricez">BATERIA:</p>
+                       <p class="product-price"> batería Li-ion de 7.4V 3000mAh.</p>
+                       <p class="product-pricez">FUENTE DE ALIMENTACION:</p>
+ <p class="product-price">Eléctrico</p>
+ <p class="product-pricez">DISTANCIA REMOTA:</p>
+                       <p class="product-pricez">100 metros</p> 
+                      <p class="product-pricez">MOTOR:</p>
+                       <p class="product-price"> motor 550 de escobillas (brushed)</p> 
+                      
+                      <p class="product-pricez">ESTADO DEL EMBALAJE:</p>
+ <p class="product-price">Listo para Usarlo</p>
+                      <p class="product-pricez">INCLUYE:</p>
+ <p class="product-price">el paquete Original Box, Baterías,Cabrestante de Metal de doble motor, Instrucciones de funcionamiento, Controlador remoto, Cable USB, Otros</p>
+                      <p class="product-pricez">MATERIAL:</p>
+ <p class="product-price">Metal,Plástico</p>
+                      <p class="product-pricez">RANGO DE EDAD:</p>
+ <p class="product-price">De 8 a 13 años, 14 años y hasta</p>
+                    <p class="product-price">$580 USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 3 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20WLTOYS%20104010%20CARRO%20CRAWLERS%20DE%20CONTROL%20REMOTO%20TODOTERRENO%204X4%20por%20$580%20USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+
+
+     <!-- PRODUCTO 4: WLTOYS 124019 COCHE DE ALTA VELOCIDAD PARA PRINCIPIANTES -->
+                     <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 4 -->
+                        <button onclick="cambiarImagen('izq', 4)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width: 600px;">
+                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 4 -->
+                            <img id="imgPrincipal-4" src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/fc37627f6b6f70bf42835098a865fede4e85514c/imagenes/Hb0e3a604aa2e4091b5567e9c26595f22X.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto  4 -->
+                        <button onclick="cambiarImagen('der', 4)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 4 -->
+                    <div id="todasLasImagenes-4" style="display:none;">
+                     
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/dea44f6dc3354e2d6c420984c02ff41337aff0a5/imagenes/Hdc43a2cd16574b0baf2891b42af7e449Y.jpg" alt="Carro Deportivo GT-115" class="product-img">
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/dea44f6dc3354e2d6c420984c02ff41337aff0a5/imagenes/H69c18ff3cbb34c28b0368be00b1cade3H.jpg" alt="Carro Deportivo GT-115" class="product-img">
+                      <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/dea44f6dc3354e2d6c420984c02ff41337aff0a5/imagenes/H6d569ac34ba44386a32f414c3694751eO.jpg" alt="Nombre que quieras ponerle" class="product-img">                                    
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/4c67c09203078a722daeab09c5fd43785d2a4861/imagenes/H133aff73177d415e8cf3821f6d4db3e8b.jpg" alt="Nombre que quieras ponerle" class="product-img">
+            
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/4c67c09203078a722daeab09c5fd43785d2a4861/imagenes/H7daf8da5fb3f44e0a08419d0e93364caV.jpg" alt="Nombre que quieras ponerle" class="product-img">               
+     
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/4c67c09203078a722daeab09c5fd43785d2a4861/imagenes/Hb0e3a604aa2e4091b5567e9c26595f22X.jpg" alt="Nombre que quieras ponerle" class="product-img">
+    
+                 
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/085fc2175e509f02109990c0b5f97c99d9cbbedb/imagenes/H04157279ebc248aca67e856c945baba3i.jpg" alt="Nombre que quieras ponerle" class="product-img">
+
+                     
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/085fc2175e509f02109990c0b5f97c99d9cbbedb/imagenes/H7dc6a6dbef7748a0ae7123827be52f22S.jpg" alt="Nombre que quieras ponerle" class="product-img">
+   
+                    
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/085fc2175e509f02109990c0b5f97c99d9cbbedb/imagenes/Ha870be1c86a74760acaa40c729e9c031T.jpg" alt="Nombre que quieras ponerle" class="product-img">
+
+                    
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/fc37627f6b6f70bf42835098a865fede4e85514c/imagenes/Hb0e3a604aa2e4091b5567e9c26595f22X%20(1).jpg" alt="Nombre que quieras ponerle" class="product-img">
+
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/fc37627f6b6f70bf42835098a865fede4e85514c/imagenes/Hdb37f9719a434487834c7a0184327d20u.jpg" alt="Nombre que quieras ponerle" class="product-img">
+       
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/fc37627f6b6f70bf42835098a865fede4e85514c/imagenes/Hee8f70f0ad224f78a3d7605c6bf37efeC.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                   
+                    </div>
+                    <h3>WLTOYS 124019 COCHE DE ALTA VELOCIDAD PARA PRINCIPIANTES</h3>
+                      <p class="product-pricez">CARACTERISTICAS:</p>
+                    <p class="product-price">Vehículos de alta velocidad</p>
+                       <p class="product-pricez">ESCALA:</p>
+                      <p class="product-price">1:12</p>
+                      <p class="product-pricez">FUENTE DE ALIMENTACION:</p>
+                     <p class="product-price">Eléctrico</p>
+                      <p class="product-pricez">DISTANCIA REMOTA:</p>
+                       <p class="product-pricez">100 metros</p> 
+                      <p class="product-pricez">MOTOR:</p>
+                       <p class="product-price">Motor de escobillas de carbón 550</p> 
+                       <p class="product-pricez">BATERIA:</p>
+                       <p class="product-price">batería Li-ion de 7.4V 2200mAh</p>
+                      <p class="product-pricez">ESTADO DEL EMBALAJE:</p>
+                      <p class="product-price">Listo para Usarlo</p>
+                      <p class="product-pricez">INCLUYE:</p>
+                      <p class="product-price">El paquete incluye Batería, Instrucciones de uso, Control remoto, Cable USB, Otros</p>
+                      <p class="product-pricez">MATERIAL:</p>
+                     <p class="product-price">Metal,Plástico</p>
+                      <p class="product-pricez">RANGO DE EDAD:</p>
+                     <p class="product-price">De 8 a 13 años, 14 años y hasta</p>
+                    <p class="product-price">$230 USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 4 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20WLTOYS%20124019%20COCHE%20DE%20ALTA%20VELOCIDAD%20PARA%20PRINCIPIANTES%20$230%20USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+
+
+
+
+<!-- PRODUCTO 5: WLTOYS 104020 CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4 -->
+                     <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 5 -->
+                        <button onclick="cambiarImagen('izq', 5)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width:600px;">
+
+                           <!-- IMAGEN PRINCIPAL DEL PRODUCTO 5 -->
+                            <img id="imgPrincipal-5" src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/400ed548dced0927450229e1b285869adccc4fd8/imagenes/H6b0049062a69484d95db864817832c25K%2520(1).jpg" alt="Nombre que quieras ponerle" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto 5 -->
+                        <button onclick="cambiarImagen('der', 5)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 5-->
+                    <div id="todasLasImagenes-5" style="display:none;">                                                  
+                                
+        
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/400ed548dced0927450229e1b285869adccc4fd8/imagenes/H6b0049062a69484d95db864817832c25K%2520%281%29.jpg" alt="Carro Deportivo GT-115" class="product-img">
+                   
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/68faa8e16f88cf1eeb01addf9b6e8bd154b6e88a/imagenes/H7cf8af92d42541758b7195019373ff28v.jpg" alt="Carro Deportivo GT-115" class="product-img"> 
+   
+                    <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a06e35d2357dcd36df8177a7db4425e7e1684da0/imagenes/Ha7d5e193cac44507b651e1abcad1dd91j.jpg" alt="Nombre que quieras ponerle" class="product-img">
+
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a06e35d2357dcd36df8177a7db4425e7e1684da0/imagenes/H691e27671bfc44c0890ee811bcc953857.jpg" alt="Nombre que quieras ponerle" class="product-img">
+
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a06e35d2357dcd36df8177a7db4425e7e1684da0/imagenes/Hadb6ab5cd5ce4cba9714da0a22f842d97.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                  
+
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a06e35d2357dcd36df8177a7db4425e7e1684da0/imagenes/Hdeafe8d80d534d2cb38b3ff7ca42abd2W.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                 
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/3af29eaecb1aa25e5c939c3a801a7ef1b1106aaa/imagenes/H6cd448427d6d46b4a7ee899e2535f456D.jpg" alt="Nombre que quieras ponerle" class="product-img">
+              
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/3af29eaecb1aa25e5c939c3a801a7ef1b1106aaa/imagenes/Ha8d6cf3b770443d99d2b4c6b90507cb7J.jpg" alt="Nombre que quieras ponerle" class="product-img">
+                  
+                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/3af29eaecb1aa25e5c939c3a801a7ef1b1106aaa/imagenes/Hecd528129aa64223ae19284e083e7fe8z.jpg" alt="Nombre que quieras ponerle" class="product-img">
+               
+                    
+                    </div>
+                  
+                <h3>  CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4  </h3>
+                      <p class="product-pricez">CARACTERISTICAS:</p>
+ <p class="product-price">Vehículo eléctrico RC de escalada a tracción integral</p>
+                      <p class="product-pricez">TIPO DE COCHE:</p>
+                      <p class="product-price">Rock Crawlers</p>
+                    
+                       <p class="product-pricez">ESCALA:</p> 
+                      <p class="product-price">1:10</p>
+                      <p class="product-pricez">FUENTE DE ALIMENTACION:</p>
+ <p class="product-price">Eléctrico</p>
+                       <p class="product-pricez">AUTONOMIA:</p>
+                       <p class="product-price"> Aproximadamente 45 minutos</p>
+                      <p class="product-pricez">BATERIA:</p>
+                       <p class="product-price"> batería Li-ion de 7.4V 3000mAh.</p>
+                       <p class="product-pricez">DISTANCIA REMOTA:</p>
+                       <p class="product-pricez">100 metros</p> 
+                      <p class="product-pricez">MOTOR:</p>
+                       <p class="product-price"> motor 550 de escobillas (brushed)</p> 
+                      <p class="product-pricez">ESTADO DEL EMBALAJE:</p>
+ <p class="product-price">Listo para Usarlo</p>
+                      <p class="product-pricez">INCLUYE:</p>
+ <p class="product-price">el paquete Original Box, Baterías,Cabrestante de Metal de doble motor, Instrucciones de funcionamiento, Controlador remoto, Cable USB, Otros</p>
+                      <p class="product-pricez">MATERIAL:</p>
+ <p class="product-price">Metal,Plástico</p>
+                      <p class="product-pricez">RANGO DE EDAD:</p>
+ <p class="product-price">De 8 a 13 años, 14 años y hasta</p>
+                    <p class="product-price">$550 USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 2 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20WLTOYS%20104020%20CARRO%20CRAWLERS%20DE%20CONTROL%20REMOTO%20TODOTERRENO%204X4%20por%20$550%20USD." target="_blank" rel="noopener noreferrer">
+                     
+                   <button class="buy-button">COMPRAR AHORA</button>
+                     
+                 </a>
+                </div>
+
+
+
+
+             
+
+
+
+
+             
+            </div> <!-- Fin #vehiculos -->
+
+            <!-- ================== CATEGORÍA 2: DRONES ================== -->
+            <button class="category-button" onclick="toggleCategory('drones')">
+                🚁 DRONES
+            </button>
+            <div id="drones" class="category-content">
+                <!-- PRODUCTO 4: Mini Dron Plegable con Cámara HD -->
+                <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 4 -->
+                        <button onclick="cambiarImagen('izq', 4)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
+                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 4 -->
+                            <img id="imgPrincipal-4" src="https://picsum.photos/id/248/200/300" alt="Mini Dron Plegable" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto 4 -->
+                        <button onclick="cambiarImagen('der', 4)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 4 -->
+                    <div id="todasLasImagenes-4" style="display:none;">
+                        <img src="https://picsum.photos/id/249/200/300" alt="Mini Dron Plegable compacto">
+                        <img src="https://picsum.photos/id/250/200/300" alt="Mini Dron Plegable con mando">
+                    </div>
+                    <h3>Mini Dron Plegable con Cámara HD</h3>
+                    <p class="product-price">$80 USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 4 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Mini%20Dron%20Plegable%20con%20Cámara%20HD%20por%20$80%20USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+                
+                <!-- PRODUCTO 5: Dron Profesional con GPS y 4K Cámara -->
+                <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 5 -->
+                        <button onclick="cambiarImagen('izq', 5)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
+                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 5 -->
+                            <img id="imgPrincipal-5" src="https://picsum.photos/id/251/200/300" alt="Dron Profesional 4K" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto 5 -->
+                        <button onclick="cambiarImagen('der', 5)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 5 -->
+                    <div id="todasLasImagenes-5" style="display:none;">
+                        <img src="https://picsum.photos/id/252/200/300" alt="Dron Profesional 4K en vuelo">
+                        <img src="https://picsum.photos/id/253/200/300" alt="Detalle de la cámara Dron Profesional 4K">
+                    </div>
+                    <h3>Dron Profesional con GPS y 4K Cámara</h3>
+                    <p class="product-price">$450 USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 5 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Dron%20Profesional%20con%20GPS%20y%204K%20Cámara%20por%20$450%20USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+            </div> <!-- Fin #drones -->
+
+            <!-- ================== CATEGORÍA 3: COLECCIONABLES ================== -->
+            <button class="category-button" onclick="toggleCategory('coleccionables')">
+                🤖 COLECCIONABLES
+            </button>
+            <div id="coleccionables" class="category-content">
+                <!-- PRODUCTO 6: Figura de Acción Optimus Prime Edición Limitada -->
+                <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 6 -->
+                        <button onclick="cambiarImagen('izq', 6)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
+                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 6 -->
+                            <img id="imgPrincipal-6" src="https://picsum.photos/id/254/200/300" alt="Optimus Prime Edición Limitada" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto 6 -->
+                        <button onclick="cambiarImagen('der', 6)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 6 -->
+                    <div id="todasLasImagenes-6" style="display:none;">
+                        <img src="https://picsum.photos/id/255/200/300" alt="Optimus Prime pose épica">
+                        <img src="https://picsum.photos/id/256/200
+                                                    <img src="https://picsum.photos/id/256/200/300" alt="Optimus Prime transformado">
+                    </div>
+                    <h3>Figura de Acción Optimus Prime Edición Limitada</h3>
+                    <p class="product-price">$250 USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 6 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20la%20Figura%20de%20Acción%20Optimus%20Prime%20Edición%20Limitada%20por%20$250%20USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+
+                <!-- PRODUCTO 7: Set de Figuras Dragon Ball Z - Goku y Vegeta -->
+                <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 7 -->
+                        <button onclick="cambiarImagen('izq', 7)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
+                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 7 -->
+                            <img id="imgPrincipal-7" src="https://picsum.photos/id/257/200/300" alt="Set Dragon Ball Z Goku Vegeta" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto 7 -->
+                        <button onclick="cambiarImagen('der', 7)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 7 -->
+                    <div id="todasLasImagenes-7" style="display:none;">
+                        <img src="https://picsum.photos/id/258/200/300" alt="Set Dragon Ball Z Goku">
+                        <img src="https://picsum.photos/id/259/200/300" alt="Set Dragon Ball Z Vegeta">
+                    </div>
+                    <h3>Set de Figuras Dragon Ball Z - Goku y Vegeta</h3>
+                    <p class="product-price">$180 USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 7 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20Set%20de%20Figuras%20Dragon%20Ball%20Z%20-%20Goku%20y%20Vegeta%20por%20$180%20USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+            </div> <!-- Fin #coleccionables -->
+
+            <!-- ================== CATEGORÍA 4: OTROS ================== -->
+            <button class="category-button" onclick="toggleCategory('otros')">
+                🎁 OTROS PRODUCTOS
+            </button>
+            <div id="otros" class="category-content">
+                <!-- PRODUCTO 8: [Nombre de tu Producto 8] -->
+                <div class="product-box" style="background-color: #333; color: white;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <!-- Botón Izquierda para carrusel del Producto 8 -->
+                        <button onclick="cambiarImagen('izq', 8)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
+                        <div style="border:3px solid yellow; padding:5px; max-width: 200px;">
+                            <!-- IMAGEN PRINCIPAL DEL PRODUCTO 8 -->
+                            <img id="imgPrincipal-8" src="[URL_DE_TU_IMAGEN_8]" alt="[Nombre de tu Producto 8]" class="product-img">
+                        </div>
+                        <!-- Botón Derecha para carrusel del Producto 8 -->
+                        <button onclick="cambiarImagen('der', 8)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10095;</button>
+                    </div>
+                    <!-- IMÁGENES OCULTAS PARA EL CARRUSEL DEL PRODUCTO 8 -->
+                    <div id="todasLasImagenes-8" style="display:none;">
+                        <img src="[URL_DE_TU_IMAGEN_8_SECUNDARIA_1]" alt="[Descripción Imagen 8-1]">
+                        <img src="[URL_DE_TU_IMAGEN_8_SECUNDARIA_2]" alt="[Descripción Imagen 8-2]">
+                    </div>
+                    <h3>[Nombre de tu Producto 8]</h3>
+                    <p class="product-price">$PRECIO USD</p>
+                    <p class="in-stock">&#128994; EN STOCK</p>
+                    <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 8 -->
+                    <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20[Nombre%20de%20tu%20Producto%208]%20por%20$PRECIO%20USD." target="_blank" rel="noopener noreferrer">
+                        <button class="buy-button">COMPRAR AHORA</button>
+                    </a>
+                </div>
+            </div> <!-- Fin #otros -->
+        </section> <!-- Fin SECCIÓN PRODUCTOS -->
+
+        <!-- SECCIÓN QUIÉNES SOMOS -->
+        <section id="quienes" class="info-section">
+            <h2>QUIÉNES SOMOS</h2>
+            <p>
+                Somos una empresa dedicada a la venta de juguetes teledirigidos y productos coleccionables de las mejores marcas. Nuestro objetivo es ofrecer diversión y entretenimiento para todas las edades con productos de calidad garantizada y un servicio al cliente excepcional.
+            </p>
+            <p>
+                Ubicados en Ambato, Provincia del Tungurahua, Ecuador, nos esforzamos por ser tu tienda de referencia para encontrar ese regalo especial o ese artículo único que tanto buscas.
+            </p>
+        </section>
 
 
 
