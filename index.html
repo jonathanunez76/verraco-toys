@@ -437,10 +437,10 @@ body {
             <div class="nav-container">
                 <div class="logo">MundoJuguetes</div>    
                <nav class="nav-links">
-  <a href="#home-page" onclick="mostrarSeccion('home-page')">Inicio</a>
-  <a href="#products-section" onclick="mostrarSeccion('category-content')">Productos</a>
-  <a href="#categorias-section" onclick="mostrarSeccion('categorias-section')">Categorías</a>
-  <a href="#contacto-section" onclick="mostrarSeccion('contacto-section')">Contacto</a>
+ <a href="#inicio" style="margin: 0 10px; text-decoration: none; color: #fff;">Inicio</a>
+        <a href="#productos" style="margin: 0 10px; text-decoration: none; color: #fff;">Productos</a>
+        <a href="#quienes" style="margin: 0 10px; text-decoration: none; color: #fff;">Quienes somos</a>
+        <a href="#contacto" style="margin: 0 10px; text-decoration: none; color: #fff;">Contacto</a>
 </nav>
             </div>
                  
@@ -823,32 +823,29 @@ body {
             <p>Ambato - Tungurahua, Ecuador</p>
         </footer>
     </div>
-<!-- SECCIÓN DE CATEGORÍAS -->
-  
-<section id="products-section" style="display: none;">
-  <h2>Categorías de Juguetes</h2>
-  <p>• Camiones de Construcción<br>• Maquinarias Pequeñas<br>• Accesorios de Obra</p>
-</section>
+ <!-- SECCIÓN QUIÉNES SOMOS -->
+        <section id="quienes" class="info-section">
+            <h2>QUIÉNES SOMOS</h2>
+            <p>
+                Somos una empresa dedicada a la venta de juguetes teledirigidos y productos coleccionables de las mejores marcas. Nuestro objetivo es ofrecer diversión y entretenimiento para todas las edades con productos de calidad garantizada y un servicio al cliente excepcional.
+            </p>
+            <p>
+                Ubicados en Ambato, Provincia del Tungurahua, Ecuador, nos esforzamos por ser tu tienda de referencia para encontrar ese regalo especial o ese artículo único que tanto buscas.
+            </p>
+        </section>
 
-<!-- SECCIÓN DE CATEGORÍAS -->
-  
-<section id="categorias-section" style="display: none;">
-  <h2>Categorías de Juguetes</h2>
-  <p>• Camiones de Construcción<br>• Maquinarias Pequeñas<br>• Accesorios de Obra</p>
-</section>
-
-<!-- SECCIÓN DE CONTACTO -->
-               
-
-<section id="contacto-section" style="display: none;">
-  <h2>Contacto</h2>
-  <p>📞 Teléfono: 0987654321<br>📍 Dirección: Ambato - Tungurahua<br>✉️ Correo: contacto@mundojuguetes.com</p>
-</section>
-    
-
-    <!-- Otras páginas de detalle se pueden agregar con su propio video -->
-
-    <script>
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto" class="info-section">
+            <h2>CONTACTO</h2>
+            <p>¿Tienes alguna pregunta? ¡No dudes en contactarnos!</p>
+            <p>
+                Puedes encontrarnos en nuestra tienda física en [Dirección de la tienda, si aplica] o escribirnos a nuestro WhatsApp: 
+                <a href="https://wa.me/593963057078?text=Hola!%20Tengo%20una%20pregunta." target="_blank" rel="noopener noreferrer" style="color: #25d366; text-decoration: none; font-weight: bold;">+593 963057078</a>
+            </p>
+            <p>
+                Horario de atención: Lunes a Viernes de 9:00 AM a 6:00 PM.
+            </p>
+        </section>
         
         // Navegación entre páginas
        document.querySelectorAll('a[href^="#"]').forEach(link => {
