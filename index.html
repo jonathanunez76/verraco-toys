@@ -840,9 +840,7 @@ body {
 
 <!-- SECCIÓN PRODUCTOS -->
  <section class="product-detail">
-    <section id="productos-section" style="display: none;">
-
-             <div class="product-box" style="background-color: #333; color: white;">
+      <div class="product-box" style="background-color: #333; color: white;">
                     <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
                         <!-- Botón Izquierda para carrusel del Producto 1 -->
                         <button onclick="cambiarImagen('izq', 1)" style="font-size: 24px; background: none; border: none; color: yellow; cursor: pointer;">&#10094;</button>
@@ -863,11 +861,48 @@ body {
                     <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/effac94486a134062aa5c4cfa2353c0db6a794b9/imagenes/H440139590608408e8999890cf44569e7p%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
                      <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/0f3b45db48cbc9e8e76c24de792b276b041f8c17/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20%281%29.jpg" alt="Nombre que quieras ponerle" class="product-img">
                     </div>
+                <!-- Contenedor de video -->
+                <div class="video-container">
+                    <iframe class="product-video" 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Video del Camión Volcador Grande" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    <div class="video-controls">
+                        <button class="btn" onclick="document.querySelector('.product-video').requestFullscreen()">
+                            Ver en Pantalla Completa
+                        </button>
+                    </div>
+                </div>
+            </div>
 
+            <div class="detail-info">
+                <h2>Camión Volcador Grande</h2>
+                <p class="detail-price">$49.90</p>
+                <p class="in-stock">&#128994; EN STOCK</p>
+                <p class="detail-description">
+                    Este camión volcador de juguete está diseñado para horas de diversión constructiva. Fabricado con materiales resistentes y seguros para niños mayores de 3 años, cuenta con un sistema de volteo fácil de usar y ruedas con buen agarre para cualquier superficie.
+                </p>
+                <div class="detail-features">
+                    <h3>Características principales:</h3>
+                    <ul>
+                        <li>Medidas: 35 cm de largo x 18 cm de alto</li>
+                        <li>Material: Plástico resistente y no tóxico</li>
+                        <li>Color: Amarillo y negro con detalles rojos</li>
+                        <li>Incluye accesorios: 2 conos de obra y 1 pala pequeña</li>
+                        <li>Recomendado para niños de 3 a 10 años</li>
+                        <li>Fácil de limpiar y mantener</li>
+                    </ul>
+                </div>
+                <!-- ENLACE DE WHATSAPP PARA EL PRODUCTO 2 -->
+                   <button class="btn" onclick="location.href='https://wa.me/593963057078?text=Hola!%20Quiero%20comprar%20el%20Camión%20Volcador%20Grande'">
+                   Comprar Ahora
+                  </button>
 
-  
-
- </section>
+         <button class="btn" onclick="window.location.href = 'index.html'">Volver al Catálogo</button>
+            </div>
+        </section>
 
 
 
