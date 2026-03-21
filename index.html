@@ -452,10 +452,10 @@ body {
             <div class="nav-container">
                 <div class="logo">MundoJuguetes</div>    
                <nav class="nav-links">
- <a href="#inicio" style="margin: 0 10px; text-decoration: none; color: #fff;">Inicio</a>
-        <a href="#productos" style="margin: 0 10px; text-decoration: none; color: #fff;">Productos</a>
-        <a href="#quienes" style="margin: 0 10px; text-decoration: none; color: #fff;">Quienes somos</a>
-        <a href="#contacto" style="margin: 0 10px; text-decoration: none; color: #fff;">Contacto</a>
+  <a href="#home-page" onclick="mostrarSeccion('home-page')" style="margin: 0 10px; text-decoration: none; color: #fff;">Inicio</a>
+  <a href="#productos-section" onclick="mostrarSeccion('productos-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">Productos</a>
+  <a href="#quienes-section" onclick="mostrarSeccion('quienes-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">¿Quiénes Somos?</a>
+  <a href="#contacto-section" onclick="mostrarSeccion('contacto-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">Contacto</a>
 </nav>
             </div>
                  
@@ -840,23 +840,28 @@ body {
         </footer>
     </div>
 
- <!-- SECCIÓN QUIENES SOMOS -->
-<section id="quienes-section" class="info-section" style="display: none;">
-  <h2>QUIENES SOMOS</h2>
-<p>Somos una empresa dedicada a la venta de juguetes teledirigidos y productos coleccionables de las mejores marcas. Nuestro objetivo es ofrecer diversión y entretenimiento para todas las edades con productos de calidad garantizada y un servicio al cliente excepcional.</p>
-  <p>Ubicados en Ambato, Provincia del Tungurahua, Ecuador, nos esforzamos por ser tu tienda de referencia para encontrar ese regalo especial o ese artículo único que tanto buscas.</p>
+<!-- SECCIÓN PRODUCTOS -->
+<section id="productos-section" style="display: none;">
+  <h2>PRODUCTOS</h2>
+  <!-- Tu contenido de productos aquí -->
+</section>
+
+<!-- SECCIÓN ¿QUIENES SOMOS? -->
+<section id="quienes-section" style="display: none;">
+  <h2>¿QUIENES SOMOS?</h2>
+  <!-- Tu contenido aquí -->
 </section>
 
 <!-- SECCIÓN CONTACTO -->
-<section id="contacto-section" class="info-section" style="display: none;">
+<section id="contacto-section" style="display: none;">
   <h2>CONTACTO</h2>
-<p>¿Tienes alguna pregunta? ¡No dudes en contactarnos!</p>
-<p>Puedes encontrarnos en nuestra tienda física en [Dirección de la tienda, si aplica] o escribirnos a nuestro WhatsApp: 
-<a href="https://wa.me/593963057078?text=Hola!%20Tengo%20una%20pregunta." target="_blank" rel="noopener noreferrer" style="color: #25d366; text-decoration: none; font-weight: bold;">+593 963057078</a>
-</p>
-<p> Horario de atención: Lunes a Viernes de 9:00 AM a 6:00 PM.</p>
+  <!-- Tu contenido aquí -->
 </section>
 
+<!-- PÁGINA DE INICIO -->
+<div id="home-page" style="display: block;">
+  <!-- Contenido de inicio aquí -->
+</div>
     
         <script>
         // Navegación entre páginas
@@ -957,17 +962,15 @@ body {
             document.getElementById('home-page').style.display = 'block';
         }
 
-function mostrarSeccion(nombreSeccion) {
-  // Ocultar TODAS las secciones primero
-  document.querySelectorAll('div[id$="-page"], div[id$="-detail"], section[id$="-section"]').forEach(seccion => {
-    seccion.style.display = 'none';
+function mostrarSeccion(idSeccion) {
+  // Ocultar todo
+  document.querySelectorAll('div[id], section[id]').forEach(elem => {
+    elem.style.display = 'none';
   });
-  // Mostrar solo la sección seleccionada
-  document.getElementById(nombreSeccion).style.display = 'block';
-  // Ir al inicio de la página
+  // Mostrar solo la sección
+  document.getElementById(idSeccion).style.display = 'block';
   window.scrollTo(0, 0);
 }
-       
     </script>
 </body>
 </html>
