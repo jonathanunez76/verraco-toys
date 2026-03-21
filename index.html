@@ -349,7 +349,11 @@ body {
             color: inherit;
         }
 
-       
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
 
         .product-info {
             padding: 20px;
@@ -362,7 +366,12 @@ body {
             margin-bottom: 10px;
         }
 
-  
+        .product-price {
+            font-size: 1.5rem;
+            color: #c0392b;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
 
         /* Contenedor de video */
@@ -898,13 +907,7 @@ body {
 
           <!-- SECCIÓN PRODUCTOS PRINCIPAL (SIN CATEGORÍAS ADENTRO) -->
 <section id="products-main-section" style="display: none; width: 100%; max-width: 1200px; margin: 20px auto; padding: 20px;">
-        <h2>NUESTROS PRODUCTOS</h2>
-            
-            <!-- ================== CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS ================== -->
-            <button class="category-button" onclick="toggleCategory('vehiculos')">
-                🚗 VEHÍCULOS TELEDIRIGIDOS
-            </button>
-
+        
       
                                  <!-- PRODUCTO 1: HOSHI NS18 RAPTOR 2 -->
                      <div class="product-box" style="background-color: #333; color: white;">
