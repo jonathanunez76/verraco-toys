@@ -310,7 +310,9 @@ body {
             object-fit: contain;
             margin: 0 auto;
         }
-.productos-section {
+
+        /* Página de detalle de producto */
+.product-section {
           width: 100%;
             max-width: 1200px;
             height: auto;
@@ -481,7 +483,7 @@ body {
                <nav class="nav-links">
    <a href="#home-page">Inicio</a>
                   
-  <a href="#productos-section" onclick="mostrarSeccion('productos-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">Productos</a>
+  <a href="#products-section" onclick="mostrarSeccion('products-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">Productos</a>
   <a href="#quienes-section" onclick="mostrarSeccion('quienes-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">¿Quiénes Somos?</a>
   <a href="#contacto-section" onclick="mostrarSeccion('contacto-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">Contacto</a>
 </nav>
@@ -1169,11 +1171,11 @@ Así que cuando decimos “¡Porque jugar y coleccionar es berraco!”, no es so
         }
 
 function mostrarSeccion(idSeccion) {
-  // Ocultar todo
-  document.querySelectorAll('div[id], section[id]').forEach(elem => {
+  // Ocultar solo páginas, secciones y detalles
+  document.querySelectorAll('div[id$="-page"], section[id$="-section"], div[id$="-detail"]').forEach(elem => {
     elem.style.display = 'none';
   });
-  // Mostrar solo la sección
+  // Mostrar la sección seleccionada
   document.getElementById(idSeccion).style.display = 'block';
   window.scrollTo(0, 0);
 }
