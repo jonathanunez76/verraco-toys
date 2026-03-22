@@ -429,39 +429,8 @@ body {
 
             .hero-banner h1 {
                 font-size: 2rem;
-            }
-/* Estilo general de la sección ¿Quiénes Somos? */
-.quienes-section {
-      background: url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-}
-/* Título de la sección */
-.quienes-section-title {
-    font-size: 2.8rem; /* Tamaño grande para el título */
-    text-align: center;
-    margin-bottom: 20px;
-    color: #000;
-    text-decoration: underline; /* Subrayado en el título si quieres */
-}
 
-/* Texto principal */
-.quienes-section-text {
-    font-size: 1.25rem; /* Letras más grandes */
-    line-height: 1.7; /* Mejora la lectura */
-    padding: 18px;
-    background-color: rgba(0, 0, 255, 0.08); /* Fondo azul claro como en tu foto */
-    border-bottom: 3px solid blue; /* Subrayado grueso azul abajo */
-    text-align: justify; /* Alinea el texto por ambos lados para que quede ordenado */
-    white-space: normal;
-    word-wrap: break-word;
-}
- 
+  }
 }
     </style>
 </head>
@@ -481,17 +450,12 @@ body {
             <div class="nav-container">
                 <div class="logo">MundoJuguetes</div>    
                <nav class="nav-links">
-  
+   <a href="#home-page">Inicio</a>
 
-
-     <!-- Enlaces de navegación -->
-      <div class="enlaces-de-navegacion" style="text-align: center; padding: 10px; background-color: #222;">   
-       <a href="#home-page">Inicio</a>
-                <a href="#productos" class="product-link" onclick="setTimeout(() => { document.getElementById('imgPrincipal-1').scrollIntoView({behavior:'smooth', block:'start'}); }, 100);">Productos</a>
-<a href="#quienes-somos" class="product-link" onclick="setTimeout(() => { document.getElementById('imgPrincipal-1').scrollIntoView({behavior:'smooth', block:'start'}); }, 100);">Quiénes somos</a>
-<a href="#contacto" class="product-link" onclick="setTimeout(() => { document.getElementById('imgPrincipal-1').scrollIntoView({behavior:'smooth', block:'start'}); }, 100);">Contacto</a>
-    </div>
-    </nav>
+  <a href="#quienes-section" onclick="mostrarSeccion('quienes-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">¿Quiénes Somos?</a>
+  <a href="#contacto-section" onclick="mostrarSeccion('contacto-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">Contacto</a>
+</nav>
+            </div>
                  
       
         </header>
@@ -500,18 +464,13 @@ body {
      
         <section class="hero">
             <div class="hero-content">
-               <h1>BIENVENIDOS A VERRACO TOYS</h1>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; padding: 0 10px;">
-            Tu tienda de confianza en Ambato, Provincia del Tungurahua, especializada en juguetes teledirigidos y productos coleccionables de alta calidad.
-        </p>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; padding: 0 10px;">
-            Contamos con modelos exclusivos, garantía oficial y atención personalizada para cada cliente.
-        </p>
+                <h1>Juguetes de Construcción que Inspiran</h1>
+                <p>Calidad y diversión para los pequeños constructores</p>
             
       </div>
   </section>
 
-      <section class="products-section" id="productos">
+      <section class="products-section" id="products-section">
             <h2 class="section-title">Nuestros Destacados</h2>
             <div class="products-grid">
 
@@ -527,7 +486,7 @@ body {
                 <!-- Tarjeta 1 - Camión Volcador -->
                 
                 <div class="product-card">
-                 <a href="#truck-detail" class="product-link" onclick="setTimeout(() => { document.getElementById('imgPrincipal-1').scrollIntoView({behavior:'smooth', block:'start'}); }, 100);">
+                 <a href="#truck-detail" class="product-link">
                         <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión de construcción" class="product-img">
                         <div class="product-info">
                             <h3 class="product-name">Camión Volcador Grande</h3>
@@ -692,12 +651,16 @@ body {
                             <span class="btn">Ver Detalles</span>
                         </div>
                     </a>
-            
+                </div>
             </div>
-           </div> <!-- Fin #otros -->
-        </section> <!-- Fin SECCIÓN PRODUCTOS -->
 
+        </section>
 
+        <footer>
+            <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
+            <p>Ambato - Tungurahua, Ecuador</p>
+        </footer>
+    </div>
 
     <!-- Página de detalle: Camión Volcador Grande -->
     <div id="truck-detail" style="display: none;">
@@ -706,9 +669,8 @@ body {
                 <div class="logo">MundoJuguetes</div>
                 <nav class="nav-links">
                     <a href="#home-page">Inicio</a>
-          <a href="#productos" class="product-link" onclick="setTimeout(() => { document.getElementById('imgPrincipal-1').scrollIntoView({behavior:'smooth', block:'start'}); }, 100);">Productos</a>
-<a href="#quienes-somos" class="product-link" onclick="setTimeout(() => { document.getElementById('imgPrincipal-1').scrollIntoView({behavior:'smooth', block:'start'}); }, 100);">Quiénes somos</a>
-<a href="#contacto" class="product-link" onclick="setTimeout(() => { document.getElementById('imgPrincipal-1').scrollIntoView({behavior:'smooth', block:'start'}); }, 100);">Contacto</a>
+                    <a href="#quienes-section" onclick="mostrarSeccion('quienes-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">¿Quiénes Somos?</a>
+                    <a href="#contacto-section" onclick="mostrarSeccion('contacto-section')" style="margin: 0 10px; text-decoration: none; color: #fff;">Contacto</a>
                 </nav>
             </div>
         </header>
@@ -860,62 +822,40 @@ body {
             </div>
         </section>
  
-
-        
            <footer>
             <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
             <p>Ambato - Tungurahua, Ecuador</p>
         </footer>
     </div>
 
-       </div> <!-- Fin #otros -->
-
-
-      <section id="quienes" class="info-section">
-            <h2>QUIÉNES SOMOS</h2>
     
+  <section id="productos"
+         
 
-                <h1>Juguetes de Construcción que Inspiran</h1>
-    <p>     Verraco Toys no es solo una tienda de juguetes: es el resultado de años de pasión, sueños y la convicción de que el mundo de los juguetes va mucho más allá del entretenimiento. 
-        Nacidos en el corazón de Ambato, Provincia del Tungurahua, en pleno 2026, empezamos como un pequeño proyecto familiar con un único objetivo: llevar hasta cada hogar ecuatoriano vehículos teledirigidos de última generación y artículos coleccionables que el mercado pueda ofrecer. 
-        Nos enfocamos con esmero en este segmento porque sabemos que detrás de cada carro controlado a distancia, hay un niño —un adulto joven de corazón— que sueña con vivir aventuras únicas. 
-        Nuestro compromiso va más allá de vender productos: trabajamos día a día para seleccionar únicamente marcas líderes a nivel mundial, que garanticen durabilidad, seguridad y diversión sin límites. 
-        Cada vehículo teledirigido que llega a nuestras instalaciones pasa por rigurosas pruebas de calidad; cada dron cuenta con certificaciones internacionales que avalan su funcionamiento y seguridad; cada figura coleccionable, hay un niño —un adulto joven de corazón— que sueña con vivir aventuras únicas. 
-        Pero Verraco Toys es mucho más que productos: somos un equipo de personas apasionadas por lo que hacemos, que entendemos que un juguete no es solo un objeto —es el inicio de una historia, un regalo que queda grabado en la memoria, el elemento que une a amigos y familiares en momentos de alegría. 
-        Nos enorgullece ser parte de esas historias, ofreciendo un servicio cercano, asesoramiento personalizado y estar siempre disponibles para ti. 
-        Así que cuando decimos “¡Porque jugar y coleccionar es berraco!”, no es solo un eslogan: es nuestra forma de ver la vida —con entusiasmo, dedicación y el mismo espíritu aventurero que llevan nuestros vehículos teledirigidos por cada rincón, nuestros drones por los cielos ecuatorianos y nuestras piezas coleccionables en los hogares de quienes aman lo bueno. 
-        ¡Te invitamos a conocer más de nosotros y a unirte a la comunidad Berraco Toys —donde la diversión no tiene límites! 🚗✨
-    </p>
 
+
+<!-- SECCIÓN ¿QUIENES SOMOS? -->
+<section id="quienes-section" style="display: none;">
+  <h2>¿QUIENES SOMOS?</h2>
+¿QUIENES SOMOS?
+ <p>Berraco Toys no es solo una tienda de juguetes: es el resultado de años de pasión, sueños y la convicción de que el mundo de los juguetes va mucho más allá del entretenimiento —es una forma de conectar generaciones, fomentar la creatividad y revivir emociones que marcaron nuestra infancia y siguen encantando a los más pequeños.
+Nacidos en el corazón de Ambato, Provincia del Tungurahua, en pleno 2026, empezamos como un pequeño proyecto familiar con un único objetivo: llevar hasta cada hogar ecuatoriano los mejores vehículos teledirigidos, drones de última generación y artículos coleccionables que el mercado pueda ofrecer. Nos enfocamos con esmero en este segmento porque sabemos que detrás de cada carro controlado a distancia, cada dron que se eleva al cielo o cada pieza coleccionable, hay un niño —o un adulto joven de corazón— que sueña con vivir aventuras únicas.
+Nuestro compromiso va más allá de vender productos: trabajamos día a día para seleccionar únicamente marcas líderes a nivel mundial, que garanticen durabilidad, seguridad y diversión sin límites. Cada vehículo teledirigido que llega a nuestras instalaciones pasa por rigurosas pruebas de calidad; cada dron cuenta con certificaciones internacionales que avalan su funcionamiento y seguridad; y cada pieza coleccionable es verificada para asegurar que llegue en perfectas condiciones a tus manos.
+Pero Berraco Toys es mucho más que productos: somos un equipo de personas apasionadas por lo que hacemos, que entendemos que un juguete no es solo un objeto —es el inicio de una historia, el regalo que queda grabado en la memoria, el elemento que une a amigos y familiares en momentos de alegría. Nos enorgullece ser parte de esas historias, ofreciendo un servicio cercano, asesoramiento personalizado y la tranquilidad de saber que cuando compras con nosotros, cuentas con un equipo que está siempre dispuesto a ayudarte en lo que necesites.
+Así que cuando decimos “¡Porque jugar y coleccionar es berraco!”, no es solo un eslogan: es nuestra forma de ver la vida —con entusiasmo, dedicación y el mismo espíritu aventurero que llevan nuestros vehículos teledirigidos por cada rincón, nuestros drones por los cielos ecuatorianos y nuestras piezas coleccionables en los hogares de quienes aman lo bueno.
+¡Te invitamos a conocer más de nosotros y a unirte a la comunidad Berraco Toys —donde la diversión no tiene límites! 🚗✨🚁 <p>
+
+</section>
 
 <!-- SECCIÓN CONTACTO -->
- <section id="contacto" class="info-section">
-            <h2>CONTACTO</h2>
-            Tienes alguna pregunta? ¡No dudes en contactarnos!</p>
+<section id="contacto-section" style="display: none;">
+  <h2>CONTACTO</h2>
+ <p> Tienes alguna pregunta? ¡No dudes en contactarnos!</p>
             <p>
                 Puedes encontrarnos en nuestra tienda física en [Dirección de la tienda, si aplica] o escribirnos a nuestro WhatsApp: 
                 <a href="https://wa.me/593963057078?text=Hola!%20Tengo%20una%20pregunta." target="_blank" rel="noopener noreferrer" style="color: #25d366; text-decoration: none; font-weight: bold;">+593 963057078</a>
             </p>
-                Horario de atención: Lunes a Viernes de 9:00 AM a 6:00 PM.
-            </p>
-        
-        </section>
-
-
-
-          
-    <footer>
-            <p>&copy; 2026 MundoJuguetes - Todos los derechos reservados</p>
-            <p>Ambato - Tungurahua, Ecuador</p>
-        </footer>
-
-            </section>
-
-    
-
-
-
-
+</section>
 
 
         <script>
