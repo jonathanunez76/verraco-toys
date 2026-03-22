@@ -86,33 +86,7 @@ body {
             color: #f1c40f;
         }
 
- /* Banner principal */
-        .hero-banner {
-            background: url('https://via.placeholder.com/1200x300') center/cover no-repeat;
-            text-align: center;
-            padding: 4rem 1rem;
-            margin-bottom: 2rem;
-        }
 
-        .hero-banner h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-banner p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-        /* CONTENEDOR PRINCIPAL */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            color: #fff;
-            padding: 20px;
-        }
         /* CONTENEDOR PRINCIPAL */
         .container {
     max-width: 1300px;
@@ -390,8 +364,7 @@ body {
 </head>
 <body>
     <!-- NAVEGACIÓN -->
-
- <nav class="navbar">
+    <header>
         <div class="nav-container">
             <div class="logo">Berraco Toys</div>
             <nav class="nav-links">
@@ -400,34 +373,14 @@ body {
                 <a href="#" onclick="showSection('contactos')">Contactos</a>
             </nav>
         </div>
- 
-            <!-- SECCIÓN INICIO (PRODUCTOS) -->
-    <!-- Banner principal -->
-    <section id="inicio" class="info-section">
-        <h1>BIENVENIDOS A VERRACO TOYS</h1>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; padding: 0 10px;">
-            Tu tienda de confianza en Ambato, Provincia del Tungurahua, especializada en juguetes teledirigidos y productos coleccionables de alta calidad.
-        </p>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; padding: 0 10px;">
-            Contamos con modelos exclusivos, garantía oficial y atención personalizada para cada cliente.
-        </p>
-    </section>
-
+    </header>
 
     <!-- CONTENEDOR PRINCIPAL -->
-   <div class="container">
-        <!-- SECCIÓN INICIO -->
-         <section class="hero-banner"
-        style="background-color: rgba(225, 225, 225, 0.5);">  
-            <h1>¡Descubre Nuestra Colección de Juguetes!</h1>
-           <h1>Teledirigidos, coleccionables y mucho más - calidad garantizada para toda la familia</h1>   
-        </section>
-
-
-
-
-
-                
+    <div class="container">
+        <!-- SECCIÓN INICIO (PRODUCTOS) -->
+        <section id="inicio" class="active">
+            <h2>Catálogo de Productos</h2>
+            <div class="categories-wrapper">
                 <!-- CATEGORÍA 1: JUGUETES DE MADERA -->
                 <div class="category-card">
                     <h3><i class="fas fa-tree"></i> Juguetes de Madera</h3>
