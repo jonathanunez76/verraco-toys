@@ -671,7 +671,7 @@ The file is too long. Dola only read the first 0%.
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <!-- SEGUNDO: TU PROPIO SCRIPT CON LA LÓGICA DEL SITIO Y LA INTEGRACIÓN DE SWIPER -->
-    <script>
+<script>
         // DATOS DE TODOS LOS PRODUCTOS
         const products = {
             1: {
@@ -809,10 +809,14 @@ The file is too long. Dola only read the first 0%.
             }
         };
 
-        // === CAMBIO #5: INICIALIZACIÓN DE SWIPER.JS Y REMOCIÓN DE FUNCIONES OBSOLETAS ===
-        // Variable para la instancia de Swiper
-        let mySwiper; 
-        let currentProductId = 0; // Esta variable se mantiene
+        // VARIABLES PARA EL CARRUSEL
+        let currentSlide = 0;
+        let currentProductId = 0;
+
+        // NUEVAS VARIABLES PARA EL SWIPE (funcionalidad táctil)
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50; // Distancia mínima en píxeles para considerar un swipe
 
         // FUNCIÓN PARA MOSTRAR SECCIONES
         function showSection(sectionId) {
@@ -827,6 +831,26 @@ The file is too long. Dola only read the first 0%.
             section.style.display = 'block';
             // Scroll al inicio de la página
             window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // FUNCIÓN PARA ACTUALIZAR POSICIÓN DEL CARRUSEL
+        function updateCarouselPosition() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            if (slides.length === 0) return;
+            const slideWidth = slides[0].offsetWidth;
+            document.getElementById('carousel-slides').style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+
+        // FUNCIÓN PARA MOVER EL CARRUSEL
+        function moveCarousel(direction) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            if (slides.length === 0) return;
+            
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            
+            updateCarouselPosition();
         }
 
         // FUNCIÓN PARA MOSTRAR DETALLE DE PRODUCTO
@@ -853,59 +877,93 @@ The file is too long. Dola only read the first 0%.
                 featuresList.appendChild(li);
             });
 
-            // === CAMBIO #6: Lógica para cargar imágenes en Swiper y su inicialización ===
-            // Destruir la instancia anterior de Swiper si existe para evitar duplicados al abrir otro producto
-            if (mySwiper) {
-                mySwiper.destroy(true, true);
-            }
-
-            // Preparar el contenedor de slides para Swiper
-            const carouselSlidesContainer = document.getElementById('carousel-slides');
-            carouselSlidesContainer.innerHTML = ''; // Limpiar slides anteriores
-
-            // Reconstruir los slides con la estructura que Swiper espera
+            // Cargar imágenes en el carrusel
+            const carouselSlides = document.getElementById('carousel-slides');
+            carouselSlides.innerHTML = '';
             prod.images.forEach((imgSrc, index) => {
-                const slideDiv = document.createElement('div');
-                slideDiv.className = 'swiper-slide'; // ¡CLASE NECESARIA PARA SWIPER!
-                slideDiv.innerHTML = `<img src="${imgSrc}" alt="${prod.title} - Imagen ${index + 1}">`;
-                carouselSlidesContainer.appendChild(slideDiv);
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `<img src="${imgSrc}" alt="${prod.title} - Imagen ${index + 1}">`;
+                carouselSlides.appendChild(slide);
             });
 
-            // Inicializar Swiper.js
-            mySwiper = new Swiper('.carousel-container', { // Contenedor principal de Swiper
-                loop: true, // Carrusel infinito
-                pagination: { // Puntos de navegación
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: { // Flechas de navegación
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                simulateTouch: true, // Esto habilita la funcionalidad táctil
-                grabCursor: true,    // Esto cambia el cursor al arrastrar
-            });
+            // Reiniciar carrusel
+            currentSlide = 0;
+            updateCarouselPosition();
 
             // Mostrar sección de detalle
             showSection('product-detail');
         }
 
-        // === CAMBIO #7: Adaptar resetCarousel para Swiper ===
+        // FUNCIÓN PARA REINICIAR EL CARRUSEL
         function resetCarousel() {
-            if (mySwiper) {
-                mySwiper.slideTo(0); // Vuelve al primer slide usando Swiper
-            }
+            currentSlide = 0;
+            updateCarouselPosition();
         }
 
-        // === CAMBIO #8: ELIMINACIÓN DE FUNCIONES ANTIGUAS NO NECESARIAS ===
-        // Las funciones updateCarouselPosition y moveCarousel YA NO son necesarias
-        // porque Swiper.js las maneja internamente. Por lo tanto, fueron eliminadas.
-        // Lo mismo aplica para el window.addEventListener('resize', updateCarouselPosition);
+        // AJUSTAR CARRUSEL CUANDO CAMBIA EL TAMAÑO DE PANTALLA
+        window.addEventListener('resize', updateCarouselPosition);
 
         // MOSTRAR SECCIÓN DE INICIO AL CARGAR LA PÁGINA
         window.onload = function() {
             showSection('inicio');
         };
+
+        // === CAMBIOS PARA LA FUNCIONALIDAD TÁCTIL (SWIPE) ===
+        // Aquí es donde añadimos los listeners de eventos para el swipe
+        document.addEventListener('DOMContentLoaded', () => {
+            const carouselSlidesElement = document.getElementById('carousel-slides');
+
+            carouselSlidesElement.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            carouselSlidesElement.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleGesture();
+            });
+
+            // Para que funcione también con arrastre de ratón en escritorio
+            let isDragging = false;
+            carouselSlidesElement.addEventListener('mousedown', e => {
+                isDragging = true;
+                touchStartX = e.screenX;
+                carouselSlidesElement.style.cursor = 'grabbing'; // Cambia el cursor
+            });
+
+            carouselSlidesElement.addEventListener('mouseup', e => {
+                if (isDragging) {
+                    touchEndX = e.screenX;
+                    handleGesture();
+                    isDragging = false;
+                    carouselSlidesElement.style.cursor = 'grab'; // Restaura el cursor
+                }
+            });
+
+            carouselSlidesElement.addEventListener('mouseleave', e => {
+                if (isDragging) { // Si el ratón sale mientras se arrastra
+                    touchEndX = e.screenX;
+                    handleGesture();
+                    isDragging = false;
+                    carouselSlidesElement.style.cursor = 'grab';
+                }
+            });
+
+            function handleGesture() {
+                if (touchEndX < touchStartX - minSwipeDistance) {
+                    // Swipe a la izquierda
+                    moveCarousel(1); // Mover al siguiente
+                }
+
+                if (touchEndX > touchStartX + minSwipeDistance) {
+                    // Swipe a la derecha
+                    moveCarousel(-1); // Mover al anterior
+                }
+            }
+            
+            // Asegurarse de que el cursor por defecto sea "grab" en el carrusel
+            carouselSlidesElement.style.cursor = 'grab';
+        });
     </script>
 </body>
 </html>
