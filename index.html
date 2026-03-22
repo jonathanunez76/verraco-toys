@@ -466,6 +466,8 @@ h2 {
     </header>
 
     <!-- CONTENEDOR PRINCIPAL -->
+
+
     <section id="inicio" class="active">
     <div class="container">    
 <h1 class="titulo-verraco">BIENVENIDOS A VERRACO TOYS</h1>
@@ -572,7 +574,7 @@ h2 {
                             </div>
                         </div>
                         <div class="product-card" onclick="showProductDetail(6)">
-                            <img src="https://via.placeholder
+                            <img src="https://via.placeholder.com/240x180?text=Trampolín" alt="Trampolín Infantil">
 
                         <img src="https://via.placeholder.com/240x180?text=Bicicleta+Equilibrio" alt="Bicicleta de Equilibrio">
                         <div class="product-info">
@@ -582,9 +584,9 @@ h2 {
                             <a href="#" class="btn btn-details" onclick="event.preventDefault(); showProductDetail(6)">Ver Detalles</a>
                             <a href="https://wa.me/593999999999?text=Hola! Quiero comprar la Bicicleta de Equilibrio - $55.00" target="_blank" class="btn btn-whatsapp">Comprar</a>
                         </div>
+                          
                     </div>
                 </div>
-            </div>
         </section>
 
         <!-- SECCIÓN QUIENES SOMOS -->
@@ -622,12 +624,13 @@ h2 {
             
             <div class="product-detail">
                 <!-- CARRUSEL DE IMÁGENES -->
-                <div class="carousel-container">
-                    <div class="carousel-slides" id="carousel-slides">
+                <div class="carousel-container swiper">
+                    <div class="carousel-slides-wrapper" id="carousel-slides">
                         <!-- Las imágenes se cargarán dinámicamente -->
                     </div>
-                    <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
-                    <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
+                   <div class="swiper-pagination"></div>
+                  <button class="carousel-btn prev-btn swiper-button-prev">&#10094;</button>
+<button class="carousel-btn next-btn swiper-button-next">&#10095;</button>
                 </div>
 
                 <!-- VIDEO DEL PRODUCTO -->
@@ -843,14 +846,40 @@ h2 {
             });
 
             // Cargar imágenes en el carrusel
+                       // --- INICIO del bloque reemplazado para cargar imágenes en el carrusel ---
+
+            // Si ya existe una instancia de Swiper, destrúyela para crear una nueva
+            if (mySwiper) {
+                mySwiper.destroy(true, true);
+            }
+
+            // Preparar el contenedor del carrusel para Swiper
             const carouselSlides = document.getElementById('carousel-slides');
-            carouselSlides.innerHTML = '';
+            carouselSlides.innerHTML = ''; // Limpiar slides anteriores
+
+            // Reconstruir los slides con la estructura que Swiper espera
             prod.images.forEach((imgSrc, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'carousel-slide';
-                slide.innerHTML = `<img src="${imgSrc}" alt="${prod.title} - Imagen ${index + 1}">`;
-                carouselSlides.appendChild(slide);
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'swiper-slide'; // ¡CLASE NECESARIA PARA SWIPER!
+                slideDiv.innerHTML = `<img src="${imgSrc}" alt="${prod.title} - Imagen ${index + 1}">`;
+                carouselSlides.appendChild(slideDiv);
             });
+
+            // Inicializar Swiper.js
+            mySwiper = new Swiper('.carousel-container', { // Contenedor principal de Swiper
+                loop: true, // Carrusel infinito
+                pagination: { // Puntos de navegación
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: { // Flechas de navegación
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                simulateTouch: true, // Esto habilita la funcionalidad táctil
+                grabCursor: true,    // Esto cambia el cursor al arrastrar
+            });
+            // --- FIN del bloque reemplazado para cargar imágenes en el carrusel ---
 
             // Reiniciar carrusel
             currentSlide = 0;
@@ -894,8 +923,9 @@ h2 {
             showSection('inicio');
                };
        </script>
-      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> <!-- PROBLEMA: ESTÁ DENTRO DEL SCRIPT DE ARRIBA -->
-    </body>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></
+        </script> 
+      <body>    
 </html>
               
               
