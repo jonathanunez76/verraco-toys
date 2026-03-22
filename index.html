@@ -35,15 +35,22 @@
             font-family: 'Arial', sans-serif;
         }
 body {
-            padding-top: 80px;
-            line-height: 1.6;
-            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-blend-mode: normal;                         ;
-         }
+  padding-top: 80px; /* Ya lo tienes, ¡excelente! */
+  line-height: 1.6;
+  background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/img/hero-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: normal;
+
+  /* --- ¡AGREGA ESTAS PROPIEDADES NUEVAS! --- */
+  display: flex;             /* Habilita Flexbox */
+  flex-direction: column;    /* Los elementos hijos se apilarán verticalmente */
+  min-height: 100vh;         /* Ocupa al menos el 100% de la altura de la ventana */
+  margin: 0;                 /* Asegura que no haya margen extra en el body */
+  /* El padding-top ya lo tienes en 80px, ¡perfecto para tu header fijo! */
+}
 
       /* Barra de navegación */
       
@@ -93,6 +100,7 @@ body {
     margin: 5rem auto 3rem auto;;
     padding: 0 1.5rem;
              text-align: center;
+             flex-grow: 1;
         }
 
         /* SECCIONES GENERALES */
@@ -350,7 +358,7 @@ h2 {
             color: white;
             text-align: center;
             padding: 25px 0;
-            margin-top: 50px;
+            margin-top: 0;
         }
 
         /* RESPONSIVIDAD PARA MOVILES */
