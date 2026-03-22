@@ -102,16 +102,18 @@ body {
         section.active {
             display: block;
         }
-
-  h1 {
-  color: white; /* Cambia el color del texto a blanco */
-  background-color: blue; /* Agrega fondo azul */
+h1 {
+  color: white;
+  background-color: blue;
   margin-bottom: 20px;
   text-align: center;
-  padding: 2px 8px; /* Añade espacio interno */
-  display: inline-block; /* Para que el fondo cubra solo el texto */
+  padding: 2px 8px;
+  display: inline-block;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; /* Centra el elemento */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* Ajusta perfectamente al centro */
 }
 
 p {
@@ -122,6 +124,9 @@ p {
   padding: 2px 8px;
   display: inline-block;
   margin: 5px auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 h2 {
@@ -131,6 +136,9 @@ h2 {
   display: inline-block;
   margin: 10px auto;
   text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
         /* CATEGORÍAS Y PRODUCTOS */
