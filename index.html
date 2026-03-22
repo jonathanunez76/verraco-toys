@@ -1,7 +1,4 @@
-
-              
-
-              <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
@@ -30,7 +27,9 @@
     <title>Verraco Toys - Tienda Oficial</title>
     <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
     <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+    <!-- === CAMBIO #1: CSS DE SWIPER.JS (AÑADIDO) === -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
         * {
@@ -309,26 +308,24 @@ h2 {
             background-color: #B71C1C;
         }
 
-        /* CARRUSEL DE IMÁGENES */
+        /* === CAMBIO #2: MODIFICACIÓN DE ESTILOS EXISTENTES (NO AÑADIR NADA) === */
+        /* Eliminamos los estilos CSS que Swiper.js ahora controla o hace redundantes */
         .carousel-container {
             position: relative;
             max-width: 500px;
             margin: 0 auto 2rem auto;
             border-radius: 10px;
             overflow: hidden;
+            /* Eliminamos propiedades como `display: flex;` y `transition: transform;` de .carousel-slides */
+            /* Ya que Swiper.js maneja la disposición y animación internamente. */
         }
-        .carousel-slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .carousel-slide {
-            min-width: 100%;
-        }
-        .carousel-slide img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
+        /* .carousel-slides ya no necesita un display: flex ni transition */
+        /* .carousel-slide ya no necesita un min-width: 100% */
+        /* Swiper lo manejará con .swiper-wrapper y .swiper-slide */
+
+
+        /* Ajustamos estos selectores para que sigan aplicando a tus botones,
+           pero Swiper.js ahora los controlará */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -340,6 +337,7 @@ h2 {
             font-size: 1.5rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            z-index: 10; /* Aseguramos que los botones estén por encima del carrusel */
         }
         .carousel-btn:hover {
             background-color: rgba(0,0,0,0.8);
@@ -385,7 +383,10 @@ h2 {
             padding-left: 1.5rem;
             color: #444;
             margin-bottom: 1.5rem;
-        }
+
+
+The file is too long. Dola only read the first 0%.
+                  }
 
         
        /* Pie de página */
@@ -486,7 +487,7 @@ h2 {
                     <h3><i class="fas fa-tree"></i> Juguetes de Madera</h3>
                     <div class="products-grid">
                         <div class="product-card" onclick="showProductDetail(1)">
-                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d (1).jpg" alt="Nombre que quieras ponerle" class="product-img">
+                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/a5c86d1b0a72703a0021604e15a5e4b6def92f96/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20(1).jpg" alt="Nombre que quieras ponerle" class="product-img">
                             <div class="product-info">
                                 <h4>Coche de Madera Clásico</h4>
                                 <p class="product-price">$35.00</p>
@@ -574,15 +575,14 @@ h2 {
                             </div>
                         </div>
                         <div class="product-card" onclick="showProductDetail(6)">
-                            <img src="https://via.placeholder
-
-                        <img src="https://via.placeholder.com/240x180?text=Bicicleta+Equilibrio" alt="Bicicleta de Equilibrio">
-                        <div class="product-info">
-                            <h4>Bicicleta de Equilibrio</h4>
-                            <p class="product-price">$55.00</p>
-                            <button class="stock-btn in-stock">En Stock</button>
-                            <a href="#" class="btn btn-details" onclick="event.preventDefault(); showProductDetail(6)">Ver Detalles</a>
-                            <a href="https://wa.me/593999999999?text=Hola! Quiero comprar la Bicicleta de Equilibrio - $55.00" target="_blank" class="btn btn-whatsapp">Comprar</a>
+                            <img src="https://via.placeholder.com/240x180?text=Bicicleta+Equilibrio" alt="Bicicleta de Equilibrio">
+                            <div class="product-info">
+                                <h4>Bicicleta de Equilibrio</h4>
+                                <p class="product-price">$55.00</p>
+                                <button class="stock-btn in-stock">En Stock</button>
+                                <a href="#" class="btn btn-details" onclick="event.preventDefault(); showProductDetail(6)">Ver Detalles</a>
+                                <a href="https://wa.me/593999999999?text=Hola! Quiero comprar la Bicicleta de Equilibrio - $55.00" target="_blank" class="btn btn-whatsapp">Comprar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -623,13 +623,17 @@ h2 {
             <a href="#" class="btn btn-back" onclick="showSection('inicio'); resetCarousel()">Regresar a la Página Principal</a>
             
             <div class="product-detail">
-                <!-- CARRUSEL DE IMÁGENES -->
-                <div class="carousel-container">
-                    <div class="carousel-slides" id="carousel-slides">
-                        <!-- Las imágenes se cargarán dinámicamente -->
+                <!-- === CAMBIO #3: HTML DEL CARRUSEL (ADAPTADO PARA SWIPER.JS) === -->
+                <div class="carousel-container swiper"> <!-- Añade la clase 'swiper' -->
+                    <div class="carousel-slides swiper-wrapper" id="carousel-slides"> <!-- Añade la clase 'swiper-wrapper' -->
+                        <!-- Las imágenes se cargarán dinámicamente aquí -->
                     </div>
-                    <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
-                    <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
+                    <!-- ¡NUEVO DIV para la paginación de Swiper! -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- Tus botones existentes, pero ADAPTADOS para Swiper (SIN onclick) -->
+                    <button class="carousel-btn prev-btn swiper-button-prev">&#10094;</button>
+                    <button class="carousel-btn next-btn swiper-button-next">&#10095;</button>
                 </div>
 
                 <!-- VIDEO DEL PRODUCTO -->
@@ -638,7 +642,10 @@ h2 {
                 <!-- INFORMACIÓN DEL PRODUCTO -->
                 <div class="detail-info">
                     <h2 id="detail-title"></h2>
-                    <p id="detail-price" class="detail-price"></p>
+                    <p id
+
+The file is too long. Dola only read the first 0%.
+                      -price" class="detail-price"></p>
                     <button id="detail-stock" class="stock-btn"></button>
                     
                     <h3>Descripción</h3>
@@ -659,6 +666,11 @@ h2 {
         <p><i class="fas fa-shield-alt"></i> Productos certificados por normas de seguridad infantil ecuatorianas</p>
     </footer>
 
+    <!-- === CAMBIO #4: ORDEN Y CONTENIDO DE SCRIPTS === -->
+    <!-- PRIMERO: EL SCRIPT DE SWIPER.JS DEBE CARGARSE ANTES QUE TU CÓDIGO -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- SEGUNDO: TU PROPIO SCRIPT CON LA LÓGICA DEL SITIO Y LA INTEGRACIÓN DE SWIPER -->
     <script>
         // DATOS DE TODOS LOS PRODUCTOS
         const products = {
@@ -797,9 +809,10 @@ h2 {
             }
         };
 
-        // VARIABLES PARA EL CARRUSEL
-        let currentSlide = 0;
-        let currentProductId = 0;
+        // === CAMBIO #5: INICIALIZACIÓN DE SWIPER.JS Y REMOCIÓN DE FUNCIONES OBSOLETAS ===
+        // Variable para la instancia de Swiper
+        let mySwiper; 
+        let currentProductId = 0; // Esta variable se mantiene
 
         // FUNCIÓN PARA MOSTRAR SECCIONES
         function showSection(sectionId) {
@@ -834,70 +847,65 @@ h2 {
             // Cargar características
             const featuresList = document.getElementById('detail-features');
             featuresList.innerHTML = '';
-
-
-
-
-                        prod.features.forEach(feature => {
+            prod.features.forEach(feature => {
                 const li = document.createElement('li');
                 li.textContent = feature;
                 featuresList.appendChild(li);
             });
 
-            // Cargar imágenes en el carrusel
-            const carouselSlides = document.getElementById('carousel-slides');
-            carouselSlides.innerHTML = '';
+            // === CAMBIO #6: Lógica para cargar imágenes en Swiper y su inicialización ===
+            // Destruir la instancia anterior de Swiper si existe para evitar duplicados al abrir otro producto
+            if (mySwiper) {
+                mySwiper.destroy(true, true);
+            }
+
+            // Preparar el contenedor de slides para Swiper
+            const carouselSlidesContainer = document.getElementById('carousel-slides');
+            carouselSlidesContainer.innerHTML = ''; // Limpiar slides anteriores
+
+            // Reconstruir los slides con la estructura que Swiper espera
             prod.images.forEach((imgSrc, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'carousel-slide';
-                slide.innerHTML = `<img src="${imgSrc}" alt="${prod.title} - Imagen ${index + 1}">`;
-                carouselSlides.appendChild(slide);
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'swiper-slide'; // ¡CLASE NECESARIA PARA SWIPER!
+                slideDiv.innerHTML = `<img src="${imgSrc}" alt="${prod.title} - Imagen ${index + 1}">`;
+                carouselSlidesContainer.appendChild(slideDiv);
             });
 
-            // Reiniciar carrusel
-            currentSlide = 0;
-            updateCarouselPosition();
+            // Inicializar Swiper.js
+            mySwiper = new Swiper('.carousel-container', { // Contenedor principal de Swiper
+                loop: true, // Carrusel infinito
+                pagination: { // Puntos de navegación
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: { // Flechas de navegación
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                simulateTouch: true, // Esto habilita la funcionalidad táctil
+                grabCursor: true,    // Esto cambia el cursor al arrastrar
+            });
 
             // Mostrar sección de detalle
             showSection('product-detail');
         }
 
-        // FUNCIÓN PARA ACTUALIZAR POSICIÓN DEL CARRUSEL
-        function updateCarouselPosition() {
-            const slides = document.querySelectorAll('.carousel-slide');
-            if (slides.length === 0) return;
-            const slideWidth = slides[0].offsetWidth;
-            document.getElementById('carousel-slides').style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-        }
-
-        // FUNCIÓN PARA MOVER EL CARRUSEL
-        function moveCarousel(direction) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            if (slides.length === 0) return;
-            
-            currentSlide += direction;
-            if (currentSlide < 0) currentSlide = slides.length - 1;
-            if (currentSlide >= slides.length) currentSlide = 0;
-            
-            updateCarouselPosition();
-        }
-
-        // FUNCIÓN PARA REINICIAR EL CARRUSEL
+        // === CAMBIO #7: Adaptar resetCarousel para Swiper ===
         function resetCarousel() {
-            currentSlide = 0;
-            updateCarouselPosition();
+            if (mySwiper) {
+                mySwiper.slideTo(0); // Vuelve al primer slide usando Swiper
+            }
         }
 
-        // AJUSTAR CARRUSEL CUANDO CAMBIA EL TAMAÑO DE PANTALLA
-        window.addEventListener('resize', updateCarouselPosition);
+        // === CAMBIO #8: ELIMINACIÓN DE FUNCIONES ANTIGUAS NO NECESARIAS ===
+        // Las funciones updateCarouselPosition y moveCarousel YA NO son necesarias
+        // porque Swiper.js las maneja internamente. Por lo tanto, fueron eliminadas.
+        // Lo mismo aplica para el window.addEventListener('resize', updateCarouselPosition);
 
         // MOSTRAR SECCIÓN DE INICIO AL CARGAR LA PÁGINA
         window.onload = function() {
             showSection('inicio');
-               };
-       </script>
-      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> <!-- PROBLEMA: ESTÁ DENTRO DEL SCRIPT DE ARRIBA -->
-    </body>
+        };
+    </script>
+</body>
 </html>
-              
-              
