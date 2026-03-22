@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+              <!DOCTYPE html>
 <html lang="es">
 <head>
     <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
@@ -164,11 +165,10 @@ h2 {
         
         /* CATEGORÍAS Y PRODUCTOS */
         .categories-wrapper {
-            display: flex;
-           flex-direction: column;
-            align-items: center;
+            display: block;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top:2rem;
+            margin-top: 2rem;
         }
         .category-card {
             background-color: rgba(255,255,255,0.2);
@@ -177,7 +177,7 @@ h2 {
             padding: 1.5rem;
             text-align: center;
             margin-bottom: 2rem;
-            max-width:90%;
+            max-width: 100%;
         }
         .category-card h3 {
             color: #D32F2F;
