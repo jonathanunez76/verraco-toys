@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https:;
+        script-src 'self' 'unsafe-inline';
+        style-src 'self' 'unsafe-inline' https:;
+        img-src 'self' data: https:;
+        font-src 'self' https:;
+        connect-src 'self' https:;
+        frame-src 'self' https://www.whatsapp.com https://www.youtube.com https://player.vimeo.com;
+        media-src 'self' https: data:;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+    ">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="X-UA-Compatible" content="IE=edge">
+
+    <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berraco Toys - Juguetes de Calidad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Verraco Toys - Tienda Oficial</title>
+    <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
+    <meta name="robots" content="index, follow">
     <style>
         * {
             margin: 0;
@@ -11,6 +34,16 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
+body {
+            padding-top: 80px;
+            line-height: 1.6;
+            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-blend-mode: normal;                         ;
+         }
 
         /* NAVEGACIÓN PRINCIPAL */
         header {
@@ -50,9 +83,9 @@
 
         /* CONTENEDOR PRINCIPAL */
         .container {
-            max-width: 1300px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+    max-width: 1300px;
+    margin: 2rem auto 3rem auto;;
+    padding: 0 1.5rem;
         }
 
         /* SECCIONES GENERALES */
@@ -289,11 +322,12 @@
         
         /* Pie de página */
         footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 25px 0;
-            margin-top: 50px;
+    background-color: #2D3436;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%;}
+        
         }
 
         /* RESPONSIVIDAD PARA MOVILES */
@@ -317,40 +351,8 @@
             .categories-wrapper {
                 grid-template-columns: 1fr;
             }
-       
-/* Correción para mantener el pie de página abajo */
-/* SOLUCIÓN DEFINITIVA PARA PIE DE PÁGINA ABAJO */
-html {
-    height: 100%;
-}
-body {
-    min-height: 100%;
-    margin: 0;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 100%; /* AGREGA ESTA LÍNEA */
-}
-         * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}   
 
-/* Ajuste del contenedor principal */
-.container {
-    max-width: 1300px;
-    margin: 2rem auto 3rem auto;;
-    padding: 0 1.5rem;
-}
 
-/* Estilo del footer (mantén los colores que ya tienes) */
-footer {
-    background-color: #2D3436;
-    color: white;
-    text-align: center;
-    padding: 1.5rem;
-    width: 100%;}
-        }
     </style>
     <!-- ÍCONOS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
