@@ -327,8 +327,14 @@ body {
     min-height: 100%;
     margin: 0;
     display: grid;
-    grid-template-rows: auto 1fr auto; /* Divide la página en 3 partes: header, contenido, footer */
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%; /* AGREGA ESTA LÍNEA */
 }
+         * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}   
 
 /* Ajuste del contenedor principal */
 .container {
