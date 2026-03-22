@@ -103,28 +103,35 @@ body {
             display: block;
         }
 
-   h1 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            text-align: center;
-            padding: 0 10px;
-        }
+  h1 {
+  color: white; /* Cambia el color del texto a blanco */
+  background-color: blue; /* Agrega fondo azul */
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 2px 8px; /* Añade espacio interno */
+  display: inline-block; /* Para que el fondo cubra solo el texto */
+  margin-left: auto;
+  margin-right: auto;
+}
 
-        h1 {
-            font-size: 2rem;
-        }
+p {
+  color: white;
+  background-color: blue;
+  text-align: center;
+  max-width: 800px;
+  padding: 2px 8px;
+  display: inline-block;
+  margin: 5px auto;
+}
 
-
-
-        
-        h2 {
-            color: #2D3436;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid #D32F2F;
-            text-align: center;
-        }
+h2 {
+  color: white;
+  background-color: blue;
+  padding: 2px 8px;
+  display: inline-block;
+  margin: 10px auto;
+  text-align: center;
+}
 
         /* CATEGORÍAS Y PRODUCTOS */
         .categories-wrapper {
@@ -398,14 +405,21 @@ body {
     <div class="container">
         <!-- SECCIÓN INICIO (PRODUCTOS) -->
         <section id="inicio" class="active">
-             <h1>BIENVENIDOS A VERRACO TOYS</h1>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; padding: 0 10px;">
-            Tu tienda de confianza en Ambato, Provincia del Tungurahua, especializada en juguetes teledirigidos y productos coleccionables de alta calidad.
-        </p>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; padding: 0 10px;">
-            Contamos con modelos exclusivos, garantía oficial y atención personalizada para cada cliente.
-        </p>
-            <h2>Catálogo de Productos</h2>
+            <!-- Título H1 -->
+<h1 class="texto-resaltado">BIENVENIDOS A VERRACO TOYS</h1>
+
+<!-- Primer párrafo -->
+<p class="texto-resaltado">
+  Tu tienda de confianza en Ambato, Provincia del Tungurahua, especializada en juguetes teledirigidos y productos coleccionables de alta calidad.
+</p>
+
+<!-- Segundo párrafo -->
+<p class="texto-resaltado">
+  Contamos con modelos exclusivos, garantía oficial y atención personalizada para cada cliente.
+</p>
+
+<!-- Título H2 -->
+<h2 class="texto-resaltado">Catálogo de Productos</h2>
             <div class="categories-wrapper">
                 <!-- CATEGORÍA 1: JUGUETES DE MADERA -->
                 <div class="category-card">
