@@ -318,32 +318,31 @@
             }
        
 /* Correción para mantener el pie de página abajo */
-html, body {
+/* SOLUCIÓN DEFINITIVA PARA PIE DE PÁGINA ABAJO */
+html {
     height: 100%;
-    margin: 0;
-    padding: 0;
 }
-
 body {
-    display: flex;
-    flex-direction: column;
+    min-height: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Divide la página en 3 partes: header, contenido, footer */
 }
 
+/* Ajuste del contenedor principal */
 .container {
-    flex: 1; /* Hace que el contenedor ocupe todo el espacio disponible */
+    max-width: 1300px;
     margin: 2rem auto;
     padding: 0 1.5rem;
 }
 
+/* Estilo del footer (mantén los colores que ya tienes) */
 footer {
     background-color: #2D3436;
     color: white;
     text-align: center;
     padding: 1.5rem;
-    width: 100%;
-    margin-top: auto; /* Empuja el footer hacia abajo */
-}
-
+    width: 100%;}
         }
     </style>
     <!-- ÍCONOS -->
