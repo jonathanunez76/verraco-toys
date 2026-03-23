@@ -1,4 +1,6 @@
 
+
+                    
               
               <!DOCTYPE html>
 <html lang="es">
@@ -336,58 +338,54 @@ h2 {
 
         /* CARRUSEL DE IMÁGENES */
         .carousel-container {
-  position: relative;
-  width: 90%;
-  margin: 0 auto 2rem auto;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.carousel-slides {
-  display: flex;
-  transition: transform 0.5s ease;
-  touch-action: pan-y;
-}
-
-.carousel-slide {
-  min-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  background-color: #fff;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.7);
-  color: white;
-  border: none;
-  padding: 0.7rem 1rem;
-  font-size: 1.4rem;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.carousel-btn.prev {
-  left: 10px;
-}
-
-.carousel-btn.next {
-  right: 10px;
-}
-
-.carousel-btn:hover {
-  background-color: rgba(0,0,0,0.9);
-}
-
+            position: relative;
+            max-width: 400px;
+          width:90%;
+            margin: 0 auto 2rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            /* Añadido para optimizar el rendimiento en móvil */
+            touch-action: pan-y; /* Permite el scroll vertical en la página */
+        }
+        .carousel-slide {
+            min-width: 100%;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .carousel-slide img {
+            max-width: 100%;
+          max-height: 300px;
+          width: auto;
+            height:auto;
+            object-fit:contain;
+          background-color: #fff;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            padding: 0.5rem 0.8rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+           z-index: 10;
+        }
+        .carousel-btn:hover {
+          background-color: rgba(0,0,0,0.9);
+        }
+        .prev-btn {
+            left: 5px;
+        }
+        .next-btn {
+            right: 5px;
+        }
 
         /* VIDEO DEL PRODUCTO */
         .product-video {
@@ -469,35 +467,26 @@ h2 {
         }
 
           /* RESPONSIVIDAD PARA MOVILES */
-   /* RESPONSIVIDAD PARA MOVILES */
-@media (max-width: 767px) {
-  .carousel-container {
-    max-width: 95% !important; /* Fuerza el valor para evitar conflictos */
-  }
-  .carousel-slide img {
-    max-height: 450px;
-  }
-}
+      @media (max-width: 480px) {
+        .carousel-slide img{
+          max-height: 250px; 
+        }
+    .nav-container {
+        flex-direction: column;
+    }
+    .nav-links {
+        margin-top: 15px;
+    }
+    .nav-links a {
+        margin: 0 10px;
+    }
+    .titulo-verraco {
+        font-size: 2.5rem;
+    }
+    .categories-wrapper {
+        grid-template-columns: 1fr;
+    }
 
-/* TABLETS GRANDES Y ESCRITORIO PEQUEÑO */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .carousel-container {
-    max-width: 750px !important;
-  }
-  .carousel-slide img {
-    max-height: 520px;
-  }
-}
-
-/* ESCRITORIO GRANDE Y MUY GRANDE */
-@media (min-width: 1024px) {
-  .carousel-container {
-    max-width: 900px !important;
-  }
-  .carousel-slide img {
-    max-height: 600px;
-  }
-}
     /* ***** CAMBIA 'body' por 'html' AQUÍ ***** */
     html {
         background-size: contain; /* O 'cover' si prefieres que cubra */
@@ -1312,4 +1301,4 @@ window.addEventListener('load', closeAllCategories);
 </body>
 </html>
 
-                                     
+                                                      
