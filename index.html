@@ -1243,25 +1243,34 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             // Añadir eventos táctiles al carrusel
             let touchStartX = 0;
             let touchEndX = 0;
+          let touchstarty = 0;
 
-            carouselSlides.addEventListener('touchstart', (e) => {
-               touchStartX = e.touches[0].clientX;
-touchStartY = e.touches[0].clientY; // ← AGREGA ESTA LÍNEA
-isSwiping = true;
-            });
+           carouselSlides.addEventListener('touchstart', (e) => {
+  // SOLO ACTIVA EL CARRUSEL SI EL TOQUE ES SOBRE EL CARRUSEL (NO SOBRE CATEGORÍAS)
+  const target = e.target; // ← VERIFICAMOS EN QUÉ ELEMENTO TOCAMOS
+  if (target.closest('#product-carousel-slides') || target.closest('.carousel-slide')) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    isSwiping = true;
+  } else {
+    isSwiping = false; // ← SI NO ES CARRUSEL, NO ACTIVA EL SWIPE
+  }
+});
 
             carouselSlides.addEventListener('touchmove', (e) => {
-               if (!isSwiping) return;
-touchEndX = e.touches[0].clientX;
-const touchY = e.touches[0].clientY; // ← AGREGA ESTO
-const diffX = touchEndX - touchStartX;
-const diffY = touchY - touchStartY; // ← AGREGA ESTO
+           carouselSlides.addEventListener('touchmove', (e) => {
+  if (!isSwiping) return;
+  touchEndX = e.touches[0].clientX;
+  const touchY = e.touches[0].clientY;
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchY - touchStartY;
 
-// CAMBIA TODO EL IF ANTERIOR POR ESTE:
-if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 1) {
-  e.preventDefault();
-}
-            });
+  // SOLO BLOQUEA SI ES SWIPE HORIZONTAL Y MAYOR A 5 PIXELES
+  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 5) {
+    e.preventDefault();
+  }
+});
+           
 
             carouselSlides.addEventListener('touchend', () => {
                 if (!isSwiping) return;
