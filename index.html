@@ -1,3 +1,6 @@
+
+                                                                                     
+                                                                                     
  <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1235,46 +1238,43 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                 videoFrame.src = ''; // Limpiar el src para evitar que siga reproduciendo en segundo plano
             }
 
-           // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
-// Añadir eventos táctiles SOLO PARA EL CARRUSEL (sin interferir)
-let touchStartX = 0;
-// Variable para saber si el toque es sobre el carrusel
-let isTouchOnCarousel = false;
+            // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
+            // Añadir eventos táctiles al carrusel
+            let touchStartX = 0;
+            let touchEndX = 0;
 
-// Solo activar si existe el carrusel
-const carouselSlides = document.getElementById('product-carousel-slides');
-if (carouselSlides) {
-  carouselSlides.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    isTouchOnCarousel = true; // Marcar que el toque es sobre el carrusel
-  });
+            carouselSlides.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                isSwiping = true;
+            });
 
-  carouselSlides.addEventListener('touchend', (e) => {
-    if (!isTouchOnCarousel) return; // No hacer nada si el toque no es del carrusel
-    
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchEndX - touchStartX;
+            carouselSlides.addEventListener('touchmove', (e) => {
+                if (!isSwiping) return;
+                touchEndX = e.touches[0].clientX;
+                // Prevenir el scroll de la página si estamos haciendo swipe en el carrusel
+                if (Math.abs(touchEndX - touchStartX) > 10) { // Un pequeño umbral para evitar bloquear scroll accidentalmente
+                    e.preventDefault();
+                }
+            });
 
-    if (diff > 50) {
-      moveCarousel(-1); // Desliza DERECHA → ANTERIOR
-    } else if (diff < -50) {
-      moveCarousel(1); // Desliza IZQUIERDA → SIGUIENTE
-    }
+            carouselSlides.addEventListener('touchend', () => {
+                if (!isSwiping) return;
+                isSwiping = false;
+                const swipeDistance = touchEndX - touchStartX;
 
-    isTouchOnCarousel = false; // Resetear para el siguiente toque
-  });
-
-  // Evitar que el swipe del carrusel interfiera con el scroll de la página
-  carouselSlides.addEventListener('touchmove', (e) => {
-    if (!isTouchOnCarousel) return;
-    const diff = e.touches[0].clientX - touchStartX;
-    // Solo prevenir scroll si es swipe horizontal
-    if (Math.abs(diff) > Math.abs(e.touches[0].clientY - e.changedTouches[0].clientY)) {
-      e.preventDefault();
-    }
-  });
-}
-// --- FIN DE MODIFICACIONES PARA TÁCTIL ---
+                if (swipeDistance > SWIPE_THRESHOLD) {
+                    // Deslizamiento hacia la derecha (anterior)
+                    moveCarousel(-1);
+                } else if (swipeDistance < -SWIPE_THRESHOLD) {
+                    // Deslizamiento hacia la izquierda (siguiente)
+                    moveCarousel(1);
+                }
+                // Resetear para el siguiente toque
+                touchStartX = 0;
+                touchEndX = 0;
+            });
+            // --- FIN DE MODIFICACIONES PARA TÁCTIL ---
+        }
 
         function hideProductDetail() {
             document.getElementById('product-detail-page').style.display = 'none';
@@ -1289,15 +1289,13 @@ if (carouselSlides) {
             if (totalSlides === 0) return; // Asegurarse de que hay slides
 
             if (currentCarouselIndex < 0) {
-                currentCarouselIndex = totalSlides-1;
+                currentCarouselIndex = totalSlides - 1;
             } else if (currentCarouselIndex >= totalSlides) {
                 currentCarouselIndex = 0;
             }
 
             const offset = -currentCarouselIndex * 100;
             carouselSlides.style.transform = `translateX(${offset}%)`;
-        
-            carouselSlides.style.transition = `transform 0.3s ease`;
         }
 
         // Modificada para recibir dirección y ser usada por los eventos táctiles
@@ -1361,5 +1359,4 @@ window.addEventListener('load', closeAllCategories);
 </body>
 </html>
 
-                                                                                     
                                                                                      
