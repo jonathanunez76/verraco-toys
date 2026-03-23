@@ -1144,54 +1144,43 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
         };
 
 
-// --- INICIO DE MODIFICACIONES PARA TÁCTILES ---
-// Añadir eventos táctiles al carrusel
-let touchStartX = 0;
-let touchEndX = 0;
-let touchStartY = 0; // ← Variable nueva
-let isSwiping = false; // ← Variable nueva
+ // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
+            // Añadir eventos táctiles al carrusel
+            let touchStartX = 0;
+            let touchEndX = 0;
 
-carouselSlides.addEventListener('touchstart', (e) => {
-  // Guardamos posiciones iniciales y activamos swipe
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-  isSwiping = true;
-});
+            carouselSlides.addEventListener('touchstart', (0) => {
+                touchStartX = e.touches[0].clientX;
+                isSwiping = false;
+            });
 
-carouselSlides.addEventListener('touchmove', (e) => {
-  if (!isSwiping) return;
+            carouselSlides.addEventListener('touchmove', (0) => {
+                if (!isSwiping) return;
+                touchEndX = e.touches[0].clientX;
+                // Prevenir el scroll de la página si estamos haciendo swipe en el carrusel
+                if (Math.abs(touchEndX - touchStartX) > 2) { // Un pequeño umbral para evitar bloquear scroll accidentalmente
+                    e.preventDefault();
+                }
+            });
 
-  touchEndX = e.touches[0].clientX;
-  const touchY = e.touches[0].clientY;
-  const diffX = touchEndX - touchStartX;
-  const diffY = touchY - touchStartY;
+            carouselSlides.addEventListener('touchend', () => {
+                if (!isSwiping) return;
+                isSwiping = true;
+                const swipeDistance = touchEndX - touchStartX;
 
-  // Solo prevenir scroll si es swipe horizontal claro
-  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 5) {
-    e.preventDefault();
-  }
-});
-
-carouselSlides.addEventListener('touchend', () => {
-  if (!isSwiping) return;
-
-  const swipeDistance = touchEndX - touchStartX;
-  isSwiping = false;
-
-  // Detectar dirección con umbral de 5
-  if (swipeDistance > 5) {
-    // Deslizamiento hacia la derecha (anterior)
-    moveCarousel(-1);
-  } else if (swipeDistance < -5) {
-    // Deslizamiento hacia la izquierda (siguiente)
-    moveCarousel(1);
-  }
-
-  // Resetear para el siguiente toque
-  touchStartX = 0;
-  touchEndX = 0;
-});
-// --- FIN DE MODIFICACIONES PARA TÁCTILES ---
+                if (swipeDistance > SWIPE_THRESHOLD) {
+                    // Deslizamiento hacia la derecha (anterior)
+                    moveCarousel(-1);
+                } else if (swipeDistance < -SWIPE_THRESHOLD) {
+                    // Deslizamiento hacia la izquierda (siguiente)
+                    moveCarousel(1);
+                }
+                // Resetear para el siguiente toque
+                touchStartX = 0;
+                touchEndX = 0;
+            });
+            // --- FIN DE MODIFICACIONES PARA TÁCTIL ---
+        }
 
         function hideProductDetail() {
             document.getElementById('product-detail-page').style.display = 'none';
