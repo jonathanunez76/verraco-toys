@@ -36,20 +36,22 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-   body {
-        padding-top: 80px;
-        line-height: 1.6;
-         background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
-        background-size: cover; /* Se mantiene para pantallas grandes */
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center center; /* Centra la imagen horizontal y verticalmente por defecto */
-        background-blend-mode: normal;  
-        display: flex;             
-        flex-direction: column;    
-        min-height: 100vh;         
-        margin: 0;                 
-    }
+ body {
+    padding-top: 80px;
+            line-height: 1.6;
+            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-blend-mode: normal;  
+  /* --- ¡AGREGA ESTAS PROPIEDADES NUEVAS! --- */
+  display: flex;             /* Habilita Flexbox */
+  flex-direction: column;    /* Los elementos hijos se apilarán verticalmente */
+  min-height: 100vh;         /* Ocupa al menos el 100% de la altura de la ventana */
+  margin: 0;                 /* Asegura que no haya margen extra en el body */
+  /* El padding-top ya lo tienes en 80px, ¡perfecto para tu header fijo! */
+}
 
       /* Barra de navegación */
       
@@ -427,28 +429,27 @@ h2 {
             flex-shrink: 0; /* Evita que el footer se encoja */
         }
 
-        /* MEDIA QUERIES PARA RESPONSIVE */
+          /* RESPONSIVIDAD PARA MOVILES */
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
-            }
-            .nav-links {
-                margin-top: 15px;
+                gap: 1rem;
             }
             .nav-links a {
-                margin: 0 10px;
+                margin: 0 0.8rem;
             }
-            .titulo-verraco {
-                font-size: 2.5rem;
+            .carousel-slide img {
+                height: 250px;
+            }
+            .product-video {
+                height: 200px;
+            }
+            .product-detail {
+                padding: 1rem;
             }
             .categories-wrapper {
                 grid-template-columns: 1fr;
             }
-                  /* ... tus estilos de .titulo-verraco ... */
-
-        .categories-wrapper {
-            grid-template-columns: 1fr;
-        }
 
         /* ***** AQUÍ ES DONDE DEBES AÑADIR EL NUEVO BLOQUE PARA 'body' ***** */
         body {
