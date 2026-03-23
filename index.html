@@ -1149,12 +1149,12 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             let touchStartX = 0;
             let touchEndX = 0;
 
-            carouselSlides.addEventListener('touchstart', (0) => {
+            carouselSlides.addEventListener('touchstart', (e) => {
                 touchStartX = e.touches[0].clientX;
-                isSwiping = false;
+                isSwiping = true;
             });
 
-            carouselSlides.addEventListener('touchmove', (0) => {
+            carouselSlides.addEventListener('touchmove', (e) => {
                 if (!isSwiping) return;
                 touchEndX = e.touches[0].clientX;
                 // Prevenir el scroll de la página si estamos haciendo swipe en el carrusel
