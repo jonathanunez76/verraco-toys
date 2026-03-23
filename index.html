@@ -1235,24 +1235,45 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                 videoFrame.src = ''; // Limpiar el src para evitar que siga reproduciendo en segundo plano
             }
 
-            // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
-// Añadir eventos táctiles para cambiar imágenes rápido
+           // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
+// Añadir eventos táctiles SOLO PARA EL CARRUSEL (sin interferir)
 let touchStartX = 0;
+// Variable para saber si el toque es sobre el carrusel
+let isTouchOnCarousel = false;
 
-carouselSlides.addEventListener('touchstart', (e) => {
-  touchStartX = e.touches[0].clientX;
-});
+// Solo activar si existe el carrusel
+const carouselSlides = document.getElementById('product-carousel-slides');
+if (carouselSlides) {
+  carouselSlides.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    isTouchOnCarousel = true; // Marcar que el toque es sobre el carrusel
+  });
 
-carouselSlides.addEventListener('touchend', (e) => {
-  const touchEndX = e.changedTouches[0].clientX;
-  const diff = touchEndX - touchStartX;
+  carouselSlides.addEventListener('touchend', (e) => {
+    if (!isTouchOnCarousel) return; // No hacer nada si el toque no es del carrusel
+    
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchEndX - touchStartX;
 
-  if (diff > 50) {
-    moveCarousel(-1); // Desliza DERECHA → ANTERIOR
-  } else if (diff < -50) {
-    moveCarousel(1); // Desliza IZQUIERDA → SIGUIENTE
-  }
-});
+    if (diff > 50) {
+      moveCarousel(-1); // Desliza DERECHA → ANTERIOR
+    } else if (diff < -50) {
+      moveCarousel(1); // Desliza IZQUIERDA → SIGUIENTE
+    }
+
+    isTouchOnCarousel = false; // Resetear para el siguiente toque
+  });
+
+  // Evitar que el swipe del carrusel interfiera con el scroll de la página
+  carouselSlides.addEventListener('touchmove', (e) => {
+    if (!isTouchOnCarousel) return;
+    const diff = e.touches[0].clientX - touchStartX;
+    // Solo prevenir scroll si es swipe horizontal
+    if (Math.abs(diff) > Math.abs(e.touches[0].clientY - e.changedTouches[0].clientY)) {
+      e.preventDefault();
+    }
+  });
+}
 // --- FIN DE MODIFICACIONES PARA TÁCTIL ---
 
         function hideProductDetail() {
