@@ -1233,14 +1233,18 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             updateCarousel();
         }
 
-      // Función para mostrar/ocultar categorías
+// Función para mostrar/ocultar categorías
 function toggleCategory(categoryId) {
     const categoryContent = document.getElementById(categoryId);
-    // Comprobar si está oculto o sin estilo definido
-    if (categoryContent.style.display === 'grid' || categoryContent.style.display === '') {
-        categoryContent.style.display = 'none';
-    } else {
+    // Obtener el estilo COMPLETO del elemento (incluye CSS)
+    const computedStyle = window.getComputedStyle(categoryContent);
+    const currentDisplay = computedStyle.display;
+
+    // Si está oculto → mostrarlo; si está visible → ocultarlo
+    if (currentDisplay === 'none') {
         categoryContent.style.display = 'grid';
+    } else {
+        categoryContent.style.display = 'none';
     }
 }
         
