@@ -143,24 +143,27 @@ h2 {
   margin-bottom: 1.5rem; /* Separación del párrafo de abajo */
 
   /* EFECTO DORADO */
- background: -webkit-linear-gradient(#FFD700, #D4AF37, #B8860B);
-background: linear-gradient(#FFD700, #D4AF37, #B8860B);
+ background: -webkit-linear-gradient(45deg, #FFD700, #F0C420, #D4AF37, #FFD700);
+background: linear-gradient(45deg, #FFD700, #F0C420, #D4AF37, #FFD700);
+background-size: 200% 200%; /* ← AGREGA ESTA LÍNEA */
   -webkit-background-clip: text; /* Recorta el fondo al contorno del texto */
   -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente para que se vea el fondo */
-
+animation: brilloOro 3s ease infinite; /* ← AGREGA ESTA LÍNEA */
   /* EFECTO 3D (con sombras) */
- text-shadow:
-  1px 1px 0px rgba(255, 215, 0, 0.8), /* Sombra dorada brillante */
-  1px 1px 0px rgba(0, 0, 0, 0.3),
-  2px 2px 0px rgba(0, 0, 0, 0.25),
-  3px 3px 0px rgba(0, 0, 0, 0.2),
-  4px 4px 0px rgba(0, 0, 0, 0.15),
-  5px 5px 0px rgba(0, 0, 0, 0.1),
-  6px 6px 0px rgba(0, 0, 0, 0.05),
-  7px 7px 0px rgba(0, 0, 0, 0);sparente */
+text-shadow: 
+  0 0 5px rgba(255, 215, 0, 0.8),
+  0 0 10px rgba(255, 215, 0, 0.6),
+  0 0 15px rgba(255, 215, 0, 0.4),
+  2px 2px 3px rgba(0, 0, 0, 0.3);
 
   /* Para que el efecto de degradado funcione, el color del texto debe ser transparente */
   color: transparent; /* Importante para que el background-clip funcione */
+}
+      /* ANIMACIÓN PARA BRILLO DE ORO */
+@keyframes brilloOro {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
         
