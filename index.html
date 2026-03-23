@@ -1245,17 +1245,22 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             let touchEndX = 0;
 
             carouselSlides.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-                isSwiping = true;
+               touchStartX = e.touches[0].clientX;
+touchStartY = e.touches[0].clientY; // ← AGREGA ESTA LÍNEA
+isSwiping = true;
             });
 
             carouselSlides.addEventListener('touchmove', (e) => {
-                if (!isSwiping) return;
-                touchEndX = e.touches[0].clientX;
-                // Prevenir el scroll de la página si estamos haciendo swipe en el carrusel
-                if (Math.abs(touchEndX - touchStartX) > 1) { // Un pequeño umbral para evitar bloquear scroll accidentalmente
-                    e.preventDefault();
-                }
+               if (!isSwiping) return;
+touchEndX = e.touches[0].clientX;
+const touchY = e.touches[0].clientY; // ← AGREGA ESTO
+const diffX = touchEndX - touchStartX;
+const diffY = touchY - touchStartY; // ← AGREGA ESTO
+
+// CAMBIA TODO EL IF ANTERIOR POR ESTE:
+if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 1) {
+  e.preventDefault();
+}
             });
 
             carouselSlides.addEventListener('touchend', () => {
@@ -1297,7 +1302,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
 
             const offset = -currentCarouselIndex * 100;
             carouselSlides.style.transform = `translateX(${offset}%)`;
-          carouselSlides.style.transition = 'transform 0.1s ease';
+        
         }
 
         // Modificada para recibir dirección y ser usada por los eventos táctiles
