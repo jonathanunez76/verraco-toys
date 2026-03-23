@@ -143,20 +143,21 @@ h2 {
   margin-bottom: 1.5rem; /* Separación del párrafo de abajo */
 
   /* EFECTO DORADO */
-  background: -webkit-linear-gradient(#F0E68C, #DAA520, #B8860B); /* Degradado dorado para navegadores WebKit */
-  background: linear-gradient(#F0E68C, #DAA520, #B8860B); /* Degradado dorado estándar */
+ background: -webkit-linear-gradient(#FFD700, #D4AF37, #B8860B);
+background: linear-gradient(#FFD700, #D4AF37, #B8860B);
   -webkit-background-clip: text; /* Recorta el fondo al contorno del texto */
   -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente para que se vea el fondo */
 
   /* EFECTO 3D (con sombras) */
-  text-shadow:
-    1px 1px 0px rgba(0, 0, 0, 0.3),  /* Sombra leve para el efecto 3D */
-    2px 2px 0px rgba(0, 0, 0, 0.25),
-    3px 3px 0px rgba(0, 0, 0, 0.2),
-    4px 4px 0px rgba(0, 0, 0, 0.15),
-    5px 5px 0px rgba(0, 0, 0, 0.1),
-    6px 6px 0px rgba(0, 0, 0, 0.05),
-    7px 7px 0px rgba(0, 0, 0, 0); /* La última sombra es casi transparente */
+ text-shadow:
+  1px 1px 0px rgba(255, 215, 0, 0.8), /* Sombra dorada brillante */
+  1px 1px 0px rgba(0, 0, 0, 0.3),
+  2px 2px 0px rgba(0, 0, 0, 0.25),
+  3px 3px 0px rgba(0, 0, 0, 0.2),
+  4px 4px 0px rgba(0, 0, 0, 0.15),
+  5px 5px 0px rgba(0, 0, 0, 0.1),
+  6px 6px 0px rgba(0, 0, 0, 0.05),
+  7px 7px 0px rgba(0, 0, 0, 0);sparente */
 
   /* Para que el efecto de degradado funcione, el color del texto debe ser transparente */
   color: transparent; /* Importante para que el background-clip funcione */
@@ -340,7 +341,7 @@ h2 {
         .carousel-container {
             position: relative;
             max-width: 1000px;
-          width:95%;
+          width:100%;
             margin: 0 auto 2rem auto;
             border-radius: 10px;
             overflow: hidden;
@@ -470,7 +471,7 @@ h2 {
       @media (max-width: 480px) {
     
         .carousel-slide img{
-          max-height: 500px; 
+          max-height: 600px; 
         }
     .nav-container {
         flex-direction: column;
