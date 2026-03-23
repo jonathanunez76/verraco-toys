@@ -505,14 +505,14 @@ h2 {
 <body>
     <header>
         <nav class="nav-container">
-            <div class="logo">VERRACO TOYS</div>
-            <div class="nav-links">
-                <a href="#" data-section="home">Inicio</a>
-                <a href="#" data-section="shop">Tienda</a>
-                <a href="#" data-section="about">Quiénes Somos</a>
-                <a href="#" data-section="contact">Contacto</a>
-            </div>
-        </nav>
+    <div class="logo">VERRACO TOYS</div>
+    <div class="nav-links">
+        <a href="#" data-section="home" onclick="closeAllCategories()">Inicio</a>
+        <a href="#" data-section="shop" onclick="closeAllCategories()">Tienda</a>
+        <a href="#" data-section="about" onclick="closeAllCategories()">Quiénes Somos</a>
+        <a href="#" data-section="contact" onclick="closeAllCategories()">Contacto</a>
+    </div>
+</nav>
     </header>
 
     <main class="container">
@@ -1236,18 +1236,27 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
 // Función para mostrar/ocultar categorías
 function toggleCategory(categoryId) {
     const categoryContent = document.getElementById(categoryId);
-    // Obtener el estilo COMPLETO del elemento (incluye CSS)
     const computedStyle = window.getComputedStyle(categoryContent);
     const currentDisplay = computedStyle.display;
 
-    // Si está oculto → mostrarlo; si está visible → ocultarlo
     if (currentDisplay === 'none') {
         categoryContent.style.display = 'grid';
     } else {
         categoryContent.style.display = 'none';
     }
 }
-        
+
+// Función para cerrar TODAS las categorías
+function closeAllCategories() {
+    const allCategoryContents = document.querySelectorAll('.category-content');
+    allCategoryContents.forEach(content => {
+        content.style.display = 'none';
+    });
+}
+
+// Cerrar categorías cuando cargue la página
+window.addEventListener('load', closeAllCategories);
+      }
     </script>
 </body>
 </html>
