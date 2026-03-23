@@ -1,4 +1,7 @@
-               
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,7 +25,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="X-UA-Compatible" content="IE=edge">
 
-   <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
+    <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Verraco Toys - Tienda Oficial</title>
@@ -35,27 +38,23 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-body {
-    padding-top: 80px;
+        body {
+            padding-top: 80px;
             line-height: 1.6;
             background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
-            background-blend-mode: normal;  
-  /* --- ¡AGREGA ESTAS PROPIEDADES NUEVAS! --- */
-  display: flex;             /* Habilita Flexbox */
-  flex-direction: column;    /* Los elementos hijos se apilarán verticalmente */
-  min-height: 100vh;         /* Ocupa al menos el 100% de la altura de la ventana */
-  margin: 0;                 /* Asegura que no haya margen extra en el body */
-  /* El padding-top ya lo tienes en 80px, ¡perfecto para tu header fijo! */
-}
+            background-blend-mode: normal;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-      /* Barra de navegación */
-      
-       
-     header {
+        /* Barra de navegación */
+        header {
             background-color: #c0392b;
             padding: 15px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -63,7 +62,7 @@ body {
             top: 0;
             left: 0;
             width:100%;
-             z-index: 1000;
+            z-index: 1000;
         }
 
         .nav-container {
@@ -93,76 +92,71 @@ body {
             color: #f1c40f;
         }
 
-
         /* CONTENEDOR PRINCIPAL */
-         .container {
-    max-width: 1300px;
-    margin: 5rem auto 3rem auto;;
-    padding: 0 1.5rem;
-             text-align: center;
-             flex-grow: 1;
+        .container {
+            max-width: 1300px;
+            margin: 5rem auto 3rem auto;
+            padding: 0 1.5rem;
+            text-align: center;
+            flex-grow: 1;
         }
 
         /* SECCIONES GENERALES */
         section {
-          
             margin-bottom: 5rem;
             display: none;
         }
         section.active {
             display: block;
         }
- h1, h2, {
-  background-color: rgba(255,255,255,0.2);
-  margin-bottom: 20px;
+        h1, h2 {
+            background-color: rgba(255,255,255,0.2);
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
 
-  padding: 0 10px;
-}
+        h1 {
+            font-size: 2rem;
+            font-weight: 2000; /* Muy gruesa */
+        }
 
-h1 {
-  font-size: 2rem;
-  font-weight: 2000; /* Muy gruesa */
-    
-}
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 900; /* Gruesa */
+        }
 
-h2 {
-  font-size: 1.5rem;
-  font-weight: 900; /* Gruesa */
-}
+        p {
+            font-weight: 1200; /* Bold estándar */
+        }
 
-     p {
-  font-weight: 1200; /* Bold estándar */ 
-      }
+        .titulo-verraco {
+            font-family: 'Oswald', sans-serif; /* O una fuente gruesa y sin serifa que tengas cargada */
+            font-size: 3.8rem; /* Tamaño grande, ajusta según necesidad */
+            font-weight: 900; /* Lo más grueso posible */
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 1.5rem; /* Separación del párrafo de abajo */
 
-.titulo-verraco {
-  font-family: 'Oswald', sans-serif; /* O una fuente gruesa y sin serifa que tengas cargada */
-  font-size: 3.8rem; /* Tamaño grande, ajusta según necesidad */
-  font-weight: 900; /* Lo más grueso posible */
-  text-align: center;
-  line-height: 1.2;
-  margin-bottom: 1.5rem; /* Separación del párrafo de abajo */
+            /* EFECTO DORADO */
+            background: -webkit-linear-gradient(#F0E68C, #DAA520, #B8860B); /* Degradado dorado para navegadores WebKit */
+            background: linear-gradient(#F0E68C, #DAA520, #B8860B); /* Degradado dorado estándar */
+            -webkit-background-clip: text; /* Recorta el fondo al contorno del texto */
+            -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente para que se vea el fondo */
 
-  /* EFECTO DORADO */
-  background: -webkit-linear-gradient(#F0E68C, #DAA520, #B8860B); /* Degradado dorado para navegadores WebKit */
-  background: linear-gradient(#F0E68C, #DAA520, #B8860B); /* Degradado dorado estándar */
-  -webkit-background-clip: text; /* Recorta el fondo al contorno del texto */
-  -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente para que se vea el fondo */
+            /* EFECTO 3D (con sombras) */
+            text-shadow:
+                1px 1px 0px rgba(0, 0, 0, 0.3),  /* Sombra leve para el efecto 3D */
+                2px 2px 0px rgba(0, 0, 0, 0.25),
+                3px 3px 0px rgba(0, 0, 0, 0.2),
+                4px 4px 0px rgba(0, 0, 0, 0.15),
+                5px 5px 0px rgba(0, 0, 0, 0.1),
+                6px 6px 0px rgba(0, 0, 0, 0.05),
+                7px 7px 0px rgba(0, 0, 0, 0); /* La última sombra es casi transparente */
 
-  /* EFECTO 3D (con sombras) */
-  text-shadow:
-    1px 1px 0px rgba(0, 0, 0, 0.3),  /* Sombra leve para el efecto 3D */
-    2px 2px 0px rgba(0, 0, 0, 0.25),
-    3px 3px 0px rgba(0, 0, 0, 0.2),
-    4px 4px 0px rgba(0, 0, 0, 0.15),
-    5px 5px 0px rgba(0, 0, 0, 0.1),
-    6px 6px 0px rgba(0, 0, 0, 0.05),
-    7px 7px 0px rgba(0, 0, 0, 0); /* La última sombra es casi transparente */
+            /* Para que el efecto de degradado funcione, el color del texto debe ser transparente */
+            color: transparent; /* Importante para que el background-clip funcione */
+        }
 
-  /* Para que el efecto de degradado funcione, el color del texto debe ser transparente */
-  color: transparent; /* Importante para que el background-clip funcione */
-}
-
-        
         /* CATEGORÍAS Y PRODUCTOS */
         .categories-wrapper {
             display: block;
@@ -187,9 +181,9 @@ h2 {
         }
         .products-grid {
             display: flex;
-          flex-wrap: wrap;
+            flex-wrap: wrap;
             gap: 1.5rem;
-          justify-content: center;
+            justify-content: center;
         }
         .product-card {
             background-color:rgba(255,255,255, 0.2);
@@ -198,8 +192,8 @@ h2 {
             overflow: hidden;
             transition: transform 0.3s ease;
             cursor: pointer;
-           width: 90%;
-          max-width: 400px;
+            width: 90%;
+            max-width: 400px;
         }
         .product-card:hover {
             transform: translateY(-5px);
@@ -207,7 +201,7 @@ h2 {
         .product-card img {
             width: 100%;
             height: auto;
-           display: block;
+            display: block;
         }
         .product-info {
             padding: 1rem;
@@ -261,31 +255,30 @@ h2 {
             background-color: #128C7E;
         }
 
+        /* SECCIÓN QUIENES SOMOS Y CONTACTOS */
+        .about-content, .contact-content {
+            max-width: 900px; /* Ancho mayor para que el texto no se vea tan ajustado */
+            margin: 4rem auto; /* Más espacio arriba y abajo */
+            line-height: 3; /* Espaciado entre líneas más cómodo para leer */
+            color: #2D3436; /* Color de texto más oscuro para mejor legibilidad */
+            font-size: 1.15rem; /* Tamaño de fuente ligeramente mayor */
+            padding: 0 1.5rem; /* Espacio lateral en pantallas pequeñas */
+            text-align: center;
+        }
 
-       /* SECCIÓN QUIENES SOMOS Y CONTACTOS */
-.about-content, .contact-content {
-    max-width: 900px; /* Ancho mayor para que el texto no se vea tan ajustado */
-    margin: 4rem auto; /* Más espacio arriba y abajo */
-    line-height: 3; /* Espaciado entre líneas más cómodo para leer */
-    color: #2D3436; /* Color de texto más oscuro para mejor legibilidad */
-    font-size: 1.15rem; /* Tamaño de fuente ligeramente mayor */
-    padding: 0 1.5rem; /* Espacio lateral en pantallas pequeñas */
-    text-align: center;
-}
+        .contact-content p {
+            margin-bottom: 1.5rem; /* Más espacio entre párrafos */
+            display: flex;
+            align-items: center;
+            padding: 0.5rem; /* Borde interno para darle volumen */
+            border-left: 3px solid #D32F2F; /* Línea roja a la izquierda para resaltar */
+        }
 
-.contact-content p {
-    margin-bottom: 1.5rem; /* Más espacio entre párrafos */
-    display: flex;
-    align-items: center;
-    padding: 0.5rem; /* Borde interno para darle volumen */
-    border-left: 3px solid #D32F2F; /* Línea roja a la izquierda para resaltar */
-}
-
-.contact-content i {
-    color: #D32F2F; /* Mantiene el rojo de la marca */
-    margin-right: 1rem; /* Más espacio entre ícono y texto */
-    font-size: 1.5rem; /* Íconos más grandes y visibles */
-}
+        .contact-content i {
+            color: #D32F2F; /* Mantiene el rojo de la marca */
+            margin-right: 1rem; /* Más espacio entre ícono y texto */
+            font-size: 1.5rem; /* Íconos más grandes y visibles */
+        }
 
         /* PÁGINA DE DETALLE DE PRODUCTO */
         .product-detail {
@@ -312,8 +305,7 @@ h2 {
             margin: 0 auto 2rem auto;
             border-radius: 10px;
             overflow: hidden;
-            /* ¡AÑADIDA ESTA LÍNEA PARA PERMITIR LA INTERACCIÓN TÁCTIL! */
-            touch-action: pan-y; 
+            touch-action: pan-y; /* Permite el scroll vertical de la página, pero evita el desplazamiento horizontal no deseado dentro del carrusel */
         }
         .carousel-slides {
             display: flex;
@@ -385,8 +377,8 @@ h2 {
             margin-bottom: 1.5rem;
         }
 
-        
-       /* Pie de página */
+
+        /* Pie de página */
         footer {
             background-color: #2c3e50;
             color: white;
@@ -399,7 +391,7 @@ h2 {
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
-                gap:   1rem;
+                gap: 1rem;
             }
             .nav-links a {
                 margin: 0 0.8rem;
@@ -414,32 +406,30 @@ h2 {
                 padding: 1rem;
             }
             .categories-wrapper {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1
+
+                fr;
             }
             .titulo-verraco {
                 font-size: 3rem; /* Ajuste para móviles */
             }
         }
     </style>
-<!-- ÍCONOS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
 </head>
 <body>
-       <!-- NAVEGACIÓN -->
     <header>
-        <div class="nav-container">
-            <div class="logo">Berraco Toys</div>
-            <nav class="nav-links">
-                <a href="#" onclick="showSection('inicio')">Índice</a>
-                <a href="#" onclick="showSection('quienes-somos')">Quiénes Somos</a>
-                <a href="#" onclick="showSection('contactos')">Contactos</a>
-            </nav>
-        </div>
+        <nav class="nav-container">
+            <a href="#" class="logo">VERRACO TOYS</a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-section="home">Inicio</a>
+                <a href="#products" class="nav-link" data-section="products">Productos</a>
+                <a href="#about" class="nav-link" data-section="about">Quienes Somos</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contacto</a>
+            </div>
+        </nav>
     </header>
 
-
-   
+    <main class="container">
         <!-- SECCIÓN DE DETALLE DE PRODUCTO (inicialmente oculta, se activa con JS) -->
         <section id="product-detail">
             <div class="product-detail">
@@ -535,7 +525,9 @@ h2 {
             </div>
         </section>
 
-                <!-- SECCIÓN QUIENES SOMOS -->
+
+
+        <!-- SECCIÓN QUIENES SOMOS -->
         <section id="about">
             <h2 class="titulo-verraco">Quiénes Somos</h2>
             <p class="about-content" style="color:white;">En VERRACO TOYS, somos apasionados por los juguetes teledirigidos y los coleccionables. Nuestra misión es traer la alegría y la emoción de estos productos a Ambato y todo Ecuador. Seleccionamos cuidadosamente cada artículo para asegurar la máxima calidad y diversión. Desde drones de alta velocidad hasta carros RC todo terreno y figuras de acción detalladas, tenemos algo para cada entusiasta.</p>
@@ -635,7 +627,6 @@ h2 {
 
             // *****************************************************************
             // ***** INICIO DE LA FUNCIÓN TÁCTIL AÑADIDA - Papi Rico *****
-            // ***** ESTA ES LA ÚNICA PARTE NUEVA EN TU CÓDIGO *****
             // *****************************************************************
 
             const detailCarouselElement = document.querySelector('.product-detail .carousel-container');
