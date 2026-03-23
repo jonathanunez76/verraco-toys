@@ -1297,6 +1297,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
 
             const offset = -currentCarouselIndex * 100;
             carouselSlides.style.transform = `translateX(${offset}%)`;
+          carouselSlides.style.transition = 'transform 0.1s ease';
         }
 
         // Modificada para recibir dirección y ser usada por los eventos táctiles
