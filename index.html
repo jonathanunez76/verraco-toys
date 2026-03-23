@@ -30,28 +30,34 @@
     <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
     <meta name="robots" content="index, follow">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
- body {
-    padding-top: 80px;
-            line-height: 1.6;
-            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-blend-mode: normal;  
-  /* --- ¡AGREGA ESTAS PROPIEDADES NUEVAS! --- */
-  display: flex;             /* Habilita Flexbox */
-  flex-direction: column;    /* Los elementos hijos se apilarán verticalmente */
-  min-height: 100vh;         /* Ocupa al menos el 100% de la altura de la ventana */
-  margin: 0;                 /* Asegura que no haya margen extra en el body */
-  /* El padding-top ya lo tienes en 80px, ¡perfecto para tu header fijo! */
+    
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
+
+/* ***** AÑADE ESTA REGLA NUEVA ***** */
+html {
+    background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
+    background-size: cover; /* Para pantallas grandes */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: #f0f0f0; /* Color de fondo para espacios blancos */
+}
+/* ********************************** */
+
+body {
+    padding-top: 80px;
+    line-height: 1.6;
+    display: flex;             
+    flex-direction: column;     
+    min-height: 100vh;          
+    margin: 0;                  
+}
+
 
       /* Barra de navegación */
       
@@ -430,26 +436,31 @@ h2 {
         }
 
           /* RESPONSIVIDAD PARA MOVILES */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .nav-links a {
-                margin: 0 0.8rem;
-            }
-            .carousel-slide img {
-                height: 250px;
-            }
-            .product-video {
-                height: 200px;
-            }
-            .product-detail {
-                padding: 1rem;
-            }
-            .categories-wrapper {
-                grid-template-columns: 1fr;
-            }
+      @media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+    }
+    .nav-links {
+        margin-top: 15px;
+    }
+    .nav-links a {
+        margin: 0 10px;
+    }
+    .titulo-verraco {
+        font-size: 2.5rem;
+    }
+    .categories-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    /* ***** CAMBIA 'body' por 'html' AQUÍ ***** */
+    html {
+        background-size: contain; /* O 'cover' si prefieres que cubra */
+        background-position: top center;
+        background-color: #f0f0f0;
+    }
+    /* ****************************************** */
+}
 
         /* ***** AQUÍ ES DONDE DEBES AÑADIR EL NUEVO BLOQUE PARA 'body' ***** */
         body {
