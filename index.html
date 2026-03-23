@@ -1238,40 +1238,25 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                 videoFrame.src = ''; // Limpiar el src para evitar que siga reproduciendo en segundo plano
             }
 
-            // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
-            // Añadir eventos táctiles al carrusel
-            let touchStartX = 0;
-            let touchEndX = 0;
+       // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
+         // Añadir eventos táctiles al carrusel
+let touchStartX = 0;
+let touchEndX = 0;
 
-            carouselSlides.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-                isSwiping = true;
-            });
+carouselSlides.addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX;
+});
 
-            carouselSlides.addEventListener('touchmove', (e) => {
-                if (!isSwiping) return;
-                touchEndX = e.touches[0].clientX;
-                // Prevenir el scroll de la página si estamos haciendo swipe en el carrusel
-                if (Math.abs(touchEndX - touchStartX) > 10) { // Un pequeño umbral para evitar bloquear scroll accidentalmente
-                    e.preventDefault();
-                }
-            });
+carouselSlides.addEventListener('touchmove', (e) => {
+  touchEndX = e.touches[0].clientX;
+});
 
-            carouselSlides.addEventListener('touchend', () => {
-                if (!isSwiping) return;
-                isSwiping = false;
-                const swipeDistance = touchEndX - touchStartX;
-
-                if (swipeDistance > SWIPE_THRESHOLD) {
-                    // Deslizamiento hacia la derecha (anterior)
-                    moveCarousel(-1);
-                } else if (swipeDistance < -SWIPE_THRESHOLD) {
-                    // Deslizamiento hacia la izquierda (siguiente)
-                    moveCarousel(1);
-                }
-                // Resetear para el siguiente toque
-                touchStartX = 0;
-                touchEndX = 0;
+carouselSlides.addEventListener('touchend', () => {
+  const diff = touchEndX - touchStartX;
+  carouselSlides.style.transition = 'transform 0.2s ease';
+  if (diff > 50) moveCarousel(-1);
+  if (diff < -50) moveCarousel(1);
+});
             });
             // --- FIN DE MODIFICACIONES PARA TÁCTIL ---
         }
@@ -1296,6 +1281,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
 
             const offset = -currentCarouselIndex * 100;
             carouselSlides.style.transform = `translateX(${offset}%)`;
+          carouselSlides.style.transition = 'transform 0.2s ease';
         }
 
         // Modificada para recibir dirección y ser usada por los eventos táctiles
@@ -1358,5 +1344,3 @@ window.addEventListener('load', closeAllCategories);
     </script>
 </body>
 </html>
-
-                                                                                     
