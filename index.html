@@ -620,15 +620,26 @@ h2 {
             </div>
         </section>
 
-        <!-- SECCIÓN DETALLE DE PRODUCTO -->
-      <section id="product-detail">
-            <a href="#" class="btn btn-back" onclick="showSection('inicio'); resetCarousel()">Regresar a la Página Principal</a>
-            
+       <main class="container">
+        <!-- SECCIÓN DE DETALLE DE PRODUCTO (inicialmente oculta, se activa con JS) -->
+        <section id="product-detail">
             <div class="product-detail">
-                <!-- CARRUSEL DE IMÁGENES -->
+                <a href="#" class="btn btn-back">Volver a Productos</a>
+                
+                <h2>Juguete Teledirigido X-Wing Starfighter</h2>
+                
+                 <!-- CARRUSEL DE IMÁGENES -->
                 <div class="carousel-container">
-                    <div class="carousel-slides" id="carousel-slides">
-                        <!-- Las imágenes se cargarán dinámicamente -->
+                    <div class="carousel-slides">
+                        <div class="carousel-slide">
+                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/X-wing%20Starfighter%20Drone%20(1).webp" alt="X-Wing Starfighter Drone">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/X-wing%20Starfighter%20Drone%20(2).webp" alt="X-Wing Starfighter Drone 2">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/X-wing%20Starfighter%20Drone%20(3).webp" alt="X-Wing Starfighter Drone 3">
+                        </div>
                     </div>
                     <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
                     <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
