@@ -1239,86 +1239,64 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             }
 
 
- // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
-            // Añadir eventos táctiles al carrusel
-            let touchStartX = 0;
-            let touchEndX = 0;
-          let touchstarty = 0;
+// VARIABLES NECESARIAS (SOLO ESTAS)
+let currentCarouselIndex = 0;
+let touchStartX = 0;
+let touchStartY = 0;
 
-           carouselSlides.addEventListener('touchstart', (e) => {
-  // SOLO ACTIVA EL CARRUSEL SI EL TOQUE ES SOBRE EL CARRUSEL (NO SOBRE CATEGORÍAS)
-  const target = e.target; // ← VERIFICAMOS EN QUÉ ELEMENTO TOCAMOS
-  if (target.closest('#product-carousel-slides') || target.closest('.carousel-slide')) {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    isSwiping = true;
-  } else {
-    isSwiping = false; // ← SI NO ES CARRUSEL, NO ACTIVA EL SWIPE
-  }
+// TRAEMOS EL CARRUSEL
+const carouselSlides = document.getElementById('product-carousel-slides');
+
+// FUNCION PARA ACTUALIZAR EL CARRUSEL
+function updateCarousel() {
+  const totalSlides = carouselSlides.children.length;
+  if (totalSlides === 0) return;
+
+  // CICLO INFINITO
+  if (currentCarouselIndex < 0) currentCarouselIndex = totalSlides - 1;
+  if (currentCarouselIndex >= totalSlides) currentCarouselIndex = 0;
+
+  // MOVIMIENTO RÁPIDO
+  const offset = -currentCarouselIndex * 100;
+  carouselSlides.style.transform = `translateX(${offset}%)`;
+  carouselSlides.style.transition = 'transform 0.1s ease';
+}
+
+// --- TÁCTIL COMPLETO AQUÍ ---
+carouselSlides.addEventListener('touchstart', (e) => {
+  // GUARDAMOS LA POSICIÓN INICIAL
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
 });
 
-            carouselSlides.addEventListener('touchmove', (e) => {
-           carouselSlides.addEventListener('touchmove', (e) => {
-  if (!isSwiping) return;
-  touchEndX = e.touches[0].clientX;
-  const touchY = e.touches[0].clientY;
+carouselSlides.addEventListener('touchmove', (e) => {
+  const touchEndX = e.touches[0].clientX;
+  const touchEndY = e.touches[0].clientY;
+  
+  // CALCULAMOS LOS MOVIMIENTOS
   const diffX = touchEndX - touchStartX;
-  const diffY = touchY - touchStartY;
+  const diffY = touchEndY - touchStartY;
 
-  // SOLO BLOQUEA SI ES SWIPE HORIZONTAL Y MAYOR A 5 PIXELES
-  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 5) {
+  // SOLO BLOQUEAMOS SI ES DESLIZAMIENTO HORIZONTAL CLARO
+  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 3) {
     e.preventDefault();
   }
 });
-           
 
-            carouselSlides.addEventListener('touchend', () => {
-                if (!isSwiping) return;
-                isSwiping = false;
-                const swipeDistance = touchEndX - touchStartX;
+carouselSlides.addEventListener('touchend', (e) => {
+  const touchEndX = e.changedTouches[0].clientX;
+  const diffX = touchEndX - touchStartX;
 
-                if (swipeDistance > SWIPE_THRESHOLD) {
-                    // Deslizamiento hacia la derecha (anterior)
-                    moveCarousel(-1);
-                } else if (swipeDistance < -SWIPE_THRESHOLD) {
-                    // Deslizamiento hacia la izquierda (siguiente)
-                    moveCarousel(1);
-                }
-                // Resetear para el siguiente toque
-                touchStartX = 0;
-                touchEndX = 0;
-            });
-            // --- FIN DE MODIFICACIONES PARA TÁCTIL ---
-        }
+  // DETECTAMOS DIRECCIÓN
+  if (diffX > 5) currentCarouselIndex--; // DERECHA
+  if (diffX < -5) currentCarouselIndex++; // IZQUIERDA
 
-        function hideProductDetail() {
-            document.getElementById('product-detail-page').style.display = 'none';
-            showSection('home'); // Vuelve a la sección principal o a la que desees
-            // Limpiar el src del video para detener la reproducción en segundo plano
-            document.getElementById('product-video-frame').src = '';
-        }
+  // ACTUALIZAMOS
+  updateCarousel();
+});
 
-        function updateCarousel() {
-            const carouselSlides = document.getElementById('product-carousel-slides');
-            const totalSlides = carouselSlides.children.length;
-            if (totalSlides === 0) return; // Asegurarse de que hay slides
-
-            if (currentCarouselIndex < 0) {
-                currentCarouselIndex = totalSlides - 1;
-            } else if (currentCarouselIndex >= totalSlides) {
-                currentCarouselIndex = 0;
-            }
-
-            const offset = -currentCarouselIndex * 100;
-            carouselSlides.style.transform = `translateX(${offset}%)`;
-        
-        }
-
-        // Modificada para recibir dirección y ser usada por los eventos táctiles
-        function moveCarousel(direction) {
-            currentCarouselIndex += direction;
-            updateCarousel();
-        }
+// INICIAMOS EL CARRUSEL
+updateCarousel();
 
 // Función para mostrar/ocultar categorías
 function toggleCategory(categoryId) {
