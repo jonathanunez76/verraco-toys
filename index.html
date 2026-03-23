@@ -1235,53 +1235,43 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                 videoFrame.src = ''; // Limpiar el src para evitar que siga reproduciendo en segundo plano
             }
 
-        // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
-// Añadir eventos táctiles al carrusel
-let touchStartX = 0;
-let touchEndX = 0;
-// Agregar variable para mover en tiempo real
-let tempIndex = 0;
+            // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
+            // Añadir eventos táctiles al carrusel
+            let touchStartX = 0;
+            let touchEndX = 0;
 
-carouselSlides.addEventListener('touchstart', (e) => {
-  touchStartX = e.touches[0].clientX;
-  isSwiping = true;
-  tempIndex = currentCarouselIndex; // Guardar posición actual
-  carouselSlides.style.transition = 'none'; // Sin animación mientras se desliza
-});
+            carouselSlides.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                isSwiping = true;
+            });
 
-carouselSlides.addEventListener('touchmove', (e) => {
-  if (!isSwiping) return;
-  touchEndX = e.touches[0].clientX;
-  const swipeDistance = touchStartX - touchEndX;
+            carouselSlides.addEventListener('touchmove', (e) => {
+                if (!isSwiping) return;
+                touchEndX = e.touches[0].clientX;
+                // Prevenir el scroll de la página si estamos haciendo swipe en el carrusel
+                if (Math.abs(touchEndX - touchStartX) > 10) { // Un pequeño umbral para evitar bloquear scroll accidentalmente
+                    e.preventDefault();
+                }
+            });
 
-  // Prevenir scroll de la página mientras se desliza
-  if (Math.abs(swipeDistance) > 10) e.preventDefault();
+            carouselSlides.addEventListener('touchend', () => {
+                if (!isSwiping) return;
+                isSwiping = false;
+                const swipeDistance = touchEndX - touchStartX;
 
-  // Mover carrusel EN TIEMPO REAL
-  tempIndex = currentCarouselIndex + (swipeDistance > 0 ? 0.1 : -0.1);
-  // No dejar que se salga de los límites
-  if (tempIndex < 0) tempIndex = 0;
-  if (tempIndex >= carouselSlides.children.length) tempIndex = carouselSlides.children.length - 1;
-  carouselSlides.style.transform = `translateX(-${tempIndex * 100}%)`;
-});
-
-carouselSlides.addEventListener('touchend', () => {
-  if (!isSwiping) return;
-  isSwiping = false;
-  const swipeDistance = touchStartX - touchEndX;
-
-  // Definir dirección y velocidad
-  if (swipeDistance > 50) { // Swipe a la IZQUIERDA → SIGUIENTE IMAGEN
-    moveCarousel(1);
-  } else if (swipeDistance < -50) { // Swipe a la DERECHA → IMAGEN ANTERIOR
-    moveCarousel(-1);
-  } else {
-    // Volver a posición original si no hubo swipe suficiente
-    carouselSlides.style.transition = 'transform 0.2s ease';
-    carouselSlides.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
-  }
-});
-// --- FIN DE MODIFICACIONES PARA TÁCTIL ---
+                if (swipeDistance > SWIPE_THRESHOLD) {
+                    // Deslizamiento hacia la derecha (anterior)
+                    moveCarousel(-1);
+                } else if (swipeDistance < -SWIPE_THRESHOLD) {
+                    // Deslizamiento hacia la izquierda (siguiente)
+                    moveCarousel(1);
+                }
+                // Resetear para el siguiente toque
+                touchStartX = 0;
+                touchEndX = 0;
+            });
+            // --- FIN DE MODIFICACIONES PARA TÁCTIL ---
+        }
 
         function hideProductDetail() {
             document.getElementById('product-detail-page').style.display = 'none';
@@ -1290,22 +1280,21 @@ carouselSlides.addEventListener('touchend', () => {
             document.getElementById('product-video-frame').src = '';
         }
 
-      function updateCarousel() {
-  const carouselSlides = document.getElementById('product-carousel-slides');
-  const totalSlides = carouselSlides.children.length;
-  if (totalSlides === 0) return; // Asegurarse de que hay slides
+        function updateCarousel() {
+            const carouselSlides = document.getElementById('product-carousel-slides');
+            const totalSlides = carouselSlides.children.length;
+            if (totalSlides === 0) return; // Asegurarse de que hay slides
 
-  if (currentCarouselIndex < 0) {
-    currentCarouselIndex = totalSlides - 1;
-  } else if (currentCarouselIndex >= totalSlides) {
-    currentCarouselIndex = 0;
-  }
+            if (currentCarouselIndex < 0) {
+                currentCarouselIndex = totalSlides - 1;
+            } else if (currentCarouselIndex >= totalSlides) {
+                currentCarouselIndex = 0;
+            }
 
-  const offset = -currentCarouselIndex * 100;
-  carouselSlides.style.transform = `translateX(${offset}%)`;
-  // AGREGA ESTA LÍNEA AQUÍ ↓
-  carouselSlides.style.transition = 'transform 0.3s ease';
-}
+            const offset = -currentCarouselIndex * 100;
+            carouselSlides.style.transform = `translateX(${offset}%)`;
+        }
+
         // Modificada para recibir dirección y ser usada por los eventos táctiles
         function moveCarousel(direction) {
             currentCarouselIndex += direction;
@@ -1367,4 +1356,5 @@ window.addEventListener('load', closeAllCategories);
 </body>
 </html>
 
+                                                                                     
                                                                                      
