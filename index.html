@@ -1,7 +1,4 @@
-
-                                                                                     
-                                                                                     
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
@@ -1143,9 +1140,102 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             // Agrega más productos aquí
         };
 
+        let currentCarouselIndex = 0;
+        let startX = 0;
+        let isSwiping = false;
+        const SWIPE_THRESHOLD = 50; // Píxeles para considerar un swipe
+
+        // Función para mostrar la sección activa
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            // Ocultar la página de detalle del producto si no es la sección activa
+            if (sectionId !== 'product-detail-page') {
+                document.getElementById('product-detail-page').style.display = 'none';
+            }
+            window.scrollTo(0, 0); // Ir al inicio de la página
+        }
+
+        // Manejar clics en la navegación
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.dataset.section;
+                showSection(sectionId);
+            });
+        });
+
+        // Mostrar la sección de inicio por defecto
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+        });
+
+        function showProductDetail(productId) {
+            const product = products[productId];
+            if (!product) {
+                console.error('Producto no encontrado:', productId);
+                return;
+            }
+
+            // Ocultar todas las secciones y mostrar la de detalle del producto
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('product-detail-page').style.display = 'block';
+            window.scrollTo(0, 0); // Ir al inicio de la página
+
+            // Rellenar la información del producto
+            document.getElementById('detail-product-name').textContent = product.name;
+            document.getElementById('detail-product-price').textContent = product.price;
+            document.getElementById('detail-product-description').textContent = product.description;
+
+            const featuresList = document.getElementById('detail-product-features');
+            featuresList.innerHTML = '';
+            const ul = document.createElement('ul');
+            product.features.forEach(feature => {
+                const li = document.createElement('li');
 
 
- // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
+
+
+
+
+                li.textContent = feature;
+                ul.appendChild(li);
+            });
+            featuresList.appendChild(ul);
+
+            const whatsappLink = document.getElementById('detail-whatsapp-link');
+            whatsappLink.href = `https://wa.me/593988582236?text=${encodeURIComponent(product.whatsapp_message)}`;
+
+            // Configurar el carrusel de imágenes
+            const carouselSlides = document.getElementById('product-carousel-slides');
+            carouselSlides.innerHTML = ''; // Limpiar slides anteriores
+            product.images.forEach(imageSrc => {
+                const div = document.createElement('div');
+                div.classList.add('carousel-slide');
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.alt = product.name;
+                div.appendChild(img);
+                carouselSlides.appendChild(div);
+            });
+            currentCarouselIndex = 0;
+            updateCarousel();
+
+            // Configurar video si existe
+            const videoFrame = document.getElementById('product-video-frame');
+            if (product.video) {
+                videoFrame.src = product.video;
+                videoFrame.style.display = 'block';
+            } else {
+                videoFrame.style.display = 'none';
+                videoFrame.src = ''; // Limpiar el src para evitar que siga reproduciendo en segundo plano
+            }
+
+            // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
             // Añadir eventos táctiles al carrusel
             let touchStartX = 0;
             let touchEndX = 0;
@@ -1265,3 +1355,18 @@ window.addEventListener('load', closeAllCategories);
     </script>
 </body>
 </html>
+
+                                                                                     
+
+
+
+
+
+
+
+
+
+
+
+
+
