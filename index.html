@@ -1,6 +1,4 @@
-
-                
-                    
+               
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,11 +22,11 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="X-UA-Compatible" content="IE=edge">
 
-    <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
+   <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Verraco Toys - Tienda Oficial</title>
-    <meta name="description" contact-content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
+    <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
     <meta name="robots" content="index, follow">
     <style>
         * {
@@ -423,21 +421,25 @@ h2 {
             }
         }
     </style>
+<!-- ÍCONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
 </head>
 <body>
+       <!-- NAVEGACIÓN -->
     <header>
-        <nav class="nav-container">
-            <a href="#" class="logo">VERRACO TOYS</a>
-            <div class="nav-links">
-                <a href="#home" class="nav-link active" data-section="home">Inicio</a>
-                <a href="#products" class="nav-link" data-section="products">Productos</a>
-                <a href="#about" class="nav-link" data-section="about">Quienes Somos</a>
-                <a href="#contact" class="nav-link" data-section="contact">Contacto</a>
-            </div>
-        </nav>
+        <div class="nav-container">
+            <div class="logo">Berraco Toys</div>
+            <nav class="nav-links">
+                <a href="#" onclick="showSection('inicio')">Índice</a>
+                <a href="#" onclick="showSection('quienes-somos')">Quiénes Somos</a>
+                <a href="#" onclick="showSection('contactos')">Contactos</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="container">
+
+   
         <!-- SECCIÓN DE DETALLE DE PRODUCTO (inicialmente oculta, se activa con JS) -->
         <section id="product-detail">
             <div class="product-detail">
