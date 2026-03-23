@@ -504,13 +504,14 @@ h2 {
 </head>
 <body>
     <header>
-        <nav class="nav-container">
+   
+   <nav class="nav-container">
     <div class="logo">VERRACO TOYS</div>
     <div class="nav-links">
-        <a href="#" data-section="home" onclick="closeAllCategories()">Inicio</a>
-        <a href="#" data-section="shop" onclick="closeAllCategories()">Tienda</a>
-        <a href="#" data-section="about" onclick="closeAllCategories()">Quiénes Somos</a>
-        <a href="#" data-section="contact" onclick="closeAllCategories()">Contacto</a>
+        <a href="#" data-section="home">Inicio</a>
+        <a href="#" data-section="shop">Tienda</a>
+        <a href="#" data-section="about">Quiénes Somos</a>
+        <a href="#" data-section="contact">Contacto</a>
     </div>
 </nav>
     </header>
@@ -1246,6 +1247,19 @@ function toggleCategory(categoryId) {
     }
 }
 
+// Función para mostrar/ocultar categorías
+function toggleCategory(categoryId) {
+    const categoryContent = document.getElementById(categoryId);
+    const computedStyle = window.getComputedStyle(categoryContent);
+    const currentDisplay = computedStyle.display;
+
+    if (currentDisplay === 'none') {
+        categoryContent.style.display = 'grid';
+    } else {
+        categoryContent.style.display = 'none';
+    }
+}
+
 // Función para cerrar TODAS las categorías
 function closeAllCategories() {
     const allCategoryContents = document.querySelectorAll('.category-content');
@@ -1254,9 +1268,23 @@ function closeAllCategories() {
     });
 }
 
+// Lógica de navegación para cambiar sección y cerrar categorías
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        
+        // Cambiar a la sección seleccionada
+        document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
+        
+        // Cerrar categorías
+        closeAllCategories();
+    });
+});
+
 // Cerrar categorías cuando cargue la página
 window.addEventListener('load', closeAllCategories);
-      }
     </script>
 </body>
 </html>
