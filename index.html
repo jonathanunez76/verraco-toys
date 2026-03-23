@@ -1144,6 +1144,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
         };
 
 
+
  // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
             // Añadir eventos táctiles al carrusel
             let touchStartX = 0;
@@ -1158,14 +1159,14 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                 if (!isSwiping) return;
                 touchEndX = e.touches[0].clientX;
                 // Prevenir el scroll de la página si estamos haciendo swipe en el carrusel
-                if (Math.abs(touchEndX - touchStartX) > 2) { // Un pequeño umbral para evitar bloquear scroll accidentalmente
+                if (Math.abs(touchEndX - touchStartX) > 10) { // Un pequeño umbral para evitar bloquear scroll accidentalmente
                     e.preventDefault();
                 }
             });
 
             carouselSlides.addEventListener('touchend', () => {
                 if (!isSwiping) return;
-                isSwiping = true;
+                isSwiping = false;
                 const swipeDistance = touchEndX - touchStartX;
 
                 if (swipeDistance > SWIPE_THRESHOLD) {
