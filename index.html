@@ -142,31 +142,27 @@ h2 {
   text-align: center;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-background-color: rgba(0,0,0,0.5); 
+  /* FONDO NEGRO SEMITRANSPARENTE PRIMERO */
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 5px;
-  /* EFECTO ORO COMO LA IMAGEN */
-  background: -webkit-linear-gradient(180deg, #F9D423, #E6B822, #C89523, #A67C00);
-  background: linear-gradient(180deg, #F9D423, #E6B822, #C89523, #A67C00);
+  /* EFECTO ORO EN EL TEXTO (SEPARADO DEL FONDO) */
   -webkit-background-clip: text;
   background-clip: text;
+  background-image: -webkit-linear-gradient(180deg, #F9D423, #E6B822, #C89523, #A67C00);
+  background-image: linear-gradient(180deg, #F9D423, #E6B822, #C89523, #A67C00);
   color: transparent;
-
   /* EFECTO 3D */
   text-shadow: 
     1px 1px 0px #8A6E00,
     2px 2px 0px #7A5C00,
     0 0 5px rgba(249, 212, 35, 0.9);
-
-  /* SUBRAYADO VISIBLE CON ORO */
+  /* SUBRAYADO */
   text-decoration: underline;
-  text-decoration-color: #F9D423; /* Subrayado dorado */
+  text-decoration-color: #F9D423;
   text-decoration-thickness: 4px;
   text-underline-offset: 8px;
-  /* ¡IMPORTANTE! PARA QUE SE VEA EL SUBRAYADO CON EL EFECTO DORADO */
-  text-decoration-skip-ink: none;
-  -webkit-text-decoration-color: #F9D423;
-}    
+}
         /* CATEGORÍAS Y PRODUCTOS */
         .categories-wrapper {
             display: block;
