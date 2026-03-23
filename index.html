@@ -469,34 +469,33 @@ h2 {
         }
 
           /* RESPONSIVIDAD PARA MOVILES */
-     @media (max-width: 767px) {
+   /* RESPONSIVIDAD PARA MOVILES */
+@media (max-width: 767px) {
   .carousel-container {
-    max-width: 95%;
+    max-width: 95% !important; /* Fuerza el valor para evitar conflictos */
   }
   .carousel-slide img {
     max-height: 450px;
   }
 }
 
-
 /* TABLETS GRANDES Y ESCRITORIO PEQUEÑO */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .carousel-container {
-    max-width: 750px; /* Un poco más grande que antes */
+    max-width: 750px !important;
   }
   .carousel-slide img {
     max-height: 520px;
   }
 }
 
-
 /* ESCRITORIO GRANDE Y MUY GRANDE */
 @media (min-width: 1024px) {
   .carousel-container {
-    max-width: 900px; /* Aumentamos el ancho máximo */
+    max-width: 900px !important;
   }
   .carousel-slide img {
-    max-height: 600px; /* Imagen un poco más grande */
+    max-height: 600px;
   }
 }
     /* ***** CAMBIA 'body' por 'html' AQUÍ ***** */
