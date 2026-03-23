@@ -1,9 +1,3 @@
-
-
-
-
-
-            
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -257,7 +251,6 @@
             background-color: #128C7E;
         }
 
-
         /* SECCIÓN QUIENES SOMOS Y CONTACTOS */
         .about-content, .contact-content {
             max-width: 900px; /* Ancho mayor para que el texto no se vea tan ajustado */
@@ -408,11 +401,10 @@
             .product-detail {
                 padding: 1rem;
             }
-            .categories-wrapper
+            .categories-wrapper {
+                grid-template-columns: 1
 
-
-
-                grid-template-columns: 1fr;
+                fr;
             }
             .titulo-verraco {
                 font-size: 3rem; /* Ajuste para móviles */
@@ -528,7 +520,10 @@
                 <!-- Más categorías si las hay -->
             </div>
         </section>
-              <!-- SECCIÓN QUIENES SOMOS -->
+
+
+
+        <!-- SECCIÓN QUIENES SOMOS -->
         <section id="about">
             <h2 class="titulo-verraco">Quiénes Somos</h2>
             <p class="about-content" style="color:white;">En VERRACO TOYS, somos apasionados por los juguetes teledirigidos y los coleccionables. Nuestra misión es traer la alegría y la emoción de estos productos a Ambato y todo Ecuador. Seleccionamos cuidadosamente cada artículo para asegurar la máxima calidad y diversión. Desde drones de alta velocidad hasta carros RC todo terreno y figuras de acción detalladas, tenemos algo para cada entusiasta.</p>
@@ -567,7 +562,7 @@
                     const targetSectionId = this.getAttribute('data-section');
 
                     sections.forEach(section => {
-                        if (section.id === targetSectionId) { // Aquí corregimos para no activar product-detail con products
+                        if (section.id === targetSectionId) {
                             section.classList.add('active');
                         } else {
                             section.classList.remove('active');
@@ -607,7 +602,7 @@
             showCarouselSlide(currentCarouselIndex + direction);
         }
 
-        // Función para mostrar detalles del producto (originalmente tuyo)
+        // Función para mostrar detalles del producto
         function showProductDetail(productId) {
             document.querySelectorAll('section').forEach(section => {
                 section.classList.remove('active');
@@ -628,7 +623,6 @@
 
             // *****************************************************************
             // ***** INICIO DE LA FUNCIÓN TÁCTIL AÑADIDA - Papi Rico *****
-            // ***** (Integrada y activada al mostrar el detalle del producto) *****
             // *****************************************************************
 
             const detailCarouselElement = document.querySelector('.product-detail .carousel-container');
@@ -636,8 +630,7 @@
             let touchEndX = 0;
             const swipeThreshold = 75; // Píxeles mínimos para considerar un "swipe"
 
-            // Remover listeners anteriores para evitar duplicados si se llama showProductDetail varias veces
-            // Verificamos si los listeners ya existen antes de removerlos o añadirlos
+            // Definimos las funciones manejadoras de eventos
             const handleTouchStart = function(e) {
                 touchStartX = e.changedTouches[0].screenX;
             };
@@ -655,10 +648,12 @@
                 }
             };
 
-            // Para evitar añadir múltiples listeners, los removemos si ya existen
+            // Asegurarnos de no añadir múltiples listeners.
+            // Primero removemos si ya existen (por si showProductDetail es llamado múltiples veces)
             detailCarouselElement.removeEventListener('touchstart', handleTouchStart);
             detailCarouselElement.removeEventListener('touchend', handleTouchEnd);
 
+            // Luego, los añadimos
             detailCarouselElement.addEventListener('touchstart', handleTouchStart, { passive: true });
             detailCarouselElement.addEventListener('touchend', handleTouchEnd, { passive: true });
 
@@ -679,4 +674,5 @@
     </script>
 </body>
 </html>
-          
+                
+                    
