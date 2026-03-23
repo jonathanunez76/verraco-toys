@@ -1,5 +1,6 @@
 
 
+
                     
               
               <!DOCTYPE html>
@@ -102,18 +103,7 @@ body {
              text-align: center;
              flex-grow: 1;
         }
- .containerr {
-    max-width: 1300px;
-    margin: 5rem auto 3rem auto;;
-    padding: 0 1.5rem;
-             text-align: center;
-             flex-grow: 1;
 
-           background-color: rgba(0,0,0,0.5);
-           padding: 10px; 
-           border-radius: 5px;
-
-      
         /* SECCIONES GENERALES */
         section {
           
@@ -123,7 +113,7 @@ body {
         section.active {
             display: block;
         }
- h1, h2, p{
+ h1, h2, {
 
 background-color: rgba(0,0,0,0.5);
    padding: 10px; 
@@ -153,21 +143,21 @@ h2 {
   text-align: center;
   line-height: 1.2;
   margin-bottom: 2rem;
-  /* FONDO SEMITRANSPARENTE (AHORA SE VE PORQUE ESTÁ ANTES DEL DEGRADADO) */
-  background-color: rgba(0, 0, 0, 0.6); /* Aumentamos un poco la opacidad para que se vea mejor */
-  padding: 15px; /* Más espacio interno para que el fondo sea más visible */
-  border-radius: 8px; /* Bordes un poco más redondeados */
+  /* FONDO SEMITRANSPARENTE NEGRO */
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
   /* EFECTO TEXTO AZUL OSCURO BRILLANTE */
   color: transparent;
   background-image: -webkit-linear-gradient(180deg, #1E3A8A, #3B82F6, #60A5FA);
   background-image: linear-gradient(180deg, #1E3A8A, #3B82F6, #60A5FA);
   -webkit-background-clip: text;
   background-clip: text;
-  /* EFECTO BRILLO */
+  /* EFECTO 3D/BRILLO */
   text-shadow: 
     1px 1px 0px #0F172A,
     2px 2px 0px #1E40AF,
-    0 0 8px rgba(30, 144, 255, 0.8);
+    0 0 5px rgba(30, 144, 255, 0.9);
 }
         /* CATEGORÍAS Y PRODUCTOS */
         .categories-wrapper {
@@ -535,19 +525,18 @@ h2 {
 </nav>
     </header>
 
-    <main class="containerr">
+    <main class="container">
         <!-- SECCIÓN INICIO -->
         <section id="home" class="active">
            <h1 class="titulo-verraco">BIENVENIDOS A VERRACO TOYS</h1>
             <p style="text-align: center; color: white; font-size: 1.2rem; margin-bottom: 2rem;
 background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Tu tienda de juguetes teledirigidos y coleccionables en Ambato, Ecuador.</p>
-          <h1 class="titulo-verraco">DESCUBRE NUESTRA COLECCIÓN DE JUGUETES!</h1>
+          <h1 class="titulo-verraco" style="text-align: center; color: white; font-size: 1.8rem; margin-bottom: 2rem; background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; text-decoration: underline; text-decoration-color: #F9D423; text-decoration-thickness: 3px; text-underline-offset: 6px;">DESCUBRE NUESTRA COLECCIÓN DE JUGUETES!</h1>
              <div class="categories-wrapper">
                 <div class="category-card">
 
   </div>
-       <section>        
- <main class="container">
+
                   <!-- ================== CATEGORÍA 1: VEHÍCULOS TELEDIRIGIDOS ================== -->
             <button class="category-button" onclick="toggleCategory('vehiculos')">
                 🚗 VEHÍCULOS TELEDIRIGIDOS
