@@ -479,9 +479,17 @@ text-align: center;
           /* RESPONSIVIDAD PARA MOVILES */
       @media (max-width: 480px) {
     
-        .carousel-slide img{
-          max-height: 600px; 
+      .carousel-slide img{
+  max-height: 350px; /* Baja la altura de 600px a 350px */
+  width: 100%; /* Asegura que use todo el ancho de la pantalla */
+  object-fit: cover; /* Evita que la imagen se deforme */
+  margin: 0 auto; /* Centra la imagen */
         }
+          html, body {
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+          }
     .nav-container {
         flex-direction: column;
     }
