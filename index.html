@@ -477,48 +477,20 @@ text-align: center;
             flex-shrink: 0; /* Evita que el footer se encoja */
         }
 
-     /* Estilo BASE del logo y contenedor principal (fuera de la media query) */
-/* Asegúrate de que el contenedor que tiene el logo y la navegación esté así: */
-.header-container {
-    display: flex;
-    flex-direction: column; /* Logo arriba, navegación abajo */
-    align-items: center; /* Centra tanto logo como navegación */
-    width: 100%;
-}
-
-/* RESPONSIVIDAD GENERAL (valores base para ambas plataformas) */
-@media (max-width: 480px) {
-    .carousel-slide img {
-        max-height: 600px;
-    }
-
-    /* Logo: ajusta si es necesario para que quepa bien */
-    .logo { /* Cambia ".logo" por el selector real de tu logo */
-        width: 100%;
-        max-width: 250px; /* Ajusta el tamaño máximo del logo */
-        margin-bottom: 10px; /* Espacio entre logo y navegación */
-    }
-
-    /* Barra de navegación en horizontal debajo del logo */
+      /* RESPONSIVIDAD PARA MOVILES */
+      @media (max-width: 480px) {
+    
+        .carousel-slide img{
+          max-height: 600px; 
+        }
     .nav-container {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin: 0;
-        padding: 0 5px; /* Espacio lateral para no tocar bordes */
+        flex-direction: column;
     }
     .nav-links {
-        margin-top: 0;
-        display: flex;
-        justify-content: center;
-        gap: 8px; /* Reduce espacio si es necesario para que quepan */
-        padding: 0;
+        margin-top: 15px;
     }
     .nav-links a {
-        margin: 0;
-        white-space: nowrap; /* Evita que los textos se rompan */
-        font-size: 12px; /* Tamaño ajustado para que todos entren */
+        margin: 0 10px;
     }
     .titulo-verraco {
         font-size: 2.5rem;
@@ -526,7 +498,6 @@ text-align: center;
     .categories-wrapper {
         grid-template-columns: 1fr;
     }
-}
 
 /* AJUSTES EXCLUSIVOS PARA ANDROID */
 @media screen and (max-width: 480px) and (orientation: portrait) and 
