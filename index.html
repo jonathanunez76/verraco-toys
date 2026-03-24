@@ -477,20 +477,29 @@ text-align: center;
             flex-shrink: 0; /* Evita que el footer se encoja */
         }
 
-          /* RESPONSIVIDAD PARA MOVILES */
-      @media (max-width: 480px) {
-    
-        .carousel-slide img{
-          max-height: 600px; 
-        }
+         /* RESPONSIVIDAD GENERAL (valores base para ambas plataformas) */
+@media (max-width: 480px) {
+    .carousel-slide img {
+        max-height: 600px;
+    }
+    /* Barra de navegación en horizontal para todas las plataformas */
     .nav-container {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
     .nav-links {
-        margin-top: 15px;
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 0;
     }
     .nav-links a {
-        margin: 0 10px;
+        margin: 0;
     }
     .titulo-verraco {
         font-size: 2.5rem;
@@ -498,14 +507,40 @@ text-align: center;
     .categories-wrapper {
         grid-template-columns: 1fr;
     }
+}
 
-    /* ***** CAMBIA 'body' por 'html' AQUÍ ***** */
+/* AJUSTES EXCLUSIVOS PARA ANDROID */
+@media screen and (max-width: 480px) and (orientation: portrait) and 
+(-webkit-device-pixel-ratio: 1.5),
+screen and (max-width: 480px) and (orientation: portrait) and 
+(-webkit-device-pixel-ratio: 2),
+screen and (max-width: 480px) and (orientation: portrait) and 
+(-webkit-device-pixel-ratio: 3) {
     html {
-        background-size: contain; /* O 'cover' si prefieres que cubra */
+        background-size: contain;
         background-position: top center;
         background-color: #f0f0f0;
     }
-    /* ****************************************** */
+    /* Cualquier otro ajuste que necesites solo para Android */
+}
+
+/* AJUSTES EXCLUSIVOS PARA iOS (resetea y mantiene ordenado) */
+@media screen and (max-width: 480px) and (orientation: portrait) and 
+(-webkit-device-pixel-ratio: 2),
+screen and (max-width: 480px) and (orientation: portrait) and 
+(-webkit-device-pixel-ratio: 3) and 
+(-webkit-touch-callout: default) {
+    html {
+        background-size: cover; /* O el valor original que tenía iOS */
+        background-position: center center;
+        background-color: initial; /* Vuelve al color por defecto */
+    }
+    /* Si los textos con subrayado se ven mal, resetea sus estilos */
+    [selector-de-los-textos] {
+        text-align: center;
+        padding: 0;
+        margin: 0 auto;
+    }
 }
 
         /* ***** AQUÍ ES DONDE DEBES AÑADIR EL NUEVO BLOQUE PARA 'body' ***** */
