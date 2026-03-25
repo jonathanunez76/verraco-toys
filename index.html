@@ -1,261 +1,168 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self' https:;
-        script-src 'self' 'unsafe-inline';
-        style-src 'self' 'unsafe-inline' https:;
-        img-src 'self' data: https:;
-        font-src 'self' https:;
-        connect-src 'self' https:;
-        frame-src 'self' https://www.whatsapp.com https://www.youtube.com https://player.vimeo.com;
-        media-src 'self' https: data:;
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-    ">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="X-UA-Compatible" content="IE=edge">
-
-    <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verraco Toys - Tienda Oficial</title>
-    <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
-    <meta name="robots" content="index, follow">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
         }
-body {
-            padding-top: 80px;
-            line-height: 1.6;
-            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-blend-mode: normal;                         ;
-         }
 
-      /* Barra de navegación */
-      
-        header {
-            background: #2c3e50;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* BARRA SUPERIOR */
+        .top-bar {
+            background-color: #1d3557;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .nav-container {
+        .search-input {
+            width: 90%;
+            max-width: 500px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        /* TÍTULO Y MENÚ */
+        .header {
+            background-color: #f1faee;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #e63946;
+        }
+        .header h1 {
+            color: #1d3557;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            overflow-x: auto; /* Para móviles pequeños */
+            padding-bottom: 5px;
+        }
+        .nav-menu a {
+            color: #1d3557;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            white-space: nowrap; /* No romper texto */
+        }
+        .nav-menu a.active, .nav-menu a:hover {
+            color: #e63946;
+            border-bottom: 2px solid #e63946;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .main-content {
+            padding: 15px;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* CATEGORÍAS */
+        .category-section h2 {
+            color: #1d3557;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .category-item {
+            background-color: #f5f5f5;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .category-title {
+            padding: 12px 15px;
+            background-color: #457b9d;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
+        .category-arrow {
+            font-size: 18px;
+            transition: transform 0.3s;
         }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 1.1rem;
-            transition: color 0.3s;
+        .category-arrow.open {
+            transform: rotate(180deg);
         }
-        .nav-links a:hover {
-            color: #3498db;
-        }
-
-        /* CONTENEDOR PRINCIPAL */
-        .container {
-    max-width: 1300px;
-    margin: 2rem auto 3rem auto;;
-    padding: 0 1.5rem;
-        }
-
-        /* SECCIONES GENERALES */
-        section {
-            margin-bottom: 5rem;
+        .category-products {
             display: none;
-        }
-        section.active {
-            display: block;
-        }
-        h2 {
-            color: #2D3436;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid #D32F2F;
-            text-align: center;
-        }
-
-        /* CATEGORÍAS Y PRODUCTOS */
-        .categories-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .category-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            padding: 1.5rem;
-            text-align: center;
-        }
-        .category-card h3 {
-            color: #D32F2F;
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
+            padding: 15px;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .product-card {
             background-color: white;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
+            width: 140px;
+            padding: 10px;
+            text-align: center;
         }
         .product-card img {
             width: 100%;
-            height: 180px;
+            height: 100px;
             object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 8px;
         }
-        .product-info {
-            padding: 1rem;
-        }
-        .product-info h4 {
-            color: #2D3436;
-            margin-bottom: 0.5rem;
+        .stock-badge {
+            background-color: #2a9d8f;
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            display: inline-block;
         }
         .product-price {
-            font-size: 1.3rem;
             font-weight: bold;
-            color: #2E7D32;
-            margin-bottom: 0.8rem;
-        }
-        .stock-btn {
-            border: none;
-            padding: 0.4rem 1rem;
-            border-radius: 4px;
-            color: white;
-            font-weight: bold;
-            cursor: default;
-            margin-bottom: 1rem;
-        }
-        .in-stock {
-            background-color: #2E7D32;
-        }
-        .out-stock {
-            background-color: #D32F2F;
-        }
-        .btn {
-            display: inline-block;
-            padding: 0.7rem 1.2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            margin: 0.3rem;
+            color: #e63946;
+            margin-bottom: 8px;
         }
         .btn-details {
-            background-color: #1976D2;
+            background-color: #1d3557;
             color: white;
-        }
-        .btn-details:hover {
-            background-color: #0D47A1;
-        }
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-        }
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-        }
-
-
-       /* SECCIÓN QUIENES SOMOS Y CONTACTOS */
-.about-content, .contact-content {
-    max-width: 900px; /* Ancho mayor para que el texto no se vea tan ajustado */
-    margin: 2rem auto; /* Más espacio arriba y abajo */
-    line-height: 2; /* Espaciado entre líneas más cómodo para leer */
-    color: #2D3436; /* Color de texto más oscuro para mejor legibilidad */
-    font-size: 1.15rem; /* Tamaño de fuente ligeramente mayor */
-    padding: 0 1.5rem; /* Espacio lateral en pantallas pequeñas */
-}
-
-.contact-content p {
-    margin-bottom: 1.5rem; /* Más espacio entre párrafos */
-    display: flex;
-    align-items: center;
-    padding: 0.5rem; /* Borde interno para darle volumen */
-    border-left: 3px solid #D32F2F; /* Línea roja a la izquierda para resaltar */
-}
-
-.contact-content i {
-    color: #D32F2F; /* Mantiene el rojo de la marca */
-    margin-right: 1rem; /* Más espacio entre ícono y texto */
-    font-size: 1.5rem; /* Íconos más grandes y visibles */
-}
-
-        /* PÁGINA DE DETALLE DE PRODUCTO */
-        .product-detail {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-            padding: 2rem;
-        }
-        .btn-back {
-            background-color: #D32F2F;
-            color: white;
-            margin-bottom: 2rem;
-        }
-        .btn-back:hover {
-            background-color: #B71C1C;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
         }
 
         /* CARRUSEL DE IMÁGENES */
         .carousel-container {
             position: relative;
-            max-width: 500px;
-            margin: 0 auto 2rem auto;
-            border-radius: 10px;
+            max-width: 100%;
+            margin: 20px 0;
             overflow: hidden;
+            border-radius: 10px;
         }
         .carousel-slides {
             display: flex;
             transition: transform 0.5s ease;
+            touch-action: pan-x; /* Para táctil */
         }
         .carousel-slide {
             min-width: 100%;
         }
         .carousel-slide img {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
+            height: auto;
         }
         .carousel-btn {
             position: absolute;
@@ -264,502 +171,393 @@ body {
             background-color: rgba(0,0,0,0.5);
             color: white;
             border: none;
-            padding: 1rem;
-            font-size: 1.5rem;
+            padding: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            font-size: 20px;
         }
-        .carousel-btn:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-        .prev-btn {
-            left: 0;
-        }
-        .next-btn {
-            right: 0;
-        }
+        .carousel-prev { left: 0; }
+        .carousel-next { right: 0; }
 
-        /* VIDEO DEL PRODUCTO */
+        /* PÁGINA DE DETALLES */
+        .product-detail h2 {
+            color: #1d3557;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
         .product-video {
-            width: 100%;
-            height: 300px;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 20px 0;
             border-radius: 10px;
-            margin: 1.5rem 0;
         }
-
-        /* DETALLES DEL PRODUCTO */
-        .detail-info {
-            max-width: 800px;
-            margin: 0 auto;
+        .product-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
-        .detail-info h3 {
-            color: #D32F2F;
-            font-size: 1.5rem;
-            margin: 1.5rem 0 0.8rem 0;
+        .product-info {
+            margin: 15px 0;
         }
-        .detail-price {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #2E7D32;
-            margin: 1rem 0;
+        .product-info p {
+            margin: 8px 0;
+            line-height: 1.5;
         }
-        .detail-description {
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 1.5rem;
+        .features-list {
+            margin: 15px 0;
+            padding-left: 20px;
         }
-        .detail-features {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            color: #444;
-            margin-bottom: 1.5rem;
-        }
-
-        
-       /* Pie de página */
-        footer {
-            background-color: #2c3e50;
+        .btn-back {
+            background-color: #e63946;
             color: white;
-            text-align: center;
-            padding: 25px 0;
-            margin-top: 50px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
         }
 
-        /* RESPONSIVIDAD PARA MOVILES */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .nav-links a {
-                margin: 0 0.8rem;
-            }
-            .carousel-slide img {
-                height: 250px;
-            }
-            .product-video {
-                height: 200px;
-            }
-            .product-detail {
-                padding: 1rem;
-            }
-            .categories-wrapper {
-                grid-template-columns: 1fr;
-            }
+        /* SECCIONES QUIENES SOMOS Y CONTACTO */
+        .static-section {
+            line-height: 1.6;
+            color: #333;
+        }
+        .static-section h2 {
+            color: #1d3557;
+            margin-bottom: 15px;
+        }
 
-
+        /* OCULTAR SECCIONES POR DEFECTO */
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
     </style>
-    <!-- ÍCONOS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- NAVEGACIÓN -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">Berraco Toys</div>
-            <nav class="nav-links">
-                <a href="#" onclick="showSection('inicio')">Índice</a>
-                <a href="#" onclick="showSection('quienes-somos')">Quiénes Somos</a>
-                <a href="#" onclick="showSection('contactos')">Contactos</a>
-            </nav>
-        </div>
-    </header>
+    <!-- BARRA DE BÚSQUEDA SUPERIOR -->
+    <div class="top-bar">
+        <input type="text" class="search-input" placeholder="Buscar productos...">
+    </div>
+
+    <!-- TÍTULO Y MENÚ DE NAVEGACIÓN -->
+    <div class="header">
+        <h1>VERRACO TOYS</h1>
+        <nav class="nav-menu">
+            <a href="#" onclick="showSection('inicio')" class="active">INICIO</a>
+            <a href="#" onclick="showSection('tienda')">TIENDA</a>
+            <a href="#" onclick="showSection('quienes')">¿QUIENES SOMOS?</a>
+            <a href="#" onclick="showSection('contacto')">CONTACTO</a>
+        </nav>
+    </div>
 
     <!-- CONTENEDOR PRINCIPAL -->
-    <div class="container">
-        <!-- SECCIÓN INICIO (PRODUCTOS) -->
-        <section id="inicio" class="active">
-            <h2>Catálogo de Productos</h2>
-            <div class="categories-wrapper">
-                <!-- CATEGORÍA 1: JUGUETES DE MADERA -->
-                <div class="category-card">
-                    <h3><i class="fas fa-tree"></i> Juguetes de Madera</h3>
-                    <div class="products-grid">
-                        <div class="product-card" onclick="showProductDetail(1)">
-                            <img src="https://via.placeholder.com/240x180?text=Coche+Madera" alt="Coche de Madera">
-                            <div class="product-info">
-                                <h4>Coche de Madera Clásico</h4>
-                                <p class="product-price">$35.00</p>
-                                <button class="stock-btn in-stock">En Stock</button>
-                                <a href="#" class="btn btn-details" onclick="event.preventDefault(); showProductDetail(1)">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero comprar el Coche de Madera Clásico - $35.00" target="_blank" class="btn btn-whatsapp">Comprar</a>
-                            </div>
+    <div class="main-content">
+        <!-- SECCIÓN INICIO -->
+        <section id="inicio" class="section active">
+            <div class="category-section">
+                <h2>Categorías de Productos</h2>
+
+                <!-- Categoría 1 -->
+                <div class="category-item">
+                    <div class="category-title" onclick="toggleCategory('cat1')">
+                        <span>Juguetes de Madera</span>
+                        <span class="category-arrow">▼</span>
+                    </div>
+                    <div id="cat1" class="category-products">
+                        <div class="product-card">
+                            <img src="https://via.placeholder.com/140x100?text=Coche+Madera" alt="Coche de madera">
+                            <div class="stock-badge">EN STOCK</div>
+                            <div class="product-price">$35.00</div>
+                            <a href="#" class="btn-details" onclick="showProductDetail(1)">Ver Detalles</a>
                         </div>
-                        <div class="product-card" onclick="showProductDetail(2)">
-                            <img src="https://via.placeholder.com/240x180?text=Bloques+Madera" alt="Bloques de Construcción">
-                            <div class="product-info">
-                                <h4>Bloques de Construcción</h4>
-                                <p class="product-price">$28.00</p>
-                                <button class="stock-btn out-stock">Agotado</button>
-                                <a href="#" class="btn btn-details" onclick="event.preventDefault(); showProductDetail(2)">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero consultar sobre los Bloques de Construcción - $28.00" target="_blank" class="btn btn-whatsapp">Consultar</a>
-                            </div>
+                        <div class="product-card">
+                            <img src="https://via.placeholder.com/140x100?text=Tren+Madera" alt="Tren de madera">
+                            <div class="stock-badge">EN STOCK</div>
+                            <div class="product-price">$45.00</div>
+                            <a href="#" class="btn-details" onclick="showProductDetail(2)">Ver Detalles</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- CATEGORÍA 2: JUGUETES ELECTRÓNICOS -->
-                <div class="category-card">
-                    <h3><i class="fas fa-bolt"></i> Juguetes Electrónicos</h3>
-                    <div class="products-grid">
-                        <div class="product-card" onclick="showProductDetail(3)">
-                            <img src="https://via.placeholder.com/240x180?text=Robot+Interactivo" alt="Robot Interactivo">
-                            <div class="product-info">
-                                <h4>Robot Interactivo</h4>
-                                <p class="product-price">$89.00</p>
-                                <button class="stock-btn in-stock">En Stock</button>
-                                <a href="#" class="btn btn-details" onclick="event.preventDefault(); showProductDetail(3)">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero comprar el Robot Interactivo - $89.00" target="_blank" class="btn btn-whatsapp">Comprar</a>
-                            </div>
-                        </div>
-                        <div class="product-card" onclick="showProductDetail(4)">
-                            <img src="https://via.placeholder.com/240x180?text=Tableta+Educativa" alt="Tableta Educativa">
-                            <div class="product-info">
-                                <h4>Tableta Educativa</h4>
-                                <p class="product-price">$65.00</p>
-                                <button class="stock-btn in-stock">En Stock</button>
-                                <a href="#" class="btn btn-details" onclick="event.preventDefault(); showProductDetail(4)">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero comprar la Tableta Educativa - $65.00" target="_blank" class="btn btn-whatsapp">Comprar</a>
-                            </div>
-                        </div>
+                <!-- Categoría 2 -->
+                <div class="category-item">
+                    <div class="category-title" onclick="toggleCategory('cat2')">
+                        <span>Juguetes de Plástico Ecológico</span>
+                        <span class="category-arrow">▼</span>
                     </div>
-                </div>
-
-                <!-- CATEGORÍA 3: JUGUETES DE AIRE LIBRE -->
-                <div class="category-card">
-                    <h3><i class="fas fa-sun"></i> Juguetes de Aire Libre</h3>
-                    <div class="products-grid">
-                        <div class="product-card" onclick="showProductDetail(5)">
-                            <img src="https://via.placeholder.com/240x180?text=Trampolín" alt="Trampolín Infantil">
-                            <div class="product-info">
-                                <h4>Trampolín Infantil</h4>
-                                <p class="product-price">$120.00</p>
-                                <button class="stock-btn out-stock">Agotado</button>
-                                <a href="#" class="btn btn-details" onclick="event.preventDefault(); showProductDetail(5)">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero consultar sobre el Trampolín Infantil - $120.00" target="_blank" class="btn btn-whatsapp">Consultar</a>
-                            </div>
-                        </div>
-                        <div class="product-card" onclick="showProductDetail(6)">
-                            <img src="https://via.placeholder
-
-                        <img src="https://via.placeholder.com/240x180?text=Bicicleta+Equilibrio" alt="Bicicleta de Equilibrio">
-                        <div class="product-info">
-                            <h4>Bicicleta de Equilibrio</h4>
-                            <p class="product-price">$55.00</p>
-                            <button class="stock-btn in-stock">En Stock</button>
-                            <a href="#" class="btn btn-details" onclick="event.preventDefault(); showProductDetail(6)">Ver Detalles</a>
-                            <a href="https://wa.me/593999999999?text=Hola! Quiero comprar la Bicicleta de Equilibrio - $55.00" target="_blank" class="btn btn-whatsapp">Comprar</a>
+                    <div id="cat2" class="category-products">
+                        <div class="product-card">
+                            <img src="https://via.placeholder.com/140x100?text=Bloques+Eco" alt="Bloques ecológicos">
+                            <div class="stock-badge">EN STOCK</div>
+                            <div class="product-price">$25.00</div>
+                            <a href="#" class="btn-details" onclick="showProductDetail(3)">Ver Detalles</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN QUIENES SOMOS -->
-        <section id="quienes-somos">
-            <h2><i class="fas fa-users"></i> Quiénes Somos</h2>
-            <div class="about-content">
-                <p>Fundada en 2016 en Ambato - Ecuador, Berraco Toys es una empresa familiar dedicada a ofrecer juguetes que combinan diversión, aprendizaje y seguridad.</p>
-                <br>
-                <p>Nuestro compromiso es seleccionar productos de alta calidad, fabricados con materiales seguros y respetuosos con el medio ambiente, trabajando únicamente con proveedores certificados internacionalmente.</p>
-                <br>
-                <p>Creemos que los juguetes son herramientas fundamentales para el desarrollo infantil, por lo que cada uno de nuestros artículos está diseñado para fomentar la creatividad, la motricidad y el razonamiento de los pequeños.</p>
-                <br>
-                <p>Con más de 5 años en el mercado ecuatoriano, hemos logrado conquistar la confianza de miles de familias que buscan lo mejor para sus hijos.</p>
-            </div>
-        </section>
-
-        <!-- SECCIÓN CONTACTOS -->
-        <section id="contactos">
-            <h2><i class="fas fa-envelope"></i> Contactos</h2>
-            <div class="contact-content">
-                <p><i class="fas fa-map-marker-alt"></i> Dirección: Calle 10 de Agosto N° 456, Edificio Centro Comercial Ambato, Piso 2 - Ambato (Tungurahua)</p>
-                <p><i class="fas fa-phone"></i> Teléfono: 03-225-6789 | Línea gratuita: 1800-123-456</p>
-                <p><i class="fas fa-mobile-alt"></i> WhatsApp: +593 99 123 4567</p>
-                <p><i class="fas fa-envelope"></i> Correo electrónico: ventas@berracotoys.ec</p>
-                <p><i class="fas fa-clock"></i> Horarios de atención: Lunes a Sábado de 9:00 AM a 7:00 PM | Domingos de 10:00 AM a 2:00 PM</p>
-                <p><i class="fas fa-truck"></i> Servicio de entrega a domicilio en toda la provincia de Tungurahua</p>
-            </div>
-        </section>
-
-        <!-- SECCIÓN DETALLE DE PRODUCTO -->
-        <section id="product-detail">
-            <a href="#" class="btn btn-back" onclick="showSection('inicio'); resetCarousel()">Regresar a la Página Principal</a>
-            
-            <div class="product-detail">
-                <!-- CARRUSEL DE IMÁGENES -->
-                <div class="carousel-container">
-                    <div class="carousel-slides" id="carousel-slides">
-                        <!-- Las imágenes se cargarán dinámicamente -->
+        <!-- SECCIÓN TIENDA -->
+        <section id="tienda" class="section">
+            <div class="category-section">
+                <h2>Todos los Productos</h2>
+                <div class="category-products">
+                    <!-- Todos los productos juntos -->
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/140x100?text=Coche+Madera" alt="Coche de madera">
+                        <div class="stock-badge">EN STOCK</div>
+                        <div class="product-price">$35.00</div>
+                        <a href="#" class="btn-details" onclick="showProductDetail(1)">Ver Detalles</a>
                     </div>
-                    <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
-                    <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
-                </div>
-
-                <!-- VIDEO DEL PRODUCTO -->
-                <iframe id="detail-video" class="product-video" src="" title="Video del producto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                <!-- INFORMACIÓN DEL PRODUCTO -->
-                <div class="detail-info">
-                    <h2 id="detail-title"></h2>
-                    <p id="detail-price" class="detail-price"></p>
-                    <button id="detail-stock" class="stock-btn"></button>
-                    
-                    <h3>Descripción</h3>
-                    <p id="detail-description" class="detail-description"></p>
-                    
-                    <h3>Características Principales</h3>
-                    <ul id="detail-features" class="detail-features"></ul>
-                    
-                    <a id="detail-whatsapp" href="#" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/140x100?text=Tren+Madera" alt="Tren de madera">
+                        <div class="stock-badge">EN STOCK</div>
+                        <div class="product-price">$45.00</div>
+                        <a href="#" class="btn-details" onclick="showProductDetail(2)">Ver Detalles</a>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/140x100?text=Bloques+Eco" alt="Bloques ecológicos">
+                        <div class="stock-badge">EN STOCK</div>
+                        <div class="product-price">$25.00</div>
+                        <a href="#" class="btn-details" onclick="showProductDetail(3)">Ver Detalles</a>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- SECCIÓN ¿QUIENES SOMOS? -->
+        <section id="quienes" class="section static-section">
+            <h2>¿Quiénes Somos?</h2>
+            <p>Verraco Toys es una empresa familiar fundada en Latacunga, Cotopaxi, dedicada a crear juguetes seguros y de alta calidad para niños de todas las edades.</p>
+            <p>Nuestro compromiso es usar materiales sostenibles y procesos artesanales que apoyen a la comunidad local, garantizando juguetes duraderos y divertidos.</p>
+            <a href="#" class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</a>
+        </section>
+
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto" class="section static-section">
+            <h2>Contacto</h2>
+            <p>Dirección: Calle Principal #123, Centro de Latacunga, Cotopaxi</p>
+            <p>Teléfono: 099 123 4567</p>
+            <p>Email: contacto@verraco-toys.ec</p>
+            <p>Horario: Lunes a Sábado de 9:00 a 18:00</p>
+            <a href="#" class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</a>
+        </section>
+
+        <!-- SECCIÓN DETALLES DEL PRODUCTO -->
+        <section id="product-detail" class="section product-detail">
+            <div class="carousel-container" id="product-carousel">
+                <div class="carousel-slides" id="carousel-slides">
+                    <!-- Imágenes se cargan dinámicamente -->
+                </div>
+                <button class="carousel-btn carousel-prev" onclick="moveCarousel(-1)">❮</button>
+                <button class="carousel-btn carousel-next" onclick="moveCarousel(1)">❯</button>
+            </div>
+
+            <h2 id="detail-title"></h2>
+            <div class="product-video" id="detail-video"></div>
+            <div class="product-info">
+                <p><strong>Precio:</strong> <span id="detail-price"></span></p>
+                <p><strong>Estado:</strong> <span id="detail-stock"></span></p>
+                <p><strong>Descripción:</strong> <span id="detail-description"></span></p>
+                <p><strong>Características:</strong></p>
+                <ul class="features-list" id="detail-features"></ul>
+            </div>
+
+            <a href="#" class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</a>
+            <a href="#" class="btn-back" onclick="showSection('tienda')">Ir a la Tienda</a>
         </section>
     </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2024 Berraco Toys - Todos los derechos reservados</p>
-        <p><i class="fas fa-shield-alt"></i> Productos certificados por normas de seguridad infantil ecuatorianas</p>
-    </footer>
 
     <script>
-        // DATOS DE TODOS LOS PRODUCTOS
-        const products = {
+        // DATOS DE LOS PRODUCTOS
+        const productos = {
             1: {
-                title: "Coche de Madera Clásico",
-                price: "$35.00",
-                stock: "in-stock",
-                stockText: "En Stock",
-                images: [
-                    "https://via.placeholder.com/500x400?text=Coche+Madera+1",
-                    "https://via.placeholder.com/500x400?text=Coche+Madera+2",
-                    "https://via.placeholder.com/500x400?text=Coche+Madera+3"
+                titulo: "Coche de Madera Clásico",
+                precio: "$35.00",
+                stock: "EN STOCK",
+                imagenes: [
+                    "https://via.placeholder.com/500x400?text=Coche+1",
+                    "https://via.placeholder.com/500x400?text=Coche+2",
+                    "https://via.placeholder.com/500x400?text=Coche+3"
                 ],
-                video: "https://www.youtube.com/embed/3hjnA89Vw5Y",
-                description: "Coche de madera maciza de roble, fabricado a mano con acabados suaves y pulidos para garantizar la máxima seguridad de los niños. Ideal para niños de 2 a 6 años, cuenta con ruedas de goma eco-amigables que no rayan los pisos y capacidad de carga de hasta 30kg.",
-                features: [
+                video: "https://www.youtube.com/embed/ixRLjjTRczE",
+                descripcion: "Coche de madera maciza de roble, fabricado a mano con acabados artesanales. Ideal para niños de 3 a 8 años.",
+                caracteristicas: [
                     "Material: Roble macizo tratado",
                     "Ruedas de goma sin contaminantes",
-                    "Peso del producto: 2.5kg",
-                    "Colores disponibles: Natural o pintado en azul/rojo",
+                    "Peso: 2.5kg",
+                    "Colores: Natural o pintado en azul
+
+
+
+
+                    "Colores: Natural o pintado en azul/rojo",
                     "Armado no requerido - listo para usar",
                     "Medidas: 50cm x 30cm x 35cm"
-                ],
-                whatsappText: "Hola! Quiero comprar el Coche de Madera Clásico - $35.00"
+                ]
             },
             2: {
-                title: "Bloques de Construcción de Madera",
-                price: "$28.00",
-                stock: "out-stock",
-                stockText: "Agotado",
-                images: [
-                    "https://via.placeholder.com/500x400?text=Bloques+Madera+1",
-                    "https://via.placeholder.com/500x400?text=Bloques+Madera+2",
-                    "https://via.placeholder.com/500x400?text=Bloques+Madera+3"
-                ],
-                video: "https://www.youtube.com/embed/6R8G98j09OM",
-                description: "Set de 50 bloques de madera de haya con formas geométricas variadas (cuadrados, círculos, triángulos, rectángulos) y colores vibrantes. Diseñados para fomentar el desarrollo de la motricidad fina, la creatividad y el razonamiento espacial en niños de 1 a 4 años.",
-                features: [
-                    "Cantidad: 50 piezas",
-                    "Material: Haya de alta calidad",
-                    "Dimensiones de piezas: 3cm a 8cm",
-                    "Pintura acrílica no tóxica",
-                    "Estuche de tela resistente incluido",
-                    "Lavables con agua tibia y jabón suave"
-                ],
-                whatsappText: "Hola! Quiero consultar sobre los Bloques de Construcción de Madera - $28.00"
-            },
-            3: {
-                title: "Robot Interactivo X-200",
-                price: "$89.00",
-                stock: "in-stock",
-                stockText: "En Stock",
-                images: [
-                    "https://via.placeholder.com/500x400?text=Robot+Interactivo+1",
-                    "https://via.placeholder.com/500x400?text=Robot+Interactivo+2",
-                    "https://via.placeholder.com/500x400?text=Robot+Interactivo+3"
+                titulo: "Tren de Madera con Vías",
+                precio: "$45.00",
+                stock: "EN STOCK",
+                imagenes: [
+                    "https://via.placeholder.com/500x400?text=Tren+1",
+                    "https://via.placeholder.com/500x400?text=Tren+2",
+                    "https://via.placeholder.com/500x400?text=Tren+3",
+                    "https://via.placeholder.com/500x400?text=Tren+4"
                 ],
                 video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: "Robot interactivo programable ideal para niños de 5 a 12 años. Cuenta con más de 50 funciones preprogramadas, entre ellas: bailes sincronizados, respuesta a comandos de voz básicos, seguimiento de objetos por sensor y modos educativos para aprender matemáticas, letras y lógica.",
-                features: [
-                    "Conectividad Bluetooth y control remoto incluido",
-                    "Modos: Educativo, Entretenimiento y Deportes",
-                    "Duración de batería: 4 horas de uso continuo",
-                    "Dimensiones: 25cm de alto x 15cm de ancho",
-                    "Certificación internacional de seguridad: CE y ASTM",
-                    "Materiales: Plástico resistente y no tóxico"
-                ],
-                whatsappText: "Hola! Quiero comprar el Robot Interactivo X-200 - $89.00"
+                descripcion: "Tren de madera con 3 vagones y 10 metros de vías flexibles. Fabricado con pino tratado y acabados suaves.",
+                caracteristicas: [
+                    "Material: Pino macizo y vías de plástico ecológico",
+                    "Incluye 3 vagones y locomotor",
+                    "Peso: 3.2kg",
+                    "Idioma de instrucciones: Español",
+                    "Montaje sencillo - incluye herramientas",
+                    "Medidas del tren: 60cm x 15cm x 20cm"
+                ]
             },
-            4: {
-                title: "Tableta Educativa Infantil KidPad",
-                price: "$65.00",
-                stock: "in-stock",
-                stockText: "En Stock",
-                images: [
-                    "https://via.placeholder.com/500x400?text=Tableta+Educativa+1",
-                    "https://via.placeholder.com/500x400?text=Tableta+Educativa+2",
-                    "https://via.placeholder.com/500x400?text=Tableta+Educativa+3"
+            3: {
+                titulo: "Bloques de Construcción Ecológicos",
+                precio: "$25.00",
+                stock: "EN STOCK",
+                imagenes: [
+                    "https://via.placeholder.com/500x400?text=Bloques+1",
+                    "https://via.placeholder.com/500x400?text=Bloques+2"
                 ],
-                video: "https://www.youtube.com/embed/9Z75fBLVbSo",
-                description: "Tableta con pantalla táctil de 7 pulgadas diseñada específicamente para niños de 3 a 8 años. Incluye más de 100 juegos y actividades educativas adaptadas a diferentes edades, con contenido sobre letras, números, colores, animales, música y ciencias básicas.",
-                features: [
-                    "Pantalla: 7 pulgadas HD anti-reflejo",
-                    "Almacenamiento: 16GB + expansión hasta 128GB con tarjeta SD",
-                    "Batería de litio: 6 horas de uso continuo",
-                    "Idiomas disponibles: Español, Inglés y Quechua",
-                    "Control parental para limitar tiempo de uso",
-                    "Resistente a golpes leves y salpicaduras"
-                ],
-                whatsappText: "Hola! Quiero comprar la Tableta Educativa Infantil KidPad - $65.00"
-            },
-            5: {
-                title: "Trampolín Infantil de 1.8m",
-                price: "$120.00",
-                stock: "out-stock",
-                stockText: "Agotado",
-                images: [
-                    "https://via.placeholder.com/500x400?text=Trampolín+1",
-                    "https://via.placeholder.com/500x400?text=Trampolín+2",
-                    "https://via.placeholder.com/500x400?text=Trampolín+3"
-                ],
-                video: "https://www.youtube.com/embed/7XyD66XJ45I",
-                description: "Trampolín circular de 1.8 metros de diámetro con red de seguridad completa y tapones protectores en todos los resortes. Fabricado con estructura de acero galvanizado resistente a la corrosión, ideal para uso en jardines o espacios cerrados amplios.",
-                features: [
-                    "Diámetro total: 1.8 metros",
-                    "Carga máxima permitida: 50kg",
-                    "Material de estructura: Acero galvanizado 2mm",
-                    "Red de seguridad de polietileno resistente",
-                    "Resortes de acero cromado - 36 unidades",
-                    "Incluye instrucciones y herramientas de montaje"
-                ],
-                whatsappText: "Hola! Quiero consultar sobre el Trampolín Infantil de 1.8m - $120.00"
-            },
-            6: {
-                title: "Bicicleta de Equilibrio EcoRider",
-                price: "$55.00",
-                stock: "in-stock",
-                stockText: "En Stock",
-                images: [
-                    "https://via.placeholder.com/500x400?text=Bicicleta+Equilibrio+1",
-                    "https://via.placeholder.com/500x400?text=Bicicleta+Equilibrio+2",
-                    "https://via.placeholder.com/500x400?text=Bicicleta+Equilibrio+3"
-                ],
-                video: "https://www.youtube.com/embed/8KfGz4Y2Z6Q",
-                description: "Bicicleta sin pedales diseñada para desarrollar el equilibrio y la coordinación motriz en niños de 2 a 5 años. Cuenta con ruedas de EVA duraderas que no necesitan cámara de aire, manubrio ajustable y freno trasero de mano para mayor seguridad.",
-                features: [
-                    "Material de cuadro: Aluminio ligero",
-                    "Ruedas: EVA de alta densidad",
-                    "Ajuste de asiento: 30cm a 40cm de altura",
-                    "Freno trasero de disco incluido",
-                    "Peso total: 3.2kg",
-                    "Colores disponibles: Azul, rojo, rosa y verde",
-                    "Capacidad de carga: 35kg"
-                ],
-                whatsappText: "Hola! Quiero comprar la Bicicleta de Equilibrio EcoRider - $55.00"
+                video: "https://www.youtube.com/embed/9bZkp7q19f0",
+                descripcion: "Set de 50 bloques de plástico reciclado, libres de BPA y tóxicos. Ideales para estimular la creatividad infantil.",
+                caracteristicas: [
+                    "Material: Plástico reciclado 100%",
+                    "Cantidad: 50 piezas en 8 formas diferentes",
+                    "Color: Multicolor no tóxico",
+                    "Edad recomendada: 1 a 5 años",
+                    "Lavables con agua y jabón",
+                    "Peso del set: 1.8kg"
+                ]
             }
         };
 
         // VARIABLES PARA EL CARRUSEL
         let currentSlide = 0;
-        let currentProductId = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
-        // FUNCIÓN PARA MOSTRAR SECCIONES
+        // FUNCIÓN PARA MOSTRAR/Ocultar SECCIONES
         function showSection(sectionId) {
             // Ocultar todas las secciones
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-                section.style.display = 'none';
-            });
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            // Ocultar detalles de producto siempre que no sea la sección de detalles
+            document.getElementById('product-detail').classList.remove('active');
             // Mostrar la sección seleccionada
-            const section = document.getElementById(sectionId);
-            section.classList.add('active');
-            section.style.display = 'block';
-            // Scroll al inicio de la página
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            document.getElementById(sectionId).classList.add('active');
+            // Actualizar menú activo
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
         }
 
-        // FUNCIÓN PARA MOSTRAR DETALLE DE PRODUCTO
+        // FUNCIÓN PARA ABRIR/CERRAR CATEGORÍAS
+        function toggleCategory(categoryId) {
+            const category = document.getElementById(categoryId);
+            const arrow = category.previousElementSibling.querySelector('.category-arrow');
+            if (category.style.display === 'flex') {
+                category.style.display = 'none';
+                arrow.classList.remove('open');
+            } else {
+                category.style.display = 'flex';
+                arrow.classList.add('open');
+            }
+        }
+
+        // FUNCIÓN PARA MOSTRAR DETALLES DEL PRODUCTO
         function showProductDetail(productId) {
-            currentProductId = productId;
-            const prod = products[productId];
-
-            // Cargar datos básicos
-            document.getElementById('detail-title').textContent = prod.title;
-            document.getElementById('detail-price').textContent = prod.price;
-            document.getElementById('detail-stock').className = `stock-btn ${prod.stock}`;
-            document.getElementById('detail-stock').textContent = prod.stockText;
-            document.getElementById('detail-description').textContent = prod.description;
-            document.getElementById('detail-video').src = prod.video;
-            document.getElementById('detail-whatsapp').href = `https://wa.me/593999999999?text=${encodeURIComponent(prod.whatsappText)}`;
-            document.getElementById('detail-whatsapp').textContent = prod.stock === 'in-stock' ? 'Comprar Ahora' : 'Consultar Disponibilidad';
-
+            // Ocultar otras secciones
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            // Obtener datos del producto
+            const prod = productos[productId];
+            // Cargar datos en la página
+            document.getElementById('detail-title').textContent = prod.titulo;
+            document.getElementById('detail-price').textContent = prod.precio;
+            document.getElementById('detail-stock').textContent = prod.stock;
+            document.getElementById('detail-description').textContent = prod.descripcion;
             // Cargar características
             const featuresList = document.getElementById('detail-features');
             featuresList.innerHTML = '';
-
-
-
-
-                        prod.features.forEach(feature => {
+            prod.caracteristicas.forEach(feat => {
                 const li = document.createElement('li');
-                li.textContent = feature;
+                li.textContent = feat;
                 featuresList.appendChild(li);
             });
-
-            // Cargar imágenes en el carrusel
+            // Cargar vídeo
+            document.getElementById('detail-video').innerHTML = `
+                <iframe src="${prod.video}" title="${prod.titulo}" allowfullscreen></iframe>
+            `;
+            // Cargar carrusel de imágenes
             const carouselSlides = document.getElementById('carousel-slides');
             carouselSlides.innerHTML = '';
-            prod.images.forEach((imgSrc, index) => {
+            prod.imagenes.forEach(img => {
                 const slide = document.createElement('div');
-                slide.className = 'carousel-slide';
-                slide.innerHTML = `<img src="${imgSrc}" alt="${prod.title} - Imagen ${index + 1}">`;
+                slide.classList.add('carousel-slide');
+                slide.innerHTML = `<img src="${img}" alt="${prod.titulo}">`;
                 carouselSlides.appendChild(slide);
             });
-
             // Reiniciar carrusel
             currentSlide = 0;
-            updateCarouselPosition();
-
-            // Mostrar sección de detalle
-            showSection('product-detail');
+            updateCarousel();
+            // Agregar eventos táctiles al carrusel
+            carouselSlides.addEventListener('touchstart', handleTouchStart, false);
+            carouselSlides.addEventListener('touchend', handleTouchEnd, false);
+            // Mostrar sección de detalles
+            document.getElementById('product-detail').classList.add('active');
         }
 
-        // FUNCIÓN PARA ACTUALIZAR POSICIÓN DEL CARRUSEL
-        function updateCarouselPosition() {
+        // FUNCIONES PARA EL CARRUSEL
+        function updateCarousel() {
             const slides = document.querySelectorAll('.carousel-slide');
-            if (slides.length === 0) return;
             const slideWidth = slides[0].offsetWidth;
             document.getElementById('carousel-slides').style.transform = `translateX(-${currentSlide * slideWidth}px)`;
         }
 
-        // FUNCIÓN PARA MOVER EL CARRUSEL
-        function moveCarousel(direction) {
+        function moveCarousel(step) {
             const slides = document.querySelectorAll('.carousel-slide');
-            if (slides.length === 0) return;
-            
-            currentSlide += direction;
+            currentSlide += step;
             if (currentSlide < 0) currentSlide = slides.length - 1;
             if (currentSlide >= slides.length) currentSlide = 0;
-            
-            updateCarouselPosition();
+            updateCarousel();
         }
 
-        // FUNCIÓN PARA REINICIAR EL CARRUSEL
-        function resetCarousel() {
-            currentSlide = 0;
-            updateCarouselPosition();
+        // FUNCIONES PARA CONTROL TÁCTIL
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
         }
 
-        // AJUSTAR CARRUSEL CUANDO CAMBIA EL TAMAÑO DE PANTALLA
-        window.addEventListener('resize', updateCarouselPosition);
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
 
-        // MOSTRAR SECCIÓN DE INICIO AL CARGAR LA PÁGINA
-        window.onload = function() {
-            showSection('inicio');
-               };
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 15) moveCarousel(1); // Deslizar a la izquierda
+            if (touchEndX > touchStartX + 15) moveCarousel(-1); // Deslizar a la derecha
+        }
+
+        // ACTUALIZAR CARRUSEL CUANDO CAMBIE EL TAMAÑO DE PANTALLA
+        window.addEventListener('resize', updateCarousel);
     </script>
 </body>
 </html>
+                    
               
