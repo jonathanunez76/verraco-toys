@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -403,15 +402,14 @@
                     "Medidas: 50cm x 30cm x 35cm"
                 ]
             },
-           
-
             2: {
+            
                 titulo: "Tren de Madera con Vías",
                 precio: "$45.00",
                 stock: "EN STOCK",
                 imagenes: [
-                    "https://via.placeholder.com/140x100?text=Tren+Madera",
-                    "https://via.placeholder.com/140x100?text=Tren+Vías"
+                    "https://via.placeholder.com/500x400?text=Tren+1",
+                    "https://via.placeholder.com/500x400?text=Tren+2"
                 ],
                 video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
                 descripcion: "Tren de madera con 3 vagones y 10 metros de vías flexibles. Fabricado con pino tratado y acabados suaves.",
@@ -429,8 +427,8 @@
                 precio: "$25.00",
                 stock: "EN STOCK",
                 imagenes: [
-                    "https://via.placeholder.com/140x100?text=Bloques+1",
-                    "https://via.placeholder.com/140x100?text=Bloques+2"
+                    "https://via.placeholder.com/500x400?text=Bloques+1",
+                    "https://via.placeholder.com/500x400?text=Bloques+2"
                 ],
                 video: "https://www.youtube.com/embed/9bZkp7q19f0",
                 descripcion: "Set de 50 bloques de plástico reciclado, libres de BPA y tóxicos. Ideales para estimular la creatividad infantil.",
@@ -450,12 +448,28 @@
         let touchStartX = 0;
         let touchEndX = 0;
 
+        // FUNCIÓN PARA DETENER EL VÍDEO CUANDO CAMBIEMOS DE SECCIÓN
+        function stopVideo() {
+            const videoFrame = document.getElementById('detail-video').querySelector('iframe');
+            if (videoFrame) {
+                // REINICIAR EL IFRAME PARA DETENER LA REPRODUCCIÓN
+                const src = videoFrame.src;
+                videoFrame.src = '';
+                videoFrame.src = src;
+            }
+        }
+
         // FUNCIÓN PARA MOSTRAR/Ocultar SECCIONES
         function showSection(sectionId) {
+            // DETENER EL VÍDEO PRIMERO
+            stopVideo();
             // Ocultar todas las secciones
             document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
             // Mostrar la sección seleccionada
             document.getElementById(sectionId).classList.add('active');
+            // Actualizar menú activo
+            document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
             // Reiniciar carrusel
             currentSlide = 0;
         }
@@ -476,14 +490,18 @@
         // FUNCIÓN PARA MOSTRAR DETALLES DEL PRODUCTO
         function showProductDetail(prodId) {
             const prod = productos[prodId];
-            // Ocultar otras secciones
-            showSection('product-detail');
-            // Cargar datos
+            // Ocultar otras secciones y detener vídeo anterior
+            stopVideo();
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            // Mostrar sección de detalles
+            document.getElementById('product-detail').classList.add('active');
+
+            // Cargar datos del producto
             document.getElementById('detail-title').textContent = prod.titulo;
             document.getElementById('detail-price').textContent = prod.precio;
             document.getElementById('detail-stock').textContent = prod.stock;
             document.getElementById('detail-description').textContent = prod.descripcion;
-            
+
             // Cargar características
             const featuresList = document.getElementById('detail-features');
             featuresList.innerHTML = '';
@@ -493,8 +511,10 @@
                 featuresList.appendChild(li);
             });
 
-            // Cargar vídeo
-            document.getElementById('detail-video').innerHTML = `<iframe src="${prod.video}" title="${prod.titulo}" width="100%" height="300" allowfullscreen></iframe>`;
+            // Cargar vídeo nuevo
+            document.getElementById('detail-video').innerHTML = `
+                <iframe src="${prod.video}" title="${prod.titulo}" allowfullscreen></iframe>
+            `;
 
             // Cargar carrusel de imágenes
             const carousel = document.getElementById('carousel-slides');
@@ -505,9 +525,9 @@
                 slide.innerHTML = `<img src="${img}" alt="${prod.titulo}">`;
                 carousel.appendChild(slide);
             });
-            // Inicializar carrusel
             updateCarousel();
-            // Agregar eventos táctiles al carrusel
+
+            // EVENTOS TÁCTILES PARA EL CARRUSEL
             const carouselEl = document.getElementById('carousel-slides');
             carouselEl.addEventListener('touchstart', e => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -519,28 +539,27 @@
             });
         }
 
-        // FUNCIÓN DEL CARRUSEL
+        // FUNCIONES DEL CARRUSEL
         function updateCarousel() {
             const slides = document.querySelectorAll('.carousel-slide');
             if (slides.length === 0) return;
-            slides.forEach((slide, idx) => {
-                slide.style.transform = `translateX(-${currentSlide * 100}%)`;
-            });
+            const slideWidth = slides[0].offsetWidth;
+            document.getElementById('carousel-slides').style.transform = `translateX(-${currentSlide * slideWidth}px)`;
         }
 
         function moveCarousel(step) {
             const slides = document.querySelectorAll('.carousel-slide');
+            if (slides.length === 0) return;
             currentSlide += step;
             if (currentSlide < 0) currentSlide = slides.length - 1;
             if (currentSlide >= slides.length) currentSlide = 0;
             updateCarousel();
         }
 
-        // INICIALIZAR LA PÁGINA EN EL INICIO
-        showSection('inicio');
+        // INICIALIZAR CARRUSEL CUANDO CARGA LA PÁGINA
+        window.addEventListener('resize', updateCarousel);
+        updateCarousel();
     </script>
 </body>
 </html>
-                
-
                 
