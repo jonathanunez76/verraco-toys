@@ -1590,8 +1590,12 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             currentCarouselIndex = 0;
             updateCarousel();
 
-         const videoFrame = document.getElementById('product-video-frame');
+      // --- INICIO DEL BLOQUE A REEMPLAZAR ---
+const videoFrame = document.getElementById('product-video-frame');
 let vimeoPlayerInstance = null; // DECLARACIÓN DE LA INSTANCIA DEL REPRODUCTOR AQUÍ
+
+// Variable para guardar el URL actual del producto para detectar cambios
+let currentProductVideoUrl = null; 
 
 if (product.video) {
   videoFrame.src = product.video;
@@ -1599,28 +1603,46 @@ if (product.video) {
 
   // --- INICIO DEL CÓDIGO AÑADIDO PARA PAUSAR EL VIDEO AL NAVEGAR ---
   if (window.Vimeo) { // Asegúrate de que la API de Vimeo esté cargada
-      // Asegúrate de que vimeoPlayerInstance se inicialice solo una vez por iframe
+
+      // Inicializar el reproductor si no está inicializado o si es un nuevo video
       if (!vimeoPlayerInstance || vimeoPlayerInstance.element !== videoFrame) {
           vimeoPlayerInstance = new Vimeo.Player(videoFrame);
+          currentProductVideoUrl = product.video; // Guardar el URL del video actual
       }
 
       // Función para pausar el video
       const pauseVimeoOnNavigate = () => {
           if (vimeoPlayerInstance) {
               vimeoPlayerInstance.pause();
-              console.log('Vimeo Player pausado al navegar fuera del producto.');
+              // console.log('Vimeo Player pausado al navegar fuera del producto.'); // Descomenta para depurar
           }
       };
 
-      // Escuchar clics en toda la página para detectar navegación a otros enlaces
-      document.addEventListener('click', function(event) {
-          const target = event.target;
-          // Si el clic es en un enlace (<a>) o botón (<button>) y NO es dentro del iframe del video
-          if ((target.closest('a') || target.closest('button')) && !target.closest('iframe[src*="player.vimeo.com/video"]')) {
+      // --- ESTRATEGIA PRINCIPAL: DETECTAR CAMBIO DE URL (para SPAs y navegación interna) ---
+      // Guardar el URL de la página actual para comparar
+      let lastKnownUrl = window.location.href;
+
+      // Usar un temporizador para comprobar el URL regularmente
+      // Esto es un poco "hacky" pero funciona bien para SPAs que no disparan popstate
+      setInterval(() => {
+          if (window.location.href !== lastKnownUrl) {
+              // El URL ha cambiado, lo que significa que el usuario ha navegado
+              // Pausar si el video de este producto sigue siendo el actual y se está reproduciendo
+              if (vimeoPlayerInstance && videoFrame.style.display !== 'none' && videoFrame.src === currentProductVideoUrl) {
+                  pauseVimeoOnNavigate();
+              }
+              lastKnownUrl = window.location.href; // Actualizar el último URL conocido
+          }
+      }, 500); // Comprueba cada medio segundo
+
+      // Escuchar el evento popstate (para navegación de historial sin recarga completa)
+      window.addEventListener('popstate', () => {
+          if (vimeoPlayerInstance && videoFrame.style.display !== 'none' && videoFrame.src === currentProductVideoUrl) {
               pauseVimeoOnNavigate();
           }
       });
 
+      // --- ESTRATEGIAS ADICIONALES (mantener por si acaso) ---
       // También pausar cuando la página del navegador pierda el foco (ej. cambio de pestaña)
       document.addEventListener('visibilitychange', function() {
           if (document.hidden) {
@@ -1632,6 +1654,7 @@ if (product.video) {
       window.addEventListener('beforeunload', function() {
           pauseVimeoOnNavigate();
       });
+
   }
   // --- FIN DEL CÓDIGO AÑADIDO ---
 
@@ -1643,7 +1666,9 @@ if (product.video) {
       vimeoPlayerInstance.destroy();
       vimeoPlayerInstance = null;
   }
+  currentProductVideoUrl = null; // Limpiar también el URL del video actual
 }
+// --- FIN DEL BLOQUE A REEMPLAZAR ---
 
 // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
 // ... (el resto de tu código para el carrusel, etc., sigue aquí)
