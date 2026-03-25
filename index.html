@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -165,24 +166,30 @@
             background-color: #128C7E;
         }
 
-        /* SECCIÓN QUIENES SOMOS Y CONTACTOS */
-        .about-content, .contact-content {
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-            color: #444;
-            font-size: 1.1rem;
-        }
-        .contact-content p {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        .contact-content i {
-            color: #D32F2F;
-            margin-right: 0.8rem;
-            font-size: 1.3rem;
-        }
+
+       /* SECCIÓN QUIENES SOMOS Y CONTACTOS */
+.about-content, .contact-content {
+    max-width: 900px; /* Ancho mayor para que el texto no se vea tan ajustado */
+    margin: 2rem auto; /* Más espacio arriba y abajo */
+    line-height: 2; /* Espaciado entre líneas más cómodo para leer */
+    color: #2D3436; /* Color de texto más oscuro para mejor legibilidad */
+    font-size: 1.15rem; /* Tamaño de fuente ligeramente mayor */
+    padding: 0 1.5rem; /* Espacio lateral en pantallas pequeñas */
+}
+
+.contact-content p {
+    margin-bottom: 1.5rem; /* Más espacio entre párrafos */
+    display: flex;
+    align-items: center;
+    padding: 0.5rem; /* Borde interno para darle volumen */
+    border-left: 3px solid #D32F2F; /* Línea roja a la izquierda para resaltar */
+}
+
+.contact-content i {
+    color: #D32F2F; /* Mantiene el rojo de la marca */
+    margin-right: 1rem; /* Más espacio entre ícono y texto */
+    font-size: 1.5rem; /* Íconos más grandes y visibles */
+}
 
         /* PÁGINA DE DETALLE DE PRODUCTO */
         .product-detail {
@@ -310,6 +317,34 @@
             .categories-wrapper {
                 grid-template-columns: 1fr;
             }
+       
+/* Correción para mantener el pie de página abajo */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1; /* Hace que el contenedor ocupe todo el espacio disponible */
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+footer {
+    background-color: #2D3436;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%;
+    margin-top: auto; /* Empuja el footer hacia abajo */
+}
+
         }
     </style>
     <!-- ÍCONOS -->
@@ -726,4 +761,3 @@
 </body>
 </html>
                                 
-                
