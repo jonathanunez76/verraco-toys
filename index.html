@@ -1,497 +1,140 @@
-
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berraco Toys - Todo para tus juguetes favoritos</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        /* Navegación Principal */
-        header {
-            background: #2c3e50;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #3498db;
-        }
-        /* Contenedor Principal */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-        /* Secciones */
-        section {
-            margin-bottom: 4rem;
-        }
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 0.5rem;
-        }
-        /* Categorías y Productos */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .category-card {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: box-shadow 0.3s;
-        }
-        .category-card:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .product-card {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-        .product-info {
-            padding: 1rem;
-        }
-        .product-info h3 {
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-        .product-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #27ae60;
-            margin-bottom: 1rem;
-        }
-        .stock-status {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-        }
-        .in-stock {
-            background: #2ecc71;
-            color: white;
-        }
-        .out-stock {
-            background: #e74c3c;
-            color: white;
-        }
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: background 0.3s;
-            margin: 0.5rem;
-        }
-        .btn-details {
-            background: #3498db;
-            color: white;
-        }
-        .btn-details:hover {
-            background: #2980b9;
-        }
-        .btn-whatsapp {
-            background: #25d366;
-            color: white;
-        }
-        .btn-whatsapp:hover {
-            background: #128c7e;
-        }
-        .btn-back {
-            background: #2c3e50;
-            color: white;
-            margin-bottom: 2rem;
-        }
-        .btn-back:hover {
-            background: #34495e;
-        }
-        /* Página de Detalle de Producto */
-        .product-detail {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        .product-detail img {
-            width: 100%;
-            border-radius: 8px;
-        }
-        .product-video {
-            width: 100%;
-            height: 315px;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-        }
-        .product-description {
-            line-height: 1.6;
-            color: #555;
-            margin-top: 1rem;
-        }
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 4rem;
-        }
-        /* Responsividad para Móviles */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .nav-links a {
-                margin: 0 1rem;
-            }
-            .product-detail {
-                grid-template-columns: 1fr;
-            }
-            .product-video {
-                height: 200px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navegación Principal -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">Berraco Toys</div>
-            <nav class="nav-links">
-                <a href="#inicio">Índice</a>
-                <a href="#quienes-somos">Quiénes Somos</a>
-                <a href="#contactos">Contactos</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Contenedor Principal -->
-    <div class="container">
-        <!-- Sección Inicio/Productos -->
-        <section id="inicio">
-            <h2>Catálogo de Productos</h2>
-            <div class="categories-grid">
-                <!-- Categoría 1 -->
-                <div class="category-card">
-                    <h3>Juguetes de Madera</h3>
-                    <div class="products-grid">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Madera+1" alt="Juguete de Madera 1" onclick="window.location.href='producto-detalle.html?id=1'">
-                            <div class="product-info">
-                                <h3>Coche de Madera Clásico</h3>
-                                <p class="product-price">$35.00</p>
-                                <span class="stock-status in-stock">En Existencia</span>
-                                <a href="producto-detalle.html?id=1" class="btn btn-details">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero comprar el Coche de Madera Clásico" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Madera+2" alt="Juguete de Madera 2" onclick="window.location.href='producto-detalle.html?id=2'">
-                            <div class="product-info">
-                                <h3>Bloques de Construcción</h3>
-                                <p class="product-price">$28.00</p>
-                                <span class="stock-status out-stock">Agotado</span>
-                                <a href="producto-detalle.html?id=2" class="btn btn-details">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero consultar sobre los Bloques de Construcción" target="_blank" class="btn btn-whatsapp">Consultar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2 -->
-                <div class="category-card">
-                    <h3>Juguetes Electrónicos</h3>
-                    <div class="products-grid">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Electronico+1" alt="Juguete Electrónico 1" onclick="window.location.href='producto-detalle.html?id=3'">
-                            <div class="product-info">
-                                <h3>Robot Interactivo</h3>
-                                <p class="product-price">$89.00</p>
-                                <span class="stock-status in-stock">En Existencia</span>
-                                <a href="producto-detalle.html?id=3" class="btn btn-details">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero comprar el Robot Interactivo" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Electronico+2" alt="Juguete Electrónico 2" onclick="window.location.href='producto-detalle.html?id=4'">
-                            <div class="product-info">
-                                <h3>Tableta Educativa Infantil</h3>
-                                <p class="product-price">$65.00</p>
-                                <span class="stock-status in-stock">En Existencia</span>
-                                <a href="producto-detalle.html?id=4" class="btn btn-details">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero comprar la Tableta Educativa Infantil" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 3 -->
-                <div class="category-card">
-                    <h3>Juguetes de Aire Libre</h3>
-                    <div class="products-grid">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Aire+Libre+1" alt="Juguete de Aire Libre 1" onclick="window.location.href='producto-detalle.html?id=5'">
-                            <div class="product-info">
-                                <h3>Trampolín Infantil</h3>
-                                <p class="product-price">$120.00</p>
-                                <span class="stock-status out-stock">Agotado</span>
-                                <a href="producto-detalle.html?id=5" class="btn btn-details">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero consultar sobre el Trampolín Infantil" target="_blank" class="btn btn-whatsapp">Consultar</a>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Aire+Libre+2" alt="Juguete de Aire Libre 2" onclick="window.location.href='producto-detalle.html?id=6'">
-                            <div class="product-info">
-                                <h3>Bicicleta de Equilibrio</h3>
-                                <p class="product-price">$55.00</p>
-                                <span class="stock-status in-stock">En Existencia</span>
-                                <a href="producto-detalle.html?id=6" class="btn btn-details">Ver Detalles</a>
-                                <a href="https://wa.me/593999999999?text=Hola! Quiero comprar la Bicicleta de Equilibrio" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camión Volcador Funciones" class="detalle-imagen">
             </div>
-        </section>
-
-        <!-- Sección Quiénes Somos -->
-        <section id="quienes-somos">
-            <h2>Quiénes Somos</h2>
-            <p>Somos una empresa ecuatoriana dedicada a ofrecer juguetes de alta calidad que fomenten el desarrollo creativo y físico de los niños. Con más de 10 años de experiencia en el mercado, trabajamos con proveedores certificados para garantizar la seguridad y durabilidad de cada producto.</p>
-            <p>Nuestro objetivo es llevar alegría y aprendizaje a los hogares, ofreciendo opciones para todas las edades y necesidades.</p>
-        </section>
-
-        <!-- Sección Contactos -->
-        <section id="contactos">
-            <h2>Contactos</h2>
-            <p><strong>Dirección:</strong> Calle Principal N° 123, Ambato - Tungurahua</p>
-            <p><strong>Teléfono:</strong> 03-222-3333</p>
-            <p><strong>Correo:</strong> contacto@berracotoys.ec</p>
-            <p><strong>WhatsApp:</strong> +593 99 999 9999</p>
-        </section>
+            <h3 class="detalle-nombre">Camión Volcador Grande</h3>
+            <p class="detalle-precio">$49.90</p>
+            <p class="detalle-disponibilidad"><span class="disponible">✅ Disponible en stock</span></p>
+            <p class="detalle-descripcion">
+                Camión volcador teledirigido de 1:16, fabricado en plástico resistente y metal ligero. Cuenta con control remoto de 2.4GHz para maniobras precisas, función de elevación y volteo de la caja de carga, luces LED frontales y ruedas con agarre reforzado. Incluye batería recargable y cargador USB. Ideal para niños de 6 años en adelante.
+            </p>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Berraco Toys - Todos los derechos reservados</p>
-    </footer>
-
-    <!-- Página de Detalle de Producto (crear archivo separado: producto-detalle.html) -->
-    <!-- Contenido de producto-detalle.html: -->
-    <!--
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Detalle del Producto - Berraco Toys</title>
-        <link rel="stylesheet" href="style.css"> <!-- Reutilizar el mismo CSS -->
-    </head>
-    <body>
-        <header>
-            <div class="nav-container">
-                <div class="logo">Berraco Toys</div>
-                <nav class="nav-links">
-                    <a href="index.html#inicio">Índice</a>
-                    <a href="index.html#quienes-somos">Quiénes Somos</a>
-                    <a href="index.html#contactos">Contactos</a>
-                </nav>
+    <!-- Detalle Excavadora -->
+    <div id="detalle-excavadora" class="detalle-pagina">
+        <div class="detalle-contenido">
+            <span class="detalle-cerrar" onclick="cerrarDetalle()">×</span>
+            <div class="detalle-imagenes">
+                <img src="https://images.unsplash.com/photo-1566305882121-2f41e914b5a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora Frontal" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora Brazo" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Excavadora Control" class="detalle-imagen">
             </div>
-        </header>
-
-        <div class="container">
-            <a href="index.html#inicio" class="btn btn-back" onclick="window.scrollTo(0,0)">Regresar al Inicio</a>
-
-            <section class="product-detail">
-                <div class="detail-images">
-                    <img src="https://via.placeholder.com/500x400?text=Producto+Detalle" alt="Detalle del Producto">
-                    <iframe class="product-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video del Producto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
-
-
-
-
-
-
-
-                    picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="detail-info">
-                    <h2 id="product-title">Robot Interactivo</h2>
-                    <p class="product-price">$89.00</p>
-                    <span class="stock-status in-stock">En Existencia</span>
-                    
-                    <h3>Descripción</h3>
-                    <p class="product-description">
-                        Este robot interactivo es ideal para niños de 5 a 12 años. Cuenta con más de 50 funciones, entre ellas: bailes preprogramados, respuesta a comandos de voz, seguimiento de objetos y modos educativos para aprender matemáticas y lenguaje. Fabricado con materiales resistentes y no tóxicos, incluye batería recargable y control remoto.
-                    </p>
-                    
-                    <h3>Características Principales</h3>
-                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: #555;">
-                        <li>Conectividad Bluetooth</li>
-                        <li>Modo educativo y de entretenimiento</li>
-                        <li>Duración de batería: 4 horas</li>
-                        <li>Dimensiones: 25cm x 15cm x 10cm</li>
-                        <li>Certificación de seguridad internacional</li>
-                    </ul>
-
-                    <a href="https://wa.me/593999999999?text=Hola! Quiero comprar el Robot Interactivo - Precio: $89.00" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
-                </div>
-            </section>
+            <h3 class="detalle-nombre">Excavadora con Control</h3>
+            <p class="detalle-precio">$79.90</p>
+            <p class="detalle-disponibilidad"><span class="disponible">✅ Disponible en stock</span></p>
+            <p class="detalle-descripcion">
+                Excavadora teledirigida profesional de 1:12, con 8 funciones de movimiento (avance, retroceso, giro, elevación del brazo, cierre de la cuchara, etc.). Cuenta con motor potente, luces LED y sonidos simulados de maquinaria. Batería de litio recargable con autonomía de 45 minutos. Recomendado para niños de 8 años en adelante.
+            </p>
         </div>
+    </div>
 
-        <footer>
-            <p>&copy; 2026 Berraco Toys - Todos los derechos reservados</p>
-        </footer>
+    <!-- Detalle Grúa Torre -->
+    <div id="detalle-grua" class="detalle-pagina">
+        <div class="detalle-contenido">
+            <span class="detalle-cerrar" onclick="cerrarDetalle()">×</span>
+            <div class="detalle-imagenes">
+                <img src="https://images.unsplash.com/photo-1571210862729-75d5cdb8c87a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa Torre Frontal" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1592845215125-429794b59189?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa Torre Rotación" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grúa Torre Piezas" class="detalle-imagen">
+            </div>
+            <h3 class="detalle-nombre">Grúa Torre Rotativa</h3>
+            <p class="detalle-precio">$59.90</p>
+            <p class="detalle-disponibilidad"><span class="no-disponible">❌ Agotado - Próximamente en stock</span></p>
+            <p class="detalle-descripcion">
+                Maqueta coleccionable de grúa torre rotativa, con 350 piezas de montaje. Incluye sistema de elevación con polea funcional, brazo extensible y base ajustable. Fabricada en plástico ABS resistente, con detalles en color metalizado. Dimensiones finales: 45cm de alto x 20cm de ancho. Ideal para coleccionistas de 12 años en adelante.
+            </p>
+        </div>
+    </div>
 
-        <script>
-            // Script para cargar datos específicos de cada producto según el ID en la URL
-            document.addEventListener('DOMContentLoaded', () => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const productId = urlParams.get('id');
-                
-                // Datos de todos los productos
-                const products = {
-                    1: {
-                        title: "Coche de Madera Clásico",
-                        price: "$35.00",
-                        stock: "in-stock",
-                        stockText: "En Existencia",
-                        image: "https://via.placeholder.com/500x400?text=Coche+Madera+Clásico",
-                        video: "https://www.youtube.com/embed/3hjnA89Vw5Y",
-                        description: "Coche de madera maciza de roble, fabricado a mano con acabados suaves para garantizar la seguridad de los niños. Ideal para niños de 2 a 6 años, cuenta con ruedas de goma que no rayan los pisos y capacidad de carga de 30kg.",
-                        features: ["Material: Roble macizo", "Ruedas de goma eco-amigable", "Peso: 2.5kg", "Color: Natural o pintado a elección", "Armado no requerido"]
-                    },
-                    2: {
-                        title: "Bloques de Construcción",
-                        price: "$28.00",
-                        stock: "out-stock",
-                        stockText: "Agotado",
-                        image: "https://via.placeholder.com/500x400?text=Bloques+de+Construcción",
-                        video: "https://www.youtube.com/embed/6R8G98j09OM",
-                        description: "Set de 50 bloques de madera de haya, con formas geométricas variadas y colores vibrantes. Fomenta el desarrollo de la motricidad fina, la creatividad y el razonamiento espacial. Incluye estuche de almacenamiento.",
-                        features: ["Cantidad: 50 piezas", "Material: Haya tratada", "Dimensiones de piezas: 3cm a 8cm", "Pintura no tóxica", "Estuche de tela incluido"]
-                    },
-                    3: {
-                        title: "Robot Interactivo",
-                        price: "$89.00",
-                        stock: "in-stock",
-                        stockText: "En Existencia",
-                        image: "https://via.placeholder.com/500x400?text=Robot+Interactivo",
-                        video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                        description: "Este robot interactivo es ideal para niños de 5 a 12 años. Cuenta con más de 50 funciones, entre ellas: bailes preprogramados, respuesta a comandos de voz, seguimiento de objetos y modos educativos para aprender matemáticas y lenguaje. Fabricado con materiales resistentes y no tóxicos, incluye batería recargable y control remoto.",
-                        features: ["Conectividad Bluetooth", "Modo educativo y de entretenimiento", "Duración de batería: 4 horas", "Dimensiones: 25cm x 15cm x 10cm", "Certificación de seguridad internacional"]
-                    },
-                    4: {
-                        title: "Tableta Educativa Infantil",
-                        price: "$65.00",
-                        stock: "in-stock",
-                        stockText: "En Existencia",
-                        image: "https://via.placeholder.com/500x400?text=Tableta+Educativa",
-                        video: "https://www.youtube.com/embed/9Z75fBLVbSo",
-                        description: "Tableta con pantalla táctil de 7 pulgadas, diseñada para niños de 3 a 8 años. Incluye más de 100 juegos educativos sobre letras, números, colores, animales y música. Cuenta con control parental y batería de larga duración.",
-                        features: ["Pantalla: 7 pulgadas HD", "Almacenamiento: 16GB + expansión SD", "Batería: 6 horas de uso", "Idiomas: Español e Inglés", "Resistente a golpes leves"]
-                    },
-                    5: {
-                        title: "Trampolín Infantil",
-                        price: "$120.00",
-                        stock: "out-stock",
-                        stockText: "Agotado",
-                        image: "https://via.placeholder.com/500x400?text=Trampolín+Infantil",
-                        video: "https://www.youtube.com/embed/7XyD66XJ45I",
-                        description: "Trampolín de 1.8 metros de diámetro, con red de seguridad completa y tapones protectores en los resortes. Fabricado con acero galvanizado resistente a la corrosión, ideal para uso en jardines. Incluye instrucciones de montaje y herramientas.",
-                        features: ["Diámetro: 1.8m", "Carga máxima: 50kg", "Material: Acero galvanizado", "Red de seguridad incluida", "Resortes de alta resistencia"]
-                    },
-                    6: {
-                        title: "Bicicleta de Equilibrio",
-                        price: "$55.00",
-                        stock: "in-stock",
-                        stockText: "En Existencia",
-                        image: "https://via.placeholder.com/500x400?text=Bicicleta+de+Equilibrio",
-                        video: "https://www.youtube.com/embed/8KfGz4Y2Z6Q",
-                        description: "Bicicleta sin pedales para niños de 2 a 5 años, diseñada para desarrollar el equilibrio y la coordinación motriz. Cuenta con ruedas de EVA duraderas, manubrio ajustable y freno trasero. Disponible en varios colores.",
-                        features: ["Material: Aluminio ligero", "Ruedas: EVA sin cámara", "Ajuste de asiento: 30cm a 40cm", "Freno trasero incluido", "Peso: 3.2kg"]
-                    }
-                };
+    <!-- Detalle Avión de Caza -->
+    <div id="detalle-avion" class="detalle-pagina">
+        <div class="detalle-contenido">
+            <span class="detalle-cerrar" onclick="cerrarDetalle()">×</span>
+            <div class="detalle-imagenes">
+                <img src="https://images.unsplash.com/photo-1583328558452-023c19d82848?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Avión F-16 Frontal" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1568515045052-f9a8b86d1982?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Avión F-16 Alas" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1553297685-29488ba58333?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Avión F-16 Detalles" class="detalle-imagen">
+            </div>
+            <h3 class="detalle-nombre">Avión de Caza F-16</h3>
+            <p class="detalle-precio">$69.90</p>
+            <p class="detalle-disponibilidad"><span class="disponible">✅ Disponible en stock</span></p>
+            <p class="detalle-descripcion">
+                Maqueta coleccionable de avión de caza F-16 Fighting Falcon a escala 1:48. Fabricada en metal die-cast y plástico de alta calidad, con detalles pintados a mano, alas móviles y sistema de apertura de capó y bodegas de armamento. Incluye base de exhibición en madera. Ideal para coleccionistas de 10 años en adelante.
+            </p>
+        </div>
+    </div>
 
-                // Actualizar contenido si el producto existe
-                if (productId && products[productId]) {
-                    const prod = products[productId];
-                    document.getElementById('product-title').textContent = prod.title;
-                    document.querySelector('.product-price').textContent = prod.price;
-                    document.querySelector('.stock-status').className = `stock-status ${prod.stock}`;
-                    document.querySelector('.stock-status').textContent = prod.stockText;
-                    document.querySelector('.detail-images img').src = prod.image;
-                    document.querySelector('.detail-images img').alt = `Detalle de ${prod.title}`;
-                    document.querySelector('.product-video').src = prod.video;
-                    document.querySelector('.product-description').textContent = prod.description;
-                    
-                    // Actualizar características
-                    const featuresList = document.querySelector('.detail-info ul');
-                    featuresList.innerHTML = '';
-                    prod.features.forEach(feature => {
-                        const li = document.createElement('li');
-                        li.textContent = feature;
-                        featuresList.appendChild(li);
-                    });
+    <!-- Detalle Ciudad Moderna -->
+    <div id="detalle-ciudad" class="detalle-pagina">
+        <div class="detalle-contenido">
+            <span class="detalle-cerrar" onclick="cerrarDetalle()">×</span>
+            <div class="detalle-imagenes">
+                <img src="https://images.unsplash.com/photo-1518732756048-1241b6e21b5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ciudad Moderna Vista General" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ciudad Moderna Edificios" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1530991472021-ce0e43475f6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ciudad Moderna Vehículos" class="detalle-imagen">
+            </div>
+            <h3 class="detalle-nombre">Ciudad Moderna 1200 Piezas</h3>
+            <p class="detalle-precio">$89.90</p>
+            <p class="detalle-disponibilidad"><span class="disponible">✅ Disponible en stock</span></p>
+            <p class="detalle-descripcion">
+                Juego de construcción de ciudad moderna con 1200 piezas interconectables. Incluye 3 edificios de altura (edificio de oficinas, hotel y centro comercial), sistema de calles con señalización, 5 vehículos miniatura y accesorios como farolas, árboles y bancos. Incluye instrucciones paso a paso en color. Ideal para niños de 7 años en adelante.
+            </p>
+        </div>
+    </div>
 
-                    // Actualizar enlace de WhatsApp
-                    const whatsappLink = document.querySelector('.btn-whatsapp');
-                    whatsappLink.href = `https://wa.me/593999999999?text=Hola! Quiero ${prod.stock === 'out-stock' ? 'consultar sobre' : 'comprar'} el ${prod.title} - Precio: ${prod.price}`;
-                    whatsappLink.textContent = prod.stock === 'out-stock' ? 'Consultar Disponibilidad' : 'Comprar Ahora';
-                }
-            });
-        </script>
-    </body>
-    </html>
+    <!-- Detalle Puente Metálico -->
+    <div id="detalle-puente" class="detalle-pagina">
+        <div class="detalle-contenido">
+            <span class="detalle-cerrar" onclick="cerrarDetalle()">×</span>
+            <div class="detalle-imagenes">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Puente Metálico Vista General" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Puente Metálico Estructura" class="detalle-imagen">
+                <img src="https://images.unsplash.com/photo-1576717515965-507831139087?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Puente Metálico Montaje" class="detalle-imagen">
+            </div>
+            <h3 class="detalle-nombre">Puente Metálico 800 Piezas</h3>
+            <p class="detalle-precio">$74.90</p>
+            <p class="detalle-disponibilidad"><span class="no-disponible">❌ Agotado - Próximamente en stock</span></p>
+            <p class="detalle-descripcion">
+                Juego de construcción de puente metálico con 800 piezas de acero y plástico resistente. Replica un puente colgante con estructura tridimensional, cables de soporte y rampas de acceso. Incluye 2 vehículos de carga miniatura y manual de montaje con explicaciones técnicas básicas. Ideal para niños de 9 años en adelante.
+            </p>
+        </div>
+    </div>
+
+    <!-- Lógica JavaScript para funciones -->
+    <script>
+        // Mostrar sección seleccionada en la navegación
+        function mostrarSeccion(idSeccion) {
+            // Ocultar todas las secciones
+            const secciones = document.querySelectorAll('.seccion');
+            secciones.forEach(seccion => seccion.style.display = 'none');
+            
+            // Mostrar la sección seleccionada
+            document.getElementById(idSeccion).style.display = 'block';
+            
+            // Si es la sección de inicio, mostrar todas las categorías y productos
+            if (idSeccion === 'inicio') {
+                document.getElementById(idSeccion).style.display = 'block';
+            }
+        }
+
+        // Mostrar página de detalle de producto
+        function mostrarDetalle(idDetalle) {
+            document.getElementById(idDetalle).style.display = 'block';
+            // Evitar scroll de la página principal mientras se ve el detalle
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Cerrar página de detalle
+        function cerrarDetalle() {
+            const detalles = document.querySelectorAll('.detalle-pagina');
+            detalles.forEach(detalle => detalle.style.display = 'none');
+            // Restaurar scroll de la página principal
+            document.body.style.overflow = 'auto';
+        }
+
+        // Mostrar sección de inicio por defecto al cargar la página
+        window.onload = function() {
+            mostrarSeccion('inicio');
+        }
+    </script>
+</body>
+</html>
