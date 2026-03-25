@@ -1,6 +1,4 @@
 
-                    
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -203,6 +201,10 @@
                 height: 200px;
             }
         }
+        /* Ocultar sección de detalle por defecto */
+        #product-detail-section {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -211,9 +213,9 @@
         <div class="nav-container">
             <div class="logo">Berraco Toys</div>
             <nav class="nav-links">
-                <a href="#inicio">Índice</a>
-                <a href="#quienes-somos">Quiénes Somos</a>
-                <a href="#contactos">Contactos</a>
+                <a href="#inicio" onclick="showSection('inicio')">Índice</a>
+                <a href="#quienes-somos" onclick="showSection('quienes-somos')">Quiénes Somos</a>
+                <a href="#contactos" onclick="showSection('contactos')">Contactos</a>
             </nav>
         </div>
     </header>
@@ -229,22 +231,22 @@
                     <h3>Juguetes de Madera</h3>
                     <div class="products-grid">
                         <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Madera+1" alt="Juguete de Madera 1" onclick="window.location.href='producto-detalle.html?id=1'">
+                            <img src="https://via.placeholder.com/250x200?text=Juguete+Madera+1" alt="Juguete de Madera 1" onclick="showProductDetail(1)">
                             <div class="product-info">
                                 <h3>Coche de Madera Clásico</h3>
                                 <p class="product-price">$35.00</p>
                                 <span class="stock-status in-stock">En Existencia</span>
-                                <a href="producto-detalle.html?id=1" class="btn btn-details">Ver Detalles</a>
+                                <a href="#" class="btn btn-details" onclick="showProductDetail(1)">Ver Detalles</a>
                                 <a href="https://wa.me/593999999999?text=Hola! Quiero comprar el Coche de Madera Clásico" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
                             </div>
                         </div>
                         <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Madera+2" alt="Juguete de Madera 2" onclick="window.location.href='producto-detalle.html?id=2'">
+                            <img src="https://via.placeholder.com/250x200?text=Juguete+Madera+2" alt="Juguete de Madera 2" onclick="showProductDetail(2)">
                             <div class="product-info">
                                 <h3>Bloques de Construcción</h3>
                                 <p class="product-price">$28.00</p>
                                 <span class="stock-status out-stock">Agotado</span>
-                                <a href="producto-detalle.html?id=2" class="btn btn-details">Ver Detalles</a>
+                                <a href="#" class="btn btn-details" onclick="showProductDetail(2)">Ver Detalles</a>
                                 <a href="https://wa.me/593999999999?text=Hola! Quiero consultar sobre los Bloques de Construcción" target="_blank" class="btn btn-whatsapp">Consultar</a>
                             </div>
                         </div>
@@ -256,22 +258,22 @@
                     <h3>Juguetes Electrónicos</h3>
                     <div class="products-grid">
                         <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Electronico+1" alt="Juguete Electrónico 1" onclick="window.location.href='producto-detalle.html?id=3'">
+                            <img src="https://via.placeholder.com/250x200?text=Juguete+Electronico+1" alt="Juguete Electrónico 1" onclick="showProductDetail(3)">
                             <div class="product-info">
                                 <h3>Robot Interactivo</h3>
                                 <p class="product-price">$89.00</p>
                                 <span class="stock-status in-stock">En Existencia</span>
-                                <a href="producto-detalle.html?id=3" class="btn btn-details">Ver Detalles</a>
+                                <a href="#" class="btn btn-details" onclick="showProductDetail(3)">Ver Detalles</a>
                                 <a href="https://wa.me/593999999999?text=Hola! Quiero comprar el Robot Interactivo" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
                             </div>
                         </div>
                         <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Electronico+2" alt="Juguete Electrónico 2" onclick="window.location.href='producto-detalle.html?id=4'">
+                            <img src="https://via.placeholder.com/250x200?text=Juguete+Electronico+2" alt="Juguete Electrónico 2" onclick="showProductDetail(4)">
                             <div class="product-info">
                                 <h3>Tableta Educativa Infantil</h3>
                                 <p class="product-price">$65.00</p>
                                 <span class="stock-status in-stock">En Existencia</span>
-                                <a href="producto-detalle.html?id=4" class="btn btn-details">Ver Detalles</a>
+                                <a href="#" class="btn btn-details" onclick="showProductDetail(4)">Ver Detalles</a>
                                 <a href="https://wa.me/593999999999?text=Hola! Quiero comprar la Tableta Educativa Infantil" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
                             </div>
                         </div>
@@ -283,22 +285,22 @@
                     <h3>Juguetes de Aire Libre</h3>
                     <div class="products-grid">
                         <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Aire+Libre+1" alt="Juguete de Aire Libre 1" onclick="window.location.href='producto-detalle.html?id=5'">
+                            <img src="https://via.placeholder.com/250x200?text=Juguete+Aire+Libre+1" alt="Juguete de Aire Libre 1" onclick="showProductDetail(5)">
                             <div class="product-info">
                                 <h3>Trampolín Infantil</h3>
                                 <p class="product-price">$120.00</p>
                                 <span class="stock-status out-stock">Agotado</span>
-                                <a href="producto-detalle.html?id=5" class="btn btn-details">Ver Detalles</a>
+                                <a href="#" class="btn btn-details" onclick="showProductDetail(5)">Ver Detalles</a>
                                 <a href="https://wa.me/593999999999?text=Hola! Quiero consultar sobre el Trampolín Infantil" target="_blank" class="btn btn-whatsapp">Consultar</a>
                             </div>
                         </div>
                         <div class="product-card">
-                            <img src="https://via.placeholder.com/250x200?text=Juguete+Aire+Libre+2" alt="Juguete de Aire Libre 2" onclick="window.location.href='producto-detalle.html?id=6'">
+                            <img src="https://via.placeholder.com/250x200?text=Juguete+Aire+Libre+2" alt="Juguete de Aire Libre 2" onclick="showProductDetail(6)">
                             <div class="product-info">
                                 <h3>Bicicleta de Equilibrio</h3>
                                 <p class="product-price">$55.00</p>
                                 <span class="stock-status in-stock">En Existencia</span>
-                                <a href="producto-detalle.html?id=6" class="btn btn-details">Ver Detalles</a>
+                                <a href="#" class="btn btn-details" onclick="showProductDetail(6)">Ver Detalles</a>
                                 <a href="https://wa.me/593999999999?text=Hola! Quiero comprar la Bicicleta de Equilibrio" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
                             </div>
                         </div>
@@ -322,6 +324,30 @@
             <p><strong>Correo:</strong> contacto@berracotoys.ec</p>
             <p><strong>WhatsApp:</strong> +593 99 999 9999</p>
         </section>
+
+        <!-- Sección Detalle de Producto -->
+        <section id="product-detail-section">
+            <a href="#" class="btn btn-back" onclick="showSection('inicio'); window.scrollTo(0,0)">Regresar al Inicio</a>
+            <div class="product-detail">
+                <div class="detail-images">
+                    <img id="detail-img" src="" alt="Detalle del Producto">
+                    <iframe id="detail-video" class="product-video" src="" title="Video del Producto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="detail-info">
+                    <h2 id="detail-title"></h2>
+                    <p id="detail-price" class="product-price"></p>
+                    <span id="detail-stock" class="stock-status"></span>
+                    
+                    <h3>Descripción</h3>
+                    <p id="detail-description" class="product-description"></p>
+                    
+                    <h3>Características Principales</h3>
+                    <ul id="detail-features" style="margin: 1rem 0; padding-left: 1.5rem; color: #555;"></ul>
+
+                    <a id="detail-whatsapp" href="#" target="_blank" class="btn btn-whatsapp"></a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Footer -->
@@ -329,171 +355,132 @@
         <p>&copy; 2026 Berraco Toys - Todos los derechos reservados</p>
     </footer>
 
-    <!-- Página de Detalle de Producto (crear archivo separado: producto-detalle.html) -->
-    <!-- Contenido de producto-detalle.html: -->
-    <!--
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Detalle del Producto - Berraco Toys</title>
-        <link rel="stylesheet" href="style.css"> <!-- Reutilizar el mismo CSS -->
-    </head>
-    <body>
-        <header>
-            <div class="nav-container">
-                <div class="logo">Berraco Toys</div>
-                <nav class="nav-links">
-                    <a href="index.html#inicio">Índice</a>
-                    <a href="index.html#quienes-somos">Quiénes Somos</a>
-                    <a href="index.html#contactos">Contactos</a>
-                </nav>
-            </div>
-        </header>
-
-        <div class="container">
-            <a href="index.html#inicio" class="btn btn-back" onclick="window.scrollTo(0,0)">Regresar al Inicio</a>
-
-            <section class="product-detail">
-                <div class="detail-images">
-                    <img src="https://via.placeholder.com/500x400?text=Producto+Detalle" alt="Detalle del Producto">
-                    <iframe class="product-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video del Producto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+    <script>
+        // Datos de todos los productos
+        const products = {
+            1: {
+                title: "Coche de Madera Clásico",
+                price: "$35.00",
+                stock: "in-stock",
+                stockText: "En Existencia",
+                image: "https
 
 
+                image: "https://via.placeholder.com/500x400?text=Coche+Madera+Clásico",
+                video: "https://www.youtube.com/embed/3hjnA89Vw5Y",
+                description: "Coche de madera maciza de roble, fabricado a mano con acabados suaves para garantizar la seguridad de los niños. Ideal para niños de 2 a 6 años, cuenta con ruedas de goma que no rayan los pisos y capacidad de carga de 30kg.",
+                features: ["Material: Roble macizo", "Ruedas de goma eco-amigable", "Peso: 2.5kg", "Color: Natural o pintado a elección", "Armado no requerido"]
+            },
+            2: {
+                title: "Bloques de Construcción",
+                price: "$28.00",
+                stock: "out-stock",
+                stockText: "Agotado",
+                image: "https://via.placeholder.com/500x400?text=Bloques+de+Construcción",
+                video: "https://www.youtube.com/embed/6R8G98j09OM",
+                description: "Set de 50 bloques de madera de haya, con formas geométricas variadas y colores vibrantes. Fomenta el desarrollo de la motricidad fina, la creatividad y el razonamiento espacial. Incluye estuche de almacenamiento.",
+                features: ["Cantidad: 50 piezas", "Material: Haya tratada", "Dimensiones de piezas: 3cm a 8cm", "Pintura no tóxica", "Estuche de tela incluido"]
+            },
+            3: {
+                title: "Robot Interactivo",
+                price: "$89.00",
+                stock: "in-stock",
+                stockText: "En Existencia",
+                image: "https://via.placeholder.com/500x400?text=Robot+Interactivo",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                description: "Este robot interactivo es ideal para niños de 5 a 12 años. Cuenta con más de 50 funciones, entre ellas: bailes preprogramados, respuesta a comandos de voz, seguimiento de objetos y modos educativos para aprender matemáticas y lenguaje. Fabricado con materiales resistentes y no tóxicos, incluye batería recargable y control remoto.",
+                features: ["Conectividad Bluetooth", "Modo educativo y de entretenimiento", "Duración de batería: 4 horas", "Dimensiones: 25cm x 15cm x 10cm", "Certificación de seguridad internacional"]
+            },
+            4: {
+                title: "Tableta Educativa Infantil",
+                price: "$65.00",
+                stock: "in-stock",
+                stockText: "En Existencia",
+                image: "https://via.placeholder.com/500x400?text=Tableta+Educativa",
+                video: "https://www.youtube.com/embed/9Z75fBLVbSo",
+                description: "Tableta con pantalla táctil de 7 pulgadas, diseñada para niños de 3 a 8 años. Incluye más de 100 juegos educativos sobre letras, números, colores, animales y música. Cuenta con control parental y batería de larga duración.",
+                features: ["Pantalla: 7 pulgadas HD", "Almacenamiento: 16GB + expansión SD", "Batería: 6 horas de uso", "Idiomas: Español e Inglés", "Resistente a golpes leves"]
+            },
+            5: {
+                title: "Trampolín Infantil",
+                price: "$120.00",
+                stock: "out-stock",
+                stockText: "Agotado",
+                image: "https://via.placeholder.com/500x400?text=Trampolín+Infantil",
+                video: "https://www.youtube.com/embed/7XyD66XJ45I",
+                description: "Trampolín de 1.8 metros de diámetro, con red de seguridad completa y tapones protectores en los resortes. Fabricado con acero galvanizado resistente a la corrosión, ideal para uso en jardines. Incluye instrucciones de montaje y herramientas.",
+                features: ["Diámetro: 1.8m", "Carga máxima: 50kg", "Material: Acero galvanizado", "Red de seguridad incluida", "Resortes de alta resistencia"]
+            },
+            6: {
+                title: "Bicicleta de Equilibrio",
+                price: "$55.00",
+                stock: "in-stock",
+                stockText: "En Existencia",
+                image: "https://via.placeholder.com/500x400?text=Bicicleta+de+Equilibrio",
+                video: "https://www.youtube.com/embed/8KfGz4Y2Z6Q",
+                description: "Bicicleta sin pedales para niños de 2 a 5 años, diseñada para desarrollar el equilibrio y la coordinación motriz. Cuenta con ruedas de EVA duraderas, manubrio ajustable y freno trasero. Disponible en varios colores.",
+                features: ["Material: Aluminio ligero", "Ruedas: EVA sin cámara", "Ajuste de asiento: 30cm a 40cm", "Freno trasero incluido", "Peso: 3.2kg"]
+            }
+        };
 
+        // Función para mostrar solo la sección seleccionada
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.getElementById('inicio').style.display = 'none';
+            document.getElementById('quienes-somos').style.display = 'none';
+            document.getElementById('contactos').style.display = 'none';
+            document.getElementById('product-detail-section').style.display = 'none';
+            
+            // Mostrar la sección solicitada
+            document.getElementById(sectionId).style.display = 'block';
+            // Scroll al inicio de la sección
+            window.scrollTo(0, 0);
+        }
 
+        // Función para mostrar detalle de producto
+        function showProductDetail(productId) {
+            // Ocultar otras secciones y mostrar la de detalle
+            document.getElementById('inicio').style.display = 'none';
+            document.getElementById('quienes-somos').style.display = 'none';
+            document.getElementById('contactos').style.display = 'none';
+            document.getElementById('product-detail-section').style.display = 'block';
 
-
-
-                    picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="detail-info">
-                    <h2 id="product-title">Robot Interactivo</h2>
-                    <p class="product-price">$89.00</p>
-                    <span class="stock-status in-stock">En Existencia</span>
-                    
-                    <h3>Descripción</h3>
-                    <p class="product-description">
-                        Este robot interactivo es ideal para niños de 5 a 12 años. Cuenta con más de 50 funciones, entre ellas: bailes preprogramados, respuesta a comandos de voz, seguimiento de objetos y modos educativos para aprender matemáticas y lenguaje. Fabricado con materiales resistentes y no tóxicos, incluye batería recargable y control remoto.
-                    </p>
-                    
-                    <h3>Características Principales</h3>
-                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: #555;">
-                        <li>Conectividad Bluetooth</li>
-                        <li>Modo educativo y de entretenimiento</li>
-                        <li>Duración de batería: 4 horas</li>
-                        <li>Dimensiones: 25cm x 15cm x 10cm</li>
-                        <li>Certificación de seguridad internacional</li>
-                    </ul>
-
-                    <a href="https://wa.me/593999999999?text=Hola! Quiero comprar el Robot Interactivo - Precio: $89.00" target="_blank" class="btn btn-whatsapp">Comprar Ahora</a>
-                </div>
-            </section>
-        </div>
-
-        <footer>
-            <p>&copy; 2026 Berraco Toys - Todos los derechos reservados</p>
-        </footer>
-
-        <script>
-            // Script para cargar datos específicos de cada producto según el ID en la URL
-            document.addEventListener('DOMContentLoaded', () => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const productId = urlParams.get('id');
-                
-                // Datos de todos los productos
-                const products = {
-                    1: {
-                        title: "Coche de Madera Clásico",
-                        price: "$35.00",
-                        stock: "in-stock",
-                        stockText: "En Existencia",
-                        image: "https://via.placeholder.com/500x400?text=Coche+Madera+Clásico",
-                        video: "https://www.youtube.com/embed/3hjnA89Vw5Y",
-                        description: "Coche de madera maciza de roble, fabricado a mano con acabados suaves para garantizar la seguridad de los niños. Ideal para niños de 2 a 6 años, cuenta con ruedas de goma que no rayan los pisos y capacidad de carga de 30kg.",
-                        features: ["Material: Roble macizo", "Ruedas de goma eco-amigable", "Peso: 2.5kg", "Color: Natural o pintado a elección", "Armado no requerido"]
-                    },
-                    2: {
-                        title: "Bloques de Construcción",
-                        price: "$28.00",
-                        stock: "out-stock",
-                        stockText: "Agotado",
-                        image: "https://via.placeholder.com/500x400?text=Bloques+de+Construcción",
-                        video: "https://www.youtube.com/embed/6R8G98j09OM",
-                        description: "Set de 50 bloques de madera de haya, con formas geométricas variadas y colores vibrantes. Fomenta el desarrollo de la motricidad fina, la creatividad y el razonamiento espacial. Incluye estuche de almacenamiento.",
-                        features: ["Cantidad: 50 piezas", "Material: Haya tratada", "Dimensiones de piezas: 3cm a 8cm", "Pintura no tóxica", "Estuche de tela incluido"]
-                    },
-                    3: {
-                        title: "Robot Interactivo",
-                        price: "$89.00",
-                        stock: "in-stock",
-                        stockText: "En Existencia",
-                        image: "https://via.placeholder.com/500x400?text=Robot+Interactivo",
-                        video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                        description: "Este robot interactivo es ideal para niños de 5 a 12 años. Cuenta con más de 50 funciones, entre ellas: bailes preprogramados, respuesta a comandos de voz, seguimiento de objetos y modos educativos para aprender matemáticas y lenguaje. Fabricado con materiales resistentes y no tóxicos, incluye batería recargable y control remoto.",
-                        features: ["Conectividad Bluetooth", "Modo educativo y de entretenimiento", "Duración de batería: 4 horas", "Dimensiones: 25cm x 15cm x 10cm", "Certificación de seguridad internacional"]
-                    },
-                    4: {
-                        title: "Tableta Educativa Infantil",
-                        price: "$65.00",
-                        stock: "in-stock",
-                        stockText: "En Existencia",
-                        image: "https://via.placeholder.com/500x400?text=Tableta+Educativa",
-                        video: "https://www.youtube.com/embed/9Z75fBLVbSo",
-                        description: "Tableta con pantalla táctil de 7 pulgadas, diseñada para niños de 3 a 8 años. Incluye más de 100 juegos educativos sobre letras, números, colores, animales y música. Cuenta con control parental y batería de larga duración.",
-                        features: ["Pantalla: 7 pulgadas HD", "Almacenamiento: 16GB + expansión SD", "Batería: 6 horas de uso", "Idiomas: Español e Inglés", "Resistente a golpes leves"]
-                    },
-                    5: {
-                        title: "Trampolín Infantil",
-                        price: "$120.00",
-                        stock: "out-stock",
-                        stockText: "Agotado",
-                        image: "https://via.placeholder.com/500x400?text=Trampolín+Infantil",
-                        video: "https://www.youtube.com/embed/7XyD66XJ45I",
-                        description: "Trampolín de 1.8 metros de diámetro, con red de seguridad completa y tapones protectores en los resortes. Fabricado con acero galvanizado resistente a la corrosión, ideal para uso en jardines. Incluye instrucciones de montaje y herramientas.",
-                        features: ["Diámetro: 1.8m", "Carga máxima: 50kg", "Material: Acero galvanizado", "Red de seguridad incluida", "Resortes de alta resistencia"]
-                    },
-                    6: {
-                        title: "Bicicleta de Equilibrio",
-                        price: "$55.00",
-                        stock: "in-stock",
-                        stockText: "En Existencia",
-                        image: "https://via.placeholder.com/500x400?text=Bicicleta+de+Equilibrio",
-                        video: "https://www.youtube.com/embed/8KfGz4Y2Z6Q",
-                        description: "Bicicleta sin pedales para niños de 2 a 5 años, diseñada para desarrollar el equilibrio y la coordinación motriz. Cuenta con ruedas de EVA duraderas, manubrio ajustable y freno trasero. Disponible en varios colores.",
-                        features: ["Material: Aluminio ligero", "Ruedas: EVA sin cámara", "Ajuste de asiento: 30cm a 40cm", "Freno trasero incluido", "Peso: 3.2kg"]
-                    }
-                };
-
-                // Actualizar contenido si el producto existe
-                if (productId && products[productId]) {
-                    const prod = products[productId];
-                    document.getElementById('product-title').textContent = prod.title;
-                    document.querySelector('.product-price').textContent = prod.price;
-                    document.querySelector('.stock-status').className = `stock-status ${prod.stock}`;
-                    document.querySelector('.stock-status').textContent = prod.stockText;
-                    document.querySelector('.detail-images img').src = prod.image;
-                    document.querySelector('.detail-images img').alt = `Detalle de ${prod.title}`;
-                    document.querySelector('.product-video').src = prod.video;
-                    document.querySelector('.product-description').textContent = prod.description;
-                    
-                    // Actualizar características
-                    const featuresList = document.querySelector('.detail-info ul');
-                    featuresList.innerHTML = '';
-                    prod.features.forEach(feature => {
-                        const li = document.createElement('li');
-                        li.textContent = feature;
-                        featuresList.appendChild(li);
-                    });
-
-                    // Actualizar enlace de WhatsApp
-                    const whatsappLink = document.querySelector('.btn-whatsapp');
-                    whatsappLink.href = `https://wa.me/593999999999?text=Hola! Quiero ${prod.stock === 'out-stock' ? 'consultar sobre' : 'comprar'} el ${prod.title} - Precio: ${prod.price}`;
-                    whatsappLink.textContent = prod.stock === 'out-stock' ? 'Consultar Disponibilidad' : 'Comprar Ahora';
-                }
+            // Cargar datos del producto seleccionado
+            const prod = products[productId];
+            document.getElementById('detail-title').textContent = prod.title;
+            document.getElementById('detail-price').textContent = prod.price;
+            document.getElementById('detail-stock').className = `stock-status ${prod.stock}`;
+            document.getElementById('detail-stock').textContent = prod.stockText;
+            document.getElementById('detail-img').src = prod.image;
+            document.getElementById('detail-img').alt = `Detalle de ${prod.title}`;
+            document.getElementById('detail-video').src = prod.video;
+            document.getElementById('detail-description').textContent = prod.description;
+            
+            // Actualizar características
+            const featuresList = document.getElementById('detail-features');
+            featuresList.innerHTML = '';
+            prod.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresList.appendChild(li);
             });
-        </script>
-    </body>
-    </html>
 
+            // Actualizar enlace de WhatsApp
+            const whatsappLink = document.getElementById('detail-whatsapp');
+            const actionText = prod.stock === 'out-stock' ? 'consultar sobre' : 'comprar';
+            const buttonText = prod.stock === 'out-stock' ? 'Consultar Disponibilidad' : 'Comprar Ahora';
+            whatsappLink.href = `https://wa.me/593999999999?text=Hola! Quiero ${actionText} el ${prod.title} - Precio: ${prod.price}`;
+            whatsappLink.textContent = buttonText;
+
+            // Scroll al inicio de la sección de detalle
+            window.scrollTo(0, 0);
+        }
+
+        // Mostrar la sección de inicio al cargar la página
+        window.onload = function() {
+            showSection('inicio');
+        };
+    </script>
+</body>
+</html>
+                
