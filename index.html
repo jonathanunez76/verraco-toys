@@ -1234,7 +1234,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             
 
                 ],
-                video: 'https://www.streamable.com/embed/3959ty?controls=1&rel=0',
+                video: 'https://player.vimeo.com/video/1177095816?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
                 whatsapp_message: 'Hola! Quiero el WLTOYS 104010 CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4 por $580 USD.'
 
 
@@ -1297,7 +1297,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                      'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hee8f70f0ad224f78a3d7605c6bf37efeC.jpg?raw=true',
                
                 ],
-                video: 'https://www.youtube.com/embed/videoseries?si=tX64aI7047S_iQW1&amp;controls=0&amp;list=PL7k6l0w2I69x3k_0-j_2-Y7z5-z7z5-Y7',
+                video: 'https://player.vimeo.com/video/1177096887?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
                 whatsapp_message: 'Hola! Quiero el WLTOYS 124019 COCHE DE ALTA VELOCIDAD PARA PRINCIPIANTES $230 USD.'
 
 
@@ -1332,7 +1332,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
 
                     
                 ],
-                video: 'https://www.youtube.com/embed/videoseries?si=tX64aI7047S_iQW1&amp;controls=0&amp;list=PL7k6l0w2I69x3k_0-j_2-Y7z5-z7z5-Y7',
+                video: 'https://player.vimeo.com/video/1177095643?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
                 whatsapp_message: 'Hola! Quiero el WLTOYS 144001 COCHE DE COMPETENCIA PARA PRINCIPIANTES $200 USD.'
 
 
@@ -1367,7 +1367,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
 
                     
                 ],
-                video: 'https://www.youtube.com/embed/videoseries?si=tX64aI7047S_iQW1&amp;controls=0&amp;list=PL7k6l0w2I69x3k_0-j_2-Y7z5-z7z5-Y7',
+                video: 'https://player.vimeo.com/video/1177095580?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
                 whatsapp_message: 'Hola! Quiero el WLTOYS 144001 COCHE DE COMPETENCIA PARA PRINCIPIANTES $300 USD.'
 
             },
@@ -1590,15 +1590,63 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             currentCarouselIndex = 0;
             updateCarousel();
 
-            // Configurar video si existe
-            const videoFrame = document.getElementById('product-video-frame');
-            if (product.video) {
-                videoFrame.src = product.video;
-                videoFrame.style.display = 'block';
-            } else {
-                videoFrame.style.display = 'none';
-                videoFrame.src = ''; // Limpiar el src para evitar que siga reproduciendo en segundo plano
-            }
+         const videoFrame = document.getElementById('product-video-frame');
+let vimeoPlayerInstance = null; // DECLARACIÓN DE LA INSTANCIA DEL REPRODUCTOR AQUÍ
+
+if (product.video) {
+  videoFrame.src = product.video;
+  videoFrame.style.display = 'block';
+
+  // --- INICIO DEL CÓDIGO AÑADIDO PARA PAUSAR EL VIDEO AL NAVEGAR ---
+  if (window.Vimeo) { // Asegúrate de que la API de Vimeo esté cargada
+      // Asegúrate de que vimeoPlayerInstance se inicialice solo una vez por iframe
+      if (!vimeoPlayerInstance || vimeoPlayerInstance.element !== videoFrame) {
+          vimeoPlayerInstance = new Vimeo.Player(videoFrame);
+      }
+
+      // Función para pausar el video
+      const pauseVimeoOnNavigate = () => {
+          if (vimeoPlayerInstance) {
+              vimeoPlayerInstance.pause();
+              console.log('Vimeo Player pausado al navegar fuera del producto.');
+          }
+      };
+
+      // Escuchar clics en toda la página para detectar navegación a otros enlaces
+      document.addEventListener('click', function(event) {
+          const target = event.target;
+          // Si el clic es en un enlace (<a>) o botón (<button>) y NO es dentro del iframe del video
+          if ((target.closest('a') || target.closest('button')) && !target.closest('iframe[src*="player.vimeo.com/video"]')) {
+              pauseVimeoOnNavigate();
+          }
+      });
+
+      // También pausar cuando la página del navegador pierda el foco (ej. cambio de pestaña)
+      document.addEventListener('visibilitychange', function() {
+          if (document.hidden) {
+              pauseVimeoOnNavigate();
+          }
+      });
+
+      // Y, por si acaso, cuando el usuario está a punto de salir completamente de la página
+      window.addEventListener('beforeunload', function() {
+          pauseVimeoOnNavigate();
+      });
+  }
+  // --- FIN DEL CÓDIGO AÑADIDO ---
+
+} else {
+  videoFrame.style.display = 'none';
+  videoFrame.src = ''; // Limpiar el src para evitar que siga reproduciendo en segundo plano
+  // Si no hay video, destruye la instancia del reproductor si existía
+  if (vimeoPlayerInstance) {
+      vimeoPlayerInstance.destroy();
+      vimeoPlayerInstance = null;
+  }
+}
+
+// --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
+// ... (el resto de tu código para el carrusel, etc., sigue aquí)
 
             // --- INICIO DE MODIFICACIONES PARA TÁCTIL ---
             // Añadir eventos táctiles al carrusel
