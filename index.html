@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,7 +46,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            overflow-x: auto; /* Para móviles pequeños */
+            overflow-x: auto;
             padding-bottom: 5px;
         }
         .nav-menu a {
@@ -53,7 +54,7 @@
             text-decoration: none;
             font-weight: bold;
             padding: 5px 10px;
-            white-space: nowrap; /* No romper texto */
+            white-space: nowrap;
         }
         .nav-menu a.active, .nav-menu a:hover {
             color: #e63946;
@@ -151,11 +152,11 @@
             margin: 20px 0;
             overflow: hidden;
             border-radius: 10px;
+            touch-action: pan-x;
         }
         .carousel-slides {
             display: flex;
             transition: transform 0.5s ease;
-            touch-action: pan-x; /* Para táctil */
         }
         .carousel-slide {
             min-width: 100%;
@@ -174,6 +175,7 @@
             padding: 10px;
             cursor: pointer;
             font-size: 20px;
+            z-index: 10;
         }
         .carousel-prev { left: 0; }
         .carousel-next { right: 0; }
@@ -277,13 +279,13 @@
                             <img src="https://via.placeholder.com/140x100?text=Coche+Madera" alt="Coche de madera">
                             <div class="stock-badge">EN STOCK</div>
                             <div class="product-price">$35.00</div>
-                            <a href="#" class="btn-details" onclick="showProductDetail(1)">Ver Detalles</a>
+                            <button class="btn-details" onclick="showProductDetail(1)">Ver Detalles</button>
                         </div>
                         <div class="product-card">
                             <img src="https://via.placeholder.com/140x100?text=Tren+Madera" alt="Tren de madera">
                             <div class="stock-badge">EN STOCK</div>
                             <div class="product-price">$45.00</div>
-                            <a href="#" class="btn-details" onclick="showProductDetail(2)">Ver Detalles</a>
+                            <button class="btn-details" onclick="showProductDetail(2)">Ver Detalles</button>
                         </div>
                     </div>
                 </div>
@@ -299,7 +301,7 @@
                             <img src="https://via.placeholder.com/140x100?text=Bloques+Eco" alt="Bloques ecológicos">
                             <div class="stock-badge">EN STOCK</div>
                             <div class="product-price">$25.00</div>
-                            <a href="#" class="btn-details" onclick="showProductDetail(3)">Ver Detalles</a>
+                            <button class="btn-details" onclick="showProductDetail(3)">Ver Detalles</button>
                         </div>
                     </div>
                 </div>
@@ -310,25 +312,25 @@
         <section id="tienda" class="section">
             <div class="category-section">
                 <h2>Todos los Productos</h2>
-                <div class="category-products">
+                <div class="category-products" style="display:flex;">
                     <!-- Todos los productos juntos -->
                     <div class="product-card">
                         <img src="https://via.placeholder.com/140x100?text=Coche+Madera" alt="Coche de madera">
                         <div class="stock-badge">EN STOCK</div>
                         <div class="product-price">$35.00</div>
-                        <a href="#" class="btn-details" onclick="showProductDetail(1)">Ver Detalles</a>
+                        <button class="btn-details" onclick="showProductDetail(1)">Ver Detalles</button>
                     </div>
                     <div class="product-card">
                         <img src="https://via.placeholder.com/140x100?text=Tren+Madera" alt="Tren de madera">
                         <div class="stock-badge">EN STOCK</div>
                         <div class="product-price">$45.00</div>
-                        <a href="#" class="btn-details" onclick="showProductDetail(2)">Ver Detalles</a>
+                        <button class="btn-details" onclick="showProductDetail(2)">Ver Detalles</button>
                     </div>
                     <div class="product-card">
                         <img src="https://via.placeholder.com/140x100?text=Bloques+Eco" alt="Bloques ecológicos">
                         <div class="stock-badge">EN STOCK</div>
                         <div class="product-price">$25.00</div>
-                        <a href="#" class="btn-details" onclick="showProductDetail(3)">Ver Detalles</a>
+                        <button class="btn-details" onclick="showProductDetail(3)">Ver Detalles</button>
                     </div>
                 </div>
             </div>
@@ -339,7 +341,7 @@
             <h2>¿Quiénes Somos?</h2>
             <p>Verraco Toys es una empresa familiar fundada en Latacunga, Cotopaxi, dedicada a crear juguetes seguros y de alta calidad para niños de todas las edades.</p>
             <p>Nuestro compromiso es usar materiales sostenibles y procesos artesanales que apoyen a la comunidad local, garantizando juguetes duraderos y divertidos.</p>
-            <a href="#" class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</a>
+            <button class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</button>
         </section>
 
         <!-- SECCIÓN CONTACTO -->
@@ -349,7 +351,7 @@
             <p>Teléfono: 099 123 4567</p>
             <p>Email: contacto@verraco-toys.ec</p>
             <p>Horario: Lunes a Sábado de 9:00 a 18:00</p>
-            <a href="#" class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</a>
+            <button class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</button>
         </section>
 
         <!-- SECCIÓN DETALLES DEL PRODUCTO -->
@@ -372,8 +374,8 @@
                 <ul class="features-list" id="detail-features"></ul>
             </div>
 
-            <a href="#" class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</a>
-            <a href="#" class="btn-back" onclick="showSection('tienda')">Ir a la Tienda</a>
+            <button class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</button>
+            <button class="btn-back" onclick="showSection('tienda')">Ir a la Tienda</button>
         </section>
     </div>
 
@@ -396,25 +398,21 @@
                     "Material: Roble macizo tratado",
                     "Ruedas de goma sin contaminantes",
                     "Peso: 2.5kg",
-                    "Colores: Natural o pintado en azul
-
-
-
-
                     "Colores: Natural o pintado en azul/rojo",
                     "Armado no requerido - listo para usar",
                     "Medidas: 50cm x 30cm x 35cm"
                 ]
             },
             2: {
+                titulo: "Tren de Mad
+
+            2: {
                 titulo: "Tren de Madera con Vías",
                 precio: "$45.00",
                 stock: "EN STOCK",
                 imagenes: [
-                    "https://via.placeholder.com/500x400?text=Tren+1",
-                    "https://via.placeholder.com/500x400?text=Tren+2",
-                    "https://via.placeholder.com/500x400?text=Tren+3",
-                    "https://via.placeholder.com/500x400?text=Tren+4"
+                    "https://via.placeholder.com/140x100?text=Tren+Madera",
+                    "https://via.placeholder.com/140x100?text=Tren+Vías"
                 ],
                 video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
                 descripcion: "Tren de madera con 3 vagones y 10 metros de vías flexibles. Fabricado con pino tratado y acabados suaves.",
@@ -432,8 +430,8 @@
                 precio: "$25.00",
                 stock: "EN STOCK",
                 imagenes: [
-                    "https://via.placeholder.com/500x400?text=Bloques+1",
-                    "https://via.placeholder.com/500x400?text=Bloques+2"
+                    "https://via.placeholder.com/140x100?text=Bloques+1",
+                    "https://via.placeholder.com/140x100?text=Bloques+2"
                 ],
                 video: "https://www.youtube.com/embed/9bZkp7q19f0",
                 descripcion: "Set de 50 bloques de plástico reciclado, libres de BPA y tóxicos. Ideales para estimular la creatividad infantil.",
@@ -456,43 +454,37 @@
         // FUNCIÓN PARA MOSTRAR/Ocultar SECCIONES
         function showSection(sectionId) {
             // Ocultar todas las secciones
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(sec => sec.classList.remove('active'));
-            // Ocultar detalles de producto siempre que no sea la sección de detalles
-            document.getElementById('product-detail').classList.remove('active');
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
             // Mostrar la sección seleccionada
             document.getElementById(sectionId).classList.add('active');
-            // Actualizar menú activo
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => link.classList.remove('active'));
-            event.target.classList.add('active');
+            // Reiniciar carrusel
+            currentSlide = 0;
         }
 
         // FUNCIÓN PARA ABRIR/CERRAR CATEGORÍAS
-        function toggleCategory(categoryId) {
-            const category = document.getElementById(categoryId);
-            const arrow = category.previousElementSibling.querySelector('.category-arrow');
-            if (category.style.display === 'flex') {
-                category.style.display = 'none';
+        function toggleCategory(catId) {
+            const cat = document.getElementById(catId);
+            const arrow = cat.previousElementSibling.querySelector('.category-arrow');
+            if (cat.style.display === 'flex') {
+                cat.style.display = 'none';
                 arrow.classList.remove('open');
             } else {
-                category.style.display = 'flex';
+                cat.style.display = 'flex';
                 arrow.classList.add('open');
             }
         }
 
         // FUNCIÓN PARA MOSTRAR DETALLES DEL PRODUCTO
-        function showProductDetail(productId) {
+        function showProductDetail(prodId) {
+            const prod = productos[prodId];
             // Ocultar otras secciones
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(sec => sec.classList.remove('active'));
-            // Obtener datos del producto
-            const prod = productos[productId];
-            // Cargar datos en la página
+            showSection('product-detail');
+            // Cargar datos
             document.getElementById('detail-title').textContent = prod.titulo;
             document.getElementById('detail-price').textContent = prod.precio;
             document.getElementById('detail-stock').textContent = prod.stock;
             document.getElementById('detail-description').textContent = prod.descripcion;
+            
             // Cargar características
             const featuresList = document.getElementById('detail-features');
             featuresList.innerHTML = '';
@@ -501,34 +493,40 @@
                 li.textContent = feat;
                 featuresList.appendChild(li);
             });
+
             // Cargar vídeo
-            document.getElementById('detail-video').innerHTML = `
-                <iframe src="${prod.video}" title="${prod.titulo}" allowfullscreen></iframe>
-            `;
+            document.getElementById('detail-video').innerHTML = `<iframe src="${prod.video}" title="${prod.titulo}" width="100%" height="300" allowfullscreen></iframe>`;
+
             // Cargar carrusel de imágenes
-            const carouselSlides = document.getElementById('carousel-slides');
-            carouselSlides.innerHTML = '';
+            const carousel = document.getElementById('carousel-slides');
+            carousel.innerHTML = '';
             prod.imagenes.forEach(img => {
                 const slide = document.createElement('div');
                 slide.classList.add('carousel-slide');
                 slide.innerHTML = `<img src="${img}" alt="${prod.titulo}">`;
-                carouselSlides.appendChild(slide);
+                carousel.appendChild(slide);
             });
-            // Reiniciar carrusel
-            currentSlide = 0;
+            // Inicializar carrusel
             updateCarousel();
             // Agregar eventos táctiles al carrusel
-            carouselSlides.addEventListener('touchstart', handleTouchStart, false);
-            carouselSlides.addEventListener('touchend', handleTouchEnd, false);
-            // Mostrar sección de detalles
-            document.getElementById('product-detail').classList.add('active');
+            const carouselEl = document.getElementById('carousel-slides');
+            carouselEl.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            carouselEl.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 15) moveCarousel(1);
+                if (touchEndX > touchStartX + 15) moveCarousel(-1);
+            });
         }
 
-        // FUNCIONES PARA EL CARRUSEL
+        // FUNCIÓN DEL CARRUSEL
         function updateCarousel() {
             const slides = document.querySelectorAll('.carousel-slide');
-            const slideWidth = slides[0].offsetWidth;
-            document.getElementById('carousel-slides').style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+            if (slides.length === 0) return;
+            slides.forEach((slide, idx) => {
+                slide.style.transform = `translateX(-${currentSlide * 100}%)`;
+            });
         }
 
         function moveCarousel(step) {
@@ -539,25 +537,9 @@
             updateCarousel();
         }
 
-        // FUNCIONES PARA CONTROL TÁCTIL
-        function handleTouchStart(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        }
-
-        function handleTouchEnd(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }
-
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 15) moveCarousel(1); // Deslizar a la izquierda
-            if (touchEndX > touchStartX + 15) moveCarousel(-1); // Deslizar a la derecha
-        }
-
-        // ACTUALIZAR CARRUSEL CUANDO CAMBIE EL TAMAÑO DE PANTALLA
-        window.addEventListener('resize', updateCarousel);
+        // INICIALIZAR LA PÁGINA EN EL INICIO
+        showSection('inicio');
     </script>
 </body>
 </html>
-                    
-              
+                
