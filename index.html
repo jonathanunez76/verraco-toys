@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verraco Toys - Tienda Oficial</title>
+    <title>Verraco Toys - Tienda de Juguetes</title>
     <style>
         * {
             margin: 0;
@@ -11,158 +11,126 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-
-        /* BARRA SUPERIOR */
-        .top-bar {
-            background-color: #1d3557;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        body {
+            background-color: #f4f4f4;
+            color: #333;
         }
-        .search-input {
-            width: 90%;
-            max-width: 500px;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            font-size: 16px;
-        }
-
-        /* TÍTULO Y MENÚ */
-        .header {
-            background-color: #f1faee;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 2px solid #e63946;
-        }
-        .header h1 {
-            color: #1d3557;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-        .nav-menu {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
-        .nav-menu a {
-            color: #1d3557;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            white-space: nowrap;
-        }
-        .nav-menu a.active, .nav-menu a:hover {
-            color: #e63946;
-            border-bottom: 2px solid #e63946;
-        }
-
-        /* CONTENEDOR PRINCIPAL */
-        .main-content {
-            padding: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* CATEGORÍAS */
-        .category-section h2 {
-            color: #1d3557;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        .category-item {
-            background-color: #f5f5f5;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .category-title {
-            padding: 12px 15px;
-            background-color: #457b9d;
+        header {
+            background-color: #2c3e50;
             color: white;
-            font-weight: bold;
-            cursor: pointer;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 0.5rem;
+        }
+        .nav-links {
+            list-style: none;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .category-arrow {
-            font-size: 18px;
-            transition: transform 0.3s;
-        }
-        .category-arrow.open {
-            transform: rotate(180deg);
-        }
-        .category-products {
-            display: none;
-            padding: 15px;
-            gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
         }
+        .nav-links li {
+            margin: 0 1rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .section {
+            display: none;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section.active {
+            display: block;
+        }
+        .category-title {
+            background-color: #34495e;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .category-content {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
         .product-card {
             background-color: white;
-            border: 1px solid #ddd;
             border-radius: 8px;
-            width: 140px;
-            padding: 10px;
+            padding: 1rem;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
         }
         .product-card img {
-            width: 100%;
-            height: 100px;
+            max-width: 100%;
+            height: 200px;
             object-fit: cover;
             border-radius: 4px;
-            margin-bottom: 8px;
+            margin-bottom: 1rem;
         }
-        .stock-badge {
-            background-color: #2a9d8f;
-            color: white;
-            font-size: 12px;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 5px;
-            display: inline-block;
+        .product-detail-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            padding: 2rem;
+            overflow-y: auto;
         }
-        .product-price {
-            font-weight: bold;
-            color: #e63946;
-            margin-bottom: 8px;
-        }
-        .btn-details {
-            background-color: #1d3557;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 12px;
-        }
-
-        /* CARRUSEL DE IMÁGENES */
-        .carousel-container {
+        .product-detail-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
             position: relative;
-            max-width: 100%;
-            margin: 20px 0;
-            overflow: hidden;
-            border-radius: 10px;
-            touch-action: pan-x;
         }
-        .carousel-slides {
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #333;
+        }
+        .product-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .product-carousel-slides {
             display: flex;
             transition: transform 0.5s ease;
+            height: 300px;
         }
         .carousel-slide {
             min-width: 100%;
+            height: 100%;
         }
         .carousel-slide img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
         }
         .carousel-btn {
             position: absolute;
@@ -171,395 +139,504 @@
             background-color: rgba(0,0,0,0.5);
             color: white;
             border: none;
-            padding: 10px;
+            padding: 0.5rem 1rem;
             cursor: pointer;
-            font-size: 20px;
-            z-index: 10;
+            font-size: 1.5rem;
         }
-        .carousel-prev { left: 0; }
-        .carousel-next { right: 0; }
-
-        /* PÁGINA DE DETALLES */
-        .product-detail h2 {
-            color: #1d3557;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-        .product-video {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-        .product-video iframe {
-            position: absolute;
-            top: 0;
+        .prev-btn {
             left: 0;
+        }
+        .next-btn {
+            right: 0;
+        }
+        .product-video-frame {
             width: 100%;
-            height: 100%;
+            height: 450px;
             border: none;
+            border-radius: 4px;
+            margin: 1rem 0;
         }
-        .product-info {
-            margin: 15px 0;
-        }
-        .product-info p {
-            margin: 8px 0;
-            line-height: 1.5;
-        }
-        .features-list {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-        .btn-back {
-            background-color: #e63946;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
+        .whatsapp-btn {
             display: inline-block;
-            margin: 10px 5px;
+            background-color: #25d366;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
         }
-
-        /* SECCIONES QUIENES SOMOS Y CONTACTO */
-        .static-section {
-            line-height: 1.6;
-            color: #333;
-        }
-        .static-section h2 {
-            color: #1d3557;
-            margin-bottom: 15px;
-        }
-
-        /* OCULTAR SECCIONES POR DEFECTO */
-        .section {
-            display: none;
-        }
-        .section.active {
-            display: block;
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
-    <!-- BARRA DE BÚSQUEDA SUPERIOR -->
-    <div class="top-bar">
-        <input type="text" class="search-input" placeholder="Buscar productos...">
+    <header>
+        <h1>Verraco Toys</h1>
+        <p>Los mejores juguetes para grandes y pequeños</p>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#" data-section="home">Inicio</a></li>
+            <li><a href="#" data-section="carros">Carros RC</a></li>
+            <li><a href="#" data-section="drones">Drones</a></li>
+            <li><a href="#" data-section="otros">Otros Juguetes</a></li>
+            <li><a href="#" data-section="contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="section">
+        <h2>Bienvenidos a Verraco Toys</h2>
+        <p>Explora nuestra amplia selección de juguetes de calidad para todas las edades.</p>
+        <div class="category-title" onclick="toggleCategory('home-products')">Ver Productos Destacados</div>
+        <div id="home-products" class="category-content">
+            <div class="product-card" onclick="showProductDetail('carro_1')">
+                <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hca065ae1e2e0488b8756c1ba0e7862558.jpg?raw=true" alt="Carro RC">
+                <h3>WLTOYS 104311 CARRO CRAWLERS</h3>
+                <p>Precio: $200 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('drone_1')">
+                <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/hdron.jpg?raw=true" alt="Drone">
+                <h3>DJI Mavic Mini 2</h3>
+                <p>Precio: $450 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('action_figure_1')">
+                <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/action-figure.jpeg" alt="Figura de Acción">
+                <h3>Figura de Acción Articulada</h3>
+                <p>Precio: $55 USD</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="carros" class="section">
+        <h2>Carros de Control Remoto</h2>
+        <div class="category-title" onclick="toggleCategory('carros-products')">Ver Carros RC</div>
+        <div id="carros-products" class="category-content">
+            <div class="product-card" onclick="showProductDetail('carro_1')">
+                <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hca065ae1e2e0488b8756c1ba0e7862558.jpg?raw=true" alt="Carro RC">
+                <h3>WLTOYS 104311 CARRO CRAWLERS</h3>
+                <p>Precio: $200 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('dronee_1')">
+                <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hdc43a2cd16574b0baf2891b42af7e449Y.jpg?raw=true" alt="Carro RC">
+                <h3>WLTOYS 124019 BUGGY RC</h3>
+                <p>Precio: $230 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('droneee_1')">
+                <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H6b0049062a69484d95db864817832c25K%2520(1).jpg?raw=true" alt="Carro RC">
+                <h3>WLTOYS 144001 COCHE ALTA VELOCIDAD</h3>
+                <p>Precio: $200 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('droneeee_1')">
+                <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hd33b68147a91414e8badda5d70dcd4af8.jpg?raw=true" alt="Carro RC">
+                <h3>WLTOYS 104001 BUGGY RC</h3>
+                <p>Precio: $300 USD</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="drones" class="section">
+        <h2>Drones</h2>
+        <div class="category-title" onclick="toggleCategory('drones-products')">Ver Drones</div>
+        <div id="drones-products" class="category-content">
+            <div class="product-card" onclick="showProductDetail('drone_1')">
+                <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/hdron.jpg?raw=true" alt="Drone">
+                <h3>DJI Mavic Mini 2</h3>
+                <p>Precio: $450 USD</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="otros" class="section">
+        <h2>Otros Juguetes</h2>
+        <div class="category-title" onclick="toggleCategory('otros-products')">Ver Otros Juguetes</div>
+        <div id="otros-products" class="category-content">
+            <div class="product-card" onclick="showProductDetail('action_figure_1')">
+                <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/action-figure.jpeg" alt="Figura de Acción">
+                <h3>Figura de Acción Articulada</h3>
+                <p>Precio: $55 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('robot_interactivo_1')">
+                <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Robot%20Interactivo%201.jpg" alt="Robot Interactivo">
+                <h3>Robot Interactivo</h3>
+                <p>Precio: $75 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('trampolin_1')">
+                <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Trampolin%201.jpg" alt="Trampolín Infantil">
+                <h3>Trampolín Infantil</h3>
+                <p>Precio: $120 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('bicicleta_equilibrio_1')">
+                <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Bicicleta%20Equilibrio%201.jpg" alt="Bicicleta de Equilibrio">
+                <h3>Bicicleta de Equilibrio</h3>
+                <p>Precio: $80 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('ajedrez_1')">
+                <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/ajedrez-madera.jpeg" alt="Ajedrez de Madera">
+                <h3>Ajedrez de Madera</h3>
+                <p>Precio: $35 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('domino_1')">
+                <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/domino-clasico.jpeg" alt="Dominó Clásico">
+                <h3>Dominó Clásico</h3>
+                <p>Precio: $15 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('tableta_educativa_1')">
+                <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Tableta%20Educativa%201.jpg" alt="Tableta Educativa">
+                <h3>Tableta Educativa</h3>
+                <p>Precio: $90 USD</p>
+            </div>
+            <div class="product-card" onclick="showProductDetail('microscopio_1')">
+                <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/microscopio-ninos.jpeg" alt="Microscopio para Niños">
+                <h3>Microscopio para Niños</h3>
+                <p>Precio: $50 USD</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section">
+        <h2>Contacto</h2>
+        <p>Teléfono: +593 988 582 236</p>
+        <p>Email: verraco-toys@ejemplo.com</p>
+        <p>Dirección: Calle Principal #123, Latacunga - Cotopaxi</p>
+        <a href="https://wa.me/593988582236" class="whatsapp-btn">Contáctanos por WhatsApp</a>
+    </section>
+
+    <div id="product-detail-page" class="product-detail-page">
+        <div class="product-detail-content">
+            <span class="close-btn" onclick="hideProductDetail()">&times;</span>
+            <h2 id="detail-product-name"></h2>
+            <p id="detail-product-price"></p>
+            
+            <div class="product-carousel">
+                <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
+                <div id="product-carousel-slides" class="product-carousel-slides"></div>
+                <button class="carousel-btn next
+
+
+
+                                    <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+
+            <!-- CONTENEDOR DEL VIDEO AJUSTADO -->
+            <iframe id="product-video-frame" class="product-video-frame" style="display: none;" title="Video del producto"></iframe>
+
+            <p id="detail-product-description"></p>
+            <h3>Características:</h3>
+            <ul id="detail-product-features"></ul>
+            <a id="detail-whatsapp-btn" class="whatsapp-btn" href="#" target="_blank">Solicitar por WhatsApp</a>
+        </div>
     </div>
 
-    <!-- TÍTULO Y MENÚ DE NAVEGACIÓN -->
-    <div class="header">
-        <h1>VERRACO TOYS</h1>
-        <nav class="nav-menu">
-            <a href="#" onclick="showSection('inicio')" class="active">INICIO</a>
-            <a href="#" onclick="showSection('tienda')">TIENDA</a>
-            <a href="#" onclick="showSection('quienes')">¿QUIENES SOMOS?</a>
-            <a href="#" onclick="showSection('contacto')">CONTACTO</a>
-        </nav>
-    </div>
-
-    <!-- CONTENEDOR PRINCIPAL -->
-    <div class="main-content">
-        <!-- SECCIÓN INICIO -->
-        <section id="inicio" class="section active">
-            <div class="category-section">
-                <h2>Categorías de Productos</h2>
-
-                <!-- Categoría 1 -->
-                <div class="category-item">
-                    <div class="category-title" onclick="toggleCategory('cat1')">
-                        <span>Juguetes de Madera</span>
-                        <span class="category-arrow">▼</span>
-                    </div>
-                    <div id="cat1" class="category-products">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/140x100?text=Coche+Madera" alt="Coche de madera">
-                            <div class="stock-badge">EN STOCK</div>
-                            <div class="product-price">$35.00</div>
-                            <button class="btn-details" onclick="showProductDetail(1)">Ver Detalles</button>
-                        </div>
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/140x100?text=Tren+Madera" alt="Tren de madera">
-                            <div class="stock-badge">EN STOCK</div>
-                            <div class="product-price">$45.00</div>
-                            <button class="btn-details" onclick="showProductDetail(2)">Ver Detalles</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2 -->
-                <div class="category-item">
-                    <div class="category-title" onclick="toggleCategory('cat2')">
-                        <span>Juguetes de Plástico Ecológico</span>
-                        <span class="category-arrow">▼</span>
-                    </div>
-                    <div id="cat2" class="category-products">
-                        <div class="product-card">
-                            <img src="https://via.placeholder.com/140x100?text=Bloques+Eco" alt="Bloques ecológicos">
-                            <div class="stock-badge">EN STOCK</div>
-                            <div class="product-price">$25.00</div>
-                            <button class="btn-details" onclick="showProductDetail(3)">Ver Detalles</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN TIENDA -->
-        <section id="tienda" class="section">
-            <div class="category-section">
-                <h2>Todos los Productos</h2>
-                <div class="category-products" style="display:flex;">
-                    <!-- Todos los productos juntos -->
-                    <div class="product-card">
-                        <img src="https://via.placeholder.com/140x100?text=Coche+Madera" alt="Coche de madera">
-                        <div class="stock-badge">EN STOCK</div>
-                        <div class="product-price">$35.00</div>
-                        <button class="btn-details" onclick="showProductDetail(1)">Ver Detalles</button>
-                    </div>
-                    <div class="product-card">
-                        <img src="https://via.placeholder.com/140x100?text=Tren+Madera" alt="Tren de madera">
-                        <div class="stock-badge">EN STOCK</div>
-                        <div class="product-price">$45.00</div>
-                        <button class="btn-details" onclick="showProductDetail(2)">Ver Detalles</button>
-                    </div>
-                    <div class="product-card">
-                        <img src="https://via.placeholder.com/140x100?text=Bloques+Eco" alt="Bloques ecológicos">
-                        <div class="stock-badge">EN STOCK</div>
-                        <div class="product-price">$25.00</div>
-                        <button class="btn-details" onclick="showProductDetail(3)">Ver Detalles</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN ¿QUIENES SOMOS? -->
-        <section id="quienes" class="section static-section">
-            <h2>¿Quiénes Somos?</h2>
-            <p>Verraco Toys es una empresa familiar fundada en Latacunga, Cotopaxi, dedicada a crear juguetes seguros y de alta calidad para niños de todas las edades.</p>
-            <p>Nuestro compromiso es usar materiales sostenibles y procesos artesanales que apoyen a la comunidad local, garantizando juguetes duraderos y divertidos.</p>
-            <button class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</button>
-        </section>
-
-        <!-- SECCIÓN CONTACTO -->
-        <section id="contacto" class="section static-section">
-            <h2>Contacto</h2>
-            <p>Dirección: Calle Principal #123, Centro de Latacunga, Cotopaxi</p>
-            <p>Teléfono: 099 123 4567</p>
-            <p>Email: contacto@verraco-toys.ec</p>
-            <p>Horario: Lunes a Sábado de 9:00 a 18:00</p>
-            <button class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</button>
-        </section>
-
-        <!-- SECCIÓN DETALLES DEL PRODUCTO -->
-        <section id="product-detail" class="section product-detail">
-            <div class="carousel-container" id="product-carousel">
-                <div class="carousel-slides" id="carousel-slides">
-                    <!-- Imágenes se cargan dinámicamente -->
-                </div>
-                <button class="carousel-btn carousel-prev" onclick="moveCarousel(-1)">❮</button>
-                <button class="carousel-btn carousel-next" onclick="moveCarousel(1)">❯</button>
-            </div>
-
-            <h2 id="detail-title"></h2>
-            <div class="product-video" id="detail-video"></div>
-            <div class="product-info">
-                <p><strong>Precio:</strong> <span id="detail-price"></span></p>
-                <p><strong>Estado:</strong> <span id="detail-stock"></span></p>
-                <p><strong>Descripción:</strong> <span id="detail-description"></span></p>
-                <p><strong>Características:</strong></p>
-                <ul class="features-list" id="detail-features"></ul>
-            </div>
-
-            <button class="btn-back" onclick="showSection('inicio')">Regresar al Inicio</button>
-            <button class="btn-back" onclick="showSection('tienda')">Ir a la Tienda</button>
-        </section>
-    </div>
-
+    <footer>
+        <p>&copy; 2024 Verraco Toys - Todos los derechos reservados</p>
+    </footer>
 
     <script>
-        // DATOS DE LOS PRODUCTOS
-        const productos = {
-            1: {
-                titulo: "Coche de Madera Clásico",
-                precio: "$35.00",
-                stock: "EN STOCK",
-                imagenes: [
-                    "https://via.placeholder.com/500x400?text=Coche+1",
-                    "https://via.placeholder.com/500x400?text=Coche+2",
-                    "https://via.placeholder.com/500x400?text=Coche+3"
+        // OBJETO DE PRODUCTOS CON ENLACES DE VIDEO INDIVIDUALES VÁLIDOS
+        const products = {
+            'carro_1': {
+                name: 'WLTOYS 104311 CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4',
+                price: '$200 USD',
+                description: 'EL WLTOYS 104311 ES UN CARRO CRAWLER DE CONTROL REMOTO CON TRACCIÓN 4X4, IDEAL PARA ADENTRARSE EN TERRENOS DIFÍCILES COMO PIEDRAS, ARENA Y BARRO.',
+                features: ['ESCALA: 1:10', 'BATERIA: Ni-MH de 7.2V 1800mAh', 'ILUMINACION: LED frontal', 'NEUMÁTICOS DE TRACCIÓN ALTA', 'CAJA DE CAMBIOS SIMPLE', 'AUTONOMIA: Aproximadamente 25 minutos', 'CONTROL de 2.4GHz', 'DISTANCIA REMOTA: 50 metros', 'MOTOR: Motor 390 de escobillas', 'MATERIAL: Plástico resistente y metal'],
+                images: [
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hca065ae1e2e0488b8756c1ba0e7862558.jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H7759f8faf5004ad89ecdaf97e426b508d.jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hd33b68147a91414e8badda5d70dcd4af8.jpg?raw=true'
                 ],
-                video: "https://www.youtube.com/embed/ixRLjjTRczE",
-                descripcion: "Coche de madera maciza de roble, fabricado a mano con acabados artesanales. Ideal para niños de 3 a 8 años.",
-                caracteristicas: [
-                    "Material: Roble macizo tratado",
-                    "Ruedas de goma sin contaminantes",
-                    "Peso: 2.5kg",
-                    "Colores: Natural o pintado en azul/rojo",
-                    "Armado no requerido - listo para usar",
-                    "Medidas: 50cm x 30cm x 35cm"
-                ]
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/5t4HkQ8XH9Y?controls=1&rel=0',
+                whatsapp_message: 'Hola! Quiero el WLTOYS 104311 CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4 por $200 USD.'
             },
-            2: {
+            'drone_1': {
+                name: 'DJI Mavic Mini 2 - DRONE CÁMARA PROFESIONAL',
+                price: '$450 USD',
+                description: 'EL DJI Mavic Mini 2 ES UN DRONE ULTRALIGERO CON CÁMARA DE 4K, IDEAL PARA FOTOGRAFÍA AÉREA Y GRABACIÓN DE VIDEO DE CALIDAD PROFESIONAL.',
+                features: ['PESO: 249 gramos', 'CAMARA: 4K a 30fps', 'TRANSMISIÓN: O3+ de hasta 10 km', 'TIEMPO DE VUELO: 31 minutos', 'SENSADORES DE COLISIÓN: No incluye', 'BATERIA: Inteligente de 2250 mAh', 'VELOCIDAD MAXIMA: 16 m/s', 'ALTURA MAXIMA: 400 metros', 'GPS: Integrado'],
+                images: [
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/hdron.jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/drone2.jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/drone3.jpg?raw=true'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/9bZkp7q19f0?controls=1&rel=0',
+                whatsapp_message: 'Hola! Quiero el DJI Mavic Mini 2 - DRONE CÁMARA PROFESIONAL por $450 USD.'
+            },
+            'dronee_1': {
+                name: 'WLTOYS 124019 BUGGY RC RÁPIDO Y RESISTENTE',
+                price: '$230 USD',
+                description: 'EL WLTOYS 124019 ES UN BUGGY RC DE ALTA VELOCIDAD CON TRACCIÓN 4WD, IDEAL PARA TERRENOS MIXTOS.',
+                features: ['ESCALA: 1:12', 'BATERIA: Li-ion de 7.4V 1500mAh', 'VELOCIDAD MAXIMA: 55-60 KM/H', 'MOTOR: 550 Cepillado', 'SUSPENSIONES HIDRÁULICAS', 'AUTONOMIA: Aproximadamente 15 minutos', 'CONTROL de 2.4GHz', 'DISTANCIA REMOTA: 100 metros', 'MATERIAL: Plástico resistente y chasis metálico'],
+                images: [
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hdc43a2cd16574b0baf2891b42af7e449Y.jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H6b0049062a69484d95db864817832c25K%2520(1).jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H86e62c49658445a48b767e9ee5cbce3cs.jpg?raw=true'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/3tmd-ClpJxA?controls=1&rel=0',
+                whatsapp_message: 'Hola! Quiero el WLTOYS 124019 BUGGY RC RÁPIDO Y RESISTENTE por $230 USD.'
+            },
+            'droneee_1': {
+                name: 'WLTOYS 144001 COCHE DE ALTA VELOCIDAD PARA PRINCIPIANTES',
+                price: '$200 USD',
+                description: 'EL WLTOYS 144001 ES UN COCHE RC DE ALTA VELOCIDAD A ESCALA 1:14, PERFECTO PARA QUEMAR NEUMÁTICOS.',
+                features: ['ESCALA: 1:14', 'BATERIA: Li-ion de 7.4V 1500mAh', 'VELOCIDAD MAXIMA: 60 KM/H', 'MOTOR: 540 Cepillado', 'CHASIS DE ALUMINIO', 'AUTONOMIA: Aproximadamente 12 minutos', 'CONTROL de 2.4GHz', 'DISTANCIA REMOTA: 80 metros', 'MATERIAL: Plástico resistente y metal'],
+                images: [
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H6b0049062a69484d95db864817832c25K%2520(1).jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hdc43a2cd16574b0baf2891b42af7e449Y.jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hca065ae1e2e0488b8756c1ba0e7862558.jpg?raw=true'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/5t4HkQ8XH9Y?controls=1&rel=0',
+                whatsapp_message: 'Hola! Quiero el WLTOYS 144001 COCHE DE ALTA VELOCIDAD PARA PRINCIPIANTES por $200 USD.'
+            },
+            'droneeee_1': {
+                name: 'WLTOYS 104001 BUGGY RC IDEAL PARA TERRENOS MIXTOS',
+                price: '$300 USD',
+                description: 'EL WLTOYS 104001 ES UN BUGGY RC 4WD A ESCALA 1:10, DISEÑADO PARA AGUANTAR TERRENOS DIFÍCILES Y VELOCIDADES ALTAS.',
+                features: ['ESCALA: 1:10', 'BATERIA: Li-ion de 7.4V 2200mAh', 'VELOCIDAD MAXIMA: 50-60 KM/H', 'MOTOR: 550 Cepillado', 'SUSPENSIONES AJUSTABLES', 'AUTONOMIA: Aproximadamente 20 minutos', 'CONTROL de 2.4GHz', 'DISTANCIA REMOTA: 100 metros', 'MATERIAL: Plástico resistente y chasis metálico'],
+                images: [
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hd33b68147a91414e8badda5d70dcd4af8.jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c.jpg?raw=true',
+                    'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H7120e77fb2074b70b2888b4e42ee5fc3v.jpg?raw=true'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/9bZkp7q19f0?controls=1&rel=0',
+                whatsapp_message: 'Hola! Quiero el WLTOYS 104001 BUGGY RC IDEAL PARA TERRENOS MIXTOS por $300 USD.'
+            },
+            'action_figure_1': {
+                name: 'Figura de Acción Articulada',
+                price: '$55.00 USD',
+                description: 'Figura de acción con múltiples puntos de articulación, ideal para coleccionistas y niños que aman crear escenas épicas.',
+                features: ['MATERIAL: Plástico resistente', 'ALTURA: 18 cm', 'PUNTOS DE ARTICULACIÓN: 15', 'INCLUYE: Accesorios intercambiables', 'DISEÑO: Detalles muy precisos', 'RECOMENDADO: Mayores de 6 años'],
+                images: [
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/action-figure.jpeg',
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/action-figure-2.jpeg'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/3tmd-ClpJxA?controls=1&rel=0',
+                whatsapp_message: 'Hola! Estoy interesado en la Figura de Acción Articulada por $55.00 USD.'
+            },
+            'robot_interactivo_1': {
+                name: 'Robot Interactivo',
+                price: '$75.00 USD',
+                description: 'Robot interactivo que responde a comandos de voz, realiza movimientos y juega canciones, perfecto para estimular la creatividad infantil.',
+                features: ['RESPONDE A VOZ', 'REALIZA TRUCOS', 'REPRODUCE CANCIONES', 'CONECTA POR BLUETOOTH', 'BATERIA RECARGABLE', 'RECOMENDADO: Mayores de 5 años'],
+                images: [
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Robot%20Interactivo%201.jpg',
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Robot%20Interactivo%202.jpg'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/5t4HkQ8XH9Y?controls=1&rel=0',
+                whatsapp_message: 'Hola! Estoy interesado en el Robot Interactivo por $75.00 USD.'
+            },
+            'trampolin_1': {
+                name: 'Trampolín Infantil',
+                price: '$120.00 USD',
+                description: 'Trampolín seguro y resistente con red de protección, ideal para que los niños jueguen y hagan ejercicio en casa o en el jardín.',
+                features: ['DIÁMETRO: 2.4 metros', 'MATERIAL: Acero galvanizado', 'INCLUYE: Red de seguridad', 'CUBRE ESPALDARAS: Espuma gruesa', 'CAPACIDAD: Hasta 100 kg', 'RECOMENDADO: Mayores de 3 años'],
+                images: [
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Trampolin%201.jpg',
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Trampolin%202.jpg'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/9bZkp7q19f0?controls=1&rel=0',
+                whatsapp_message: 'Hola! Estoy interesado en el Trampolín Infantil por $120.00 USD.'
+            },
+            'bicicleta_equilibrio_1': {
+                name: 'Bicicleta de Equilibrio',
+                price: '$80.00 USD',
+                description: 'Bicicleta sin pedales para que los niños aprendan a mantener el equilibrio antes de pasar a una bicicleta tradicional.',
+                features: ['MATERIAL: Madera y metal', 'RUEDAS: EVA sin cámara', 'AJUSTE DE ALTURA', 'PESO: 3 kg', 'CAPACIDAD: Hasta 50 kg', 'RECOMENDADO: Mayores de 3 años'],
+                images: [
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Bicicleta%20Equilibrio%201.jpg',
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Bicicleta%20Equilibrio%202.jpg'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/3tmd-ClpJxA?controls=1&rel=0',
+                whatsapp_message: 'Hola! Estoy interesado en la Bicicleta de Equilibrio por $80.00 USD.'
+            },
+            'ajedrez_1': {
+                name: 'Ajedrez de Madera',
+                price: '$35.00 USD',
+                description: 'Juego de ajedrez clásico fabricado en madera de alta calidad, perfecto para aprender y disfrutar este deporte de estrategia.',
             
-                titulo: "Tren de Madera con Vías",
-                precio: "$45.00",
-                stock: "EN STOCK",
-                imagenes: [
-                    "https://via.placeholder.com/500x400?text=Tren+1",
-                    "https://via.placeholder.com/500x400?text=Tren+2"
+                                       features: ['MATERIAL: Madera maciza', 'DIMENSIONES: 30x30 cm', 'PIEZAS: 32 piezas completas', 'DISEÑO: Plegable para transportar', 'RECOMENDADO: Mayores de 6 años'],
+                images: [
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/ajedrez-madera.jpeg',
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/ajedrez-madera-2.jpeg'
                 ],
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                descripcion: "Tren de madera con 3 vagones y 10 metros de vías flexibles. Fabricado con pino tratado y acabados suaves.",
-                caracteristicas: [
-                    "Material: Pino macizo y vías de plástico ecológico",
-                    "Incluye 3 vagones y locomotor",
-                    "Peso: 3.2kg",
-                    "Idioma de instrucciones: Español",
-                    "Montaje sencillo - incluye herramientas",
-                    "Medidas del tren: 60cm x 15cm x 20cm"
-                ]
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/5t4HkQ8XH9Y?controls=1&rel=0',
+                whatsapp_message: 'Hola! Estoy interesado en el Ajedrez de Madera por $35.00 USD.'
             },
-            3: {
-                titulo: "Bloques de Construcción Ecológicos",
-                precio: "$25.00",
-                stock: "EN STOCK",
-                imagenes: [
-                    "https://via.placeholder.com/500x400?text=Bloques+1",
-                    "https://via.placeholder.com/500x400?text=Bloques+2"
+            'domino_1': {
+                name: 'Dominó Clásico',
+                price: '$15.00 USD',
+                description: 'Juego de dominó clásico con piezas de plástico resistente, ideal para compartir momentos de diversión en familia.',
+                features: ['CANTIDAD DE PIEZAS: 28', 'MATERIAL: Plástico duradero', 'INCLUYE: Estuche de transporte', 'RECOMENDADO: Mayores de 4 años'],
+                images: [
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/domino-clasico.jpeg',
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/domino-clasico-2.jpeg'
                 ],
-                video: "https://www.youtube.com/embed/9bZkp7q19f0",
-                descripcion: "Set de 50 bloques de plástico reciclado, libres de BPA y tóxicos. Ideales para estimular la creatividad infantil.",
-                caracteristicas: [
-                    "Material: Plástico reciclado 100%",
-                    "Cantidad: 50 piezas en 8 formas diferentes",
-                    "Color: Multicolor no tóxico",
-                    "Edad recomendada: 1 a 5 años",
-                    "Lavables con agua y jabón",
-                    "Peso del set: 1.8kg"
-                ]
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/9bZkp7q19f0?controls=1&rel=0',
+                whatsapp_message: 'Hola! Estoy interesado en el Dominó Clásico por $15.00 USD.'
+            },
+            'tableta_educativa_1': {
+                name: 'Tableta Educativa Infantil',
+                price: '$90.00 USD',
+                description: 'Tableta interactiva con juegos educativos para aprender letras, números, colores y formas, ideal para niños pequeños.',
+                features: ['PANTALLA: Táctil de 7 pulgadas', 'CONTENIDO: Más de 50 actividades', 'BATERIA: Recargable', 'IDIOMAS: Español e Inglés', 'RECOMENDADO: Mayores de 2 años'],
+                images: [
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Tableta%20Educativa%201.jpg',
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/Tableta%20Educativa%202.jpg'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/3tmd-ClpJxA?controls=1&rel=0',
+                whatsapp_message: 'Hola! Estoy interesado en la Tableta Educativa Infantil por $90.00 USD.'
+            },
+            'microscopio_1': {
+                name: 'Microscopio para Niños',
+                price: '$50.00 USD',
+                description: 'Microscopio educativo con múltiples aumentos para explorar el mundo microscópico, ideal para estimular el interés por las ciencias.',
+                features: ['AUMENTO: 40x, 100x y 400x', 'ILUMINACIÓN: LED integrada', 'INCLUYE: Kit de muestras básico', 'MATERIAL: Metal y plástico', 'RECOMENDADO: Mayores de 8 años'],
+                images: [
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/microscopio-ninos.jpeg',
+                    'https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/microscopio-ninos-2.jpeg'
+                ],
+                // VIDEO INDIVIDUAL DE YOUTUBE VÁLIDO
+                video: 'https://www.youtube.com/embed/5t4HkQ8XH9Y?controls=1&rel=0',
+                whatsapp_message: 'Hola! Estoy interesado en el Microscopio para Niños por $50.00 USD.'
             }
         };
 
         // VARIABLES PARA EL CARRUSEL
         let currentSlide = 0;
-        let touchStartX = 0;
-        let touchEndX = 0;
+        let currentProductId = '';
 
-        // FUNCIÓN PARA DETENER EL VÍDEO CUANDO CAMBIEMOS DE SECCIÓN
-        function stopVideo() {
-            const videoFrame = document.getElementById('detail-video').querySelector('iframe');
-            if (videoFrame) {
-                // REINICIAR EL IFRAME PARA DETENER LA REPRODUCCIÓN
-                const src = videoFrame.src;
-                videoFrame.src = '';
-                videoFrame.src = src;
-            }
-        }
+        // MOSTRAR SECCIÓN ACTIVA
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('data-section');
+                showSection(sectionId);
+            });
+        });
 
-        // FUNCIÓN PARA MOSTRAR/Ocultar SECCIONES
         function showSection(sectionId) {
-            // DETENER EL VÍDEO PRIMERO
-            stopVideo();
-            // Ocultar todas las secciones
-            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-            // Mostrar la sección seleccionada
+            // OCULTAR TODAS LAS SECCIONES
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // MOSTRAR SECCIÓN SELECCIONADA
             document.getElementById(sectionId).classList.add('active');
-            // Actualizar menú activo
-            document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('active'));
-            event.target.classList.add('active');
-            // Reiniciar carrusel
+            // OCULTAR DETALLE DE PRODUCTO SI ESTÁ ABIERTO
+            hideProductDetail();
+        }
+
+        // MOSTRAR/OCULTAR CATEGORÍAS
+        function toggleCategory(categoryId) {
+            const categoryContent = document.getElementById(categoryId);
+            categoryContent.style.display = categoryContent.style.display === 'grid' ? 'none' : 'grid';
+        }
+
+        // MOSTRAR DETALLE DE PRODUCTO
+        function showProductDetail(productId) {
+            const product = products[productId];
+            if (!product) return;
+
+            currentProductId = productId;
             currentSlide = 0;
-        }
 
-        // FUNCIÓN PARA ABRIR/CERRAR CATEGORÍAS
-        function toggleCategory(catId) {
-            const cat = document.getElementById(catId);
-            const arrow = cat.previousElementSibling.querySelector('.category-arrow');
-            if (cat.style.display === 'flex') {
-                cat.style.display = 'none';
-                arrow.classList.remove('open');
-            } else {
-                cat.style.display = 'flex';
-                arrow.classList.add('open');
-            }
-        }
+            // LLENAR INFORMACIÓN DEL PRODUCTO
+            document.getElementById('detail-product-name').textContent = product.name;
+            document.getElementById('detail-product-price').textContent = product.price;
+            document.getElementById('detail-product-description').textContent = product.description;
 
-        // FUNCIÓN PARA MOSTRAR DETALLES DEL PRODUCTO
-        function showProductDetail(prodId) {
-            const prod = productos[prodId];
-            // Ocultar otras secciones y detener vídeo anterior
-            stopVideo();
-            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-            // Mostrar sección de detalles
-            document.getElementById('product-detail').classList.add('active');
-
-            // Cargar datos del producto
-            document.getElementById('detail-title').textContent = prod.titulo;
-            document.getElementById('detail-price').textContent = prod.precio;
-            document.getElementById('detail-stock').textContent = prod.stock;
-            document.getElementById('detail-description').textContent = prod.descripcion;
-
-            // Cargar características
-            const featuresList = document.getElementById('detail-features');
+            // LLENAR CARACTERÍSTICAS
+            const featuresList = document.getElementById('detail-product-features');
             featuresList.innerHTML = '';
-            prod.caracteristicas.forEach(feat => {
+            product.features.forEach(feature => {
                 const li = document.createElement('li');
-                li.textContent = feat;
+                li.textContent = feature;
                 featuresList.appendChild(li);
             });
 
-            // Cargar vídeo nuevo
-            document.getElementById('detail-video').innerHTML = `
-                <iframe src="${prod.video}" title="${prod.titulo}" allowfullscreen></iframe>
-            `;
-
-            // Cargar carrusel de imágenes
-            const carousel = document.getElementById('carousel-slides');
-            carousel.innerHTML = '';
-            prod.imagenes.forEach(img => {
+            // LLENAR CARRUSEL DE IMÁGENES
+            const carouselSlides = document.getElementById('product-carousel-slides');
+            carouselSlides.innerHTML = '';
+            product.images.forEach(image => {
                 const slide = document.createElement('div');
                 slide.classList.add('carousel-slide');
-                slide.innerHTML = `<img src="${img}" alt="${prod.titulo}">`;
-                carousel.appendChild(slide);
+                const img = document.createElement('img');
+                img.src = image;
+                img.alt = product.name;
+                slide.appendChild(img);
+                carouselSlides.appendChild(slide);
             });
             updateCarousel();
 
-            // EVENTOS TÁCTILES PARA EL CARRUSEL
-            const carouselEl = document.getElementById('carousel-slides');
-            carouselEl.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-            carouselEl.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                if (touchEndX < touchStartX - 15) moveCarousel(1);
-                if (touchEndX > touchStartX + 15) moveCarousel(-1);
-            });
+            // CONFIGURAR VIDEO
+            const videoFrame = document.getElementById('product-video-frame');
+            if (product.video) {
+                videoFrame.src = product.video;
+                videoFrame.style.display = 'block';
+                // MANEJAR ERROR SI NO CARGA
+                videoFrame.onerror = () => {
+                    videoFrame.style.display = 'none';
+                    alert('No se pudo cargar el video del producto.');
+                };
+            } else {
+                videoFrame.style.display = 'none';
+                videoFrame.src = '';
+            }
+
+            // CONFIGURAR BOTÓN DE WHATSAPP
+            const whatsappBtn = document.getElementById('detail-whatsapp-btn');
+            const encodedMessage = encodeURIComponent(product.whatsapp_message);
+            whatsappBtn.href = `https://wa.me/593988582236?text=${encodedMessage}`;
+
+            // MOSTRAR PÁGINA DE DETALLE
+            document.getElementById('product-detail-page').style.display = 'block';
         }
 
-        // FUNCIONES DEL CARRUSEL
-        function updateCarousel() {
-            const slides = document.querySelectorAll('.carousel-slide');
-            if (slides.length === 0) return;
-            const slideWidth = slides[0].offsetWidth;
-            document.getElementById('carousel-slides').style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        // OCULTAR DETALLE DE PRODUCTO Y DETENER VIDEO
+        function hideProductDetail() {
+            const videoFrame = document.getElementById('product-video-frame');
+            videoFrame.src = ''; // DETIENE LA REPRODUCCIÓN
+            videoFrame.style.display = 'none';
+
+            document.getElementById('product-detail-page').style.display = 'none';
         }
 
+        // MOVER CARRUSEL
         function moveCarousel(step) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            if (slides.length === 0) return;
+            const product = products[currentProductId];
+            if (!product) return;
+
             currentSlide += step;
-            if (currentSlide < 0) currentSlide = slides.length - 1;
-            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = product.images.length - 1;
+            if (currentSlide >= product.images.length) currentSlide = 0;
+
             updateCarousel();
         }
 
-        // INICIALIZAR CARRUSEL CUANDO CARGA LA PÁGINA
-        window.addEventListener('resize', updateCarousel);
-        updateCarousel();
+        // ACTUALIZAR CARRUSEL
+        function updateCarousel() {
+            const carouselSlides = document.getElementById('product-carousel-slides');
+            carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // MOSTRAR SECCIÓN DE INICIO POR DEFECTO
+        showSection('home');
     </script>
 </body>
-</html>
-                
+</html>    
