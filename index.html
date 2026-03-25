@@ -397,13 +397,31 @@ text-align: center;
             right: 5px;
         }
 
-        /* VIDEO DEL PRODUCTO */
-        .product-video {
-            width: 100%;
-            height: 300px;
-            border-radius: 10px;
-            margin: 1.5rem 0;
-        }
+     /* Estilos para el contenedor del video para que se vea GRANDE y CUADRADO (16:9) */
+.video-container-responsive {
+    position: relative; /* Clave para posicionar el iframe */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 1200px; /* <--- AQUÍ AJUSTAS EL ANCHO MÁXIMO DEL VIDEO */
+                              /*      Puedes poner 800px, 1000px, 1200px, lo que mejor quede en tu página. */
+                              /*      Si quieres que sea ANCHO SIN LÍMITES, BORRA esta línea 'max-width'. */
+    padding-bottom: 56.25%; /* ¡CLAVE! Esto fuerza la relación de aspecto 16:9 (altura es el 56.25% del ancho) */
+    height: 0; /* Necesario porque la altura la da el padding-bottom */
+    overflow: hidden; /* Para que nada se salga del contenedor */
+    margin: 20px auto; /* Centra el video horizontalmente y le da 20px de espacio arriba/abajo */
+    background-color: #000; /* Fondo negro mientras carga el video (opcional) */
+    border-radius: 8px; /* Esquinas redondeadas (opcional) */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra para que destaque (opcional) */
+}
+
+/* Estilos para el IFRAME dentro del contenedor */
+.video-container-responsive iframe {
+    position: absolute; /* Ocupa exactamente todo el espacio del contenedor */
+    top: 0;
+    left: 0;
+    width: 100%; /* El iframe toma el 100% del ancho del contenedor */
+    height: 100%; /* El iframe toma el 100% de la altura del contenedor */
+    border: none; /* Asegura que no tenga bordes */
+}
 
         /* DETALLES DEL PRODUCTO */
         .detail-info {
@@ -1128,8 +1146,9 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                     <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
                     <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
                 </div>
-                <iframe id="product-video-frame" class="product-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:none;"></iframe>
-                <div class="detail-info">
+                <div class="video-container-responsive"> <!-- ESTE ES EL DIV ENVOLTORIO -->
+    <iframe id="product-video-frame" src="[URL_DE_TU_VIDEO]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-picture" allowfullscreen></iframe>
+</div>
 
                                       <h3 id="detail-product-name"></h3>
                     <p class="detail-price" id="detail-product-price"></p>
