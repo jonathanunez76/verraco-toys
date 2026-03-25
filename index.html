@@ -1,7 +1,682 @@
 
 
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https:;
+        script-src 'self' 'unsafe-inline';
+        style-src 'self' 'unsafe-inline' https:;
+        img-src 'self' data: https:;
+        font-src 'self' https:;
+        connect-src 'self' https:;
+        frame-src 'self' https://www.whatsapp.com https://www.youtube.com https://player.vimeo.com;
+        media-src 'self' https: data:;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+    ">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="X-UA-Compatible" content="IE=edge">
 
+    <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Verraco Toys - Tienda Oficial</title>
+    <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
+    <meta name="robots" content="index, follow">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            padding-top: 80px;
+            line-height: 1.6;
+            background-image: url('https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/22129c91-6342-490c-b668-9237e5a370dd%20(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-blend-mode: normal;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Barra de navegación */
+        header {
+            background-color: #c0392b;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position:fixed;
+            top: 0;
+            left: 0;
+            width:100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f1c40f;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            max-width: 1300px;
+            margin: 5rem auto 3rem auto;
+            padding: 0 1.5rem;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        /* SECCIONES GENERALES */
+        section {
+            margin-bottom: 5rem;
+            display: none;
+        }
+        section.active {
+            display: block;
+        }
+        h1, h2 {
+            background-color: rgba(255,255,255,0.2);
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 2000; /* Muy gruesa */
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 900; /* Gruesa */
+        }
+
+        p {
+            font-weight: 1200; /* Bold estándar */
+        }
+
+        .titulo-verraco {
+            font-family: 'Oswald', sans-serif; /* O una fuente gruesa y sin serifa que tengas cargada */
+            font-size: 3.8rem; /* Tamaño grande, ajusta según necesidad */
+            font-weight: 900; /* Lo más grueso posible */
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 1.5rem; /* Separación del párrafo de abajo */
+
+            /* EFECTO DORADO */
+            background: -webkit-linear-gradient(#F0E68C, #DAA520, #B8860B); /* Degradado dorado para navegadores WebKit */
+            background: linear-gradient(#F0E68C, #DAA520, #B8860B); /* Degradado dorado estándar */
+            -webkit-background-clip: text; /* Recorta el fondo al contorno del texto */
+            -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente para que se vea el fondo */
+
+            /* EFECTO 3D (con sombras) */
+            text-shadow:
+                1px 1px 0px rgba(0, 0, 0, 0.3),  /* Sombra leve para el efecto 3D */
+                2px 2px 0px rgba(0, 0, 0, 0.25),
+                3px 3px 0px rgba(0, 0, 0, 0.2),
+                4px 4px 0px rgba(0, 0, 0, 0.15),
+                5px 5px 0px rgba(0, 0, 0, 0.1),
+                6px 6px 0px rgba(0, 0, 0, 0.05),
+                7px 7px 0px rgba(0, 0, 0, 0); /* La última sombra es casi transparente */
+
+            /* Para que el efecto de degradado funcione, el color del texto debe ser transparente */
+            color: transparent; /* Importante para que el background-clip funcione */
+        }
+
+        /* CATEGORÍAS Y PRODUCTOS */
+        .categories-wrapper {
+            display: block;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .category-card {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.0.08);
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 100%;
+        }
+        .category-card h3 {
+            color: #D32F2F;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .product-card {
+            background-color:rgba(255,255,255, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            width: 90%;
+            max-width: 400px;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .product-info {
+            padding: 1rem;
+        }
+        .product-info h4 {
+            color: #2D3436;
+            margin-bottom: 0.5rem;
+        }
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2E7D32;
+            margin-bottom: 0.8rem;
+        }
+        .stock-btn {
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            cursor: default;
+            margin-bottom: 1rem;
+        }
+        .in-stock {
+            background-color: #2E7D32;
+        }
+        .out-stock {
+            background-color: #D32F2F;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin: 0.3rem;
+        }
+        .btn-details {
+            background-color: #1976D2;
+            color: white;
+        }
+        .btn-details:hover {
+            background-color: #0D47A1;
+        }
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        /* SECCIÓN QUIENES SOMOS Y CONTACTOS */
+        .about-content, .contact-content {
+            max-width: 900px; /* Ancho mayor para que el texto no se vea tan ajustado */
+            margin: 4rem auto; /* Más espacio arriba y abajo */
+            line-height: 3; /* Espaciado entre líneas más cómodo para leer */
+            color: #2D3436; /* Color de texto más oscuro para mejor legibilidad */
+            font-size: 1.15rem; /* Tamaño de fuente ligeramente mayor */
+            padding: 0 1.5rem; /* Espacio lateral en pantallas pequeñas */
+            text-align: center;
+        }
+
+        .contact-content p {
+            margin-bottom: 1.5rem; /* Más espacio entre párrafos */
+            display: flex;
+            align-items: center;
+            padding: 0.5rem; /* Borde interno para darle volumen */
+            border-left: 3px solid #D32F2F; /* Línea roja a la izquierda para resaltar */
+        }
+
+        .contact-content i {
+            color: #D32F2F; /* Mantiene el rojo de la marca */
+            margin-right: 1rem; /* Más espacio entre ícono y texto */
+            font-size: 1.5rem; /* Íconos más grandes y visibles */
+        }
+
+        /* PÁGINA DE DETALLE DE PRODUCTO */
+        .product-detail {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            padding: 2rem;
+        }
+        .btn-back {
+            background-color: #D32F2F;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        .btn-back:hover {
+            background-color: #B71C1C;
+        }
+
+        /* CARRUSEL DE IMÁGENES */
+        .carousel-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 2rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            touch-action: pan-y; /* Permite el scroll vertical de la página, pero evita el desplazamiento horizontal no deseado dentro del carrusel */
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-slide {
+            min-width: 100%;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-btn:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .prev-btn {
+            left: 0;
+        }
+        .next-btn {
+            right: 0;
+        }
+
+        /* VIDEO DEL PRODUCTO */
+        .product-video {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        /* DETALLES DEL PRODUCTO */
+        .detail-info {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .detail-info h3 {
+            color: #D32F2F;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+        .detail-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2E7D32;
+            margin: 1rem 0;
+        }
+        .detail-description {
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+        .detail-features {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+
+
+        /* Pie de página */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 0;
+        }
+
+        /* RESPONSIVIDAD PARA MOVILES */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links a {
+                margin: 0 0.8rem;
+            }
+            .carousel-slide img {
+                height: 250px;
+            }
+            .product-video {
+                height: 200px;
+            }
+            .product-detail {
+                padding: 1rem;
+            }
+            .categories-wrapper {
+                grid-template-columns: 1
+
+                fr;
+            }
+            .titulo-verraco {
+                font-size: 3rem; /* Ajuste para móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <a href="#" class="logo">VERRACO TOYS</a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-section="home">Inicio</a>
+                <a href="#products" class="nav-link" data-section="products">Productos</a>
+                <a href="#about" class="nav-link" data-section="about">Quienes Somos</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- SECCIÓN DE DETALLE DE PRODUCTO (inicialmente oculta, se activa con JS) -->
+        <section id="product-detail">
+            <div class="product-detail">
+                <a href="#" class="btn btn-back">Volver a Productos</a>
+                
+                <h2>Juguete Teledirigido X-Wing Starfighter</h2>
+                
+                <!-- CARRUSEL DE IMÁGENES -->
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide">
+                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/X-wing%20Starfighter%20Drone%20(1).webp" alt="X-Wing Starfighter Drone">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/X-wing%20Starfighter%20Drone%20(2).webp" alt="X-Wing Starfighter Drone 2">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/X-wing%20Starfighter%20Drone%20(3).webp" alt="X-Wing Starfighter Drone 3">
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
+                    <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
+                </div>
+
+                <!-- VIDEO DEL PRODUCTO -->
+                <div class="product-video-container">
+                    <iframe class="product-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <div class="detail-info">
+                    <h3>Características Destacadas</h3>
+                    <p class="detail-price">$99.99</p>
+                    <p class="detail-description">
+                        ¡Pilota tu propio X-Wing Starfighter como un verdadero héroe de la Alianza Rebelde! Este drone teledirigido es una réplica detallada y funcional, perfecta para fans de Star Wars.
+                    </p>
+                    <ul class="detail-features">
+                        <li>Diseño auténtico del X-Wing Starfighter.</li>
+                        <li>Control remoto de alta precisión.</li>
+                        <li>Vuelo estable y maniobrable.</li>
+                        <li>Luces LED incorporadas para efectos realistas.</li>
+                        <li>Ideal para niños y coleccionistas.</li>
+                    </ul>
+                    <a href="https://wa.me/593987654321?text=Hola!%20Estoy%20interesado%20en%20el%20X-Wing%20Starfighter%20Drone." target="_blank" class="btn btn-whatsapp">
+                        Comprar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN INICIO -->
+        <section id="home" class="active">
+            <h1 class="titulo-verraco">VERRACO TOYS</h1>
+            <p style="color:white;">Tu tienda favorita de juguetes teledirigidos y coleccionables en Ambato, Ecuador.</p>
+        </section>
+
+        <!-- SECCIÓN PRODUCTOS -->
+        <section id="products">
+            <h2 class="titulo-verraco">Nuestros Productos</h2>
+            <div class="categories-wrapper">
+                <div class="category-card">
+                    <h3>Drones</h3>
+                    <div class="products-grid">
+                        <div class="product-card" onclick="showProductDetail('xwing')">
+                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/X-wing%20Starfighter%20Drone%20(1).webp" alt="X-Wing Starfighter Drone">
+                            <div class="product-info">
+                                <h4>X-Wing Starfighter Drone</h4>
+                                <span class="stock-btn in-stock">En Stock</span>
+                                <p class="product-price">$99.99</p>
+                                <a href="#" class="btn btn-details">Ver Detalles</a>
+                                <a href="https://wa.me/593987654321?text=Hola!%20Estoy%20interesado%20en%20el%20X-Wing%20Starfighter%20Drone." target="_blank" class="btn btn-whatsapp">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Más productos de drones si los hay -->
+                    </div>
+                </div>
+                <div class="category-card">
+                    <h3>Carros RC</h3>
+                    <div class="products-grid">
+                        <div class="product-card" onclick="showProductDetail('rallycar')">
+                            <img src="https://raw.githubusercontent.com/jonathanunez76/verraco-toys/main/imagenes/rally%20car.webp" alt="Rally Car RC">
+                            <div class="product-info">
+                                <h4>Rally Car RC</h4>
+                                <span class="stock-btn out-stock">Agotado</span>
+                                <p class="product-price">$59.99</p>
+                                <a href="#" class="btn btn-details">Ver Detalles</a>
+                                <a href="https://wa.me/593987654321?text=Hola!%20Estoy%20interesado%20en%20el%20Rally%20Car%20RC." target="_blank" class="btn btn-whatsapp">Comprar</a>
+                            </div>
+                        </div>
+                        <!-- Más productos de carros RC si los hay -->
+                    </div>
+                </div>
+                <!-- Más categorías si las hay -->
+            </div>
+        </section>
+
+
+
+        <!-- SECCIÓN QUIENES SOMOS -->
+        <section id="about">
+            <h2 class="titulo-verraco">Quiénes Somos</h2>
+            <p class="about-content" style="color:white;">En VERRACO TOYS, somos apasionados por los juguetes teledirigidos y los coleccionables. Nuestra misión es traer la alegría y la emoción de estos productos a Ambato y todo Ecuador. Seleccionamos cuidadosamente cada artículo para asegurar la máxima calidad y diversión. Desde drones de alta velocidad hasta carros RC todo terreno y figuras de acción detalladas, tenemos algo para cada entusiasta.</p>
+        </section>
+
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contact">
+            <h2 class="titulo-verraco">Contáctanos</h2>
+            <div class="contact-content" style="color:white;">
+                <p><i class="fas fa-map-marker-alt"></i> Dirección: Av. Cevallos 123, Ambato, Ecuador</p>
+                <p><i class="fas fa-phone-alt"></i> Teléfono: +593 987 654 321</p>
+                <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/593987654321" target="_blank" style="color:white;">+593 987 654 321</a></p>
+                <p><i class="fas fa-envelope"></i> Email: info@verracotoys.com</p>
+                <p><i class="fab fa-facebook-f"></i> Facebook: <a href="https://facebook.com/verracotoys" target="_blank" style="color:white;">/verracotoys</a></p>
+                <p><i class="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/verracotoys" target="_blank" style="color:white;">@verracotoys</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Verraco Toys. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // JS original para la navegación de secciones
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const targetSectionId = this.getAttribute('data-section');
+
+                    sections.forEach(section => {
+                        if (section.id === targetSectionId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+
+                    // Asegurarse de que el detalle del producto esté oculto si no se navega directamente a él
+                    if (targetSectionId !== 'product-detail') {
+                         document.getElementById('product-detail').classList.remove('active');
+                    }
+                });
+            });
+
+            // Activar la sección 'home' por defecto al cargar
+            document.getElementById('home').classList.add('active');
+        });
+
+        // Lógica del carrusel de productos
+        let currentCarouselIndex = 0;
+        let carouselSlides; // Declarar a nivel global para que sea accesible
+
+        function showCarouselSlide(index) {
+            if (!carouselSlides || carouselSlides.length === 0) return;
+
+            if (index >= carouselSlides.length) {
+                currentCarouselIndex = 0;
+            } else if (index < 0) {
+                currentCarouselIndex = carouselSlides.length - 1;
+            } else {
+                currentCarouselIndex = index;
+            }
+            // Usa el transform para mover el contenedor de slides
+            document.querySelector('.product-detail .carousel-slides').style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+        }
+
+        function moveCarousel(direction) {
+            showCarouselSlide(currentCarouselIndex + direction);
+        }
+
+        // Función para mostrar detalles del producto
+        function showProductDetail(productId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('product-detail').classList.add('active');
+            
+            // Re-inicializar el carrusel para el nuevo producto
+            const productCarousel = document.querySelector('.product-detail .carousel-slides');
+            if (productCarousel) {
+                carouselSlides = productCarousel.querySelectorAll('.carousel-slide');
+                currentCarouselIndex = 0; // Reiniciar a la primera imagen
+                showCarouselSlide(currentCarouselIndex);
+            }
+
+            // Aquí podrías cargar los datos específicos del producto (título, descripción, imágenes, video, etc.)
+            // Basado en el `productId`. Como tu ejemplo es estático, solo se muestra el X-Wing.
+            // Si tuvieras más productos dinámicos, aquí iría la lógica para actualizar los contenidos del product-detail.
+
+            // *****************************************************************
+            // ***** INICIO DE LA FUNCIÓN TÁCTIL AÑADIDA - Papi Rico *****
+            // *****************************************************************
+
+            const detailCarouselElement = document.querySelector('.product-detail .carousel-container');
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const swipeThreshold = 75; // Píxeles mínimos para considerar un "swipe"
+
+            // Definimos las funciones manejadoras de eventos
+            const handleTouchStart = function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            };
+            const handleTouchEnd = function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleGestureForDetailCarousel();
+            };
+            const handleGestureForDetailCarousel = function() {
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Deslizamiento hacia la izquierda (siguiente slide)
+                    moveCarousel(1);
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Deslizamiento hacia la derecha (slide anterior)
+                    moveCarousel(-1);
+                }
+            };
+
+            // Asegurarnos de no añadir múltiples listeners.
+            // Primero removemos si ya existen (por si showProductDetail es llamado múltiples veces)
+            detailCarouselElement.removeEventListener('touchstart', handleTouchStart);
+            detailCarouselElement.removeEventListener('touchend', handleTouchEnd);
+
+            // Luego, los añadimos
+            detailCarouselElement.addEventListener('touchstart', handleTouchStart, { passive: true });
+            detailCarouselElement.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+            // *****************************************************************
+            // ***** FIN DE LA FUNCIÓN TÁCTIL AÑADIDA - Papi Rico *****
+            // *****************************************************************
+        }
+
+        // Para que el botón de "Volver a Productos" funcione correctamente en el detalle
+        document.querySelector('.btn-back').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('product-detail').classList.remove('active');
+            document.getElementById('products').classList.add('active');
+            // Actualizar la navegación para que "Productos" esté activo
+            document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
+            document.querySelector('.nav-link[data-section="products"]').classList.add('active');
+        });
+    </script>
+</body>
+</html>
 
 
 
