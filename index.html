@@ -207,9 +207,11 @@ text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.08);
             overflow: hidden;
             transition: transform 0.3s ease;
-            cursor: pointer;
-           width: 90%;
-          max-width: 400px;
+            cursor: pointer;      
+           flex-basis: calc(33.333% - 1rem); /* Este cálculo es para que quepan 3, restando el gap de 1.5rem */
+            min-width: 250px; /* Tamaño mínimo de cada tarjeta para que no se hagan muy pequeñas */
+            box-sizing: border-box; /* Muy importante para el cálculo correcto del ancho */
+             
         }
         .product-card:hover {
             transform: translateY(-5px);
