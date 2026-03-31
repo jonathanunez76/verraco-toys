@@ -196,46 +196,29 @@ text-align: center;
             text-transform: uppercase;
         }
        
-        .products-grid {
-    display: grid; /* ¡CAMBIADO A GRID! */
-    /* En pantallas pequeñas (móviles), los productos irán de 1 en 1 */
-    grid-template-columns: 1fr;
-    gap: 20px; /* Un poco más de espacio entre productos, como tenías antes o puedes usar 1.5rem */
-    padding: 20px 0;
-    max-width: 1200px; /* Para que la cuadrícula no se haga demasiado ancha */
-    margin: 0 auto;   /* Para que la cuadrícula esté centrada */
+       .products-grid {
+            display: flex;
+          flex-wrap: wrap;
+            gap: 1.5rem;
+          justify-content: center;
+
+
+
+
+   
+        }
+        .product-card {
+            background-color:rgba(255,255,255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;   
+            width: 100%;
+          max-width: 400px;
 }
 
-/* Cuando la pantalla es de tamaño MEDIANO (como una tablet), los productos irán de 2 en 2 */
-@media (min-width: 768px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr); /* ¡Aquí forzamos que haya 2 productos por fila! */
-    }
-}
 
-/* Cuando la pantalla es GRANDE (como un ordenador de escritorio), los productos irán de 3 en 3 */
-@media (min-width: 1024px) {
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr); /* ¡Aquí forzamos que haya 3 productos por fila SIEMPRE! */
-    }
-}
-
-/* *IMPORTANTE*: Revisa el .product-card también */
-.product-card {
-    background-color: rgba(255,255,255, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    /* ANTES TENÍAS width: 90%; max-width: 400px; */
-    /* Ahora la cuadrícula Grid maneja el ancho, no necesitas esto */
-    /* Pero si quieres un máximo para las tarjetas individuales, podrías usar: */
-    max-width: 400px; /* Mantén el max-width para que no se estiren demasiado en pantallas muy grandes */
-    width: 100%; /* Asegura que la tarjeta ocupe todo el espacio de su celda Grid */
-    /* Asegúrate de que no haya un min-width o min-height excesivo que rompa el layout */
-    /* Si tenías min-height: 350px; en las tarjetas, mantenlo si es importante */
-}
         .product-card:hover {
             transform: translateY(-5px);
         }
