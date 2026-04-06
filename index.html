@@ -761,9 +761,43 @@ header {
                                 <p class="product-price">$550</p>
                                 <span class="stock-btn in-stock">En Stock</span>
                                 <button class="btn btn-details" onclick="showProductDetail('drone_1')">Ver Detalles</button>
-                                <a href="https://wa.me/593963057078?text=Hola!%20Quiero%20el%20WLTOYS%20104020%20CARRO%20CRAWLERS%20DE%20CONTROL%20REMOTO%20TODOTERRENO%204X4%20por%20$550%20USD." target="_blank" class="btn btn-whatsapp">Comprar por WhatsApp</a>
-                            </div>
-                        </div>
+                             <button class="btn btn-whatsapp" onclick="toggleProductForm('drone_1', 'WLTOYS 104020 CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4')">Comprar por WhatsApp</button>
+                            <!-- AQUI VA EL CÓDIGO HTML DEL FORMULARIO (oculto por defecto con CSS) -->
+        <div id="formContainer_drone_1" class="formulario-contacto-producto" style= "display: none;">
+            <h3>¡Déjanos tus datos para tu pedido!</h3>
+            <p class="product-name-display">Producto: <span class="product-name-span"></span></p>
+            <form id="contactForm_drone_1" onsubmit="sendToWhatsApp(event, 'drone_1')"> 
+                <label for="nombre_drone_1">Nombre Completo:</label>
+                <input type="text" id="nombre_drone_1" name="nombre" required>
+                
+                <label for="correo_drone_1">Correo Electrónico:</label>
+                <input type="email" id="correo_drone_1" name="correo" required>
+                
+                <label for="ciudad_drone_1">¿De qué ciudad del Ecuador nos escribes?</label>
+                <input type="text" id="ciudad_drone_1" name="ciudad" required>
+                
+                <label for="direccion_drone_1">Dirección de Envío:</label>
+                <input type="text" id="direccion_drone_1" name="direccion" required>
+
+                <label for="pago_drone_1">¿Cómo prefieres realizar tu pago?</label>
+                <select id="pago_rc_drone_1" name="pago" required>
+                    <option value="">-- Selecciona una opción --</option>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="transferencia">Transferencia Bancaria</option>
+                    <!-- Puedes añadir más opciones si las tienes -->
+                </select>
+
+                <!-- Campo oculto con el nombre del producto para este formulario específico -->
+                <input type="hidden" name="producto_consultado" value="WLTOYS 104020 CARRO CRAWLERS DE CONTROL REMOTO TODOTERRENO 4X4">
+                
+                <button type="submit">Enviar Pedido y Chatear por WhatsApp</button>
+            </form>
+            <div class="form-message" id="formMessage_drone_1"></div>
+        </div>
+        <!-- FIN DEL FORMULARIO -->
+
+    </div>
+</div>
 
 
 
