@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -859,7 +857,43 @@ header {
                                 <p class="product-price">$200</p>
                                 <span class="stock-btn in-stock">En Stock</span>
                                 <button class="btn btn-details" onclick="showProductDetail('dronn_1')">Ver Detalles</button>
-          
+                               <button class="btn btn-whatsapp" onclick="toggleProductForm('dronn_1', 'WLTOYS 104311 CARRO CRAWLERS TODOTERRENO 4X4')">Comprar por WhatsApp</button>
+                            <!-- AQUI VA EL CÓDIGO HTML DEL FORMULARIO (oculto por defecto con CSS) -->
+        <div id="formContainer_dronn_1" class="formulario-contacto-producto" style= "display: none;">
+            <h3>¡Déjanos tus datos para tu pedido!</h3>
+            <p class="product-name-display">Producto: <span class="product-name-span"></span></p>
+            <form id="contactForm_dronn_1" onsubmit="sendToWhatsApp(event, 'dronn_1')"> 
+                <label for="nombre_dronn_1">Nombre Completo:</label>
+                <input type="text" id="nombre_dronn_1" name="nombre" required>
+                
+                <label for="correo_dronn_1">Correo Electrónico:</label>
+                <input type="email" id="correo_dronn_1" name="correo" required>
+                
+                <label for="ciudad_dronn_1">¿De qué ciudad del Ecuador nos escribes?</label>
+                <input type="text" id="ciudad_dronn_1" name="ciudad" required>
+                
+                <label for="direccion_dronn_1">Dirección de Envío:</label>
+                <input type="text" id="direccion_dronn_1" name="direccion" required>
+
+                <label for="pago_dronn_1">¿Cómo prefieres realizar tu pago?</label>
+                <select id="pago_dronn_1" name="pago" required>
+                    <option value="">-- Selecciona una opción --</option>  
+                    <option value="transferencia">Transferencia Bancaria</option>
+                    <!-- Puedes añadir más opciones si las tienes -->
+               </select>
+
+                <!-- Campo oculto con el nombre del producto para este formulario específico -->
+                <input type="hidden" name="producto_consultado" value="WLTOYS 104311 CARRO CRAWLERS TODOTERRENO 4X4">
+                
+                <button type="submit">Enviar Pedido y Chatear por WhatsApp</button>
+            </form>
+            <div class="form-message" id="formMessage_dronn_1"></div>
+        </div>
+        <!-- FIN DEL FORMULARIO -->
+
+    </div>
+</div>
+
                     </div>
                 </div>
 <!-- ================== CATEGORÍA 2: VEHÍCULOS TELEDIRIGIDOS BUGGY ================== -->
@@ -1940,7 +1974,8 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
 
                 ],
                 video: 'https://player.vimeo.com/video/1177095678?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
-   
+                whatsapp_message: 'Hola! Quiero el HOSHI NS18 RAPTOR 2 a escala 4WD 1/8 por $650 USD .'
+
 
            },
             'drone_1': {
