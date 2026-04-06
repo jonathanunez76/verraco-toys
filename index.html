@@ -1936,36 +1936,33 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                           <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
                 </div> 
             
-      <a id="formContainer_${productId}" class="detail-whatsapp-btn">Comprar por WhatsApp</a>
-            <h3>¡Déjanos tus datos para tu pedido!</h3>
-            <p class="product-name-display">Producto: <span class="product-name-span"></span></p>
-            <form id="contactForm_dronn_1" onsubmit="sendToWhatsApp(event, 'dronn_1')"> 
-                <label for="nombre_dronn_1">Nombre Completo:</label>
-                <input type="text" id="nombre_dronn_1" name="nombre" required>
-                
-                <label for="correo_dronn_1">Correo Electrónico:</label>
-                <input type="email" id="correo_dronn_1" name="correo" required>
-                
-                <label for="ciudad_dronn_1">¿De qué ciudad del Ecuador nos escribes?</label>
-                <input type="text" id="ciudad_dronn_1" name="ciudad" required>
-                
-                <label for="direccion_dronn_1">Dirección de Envío:</label>
-                <input type="text" id="direccion_dronn_1" name="direccion" required>
+     <div id="formContainer_${productId}" class="formulario-contacto-producto" style="display: none;">
+                    <h3>Déjanos tus datos para tu pedido:</h3>
+                    <p class="product-name-display">Producto: <span class="product-name-span">${product.name}</span></p>
+                    <form id="contactForm_${productId}">
+                        <label for="nombre_${productId}">Nombre Completo:</label>
+                        <input type="text" id="nombre_${productId}" placeholder="Tu Nombre" required>
 
-                <label for="pago_dronn_1">¿Cómo prefieres realizar tu pago?</label>
-                <select id="pago_dronn_1" name="pago" required>
-                    <option value="">-- Selecciona una opción --</option>  
-                    <option value="transferencia">Transferencia Bancaria</option>
-                    <!-- Puedes añadir más opciones si las tienes -->
-               </select>
+                        <label for="correo_${productId}">Correo Electrónico:</label>
+                        <input type="email" id="correo_${productId}" placeholder="Tu Correo" required>
 
-                <!-- Campo oculto con el nombre del producto para este formulario específico -->
-                <input type="hidden" name="producto_consultado" value="WLTOYS 104311 CARRO CRAWLERS TODOTERRENO 4X4">
-                
-                <button type="submit">Enviar Pedido y Chatear por WhatsApp</button>
-            </form>
-            <div class="form-message" id="formMessage_dronn_1"></div>
-        </div>
+                        <label for="ciudad_${productId}">¿De qué ciudad del Ecuador nos escribes?</label>
+                        <input type="text" id="ciudad_${productId}" placeholder="Ciudad" required>
+
+                        <label for="direccion_${productId}">Dirección de Envío:</label>
+                        <input type="text" id="direccion_${productId}" placeholder="Dirección de Envío" required>
+
+                        <label for="pago_${productId}">¿Cómo prefieres realizar tu pago?</label>
+                        <select id="pago_${productId}" name="pago" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="Transferencia">Transferencia Bancaria</option>
+                            <option value="Efectivo">Efectivo (Contra Entrega)</option>
+                        </select>
+                        
+                        <button type="submit">Enviar Pedido y Chatear por WhatsApp</button>
+                    </form>
+                    <div id="formMessage_${productId}" class="form-message"></div>
+                </div>
         </section>
     </main>
 
