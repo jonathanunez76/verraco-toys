@@ -589,22 +589,32 @@ header {
         }
         /* ****************************************************************** */
     } /* Cierre de la media query @media (max-width: 768px) */
+/* ... el resto de tus estilos fuera de la media query ... */
 
-  
-   
-  .formulario-contacto-producto {
+
+/* --- ESTILOS DEL FORMULARIO DE CONTACTO/PEDIDO --- */
+.formulario-contacto-producto {
     background-color: #f9f9f9;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-top: 20px;
+    /* Por defecto, estará oculto hasta que se haga clic en el botón de WhatsApp */
+    display: none; 
 }
 
 .formulario-contacto-producto h3 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
-    font-size: 1.5em; /* Ajustado para el tamaño del h3 */
+    font-size: 1.5em; 
+}
+
+.formulario-contacto-producto p.product-name-display { /* Para mostrar el nombre del producto en el form */
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #007bff; /* Color para el nombre del producto */
 }
 
 .formulario-contacto-producto label {
@@ -617,12 +627,12 @@ header {
 .formulario-contacto-producto input[type="text"],
 .formulario-contacto-producto input[type="email"],
 .formulario-contacto-producto select {
-    width: calc(100% - 20px); /* Ancho completo menos padding */
+    width: calc(100% - 20px); 
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Para incluir padding y border en el width */
+    box-sizing: border-box; 
 }
 
 .formulario-contacto-producto button[type="submit"] {
@@ -639,19 +649,18 @@ header {
 
 .formulario-contacto-producto button[type="submit"]:hover {
     background-color: #1DA851;
-} 
-   
-/* Estilo adicional para el contenedor del formulario */
-.product-form-container {
-    padding: 15px; /* Un poco de espacio alrededor del formulario */
-    border: 1px solid #eee; /* Un borde suave si quieres */
-    border-radius: 5px;
-    margin-top: 15px;
-    /* Los display: none/block se manejarán con JavaScript */
 }
+
+.formulario-contacto-producto .form-message { /* Para mensajes de confirmación */
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
+
+    
 </style>
-        }
-    </style>
+
 </head>
 <body>
     <header>
@@ -705,10 +714,11 @@ header {
                                 <p class="product-price">$650</p>
                                 <span class="stock-btn in-stock">En Stock</span>
                                 <button class="btn btn-details" onclick="showProductDetail('rc_car_1')">Ver Detalles</button>
-                               <!-- ESTE ES EL CONTENEDOR DEL FORMULARIO, QUE DEBE INICIAR OCULTO -->
-    <div id="product-detail-rc_car_1" class="product-form-container" style="display: none;">
-        <div class="formulario-contacto-producto">
+                                <button class="btn btn-whatsapp-product" onclick="toggleProductForm('rc_car_1', 'HOSHI NS18 RAPTOR 2')">Comprar por WhatsApp</button>
+                            <!-- AQUI VA EL CÓDIGO HTML DEL FORMULARIO (oculto por defecto con CSS) -->
+        <div id="formContainer_rc_car_1" class="formulario-contacto-producto">
             <h3>¡Déjanos tus datos para tu pedido!</h3>
+            <p class="product-name-display">Producto: <span class="product-name-span"></span></p>
             <form id="contactForm_rc_car_1" onsubmit="sendToWhatsApp(event, 'rc_car_1')"> 
                 <label for="nombre_rc_car_1">Nombre Completo:</label>
                 <input type="text" id="nombre_rc_car_1" name="nombre" required>
@@ -719,7 +729,6 @@ header {
                 <label for="ciudad_rc_car_1">¿De qué ciudad del Ecuador nos escribes?</label>
                 <input type="text" id="ciudad_rc_car_1" name="ciudad" required>
                 
-                <!-- ¡NUEVO CAMPO PARA LA DIRECCIÓN DE ENVÍO! -->
                 <label for="direccion_rc_car_1">Dirección de Envío:</label>
                 <input type="text" id="direccion_rc_car_1" name="direccion" required>
 
@@ -732,13 +741,16 @@ header {
                 </select>
 
                 <!-- Campo oculto con el nombre del producto para este formulario específico -->
-                <input type="hidden" name="producto_consultado" value="HOSHI N518 RAPTOR 2">
+                <input type="hidden" name="producto_consultado" value="HOSHI NS18 RAPTOR 2">
                 
                 <button type="submit">Enviar Pedido y Chatear por WhatsApp</button>
             </form>
-            <div id="formMessage_rc_car_1" style="margin-top: 15px; color: green; font-weight: bold;"></div>
+            <div class="form-message" id="formMessage_rc_car_1"></div>
         </div>
+        <!-- FIN DEL FORMULARIO -->
 
+    </div>
+</div>
 
 
  <div class="product-card" data-product-id="drone_1">
@@ -3291,63 +3303,72 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 // Cerrar categorías cuando cargue la página
 window.addEventListener('load', closeAllCategories);
-
-    }
-}
-    // TU NÚMERO DE WHATSAPP (código de país + número, sin el signo +)
-    const WHATSAPP_NUMBER = "593963057078"; // <--- ¡¡¡CAMBIA ESTO POR TU NÚMERO REAL!!!
-
-    // Función para mostrar/ocultar el formulario de un producto
-    function showProductDetail(productId) {
-        // Oculta todos los formularios de producto primero (opcional, si solo quieres uno abierto a la vez)
-        document.querySelectorAll('.product-form-container').forEach(formContainer => {
-            formContainer.style.display = 'none';
-        });
-
-        // Muestra el formulario del producto específico
-        const productForm = document.getElementById(`product-detail-${productId}`);
-        if (productForm) {
-            productForm.style.display = 'block'; // O 'flex' o 'grid' dependiendo de tu diseño CSS
-        }
-    }
-
-    // Tu función para enviar a WhatsApp (con la dirección añadida)
-    function sendToWhatsApp(event, productId) {
-        event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
-
-        const form = document.getElementById(`contactForm_${productId}`);
-        const nombre = document.getElementById(`nombre_${productId}`).value;
-        const correo = document.getElementById(`correo_${productId}`).value;
-        const ciudad = document.getElementById(`ciudad_${productId}`).value;
-        const direccion = document.getElementById(`direccion_${productId}`).value; // ¡NUEVO CAMPO!
-        const pago = document.getElementById(`pago_${productId}`).value;
-        const producto_consultado = form.querySelector('input[name="producto_consultado"]').value;
-
-        // Construye el mensaje de WhatsApp con la dirección
-        let message = `¡Hola Verraco Toys!\n\n`;
-        message += `Acabo de hacer un pedido desde tu web:\n`;
-        message += `**Producto:** ${producto_consultado}\n`;
-        message += `**Nombre:** ${nombre}\n`;
-        message += `**Correo:** ${correo}\n`;
-        message += `**Ciudad:** ${ciudad}\n`;
-        message += `**Dirección de Envío:** ${direccion}\n`; // ¡Añadido al mensaje!
-        message += `**Pago Preferido:** ${pago}\n\n`;
-        message += `¡Por favor, coordina conmigo para finalizar el pedido!`;
-
-        // Codifica el mensaje para la URL de WhatsApp
-        const encodedMessage = encodeURIComponent(message);
-
-        // Construye la URL de WhatsApp
-        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-
-        // Abre WhatsApp en una nueva pestaña
-        window.open(whatsappUrl, '_blank');
-
-        // Opcional: Muestra un mensaje en la web y limpia el formulario
-        document.getElementById(`formMessage_${productId}`).textContent = '¡Pedido enviado! Te estamos redirigiendo a WhatsApp...';
-        form.reset(); // Limpia los campos del formulario
-    }
-       
     </script>
+
+      <script>
+        // TU NÚMERO DE WHATSAPP (código de país + número, sin el signo +)
+        const WHATSAPP_NUMBER = "593963057078"; // <--- ¡¡¡CAMBIA ESTO POR TU NÚMERO REAL!!!
+
+        // Función para mostrar/ocultar el formulario del producto
+        function toggleProductForm(productId, productName) {
+            const formContainer = document.getElementById(`formContainer_${productId}`);
+            const productNameDisplaySpan = formContainer.querySelector('.product-name-span');
+
+            if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+                // Si está oculto, lo mostramos
+                formContainer.style.display = 'block'; // O 'flex' o 'grid' si usas esos displays en tu CSS
+                productNameDisplaySpan.textContent = productName; // Muestra el nombre del producto en el formulario
+                // Opcional: Desplazarse hasta el formulario
+                formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                // Si está visible, lo ocultamos
+                formContainer.style.display = 'none';
+            }
+        }
+
+        // Función para enviar los datos a WhatsApp
+        function sendToWhatsApp(event, productId) {
+            event.preventDefault(); // Evita que el formulario se recargue la página
+
+            const form = document.getElementById(`contactForm_${productId}`);
+            const nombre = document.getElementById(`nombre_${productId}`).value;
+            const correo = document.getElementById(`correo_${productId}`).value;
+            const ciudad = document.getElementById(`ciudad_${productId}`).value;
+            const direccion = document.getElementById(`direccion_${productId}`).value; 
+            const pago = document.getElementById(`pago_${productId}`).value;
+            const producto_consultado_name = form.querySelector('input[name="producto_consultado"]').value; // Nombre del producto del campo oculto
+
+            // Construye el mensaje de WhatsApp
+            let message = `¡Hola Verraco Toys!\n\n`;
+            message += `Acabo de hacer una consulta de pedido desde tu web:\n`;
+            message += `*Producto:* ${producto_consultado_name}\n`;
+            message += `*Nombre:* ${nombre}\n`;
+            message += `*Correo:* ${correo}\n`;
+            message += `*Ciudad:* ${ciudad}\n`;
+            message += `*Dirección de Envío:* ${direccion}\n`;
+            message += `*Pago Preferido:* ${pago}\n\n`;
+            message += `¡Por favor, coordina conmigo para finalizar el pedido!`;
+
+            // Codifica el mensaje para la URL de WhatsApp
+            const encodedMessage = encodeURIComponent(message);
+
+            // Construye la URL de WhatsApp
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+            // Abre WhatsApp en una nueva pestaña
+            window.open(whatsappUrl, '_blank');
+
+            // Muestra un mensaje de confirmación y limpia el formulario
+            const formMessageElement = document.getElementById(`formMessage_${productId}`);
+            formMessageElement.textContent = '¡Pedido enviado! Te estamos redirigiendo a WhatsApp...';
+            form.reset(); // Limpia los campos del formulario
+            
+            // Opcional: Ocultar el formulario después de un tiempo
+            setTimeout(() => {
+                document.getElementById(`formContainer_${productId}`).style.display = 'none';
+                formMessageElement.textContent = ''; // Limpia el mensaje de confirmación
+            }, 5000); // Oculta el formulario después de 5 segundos
+        }
+    </script> 
 </body>
 </html>
