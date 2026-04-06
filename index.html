@@ -3305,32 +3305,85 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 window.addEventListener('load', closeAllCategories);
     </script>
 
-     <script>
+    <script>
+    // ===============================================================
+    // JAVASCRIPT COMPLETO PARA NAVEGACIÓN Y FUNCIONES DE WHATSAPP
+    // ===============================================================
+
+    // --- Configuración de WhatsApp ---
     const WHATSAPP_NUMBER = "593963057078"; // <--- ¡¡¡CAMBIA ESTO POR TU NÚMERO REAL!!!
 
+    // --- Funciones de navegación de categorías (Tu código original, ligeramente ajustado) ---
+
+    // Función para cerrar todas las categorías (tu función existente)
+    function closeAllCategories() {
+        // Aquí va el código de tu función closeAllCategories.
+        // Por ejemplo:
+        // document.querySelectorAll('.category-content').forEach(content => {
+        //     content.style.display = 'none';
+        // });
+        // Asegúrate de que el contenido de esta función sea lo que ya tienes.
+    }
+
+    // Lógica de navegación para cambiar sección
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = link.getAttribute('data-section');
+            
+            // Quitar 'active' de todas las secciones
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Añadir 'active' a la sección clicada
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Cierra tus categorías al navegar
+            closeAllCategories();
+            
+            // Cierra todos los formularios de WhatsApp al cambiar de sección/categoría
+            closeAllWhatsappForms(); 
+        });
+    });
+
+    // Cerrar categorías cuando cargue la página
+    window.addEventListener('load', closeAllCategories);
+
+
+    // --- Funciones de formulario de WhatsApp ---
+
+    // Función para cerrar todos los formularios de WhatsApp que puedan estar abiertos
+    function closeAllWhatsappForms() {
+        document.querySelectorAll('.formulario-contacto-producto').forEach(form => {
+            form.style.display = 'none';
+        });
+    }
+
+    // Función para mostrar/ocultar el formulario del producto y desplazar la vista
     function toggleProductForm(productId, productName) {
         const formContainer = document.getElementById(`formContainer_${productId}`);
         const productNameDisplaySpan = formContainer.querySelector('.product-name-span');
 
-        // Ocultar todos los formularios abiertos para que solo se vea uno
+        // Primero, cierra todos los formularios de WhatsApp, excepto el actual si ya está visible y queremos cerrarlo
         document.querySelectorAll('.formulario-contacto-producto').forEach(form => {
-            if (form.id !== `formContainer_${productId}`) { // No ocultar el actual
+            if (form.id !== `formContainer_${productId}` || form.style.display === 'block') {
                 form.style.display = 'none';
             }
         });
         
-        // Mostrar u ocultar el formulario específico y desplazarse
+        // Ahora, muestra u oculta el formulario del producto seleccionado
         if (formContainer.style.display === 'none' || formContainer.style.display === '') {
-            formContainer.style.display = 'block'; // Mostrar
-            productNameDisplaySpan.textContent = productName; // Poner el nombre del producto
-            formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Desplazar
+            formContainer.style.display = 'block'; // Mostrar el formulario
+            productNameDisplaySpan.textContent = productName; // Actualizar el nombre del producto en el formulario
+            formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Desplazarse para que sea visible
         } else {
-            formContainer.style.display = 'none'; // Ocultar si ya estaba visible
+            formContainer.style.display = 'none'; // Ocultar el formulario si ya estaba visible
         }
     }
 
+    // Función para enviar los datos del formulario a WhatsApp
     function sendToWhatsApp(event, productId) {
-        event.preventDefault(); // Evita que se recargue la página
+        event.preventDefault(); // Evita que la página se recargue al enviar el formulario
 
         const form = document.getElementById(`contactForm_${productId}`);
         const nombre = document.getElementById(`nombre_${productId}`).value;
@@ -3338,8 +3391,9 @@ window.addEventListener('load', closeAllCategories);
         const ciudad = document.getElementById(`ciudad_${productId}`).value;
         const direccion = document.getElementById(`direccion_${productId}`).value; 
         const pago = document.getElementById(`pago_${productId}`).value;
-        const producto_consultado_name = form.querySelector('input[name="producto_consultado"]').value; 
+        const producto_consultado_name = form.querySelector('input[name="producto_consultado"]').value; // Obtener el nombre del producto
 
+        // Construir el mensaje que se enviará por WhatsApp
         let message = `¡Hola Verraco Toys!\n\n`;
         message += `Acabo de hacer una consulta de pedido desde tu web:\n`;
         message += `*Producto:* ${producto_consultado_name}\n`;
@@ -3350,18 +3404,24 @@ window.addEventListener('load', closeAllCategories);
         message += `*Pago Preferido:* ${pago}\n\n`;
         message += `¡Por favor, coordina conmigo para finalizar el pedido!`;
 
+        // Codificar el mensaje para que pueda ir en la URL de WhatsApp
         const encodedMessage = encodeURIComponent(message);
+
+        // Construir la URL de WhatsApp
         const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
+        // Abrir WhatsApp en una nueva pestaña
         window.open(whatsappUrl, '_blank');
 
+        // Mostrar un mensaje de confirmación en la página y limpiar el formulario
         const formMessageElement = document.getElementById(`formMessage_${productId}`);
         formMessageElement.textContent = '¡Pedido enviado! Te estamos redirigiendo a WhatsApp...';
-        form.reset(); 
+        form.reset(); // Limpiar todos los campos del formulario
         
+        // Ocultar el formulario después de 5 segundos
         setTimeout(() => {
             document.getElementById(`formContainer_${productId}`).style.display = 'none';
-            formMessageElement.textContent = ''; 
+            formMessageElement.textContent = ''; // Limpiar el mensaje de confirmación
         }, 5000); 
     }
 </script>
