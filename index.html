@@ -3150,7 +3150,8 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
             });
             featuresList.appendChild(ul);
 
-            const whatsapplink = document.getElementById('detail-whatsapp-link'); whatsapplink.href = `https://wa.me/593963057078?text=${encodeURIComponent(product.whatsapp_message)}`;
+         const whatsappLink = document.getElementById('detail-whatsapp-link');
+            whatsappLink.href = `https://wa.me/593963057078?text=${encodeURIComponent(product.whatsapp_message)}`;
 
             // Configurar el carrusel de imágenes
             const carouselSlides = document.getElementById('product-carousel-slides');
