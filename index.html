@@ -1933,11 +1933,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                         <!-- Las características se inyectarán aquí -->
                     </div>
                     <a id="detail-whatsapp-link" href="#" target="_blank" class="detail-whatsapp-btn">Comprar por WhatsApp</a>
-                          <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
-                </div> 
-            
-     <div id="formContainer_${productId}" class="formulario-contacto-producto" style="display: none;">
-                    <h3>Déjanos tus datos para tu pedido:</h3>
+                        <h3>Déjanos tus datos para tu pedido:</h3>
                     <p class="product-name-display">Producto: <span class="product-name-span">${product.name}</span></p>
                     <form id="contactForm_${productId}">
                         <label for="nombre_${productId}">Nombre Completo:</label>
@@ -1963,6 +1959,10 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                     </form>
                     <div id="formMessage_${productId}" class="form-message"></div>
                 </div>
+                          <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
+                </div> 
+            
+
         </section>
     </main>
 
