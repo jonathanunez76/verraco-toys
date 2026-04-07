@@ -1909,69 +1909,42 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
         </section>
 
 
-
-  <!-- SECCIÓN DE DETALLE DE PRODUCTO (OCULTA POR DEFECTO) -->
+  
+        <!-- SECCIÓN DE DETALLE DE PRODUCTO (OCULTA POR DEFECTO) -->
                    
-   <section id="product-detail-page" style="display: none;">
-    <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
-    <div class="product-detail">
-        <div class="carousel-container">
-            <div class="carousel-slides" id="product-carousel-slides">
-                <!-- Las imágenes del carrusel se inyectarán aquí -->
-            </div>
-            <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
-            <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
-        </div>
-        <div class="video-container-responsive">
-            <!-- ESTE ES EL DIV ENVOLTORIO -->
-            <iframe id="product-video-frame" src="[URL_DE_TU_VIDEO]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
-        <h3><span id="detail-product-name"></span></h3>
-        <p class="detail-price"><span id="detail-product-price"></span></p>
-        <p class="detail-description" id="detail-product-description"></p>
-        <div class="detail-features" id="detail-product-features">
-            <!-- Las características se inyectarán aquí -->
-        </div>
-
-        <!-- *************************************************************** -->
-        <!-- ***** INICIO DE LA FUNCIONALIDAD DEL FORMULARIO DE WHATSAPP ***** -->
-        <!-- *************************************************************** -->
-
-        <!-- Botón para "Comprar por WhatsApp" - al hacer click, muestra el formulario -->
-        <!-- Se mantiene el ID y la clase para que tome tus estilos existentes -->
-        <button id="detail-whatsapp-link" class="detail-whatsapp-btn" onclick="showWhatsappForm()">Comprar por WhatsApp</button>
-
-        <!-- Contenedor del formulario de WhatsApp - inicialmente oculto -->
-        <div id="whatsapp-form-container" style="display:none; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 20px; background-color: #f9f9f9;">
-            <h3 style="margin-top: 0; margin-bottom: 15px;">Envía tu mensaje por WhatsApp</h3>
-            <form id="whatsapp-form">
-                <div style="margin-bottom: 10px;">
-                    <label for="user-name-simple" style="display: block; margin-bottom: 5px; font-weight: normal;">Tu nombre (opcional):</label>
-                    <input type="text" id="user-name-simple" name="user-name-simple" style="width: calc(100% - 20px); padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+        <section id="product-detail-page" style="display: none;">
+            <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
+            <div class="product-detail">
+                <div class="carousel-container">
+                    <div class="carousel-slides" id="product-carousel-slides">
+                        <!-- Las imágenes del carrusel se inyectarán aquí -->
+                    </div>
+                    <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
+                    <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
                 </div>
-                <div style="margin-bottom: 15px;">
-                    <label for="user-message-simple" style="display: block; margin-bottom: 5px; font-weight: normal;">Tu mensaje:</label>
-                    <textarea id="user-message-simple" name="user-message-simple" rows="4" style="width: calc(100% - 20px); padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical; box-sizing: border-box;"></textarea>
-                </div>
-                <button type="submit" style="background-color: #25D366; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-right: 10px;">Enviar a WhatsApp</button>
-                <button type="button" onclick="hideWhatsappForm()" style="background-color: #6c757d; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Cancelar</button>
-            </form>
-        </div>
+                <div class="video-container-responsive"> <!-- ESTE ES EL DIV ENVOLTORIO -->
+               <iframe id="product-video-frame" src="[URL_DE_TU_VIDEO]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-picture" allowfullscreen></iframe>
+                      </div>
 
-        <!-- *************************************************************** -->
-        <!-- ***** FIN DE LA FUNCIONALIDAD DEL FORMULARIO DE WHATSAPP ***** -->
-        <!-- *************************************************************** -->
-
-    </div>
-    <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
-</section>
-
+                                      <h3 id="detail-product-name"></h3>
+                    <p class="detail-price" id="detail-product-price"></p>
+                    <p class="detail-description" id="detail-product-description"></p>
+                    <div class="detail-features" id="detail-product-features">
+                        <!-- Las características se inyectarán aquí -->
+                    </div>
+                <!-- Reemplaza la URL con la de tu Formulario de Google -->
+<a href="https://forms.gle/amRQ1TfbUsvR37eQ6" target="_blank" id="detail-whatsapp-link" class="detail-whatsapp-btn">Comprar por WhatsApp</a>
+                    <a id="detail-whatsapp-link" href="#" target="_blank" class="detail-whatsapp-btn">Comprar por WhatsApp</a>
+                       <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
+                </div>     
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2026 Verraco Toys. Todos los derechos reservados.</p>
     </footer>
+
+
 
 
 
@@ -3556,127 +3529,6 @@ window.addEventListener('load', closeAllCategories);
         });
 });
 
-  <script>
-   
-        <script>  
-// --- Variable global para almacenar el producto actual que se está viendo ---
-    let currentProduct = null;
-
-    // --- FUNCIONES PARA EL FORMULARIO DE WHATSAPP (SIMPLES Y DIRECTAS) ---
-
-    // Muestra el formulario de WhatsApp y pre-llena el mensaje
-    function showWhatsappForm() {
-        const formContainer = document.getElementById('whatsapp-form-container');
-        const showButton = document.getElementById('detail-whatsapp-link'); // Este es ahora tu botón
-        const userMessageTextarea = document.getElementById('user-message-simple');
-        const userNameInput = document.getElementById('user-name-simple');
-
-        if (formContainer && showButton && userMessageTextarea) {
-            formContainer.style.display = 'block'; // Muestra el formulario
-            showButton.style.display = 'none'; // Oculta el botón original
-
-            // Limpia el campo de nombre por si acaso
-            if (userNameInput) userNameInput.value = '';
-
-            // Pre-llena el mensaje del textarea
-            if (currentProduct && currentProduct.whatsapp_message) {
-                userMessageTextarea.value = currentProduct.whatsapp_message;
-            } else if (currentProduct && currentProduct.name) {
-                userMessageTextarea.value = `Hola! Estoy interesado en el producto ${currentProduct.name}.`;
-            } else {
-                userMessageTextarea.value = "Hola! Estoy interesado en un producto de su catálogo.";
-            }
-        }
-    }
-
-    // Oculta el formulario de WhatsApp y muestra el botón original
-    function hideWhatsappForm() {
-        const formContainer = document.getElementById('whatsapp-form-container');
-        const showButton = document.getElementById('detail-whatsapp-link'); // Este es ahora tu botón
-        const whatsappForm = document.getElementById('whatsapp-form');
-
-        if (formContainer && showButton) {
-            formContainer.style.display = 'none'; // Oculta el formulario
-            showButton.style.display = 'block'; // Muestra el botón original
-            if (whatsappForm) whatsappForm.reset(); // Limpia los campos del formulario
-        }
-    }
-
-    // --- FUNCIÓN PARA CARGAR LOS DATOS DEL PRODUCTO (AJUSTADA) ---
-    // Esta función ya la debes tener en tu código. Aquí la ajustamos para que
-    // también configure el currentProduct y maneje la visibilidad del botón.
-    // ASEGÚRATE DE QUE LLAMES A ESTA FUNCIÓN CON EL ID CORRECTO DEL PRODUCTO
-    // cuando se carga la página de detalle o cuando un usuario selecciona un producto.
-    function loadProductDetail(productId) { // Renombré tu hideProductDetail para evitar conflictos y sea más claro
-        currentProduct = products[productId]; // Asigna el producto actual
-
-        if (currentProduct) {
-            // Tu código existente para actualizar la interfaz con los detalles del producto:
-            document.getElementById('detail-product-name').textContent = currentProduct.name;
-            document.getElementById('detail-product-price').textContent = currentProduct.price;
-            document.getElementById('detail-product-description').textContent = currentProduct.description;
-
-            // ... (Ajusta esto para que se ajuste a cómo inyectas las características y el carrusel) ...
-            const featuresListDiv = document.getElementById('detail-product-features');
-            if (featuresListDiv) {
-                featuresListDiv.innerHTML = '';
-                const ulElement = document.createElement('ul');
-                currentProduct.features.forEach(feature => {
-                    const liElement = document.createElement('li');
-                    liElement.textContent = feature;
-                    ulElement.appendChild(liElement);
-                });
-                featuresListDiv.appendChild(ulElement);
-            }
-
-            // Aquí iría tu lógica para cargar el carrusel de imágenes
-            // Asegúrate de que el botón de WhatsApp esté visible y el formulario oculto
-            const showButton = document.getElementById('detail-whatsapp-link');
-            const formContainer = document.getElementById('whatsapp-form-container');
-            if (showButton) showButton.style.display = 'block';
-            if (formContainer) formContainer.style.display = 'none';
-
-        } else {
-            console.error("Producto no encontrado para el ID:", productId);
-            // Oculta el botón de WhatsApp si no hay producto
-            const showButton = document.getElementById('detail-whatsapp-link');
-            if (showButton) showButton.style.display = 'none';
-        }
-    }
-
-
-    // --- MANEJO DEL ENVÍO DEL FORMULARIO DE WHATSAPP ---
-    document.addEventListener('DOMContentLoaded', () => {
-        const whatsappForm = document.getElementById('whatsapp-form');
-
-        if (whatsappForm) {
-            whatsappForm.addEventListener('submit', (e) => {
-                e.preventDefault(); // Evita que la página se recargue
-
-                const userName = document.getElementById('user-name-simple').value.trim();
-                const userMessage = document.getElementById('user-message-simple').value.trim();
-
-                let finalMessage = "";
-                if (userName) {
-                    finalMessage += `Mi nombre es ${userName}. `;
-                }
-                if (userMessage) {
-                    finalMessage += userMessage;
-                } else if (currentProduct && currentProduct.whatsapp_message) {
-                    finalMessage += currentProduct.whatsapp_message; // Mensaje predefinido del producto
-                } else {
-                    finalMessage += "Hola! Me gustaría más información sobre el producto.";
-                }
-
-                const whatsappNumber = '593963057078'; // <-- ¡IMPORTANTE! Reemplaza con tu número de WhatsApp real (incluido el código de país, sin el signo +)
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(finalMessage)}`;
-
-                window.open(whatsappURL, '_blank'); // Abre WhatsApp en una nueva pestaña
-
-                hideWhatsappForm(); // Oculta el formulario y muestra el botón original
-            });
-        }
-    }
 </script>
  
         
