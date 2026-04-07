@@ -2031,16 +2031,13 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                     <p class="detail-price" id="detail-product-price"></p>
                     <p class="detail-description" id="detail-product-description"></p>
                     <div class="detail-features" id="detail-product-features">
-
-
-                        
                         <!-- Las características se inyectarán aquí -->
                     </div>
-           <button id="detail-buy-button" class="buy-now-button" data-product-id="">Comprar por WhatsApp</button>
-                 <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
-                       </div>    
-
-         
+                      <a id="detail-whatsapp-link" class="detail-whatsapp-btn" href="#" target="_blank">Comprar por WhatsApp</a>
+                       <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
+                </div>    
+    
+        </section>
     </main>
 
     <footer>
@@ -3293,14 +3290,10 @@ whatsapp_message: 'Hola! Quiero hacer un pedido:\n\n*Producto:* avion electrico 
                 li.textContent = feature;
                 ul.appendChild(li);
             });
-            featuresList.appendChild(ul);{
-                
-       if (detailBuyButton) { // 'detailBuyButton' es la variable que debería seleccionar el botón id="detail-buy-button"
-    detailBuyButton.dataset.productId = productId;     
+            featuresList.appendChild(ul);
 
-       }
-          const carouselSlides = document.getElementById('product-carousel-slides');
-
+            const whatsappLink = document.getElementById('detail-whatsapp-link');
+            whatsappLink.href = `https://wa.me/593963057078?text=${encodeURIComponent(product.whatsapp_message)}`;
 
             // Configurar el carrusel de imágenes
             const carouselSlides = document.getElementById('product-carousel-slides');
