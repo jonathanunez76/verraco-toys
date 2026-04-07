@@ -3508,6 +3508,9 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
+  // Cerrar categorías cuando cargue la página
+   window.addEventListener('load', closeAllCategories);
+    window.addEventListener('load', closeAllWhatsappForms);
 
     </script>
 
@@ -3554,8 +3557,13 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
     // Cerrar categorías cuando cargue la página
    window.addEventListener('load', closeAllCategories);
-    window.addEventListener('load', closeAllWhatsappForms);
 
+        });
+    });
+
+    // Cerrar categorías cuando cargue la página
+      window.addEventListener('load', closeAllWhatsappForms);
+        
     // --- Funciones de formulario de WhatsApp ---
 
     // Función para cerrar todos los formularios de WhatsApp que puedan estar abiertos
