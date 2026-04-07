@@ -1934,41 +1934,9 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                     <div class="detail-features" id="detail-product-features">
                         <!-- Las características se inyectarán aquí -->
                     </div>
-                    
-                <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
-                </div> 
-        <button class="btn btn-whatsapp" onclick="toggleProductForm('rc_car_1', 'HOSHI NS18 RAPTOR 2')">Comprar por WhatsApp</button>
-                            <!-- AQUI VA EL CÓDIGO HTML DEL FORMULARIO (oculto por defecto con CSS) -->
-        <div id="formContainer_rc_car_1" class="formulario-contacto-producto" style= "display: none;">
-            <h3>¡Déjanos tus datos para tu pedido!</h3>
-            <p class="product-name-display">Producto: <span class="product-name-span"></span></p>
-            <form id="contactForm_rc_car_1" onsubmit="sendToWhatsApp(event, 'rc_car_1')"> 
-                <label for="nombre_rc_car_1">Nombre Completo:</label>
-                <input type="text" id="nombre_rc_car_1" name="nombre" required>
-                
-                <label for="correo_rc_car_1">Correo Electrónico:</label>
-                <input type="email" id="correo_rc_car_1" name="correo" required>
-                
-                <label for="ciudad_rc_car_1">¿De qué ciudad del Ecuador nos escribes?</label>
-                <input type="text" id="ciudad_rc_car_1" name="ciudad" required>
-                
-                <label for="direccion_rc_car_1">Dirección de Envío:</label>
-                <input type="text" id="direccion_rc_car_1" name="direccion" required>
-
-                <label for="pago_rc_car_1">¿Cómo prefieres realizar tu pago?</label>
-                <select id="pago_rc_car_1" name="pago" required>
-                    <option value="">-- Selecciona una opción --</option>  
-                    <option value="transferencia">Transferencia Bancaria</option>
-                    <!-- Puedes añadir más opciones si las tienes -->
-               </select>
-
-                <!-- Campo oculto con el nombre del producto para este formulario específico -->
-                <input type="hidden" name="producto_consultado" value="HOSHI NS18 RAPTOR 2">
-                
-                <button type="submit">Enviar Pedido y Chatear por WhatsApp</button>
-            </form>
-            <div class="form-message" id="formMessage_rc_car_1"></div>
-        </div>
+                    <a id="detail-whatsapp-link" href="#" target="_blank" class="detail-whatsapp-btn">Comprar por WhatsApp</a>
+                       <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
+                </div>     
         </section>
     </main>
 
