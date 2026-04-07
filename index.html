@@ -3505,12 +3505,16 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         
         // Cerrar categorías
         closeAllCategories();
+
+  // Cerrar categorías cuando cargue la página
+   window.addEventListener('load', closeAllCategories);
+        
     });
 });
 
   // Cerrar categorías cuando cargue la página
    window.addEventListener('load', closeAllCategories);
-    window.addEventListener('load', closeAllWhatsappForms);
+
 
     </script>
 
@@ -3549,15 +3553,10 @@ document.querySelectorAll('.nav-links a').forEach(link => {
             
             // Cierra tus categorías al navegar
             closeAllCategories();
-            
+     
+
             // Cierra todos los formularios de WhatsApp al cambiar de sección/categoría
             closeAllWhatsappForms(); 
-        });
-    });
-
-    // Cerrar categorías cuando cargue la página
-   window.addEventListener('load', closeAllCategories);
-
         });
     });
 
