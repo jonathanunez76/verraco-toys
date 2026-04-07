@@ -1936,7 +1936,39 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                     </div>
                     <a id="detail-whatsapp-link" href="#" target="_blank" class="detail-whatsapp-btn">Comprar por WhatsApp</a>
                        <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
-                </div>     
+                </div>    
+            <button id="detail-whatsapp-link" class="detail-whatsapp-btn" onclick="showWhatsappForm()">
+    Comprar por WhatsApp
+</button>
+
+<!-- FORMULARIO: Esto estará oculto al principio y aparecerá al hacer clic en el botón -->
+<div id="whatsapp-form-container" style="display:none; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 20px; background-color: #f9f9f9;">
+    <h3 style="margin-top: 0; margin-bottom: 15px;">Datos para tu pedido</h3>
+    <form id="whatsapp-form">
+        <div style="margin-bottom: 10px;">
+            <label for="user-name-simple" style="display: block; margin-bottom: 5px;">Nombre completo:</label>
+            <input type="text" id="user-name-simple" name="user-name-simple" required style="width: calc(100% - 20px); padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="user-city-simple" style="display: block; margin-bottom: 5px;">Ciudad:</label>
+            <input type="text" id="user-city-simple" name="user-city-simple" required style="width: calc(100% - 20px); padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="user-address-simple" style="display: block; margin-bottom: 5px;">Dirección de envío:</label>
+            <input type="text" id="user-address-simple" name="user-address-simple" required style="width: calc(100% - 20px); padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="user-payment-simple" style="display: block; margin-bottom: 5px;">Forma de pago:</label>
+            <input type="text" id="user-payment-simple" name="user-payment-simple" required style="width: calc(100% - 20px); padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="user-message-simple" style="display: block; margin-bottom: 5px;">Mensaje / Producto (puedes añadir más detalles aquí):</label>
+            <textarea id="user-message-simple" name="user-message-simple" rows="4" style="width: calc(100% - 20px); padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+        </div>
+        <button type="submit" style="background-color: #25D366; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Enviar a WhatsApp</button>
+        <button type="button" onclick="hideWhatsappForm()" style="background-color: #6c757d; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-left: 10px;">Cancelar</button>
+    </form>
+</div>vc 
         </section>
     </main>
 
@@ -1974,7 +2006,7 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
 
                 ],
                 video: 'https://player.vimeo.com/video/1177095678?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
-                whatsapp_message: 'Hola! Quiero el HOSHI NS18 RAPTOR 2 a escala 4WD 1/8 por $650 USD .'
+                whatsapp_message: 'Hola! Mi Nombre:             ;Le escribo de la ciudad:              ; Quiero el HOSHI NS18 RAPTOR 2 a escala 4WD 1/8 por $650 USD .'
 
 
            },
