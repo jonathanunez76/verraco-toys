@@ -2031,13 +2031,51 @@ background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">Explora n
                     <p class="detail-price" id="detail-product-price"></p>
                     <p class="detail-description" id="detail-product-description"></p>
                     <div class="detail-features" id="detail-product-features">
+
+
+                        
                         <!-- Las características se inyectarán aquí -->
                     </div>
                       <a id="detail-whatsapp-link" class="detail-whatsapp-btn" href="#" target="_blank">Comprar por WhatsApp</a>
-                       <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
+       </div>    
+      <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
+        </section>   
+                
+            <button class="btn btn-whatsapp" onclick="toggleProductForm('droneeee_1', 'WLTOYS 104311 CARRO CRAWLERS TODOTERRENO 4X4')">Comprar por WhatsApp</button>
+                            <!-- AQUI VA EL CÓDIGO HTML DEL FORMULARIO (oculto por defecto con CSS) -->
+        <div id="formContainer_droneeee_1" class="formulario-contacto-producto" style= "display: none;">
+            <h3>¡Déjanos tus datos para tu pedido!</h3>
+            <p class="product-name-display">Producto: <span class="product-name-span"></span></p>
+            <form id="contactForm_droneeee_1" onsubmit="sendToWhatsApp(event, 'droneeee_1')"> 
+                <label for="nombre_droneeee_1">Nombre Completo:</label>
+                <input type="text" id="nombre_droneeee_1" name="nombre" required>
+                
+                <label for="correo_droneeee_1">Correo Electrónico:</label>
+                <input type="email" id="correo_droneeee_1" name="correo" required>
+                
+                <label for="ciudad_droneeee_1">¿De qué ciudad del Ecuador nos escribes?</label>
+                <input type="text" id="ciudad_droneeee_1" name="ciudad" required>
+                
+                <label for="direccion_droneeee_1">Dirección de Envío:</label>
+                <input type="text" id="direccion_droneeee_1" name="direccion" required>
+
+                <label for="pago_droneeee_1">¿Cómo prefieres realizar tu pago?</label>
+                <select id="pago_droneeee_1" name="pago" required>
+                    <option value="">-- Selecciona una opción --</option>  
+                    <option value="transferencia">Transferencia Bancaria</option>
+                    <!-- Puedes añadir más opciones si las tienes -->
+               </select>
+
+                <!-- Campo oculto con el nombre del producto para este formulario específico -->
+                <input type="hidden" name="producto_consultado" value="WLTOYS 104311 CARRO CRAWLERS TODOTERRENO 4X4">
+                
+                <button type="submit">Enviar Pedido y Chatear por WhatsApp</button>
+            </form>
+            <div class="form-message" id="formMessage_droneeee_1"></div>
+        </div>
                 </div>    
-    
-        </section>
+      <button class="btn btn-back" onclick="hideProductDetail()">Volver a la Tienda</button>
+        </section>           
     </main>
 
     <footer>
