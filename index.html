@@ -50,6 +50,7 @@
             text-decoration: none;
             color: #333;
             position: relative;
+            cursor: pointer;
         }
         .cart-count {
             background-color: #007bff;
@@ -69,7 +70,7 @@
             padding: 0 20px;
         }
 
-        /* Carrusel de Productos (simulado) */
+        /* Carrusel de Productos (simulado en página principal) */
         .product-carousel {
             background-color: #fff;
             padding: 20px;
@@ -106,6 +107,9 @@
         }
 
         /* Sección de Productos */
+        #product-list-page {
+            display: block; /* Visible por defecto */
+        }
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -160,6 +164,272 @@
             background-color: #e0a800;
         }
 
+        /* Página de Detalle de Producto */
+        #product-detail-page {
+            display: none; /* Oculto por defecto */
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #product-detail-page h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .product-detail-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .product-detail-images {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        .product-detail-images img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .product-detail-info {
+            flex: 2;
+            min-width: 300px;
+        }
+        .product-detail-info .price {
+            font-size: 2em;
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .product-detail-info p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .buy-now-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .buy-now-button:hover {
+            background-color: #c82333;
+        }
+        .back-to-products {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .back-to-products:hover {
+            background-color: #5a6268;
+        }
+
+        /* Carrito de Compras (Modal) */
+        .cart-modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .cart-modal.active { /* Para mostrar el modal */
+            display: flex;
+        }
+        .cart-modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+        }
+        #cart-items-container {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-item-info {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cart-item-info img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .cart-item-actions button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .cart-item-actions input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .cart-total {
+            text-align: right;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .checkout-button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .checkout-button:hover {
+            background-color: #218838;
+        }
+
+        /* Página de Checkout (Modal) */
+        .checkout-modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .checkout-modal.active { /* Para mostrar el modal */
+            display: flex;
+        }
+        .checkout-modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .checkout-modal-content h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .checkout-modal-content label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .checkout-modal-content input[type="text"],
+        .checkout-modal-content input[type="email"],
+        .checkout-modal-content input[type="tel"],
+        .checkout-modal-content select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .checkout-modal-content .form-group {
+            margin-bottom: 15px;
+        }
+        .checkout-summary {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .checkout-summary div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .checkout-summary .total-amount {
+            font-size: 1.3em;
+            font-weight: bold;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .place-order-button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .place-order-button:hover {
+            background-color: #0056b3;
+        }
+
+
         /* Pie de Página */
         footer {
             background-color: #333;
@@ -180,7 +450,8 @@
         /* Media Queries para Responsividad */
         @media (max-width: 768px) {
             .nav-menu ul {
-                display: none; /* Oculta el menú en pantallas pequeñas por simplicidad, se podría hacer un menú hamburguesa */
+                display: none; /*
+                                /* Oculta el menú en pantallas pequeñas por simplicidad, se podría hacer un menú hamburguesa */
             }
             header {
                 padding: 10px;
@@ -191,88 +462,138 @@
             .product-grid {
                 grid-template-columns: 1fr; /* Una columna en móviles */
             }
+            .product-detail-content {
+                flex-direction: column;
+            }
+            .checkout-modal-content {
+                width: 95%;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">BERRACO TOY</a>
+        <a href="#" class="logo" id="home-link">BERRACO TOY</a>
         <nav class="nav-menu">
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
+                <li><a href="#" id="nav-home">Inicio</a></li>
+                <li><a href="#" id="nav-products">Productos</a></li>
                 <li><a href="#">Ofertas</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
-        <a href="#" class="cart-icon">🛒<span class="cart-count">0</span></a>
+        <a href="#" class="cart-icon" id="open-cart-modal">🛒<span class="cart-count">0</span></a>
     </header>
 
     <div class="container">
-        <section class="product-carousel">
-            <img src="https://via.placeholder.com/800x400?text=Visita+nuestras+Liquidaciones" alt="Liquidaciones">
-            <h2>¡GRANDES DESCUENTOS EN LIQUIDACIÓN!</h2>
-            <p>Descubre ofertas increíbles en una amplia variedad de juguetes. ¡No te las pierdas!</p>
-            <a href="#" class="view-products-button">VER OFERTAS</a>
-        </section>
+        <!-- Página principal de listado de productos -->
+        <div id="product-list-page">
+            <section class="product-carousel">
+                <img src="https://via.placeholder.com/800x400?text=Visita+nuestras+Liquidaciones" alt="Liquidaciones">
+                <h2>¡GRANDES DESCUENTOS EN LIQUIDACIÓN!</h2>
+                <p>Descubre ofertas increíbles en una amplia variedad de juguetes. ¡No te las pierdas!</p>
+                <a href="#" class="view-products-button">VER OFERTAS</a>
+            </section>
 
-        <h1>Nuestros Productos</h1>
+            <h1>Nuestros Productos</h1>
 
-        <section class="product-grid">
-            <!-- Producto 1 -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200?text=Camión+RC+Verde" alt="Camión RC Verde">
-                <h3>Huina 1501 Camión Scania 770S RC Verde Escala 1/18</h3>
-                <p class="price">$135.53 USD</p>
-                <a href="product-detail.html?id=1" class="details-button">Ver Detalles</a>
-                <button class="add-to-cart-button">Añadir al Carrito</button>
-            </div>
+            <section class="product-grid" id="product-grid-container">
+                <!-- Los productos se cargarán aquí dinámicamente con JavaScript -->
+            </section>
+        </div>
 
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200?text=Plataforma+RC" alt="Plataforma RC">
-                <h3>Huina 1502 Plataforma para Scania a Control Remoto Escala 1/18 Gris</h3>
-                <p class="price">$61.87 USD</p>
-                <a href="product-detail.html?id=2" class="details-button">Ver Detalles</a>
-                <button class="add-to-cart-button">Añadir al Carrito</button>
+        <!-- Página de Detalle de Producto (oculta por defecto) -->
+        <div id="product-detail-page">
+            <button class="back-to-products" id="back-to-products-button">← Volver a Productos</button>
+            <h2 id="detail-product-name"></h2>
+            <div class="product-detail-content">
+                <div class="product-detail-images">
+                    <!-- Carrusel de imágenes simulado -->
+                    <img id="detail-main-image" src="" alt="Imagen Principal del Producto">
+                    <div id="detail-thumbnails" style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                        <!-- Miniaturas de imágenes se cargarán aquí -->
+                    </div>
+                    <!-- Video simulado -->
+                    <div id="detail-video" style="margin-top: 20px; display: none;">
+                        <iframe width="100%" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="product-detail-info">
+                    <p id="detail-product-description"></p>
+                    <p class="price" id="detail-product-price"></p>
+                    <button class="add-to-cart-button" id="detail-add-to-cart-button">Añadir al Carrito</button>
+                    <button class="buy-now-button" id="detail-buy-now-button">Comprar Ahora</button>
+                </div>
             </div>
+        </div>
+    </div>
+        <!-- Carrito de Compras (Modal) -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="close-button" id="close-cart-modal">&times;</span>
+            <h3>Tu Carrito de Compras</h3>
+            <div id="cart-items-container">
+                <!-- Los ítems del carrito se cargarán aquí -->
+            </div>
+            <div class="cart-total">
+                Total: <span id="cart-total-amount">$0.00</span>
+            </div>
+            <button class="checkout-button" id="proceed-to-checkout">Proceder al Pago</button>
+        </div>
+    </div>
 
-            <!-- Producto 3 -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200?text=Volquete+RC" alt="Volquete RC">
-                <h3>Volquete a Control Remoto Scania 1/18</h3>
-                <p class="price">$76.60 USD</p>
-                <a href="product-detail.html?id=3" class="details-button">Ver Detalles</a>
-                <button class="add-to-cart-button">Añadir al Carrito</button>
-            </div>
+    <!-- Página de Checkout (Modal) -->
+    <div id="checkout-modal" class="checkout-modal">
+        <div class="checkout-modal-content">
+            <span class="close-button" id="close-checkout-modal">&times;</span>
+            <h3>Finalizar Compra</h3>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="checkout-name">Nombre Completo:</label>
+                    <input type="text" id="checkout-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-id">Número de Cédula/Identificación:</label>
+                    <input type="text" id="checkout-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-address">Dirección de Envío:</label>
+                    <input type="text" id="checkout-address" placeholder="Calle, Número, Edificio, Apartamento" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-city">Ciudad:</label>
+                    <input type="text" id="checkout-city" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-province">Provincia/Estado:</label>
+                    <input type="text" id="checkout-province" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-email">Email:</label>
+                    <input type="email" id="checkout-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-phone">Teléfono:</label>
+                    <input type="tel" id="checkout-phone" required>
+                </div>
 
-            <!-- Producto 4 -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200?text=Tractor+RC" alt="Tractor RC">
-                <h3>Scania Kabolite 770S Tractor RC 1/14</h3>
-                <p class="price">$189.99 USD</p>
-                <a href="product-detail.html?id=4" class="details-button">Ver Detalles</a>
-                <button class="add-to-cart-button">Añadir al Carrito</button>
-            </div>
-             <!-- Producto 5 -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200?text=Cargador+RC" alt="Cargador Frontal RC">
-                <h3>Cargador Frontal RC Excavator 1/16</h3>
-                <p class="price">$99.99 USD</p>
-                <a href="product-detail.html?id=5" class="details-button">Ver Detalles</a>
-                <button class="add-to-cart-button">Añadir al Carrito</button>
-            </div>
+                <div class="checkout-summary">
+                    <h4>Resumen del Pedido</h4>
+                    <div>
+                        <span>Subtotal:</span> <span id="checkout-subtotal">$0.00</span>
+                    </div>
+                    <div>
+                        <span>Costo de Envío:</span> <span id="checkout-shipping">$0.00</span>
+                    </div>
+                    <div class="total-amount">
+                        <span>Total a Pagar:</span> <span id="checkout-total">$0.00</span>
+                    </div>
+                </div>
 
-            <!-- Producto 6 -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200?text=Excavadora+RC" alt="Excavadora RC">
-                <h3>Excavadora RC de Metal Completa 1/14</h3>
-                <p class="price">$250.00 USD</p>
-                <a href="product-detail.html?id=6" class="details-button">Ver Detalles</a>
-                <button class="add-to-cart-button">Añadir al Carrito</button>
-            </div>
-        </section>
+                <button type="submit" class="place-order-button">Pagar Ahora (Simulado)</button>
+            </form>
+        </div>
     </div>
 
     <footer>
@@ -285,28 +606,381 @@
     </footer>
 
     <script>
-        // Funcionalidad básica para el carrito (solo visual en el frontend)
-        let cartCount = 0;
-        const cartCountElement = document.querySelector('.cart-count');
-        const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
+        // Array de productos (simulado, en un sitio real vendría de una base de datos)
+        const products = [
+            {
+                id: 1,
+                name: 'Huina 1501 Camión Scania 770S RC Verde Escala 1/18',
+                price: 135.53,
+                image: 'https://via.placeholder.com/300x200?text=Camion+RC+Verde',
+                description: 'Magnífico camión Scania 770S a control remoto, escala 1/18. Detalles realistas y construcción robusta. ¡Perfecto para coleccionistas y entusiastas del RC!',
+                images: [
+                    'https://via.placeholder.com/600x400?text=Camion+RC+Verde+1',
+                    'https://via.placeholder.com/600x400?text=Camion+RC+Verde+2',
+                    'https://via.placeholder.com/600x400?text=Camion+RC+Verde+3'
+                ],
+                video: '' // URL de YouTube, por ejemplo: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+            },
+            {
+                id: 2,
+                name: 'Huina 1502 Plataforma para Scania a Control Remoto Escala 1/18 Gris',
+                price: 61.87,
+                image: 'https://via.placeholder.com/300x200?text=Plataforma+RC',
+                description: 'Plataforma a control remoto para remolcar tus vehículos Scania RC. Compatible con escala 1/18. ¡Completa tu flota!',
+                images: [
+                    'https://via.placeholder.com/600x400?text=Plataforma+RC+1',
+                    'https://via.placeholder.com/600x400?text=Plataforma+RC+2'
+                ],
+                video: ''
+            },
+            {
+                id: 3,
+                name: 'Volquete a Control Remoto Scania 1/18',
+                price: 76.60,
+                image: 'https://via.placeholder.com/300x200?text=Volquete+RC',
+                description: 'Volquete Scania a escala 1/18 con funciones de descarga a control remoto. ¡Horas de diversión en la construcción simulada!',
+                images: [
+                    'https://via.placeholder.com/600x400?text=Volquete+RC+1',
+                    'https://via.placeholder.com/600x400?text=Volquete+RC+2',
+                    'https://via.placeholder.com/600x400?text=Volquete+RC+3'
+                ],
+                video: ''
+            },
+            {
+                id: 4,
+                name: 'Scania Kabolite 770S Tractor RC 1/14',
+                price: 189.99,
+                image: 'https://via.placeholder.com/300x200?text=Tractor+RC',
+                description: 'Impresionante tractor Scania Kabolite 770S a escala 1/14. ¡Calidad premium para los modelistas más exigentes!',
+                images: [
+                    'https://via.placeholder.com/600x400?text=Tractor+RC+1',
+                    'https://via.placeholder.com/600x400?text=Tractor+RC+2'
+                ],
+                video: ''
+            },
+            {
+                id: 5,
+                name: 'Cargador Frontal RC Excavator 1/16',
+                price: 99.99,
+                image: 'https://via.placeholder.com/300x200?text=Cargador+RC',
+                description: 'Cargador frontal RC completamente funcional, escala 1/16. ¡Mueve tierra y construye con precisión!',
+                images: [
+                    'https://via.placeholder.com/600x400?text=Cargador+RC+1',
+                    'https://via.placeholder.com/600x400?text=Cargador+RC+2'
+                ],
+                video: ''
+            },
+            {
+                id: 6,
+                name: 'Excavadora RC de Metal Completa 1/14',
+                price: 250.00,
+                image: 'https://via.placeholder.com/300x200?text=Excavadora+RC',
+                description: 'Excavadora RC de metal a escala 1/14. ¡Ideal para trabajos pesados y recreación detallada!',
+                images: [
+                    'https://via.placeholder.com/600x400?text=Excavadora+RC+1',
+                    'https://via.placeholder.com/600x400?text=Excavadora+RC+2',
+                    'https://via.placeholder.com/600x400?text=Excavadora+RC+3'
+                ],
+                video: ''
+            }
+        ];
 
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                cartCount++;
-                cartCountElement.textContent = cartCount;
-                alert('Producto añadido al carrito (simulado)!');
+        let cart = []; // El carrito de compras
+        const SHIPPING_COST = 10.00; // Costo de envío fijo simulado
+
+        // Referencias a elementos del DOM
+        const productListPage = document.getElementById('product-list-page');
+        const productDetailPage = document.getElementById('product-detail-page');
+        const productGridContainer = document.getElementById('product-grid-container');
+        const cartCountElement = document.querySelector('.cart-count');
+        const homeLink = document.getElementById('home-link');
+        const navHome = document.getElementById('nav-home');
+        const navProducts = document.getElementById('nav-products');
+        const backToProductsButton = document.getElementById('back-to-products-button');
+
+        // Modal del Carrito
+        const cartModal = document.getElementById('cart-modal');
+        const openCartModalBtn = document.getElementById('open-cart-modal');
+        const closeCartModalBtn = document.getElementById('close-cart-modal');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartTotalAmountElement = document.getElementById('cart-total-amount');
+        const proceedToCheckoutBtn = document.getElementById('proceed-to-checkout');
+
+        // Modal del Checkout
+        const checkoutModal = document.getElementById('checkout-modal');
+        const closeCheckoutModalBtn = document.getElementById('close-checkout-modal');
+        const checkoutForm = document.getElementById('checkout-form');
+        const checkoutSubtotalElement = document.getElementById('checkout-subtotal');
+        const checkoutShippingElement = document.getElementById('checkout-shipping');
+        const checkoutTotalElement = document.getElementById('checkout-total');
+        const placeOrderButton = document.querySelector('.place-order-button');
+
+
+        // Función para mostrar la página de listado de productos
+        function showProductListPage() {
+            productListPage.style.display = 'block';
+            productDetailPage.style.display = 'none';
+        }
+
+        // Función para mostrar la página de detalle de un producto
+        function showProductDetailPage(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) {
+                alert('Producto no encontrado.');
+                showProductListPage();
+                return;
+            }
+
+            document.getElementById('detail-product-name').textContent = product.name;
+            document.getElementById('detail-product-description').textContent = product.description;
+            document.getElementById('detail-product-price').textContent = `$${product.price.toFixed(2)} USD`;
+            document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(product);
+            document.getElementById('detail-buy-now-button').onclick = () => buyNow(product);
+
+            // Cargar imágenes
+            const mainImage = document.getElementById('detail-main-image');
+            const thumbnailsContainer = document.getElementById('detail-thumbnails');
+            thumbnailsContainer.innerHTML = ''; // Limpiar miniaturas anteriores
+
+            mainImage.src = product.images[0]; // La primera imagen como principal
+            product.images.forEach(imgSrc => {
+                const thumb = document.createElement('img');
+                thumb.src = imgSrc;
+                thumb.alt = product.name;
+                thumb.style.width = '70px';
+                thumb.style.height = '50px';
+                thumb.style.objectFit = 'cover';
+                thumb.style.margin = '5px';
+                thumb.style.cursor = 'pointer';
+                thumb.style.border = '2px solid transparent';
+                thumb.style.borderRadius = '5px';
+                thumb.addEventListener('click', () => {
+                    mainImage.src = imgSrc;
+                    // Resaltar miniatura seleccionada
+                    Array.from(thumbnailsContainer.children).forEach(t => t.style.border = '2px solid transparent');
+                    thumb.style.border = '2px solid #007bff';
+                });
+                thumbnailsContainer.appendChild(thumb);
             });
+            // Resaltar la primera miniatura
+            if (thumbnailsContainer.firstElementChild) {
+                thumbnailsContainer.firstElementChild.style.border = '2px solid #007bff';
+            }
+
+
+            // Cargar video (si existe)
+            const videoContainer = document.getElementById('detail-video');
+            const videoIframe = videoContainer.querySelector('iframe');
+            if (product.video) {
+                videoIframe.src = product.video;
+                videoContainer.style.display = 'block';
+            } else {
+                videoIframe.src = '';
+                videoContainer.style.display = 'none';
+            }
+
+            productListPage.style.display = 'none';
+            productDetailPage.style.display = 'flex'; // Usamos flex para la alineación del detalle
+        }
+
+        // Función para renderizar los productos en la cuadrícula
+        function renderProducts() {
+            productGridContainer.innerHTML = ''; // Limpiar contenedor
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p class="price">$${product.price.toFixed(2)} USD</p>
+                    <a href="#" class="details-button" data-product-id="${product.id}">Ver Detalles</a>
+                    <button class="add-to-cart-button" data-product-id="${product.id}">Añadir al Carrito</button>
+                `;
+                productGridContainer.appendChild(productCard);
+            });
+
+            // Añadir event listeners a los botones de "Ver Detalles"
+            document.querySelectorAll('.details-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const productId = parseInt(event.target.dataset.productId);
+                    showProductDetailPage(productId);
+                });
+            });
+
+            // Añadir event listeners a los botones de "Añadir al Carrito"
+            document.querySelectorAll('.add-to-cart-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const productId = parseInt(event.target.dataset.productId);
+                    const productToAdd = products.find(p => p.id === productId);
+                    if (productToAdd) {
+                        addToCart(productToAdd);
+                    }
+                });
+            });
+        }
+
+        // Función para añadir un producto al carrito
+        function addToCart(product, quantity = 1) {
+            const existingItem = cart.find(item => item.id === product.id);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+            updateCartDisplay();
+            alert(`${quantity} unidad(es) de "${product.name}" añadida(s) al carrito.`);
+        }
+
+        // Función para eliminar un producto del carrito
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+
+        // Función para actualizar la cantidad de un producto en el carrito
+        function updateCartItemQuantity(productId, newQuantity) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = parseInt(newQuantity);
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    update
+                                            <span>${item.name} - $${item.price.toFixed(2)} x </span>
+                        <input type="number" min="1" value="${item.quantity}" data-product-id="${item.id}" class="cart-item-quantity">
+                    </div>
+                    <div class="cart-item-actions">
+                        <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                        <button data-product-id="${item.id}" class="remove-from-cart">X</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItemDiv);
+            });
+
+            cartCountElement.textContent = totalItems;
+            cartTotalAmountElement.textContent = `$${totalAmount.toFixed(2)}`;
+            proceedToCheckoutBtn.disabled = false; // Habilita el botón si hay ítems
+
+            // Añadir event listeners para cambiar cantidad
+            document.querySelectorAll('.cart-item-quantity').forEach(input => {
+                input.addEventListener('change', (event) => {
+                    const productId = parseInt(event.target.dataset.productId);
+                    updateCartItemQuantity(productId, event.target.value);
+                });
+            });
+
+            // Añadir event listeners para eliminar
+            document.querySelectorAll('.remove-from-cart').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const productId = parseInt(event.target.dataset.productId);
+                    removeFromCart(productId);
+                });
+            });
+        }
+
+        // Función para simular "Comprar Ahora" (añade al carrito y abre el checkout)
+        function buyNow(product) {
+            cart = []; // Limpia el carrito para "Comprar Ahora"
+            addToCart(product, 1);
+            openCheckoutModal();
+        }
+
+        // Event Listeners para navegación
+        homeLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            showProductListPage();
+        });
+        navHome.addEventListener('click', (event) => {
+            event.preventDefault();
+            showProductListPage();
+        });
+        navProducts.addEventListener('click', (event) => {
+            event.preventDefault();
+            showProductListPage();
+        });
+        backToProductsButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            showProductListPage();
         });
 
-        // Simulación de navegación a la página de detalles
-        document.querySelectorAll('.details-button').forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault(); // Previene la navegación real por ahora
-                const productId = button.href.split('?id=')[1];
-                alert('Navegando a la página de detalles del producto ' + productId + ' (simulado).');
-                // En un sitio real, aquí cargarías la página product-detail.html con los datos del producto
-                // window.location.href = button.href;
-            });
+        // Event Listeners para el modal del carrito
+        openCartModalBtn.addEventListener('click', () => {
+            updateCartDisplay(); // Asegurarse de que el carrito esté actualizado al abrir
+            cartModal.classList.add('active');
+        });
+        closeCartModalBtn.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+        });
+        window.addEventListener('click', (event) => {
+            if (event.target == cartModal) {
+                cartModal.classList.remove('active');
+            }
+            if (event.target == checkoutModal) {
+                checkoutModal.classList.remove('active');
+            }
+        });
+
+        // Event Listener para proceder al checkout desde el carrito
+        proceedToCheckoutBtn.addEventListener('click', () => {
+            if (cart.length > 0) {
+                cartModal.classList.remove('active'); // Cierra el modal del carrito
+                openCheckoutModal();
+            } else {
+                alert('Tu carrito está vacío. Añade productos antes de proceder al pago.');
+            }
+        });
+
+        // Funciones para el modal de Checkout
+        function openCheckoutModal() {
+            let subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            checkoutSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+            checkoutShippingElement.textContent = `$${SHIPPING_COST.toFixed(2)}`;
+            checkoutTotalElement.textContent = `$${(subtotal + SHIPPING_COST).toFixed(2)}`;
+            checkoutModal.classList.add('active');
+        }
+        closeCheckoutModalBtn.addEventListener('click', () => {
+            checkoutModal.classList.remove('active');
+        });
+
+        // Event Listener para el formulario de Checkout (simulado)
+        checkoutForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Evita que el formulario se envíe realmente
+
+            // Recopila los datos del formulario (esto sería enviado a un backend real)
+            const formData = {
+                name: document.getElementById('checkout-name').value,
+                id: document.getElementById('checkout-id').value,
+                address: document.getElementById('checkout-address').value,
+                city: document.getElementById('checkout-city').value,
+                province: document.getElementById('checkout-province').value,
+                email: document.getElementById('checkout-email').value,
+                phone: document.getElementById('checkout-phone').value,
+                order: cart.map(item => ({
+                    productId: item.id,
+                    name: item.name,
+                    quantity: item.quantity,
+                    price: item.price
+                })),
+                total: parseFloat(checkoutTotalElement.textContent.replace('$', ''))
+            };
+
+            // Simulación de procesamiento seguro
+            alert('¡Gracias por tu compra!\n\nTu pedido ha sido procesado de forma SEGURA (simulado).\n\nDetalles del pedido: ' + JSON.stringify(formData, null, 2) + '\n\nUn correo de confirmación ha sido enviado a ' + formData.email + '.');
+
+            // Limpiar carrito y cerrar modales
+            cart = [];
+            updateCartDisplay();
+            checkoutModal.classList.remove('active');
+            cartModal.classList.remove('active');
+            showProductListPage(); // Vuelve a la página principal
+        });
+
+
+        // Inicializar: renderizar productos al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            showProductListPage(); // Asegurarse de que la página de listado se muestre primero
         });
     </script>
 </body>
