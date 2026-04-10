@@ -1139,10 +1139,33 @@
         let currentProductId = null;
         let currentDetailSlide = 0; // Para el carrusel de detalles
 
-      
-document.addEventListener('DOMContentLoaded', () => {
+      // Función para mostrar la sección activa
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            // Ocultar la página de detalle del producto si no es la sección activa
+            if (sectionId !== 'product-detail-page') {
+                document.getElementById('product-detail-page').style.display = 'none';
+            }
+            window.scrollTo(0, 0); // Ir al inicio de la página
+        }
+
+        // Manejar clics en la navegación
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.dataset.section;
+                showSection(sectionId);
+            });
+        });
+
+  document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartCount();
+            startAutoSlide();
             showSection('home');
-            
         });
 
        function showPage(page) {
