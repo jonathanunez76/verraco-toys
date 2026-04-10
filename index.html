@@ -809,26 +809,31 @@
         border-radius: 20px;
 
 
-/* ESTE CÓDIGO ES PARA LA BARRA DE ABAJO: TODOS, ACCIÓN, AVENTURA... */
+/* BARRA DE CATEGORÍAS - TODOS, ACCIÓN, AVENTURA... */
 .categories {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
-    justify-content: center !important; /* O flex-start si lo quieres pegado a la izquierda */
+    justify-content: flex-start !important;
     align-items: center !important;
-    gap: 10px;
+    gap: 6px !important;
     overflow-x: auto !important;
     width: 100% !important;
-    padding: 10px 5px;
-    box-sizing: border-box;
+    max-width: 100% !important;
+    padding: 8px 5px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
 }
 
 .categories button {
     flex: 0 0 auto !important;
     white-space: nowrap !important;
-    font-size: 0.9em;
-    padding: 8px 15px;
-    border-radius: 25px;
+    font-size: 0.85em !important;
+    padding: 5px 10px !important;
+    border: none !important;
+    border-radius: 20px !important;
+    min-width: auto !important;
+    max-width: none !important;
 }
 /* PAGINA DE DETALLES ORDENADA Y EMPEZANDO ARRIBA */
 #product-detail {
@@ -1423,14 +1428,27 @@
             setInterval(() => moveSlide(1), 5000);
         }
 
-        // --- CERRAR MODALES ---
-        window.onclick = function(event) {
-            const cartModal = document.getElementById('cart-modal');
-            const checkoutModal = document.getElementById('checkout-modal');
-            
-            if(event.target == cartModal) closeCart();
-            if(event.target == checkoutModal) closeCheckout();
-        }
+          // --- CERRAR MODALES ---
+    window.onclick = function(event) {
+        const cartModal = document.getElementById('cart-modal');
+        const checkoutModal = document.getElementById('checkout-modal');
+
+        if(event.target == cartModal) closeCart();
+        if(event.target == checkoutModal) closeCheckout();
+    }
+
+    // --- IR ARRIBA AL CARGAR PÁGINA ---
+    window.addEventListener('load', function() {
+        window.scrollTo(0, 0);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        window.scrollTo(0, 0);
+    });
+
+</script>
+</body>
+</html>
 
     </script>
 </body>
