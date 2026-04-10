@@ -16,8 +16,6 @@
             --light-bg: #F7FAFC;
         }
 
-   
-
         * {
             margin: 0;
             padding: 0;
@@ -1156,8 +1154,8 @@
     else if(page === 'products') document.getElementById('product-list-page').style.display = 'block';
     else if(page === 'detail') document.getElementById('product-detail-page').style.display = 'block';
 
-
-  }
+    // ✅ AQUÍ LO PONES
+    window.scrollTo(0, 0);
 }
 
         function renderProducts() {
@@ -1244,8 +1242,6 @@
                 };
                 if(index === 0) imgEl.classList.add('active-thumbnail');
                 thumbsContainer.appendChild(imgEl);
-
-         
             });
 
             // Video
@@ -1450,7 +1446,23 @@
         if(event.target == checkoutModal) closeCheckout();
     }
 
+    // --- FORZAR IR ARRIBA AL ENTRAR A DETALLES ---
+    // Esto funciona en TODOS los navegadores y situaciones
+    window.onload = function() {
+        window.scrollTo(0, 0);
+        document.body.scrollTop = 0; // Para Safari
+        document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
+    };
 
+    // También al cambiar de página
+    history.scrollRestoration = "manual";
+    window.addEventListener('pageshow', function(event) {
+        window.scrollTo(0, 0);
+    });
+ // Mostrar la sección de inicio por defecto
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+        });
 </script>
 </body>
 </html>
