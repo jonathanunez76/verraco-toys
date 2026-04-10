@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berraco Toy - Tienda Online de Juguetes</title>
-    <!-- Incluimos una fuente de Google Fonts para un aspecto más moderno -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Iconos de Font Awesome para carrito, WhatsApp, redes sociales, etc. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Estilos Generales */
         body {
-            font-family: 'Poppins', sans-serif; /* Usamos la fuente Poppins */
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5; /* Un gris más suave para el fondo */
+            background-color: #f0f2f5;
             color: #333;
             line-height: 1.6;
         }
@@ -23,7 +21,7 @@
         header {
             background-color: #ffffff;
             padding: 10px 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Sombra más pronunciada */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -32,16 +30,16 @@
             z-index: 100;
         }
         .logo {
-            font-weight: 700; /* Más negrita */
+            font-weight: 700;
             font-size: 28px;
-            color: #007bff; /* Color primario vibrante */
+            color: #007bff;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         .logo img {
-            height: 40px; /* Logo un poco más grande */
+            height: 40px;
             width: auto;
         }
         .nav-menu ul {
@@ -49,7 +47,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 30px; /* Más espacio entre ítems */
+            gap: 30px;
         }
         .nav-menu a {
             text-decoration: none;
@@ -59,7 +57,7 @@
             font-weight: 500;
             position: relative;
         }
-        .nav-menu a::after { /* Animación de subrayado */
+        .nav-menu a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -77,7 +75,7 @@
             transform: translateY(-2px);
         }
         .cart-icon {
-            font-size: 28px; /* Icono más grande */
+            font-size: 28px;
             text-decoration: none;
             color: #333;
             position: relative;
@@ -89,7 +87,7 @@
             transform: scale(1.1);
         }
         .cart-count {
-            background-color: #ff4500; /* Un rojo anaranjado llamativo */
+            background-color: #ff4500;
             color: white;
             border-radius: 50%;
             padding: 4px 9px;
@@ -126,7 +124,7 @@
             margin-bottom: 35px;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            display: flex; /* Usamos flex para centrar mejor en móviles */
+            display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
@@ -177,14 +175,14 @@
         .offer-slide img {
             max-width: 90%;
             height: auto;
-            max-height: 400px; /* Un poco más alto */
+            max-height: 400px;
             border-radius: 12px;
             margin-bottom: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .offer-slide h2 {
             font-size: 2.8em;
-            color: #ff4500; /* Color de oferta */
+            color: #ff4500;
             margin-bottom: 15px;
         }
         .offer-slide p {
@@ -233,12 +231,12 @@
 
         /* Sección de Productos */
         #product-list-page {
-            display: block; /* Visible por defecto */
+            display: block;
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Por defecto 1 o 2 en móvil */
-            gap: 30px; /* Más espacio */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
         .product-card {
             background-color: #ffffff;
@@ -250,7 +248,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Para empujar el footer hacia abajo */
+            justify-content: space-between;
         }
         .product-card:hover {
             transform: translateY(-8px);
@@ -258,8 +256,8 @@
         }
         .product-card img {
             max-width: 100%;
-            height: 250px; /* Altura fija para las imágenes, un poco más grande */
-            object-fit: contain; /* Ajusta la imagen sin recortarla */
+            height: 250px;
+            object-fit: contain;
             display: block;
             margin: 0 auto;
             padding: 20px;
@@ -269,20 +267,20 @@
             margin: 15px 0 10px;
             padding: 0 15px;
             color: #007bff;
-            min-height: 70px; /* Para alinear el texto de productos con nombres largos */
+            min-height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
+            flex-grow: 1;
         }
         .product-card .price {
             font-size: 1.8em;
-            color: #ff4500; /* Color de oferta/precio */
-            font-weight: 700; /* Más negrita */
+            color: #ff4500;
+            font-weight: 700;
             margin-bottom: 15px;
         }
         .product-card-actions {
-            margin-top: auto; /* Empuja los botones hacia abajo */
+            margin-top: auto;
         }
         .product-card .details-button, .product-card .buy-now-from-list-button {
             background-color: #6c757d;
@@ -291,7 +289,7 @@
             border: none;
             border-radius: 7px;
             cursor: pointer;
-            margin: 8px 5px; /* Más margen */
+            margin: 8px 5px;
             text-decoration: none;
             display: inline-block;
             font-weight: 500;
@@ -311,7 +309,7 @@
 
         /* Página de Detalle de Producto */
         #product-detail-page {
-            display: none; /* Oculto por defecto */
+            display: none;
             background-color: #ffffff;
             padding: 35px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.1);
@@ -329,11 +327,11 @@
         .product-detail-content {
             display: flex;
             flex-wrap: wrap;
-            gap: 50px; /* Más espacio */
+            gap: 50px;
             justify-content: center;
         }
         .product-detail-images {
-            flex: 1 1 48%; /* Más ancho */
+            flex: 1 1 48%;
             min-width: 320px;
             text-align: center;
         }
@@ -349,16 +347,16 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px; /* Más espacio entre miniaturas */
+            gap: 12px;
             margin-top: 15px;
         }
         .detail-thumbnails img {
-            width: 80px; /* Miniaturas más grandes */
+            width: 80px;
             height: 60px;
             object-fit: cover;
             border-radius: 6px;
             cursor: pointer;
-            border: 3px solid transparent; /* Borde más grueso */
+            border: 3px solid transparent;
             transition: border-color 0.3s ease, transform 0.2s ease;
         }
         .detail-thumbnails img:hover,
@@ -375,20 +373,33 @@
         }
         .detail-video iframe {
             display: block;
-            width: 100%; /* Aseguramos que el iframe use el 100% del contenedor */
-            aspect-ratio: 16 / 9; /* Mantiene la relación de aspecto de video */
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+        .detail-video-thumbnail { /* Estilo para el botón de video como miniatura */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 60px;
+            background-color: #f0f2f5;
+            border: 3px solid transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #007bff;
+            font-size: 1.2em;
+            transition: border-color 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
+        }
+        .detail-video-thumbnail:hover {
+                        border-color: #007bff;
+            transform: scale(1.08);
+            background-color: #e0f2ff;
         }
 
         .product-detail-info {
-            flex: 1 1 48%; /* Más
-            width: 100%; /* Aseguramos que el iframe use el 100% del contenedor */
-            aspect-ratio: 16 / 9; /* Mantiene la relación de aspecto de video */
-        }
-
-        .product-detail-info {
-            flex: 1 1 48%; /* Más ancho */
+            flex: 1 1 48%;
             min-width: 320px;
-            padding-left: 20px; /* Pequeño padding para separación */
+            padding-left: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -397,7 +408,7 @@
             font-size: 1.8em;
             color: #333;
             margin-bottom: 15px;
-            text-align: left; /* Alineado a la izquierda */
+            text-align: left;
         }
         .product-detail-info .price {
             font-size: 2.5em;
@@ -426,7 +437,7 @@
             font-size: 1.1em;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            flex-grow: 1; /* Para que los botones se expandan */
+            flex-grow: 1;
             min-width: 180px;
         }
         .detail-add-to-cart-button {
@@ -466,7 +477,7 @@
 
         /* Carrito de Compras (Modal) */
         .modal {
-            display: none; /* Oculto por defecto */
+            display: none;
             position: fixed;
             z-index: 1000;
             left: 0;
@@ -474,13 +485,13 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.5); /* Fondo semitransparente */
+            background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
             padding: 20px;
-            box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
+            box-sizing: border-box;
         }
-        .modal.active { /* Para mostrar el modal */
+        .modal.active {
             display: flex;
         }
         .modal-content {
@@ -491,7 +502,7 @@
             width: 90%;
             max-width: 700px;
             position: relative;
-            animation: fadeIn 0.3s ease-out; /* Animación de entrada */
+            animation: fadeIn 0.3s ease-out;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
@@ -500,7 +511,7 @@
         .close-button {
             color: #aaa;
             float: right;
-            font-size: 32px; /* Más grande */
+            font-size: 32px;
             font-weight: bold;
             cursor: pointer;
             position: absolute;
@@ -520,17 +531,17 @@
             font-size: 1.8em;
         }
         #cart-items-container {
-            max-height: 350px; /* Un poco más alto */
+            max-height: 350px;
             overflow-y: auto;
             margin-bottom: 20px;
-            padding-right: 10px; /* Para el scrollbar */
+            padding-right: 10px;
         }
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #eee;
-            padding: 15px 0; /* Más padding */
+            padding: 15px 0;
         }
         .cart-item:last-child {
             border-bottom: none;
@@ -539,10 +550,10 @@
             flex-grow: 1;
             display: flex;
             align-items: center;
-            gap: 15px; /* Más espacio */
+            gap: 15px;
         }
         .cart-item-info img {
-            width: 60px; /* Imágenes más grandes */
+            width: 60px;
             height: 60px;
             object-fit: cover;
             border-radius: 6px;
@@ -555,10 +566,10 @@
         .cart-item-actions {
             display: flex;
             align-items: center;
-            gap: 10px; /* Más espacio */
+            gap: 10px;
         }
         .cart-item-quantity {
-            width: 50px; /* Campo de cantidad más ancho */
+            width: 50px;
             text-align: center;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -605,7 +616,7 @@
 
         /* Página de Checkout (Modal) */
         #checkout-modal .modal-content {
-            max-width: 800px; /* Checkout un poco más ancho */
+            max-width: 800px;
         }
         .checkout-modal-content h3 {
             text-align: center;
@@ -614,11 +625,11 @@
         }
         .checkout-modal-content form {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 columnas en pantallas grandes */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
         .checkout-modal-content .form-group {
-            margin-bottom: 0; /* Ya tenemos gap */
+            margin-bottom: 0;
         }
         .checkout-modal-content label {
             display: block;
@@ -629,9 +640,8 @@
         .checkout-modal-content input[type="text"],
         .checkout-modal-content input[type="email"],
         .checkout-modal-content input[type="tel"],
-        .checkout-modal-content select,
-        .checkout-modal-content textarea { /* Añadido textarea para dirección */
-            width: calc(100% - 20px); /* Ajuste por padding */
+        .checkout-modal-content textarea {
+            width: calc(100% - 20px);
             padding: 12px;
             border: 1px solid #ced4da;
             border-radius: 6px;
@@ -639,18 +649,17 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .checkout-modal-content input:focus,
-        .checkout-modal-content select:focus,
         .checkout-modal-content textarea:focus {
             border-color: #007bff;
             box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
             outline: none;
         }
         .checkout-summary {
-            background-color: #e9f7ff; /* Fondo más claro para el resumen */
+            background-color: #e9f7ff;
             padding: 20px;
             border-radius: 8px;
             margin-top: 30px;
-            grid-column: 1 / -1; /* Ocupa todo el ancho */
+            grid-column: 1 / -1;
             border: 1px solid #cceeff;
         }
         .checkout-summary h4 {
@@ -668,7 +677,7 @@
         .checkout-summary .total-amount {
             font-size: 1.6em;
             font-weight: bold;
-            border-top: 1px dashed #a0d9ff; /* Línea discontinua */
+            border-top: 1px dashed #a0d9ff;
             padding-top: 15px;
             margin-top: 15px;
             color: #ff4500;
@@ -683,7 +692,7 @@
             font-size: 1.2em;
             width: 100%;
             margin-top: 25px;
-            grid-column: 1 / -1; /* Ocupa todo el ancho */
+            grid-column: 1 / -1;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .place-order-button:hover {
@@ -716,17 +725,14 @@
             transform: scale(1.1);
         }
         /* Icono de WhatsApp (puedes usar un SVG o Font Awesome) */
-        /* Si no cargas Font Awesome, puedes usar un emoji: content: '💬'; */
-        .whatsapp-float::before {
-            content: '\f232'; /* Código de Font Awesome para WhatsApp */
-            font-family: 'Font Awesome 5 Brands'; /* Necesitarías enlazar Font Awesome */
+        .whatsapp-float i {
             font-size: 30px;
         }
 
 
         /* Pie de Página */
         footer {
-            background-color: #343a40; /* Un gris oscuro */
+            background-color: #343a40;
             color: white;
             text-align: center;
             padding: 30px 20px;
@@ -769,12 +775,12 @@
                 gap: 15px;
             }
             .product-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Se ajusta mejor a 2 columnas en tabletas */
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
             .offer-slide h2 {
                 font-size: 2em;
             }
-                       .offer-slide p {
+            .offer-slide p {
                 font-size: 1.1em;
             }
             .offer-button {
@@ -802,7 +808,7 @@
                 justify-content: center;
             }
             .nav-menu {
-                order: 1; /* Mueve el menú debajo del logo */
+                order: 1;
                 width: 100%;
             }
             .nav-menu ul {
@@ -817,12 +823,12 @@
                 font-size: 24px;
                 top: 10px;
                 right: 15px;
-                position: absolute; /* Para que no se mueva con el flexwrap */
+                position: absolute;
             }
             .cart-count {
                 top: -5px;
                 right: -8px;
-                font-size: 11px;
+                                font-size: 11px;
                 padding: 2px 6px;
                 min-width: 20px;
             }
@@ -846,40 +852,40 @@
                 font-size: 1em;
             }
             .product-grid {
-                grid-template-columns: 1fr; /* Una columna en móviles */
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
             .product-card h3 {
-                min-height: auto; /* Desactivar altura fija en móviles */
+                min-height: auto;
             }
             .product-detail-content {
                 flex-direction: column;
                 gap: 25px;
             }
             .product-detail-images {
-                min-width: unset; /* Permite que el ancho se ajuste */
+                min-width: unset;
                 width: 100%;
             }
             .product-detail-info {
-                min-width: unset; /* Permite que el ancho se ajuste */
+                min-width: unset;
                 width: 100%;
                 padding-left: 0;
-                text-align: center; /* Alinea texto a la izquierda, botones al centro */
+                text-align: center;
             }
             .product-detail-info h3,
             .product-detail-info .price,
             .product-detail-info p {
-                text-align: center; /* Centrar texto en detalles en móviles */
+                text-align: center;
             }
             .detail-buttons {
-                justify-content: center; /* Centrar botones */
+                justify-content: center;
             }
             .modal-content {
                 width: 95%;
                 padding: 20px;
             }
             .checkout-modal-content form {
-                grid-template-columns: 1fr; /* Una columna en checkout para móviles */
+                grid-template-columns: 1fr;
             }
             .whatsapp-float {
                 width: 50px;
@@ -888,7 +894,7 @@
                 bottom: 15px;
                 right: 15px;
             }
-             .whatsapp-float::before {
+             .whatsapp-float i {
                 font-size: 25px;
             }
         }
@@ -1057,7 +1063,7 @@
                 id: 1,
                 name: 'Huina 1501 Camión Scania 770S RC',
                 price: 135.53,
-                image: 'https://m.media-amazon.com/images/I/61Nl0b22VcL._AC_SX679_.jpg', // Ejemplo de imagen real
+                image: 'https://m.media-amazon.com/images/I/61Nl0b22VcL._AC_SX679_.jpg',
                 description: 'Magnífico camión Scania 770S a control remoto, escala 1/18. Detalles realistas y construcción robusta. ¡Perfecto para coleccionistas y entusiastas del RC! Conducción precisa y luces funcionales para una experiencia inmersiva.',
                 category: 'rc-vehicles',
                 stock: true,
@@ -1066,7 +1072,7 @@
                     'https://m.media-amazon.com/images/I/71YyP9f2aYL._AC_SX679_.jpg',
                     'https://m.media-amazon.com/images/I/619Ww1QhGKL._AC_SX679_.jpg'
                 ],
-                video: 'https://www.youtube.com/embed/Pj1c81z29uM' // Ejemplo de YouTube
+                video: 'https://www.youtube.com/embed/Pj1c81z29uM'
             },
             {
                 id: 2,
@@ -1112,7 +1118,7 @@
                 video: ''
             },
             {
-                              id: 5,
+                id: 5,
                 name: 'Cargador Frontal RC Excavator 1/16',
                 price: 99.99,
                 image: 'https://m.media-amazon.com/images/I/61pXh2g50BL._AC_SX679_.jpg',
@@ -1138,7 +1144,7 @@
                     'https://m.media-amazon.com/images/I/71k428H6DQL._AC_SX679_.jpg',
                     'https://m.media-amazon.com/images/I/71+2028YQZL._AC_SX679_.jpg'
                 ],
-                video: 'https://www.youtube.com/embed/ABCDEFG1234' // Ejemplo de YouTube
+                video: 'https://www.youtube.com/embed/ABCDEFG1234'
             },
             {
                 id: 7,
@@ -1191,7 +1197,7 @@
                 title: '¡Súper Oferta en Vehículos RC!',
                 description: 'Hasta 30% de descuento en todos los camiones y excavadoras a control remoto. ¡Edición limitada!',
                 image: 'https://m.media-amazon.com/images/I/71d-aJ8tCFL._AC_SX679_.jpg',
-                link: '#' // Podrías enlazar a una categoría o producto específico
+                link: '#'
             },
             {
                 id: 2,
@@ -1258,7 +1264,7 @@
         const nextSlideButton = document.getElementById('next-slide');
 
         // --- ESTADO DEL CARRITO ---
-        let cart = JSON.parse(localStorage.getItem('cart')) || []; // Cargar carrito de localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let currentSlide = 0;
 
         // --- FUNCIONES ---
@@ -1270,7 +1276,7 @@
 
         // --- PRODUCTOS ---
         function renderProducts(filterCategory = 'all') {
-            productGridContainer.innerHTML = ''; // Limpiar productos existentes
+            productGridContainer.innerHTML = '';
 
             const filteredProducts = products.filter(product =>
                 filterCategory === 'all' || product.category === filterCategory
@@ -1297,7 +1303,6 @@
                 productGridContainer.appendChild(productCard);
             });
 
-            // Añadir event listeners a los botones "Ver Detalles" y "Comprar"
             document.querySelectorAll('.details-button').forEach(button => {
                 button.addEventListener('click', (event) => {
                     const productId = parseInt(event.currentTarget.dataset.id);
@@ -1311,7 +1316,7 @@
                     const product = products.find(p => p.id === productId);
                     if (product) {
                         addToCart(product, 1);
-                        showPage('product-list-page'); // Mostrar página de listado (o redirigir al carrito)
+                        showPage('product-list-page');
                         openCartModal();
                     }
                 });
@@ -1326,16 +1331,14 @@
                 return;
             }
 
-            // Ocultar página de listado y mostrar detalle
             productListPage.style.display = 'none';
             productDetailPage.style.display = 'flex';
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll al inicio de la página
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
             detailProductName.textContent = product.name;
             detailProductDescription.textContent = product.description;
             detailProductPrice.textContent = formatPrice(product.price);
 
-            // Imágenes y miniaturas
             detailMainImage.src = product.images[0];
             detailMainImage.alt = product.name;
 
@@ -1351,20 +1354,19 @@
                         thumb.classList.remove('active-thumbnail');
                     });
                     img.classList.add('active-thumbnail');
-                    detailVideoDiv.style.display = 'none'; // Ocultar video si se muestra imagen
+                    detailVideoDiv.style.display = 'none';
                 });
                 detailThumbnails.appendChild(img);
             });
 
-            // Video (si existe)
             if (product.video) {
                 detailVideoIframe.src = product.video;
                 const videoThumbnail = document.createElement('div');
                 videoThumbnail.classList.add('detail-video-thumbnail');
-                videoThumbnail.innerHTML = `<i class="fas fa-play-circle"></i> Video`; // Icono de play
+                videoThumbnail.innerHTML = `<i class="fas fa-play-circle"></i> Video`;
                 videoThumbnail.addEventListener('click', () => {
                     detailVideoDiv.style.display = 'block';
-                    detailMainImage.src = ''; // Limpiar imagen principal
+                    detailMainImage.src = '';
                     document.querySelectorAll('.detail-thumbnails img').forEach(thumb => {
                         thumb.classList.remove('active-thumbnail');
                     });
@@ -1375,8 +1377,6 @@
                 detailVideoIframe.src = '';
             }
 
-
-            // Event listeners para botones de añadir/comprar ahora desde el detalle
             detailAddToCartButton.onclick = () => {
                 addToCart(product, 1);
                 openCartModal();
@@ -1391,7 +1391,7 @@
         function updateCartCount() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
-            cartCount.style.display = totalItems > 0 ? 'block' : 'none'; // Ocultar si no hay ítems
+            cartCount.style.display = totalItems > 0 ? 'block' : 'none';
         }
 
         function addToCart(product, quantity) {
@@ -1402,7 +1402,7 @@
             } else {
                 cart.push({ ...product, quantity });
             }
-            localStorage.setItem('cart', JSON.stringify(cart)); // Guardar carrito en localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
             renderCartItems();
             alert(`"${product.name}" ha sido añadido al carrito.`);
@@ -1444,7 +1444,7 @@
                         <div class="cart-item-info">
                             <img src="${item.image}" alt="${item.name}">
                             <span>${item.name}</span>
-                                              </div>
+                        </div>
                         <div class="cart-item-actions">
                             <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" data-id="${item.id}">
                             <span>${formatPrice(item.price * item.quantity)}</span>
@@ -1454,7 +1454,6 @@
                     cartItemsContainer.appendChild(cartItemDiv);
                 });
 
-                // Event listeners para cambiar cantidad y eliminar
                 document.querySelectorAll('.cart-item-quantity').forEach(input => {
                     input.addEventListener('change', (event) => {
                         const productId = parseInt(event.target.dataset.id);
@@ -1484,7 +1483,7 @@
         }
 
         function openCheckoutModal() {
-            closeCartModal(); // Cerrar carrito si está abierto
+            closeCartModal();
             checkoutModal.classList.add('active');
             updateCheckoutSummary();
         }
@@ -1496,17 +1495,17 @@
         // --- CHECKOUT ---
         function updateCheckoutSummary() {
             const subtotal = calculateCartTotal();
-            const total = subtotal + SHIPPING_COST; // Asumimos envío siempre
+            const total = subtotal + SHIPPING_COST;
             checkoutSubtotal.textContent = formatPrice(subtotal);
             checkoutShipping.textContent = formatPrice(SHIPPING_COST);
             checkoutTotal.textContent = formatPrice(total);
         }
 
         checkoutForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevenir el envío del formulario tradicional
+            event.preventDefault();
 
             const name = document.getElementById('checkout-name').value;
-            const idNumber = document.getElementById('checkout-id').value;
+            const idNumber = documentgetElementById('checkout-id').value;
             const city = document.getElementById('checkout-city').value;
             const address = document.getElementById('checkout-address').value;
             const email = document.getElementById('checkout-email').value;
@@ -1541,13 +1540,11 @@
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
 
-            // Opcional: Limpiar carrito y cerrar modal después de enviar el pedido
             cart = [];
             localStorage.removeItem('cart');
             updateCartCount();
             closeCheckoutModal();
             alert('¡Tu pedido ha sido generado! Te hemos redirigido a WhatsApp para que envíes los detalles.');
-            // Puedes redirigir a una página de confirmación o de inicio
             showPage('product-list-page');
         });
 
@@ -1588,22 +1585,19 @@
 
         // --- NAVEGACIÓN Y CAMBIO DE PÁGINAS ---
         function showPage(pageId) {
-            // Ocultar todas las páginas
             productListPage.style.display = 'none';
             productDetailPage.style.display = 'none';
 
-            // Mostrar la página solicitada
             document.getElementById(pageId).style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll al inicio de la página
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // --- EVENT LISTENERS GLOBALES ---
 
-        // Navegación principal
         homeLink.addEventListener('click', (event) => {
             event.preventDefault();
             showPage('product-list-page');
-            renderProducts('all'); // Recargar productos al ir a inicio
+            renderProducts('all');
         });
         navHome.addEventListener('click', (event) => {
             event.preventDefault();
@@ -1616,19 +1610,15 @@
             renderProducts('all');
         });
 
-        // Botón "Volver a Productos" en la página de detalle
         backToProductsButton.addEventListener('click', () => {
             showPage('product-list-page');
         });
 
-        // Filtro por categoría
         categoriesNav.addEventListener('click', (event) => {
             if (event.target.classList.contains('category-button')) {
-                // Eliminar 'active' de todos los botones
                 document.querySelectorAll('.category-button').forEach(button => {
                     button.classList.remove('active');
                 });
-                // Añadir 'active' al botón clickeado
                 event.target.classList.add('active');
 
                 const category = event.target.dataset.category;
@@ -1636,10 +1626,8 @@
             }
         });
 
-        // Abrir/Cerrar carrito
         cartIcon.addEventListener('click', openCartModal);
         closeCartModal.addEventListener('click', closeCartModal);
-        // Cerrar modal al hacer clic fuera de su contenido
         window.addEventListener('click', (event) => {
             if (event.target === cartModal) {
                 closeCartModal();
@@ -1649,11 +1637,9 @@
             }
         });
 
-        // Abrir checkout desde el carrito
         proceedToCheckoutButton.addEventListener('click', openCheckoutModal);
         closeCheckoutModal.addEventListener('click', closeCheckoutModal);
 
-        // Botón flotante de WhatsApp
         whatsappQuickLink.addEventListener('click', (event) => {
             event.preventDefault();
             const message = encodeURIComponent('¡Hola! Tengo una consulta sobre un producto.');
@@ -1661,19 +1647,17 @@
             window.open(whatsappUrl, '_blank');
         });
 
-        // Carrusel de ofertas
         prevSlideButton.addEventListener('click', prevSlide);
         nextSlideButton.addEventListener('click', nextSlide);
 
         // --- INICIALIZACIÓN ---
         document.addEventListener('DOMContentLoaded', () => {
-            renderProducts('all'); // Cargar todos los productos al inicio
-            updateCartCount(); // Actualizar el contador del carrito al cargar la página
-            renderOfferSlides(); // Cargar los slides de ofertas
-            showSlide(0); // Mostrar el primer slide
+            renderProducts('all');
+            updateCartCount();
+            renderOfferSlides();
+            showSlide(0);
 
-            // Autoplay para el carrusel (opcional)
-            setInterval(nextSlide, 5000); // Cambiar cada 5 segundos
+            setInterval(nextSlide, 5000);
         });
 
     </script>
