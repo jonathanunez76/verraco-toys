@@ -1154,12 +1154,9 @@
     else if(page === 'products') document.getElementById('product-list-page').style.display = 'block';
     else if(page === 'detail') document.getElementById('product-detail-page').style.display = 'block';
 
-     // ✅ AGREGA ESTO CON UN POCO DE ESPERA
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }, 50);
+       // 🚀 ESTO ES LO MÁGICO
+    window.location.hash = "#arriba-del-todo";
+  }
 }
 
         function renderProducts() {
