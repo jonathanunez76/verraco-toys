@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berraco Toy - Tienda Online de Juguetes</title>
+    <title>Berraco Toy - Tienda Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://player.vimeo.com https://www.youtube.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; frame-src 'self' https://www.youtube.com https://player.vimeo.com; font-src 'self' https://fonts.gstatic.com;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta name="referrer" content="no-referrer">
 
     <style>
         :root {
@@ -18,7 +13,6 @@
             --secondary-color: #FF6584;
             --accent-color: #FFC107;
             --dark-color: #2D3748;
-            --light-bg: #F7FAFC;
         }
 
         * {
@@ -149,7 +143,6 @@
             -webkit-overflow-scrolling: touch !important;
             width: 100% !important;
         }
-
         .categories-nav button {
             background: linear-gradient(45deg, var(--primary-color), #8A84FF);
             border: none;
@@ -165,14 +158,12 @@
             min-width: max-content !important;
             line-height: normal !important;
         }
-
         .categories-nav button:hover,
         .categories-nav button.active {
             background: linear-gradient(45deg, var(--secondary-color), #FF8BA7);
             transform: translateY(-3px);
             box-shadow: 0 5px 10px rgba(255, 101, 132, 0.3);
         }
-
         .categories-nav::-webkit-scrollbar {
             display: none;
         }
@@ -288,6 +279,7 @@
             justify-content: center;
             gap: 10px;
             padding: 0 10px;
+            margin-top: auto;
         }
         .details-button, 
         .buy-now-from-list-button {
@@ -337,7 +329,6 @@
             min-width: 300px;
             text-align: center;
         }
-
         .detail-image-slider {
             position: relative;
             width: 100%;
@@ -380,7 +371,6 @@
         }
         .detail-arrow-left { left: 10px; }
         .detail-arrow-right { right: 10px; }
-
         .detail-thumbnails {
             display: flex;
             justify-content: center;
@@ -440,13 +430,6 @@
             gap: 15px;
             margin-top: 20px;
         }
-      
-
-
-
-
-
-
         .product-detail-actions button {
             flex: 1;
             padding: 15px 20px;
@@ -461,6 +444,15 @@
             background: linear-gradient(45deg, var(--primary-color), #8A84FF);
             color: white;
         }
+
+
+
+
+
+
+
+
+
         #detail-buy-now-button {
             background: linear-gradient(45deg, #28a745, #4cd964);
             color: white;
@@ -499,6 +491,11 @@
             width: 90%;
             max-width: 600px;
             position: relative;
+            animation: modalPop 0.4s ease;
+        }
+        @keyframes modalPop {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
         }
         .close-button {
             color: #aaa;
@@ -704,7 +701,7 @@
                     <div class="offer-slide">
                         <h2>¡GRANDES DESCUENTOS!</h2>
                         <p>Todos los juguetes con hasta 30% OFF.</p>
-                        <img src="https://via.placeholder.com/800x400/FFD700/FFFFFF?text=OFERTA+DE+LANZAMIENTO" alt="Oferta">
+                        <img src="https://via.placeholder.com/800x400/FFD700/FFFFFF?text=OFERTA+1" alt="Oferta">
                         <a href="#" class="offer-button" onclick="showPage('products')">VER PRODUCTOS</a>
                     </div>
                     <div class="offer-slide">
@@ -716,7 +713,7 @@
                     <div class="offer-slide">
                         <h2>NOVEDADES</h2>
                         <p>Los juguetes más modernos ya están aquí.</p>
-                        <img src="https://via.placeholder.com/800x400/1E90FF/FFFFFF?text=NUEVOS+INGRESOS" alt="Novedades">
+                        <img src="https://via.placeholder.com/800x400/1E90FF/FFFFFF?text=NOVEDADES" alt="Novedades">
                         <a href="#" class="offer-button" onclick="showPage('products')">CONOCER MÁS</a>
                     </div>
                 </div>
@@ -749,8 +746,8 @@
         </div>
 
         <!-- PÁGINA DE DETALLE -->
-        <div id="product-detail-page">
-            <h2 id="detail-title"></h2>
+        <div id="product-detail-page" style="display: none;">
+            <h2>Detalle del Producto</h2>
             <div class="product-detail-content">
                 <div class="product-detail-images">
                     <div class="detail-image-slider" id="detail-image-slider">
@@ -760,7 +757,6 @@
                         <button class="detail-slider-arrow detail-arrow-left" onclick="moveDetailSlide(-1)">&#10094;</button>
                         <button class="detail-slider-arrow detail-arrow-right" onclick="moveDetailSlide(1)">&#10095;</button>
                     </div>
-                    
                     <div id="detail-thumbnails-container" class="detail-thumbnails"></div>
                     <div id="detail-video-container" class="detail-video"></div>
                 </div>
@@ -770,7 +766,7 @@
                     <div class="price" id="detail-price"></div>
                     <p id="detail-description"></p>
                     <div class="product-detail-actions">
-                        <button id="detail-add-to-cart-button">
+                        <button id="detail-add-to-cart-button" onclick="addToCart(currentProductId)">
                             <i class="fas fa-cart-plus"></i> Añadir al Carrito
                         </button>
                         <button id="detail-buy-now-button" onclick="buyNowFromDetail()">
@@ -804,7 +800,7 @@
         <div class="modal-content">
             <span class="close-button" onclick="closeCheckout()">&times;</span>
             <h2>Información de Envío</h2>
-            <form id="checkout-form" class="checkout-form" onsubmit="submitOrder(event)">
+            <form id="checkout-form" onsubmit="submitOrder(event)">
                 <label for="name">Nombre Completo</label>
                 <input type="text" id="name" name="name" required>
 
@@ -848,16 +844,11 @@
 
     <a href="https://wa.me/593999999999" target="_blank" class="whatsapp-fixed-button">
         <i class="fab fa-whatsapp"></i>
-        </a>
+    </a>
 
-
-
-
-
-
-
-        <script>
+    <script>
         // --- DATOS ---
+               // --- DATOS ---
         const products = [
             {
                 id: 1,
@@ -1246,3 +1237,5 @@
 
 </body>
 </html>
+        
+        
