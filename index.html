@@ -1162,7 +1162,9 @@
         });
 
   document.addEventListener('DOMContentLoaded', () => {
-            
+            renderProducts();
+            updateCartCount();
+            startAutoSlide();
             showSection('home');
         });
  function showProductDetail(productId) {
