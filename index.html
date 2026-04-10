@@ -1139,10 +1139,10 @@
         let currentProductId = null;
         let currentDetailSlide = 0; // Para el carrusel de detalles
 
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProducts();
-            updateCartCount();
-            startAutoSlide();
+      
+document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+            
         });
 
        function showPage(page) {
@@ -1459,10 +1459,7 @@
     window.addEventListener('pageshow', function(event) {
         window.scrollTo(0, 0);
     });
- // Mostrar la sección de inicio por defecto
-        document.addEventListener('DOMContentLoaded', () => {
-            showSection('home');
-        });
+
 </script>
 </body>
 </html>
