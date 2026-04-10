@@ -1162,9 +1162,7 @@
         });
 
   document.addEventListener('DOMContentLoaded', () => {
-            renderProducts();
-            updateCartCount();
-            startAutoSlide();
+            
             showSection('home');
         });
  function showProductDetail(productId) {
@@ -1180,7 +1178,7 @@
             });
             document.getElementById('product-detail-page').style.display = 'block';
             window.scrollTo(0, 0); // Ir al inicio de la página
-
+  });
        function showPage(page) {
     document.getElementById('home-page').style.display = 'none';
     document.getElementById('product-list-page').style.display = 'none';
