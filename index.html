@@ -3,108 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berraco Toy - Tienda Online</title>
+    <title>Berraco Toy - Tienda Online de Juguetes</title>
+    <!-- Incluimos una fuente de Google Fonts para un aspecto más moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de Font Awesome para carrito, WhatsApp, redes sociales, etc. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Estilos Generales */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif; /* Usamos la fuente Poppins */
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f2f5; /* Un gris más suave para el fondo */
             color: #333;
+            line-height: 1.6;
         }
 
         /* Barra de Navegación */
         header {
-            background-color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+            padding: 10px 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Sombra más pronunciada */
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         .logo {
-            font-weight: bold;
-            font-size: 24px;
-            color: #333;
+            font-weight: 700; /* Más negrita */
+            font-size: 28px;
+            color: #007bff; /* Color primario vibrante */
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            height: 40px; /* Logo un poco más grande */
+            width: auto;
         }
         .nav-menu ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 20px;
+            gap: 30px; /* Más espacio entre ítems */
         }
         .nav-menu a {
             text-decoration: none;
-            color: #333;
-            padding: 5px 10px;
-            transition: color 0.3s;
+            color: #555;
+            padding: 8px 0;
+            transition: color 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-menu a::after { /* Animación de subrayado */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #007bff;
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease;
+        }
+        .nav-menu a:hover::after {
+            width: 100%;
         }
         .nav-menu a:hover {
             color: #007bff;
+            transform: translateY(-2px);
         }
         .cart-icon {
-            font-size: 24px;
+            font-size: 28px; /* Icono más grande */
             text-decoration: none;
             color: #333;
             position: relative;
             cursor: pointer;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .cart-icon:hover {
+            color: #007bff;
+            transform: scale(1.1);
         }
         .cart-count {
-            background-color: #007bff;
+            background-color: #ff4500; /* Un rojo anaranjado llamativo */
             color: white;
             border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 12px;
+            padding: 4px 9px;
+            font-size: 14px;
             position: absolute;
-            top: -5px;
-            right: -10px;
+            top: -10px;
+            right: -15px;
+            min-width: 28px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         /* Contenido Principal */
         .container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 30px auto;
             padding: 0 20px;
         }
 
-        /* Carrusel de Productos (simulado en página principal) */
-        .product-carousel {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
+        h1, h2, h3 {
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        h1 { font-size: 2.5em; text-align: center; margin-top: 40px; }
+        h2 { font-size: 2em; }
+
+        /* Categorías */
+        .categories-nav {
+            background-color: #ffffff;
+            padding: 12px 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 35px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex; /* Usamos flex para centrar mejor en móviles */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
-        .product-carousel img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 10px;
+        .categories-nav button {
+            background: none;
+            border: none;
+            padding: 10px 18px;
+            font-size: 1.05em;
+            cursor: pointer;
+            color: #495057;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            font-weight: 500;
         }
-        .product-carousel h2 {
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-        .product-carousel p {
-            line-height: 1.6;
-        }
-        .view-products-button {
+        .categories-nav button:hover,
+        .categories-nav button.active {
             background-color: #007bff;
             color: white;
-            padding: 10px 20px;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+        }
+
+        /* Carrusel de Ofertas (Página Principal) */
+        .offer-carousel {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        .offer-carousel-inner {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+        .offer-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .offer-slide img {
+            max-width: 90%;
+            height: auto;
+            max-height: 400px; /* Un poco más alto */
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .offer-slide h2 {
+            font-size: 2.8em;
+            color: #ff4500; /* Color de oferta */
+            margin-bottom: 15px;
+        }
+        .offer-slide p {
+            font-size: 1.3em;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+        .offer-button {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 35px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            margin-top: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .view-products-button:hover {
-            background-color: #0056b3;
+        .offer-button:hover {
+            background-color: #218838;
+            transform: translateY(-4px);
         }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            font-size: 1.6em;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .carousel-arrow:hover {
+            background-color: rgba(0,0,0,0.9);
+            transform: translateY(-50%) scale(1.05);
+        }
+        .carousel-arrow.left { left: 15px; }
+        .carousel-arrow.right { right: 15px; }
+
 
         /* Sección de Productos */
         #product-list-page {
@@ -112,133 +237,235 @@
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Por defecto 1 o 2 en móvil */
+            gap: 30px; /* Más espacio */
         }
         .product-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             overflow: hidden;
             text-align: center;
-            padding-bottom: 15px;
+            padding-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Para empujar el footer hacia abajo */
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         .product-card img {
             max-width: 100%;
-            height: 200px; /* Altura fija para las imágenes */
+            height: 250px; /* Altura fija para las imágenes, un poco más grande */
             object-fit: contain; /* Ajusta la imagen sin recortarla */
             display: block;
             margin: 0 auto;
-            padding: 10px;
+            padding: 20px;
         }
         .product-card h3 {
-            font-size: 1.2em;
-            margin: 10px 0;
-            padding: 0 10px;
+            font-size: 1.4em;
+            margin: 15px 0 10px;
+            padding: 0 15px;
+            color: #007bff;
+            min-height: 70px; /* Para alinear el texto de productos con nombres largos */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
         }
         .product-card .price {
-            font-size: 1.3em;
-            color: #007bff;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            color: #ff4500; /* Color de oferta/precio */
+            font-weight: 700; /* Más negrita */
+            margin-bottom: 15px;
         }
-        .product-card .details-button, .product-card .add-to-cart-button {
-            background-color: #28a745;
+        .product-card-actions {
+            margin-top: auto; /* Empuja los botones hacia abajo */
+        }
+        .product-card .details-button, .product-card .buy-now-from-list-button {
+            background-color: #6c757d;
             color: white;
-            padding: 8px 15px;
+            padding: 12px 22px;
             border: none;
-            border-radius: 5px;
+            border-radius: 7px;
             cursor: pointer;
-            margin: 5px;
+            margin: 8px 5px; /* Más margen */
             text-decoration: none;
             display: inline-block;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .product-card .details-button:hover {
+            background-color: #5a6268;
+            transform: translateY(-3px);
+        }
+        .product-card .buy-now-from-list-button {
+            background-color: #28a745;
+        }
+        .product-card .buy-now-from-list-button:hover {
             background-color: #218838;
-        }
-        .product-card .add-to-cart-button {
-            background-color: #ffc107;
-            color: #333;
-        }
-        .product-card .add-to-cart-button:hover {
-            background-color: #e0a800;
+            transform: translateY(-3px);
         }
 
         /* Página de Detalle de Producto */
         #product-detail-page {
             display: none; /* Oculto por defecto */
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            background-color: #ffffff;
+            padding: 35px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            border-radius: 15px;
             flex-direction: column;
-            gap: 20px;
+            gap: 35px;
         }
         #product-detail-page h2 {
-            color: #007bff;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #007bff;
         }
         .product-detail-content {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 50px; /* Más espacio */
+            justify-content: center;
         }
         .product-detail-images {
-            flex: 1;
-            min-width: 300px;
+            flex: 1 1 48%; /* Más ancho */
+            min-width: 320px;
             text-align: center;
         }
-        .product-detail-images img {
+        .detail-main-image {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            max-height: 450px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
+        .detail-thumbnails {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px; /* Más espacio entre miniaturas */
+            margin-top: 15px;
+        }
+        .detail-thumbnails img {
+            width: 80px; /* Miniaturas más grandes */
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 3px solid transparent; /* Borde más grueso */
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+        .detail-thumbnails img:hover,
+        .detail-thumbnails img.active-thumbnail {
+            border-color: #007bff;
+            transform: scale(1.08);
+        }
+        .detail-video {
+            margin-top: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 100%;
+        }
+        .detail-video iframe {
+            display: block;
+            width: 100%; /* Aseguramos que el iframe use el 100% del contenedor */
+            aspect-ratio: 16 / 9; /* Mantiene la relación de aspecto de video */
+        }
+
         .product-detail-info {
-            flex: 2;
-            min-width: 300px;
+            flex: 1 1 48%; /* Más
+            width: 100%; /* Aseguramos que el iframe use el 100% del contenedor */
+            aspect-ratio: 16 / 9; /* Mantiene la relación de aspecto de video */
+        }
+
+        .product-detail-info {
+            flex: 1 1 48%; /* Más ancho */
+            min-width: 320px;
+            padding-left: 20px; /* Pequeño padding para separación */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .product-detail-info h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: left; /* Alineado a la izquierda */
         }
         .product-detail-info .price {
-            font-size: 2em;
-            color: #007bff;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-size: 2.5em;
+            color: #ff4500;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: left;
         }
         .product-detail-info p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        .buy-now-button {
-            background-color: #dc3545;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            line-height: 1.8;
+            margin-bottom: 25px;
             font-size: 1.1em;
+            color: #555;
+        }
+        .detail-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
             margin-top: 20px;
         }
-        .buy-now-button:hover {
-            background-color: #c82333;
+        .detail-add-to-cart-button, .detail-buy-now-button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            flex-grow: 1; /* Para que los botones se expandan */
+            min-width: 180px;
+        }
+        .detail-add-to-cart-button {
+            background-color: #007bff;
+            color: white;
+        }
+        .detail-add-to-cart-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+        .detail-buy-now-button {
+            background-color: #28a745;
+            color: white;
+        }
+        .detail-buy-now-button:hover {
+            background-color: #218838;
+            transform: translateY(-3px);
         }
         .back-to-products {
             background-color: #6c757d;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
+            font-size: 1em;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .back-to-products:hover {
             background-color: #5a6268;
+            transform: translateY(-3px);
         }
 
         /* Carrito de Compras (Modal) */
-        .cart-modal {
+        .modal {
             display: none; /* Oculto por defecto */
             position: fixed;
             z-index: 1000;
@@ -247,46 +474,63 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0,0,0,0.5); /* Fondo semitransparente */
             justify-content: center;
             align-items: center;
+            padding: 20px;
+            box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
         }
-        .cart-modal.active { /* Para mostrar el modal */
+        .modal.active { /* Para mostrar el modal */
             display: flex;
         }
-        .cart-modal-content {
+        .modal-content {
             background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 700px;
             position: relative;
+            animation: fadeIn 0.3s ease-out; /* Animación de entrada */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .close-button {
             color: #aaa;
             float: right;
-            font-size: 28px;
+            font-size: 32px; /* Más grande */
             font-weight: bold;
             cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            transition: color 0.3s ease;
         }
         .close-button:hover,
         .close-button:focus {
-            color: black;
+            color: #333;
             text-decoration: none;
         }
+        .modal-content h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #007bff;
+            font-size: 1.8em;
+        }
         #cart-items-container {
-            max-height: 300px;
+            max-height: 350px; /* Un poco más alto */
             overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 10px; /* Para el scrollbar */
         }
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #eee;
-            padding: 10px 0;
+            padding: 15px 0; /* Más padding */
         }
         .cart-item:last-child {
             border-bottom: none;
@@ -295,178 +539,357 @@
             flex-grow: 1;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px; /* Más espacio */
         }
         .cart-item-info img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border-radius: 4px;
+            width: 60px; /* Imágenes más grandes */
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .cart-item-info span {
+            font-size: 1.1em;
+            color: #333;
         }
         .cart-item-actions {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px; /* Más espacio */
         }
-        .cart-item-actions button {
+        .cart-item-quantity {
+            width: 50px; /* Campo de cantidad más ancho */
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 1em;
+        }
+        .remove-from-cart {
             background-color: #dc3545;
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 8px 12px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9em;
+            font-size: 0.95em;
+            transition: background-color 0.3s ease;
         }
-        .cart-item-actions input {
-            width: 40px;
-            text-align: center;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 5px;
+        .remove-from-cart:hover {
+            background-color: #c82333;
         }
         .cart-total {
             text-align: right;
-            font-size: 1.2em;
+            font-size: 1.5em;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
         }
         .checkout-button {
             background-color: #28a745;
             color: white;
-            padding: 12px 25px;
+            padding: 15px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: 1.2em;
             width: 100%;
-            margin-top: 20px;
+            margin-top: 25px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .checkout-button:hover {
             background-color: #218838;
+            transform: translateY(-3px);
         }
 
         /* Página de Checkout (Modal) */
-        .checkout-modal {
-            display: none; /* Oculto por defecto */
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            justify-content: center;
-            align-items: center;
-        }
-        .checkout-modal.active { /* Para mostrar el modal */
-            display: flex;
-        }
-        .checkout-modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 700px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            position: relative;
+        #checkout-modal .modal-content {
+            max-width: 800px; /* Checkout un poco más ancho */
         }
         .checkout-modal-content h3 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #007bff;
+        }
+        .checkout-modal-content form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 columnas en pantallas grandes */
+            gap: 20px;
+        }
+        .checkout-modal-content .form-group {
+            margin-bottom: 0; /* Ya tenemos gap */
         }
         .checkout-modal-content label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
         }
         .checkout-modal-content input[type="text"],
         .checkout-modal-content input[type="email"],
         .checkout-modal-content input[type="tel"],
-        .checkout-modal-content select {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .checkout-modal-content select,
+        .checkout-modal-content textarea { /* Añadido textarea para dirección */
+            width: calc(100% - 20px); /* Ajuste por padding */
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .checkout-modal-content .form-group {
-            margin-bottom: 15px;
+        .checkout-modal-content input:focus,
+        .checkout-modal-content select:focus,
+        .checkout-modal-content textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+            outline: none;
         }
         .checkout-summary {
-            background-color: #e9ecef;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
+            background-color: #e9f7ff; /* Fondo más claro para el resumen */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            grid-column: 1 / -1; /* Ocupa todo el ancho */
+            border: 1px solid #cceeff;
+        }
+        .checkout-summary h4 {
+            font-size: 1.4em;
+            color: #007bff;
+            margin-bottom: 15px;
+            text-align: center;
         }
         .checkout-summary div {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
         }
         .checkout-summary .total-amount {
-            font-size: 1.3em;
+            font-size: 1.6em;
             font-weight: bold;
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
-            margin-top: 10px;
+            border-top: 1px dashed #a0d9ff; /* Línea discontinua */
+            padding-top: 15px;
+            margin-top: 15px;
+            color: #ff4500;
         }
         .place-order-button {
-            background-color: #007bff;
+            background-color: #28a745;
             color: white;
-            padding: 12px 25px;
+            padding: 15px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: 1.2em;
             width: 100%;
-            margin-top: 20px;
+            margin-top: 25px;
+            grid-column: 1 / -1; /* Ocupa todo el ancho */
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .place-order-button:hover {
-            background-color: #0056b3;
+            background-color: #218838;
+            transform: translateY(-3px);
+        }
+
+        /* Botón Flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+        /* Icono de WhatsApp (puedes usar un SVG o Font Awesome) */
+        /* Si no cargas Font Awesome, puedes usar un emoji: content: '💬'; */
+        .whatsapp-float::before {
+            content: '\f232'; /* Código de Font Awesome para WhatsApp */
+            font-family: 'Font Awesome 5 Brands'; /* Necesitarías enlazar Font Awesome */
+            font-size: 30px;
         }
 
 
         /* Pie de Página */
         footer {
-            background-color: #333;
+            background-color: #343a40; /* Un gris oscuro */
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
+            padding: 30px 20px;
+            margin-top: 50px;
+            font-size: 0.95em;
+        }
+        .footer-links {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
         .footer-links a {
-            color: white;
+            color: #adb5bd;
             text-decoration: none;
-            margin: 0 10px;
+            transition: color 0.3s ease;
         }
         .footer-links a:hover {
-            text-decoration: underline;
+            color: #007bff;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .social-icons a:hover {
+            color: #007bff;
+            transform: translateY(-3px);
         }
 
+
         /* Media Queries para Responsividad */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) { /* Tabletas */
             .nav-menu ul {
-                display: none; /*
-                                /* Oculta el menú en pantallas pequeñas por simplicidad, se podría hacer un menú hamburguesa */
+                gap: 15px;
             }
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Se ajusta mejor a 2 columnas en tabletas */
+            }
+            .offer-slide h2 {
+                font-size: 2em;
+            }
+                       .offer-slide p {
+                font-size: 1.1em;
+            }
+            .offer-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+            .product-detail-info h3 {
+                font-size: 1.6em;
+            }
+            .product-detail-info .price {
+                font-size: 2.2em;
+            }
+        }
+
+        @media (max-width: 768px) { /* Móviles grandes y tabletas pequeñas */
             header {
-                padding: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px 15px;
             }
             .logo {
-                font-size: 20px;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+                justify-content: center;
+            }
+            .nav-menu {
+                order: 1; /* Mueve el menú debajo del logo */
+                width: 100%;
+            }
+            .nav-menu ul {
+                justify-content: center;
+                gap: 10px;
+            }
+            .nav-menu a {
+                font-size: 0.9em;
+                padding: 5px 8px;
+            }
+            .cart-icon {
+                font-size: 24px;
+                top: 10px;
+                right: 15px;
+                position: absolute; /* Para que no se mueva con el flexwrap */
+            }
+            .cart-count {
+                top: -5px;
+                right: -8px;
+                font-size: 11px;
+                padding: 2px 6px;
+                min-width: 20px;
+            }
+            .categories-nav {
+                justify-content: center;
+                gap: 5px;
+                padding: 8px 0;
+            }
+            .categories-nav button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+            .offer-slide h2 {
+                font-size: 1.8em;
+            }
+            .offer-slide p {
+                font-size: 1em;
+            }
+            .offer-button {
+                padding: 12px 25px;
+                font-size: 1em;
             }
             .product-grid {
                 grid-template-columns: 1fr; /* Una columna en móviles */
+                gap: 20px;
+            }
+            .product-card h3 {
+                min-height: auto; /* Desactivar altura fija en móviles */
             }
             .product-detail-content {
                 flex-direction: column;
+                gap: 25px;
             }
-            .checkout-modal-content {
+            .product-detail-images {
+                min-width: unset; /* Permite que el ancho se ajuste */
+                width: 100%;
+            }
+            .product-detail-info {
+                min-width: unset; /* Permite que el ancho se ajuste */
+                width: 100%;
+                padding-left: 0;
+                text-align: center; /* Alinea texto a la izquierda, botones al centro */
+            }
+            .product-detail-info h3,
+            .product-detail-info .price,
+            .product-detail-info p {
+                text-align: center; /* Centrar texto en detalles en móviles */
+            }
+            .detail-buttons {
+                justify-content: center; /* Centrar botones */
+            }
+            .modal-content {
                 width: 95%;
+                padding: 20px;
+            }
+            .checkout-modal-content form {
+                grid-template-columns: 1fr; /* Una columna en checkout para móviles */
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 15px;
+                right: 15px;
+            }
+             .whatsapp-float::before {
+                font-size: 25px;
             }
         }
     </style>
@@ -474,7 +897,10 @@
 <body>
 
     <header>
-        <a href="#" class="logo" id="home-link">BERRACO TOY</a>
+        <a href="#" class="logo" id="home-link">
+            <img src="https://via.placeholder.com/40x40?text=BT" alt="Berraco Toy Logo">
+            BERRACO TOY
+        </a>
         <nav class="nav-menu">
             <ul>
                 <li><a href="#" id="nav-home">Inicio</a></li>
@@ -483,20 +909,32 @@
                 <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
-        <a href="#" class="cart-icon" id="open-cart-modal">🛒<span class="cart-count">0</span></a>
+        <a href="#" class="cart-icon" id="open-cart-modal">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </a>
     </header>
 
     <div class="container">
         <!-- Página principal de listado de productos -->
         <div id="product-list-page">
-            <section class="product-carousel">
-                <img src="https://via.placeholder.com/800x400?text=Visita+nuestras+Liquidaciones" alt="Liquidaciones">
-                <h2>¡GRANDES DESCUENTOS EN LIQUIDACIÓN!</h2>
-                <p>Descubre ofertas increíbles en una amplia variedad de juguetes. ¡No te las pierdas!</p>
-                <a href="#" class="view-products-button">VER OFERTAS</a>
+            <section class="offer-carousel">
+                <div class="offer-carousel-inner" id="offer-carousel-inner">
+                    <!-- Slides se cargarán aquí dinámicamente -->
+                </div>
+                <button class="carousel-arrow left" id="prev-slide">&#10094;</button>
+                <button class="carousel-arrow right" id="next-slide">&#10095;</button>
             </section>
 
-            <h1>Nuestros Productos</h1>
+            <h1>Descubre la Diversión en Berraco Toy</h1>
+
+            <nav class="categories-nav">
+                <button class="category-button active" data-category="all">Todas las Categorías</button>
+                <button class="category-button" data-category="rc-vehicles">Vehículos RC</button>
+                <button class="category-button" data-category="construction">Construcción</button>
+                <button class="category-button" data-category="figures">Figuras de Acción</button>
+                <button class="category-button" data-category="educational">Educativos</button>
+            </nav>
 
             <section class="product-grid" id="product-grid-container">
                 <!-- Los productos se cargarán aquí dinámicamente con JavaScript -->
@@ -509,28 +947,29 @@
             <h2 id="detail-product-name"></h2>
             <div class="product-detail-content">
                 <div class="product-detail-images">
-                    <!-- Carrusel de imágenes simulado -->
-                    <img id="detail-main-image" src="" alt="Imagen Principal del Producto">
-                    <div id="detail-thumbnails" style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                    <img id="detail-main-image" class="detail-main-image" src="" alt="Imagen Principal del Producto">
+                    <div class="detail-thumbnails" id="detail-thumbnails">
                         <!-- Miniaturas de imágenes se cargarán aquí -->
                     </div>
-                    <!-- Video simulado -->
-                    <div id="detail-video" style="margin-top: 20px; display: none;">
+                    <div class="detail-video" id="detail-video" style="display: none;">
                         <iframe width="100%" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="product-detail-info">
                     <p id="detail-product-description"></p>
                     <p class="price" id="detail-product-price"></p>
-                    <button class="add-to-cart-button" id="detail-add-to-cart-button">Añadir al Carrito</button>
-                    <button class="buy-now-button" id="detail-buy-now-button">Comprar Ahora</button>
+                    <div class="detail-buttons">
+                        <button class="detail-add-to-cart-button" id="detail-add-to-cart-button"><i class="fas fa-cart-plus"></i> Añadir al Carrito</button>
+                        <button class="detail-buy-now-button" id="detail-buy-now-button"><i class="fas fa-money-check-alt"></i> Comprar Ahora</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-        <!-- Carrito de Compras (Modal) -->
-    <div id="cart-modal" class="cart-modal">
-        <div class="cart-modal-content">
+
+    <!-- Carrito de Compras (Modal) -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
             <span class="close-button" id="close-cart-modal">&times;</span>
             <h3>Tu Carrito de Compras</h3>
             <div id="cart-items-container">
@@ -544,38 +983,34 @@
     </div>
 
     <!-- Página de Checkout (Modal) -->
-    <div id="checkout-modal" class="checkout-modal">
-        <div class="checkout-modal-content">
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
             <span class="close-button" id="close-checkout-modal">&times;</span>
             <h3>Finalizar Compra</h3>
             <form id="checkout-form">
                 <div class="form-group">
                     <label for="checkout-name">Nombre Completo:</label>
-                    <input type="text" id="checkout-name" required>
+                    <input type="text" id="checkout-name" placeholder="Tu nombre completo" required>
                 </div>
                 <div class="form-group">
                     <label for="checkout-id">Número de Cédula/Identificación:</label>
-                    <input type="text" id="checkout-id" required>
-                </div>
-                <div class="form-group">
-                    <label for="checkout-address">Dirección de Envío:</label>
-                    <input type="text" id="checkout-address" placeholder="Calle, Número, Edificio, Apartamento" required>
+                    <input type="text" id="checkout-id" placeholder="Ej: 1234567890" required>
                 </div>
                 <div class="form-group">
                     <label for="checkout-city">Ciudad:</label>
-                    <input type="text" id="checkout-city" required>
+                    <input type="text" id="checkout-city" placeholder="Ej: Latacunga" required>
                 </div>
                 <div class="form-group">
-                    <label for="checkout-province">Provincia/Estado:</label>
-                    <input type="text" id="checkout-province" required>
+                    <label for="checkout-address">Dirección de Envío:</label>
+                    <textarea id="checkout-address" placeholder="Calle principal, número, calle secundaria, referencias." rows="3" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="checkout-email">Email:</label>
-                    <input type="email" id="checkout-email" required>
+                    <input type="email" id="checkout-email" placeholder="tu@email.com" required>
                 </div>
                 <div class="form-group">
-                    <label for="checkout-phone">Teléfono:</label>
-                    <input type="tel" id="checkout-phone" required>
+                    <label for="checkout-phone">Teléfono (WhatsApp):</label>
+                    <input type="tel" id="checkout-phone" placeholder="Ej: +5939XXXXXXXX" required>
                 </div>
 
                 <div class="checkout-summary">
@@ -591,45 +1026,59 @@
                     </div>
                 </div>
 
-                <button type="submit" class="place-order-button">Pagar Ahora (Simulado)</button>
+                <button type="submit" class="place-order-button"><i class="fab fa-whatsapp"></i> Realizar Pedido por WhatsApp</button>
             </form>
         </div>
     </div>
 
+    <!-- Botón flotante de WhatsApp -->
+    <a href="#" class="whatsapp-float" target="_blank" id="whatsapp-quick-link">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <footer>
         <p>&copy; 2026 Berraco Toy. Todos los derechos reservados.</p>
         <div class="footer-links">
-            <a href="#">Política de Privacidad</a> |
-            <a href="#">Términos y Condiciones</a> |
-            <a href="#">Contacto</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Preguntas Frecuentes</a>
+        </div>
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
     </footer>
 
     <script>
-        // Array de productos (simulado, en un sitio real vendría de una base de datos)
+        // --- DATOS DE PRODUCTOS (Puedes modificar esto fácilmente) ---
         const products = [
             {
                 id: 1,
-                name: 'Huina 1501 Camión Scania 770S RC Verde Escala 1/18',
+                name: 'Huina 1501 Camión Scania 770S RC',
                 price: 135.53,
-                image: 'https://via.placeholder.com/300x200?text=Camion+RC+Verde',
-                description: 'Magnífico camión Scania 770S a control remoto, escala 1/18. Detalles realistas y construcción robusta. ¡Perfecto para coleccionistas y entusiastas del RC!',
+                image: 'https://m.media-amazon.com/images/I/61Nl0b22VcL._AC_SX679_.jpg', // Ejemplo de imagen real
+                description: 'Magnífico camión Scania 770S a control remoto, escala 1/18. Detalles realistas y construcción robusta. ¡Perfecto para coleccionistas y entusiastas del RC! Conducción precisa y luces funcionales para una experiencia inmersiva.',
+                category: 'rc-vehicles',
+                stock: true,
                 images: [
-                    'https://via.placeholder.com/600x400?text=Camion+RC+Verde+1',
-                    'https://via.placeholder.com/600x400?text=Camion+RC+Verde+2',
-                    'https://via.placeholder.com/600x400?text=Camion+RC+Verde+3'
+                    'https://m.media-amazon.com/images/I/61Nl0b22VcL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71YyP9f2aYL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/619Ww1QhGKL._AC_SX679_.jpg'
                 ],
-                video: '' // URL de YouTube, por ejemplo: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                video: 'https://www.youtube.com/embed/Pj1c81z29uM' // Ejemplo de YouTube
             },
             {
                 id: 2,
-                name: 'Huina 1502 Plataforma para Scania a Control Remoto Escala 1/18 Gris',
+                name: 'Huina 1502 Plataforma para Scania RC',
                 price: 61.87,
-                image: 'https://via.placeholder.com/300x200?text=Plataforma+RC',
-                description: 'Plataforma a control remoto para remolcar tus vehículos Scania RC. Compatible con escala 1/18. ¡Completa tu flota!',
+                image: 'https://m.media-amazon.com/images/I/61S266jY7+L._AC_SX679_.jpg',
+                description: 'Plataforma a control remoto para remolcar tus vehículos Scania RC. Compatible con escala 1/18. Fabricada con materiales de alta calidad para garantizar durabilidad y resistencia. ¡Completa tu flota de construcción!',
+                category: 'rc-vehicles',
+                stock: true,
                 images: [
-                    'https://via.placeholder.com/600x400?text=Plataforma+RC+1',
-                    'https://via.placeholder.com/600x400?text=Plataforma+RC+2'
+                    'https://m.media-amazon.com/images/I/61S266jY7+L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61lYtJ2sFwL._AC_SX679_.jpg'
                 ],
                 video: ''
             },
@@ -637,12 +1086,14 @@
                 id: 3,
                 name: 'Volquete a Control Remoto Scania 1/18',
                 price: 76.60,
-                image: 'https://via.placeholder.com/300x200?text=Volquete+RC',
-                description: 'Volquete Scania a escala 1/18 con funciones de descarga a control remoto. ¡Horas de diversión en la construcción simulada!',
+                image: 'https://m.media-amazon.com/images/I/61hZ8Vb5M0L._AC_SX679_.jpg',
+                description: 'Volquete Scania a escala 1/18 con funciones de descarga a control remoto. ¡Horas de diversión en la construcción simulada! La caja basculante es totalmente operativa para cargar y descargar materiales.',
+                category: 'rc-vehicles',
+                stock: true,
                 images: [
-                    'https://via.placeholder.com/600x400?text=Volquete+RC+1',
-                    'https://via.placeholder.com/600x400?text=Volquete+RC+2',
-                    'https://via.placeholder.com/600x400?text=Volquete+RC+3'
+                    'https://m.media-amazon.com/images/I/61hZ8Vb5M0L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61H4hM4j6tL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61s8zW-tJkL._AC_SX679_.jpg'
                 ],
                 video: ''
             },
@@ -650,338 +1101,581 @@
                 id: 4,
                 name: 'Scania Kabolite 770S Tractor RC 1/14',
                 price: 189.99,
-                image: 'https://via.placeholder.com/300x200?text=Tractor+RC',
-                description: 'Impresionante tractor Scania Kabolite 770S a escala 1/14. ¡Calidad premium para los modelistas más exigentes!',
+                image: 'https://m.media-amazon.com/images/I/61y4936vVBL._AC_SX679_.jpg',
+                description: 'Impresionante tractor Scania Kabolite 770S a escala 1/14. ¡Calidad premium para los modelistas más exigentes! Este modelo detallado ofrece una experiencia de conducción realista con múltiples funciones.',
+                category: 'rc-vehicles',
+                stock: true,
                 images: [
-                    'https://via.placeholder.com/600x400?text=Tractor+RC+1',
-                    'https://via.placeholder.com/600x400?text=Tractor+RC+2'
+                    'https://m.media-amazon.com/images/I/61y4936vVBL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71u9sW0g6ZL._AC_SX679_.jpg'
                 ],
                 video: ''
             },
             {
-                id: 5,
+                              id: 5,
                 name: 'Cargador Frontal RC Excavator 1/16',
                 price: 99.99,
-                image: 'https://via.placeholder.com/300x200?text=Cargador+RC',
-                description: 'Cargador frontal RC completamente funcional, escala 1/16. ¡Mueve tierra y construye con precisión!',
+                image: 'https://m.media-amazon.com/images/I/61pXh2g50BL._AC_SX679_.jpg',
+                description: 'Cargador frontal RC completamente funcional, escala 1/16. ¡Mueve tierra y construye con precisión! Equipado con pala articulada que puedes controlar para cargar y descargar materiales.',
+                category: 'construction',
+                stock: true,
                 images: [
-                    'https://via.placeholder.com/600x400?text=Cargador+RC+1',
-                    'https://via.placeholder.com/600x400?text=Cargador+RC+2'
+                    'https://m.media-amazon.com/images/I/61pXh2g50BL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61yT+wS-8QL._AC_SX679_.jpg'
                 ],
                 video: ''
             },
             {
                 id: 6,
                 name: 'Excavadora RC de Metal Completa 1/14',
-                price: 250.00,
-                image: 'https://via.placeholder.com/300x200?text=Excavadora+RC',
-                description: 'Excavadora RC de metal a escala 1/14. ¡Ideal para trabajos pesados y recreación detallada!',
+                price: 249.99,
+                image: 'https://m.media-amazon.com/images/I/71d-aJ8tCFL._AC_SX679_.jpg',
+                description: 'Excavadora RC de metal a escala 1/14, con orugas y brazo completamente funcionales. Construcción robusta y gran potencia para trabajos pesados. Ideal para aficionados serios al modelismo de construcción.',
+                category: 'construction',
+                stock: true,
                 images: [
-                    'https://via.placeholder.com/600x400?text=Excavadora+RC+1',
-                    'https://via.placeholder.com/600x400?text=Excavadora+RC+2',
-                    'https://via.placeholder.com/600x400?text=Excavadora+RC+3'
+                    'https://m.media-amazon.com/images/I/71d-aJ8tCFL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71k428H6DQL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71+2028YQZL._AC_SX679_.jpg'
+                ],
+                video: 'https://www.youtube.com/embed/ABCDEFG1234' // Ejemplo de YouTube
+            },
+            {
+                id: 7,
+                name: 'Bloques de Construcción Ingeniero Urbano',
+                price: 45.00,
+                image: 'https://m.media-amazon.com/images/I/716b9yFp-zL._AC_SX679_.jpg',
+                description: 'Set de bloques de construcción para crear ciudades y edificios modernos. Fomenta la creatividad y las habilidades motoras finas en niños de 6 años en adelante. Incluye piezas variadas para construcciones ilimitadas.',
+                category: 'construction',
+                stock: true,
+                images: [
+                    'https://m.media-amazon.com/images/I/716b9yFp-zL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/717hH9U2dGL._AC_SX679_.jpg'
+                ],
+                video: ''
+            },
+            {
+                id: 8,
+                name: 'Figura de Acción Spider-Man Articulada',
+                price: 25.99,
+                image: 'https://m.media-amazon.com/images/I/61KxT3kL+pL._AC_SX679_.jpg',
+                description: 'Figura de acción de Spider-Man con múltiples puntos de articulación. Incluye accesorios intercambiables para recrear tus escenas favoritas de los cómics y películas.',
+                category: 'figures',
+                stock: true,
+                images: [
+                    'https://m.media-amazon.com/images/I/61KxT3kL+pL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61r5vR7u8EL._AC_SX679_.jpg'
+                ],
+                video: ''
+            },
+            {
+                id: 9,
+                name: 'Set de Experimentos Científicos para Niños',
+                price: 39.95,
+                image: 'https://m.media-amazon.com/images/I/8100YdZlEFL._AC_SX679_.jpg',
+                description: 'Kit completo de experimentos científicos para pequeños exploradores. Aprende sobre química, física y biología de forma divertida y segura. Incluye guías y todos los materiales necesarios.',
+                category: 'educational',
+                stock: true,
+                images: [
+                    'https://m.media-amazon.com/images/I/8100YdZlEFL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/81Fh3K0J9OL._AC_SX679_.jpg'
                 ],
                 video: ''
             }
         ];
 
-        let cart = []; // El carrito de compras
-        const SHIPPING_COST = 10.00; // Costo de envío fijo simulado
+        // --- DATOS DEL CARRUSEL DE OFERTAS ---
+        const offerSlides = [
+            {
+                id: 1,
+                title: '¡Súper Oferta en Vehículos RC!',
+                description: 'Hasta 30% de descuento en todos los camiones y excavadoras a control remoto. ¡Edición limitada!',
+                image: 'https://m.media-amazon.com/images/I/71d-aJ8tCFL._AC_SX679_.jpg',
+                link: '#' // Podrías enlazar a una categoría o producto específico
+            },
+            {
+                id: 2,
+                title: 'Novedad: Figuras de Acción Exclusivas',
+                description: 'Colección especial de tus héroes favoritos. ¡No te quedes sin la tuya!',
+                image: 'https://m.media-amazon.com/images/I/61KxT3kL+pL._AC_SX679_.jpg',
+                link: '#'
+            },
+            {
+                id: 3,
+                title: 'Juguetes Educativos con 20% OFF',
+                description: 'Aprende y diviértete con nuestra selección de juguetes didácticos. ¡El regalo perfecto!',
+                image: 'https://m.media-amazon.com/images/I/8100YdZlEFL._AC_SX679_.jpg',
+                link: '#'
+            }
+        ];
 
-        // Referencias a elementos del DOM
+        // --- CONSTANTES GLOBALES ---
+        const WHATSAPP_NUMBER = '+5939XXXXXXXX'; // ¡CAMBIA ESTO A TU NÚMERO DE WHATSAPP CON CÓDIGO DE PAÍS!
+        const SHIPPING_COST = 5.00; // Costo de envío fijo
+
+        // --- ELEMENTOS DEL DOM ---
         const productListPage = document.getElementById('product-list-page');
         const productDetailPage = document.getElementById('product-detail-page');
         const productGridContainer = document.getElementById('product-grid-container');
-        const cartCountElement = document.querySelector('.cart-count');
+        const categoriesNav = document.querySelector('.categories-nav');
+        const backToProductsButton = document.getElementById('back-to-products-button');
         const homeLink = document.getElementById('home-link');
         const navHome = document.getElementById('nav-home');
         const navProducts = document.getElementById('nav-products');
-        const backToProductsButton = document.getElementById('back-to-products-button');
 
-        // Modal del Carrito
+        // Carrito
+        const cartIcon = document.getElementById('open-cart-modal');
+        const cartCount = document.querySelector('.cart-count');
         const cartModal = document.getElementById('cart-modal');
-        const openCartModalBtn = document.getElementById('open-cart-modal');
-        const closeCartModalBtn = document.getElementById('close-cart-modal');
+        const closeCartModal = document.getElementById('close-cart-modal');
         const cartItemsContainer = document.getElementById('cart-items-container');
-        const cartTotalAmountElement = document.getElementById('cart-total-amount');
-        const proceedToCheckoutBtn = document.getElementById('proceed-to-checkout');
+        const cartTotalAmount = document.getElementById('cart-total-amount');
+        const proceedToCheckoutButton = document.getElementById('proceed-to-checkout');
 
-        // Modal del Checkout
+        // Detalles del producto
+        const detailProductName = document.getElementById('detail-product-name');
+        const detailMainImage = document.getElementById('detail-main-image');
+        const detailThumbnails = document.getElementById('detail-thumbnails');
+        const detailProductDescription = document.getElementById('detail-product-description');
+        const detailProductPrice = document.getElementById('detail-product-price');
+        const detailAddToCartButton = document.getElementById('detail-add-to-cart-button');
+        const detailBuyNowButton = document.getElementById('detail-buy-now-button');
+        const detailVideoDiv = document.getElementById('detail-video');
+        const detailVideoIframe = detailVideoDiv.querySelector('iframe');
+
+        // Checkout
         const checkoutModal = document.getElementById('checkout-modal');
-        const closeCheckoutModalBtn = document.getElementById('close-checkout-modal');
+        const closeCheckoutModal = document.getElementById('close-checkout-modal');
         const checkoutForm = document.getElementById('checkout-form');
-        const checkoutSubtotalElement = document.getElementById('checkout-subtotal');
-        const checkoutShippingElement = document.getElementById('checkout-shipping');
-        const checkoutTotalElement = document.getElementById('checkout-total');
-        const placeOrderButton = document.querySelector('.place-order-button');
+        const checkoutSubtotal = document.getElementById('checkout-subtotal');
+        const checkoutShipping = document.getElementById('checkout-shipping');
+        const checkoutTotal = document.getElementById('checkout-total');
+        const whatsappQuickLink = document.getElementById('whatsapp-quick-link');
 
+        // Carrusel
+        const offerCarouselInner = document.getElementById('offer-carousel-inner');
+        const prevSlideButton = document.getElementById('prev-slide');
+        const nextSlideButton = document.getElementById('next-slide');
 
-        // Función para mostrar la página de listado de productos
-        function showProductListPage() {
-            productListPage.style.display = 'block';
-            productDetailPage.style.display = 'none';
+        // --- ESTADO DEL CARRITO ---
+        let cart = JSON.parse(localStorage.getItem('cart')) || []; // Cargar carrito de localStorage
+        let currentSlide = 0;
+
+        // --- FUNCIONES ---
+
+        // Función para formatear precios a moneda local
+        function formatPrice(price) {
+            return price.toLocaleString('es-EC', { style: 'currency', currency: 'USD' });
         }
 
-        // Función para mostrar la página de detalle de un producto
-        function showProductDetailPage(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) {
-                alert('Producto no encontrado.');
-                showProductListPage();
+        // --- PRODUCTOS ---
+        function renderProducts(filterCategory = 'all') {
+            productGridContainer.innerHTML = ''; // Limpiar productos existentes
+
+            const filteredProducts = products.filter(product =>
+                filterCategory === 'all' || product.category === filterCategory
+            );
+
+            if (filteredProducts.length === 0) {
+                productGridContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">No hay productos disponibles en esta categoría.</p>';
                 return;
             }
 
-            document.getElementById('detail-product-name').textContent = product.name;
-            document.getElementById('detail-product-description').textContent = product.description;
-            document.getElementById('detail-product-price').textContent = `$${product.price.toFixed(2)} USD`;
-            document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(product);
-            document.getElementById('detail-buy-now-button').onclick = () => buyNow(product);
-
-            // Cargar imágenes
-            const mainImage = document.getElementById('detail-main-image');
-            const thumbnailsContainer = document.getElementById('detail-thumbnails');
-            thumbnailsContainer.innerHTML = ''; // Limpiar miniaturas anteriores
-
-            mainImage.src = product.images[0]; // La primera imagen como principal
-            product.images.forEach(imgSrc => {
-                const thumb = document.createElement('img');
-                thumb.src = imgSrc;
-                thumb.alt = product.name;
-                thumb.style.width = '70px';
-                thumb.style.height = '50px';
-                thumb.style.objectFit = 'cover';
-                thumb.style.margin = '5px';
-                thumb.style.cursor = 'pointer';
-                thumb.style.border = '2px solid transparent';
-                thumb.style.borderRadius = '5px';
-                thumb.addEventListener('click', () => {
-                    mainImage.src = imgSrc;
-                    // Resaltar miniatura seleccionada
-                    Array.from(thumbnailsContainer.children).forEach(t => t.style.border = '2px solid transparent');
-                    thumb.style.border = '2px solid #007bff';
-                });
-                thumbnailsContainer.appendChild(thumb);
-            });
-            // Resaltar la primera miniatura
-            if (thumbnailsContainer.firstElementChild) {
-                thumbnailsContainer.firstElementChild.style.border = '2px solid #007bff';
-            }
-
-
-            // Cargar video (si existe)
-            const videoContainer = document.getElementById('detail-video');
-            const videoIframe = videoContainer.querySelector('iframe');
-            if (product.video) {
-                videoIframe.src = product.video;
-                videoContainer.style.display = 'block';
-            } else {
-                videoIframe.src = '';
-                videoContainer.style.display = 'none';
-            }
-
-            productListPage.style.display = 'none';
-            productDetailPage.style.display = 'flex'; // Usamos flex para la alineación del detalle
-        }
-
-        // Función para renderizar los productos en la cuadrícula
-        function renderProducts() {
-            productGridContainer.innerHTML = ''; // Limpiar contenedor
-            products.forEach(product => {
+            filteredProducts.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.classList.add('product-card');
+
                 productCard.innerHTML = `
                     <img src="${product.image}" alt="${product.name}">
                     <h3>${product.name}</h3>
-                    <p class="price">$${product.price.toFixed(2)} USD</p>
-                    <a href="#" class="details-button" data-product-id="${product.id}">Ver Detalles</a>
-                    <button class="add-to-cart-button" data-product-id="${product.id}">Añadir al Carrito</button>
+                    <p class="price">${formatPrice(product.price)}</p>
+                    <div class="product-card-actions">
+                        <button class="details-button" data-id="${product.id}"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                        <button class="buy-now-from-list-button" data-id="${product.id}"><i class="fas fa-shopping-bag"></i> Comprar</button>
+                    </div>
                 `;
                 productGridContainer.appendChild(productCard);
             });
 
-            // Añadir event listeners a los botones de "Ver Detalles"
+            // Añadir event listeners a los botones "Ver Detalles" y "Comprar"
             document.querySelectorAll('.details-button').forEach(button => {
                 button.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    const productId = parseInt(event.target.dataset.productId);
-                    showProductDetailPage(productId);
+                    const productId = parseInt(event.currentTarget.dataset.id);
+                    showProductDetail(productId);
                 });
             });
 
-            // Añadir event listeners a los botones de "Añadir al Carrito"
-            document.querySelectorAll('.add-to-cart-button').forEach(button => {
+            document.querySelectorAll('.buy-now-from-list-button').forEach(button => {
                 button.addEventListener('click', (event) => {
-                    const productId = parseInt(event.target.dataset.productId);
-                    const productToAdd = products.find(p => p.id === productId);
-                    if (productToAdd) {
-                        addToCart(productToAdd);
+                    const productId = parseInt(event.currentTarget.dataset.id);
+                    const product = products.find(p => p.id === productId);
+                    if (product) {
+                        addToCart(product, 1);
+                        showPage('product-list-page'); // Mostrar página de listado (o redirigir al carrito)
+                        openCartModal();
                     }
                 });
             });
         }
 
-        // Función para añadir un producto al carrito
-        function addToCart(product, quantity = 1) {
+        // --- PÁGINA DE DETALLE DE PRODUCTO ---
+        function showProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) {
+                console.error('Producto no encontrado');
+                return;
+            }
+
+            // Ocultar página de listado y mostrar detalle
+            productListPage.style.display = 'none';
+            productDetailPage.style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll al inicio de la página
+
+            detailProductName.textContent = product.name;
+            detailProductDescription.textContent = product.description;
+            detailProductPrice.textContent = formatPrice(product.price);
+
+            // Imágenes y miniaturas
+            detailMainImage.src = product.images[0];
+            detailMainImage.alt = product.name;
+
+            detailThumbnails.innerHTML = '';
+            product.images.forEach((imgSrc, index) => {
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.alt = `${product.name} - ${index + 1}`;
+                img.classList.toggle('active-thumbnail', index === 0);
+                img.addEventListener('click', () => {
+                    detailMainImage.src = imgSrc;
+                    document.querySelectorAll('.detail-thumbnails img').forEach(thumb => {
+                        thumb.classList.remove('active-thumbnail');
+                    });
+                    img.classList.add('active-thumbnail');
+                    detailVideoDiv.style.display = 'none'; // Ocultar video si se muestra imagen
+                });
+                detailThumbnails.appendChild(img);
+            });
+
+            // Video (si existe)
+            if (product.video) {
+                detailVideoIframe.src = product.video;
+                const videoThumbnail = document.createElement('div');
+                videoThumbnail.classList.add('detail-video-thumbnail');
+                videoThumbnail.innerHTML = `<i class="fas fa-play-circle"></i> Video`; // Icono de play
+                videoThumbnail.addEventListener('click', () => {
+                    detailVideoDiv.style.display = 'block';
+                    detailMainImage.src = ''; // Limpiar imagen principal
+                    document.querySelectorAll('.detail-thumbnails img').forEach(thumb => {
+                        thumb.classList.remove('active-thumbnail');
+                    });
+                });
+                detailThumbnails.appendChild(videoThumbnail);
+            } else {
+                detailVideoDiv.style.display = 'none';
+                detailVideoIframe.src = '';
+            }
+
+
+            // Event listeners para botones de añadir/comprar ahora desde el detalle
+            detailAddToCartButton.onclick = () => {
+                addToCart(product, 1);
+                openCartModal();
+            };
+            detailBuyNowButton.onclick = () => {
+                addToCart(product, 1);
+                openCheckoutModal();
+            };
+        }
+
+        // --- CARRITO DE COMPRAS ---
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'block' : 'none'; // Ocultar si no hay ítems
+        }
+
+        function addToCart(product, quantity) {
             const existingItem = cart.find(item => item.id === product.id);
+
             if (existingItem) {
                 existingItem.quantity += quantity;
             } else {
                 cart.push({ ...product, quantity });
             }
-            updateCartDisplay();
-            alert(`${quantity} unidad(es) de "${product.name}" añadida(s) al carrito.`);
+            localStorage.setItem('cart', JSON.stringify(cart)); // Guardar carrito en localStorage
+            updateCartCount();
+            renderCartItems();
+            alert(`"${product.name}" ha sido añadido al carrito.`);
         }
 
-        // Función para eliminar un producto del carrito
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
-            updateCartDisplay();
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
         }
 
-        // Función para actualizar la cantidad de un producto en el carrito
-        function updateCartItemQuantity(productId, newQuantity) {
+        function updateQuantity(productId, newQuantity) {
             const item = cart.find(item => item.id === productId);
             if (item) {
                 item.quantity = parseInt(newQuantity);
                 if (item.quantity <= 0) {
                     removeFromCart(productId);
-                } else {
-                    update
-                                            <span>${item.name} - $${item.price.toFixed(2)} x </span>
-                        <input type="number" min="1" value="${item.quantity}" data-product-id="${item.id}" class="cart-item-quantity">
-                    </div>
-                    <div class="cart-item-actions">
-                        <span>$${(item.price * item.quantity).toFixed(2)}</span>
-                        <button data-product-id="${item.id}" class="remove-from-cart">X</button>
-                    </div>
+                }
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+        }
+
+        function calculateCartTotal() {
+            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+
+        function renderCartItems() {
+            cartItemsContainer.innerHTML = '';
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center;">Tu carrito está vacío.</p>';
+            } else {
+                cart.forEach(item => {
+                    const cartItemDiv = document.createElement('div');
+                    cartItemDiv.classList.add('cart-item');
+                    cartItemDiv.innerHTML = `
+                        <div class="cart-item-info">
+                            <img src="${item.image}" alt="${item.name}">
+                            <span>${item.name}</span>
+                                              </div>
+                        <div class="cart-item-actions">
+                            <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" data-id="${item.id}">
+                            <span>${formatPrice(item.price * item.quantity)}</span>
+                            <button class="remove-from-cart" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemDiv);
+                });
+
+                // Event listeners para cambiar cantidad y eliminar
+                document.querySelectorAll('.cart-item-quantity').forEach(input => {
+                    input.addEventListener('change', (event) => {
+                        const productId = parseInt(event.target.dataset.id);
+                        const newQuantity = parseInt(event.target.value);
+                        updateQuantity(productId, newQuantity);
+                    });
+                });
+
+                document.querySelectorAll('.remove-from-cart').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const productId = parseInt(event.target.dataset.id);
+                        removeFromCart(productId);
+                    });
+                });
+            }
+            cartTotalAmount.textContent = formatPrice(calculateCartTotal());
+        }
+
+        // --- MODALES ---
+        function openCartModal() {
+            cartModal.classList.add('active');
+            renderCartItems();
+        }
+
+        function closeCartModal() {
+            cartModal.classList.remove('active');
+        }
+
+        function openCheckoutModal() {
+            closeCartModal(); // Cerrar carrito si está abierto
+            checkoutModal.classList.add('active');
+            updateCheckoutSummary();
+        }
+
+        function closeCheckoutModal() {
+            checkoutModal.classList.remove('active');
+        }
+
+        // --- CHECKOUT ---
+        function updateCheckoutSummary() {
+            const subtotal = calculateCartTotal();
+            const total = subtotal + SHIPPING_COST; // Asumimos envío siempre
+            checkoutSubtotal.textContent = formatPrice(subtotal);
+            checkoutShipping.textContent = formatPrice(SHIPPING_COST);
+            checkoutTotal.textContent = formatPrice(total);
+        }
+
+        checkoutForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevenir el envío del formulario tradicional
+
+            const name = document.getElementById('checkout-name').value;
+            const idNumber = document.getElementById('checkout-id').value;
+            const city = document.getElementById('checkout-city').value;
+            const address = document.getElementById('checkout-address').value;
+            const email = document.getElementById('checkout-email').value;
+            const phone = document.getElementById('checkout-phone').value;
+            const orderTotal = calculateCartTotal() + SHIPPING_COST;
+
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío. Por favor, añade productos antes de realizar un pedido.');
+                return;
+            }
+
+            let message = `¡Hola! Me gustaría hacer un pedido en Berraco Toy.\n\n`;
+            message += `*Detalles del Cliente:*\n`;
+            message += `Nombre: ${name}\n`;
+            message += `Cédula/ID: ${idNumber}\n`;
+            message += `Ciudad: ${city}\n`;
+            message += `Dirección: ${address}\n`;
+            message += `Email: ${email}\n`;
+            message += `Teléfono: ${phone}\n\n`;
+            message += `*Productos:*\n`;
+
+            cart.forEach(item => {
+                message += `- ${item.name} (x${item.quantity}) - ${formatPrice(item.price * item.quantity)}\n`;
+            });
+
+            message += `\n*Resumen del Pedido:*\n`;
+            message += `Subtotal: ${formatPrice(calculateCartTotal())}\n`;
+            message += `Envío: ${formatPrice(SHIPPING_COST)}\n`;
+            message += `*Total a Pagar: ${formatPrice(orderTotal)}*\n\n`;
+            message += `¡Gracias por tu compra!`;
+
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+
+            // Opcional: Limpiar carrito y cerrar modal después de enviar el pedido
+            cart = [];
+            localStorage.removeItem('cart');
+            updateCartCount();
+            closeCheckoutModal();
+            alert('¡Tu pedido ha sido generado! Te hemos redirigido a WhatsApp para que envíes los detalles.');
+            // Puedes redirigir a una página de confirmación o de inicio
+            showPage('product-list-page');
+        });
+
+        // --- CARRUSEL DE OFERTAS ---
+        function renderOfferSlides() {
+            offerCarouselInner.innerHTML = '';
+            offerSlides.forEach(slide => {
+                const slideDiv = document.createElement('div');
+                slideDiv.classList.add('offer-slide');
+                slideDiv.innerHTML = `
+                    <img src="${slide.image}" alt="${slide.title}">
+                    <h2>${slide.title}</h2>
+                    <p>${slide.description}</p>
+                    <a href="${slide.link}" class="offer-button">Ver Oferta</a>
                 `;
-                cartItemsContainer.appendChild(cartItemDiv);
-            });
-
-            cartCountElement.textContent = totalItems;
-            cartTotalAmountElement.textContent = `$${totalAmount.toFixed(2)}`;
-            proceedToCheckoutBtn.disabled = false; // Habilita el botón si hay ítems
-
-            // Añadir event listeners para cambiar cantidad
-            document.querySelectorAll('.cart-item-quantity').forEach(input => {
-                input.addEventListener('change', (event) => {
-                    const productId = parseInt(event.target.dataset.productId);
-                    updateCartItemQuantity(productId, event.target.value);
-                });
-            });
-
-            // Añadir event listeners para eliminar
-            document.querySelectorAll('.remove-from-cart').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const productId = parseInt(event.target.dataset.productId);
-                    removeFromCart(productId);
-                });
+                offerCarouselInner.appendChild(slideDiv);
             });
         }
 
-        // Función para simular "Comprar Ahora" (añade al carrito y abre el checkout)
-        function buyNow(product) {
-            cart = []; // Limpia el carrito para "Comprar Ahora"
-            addToCart(product, 1);
-            openCheckoutModal();
+        function showSlide(index) {
+            if (index >= offerSlides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = offerSlides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+            offerCarouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
-        // Event Listeners para navegación
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // --- NAVEGACIÓN Y CAMBIO DE PÁGINAS ---
+        function showPage(pageId) {
+            // Ocultar todas las páginas
+            productListPage.style.display = 'none';
+            productDetailPage.style.display = 'none';
+
+            // Mostrar la página solicitada
+            document.getElementById(pageId).style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll al inicio de la página
+        }
+
+        // --- EVENT LISTENERS GLOBALES ---
+
+        // Navegación principal
         homeLink.addEventListener('click', (event) => {
             event.preventDefault();
-            showProductListPage();
+            showPage('product-list-page');
+            renderProducts('all'); // Recargar productos al ir a inicio
         });
         navHome.addEventListener('click', (event) => {
             event.preventDefault();
-            showProductListPage();
+            showPage('product-list-page');
+            renderProducts('all');
         });
         navProducts.addEventListener('click', (event) => {
             event.preventDefault();
-            showProductListPage();
-        });
-        backToProductsButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            showProductListPage();
+            showPage('product-list-page');
+            renderProducts('all');
         });
 
-        // Event Listeners para el modal del carrito
-        openCartModalBtn.addEventListener('click', () => {
-            updateCartDisplay(); // Asegurarse de que el carrito esté actualizado al abrir
-            cartModal.classList.add('active');
+        // Botón "Volver a Productos" en la página de detalle
+        backToProductsButton.addEventListener('click', () => {
+            showPage('product-list-page');
         });
-        closeCartModalBtn.addEventListener('click', () => {
-            cartModal.classList.remove('active');
+
+        // Filtro por categoría
+        categoriesNav.addEventListener('click', (event) => {
+            if (event.target.classList.contains('category-button')) {
+                // Eliminar 'active' de todos los botones
+                document.querySelectorAll('.category-button').forEach(button => {
+                    button.classList.remove('active');
+                });
+                // Añadir 'active' al botón clickeado
+                event.target.classList.add('active');
+
+                const category = event.target.dataset.category;
+                renderProducts(category);
+            }
         });
+
+        // Abrir/Cerrar carrito
+        cartIcon.addEventListener('click', openCartModal);
+        closeCartModal.addEventListener('click', closeCartModal);
+        // Cerrar modal al hacer clic fuera de su contenido
         window.addEventListener('click', (event) => {
-            if (event.target == cartModal) {
-                cartModal.classList.remove('active');
+            if (event.target === cartModal) {
+                closeCartModal();
             }
-            if (event.target == checkoutModal) {
-                checkoutModal.classList.remove('active');
-            }
-        });
-
-        // Event Listener para proceder al checkout desde el carrito
-        proceedToCheckoutBtn.addEventListener('click', () => {
-            if (cart.length > 0) {
-                cartModal.classList.remove('active'); // Cierra el modal del carrito
-                openCheckoutModal();
-            } else {
-                alert('Tu carrito está vacío. Añade productos antes de proceder al pago.');
+            if (event.target === checkoutModal) {
+                closeCheckoutModal();
             }
         });
 
-        // Funciones para el modal de Checkout
-        function openCheckoutModal() {
-            let subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-            checkoutSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-            checkoutShippingElement.textContent = `$${SHIPPING_COST.toFixed(2)}`;
-            checkoutTotalElement.textContent = `$${(subtotal + SHIPPING_COST).toFixed(2)}`;
-            checkoutModal.classList.add('active');
-        }
-        closeCheckoutModalBtn.addEventListener('click', () => {
-            checkoutModal.classList.remove('active');
+        // Abrir checkout desde el carrito
+        proceedToCheckoutButton.addEventListener('click', openCheckoutModal);
+        closeCheckoutModal.addEventListener('click', closeCheckoutModal);
+
+        // Botón flotante de WhatsApp
+        whatsappQuickLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            const message = encodeURIComponent('¡Hola! Tengo una consulta sobre un producto.');
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${message}`;
+            window.open(whatsappUrl, '_blank');
         });
 
-        // Event Listener para el formulario de Checkout (simulado)
-        checkoutForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Evita que el formulario se envíe realmente
+        // Carrusel de ofertas
+        prevSlideButton.addEventListener('click', prevSlide);
+        nextSlideButton.addEventListener('click', nextSlide);
 
-            // Recopila los datos del formulario (esto sería enviado a un backend real)
-            const formData = {
-                name: document.getElementById('checkout-name').value,
-                id: document.getElementById('checkout-id').value,
-                address: document.getElementById('checkout-address').value,
-                city: document.getElementById('checkout-city').value,
-                province: document.getElementById('checkout-province').value,
-                email: document.getElementById('checkout-email').value,
-                phone: document.getElementById('checkout-phone').value,
-                order: cart.map(item => ({
-                    productId: item.id,
-                    name: item.name,
-                    quantity: item.quantity,
-                    price: item.price
-                })),
-                total: parseFloat(checkoutTotalElement.textContent.replace('$', ''))
-            };
-
-            // Simulación de procesamiento seguro
-            alert('¡Gracias por tu compra!\n\nTu pedido ha sido procesado de forma SEGURA (simulado).\n\nDetalles del pedido: ' + JSON.stringify(formData, null, 2) + '\n\nUn correo de confirmación ha sido enviado a ' + formData.email + '.');
-
-            // Limpiar carrito y cerrar modales
-            cart = [];
-            updateCartDisplay();
-            checkoutModal.classList.remove('active');
-            cartModal.classList.remove('active');
-            showProductListPage(); // Vuelve a la página principal
-        });
-
-
-        // Inicializar: renderizar productos al cargar la página
+        // --- INICIALIZACIÓN ---
         document.addEventListener('DOMContentLoaded', () => {
-            renderProducts();
-            showProductListPage(); // Asegurarse de que la página de listado se muestre primero
+            renderProducts('all'); // Cargar todos los productos al inicio
+            updateCartCount(); // Actualizar el contador del carrito al cargar la página
+            renderOfferSlides(); // Cargar los slides de ofertas
+            showSlide(0); // Mostrar el primer slide
+
+            // Autoplay para el carrusel (opcional)
+            setInterval(nextSlide, 5000); // Cambiar cada 5 segundos
         });
+
     </script>
 </body>
 </html>
