@@ -1459,7 +1459,10 @@
     window.addEventListener('pageshow', function(event) {
         window.scrollTo(0, 0);
     });
-
+ // Mostrar la sección de inicio por defecto
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+        });
 </script>
 </body>
 </html>
