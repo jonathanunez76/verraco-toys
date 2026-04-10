@@ -1139,24 +1139,12 @@
         let currentProductId = null;
         let currentDetailSlide = 0; // Para el carrusel de detalles
 
-        }
-
-        // Manejar clics en la navegación
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const sectionId = this.dataset.section;
-                showSection(sectionId);
-            });
-        });
-
-  document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             renderProducts();
             updateCartCount();
             startAutoSlide();
-            
-    
-  });
+        });
+
        function showPage(page) {
     document.getElementById('home-page').style.display = 'none';
     document.getElementById('product-list-page').style.display = 'none';
@@ -1166,8 +1154,7 @@
     else if(page === 'products') document.getElementById('product-list-page').style.display = 'block';
     else if(page === 'detail') document.getElementById('product-detail-page').style.display = 'block';
 
-    // ✅ AQUÍ LO 
-             document.getElementById('product-detail-page').style.display = 'block';
+    // ✅ AQUÍ LO PONES
     window.scrollTo(0, 0);
 }
 
@@ -1472,7 +1459,10 @@
     window.addEventListener('pageshow', function(event) {
         window.scrollTo(0, 0);
     });
-
+ // Mostrar la sección de inicio por defecto
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+        });
 </script>
 </body>
 </html>
