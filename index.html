@@ -809,31 +809,41 @@
         border-radius: 20px;
 
 
-/* BARRA DE CATEGORÍAS - TODOS, ACCIÓN, AVENTURA... */
+/* BARRA DE CATEGORIAS - VERSION SUPER FUERTE */
 .categories {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     justify-content: flex-start !important;
     align-items: center !important;
-    gap: 6px !important;
+    gap: 8px !important;
     overflow-x: auto !important;
     width: 100% !important;
     max-width: 100% !important;
-    padding: 8px 5px !important;
-    box-sizing: border-box !important;
+    padding: 10px 0px !important;
     margin: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
 }
 
 .categories button {
+    display: inline-block !important;
     flex: 0 0 auto !important;
     white-space: nowrap !important;
-    font-size: 0.85em !important;
-    padding: 5px 10px !important;
+    font-size: 14px !important;
+    padding: 6px 12px !important;
     border: none !important;
     border-radius: 20px !important;
-    min-width: auto !important;
-    max-width: none !important;
+    min-width: max-content !important;
+    height: auto !important;
+    line-height: normal !important;
+    text-align: center !important;
+}
+
+/* Esto evita que el texto se parta o se baje */
+.categories * {
+    box-sizing: border-box !important;
+    word-break: keep-all !important;
 }
 /* PAGINA DE DETALLES ORDENADA Y EMPEZANDO ARRIBA */
 #product-detail {
@@ -1427,8 +1437,7 @@
         function startAutoSlide() {
             setInterval(() => moveSlide(1), 5000);
         }
-
-          // --- CERRAR MODALES ---
+    // --- CERRAR MODALES ---
     window.onclick = function(event) {
         const cartModal = document.getElementById('cart-modal');
         const checkoutModal = document.getElementById('checkout-modal');
@@ -1437,12 +1446,17 @@
         if(event.target == checkoutModal) closeCheckout();
     }
 
-    // --- IR ARRIBA AL CARGAR PÁGINA ---
-    window.addEventListener('load', function() {
+    // --- FORZAR IR ARRIBA AL ENTRAR A DETALLES ---
+    // Esto funciona en TODOS los navegadores y situaciones
+    window.onload = function() {
         window.scrollTo(0, 0);
-    });
+        document.body.scrollTop = 0; // Para Safari
+        document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
+    };
 
-    document.addEventListener('DOMContentLoaded', function() {
+    // También al cambiar de página
+    history.scrollRestoration = "manual";
+    window.addEventListener('pageshow', function(event) {
         window.scrollTo(0, 0);
     });
 
