@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,19 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
-    <!-- 🔒 PROTECCIÓN Y SEGURIDAD AVANZADA -->
+    <!-- 🔒 SEGURIDAD Y META TAGS -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://player.vimeo.com https://www.youtube.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; frame-src 'self' https://www.youtube.com https://player.vimeo.com; font-src 'self' https://fonts.gstatic.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="no-referrer">
-    <meta name="robots" content="index, follow">
 
     <style>
-        /* ESTILOS NUEVOS - MODERNOS Y LLAMATIVOS */
         :root {
-            --primary-color: #6C63FF; /* Morado vibrante */
-            --secondary-color: #FF6584; /* Rosa fuerte */
-            --accent-color: #FFC107; /* Amarillo dorado */
+            --primary-color: #6C63FF;
+            --secondary-color: #FF6584;
+            --accent-color: #FFC107;
             --dark-color: #2D3748;
             --light-bg: #F7FAFC;
         }
@@ -36,14 +33,16 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
             color: var(--dark-color);
             line-height: 1.6;
-            user-select: none; /* Evita selección de texto accidental */
-            -webkit-tap-highlight-color: transparent; /* Quitar resalto azul en clicks */
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
-        /* BARRA DE NAVEGACIÓN MODERNA Y COLOREADA */
         header {
             background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            padding: 15px 30px;
+            padding: 12px 20px;
             box-shadow: 0 8px 20px rgba(108, 99, 255, 0.3);
             display: flex;
             justify-content: space-between;
@@ -51,52 +50,55 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            flex-wrap: nowrap;
         }
         .logo {
             font-weight: 800;
-            font-size: 32px;
+            font-size: 22px;
             color: #ffffff;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            white-space: nowrap;
         }
         .logo i {
             color: var(--accent-color);
-            font-size: 36px;
+            font-size: 26px;
         }
         .nav-menu ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 30px;
+            gap: 15px;
         }
         .nav-menu a {
             text-decoration: none;
             color: #ffffff;
-            padding: 10px 15px;
+            padding: 6px 10px;
             transition: all 0.3s ease;
             font-weight: 600;
-            font-size: 1.1em;
-            border-radius: 30px;
+            font-size: 0.9em;
+            border-radius: 20px;
+            white-space: nowrap;
         }
         .nav-menu a:hover {
             background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
         .cart-icon {
-            font-size: 32px;
+            font-size: 24px;
             text-decoration: none;
             color: #ffffff;
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease;
             background: rgba(255,255,255,0.2);
-            padding: 10px;
+            padding: 8px;
             border-radius: 50%;
+            flex-shrink: 0;
         }
         .cart-icon:hover {
             transform: scale(1.1) rotate(10deg);
@@ -105,80 +107,98 @@
             background-color: var(--accent-color);
             color: var(--dark-color);
             border-radius: 50%;
-            padding: 5px 10px;
-            font-size: 14px;
+            padding: 2px 7px;
+            font-size: 12px;
             position: absolute;
-            top: -8px;
-            right: -8px;
-            min-width: 25px;
+            top: -5px;
+            right: -5px;
+            min-width: 20px;
             text-align: center;
             font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* CONTENEDOR PRINCIPAL */
         .container {
-            max-width: 1250px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
         }
 
         h1, h2, h3 {
             color: var(--dark-color);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 700;
         }
         h1 { 
-            font-size: 3em; 
+            font-size: 2.2em; 
             text-align: center; 
-            margin-top: 40px;
+            margin-top: 20px;
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        h2 { font-size: 2.2em; }
 
-        /* CATEGORÍAS COLOREADAS */
+        /* ============================================== */
+        /* 📱 BARRA DE CATEGORÍAS - OPTIMIZADA PARA IOS */
+        /* ============================================== */
         .categories-nav {
             background-color: #ffffff;
-            padding: 15px;
+            padding: 10px;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: flex-start;
-            gap: 15px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            display: -webkit-box !important;
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -webkit-box-orient: horizontal !important;
+            -webkit-box-direction: normal !important;
+            -ms-flex-direction: row !important;
+            flex-direction: row !important;
+            -ms-flex-wrap: nowrap !important;
+            flex-wrap: nowrap !important;
+            -webkit-box-pack: start !important;
+            -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+            gap: 10px;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            width: 100% !important;
         }
+
         .categories-nav button {
             background: linear-gradient(45deg, var(--primary-color), #8A84FF);
             border: none;
-            padding: 12px 25px;
-            font-size: 1em;
+            padding: 8px 18px;
+            font-size: 14px;
             cursor: pointer;
             color: white;
             transition: all 0.3s ease;
-            border-radius: 50px;
+            border-radius: 25px;
             font-weight: 600;
-            box-shadow: 0 4px 8px rgba(108, 99, 255, 0.2);
-            white-space: nowrap;
-            flex: 0 0 auto;
+            white-space: nowrap !important;
+            -webkit-box-flex: 0 !important;
+            -ms-flex: 0 0 auto !important;
+            flex: 0 0 auto !important;
+            min-width: max-content !important;
+            line-height: normal !important;
         }
+
         .categories-nav button:hover,
         .categories-nav button.active {
             background: linear-gradient(45deg, var(--secondary-color), #FF8BA7);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(255, 101, 132, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(255, 101, 132, 0.3);
         }
 
-        /* CARRUSEL DE OFERTAS MÁS VIVO */
+        .categories-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* CARRUSEL DE OFERTAS */
         .offer-carousel {
             background: linear-gradient(45deg, #1a2a6c, #b21f1f, #1a2a6c);
-            padding: 40px;
-            margin-bottom: 50px;
+            padding: 30px;
+            margin-bottom: 30px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             border-radius: 20px;
@@ -193,68 +213,59 @@
         .offer-slide {
             min-width: 100%;
             box-sizing: border-box;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
         .offer-slide h2 {
-            font-size: 3.5em;
+            font-size: 2.5em;
             color: var(--accent-color);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
         }
         .offer-slide p {
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: #f0f0f0;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .offer-button {
             background: linear-gradient(45deg, #28a745, #4cd964);
             color: white;
-            padding: 18px 40px;
+            padding: 15px 35px;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            font-size: 1.3em;
+            font-size: 1.1em;
             font-weight: 700;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
         }
         .offer-button:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.6);
         }
         .carousel-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
             color: white;
             border: none;
-            padding: 15px 20px;
-            font-size: 2em;
+            padding: 12px 15px;
+            font-size: 1.8em;
             cursor: pointer;
             border-radius: 50%;
             z-index: 10;
-            transition: all 0.3s ease;
         }
-        .carousel-arrow:hover {
-            background-color: rgba(255,255,255,0.4);
-            transform: translateY(-50%) scale(1.1);
-        }
-        .carousel-arrow.left { left: 20px; }
-        .carousel-arrow.right { right: 20px; }
+        .carousel-arrow.left { left: 15px; }
+        .carousel-arrow.right { right: 15px; }
 
-        /* TARJETAS DE PRODUCTOS MÁS MODERNAS */
+        /* GRID DE PRODUCTOS */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
         .product-card {
             background-color: #ffffff;
@@ -262,82 +273,76 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             overflow: hidden;
             text-align: center;
-            padding-bottom: 25px;
+            padding-bottom: 20px;
             transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.05);
         }
         .product-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 35px rgba(108, 99, 255, 0.2);
+            transform: translateY(-10px);
         }
         .product-card img {
-            max-width: 100%;
-            height: 260px;
+            width: 100%;
+            height: 220px;
             object-fit: contain;
             display: block;
             margin: 0 auto;
-            padding: 25px;
+            padding: 20px;
             background: linear-gradient(45deg, #f9f9f9, #eef2f3);
         }
         .product-card h3 {
-            font-size: 1.4em;
-            margin: 15px 0 10px;
-            padding: 0 15px;
+            font-size: 1.2em;
+            margin: 15px 10px 10px;
             color: var(--primary-color);
-            min-height: 70px;
+            min-height: 50px;
         }
         .product-card .price {
-            font-size: 2em;
+            font-size: 1.8em;
             color: var(--secondary-color);
             font-weight: 800;
             margin-bottom: 15px;
         }
-        .product-card .details-button, 
-        .product-card .buy-now-from-list-button {
-            padding: 12px 22px;
+        .product-card-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 10px;
+        }
+        .details-button, 
+        .buy-now-from-list-button {
+            padding: 10px 18px;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            margin: 8px 5px;
-            text-decoration: none;
-            display: inline-block;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-size: 0.9em;
         }
-        .product-card .details-button {
+        .details-button {
             background: linear-gradient(45deg, #6c757d, #8a949b);
             color: white;
         }
-        .product-card .details-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(108,117,125,0.4);
-        }
-        .product-card .buy-now-from-list-button {
+        .buy-now-from-list-button {
             background: linear-gradient(45deg, var(--accent-color), #FFD700);
             color: var(--dark-color);
         }
-        .product-card .buy-now-from-list-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(255, 193, 7, 0.5);
-        }
 
-        /* PÁGINA DE DETALLE - NUEVO CARRUSEN TÁCTICO */
+        /* ============================================== */
+        /* 📄 PÁGINA DE DETALLES CON CARRUSEL TÁCTIL */
+        /* ============================================== */
         #product-detail-page {
             display: none;
             background-color: #ffffff;
-            padding: 40px;
+            padding: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             border-radius: 25px;
             flex-direction: column;
-            gap: 35px;
+            gap: 25px;
         }
         #product-detail-page h2 {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.8em;
+            font-size: 2em;
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -345,16 +350,17 @@
         .product-detail-content {
             display: flex;
             flex-wrap: wrap;
-            gap: 50px;
+            gap: 30px;
             justify-content: center;
+            align-items: flex-start;
         }
         .product-detail-images {
-            flex: 1 1 48%;
-            min-width: 320px;
+            flex: 1 1 45%;
+            min-width: 300px;
             text-align: center;
         }
 
-        /* ESTILO NUEVO PARA EL CARRUSEL DE IMÁGENES */
+        /* ESTILO DEL CARRUSEL NUEVO */
         .detail-image-slider {
             position: relative;
             width: 100%;
@@ -362,13 +368,15 @@
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             background: #f8f9fa;
-            margin-bottom: 20px;
-            touch-action: pan-y; /* Permite scroll vertical pero mejora el horizontal */
+            touch-action: pan-y;
+            -webkit-user-select: none;
+            user-select: none;
         }
         .detail-slider-track {
             display: flex;
             transition: transform 0.5s ease;
             width: 100%;
+            will-change: transform;
         }
         .detail-slide {
             min-width: 100%;
@@ -378,13 +386,10 @@
         }
         .detail-main-image {
             max-width: 100%;
-            max-height: 500px;
-
-
-
-
-
-
+            max-height: 450px;
+            object-fit: contain;
+            padding: 20px;
+        }
         .detail-slider-arrow {
             position: absolute;
             top: 50%;
@@ -392,60 +397,55 @@
             background: rgba(108, 99, 255, 0.8);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
             border-radius: 50%;
             cursor: pointer;
             z-index: 10;
-            transition: all 0.3s ease;
         }
-        .detail-slider-arrow:hover {
-            background: var(--primary-color);
-            transform: translateY(-50%) scale(1.1);
-        }
-        .detail-arrow-left { left: 15px; }
-        .detail-arrow-right { right: 15px; }
+        .detail-arrow-left { left: 10px; }
+        .detail-arrow-right { right: 10px; }
 
         .detail-thumbnails {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
-        .detail-thumbnails img, .detail-video-thumbnail {
-            width: 80px;
-            height: 60px;
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .detail-thumbnails img {
+            width: 70px;
+            height: 50px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             border: 3px solid transparent;
             transition: all 0.3s ease;
-            background-color: #f1f1f1;
         }
         .detail-thumbnails img:hover,
         .detail-thumbnails img.active-thumbnail {
             border-color: var(--primary-color);
             transform: scale(1.08);
-            box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
-        }
-        .detail-video-thumbnail {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.5em;
-        }
-        .detail-video-thumbnail:hover {
-            border-color: var(--secondary-color);
-            background-color: #ffeef5;
         }
         .detail-video {
-            margin-top: 30px;
+            margin-top: 20px;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         .detail-video iframe {
             display: block;
@@ -454,85 +454,62 @@
         }
 
         .product-detail-info {
-            flex: 1 1 48%;
-            min-width: 320px;
-            padding-left: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+            flex: 1 1 45%;
+            min-width: 300px;
+            padding-left: 10px;
         }
         .product-detail-info h3 {
-            font-size: 2.2em;
+            font-size: 2em;
             color: var(--primary-color);
             margin-top: 0;
-            text-align: left;
         }
         .product-detail-info .price {
-            font-size: 3em;
+            font-size: 2.8em;
             color: var(--secondary-color);
             font-weight: 800;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
         .product-detail-info p {
-            font-size: 1.15em;
+            font-size: 1.1em;
             color: #555;
-            margin-bottom: 30px;
-            text-align: left;
-            line-height: 1.8;
+            margin-bottom: 25px;
+            line-height: 1.7;
         }
         .product-detail-actions {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
-            width: 100%;
         }
         .product-detail-actions button {
             flex: 1;
-            padding: 18px 25px;
+            padding: 15px 20px;
             border: none;
             border-radius: 50px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
         #detail-add-to-cart-button {
             background: linear-gradient(45deg, var(--primary-color), #8A84FF);
             color: white;
         }
-        #detail-add-to-cart-button:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.4);
-        }
         #detail-buy-now-button {
             background: linear-gradient(45deg, #28a745, #4cd964);
             color: white;
         }
-        #detail-buy-now-button:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.4);
-        }
         #back-to-products-button {
             background: linear-gradient(45deg, #6c757d, #8a949b);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
-            margin-top: 30px;
-            align-self: flex-start;
+            margin-top: 25px;
+            display: inline-block;
             text-decoration: none;
-            font-size: 1.1em;
             font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        #back-to-products-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(108,117,125,0.3);
         }
 
-        /* MODALES MÁS MODERNOS */
+        /* MODALES */
         .modal {
             display: none;
             position: fixed;
@@ -544,39 +521,31 @@
             background-color: rgba(0,0,0,0.6);
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
         .modal.active {
             display: flex;
-            opacity: 1;
         }
         .modal-content {
             background-color: #fefefe;
-            margin: auto;
-            padding: 40px;
+            padding: 35px;
             border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
             width: 90%;
-            max-width: 650px;
+            max-width: 600px;
             position: relative;
-            transform: translateY(-50px);
-            opacity: 0;
-            transition: transform 0.4s ease, opacity 0.4s ease;
+            animation: modalPop 0.4s ease;
         }
-        .modal.active .modal-content {
-            transform: translateY(0);
-            opacity: 1;
+        @keyframes modalPop {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
         }
         .close-button {
             color: #aaa;
             position: absolute;
             top: 15px;
             right: 25px;
-            font-size: 35px;
+            font-size: 30px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s ease;
         }
         .close-button:hover {
             color: var(--secondary-color);
@@ -586,56 +555,46 @@
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 25px;
-            font-size: 2.2em;
         }
 
         /* CARRITO */
         #cart-items-container {
-            max-height: 400px;
+            max-height: 350px;
             overflow-y: auto;
             margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
         }
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
-        .cart-item-info img {
-            width: 70px;
-            height: 70px;
+        .cart-item img {
+            width: 60px;
+            height: 60px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 8px;
         }
         .cart-item-quantity {
-            width: 60px;
-            padding: 8px;
+            width: 50px;
+            padding: 6px;
             border: 2px solid #ddd;
             border-radius: 8px;
             text-align: center;
-            font-size: 1em;
             font-weight: bold;
         }
         .remove-from-cart {
             background: none;
             border: none;
             color: #dc3545;
-            font-size: 1.5em;
+            font-size: 1.3em;
             cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        .remove-from-cart:hover {
-            color: #c82333;
         }
         .cart-total {
             text-align: right;
-            font-size: 1.6em;
+            font-size: 1.5em;
             font-weight: 800;
-            color: var(--dark-color);
             margin-top: 20px;
         }
         .cart-total span {
@@ -644,36 +603,29 @@
         #proceed-to-checkout {
             background: linear-gradient(45deg, #28a745, #4cd964);
             color: white;
-            padding: 18px;
+            padding: 15px;
             border: none;
             border-radius: 50px;
             width: 100%;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 25px;
-            transition: all 0.3s ease;
-        }
-        #proceed-to-checkout:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.4);
+            margin-top: 20px;
         }
 
         /* CHECKOUT */
         .checkout-form label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: 600;
-            color: var(--dark-color);
         }
         .checkout-form input {
             width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 12px;
+            margin-bottom: 15px;
             border: 2px solid #ddd;
-            border-radius: 12px;
+            border-radius: 10px;
             font-size: 1em;
-            transition: border-color 0.3s ease;
         }
         .checkout-form input:focus {
             border-color: var(--primary-color);
@@ -681,170 +633,374 @@
         }
         .checkout-summary {
             background-color: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
         }
         .checkout-summary div {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 1.1em;
+            margin-bottom: 8px;
         }
         .checkout-summary .total {
             font-weight: 800;
             color: var(--secondary-color);
-            border-top: 2px solid #dee2e6;
-            padding-top: 15px;
-            margin-top: 15px;
-            font-size: 1.4em;
+            border-top: 2px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+            font-size: 1.2em;
         }
         #confirm-checkout {
             background: linear-gradient(45deg, #25d366, #1ebe57);
             color: white;
-            padding: 18px;
+            padding: 15px;
             border: none;
             border-radius: 50px;
             width: 100%;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 25px;
-            transition: all 0.3s ease;
-        }
-        #confirm-checkout:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);
+            margin-top: 20px;
         }
 
-        /* FOOTER COLORIDO */
+        /* FOOTER */
         footer {
             background: linear-gradient(90deg, var(--dark-color), #1a1a2e);
             color: white;
-            padding: 50px 20px;
+            padding: 40px 20px;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 50px;
         }
         footer h3 {
             color: var(--accent-color);
-            font-size: 2em;
+            font-size: 1.8em;
         }
         .social-links a {
             color: white;
-            font-size: 2.5em;
-            margin: 0 15px;
-            transition: all 0.3s ease;
+            font-size: 2.2em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
         }
         .social-links a:hover {
             color: var(--accent-color);
-            transform: translateY(-5px) scale(1.2);
         }
         .whatsapp-fixed-button {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 25px;
+            right: 25px;
             background: linear-gradient(45deg, #25d366, #1ebe57);
             color: white;
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3em;
+            font-size: 2.5em;
             text-decoration: none;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
             z-index: 99;
-        }
-        .whatsapp-fixed-button:hover {
-            transform: scale(1.1) rotate(10deg);
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            header { 
-                flex-direction: row; 
-                justify-content: space-between;
-                padding: 8px 15px;
-                gap: 10px;
-            }
-            .logo { font-size: 1.3em; }
-            .nav-menu ul { 
-                gap: 5px; 
-                flex-wrap: nowrap;
-            }
-            .nav-menu ul li a {
-                font-size: 0.85em;
-                padding: 4px 6px;
-            }
-            h1 { font-size: 2.0em; }
-            .offer-slide h2 { font-size: 2.2em; }
+            header { padding: 10px 15px; }
+            .logo { font-size: 18px; }
+            .nav-menu ul { gap: 8px; }
+            h1 { font-size: 1.8em; }
             .product-detail-actions { flex-direction: column; }
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-            .product-card {
-                padding: 8px;
-                border-radius: 10px;
-            }
-            .product-card img {
-                height: 110px;
-                object-fit: contain;
-            }
-            .product-card h3 {
-                font-size: 0.85em;
-            }
-            .product-card .price {
-                font-size: 1em;
-            }
-            .product-card button {
-                font-size: 0.75em;
-                padding: 5px 10px;
-            }
         }
 
-        /* BARRA DE CATEGORIAS - VERSION SUPER FUERTE */
-        .categories {
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
-            justify-content: flex-start !important;
-            align-items: center !important;
-            gap: 8px !important;
-            overflow-x: auto !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            padding: 10px 0px !important;
-            margin: 0 !important;
-            box-sizing: border-box !important;
-            background: transparent !important;
-        }
+        /* ARREGLOS DE SEGURIDAD Y ESTILO */
+        img { -webkit-user-drag: none; }
     </style>
 </head>
 <body>
 
-    <!-- 📍 ANCLA PARA QUE SIEMPRE EMPIECE ARRIBA -->
-    <div id="top-point"></div>
+    <header>
+        <a href="#" class="logo" onclick="showPage('home')">
+            <i class="fas fa-gamepad"></i> Berraco Toy
+        </a>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#" onclick="showPage('home')">Inicio</a></li>
+                <li><a href="#" onclick="showPage('products')">Tienda</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="openCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </header>
 
-    <!-- AQUÍ VA EL RESTO DE TU HTML (Header, Productos, etc) -->
+    <div class="container">
+
+        <!-- PÁGINA DE INICIO -->
+        <div id="home-page">
+            <div class="offer-carousel">
+                <button class="carousel-arrow left" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="offer-carousel-inner" id="carousel-inner">
+                    <div class="offer-slide">
+                        <h2>¡GRANDES DESCUENTOS!</h2>
+                        <p>Todos los juguetes con hasta 30% OFF.</p>
+                        <img src="https://via.placeholder.com/800x400/FFD700/FFFFFF?text=OFERTA+DE+LANZAMIENTO" alt="Oferta">
+                        <a href="#" class="offer-button" onclick="showPage('products')">VER PRODUCTOS</a>
+                    </div>
+                    <div class="offer-slide">
+                        <h2>ENVÍO GRATIS</h2>
+                        <p>En compras mayores a $50.</p>
+                        <img src="https://via.placeholder.com/800x400/32CD32/FFFFFF?text=ENVIO+GRATIS" alt="Envío">
+                        <a href="#" class="offer-button" onclick="showPage('products')">COMPRAR AHORA</a>
+                    </div>
+                    <div class="offer-slide">
+                        <h2>NOVEDADES</h2>
+                        <p>Los juguetes más modernos ya están aquí.</p>
+                        <img src="https://via.placeholder.com/800x400/1E90FF/FFFFFF?text=NUEVOS+INGRESOS" alt="Novedades">
+                        <a href="#" class="offer-button" onclick="showPage('products')">CONOCER MÁS</a>
+                    </div>
+                </div>
+                <button class="carousel-arrow right" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+
+            <h1>Nuestra Selección Especial</h1>
+            <div class="categories-nav">
+                <button class="active" onclick="filterProducts('all')">Todos</button>
+                <button onclick="filterProducts('action')">Acción</button>
+                <button onclick="filterProducts('aventura')">Aventura</button>
+                <button onclick="filterProducts('musica')">Música</button>
+                <button onclick="filterProducts('educativo')">Educativos</button>
+            </div>
+
+            <div class="product-grid" id="home-product-grid"></div>
+        </div>
+
+        <!-- PÁGINA DE LISTADO -->
+        <div id="product-list-page" style="display: none;">
+            <h1>Nuestros Productos</h1>
+            <div class="categories-nav">
+                <button class="active" onclick="filterProducts('all')">Todos</button>
+                <button onclick="filterProducts('action')">Acción</button>
+                <button onclick="filterProducts('aventura')">Aventura</button>
+                <button onclick="filterProducts('musica')">Música</button>
+                <button onclick="filterProducts('educativo')">Educativos</button>
+            </div>
+            <div class="product-grid" id="main-product-grid"></div>
+        </div>
+
+        <!-- PÁGINA DE DETALLE -->
+        <div id="product-detail-page">
+            <h2 id="detail-title"></h2>
+            <div class="product-detail-content">
+                <div class="product-detail-images">
+                    <div class="detail-image-slider" id="detail-image-slider">
+                        <div class="detail-slider-track" id="detail-slider-track">
+                            <!-- Imágenes cargadas por JS -->
+                        </div>
+                        <button class="detail-slider-arrow detail-arrow-left" onclick="moveDetailSlide(-1)">&#10094;</button>
+                        <button class="detail-slider-arrow detail-arrow-right" onclick="moveDetailSlide(1)">&#10095;</button>
+                    </div>
+                    
+                    <div id="detail-thumbnails-container" class="detail-thumbnails"></div>
+                    <div id="detail-video-container" class="detail-video"></div>
+                </div>
+                
+                <div class="product-detail-info">
+                    <h3 id="detail-name"></h3>
+                    <div class="price" id="detail-price"></div>
+                    <p id="detail-description"></p>
+                    <div class="product-detail-actions">
+                        <button id="detail-add-to-cart-button">
+                            <i class="fas fa-cart-plus"></i> Añadir al Carrito
+                        </button>
+                        <button id="detail-buy-now-button" onclick="buyNowFromDetail()">
+                            <i class="fas fa-bolt"></i> Comprar Ahora
+                        </button>
+                    </div>
+                    <a href="#" id="back-to-products-button" onclick="showPage('products'); return false;">
+                        <i class="fas fa-arrow-left"></i> Volver a la Tienda
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL CARRITO -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeCart()">&times;</span>
+            <h2>Tu Carrito de Compras</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total">Total: $<span id="cart-total-price">0.00</span></div>
+            <button id="proceed-to-checkout" onclick="openCheckout()">
+                <i class="fas fa-credit-card"></i> Finalizar Compra
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL CHECKOUT -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeCheckout()">&times;</span>
+            <h2>Información de Envío</h2>
+            <form id="checkout-form" class="checkout-form" onsubmit="submitOrder(event)">
+              
+
+
+
+
+
+
+
+
+
+                    
+                <label for="name">Nombre Completo</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="address">Dirección de Envío</label>
+                <input type="text" id="address" name="address" required>
+
+                <div class="checkout-summary">
+                    <div><span>Subtotal:</span> <span id="summary-subtotal">$0.00</span></div>
+                    <div><span>Envío:</span> <span id="summary-shipping">$5.00</span></div>
+                    <div class="total"><span>TOTAL A PAGAR:</span> <span id="summary-total">$0.00</span></div>
+                </div>
+
+                <button type="submit" id="confirm-checkout">
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <h3>Berraco Toy</h3>
+            <p>La mejor tienda online de juguetes. Calidad y diversión asegurada.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Berraco Toy | Todos los derechos reservados
+        </div>
+    </footer>
+
+    <a href="https://wa.me/593999999999" target="_blank" class="whatsapp-fixed-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
+        // --- DATOS ---
+        const products = [
+            {
+                id: 1,
+                name: "Super Héroe Definitivo",
+                price: 25.99,
+                category: "action",
+                description: "Increíble figura de acción con múltiples puntos de articulación y accesorios exclusivos. Ideal para coleccionistas y niños.",
+                images: [
+                    "https://via.placeholder.com/400x400/FF6347/FFFFFF?text=Heroe+1",
+                    "https://via.placeholder.com/400x400/4682B4/FFFFFF?text=Heroe+2",
+                    "https://via.placeholder.com/400x400/32CD32/FFFFFF?text=Heroe+3"
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+            },
+            {
+                id: 2,
+                name: "Set Aventura en la Selva",
+                price: 45.50,
+                category: "aventura",
+                description: "Kit completo para exploradores. Incluye tienda de campaña, binoculares y mapa del tesoro. Horas de diversión asegurada.",
+                images: [
+                    "https://via.placeholder.com/400x400/228B22/FFFFFF?text=Selva+1",
+                    "https://via.placeholder.com/400x400/8B4513/FFFFFF?text=Selva+2"
+                ],
+                video: null
+            },
+            {
+                id: 3,
+                name: "Batería Musical RockStar",
+                price: 89.90,
+                category: "musica",
+                description: "Set de batería electrónica con sonidos reales y micrófono incluido. Desarrolla el ritmo y la creatividad musical.",
+                images: [
+                    "https://via.placeholder.com/400x400/FF1493/FFFFFF?text=Bateria+1",
+                    "https://via.placeholder.com/400x400/00CED1/FFFFFF?text=Bateria+2"
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+            },
+            {
+                id: 4,
+                name: "Laboratorio de Ciencias",
+                price: 35.00,
+                category: "educativo",
+                description: "Más de 50 experimentos científicos seguros y divertidos. Aprende química y física jugando.",
+                images: [
+                    "https://via.placeholder.com/400x400/9932CC/FFFFFF?text=Ciencia+1"
+                ],
+                video: null
+            },
+            {
+                id: 5,
+                name: "Robot Programable X1",
+                price: 120.00,
+                category: "tecnologia",
+                description: "Robot interactivo que se controla por voz y app. Baila, camina y enseña lógica de programación.",
+                images: [
+                    "https://via.placeholder.com/400x400/708090/FFFFFF?text=Robot+1",
+                    "https://via.placeholder.com/400x400/2F4F4F/FFFFFF?text=Robot+2"
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+            },
+            {
+                id: 6,
+                name: "Pista de Carreras Extrema",
+                price: 55.75,
+                category: "accion",
+                description: "Pista de carreras con loopings y auto incluido. Velocidad y adrenalina pura.",
+                images: [
+                    "https://via.placeholder.com/400x400/FF4500/FFFFFF?text=Carreras+1"
+                ],
+                video: null
+            }
+        ];
+
+        let cart = [];
         let currentSlide = 0;
         let currentProductId = null;
+        let currentDetailSlide = 0;
 
-        
-                // 🚀 FUNCIÓN PARA IR ARRIBA AUTOMÁTICAMENTE
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'auto'
-            });
-            document.getElementById('top-point').scrollIntoView({
-                behavior: 'auto',
-                block: 'start'
-            });
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartCount();
+            startAutoSlide();
+            setupTouchControls(); // Activar control táctil
+        });
+
+        // ==============================================
+        // 🚀 FUNCIÓN PARA IR ARRIBA AUTOMÁTICAMENTE
+        // ==============================================
+        function showPage(page) {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('product-list-page').style.display = 'none';
+            document.getElementById('product-detail-page').style.display = 'none';
+
+            if(page === 'home') document.getElementById('home-page').style.display = 'block';
+            else if(page === 'products') document.getElementById('product-list-page').style.display = 'block';
+            else if(page === 'detail') document.getElementById('product-detail-page').style.display = 'flex';
+
+            window.scrollTo(0, 0);
         }
 
         // ==============================================
@@ -852,6 +1008,15 @@
         // ==============================================
         let startX = 0;
         let endX = 0;
+
+        function setupTouchControls() {
+            const slider = document.querySelector('.detail-image-slider');
+            if(slider) {
+                slider.addEventListener('touchstart', handleTouchStart, false);
+                slider.addEventListener('touchmove', handleTouchMove, false);
+                slider.addEventListener('touchend', handleTouchEnd, false);
+            }
+        }
 
         function handleTouchStart(e) {
             startX = e.touches[0].clientX;
@@ -866,13 +1031,11 @@
             
             let diff = startX - endX;
             
-            // Si desliza hacia la izquierda (siguiente)
-            if (diff > 50) {
-                if(typeof nextSlide === 'function') nextSlide();
+            if (diff > 50) { // Desliza izquierda -> Siguiente
+                moveDetailSlide(1);
             }
-            // Si desliza hacia la derecha (anterior)
-            else if (diff < -50) {
-                if(typeof prevSlide === 'function') prevSlide();
+            else if (diff < -50) { // Desliza derecha -> Anterior
+                moveDetailSlide(-1);
             }
 
             startX = 0;
@@ -880,12 +1043,9 @@
         }
 
         // ==============================================
-        // 🛡️ PROTECCIÓN CONTRA INSPECCIÓN Y HACKEOS
+        // 🛡️ PROTECCIÓN CONTRA INSPECCIÓN
         // ==============================================
-        // Desactivar clic derecho
         document.addEventListener('contextmenu', event => event.preventDefault());
-        
-        // Desactivar teclas de inspección (F12, Ctrl+U, Ctrl+Shift+I)
         document.addEventListener('keydown', function(e) {
             if(e.key === "F12" || 
                (e.ctrlKey && e.shiftKey && e.key === "I") ||
@@ -896,94 +1056,295 @@
             }
         });
 
-        // Protección adicional para evitar ver el código
-        setInterval(function() {
-            document.querySelectorAll('*').forEach(el => {
-                el.setAttribute('oncontextmenu', 'return false');
-            });
-        }, 1000);
-
         // ==============================================
-        // 📸 FUNCIONES DEL CARRUSEL DE IMÁGENES
+        // 📸 FUNCIONES DEL CARRUSEL DE DETALLES
         // ==============================================
-        function showSlide(index) {
+        function moveDetailSlide(step) {
             const track = document.getElementById('detail-slider-track');
-            const slides = document.querySelectorAll('.detail-slide');
+            const slides = track.children;
+            if(!slides.length) return;
+
+            currentDetailSlide += step;
             
-            if(track && slides.length > 0) {
-                if(index >= slides.length) currentSlide = 0;
-                else if(index < 0) currentSlide = slides.length - 1;
-                else currentSlide = index;
+            if(currentDetailSlide >= slides.length) currentDetailSlide = 0;
+            else if(currentDetailSlide < 0) currentDetailSlide = slides.length - 1;
 
-                track.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // Actualizar miniaturas
-                document.querySelectorAll('.detail-thumbnails img').forEach((thumb, i) => {
-                    thumb.classList.toggle('active-thumbnail', i === currentSlide);
-                });
-            }
+            track.style.transform = `translateX(-${currentDetailSlide * 100}%)`;
+            
+            // Actualizar miniaturas
+            document.querySelectorAll('.detail-thumbnails img').forEach((thumb, i) => {
+                thumb.classList.toggle('active-thumbnail', i === currentDetailSlide);
+            });
         }
 
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentSlide - 1);
+        function showDetailSlide(index) {
+            currentDetailSlide = index;
+            moveDetailSlide(0);
         }
 
         // ==============================================
-        // 📄 FUNCIÓN VER DETALLES (CON SCROLL ARRIBA)
+        // 📄 VER DETALLES
         // ==============================================
         function viewDetails(productId) {
             currentProductId = productId;
-            currentSlide = 0;
+            currentDetailSlide = 0;
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            // Llenar datos
+            document.getElementById('detail-name').textContent = product.name;
+            document.getElementById('detail-price').textContent = '$' + product.price.toFixed(2);
+            document.getElementById('detail-description').textContent = product.description;
+
+            // Cargar imágenes en carrusel
+            const track = document.getElementById('detail-slider-track');
+            const thumbs = document.getElementById('detail-thumbnails-container');
+            const videoContainer = document.getElementById('detail-video-container');
             
-            // 👇 ESTO HACE QUE EMPIECE DESDE ARRIBA 👇
-            scrollToTop();
+            track.innerHTML = "";
+            thumbs.innerHTML = "";
+            videoContainer.innerHTML = "";
 
-            // Aquí cargas los datos del producto...
-            // ... (tu código original se mantiene igual)
+            product.images.forEach((img, index) => {
+                // Slides
+                const slide = document.createElement('div');
+                slide.className = 'detail-slide';
+                slide.innerHTML = `<img src="${img}" alt="${product.name}">`;
+                track.appendChild(slide);
 
-            // Mostrar la página
-            const detailPage = document.getElementById('product-detail-page');
-            if(detailPage) {
-                detailPage.style.display = 'flex';
-                detailPage.scrollTop = 0;
+                // Miniaturas
+                const thumb = document.createElement('img');
+                thumb.src = img;
+                thumb.alt = "Miniatura";
+                thumb.onclick = () => showDetailSlide(index);
+                if(index === 0) thumb.classList.add('active-thumbnail');
+                thumbs.appendChild(thumb);
+            });
+
+            // Cargar video si existe
+            if(product.video) {
+                videoContainer.innerHTML = `<iframe src="${product.video}" frameborder="0" allowfullscreen></iframe>`;
             }
 
-            // Agregar eventos táctiles a las imágenes
-            const slider = document.querySelector('.detail-image-slider');
-            if(slider) {
-                slider.addEventListener('touchstart', handleTouchStart, false);
-                slider.addEventListener('touchmove', handleTouchMove, false);
-                slider.addEventListener('touchend', handleTouchEnd, false);
-            }
+            // Mostrar página y subir arriba
+            showPage('detail');
         }
 
         // ==============================================
-        // 🔙 VOLVER A PRODUCTOS
+        // 🛒 FUNCIONES DEL CARRITO
         // ==============================================
-        function backToProducts() {
-            const detailPage = document.getElementById('product-detail-page');
-            if(detailPage) {
-                detailPage.style.display = 'none';
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const item = cart.find(i => i.id === productId);
+            
+            if(item) {
+                item.quantity++;
+            } else {
+                cart.push({...product, quantity: 1});
             }
-            scrollToTop();
+            updateCartCount();
+            renderCart();
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+
+        function openCart() {
+            renderCart();
+            document.getElementById('cart-modal').classList.add('active');
+        }
+
+        function closeCart() {
+            document.getElementById('cart-modal').classList.remove('active');
+        }
+
+        function openCheckout() {
+            closeCart();
+            calculateTotals();
+            document.getElementById('checkout-modal').classList.add('active');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.remove('active');
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = "";
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div class="cart-item-info">
+                        <img src="${item.images[0]}" alt="${item.name}">
+                        <span>${item.name}</span>
+                    </div>
+                    <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" onchange="updateQuantity(${item.id}, this.value)">
+                    <span class="price">$${(item.price * item.quantity).toFixed(2)}</span>
+                    <button class="remove-from-cart" onclick="removeFromCart(${item.id})">&times;</button>
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('cart-total-price').textContent = total.toFixed(2);
+        }
+
+        function updateQuantity(id, qty) {
+            const item = cart.find(i => i.id === id);
+            if(item) item.quantity = parseInt(qty);
+            updateCartCount();
+            renderCart();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(i => i.id !== id);
+            updateCartCount();
+            renderCart();
+        }
+
+        function calculateTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = 5.00;
+            const total = subtotal + shipping;
+
+            document.getElementById('summary-subtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            
+            let message = `🛒 *NUEVO PEDIDO - BERRACO TOY*%0A%0A`;
+            message += `👤 *Cliente:* ${name}%0A`;
+            message += `📞 *Teléfono:* ${phone}%0A`;
+            message += `📍 *Dirección:* ${address}%0A%0A`;
+            message += `📦 *Productos:*%0A`;
+            
+            cart.forEach(item => {
+                message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}%0A`;
+            });
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) + 5;
+            message += `%0A💵 *TOTAL A PAGAR: $${total.toFixed(2)}*`;
+
+            window.open(`https://wa.me/593999999999?text=${message}`, '_blank');
+            
+            cart = [];
+            updateCartCount();
+            closeCheckout();
+            alert('¡Pedido enviado con éxito! Te contactaremos pronto.');
+        }
+
+        function buyNowFromDetail() {
+            addToCart(currentProductId);
+            openCart();
         }
 
         // ==============================================
-        // 🚀 INICIALIZACIÓN
+        // 🎠 CARRUSEL DE OFERTAS
         // ==============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('%c✅ PÁGINA SEGURA Y OPTIMIZADA', 'color: white; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 0px #6C63FF, 4px 4px 0px #FF6584;');
-            console.log('%c🛡️ Protección anti-hackeo activada', 'color: lightgreen;');
-            console.log('%c📱 Control táctil habilitado', 'color: lightblue;');
+        function moveSlide(step) {
+            const slides = document.querySelectorAll('.offer-slide');
+            currentSlide += step;
+            
+            if(currentSlide >= slides.length) currentSlide = 0;
+            else if(currentSlide < 0) currentSlide = slides.length - 1;
+
+            document.getElementById('carousel-inner').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function startAutoSlide() {
+            setInterval(() => moveSlide(1), 5000);
+        }
+
+        // ==============================================
+        // 📦 RENDERIZADO Y FILTROS
+        // ==============================================
+        function createProductCard(product) {
+            const div = document.createElement('div');
+            div.className = 'product-card';
+      
+div
+
+
+        div.innerHTML = `
+            <img src="${product.images[0]}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <div class="price">$${product.price.toFixed(2)}</div>
+            <div class="product-card-actions">
+                <button class="details-button" onclick="viewDetails(${product.id})">
+                    <i class="fas fa-eye"></i> Ver Detalles
+                </button>
+                <button class="buy-now-from-list-button" onclick="addToCart(${product.id})">
+                    <i class="fas fa-shopping-cart"></i> Añadir
+                </button>
+            </div>
+        `;
+        return div;
+    }
+
+    function renderProducts() {
+        const homeGrid = document.getElementById('home-product-grid');
+        const mainGrid = document.getElementById('main-product-grid');
+        homeGrid.innerHTML = "";
+        mainGrid.innerHTML = "";
+
+        products.forEach(product => {
+            const card = createProductCard(product);
+            homeGrid.appendChild(card.cloneNode(true));
+            mainGrid.appendChild(card);
         });
+    }
+
+    function filterProducts(category) {
+        const grids = [
+            document.getElementById('home-product-grid'),
+            document.getElementById('main-product-grid')
+        ];
+
+        grids.forEach(grid => {
+            const cards = grid.children;
+            for(let card of cards) {
+                if(category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+
+        // Marcar botón activo
+        document.querySelectorAll('.categories-nav button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+    }
+
+    // ==============================================
+    // 🛡️ PROTECCIÓN ADICIONAL
+    // ==============================================
+    setInterval(function() {
+        document.querySelectorAll('*').forEach(el => {
+            el.setAttribute('oncontextmenu', 'return false');
+        });
+    }, 1000);
 
     </script>
 
 </body>
 </html>
+            
+
+
 
         
