@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https:;
+        script-src 'self' 'unsafe-inline';
+        style-src 'self' 'unsafe-inline' https:;
+        img-src 'self' data: https:;
+        font-src 'self' https:;
+        connect-src 'self' https:;
+        frame-src 'self' https://www.whatsapp.com https://www.youtube.com https://player.vimeo.com https://streamable.com;
+       media-src 'self' https://raw.githubusercontent.com https://raw.githubusercontent.com data:;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+    ">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    
+<!-- LÍNEAS NUEVAS PARA VELOCIDAD -->
+<meta name="expires" content="Wed, 24 Mar 2027 00:00:00 GMT">
+<meta name="cache-control" content="public, max-age=31536000">
+
+    <!-- 📱 CONFIGURACIÓN RESPONSIVE Y BÁSICA -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berraco Toy - Tienda Online de Juguetes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Verraco Toys - Tienda Oficial</title>
+    <meta name="description" content="Tienda de juguetes teledirigidos y productos coleccionables en Ambato, Ecuador">
+    <meta name="robots" content="index, follow">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
     <style>
         /* ESTILOS NUEVOS - MODERNOS Y LLAMATIVOS */
         :root {
@@ -1154,8 +1181,7 @@
     else if(page === 'products') document.getElementById('product-list-page').style.display = 'block';
     else if(page === 'detail') document.getElementById('product-detail-page').style.display = 'block';
 
-       // 🚀 ESTO ES LO MÁGICO
-    window.location.hash = "#arriba-del-todo";
+
   }
 }
 
