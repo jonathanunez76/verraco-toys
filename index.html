@@ -1166,20 +1166,7 @@
             updateCartCount();
             startAutoSlide();
             
-        });
- function showProductDetail(productId) {
-            const product = products[productId];
-            if (!product) {
-                console.error('Producto no encontrado:', productId);
-                return;
-            }
-
-            // Ocultar todas las secciones y mostrar la de detalle del producto
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('product-detail-page').style.display = 'block';
-            window.scrollTo(0, 0); // Ir al inicio de la página
+    
   });
        function showPage(page) {
     document.getElementById('home-page').style.display = 'none';
@@ -1190,7 +1177,8 @@
     else if(page === 'products') document.getElementById('product-list-page').style.display = 'block';
     else if(page === 'detail') document.getElementById('product-detail-page').style.display = 'block';
 
-    // ✅ AQUÍ LO PONES
+    // ✅ AQUÍ LO 
+             document.getElementById('product-detail-page').style.display = 'block';
     window.scrollTo(0, 0);
 }
 
