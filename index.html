@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Tienda Moderna</title>
+    <title>🎮 Mundo Juguete - Tienda Moderna</title>
 
     <!-- 🔒 SEGURIDAD -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://player.vimeo.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src 'self' https://player.vimeo.com;">
@@ -12,19 +13,20 @@
     <meta name="referrer" content="no-referrer">
 
     <style>
-        /* 🎨 ESTILOS GENERALES Y COLOR MODERNO */
+        /* 🎨 ESTILO JUGUETERÍA MODERNA Y LLAMATIVA */
         :root {
-            --color-principal: #2563EB; /* Azul vibrante moderno */
-            --color-secundario: #1E40AF; /* Azul más oscuro */
-            --color-fondo: #F8FAFC;
-            --color-texto: #1E293B;
+            --color-principal: #7C3AED; /* Morado Vibrante */
+            --color-secundario: #5B21B6;
+            --color-acento: #F59E0B; /* Naranja brillante */
+            --color-fondo: #F0F4FF;
+            --color-texto: #1F2937;
         }
 
         * { 
             margin: 0; 
             padding: 0; 
             box-sizing: border-box; 
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body { 
@@ -32,70 +34,64 @@
             color: var(--color-texto);
         }
         
-        /* Páginas */
+        /* PÁGINAS */
         .page { 
             display: none; 
             width: 100%; 
             min-height: 100vh; 
             padding: 15px; 
-            animation: fadeIn 0.3s ease-in;
-        }
-        .active { display: block !important; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
-        /* 🎀 HEADER Y BOTONES */
+        /* HEADER Y BOTONES */
         .detail-header { 
             display: flex; 
             align-items: center; 
             gap: 15px; 
             margin-bottom: 20px; 
             background: white;
-            padding: 10px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 12px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.1);
         }
         
         .back-button { 
             padding: 10px 18px; 
             cursor: pointer; 
             font-size: 18px;
-            background: var(--color-principal);
+            background: var(--color-acento);
             color: white;
             border: none;
-            border-radius: 8px;
-            transition: all 0.2s;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: transform 0.1s;
         }
         .back-button:hover {
-            background: var(--color-secundario);
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         #detail-title {
-            color: var(--color-texto);
-            font-size: 20px;
-            font-weight: 600;
+            color: var(--color-principal);
+            font-size: 22px;
+            font-weight: bold;
         }
 
-        /* 🖼️ IMÁGENES Y CARRUSEL */
+        /* 🖼️ CARRUSEL DE IMÁGENES */
+        #detail-slider-track {
+            display: flex;
+            transition: transform 0.4s ease-out;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .detail-slide {
+            min-width: 100%;
+        }
         .detail-slide img { 
             width: 100%; 
             max-height: 550px; 
             object-fit: contain; 
-            background: #ffffff; 
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        
-        #detail-slider-track {
-            display: flex;
-            transition: transform 0.4s ease;
-        }
-        .detail-slide {
-            min-width: 100%;
+            padding: 10px;
         }
 
         /* 🎞️ MINIATURAS */
@@ -107,19 +103,20 @@
             padding: 5px;
         }
         #detail-thumbnails-container img { 
-            width: 70px; 
-            height: 70px; 
+            width: 75px; 
+            height: 75px; 
             object-fit: cover; 
             cursor: pointer; 
             border: 3px solid transparent;
-            border-radius: 8px;
-            transition: border-color 0.2s;
+            border-radius: 10px;
+            background: white;
         }
         #detail-thumbnails-container img.active-thumbnail { 
             border-color: var(--color-principal); 
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
         }
 
-        /* 🎬 VIDEOS VIMEO EN ALTA CALIDAD */
+        /* 🎬 VIDEOS VIMEO GRANDES Y CLAROS */
         #detail-video-container {
             position: relative;
             width: 100%;
@@ -127,9 +124,9 @@
             margin: 25px auto;
             background: #000;
             aspect-ratio: 16 / 9;
-            border-radius: 15px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         #detail-video-container iframe {
             position: absolute;
@@ -142,71 +139,97 @@
 
         /* 📝 TEXTO Y PRECIOS */
         #detail-name { 
-            font-size: 26px; 
+            font-size: 28px; 
             margin: 20px 0 10px; 
-            font-weight: bold;
+            font-weight: 800;
+            color: var(--color-texto);
         }
         #detail-price { 
-            font-size: 24px; 
-            color: #10B981; /* Verde para precio */
+            font-size: 26px; 
+            color: #10B981; /* Verde precio */
             font-weight: bold; 
         }
         #detail-description { 
             font-size: 17px; 
-            line-height: 1.6; 
+            line-height: 1.7; 
             margin-top: 20px;
             background: white;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid var(--color-principal);
         }
 
-        /* PRODUCTOS Y TARJETAS */
+        /* 🛒 LISTADO DE PRODUCTOS */
         #products-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+            padding: 10px;
         }
         .product-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 15px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.2);
         }
         .details-button {
             background: var(--color-principal);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 12px 25px;
+            border-radius: 10px;
             margin-top: 10px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 15px;
         }
         .details-button:hover {
             background: var(--color-secundario);
         }
+
+        /* CATEGORÍAS */
+        .categories-nav button {
+            padding: 12px 25px;
+            margin: 5px;
+            border-radius: 10px;
+            border: none;
+            background: #E0E7FF;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .categories-nav button.active {
+            background: var(--color-principal);
+            color: white;
+        }
     </style>
+    <!-- Fuente bonita -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- PÁGINA DE INICIO -->
-    <div id="home-page" class="page active">
-        <h1 style="text-align:center; margin: 30px 0; color: var(--color-principal);">Bienvenido a la Tienda</h1>
-        <div style="text-align:center;">
-            <button onclick="showPage('products')" style="padding: 15px 30px; font-size: 18px; background: var(--color-principal); color: white; border: none; border-radius: 10px;">Ver Productos</button>
+    <div id="home-page" class="page" style="display:block;">
+        <div style="text-align:center; padding: 50px 20px;">
+            <h1 style="font-size: 60px; color: var(--color-principal); font-weight: 800;">🎮 MUNDO JUGUETE</h1>
+            <p style="font-size: 22px; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">La mejor tienda con los juguetes más modernos y divertidos.</p>
+            <button onclick="showPage('products')" style="padding: 20px 50px; font-size: 22px; background: var(--color-acento); color: white; border: none; border-radius: 15px; font-weight: bold; margin-top: 30px;">VER CATÁLOGO ➡️</button>
         </div>
     </div>
 
     <!-- PÁGINA DE LISTADO -->
     <div id="product-list-page" class="page">
-        <div class="categories-nav" style="text-align: center; margin: 20px 0;">
-            <button onclick="filterProducts('all')" style="padding: 10px 20px; margin: 5px; background: var(--color-principal); color: white; border: none; border-radius: 8px;">Todos</button>
-            <button onclick="filterProducts('categoria1')" style="padding: 10px 20px; margin: 5px; background: #e2e8f0; border: none; border-radius: 8px;">Categoría 1</button>
+        <h1 style="text-align:center; color: var(--color-principal); margin: 10px 0 20px;">Nuestros Productos 🎁</h1>
+        <div class="categories-nav" style="text-align: center; margin-bottom: 20px;">
+            <button class="active" onclick="filterProducts('all')">📦 Todos</button>
+            <button onclick="filterProducts('accion')">⚔️ Acción</button>
+            <button onclick="filterProducts('tecnologia')">🤖 Tecnología</button>
+            <button onclick="filterProducts('juegos')">🎲 Juegos</button>
         </div>
         <div id="products-container">
             <!-- Se carga con JS -->
@@ -215,11 +238,11 @@
 
     <!-- PÁGINA DE DETALLES -->
     <div id="product-detail-page" class="page">
-        <!-- 📍 ANCLA PARA SUBIR ARRIBA -->
+        <!-- 📍 ANCLA PARA QUE SUBE SIEMPRE ARRIBA -->
         <div id="top-point"></div> 
         
         <div class="detail-header">
-            <button class="back-button" onclick="showPage('products')">←</button>
+            <button class="back-button" onclick="showPage('products')">← Volver</button>
             <h2 id="detail-title">Detalles del Producto</h2>
         </div>
 
@@ -241,27 +264,35 @@
     </div>
 
     <script>
-        // --- DATOS DE PRODUCTOS ---
+        // --- 📦 PRODUCTOS DE EJEMPLO (Juguetería) ---
         const products = [
             { 
                 id: 1, 
-                name: "Producto Ejemplo 1", 
-                price: 25.99, 
-                category: "categoria1",
-                description: "Descripción detallada del producto con todas sus características y beneficios para el cliente.", 
+                name: "Robot Inteligente X200", 
+                price: 89.99, 
+                category: "tecnologia",
+                description: "¡El robot más divertido y educativo! Camina, habla y responde a tus comandos. Hecho de materiales seguros y resistentes. Ideal para estimular la imaginación y el aprendizaje.", 
                 images: [
-                    "https://via.placeholder.com/600x400/ffffff/2563EB?text=Imagen+1",
-                    "https://via.placeholder.com/600x400/f0f4f8/2563EB?text=Imagen+2"
+                    "https://images.unsplash.com/photo-1608248597173-81ebf0ba7369?w=500",
+                    "https://images.unsplash.com/photo-1563298724-dab192b0693b?w=500"
                 ],
                 video: "https://player.vimeo.com/video/76979871"
             },
             { 
                 id: 2, 
-                name: "Producto Ejemplo 2", 
-                price: 15.50,
-                category: "categoria1", 
-                description: "Otra descripción increíble que convence al cliente de comprar.", 
-                images: ["https://via.placeholder.com/600x400/ffffff/10B981?text=Producto+2"]
+                name: "Set de Construcción Mega", 
+                price: 45.50,
+                category: "juegos", 
+                description: "Más de 500 piezas para crear estructuras increíbles. Fomenta la creatividad y la motricidad fina. Compatible con otras marcas líderes.", 
+                images: ["https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=500"]
+            },
+            { 
+                id: 3, 
+                name: "Muñeco Héroe Defensor", 
+                price: 29.90,
+                category: "accion", 
+                description: "Tu héroe favorito con accesorios y puntos de articulación para todas las poses. ¡La aventura nunca termina!", 
+                images: ["https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?w=500"]
             }
         ];
 
@@ -269,15 +300,18 @@
         let currentDetailSlide = 0;
 
         // ==============================================
-        // 🚀 FUNCIÓN IR ARRIBA (Siempre funciona)
+        // 🚀 FUNCIÓN IR ARRIBA (SOLUCIÓN DEFINITIVA)
         // ==============================================
         function irArriba() {
-            document.getElementById('top-point').scrollIntoView({ block: 'start' });
+            document.getElementById('top-point').scrollIntoView({ 
+                behavior: 'auto', 
+                block: 'start' 
+            });
             setTimeout(() => {
                 window.scrollTo(0, 0);
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
-            }, 20);
+            }, 10);
         }
 
         // ==============================================
@@ -353,7 +387,11 @@
             showPage('detail');
         }
 
-        // ==============================================
+       
+
+
+
+                           // ==============================================
         // 🎞️ FUNCIÓN CARRUSEL
         // ==============================================
         function updateDetailSlidePosition() {
@@ -372,6 +410,12 @@
         // 🗂️ FUNCIÓN FILTRAR PRODUCTOS
         // ==============================================
         function filterProducts(category) {
+            // Cambiar estilo de botones
+            const buttons = document.querySelectorAll('.categories-nav button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filtrar tarjetas
             const cards = document.querySelectorAll('.product-card');
             cards.forEach(card => {
                 if(category === 'all' || card.dataset.category === category) {
@@ -393,10 +437,10 @@
                 card.className = 'product-card';
                 card.dataset.category = prod.category;
                 card.innerHTML = `
-                    <img src="${prod.images[0]}" alt="${prod.name}" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
-                    <h3>${prod.name}</h3>
-                    <p style="color: #10B981; font-weight:bold; font-size:18px; margin: 8px 0;">$${prod.price.toFixed(2)}</p>
-                    <button class="details-button" onclick="viewDetails(${prod.id})">Ver Detalles</button>
+                    <img src="${prod.images[0]}" alt="${prod.name}" style="width:100%; height:220px; object-fit:cover; border-radius:12px;">
+                    <h3 style="margin: 15px 0 10px; font-size: 18px;">${prod.name}</h3>
+                    <p style="color: #10B981; font-weight:bold; font-size:20px;">$${prod.price.toFixed(2)}</p>
+                    <button class="details-button" onclick="viewDetails(${prod.id})">👁️ Ver Detalles</button>
                 `;
                 container.appendChild(card);
             });
@@ -410,4 +454,4 @@
     </script>
 
 </body>
-</html>
+</html> 
