@@ -1154,8 +1154,12 @@
     else if(page === 'products') document.getElementById('product-list-page').style.display = 'block';
     else if(page === 'detail') document.getElementById('product-detail-page').style.display = 'block';
 
-    // ✅ AQUÍ LO PONES
+     // ✅ AGREGA ESTO CON UN POCO DE ESPERA
+  setTimeout(() => {
     window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, 50);
 }
 
         function renderProducts() {
@@ -1243,7 +1247,7 @@
                 if(index === 0) imgEl.classList.add('active-thumbnail');
                 thumbsContainer.appendChild(imgEl);
 
-                irArriba();
+         
             });
 
             // Video
@@ -1448,28 +1452,7 @@
         if(event.target == checkoutModal) closeCheckout();
     }
 
-// --- FORZAR IR ARRIBA AL ENTRAR A DETALLES ---
-// Creamos la función para poder llamarla cuando queramos
-function irArriba() {
-  window.scrollTo(0, 0);
-  document.body.scrollTop = 0; // Safari
-  document.documentElement.scrollTop = 0; // Chrome, Firefox, IE y Opera
-document.documentElement.scrollTop = 0; // Chrome, Firefox, IE y Opera
-  }, 100);
-}
 
-// La ejecutamos también cuando carga la página
-window.onload = irArriba;
-
-// También al cambiar de página
-history.scrollRestoration = "manual";
-window.addEventListener('pageshow', function(event) {
-  window.scrollTo(0, 0);
-});
- // Mostrar la sección de inicio por defecto
-        document.addEventListener('DOMContentLoaded', () => {
-            showSection('home');
-        });
 </script>
 </body>
 </html>
