@@ -1448,19 +1448,22 @@
         if(event.target == checkoutModal) closeCheckout();
     }
 
-    // --- FORZAR IR ARRIBA AL ENTRAR A DETALLES ---
-    // Esto funciona en TODOS los navegadores y situaciones
-    window.onload = function() {
-        window.scrollTo(0, 0);
-        document.body.scrollTop = 0; // Para Safari
-        document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
-    };
+// --- FORZAR IR ARRIBA AL ENTRAR A DETALLES ---
+// Creamos la función para poder llamarla cuando queramos
+function irArriba() {
+  window.scrollTo(0, 0);
+  document.body.scrollTop = 0; // Safari
+  document.documentElement.scrollTop = 0; // Chrome, Firefox, IE y Opera
+}
 
-    // También al cambiar de página
-    history.scrollRestoration = "manual";
-    window.addEventListener('pageshow', function(event) {
-        window.scrollTo(0, 0);
-    });
+// La ejecutamos también cuando carga la página
+window.onload = irArriba;
+
+// También al cambiar de página
+history.scrollRestoration = "manual";
+window.addEventListener('pageshow', function(event) {
+  window.scrollTo(0, 0);
+});
  // Mostrar la sección de inicio por defecto
         document.addEventListener('DOMContentLoaded', () => {
             showSection('home');
