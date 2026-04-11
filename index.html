@@ -294,19 +294,8 @@ const products=[
 let cart=[],currentSlide=0,currentId=null,currentDetail=0,sliderAuto;
 
 // FUNCIONES
-  function showPage(page) {
-            document.getElementById('home-page').style.display = 'none';
-            document.getElementById('product-list-page').style.display = 'none';
-            document.getElementById('product-detail-page').style.display = 'none';
-
-            if(page === 'home') document.getElementById('home-page').style.display = 'block';
-            else if(page === 'products') document.getElementById('product-list-page').style.display = 'block';
-            else if(page === 'detail') document.getElementById('product-detail-page').style.display = 'flex';
-
-            window.scrollTo(0, 0);
-        }
-
-
+ 
+function showPage(p){document.querySelectorAll('#home-page,#detail-page,#about-page,#contact-page').forEach(el=>el.style.display='none');if(p=='home'||p=='products'){document.getElementById('home-page').style.display='block'}else{document.getElementById(p).style.display='block'}window.scrollTo(0,0)}
 function openCart(){document.getElementById('cart-modal').classList.add('active');updateCart();}
 function closeCart(){document.getElementById('cart-modal').classList.remove('active');}
 function openCheckout(){closeCart();document.getElementById('checkout-modal').classList.add('active');calculateTotals();}
