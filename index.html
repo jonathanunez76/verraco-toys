@@ -1,8 +1,3 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,14 +29,22 @@ h1{font-size:2.2em;text-align:center;margin-top:15px;color:var(--dark-color)}
 .categories-nav button{background:transparent;border:1px solid #ccc;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--dark-color);transition:all .3s ease;border-radius:4px;font-weight:600;white-space:nowrap}
 .categories-nav button:hover,.categories-nav button.active{background:var(--primary-color);border-color:var(--primary-color);color:var(--dark-color)}
 
-.offer-carousel{background:linear-gradient(135deg,var(--dark-color),#333);padding:30px;margin-bottom:25px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.1);border-radius:8px;position:relative;overflow:hidden;color:#fff}
-.offer-carousel-inner{display:flex;transition:transform .8s ease}
-.offer-slide{min-width:100%;box-sizing:border-box;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.offer-slide h2{font-size:2.4em;color:var(--primary-color);margin-bottom:10px}
-.offer-slide p{font-size:1.1em;color:#ddd;margin-bottom:15px}
+/* ============================================== */
+/* CARRUSEL CON IMAGEN DE FONDO EN CADA SLIDE     */
+/* ============================================== */
+.offer-carousel{background:var(--dark-color);padding:0;margin-bottom:25px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.1);border-radius:8px;position:relative;overflow:hidden;color:#fff;height:300px}
+.offer-carousel-inner{display:flex;height:100%;transition:transform .8s ease}
+.offer-slide{min-width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;background-size:cover;background-position:center}
+/* Capa oscura sobre la imagen para que se lea el texto */
+.offer-slide::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1}
+/* Contenido del slide encima de la imagen */
+.offer-slide > * {position:relative;z-index:2}
+.offer-slide h2{font-size:2.8em;color:var(--primary-color);margin-bottom:10px;text-shadow:2px 2px 4px rgba(0,0,0,0.5)}
+.offer-slide p{font-size:1.2em;color:#eee;margin-bottom:20px;max-width:80%}
 .offer-button{background:var(--primary-color);color:var(--dark-color);padding:12px 30px;border:none;border-radius:4px;cursor:pointer;text-decoration:none;display:inline-block;font-size:1.1em;font-weight:700;transition:all .3s ease;text-transform:uppercase}
 .offer-button:hover{background:var(--accent-color);transform:translateY(-2px)}
-.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);background-color:rgba(255,255,255,0.1);color:#fff;border:none;padding:10px 12px;font-size:1.8em;cursor:pointer;border-radius:50%;z-index:10}
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);background-color:rgba(255,255,255,0.15);color:#fff;border:none;padding:10px 14px;font-size:2em;cursor:pointer;border-radius:50%;z-index:20;transition:background .3s ease}
+.carousel-arrow:hover{background-color:rgba(255,255,255,0.3)}
 .carousel-arrow.left{left:15px}
 .carousel-arrow.right{right:15px}
 
@@ -56,6 +59,9 @@ h1{font-size:2.2em;text-align:center;margin-top:15px;color:var(--dark-color)}
 .details-button{background:transparent;border:1px solid var(--dark-color);color:var(--dark-color)}
 .buy-now-from-list-button{background:var(--primary-color);color:var(--dark-color)}
 
+/* ============================================== */
+/* PÁGINA DE DETALLES (FOTOS Y VIDEO)             */
+/* ============================================== */
 #detail-page{display:none;background-color:#fff;padding:25px;box-shadow:0 5px 15px rgba(0,0,0,0.05);margin-bottom:25px;border-radius:8px;flex-direction:column;gap:25px;border:1px solid #eee}
 #detail-page h2{text-align:center;font-size:1.8em;color:var(--dark-color)}
 .product-detail-content{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;align-items:flex-start}
@@ -82,6 +88,18 @@ h1{font-size:2.2em;text-align:center;margin-top:15px;color:var(--dark-color)}
 #detail-buy-now-button{background:var(--primary-color);color:var(--dark-color)}
 #back-to-products-button{background:transparent;border:2px solid #ccc;color:var(--dark-color);padding:12px 25px;border-radius:4px;margin-top:20px;display:inline-block;text-decoration:none;font-weight:600;font-size:0.95em}
 
+/* ============================================== */
+/* PÁGINAS QUIÉNES SOMOS Y CONTACTO               */
+/* ============================================== */
+#about-page, #contact-page{display:none;padding:25px;max-width:800px;margin:0 auto;width:100%}
+#about-page h2, #contact-page h2{text-align:center;font-size:2em;margin-bottom:20px}
+#about-page p, #contact-page p{font-size:1.1em;color:#555;margin-bottom:15px;line-height:1.8}
+.info-block{background:#f9f9f9;padding:20px;border-radius:8px;margin-top:20px}
+.info-block h3{color:var(--primary-color);margin-bottom:15px;font-size:1.4em}
+.info-block ul{list-style:none;padding:0}
+.info-block li{padding:8px 0;font-size:1.05em;border-bottom:1px solid #eee}
+.info-block li i{color:var(--primary-color);margin-right:10px;width:20px}
+
 .modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);justify-content:center;align-items:center}
 .modal.active{display:flex}
 .modal-content{background-color:#fff;padding:30px;border-radius:8px;width:90%;max-width:550px;position:relative;border:1px solid #eee}
@@ -104,11 +122,6 @@ h1{font-size:2.2em;text-align:center;margin-top:15px;color:var(--dark-color)}
 .checkout-summary .total{font-weight:800;color:var(--dark-color);border-top:2px solid #ddd;padding-top:10px;margin-top:10px;font-size:1.2em}
 #confirm-checkout{background:var(--primary-color);color:var(--dark-color);padding:14px;border:none;border-radius:4px;width:100%;font-size:1.1em;font-weight:700;cursor:pointer;margin-top:15px}
 
-/* PÁGINAS QUIÉNES SOMOS Y CONTACTO */
-#about-page, #contact-page{display:none;padding:25px;max-width:800px;margin:0 auto;width:100%}
-#about-page h2, #contact-page h2{text-align:center;font-size:2em;margin-bottom:20px}
-#about-page p, #contact-page p{font-size:1.1em;color:#555;margin-bottom:15px;line-height:1.8}
-
 /* FOOTER ABAJO FIJO */
 footer{background:var(--dark-color);color:#fff;padding:35px 20px;text-align:center;margin-top:auto}
 footer h3{color:var(--primary-color);font-size:1.6em;margin-bottom:10px}
@@ -116,9 +129,9 @@ footer p{font-size:1em;opacity:0.8}
 .social-links a{color:#fff;font-size:2em;margin:0 10px;transition:color .3s ease;text-decoration:none}
 .social-links a:hover{color:var(--primary-color)}
 
-.whatsapp-fixed-button{position:fixed;bottom:20px;right:20px;background:var(--primary-color);color:var(--dark-color);width:55px;height:55px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:2em;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:99}
+.whatsapp-fixed-button{position:fixed;bottom:20px;right:20px;background:var(--primary-color);color:var(--dark-color);width:55px;height:55px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:2em;text-decoration:none; box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:99}
 
-/* AJUSTE EXACTO PARA CELULARES - MÁS PEQUEÑO Y ORDENADO */
+/* AJUSTE EXACTO PARA CELULARES */
 @media (max-width: 768px) {
     body {font-size: 11px !important;}
     h1 {font-size: 1.4em !important; margin: 8px 0 !important;}
@@ -133,216 +146,394 @@ footer p{font-size:1em;opacity:0.8}
     .product-card-actions button {font-size: 0.8em !important; padding: 5px 8px !important;}
     .categories-nav {padding: 6px !important; margin-bottom: 12px !important;}
     .categories-nav button {font-size: 9px !important; padding: 3px 7px !important;}
-    .offer-carousel {padding: 15px !important; margin-bottom: 12px !important;}
-    .offer-slide h2 {font-size: 1.6em !important;}
+    .offer-carousel {height: 200px !important; margin-bottom: 12px !important;}
+    .offer-slide h2 {font-size: 1.8em !important;}
     .offer-slide p {font-size: 0.9em !important;}
-
-
-
-
-
     .offer-button {padding: 7px 18px !important; font-size: 0.95em !important;}
     .carousel-arrow {font-size: 1.4em !important; padding: 6px 8px !important;}
 }
 </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
 
 <header>
-<a href="#" class="logo" onclick="showPage('home'); return false;"><i class="fas fa-truck"></i> TU MARCA</a>
-<nav class="nav-menu">
-<ul>
-<li><a href="#" onclick="showPage('home'); return false;">Inicio</a></li>
-<li><a href="#" onclick="showPage('products'); return false;">Tienda</a></li>
-<li><a href="#" onclick="showPage('about'); return false;">Quiénes Somos</a></li>
-<li><a href="#" onclick="showPage('contact'); return false;">Contacto</a></li>
-</ul>
-</nav>
-<div class="cart-icon" onclick="openCart()"><i class="fas fa-shopping-cart"></i><span class="cart-count" id="cart-count">0</span></div>
+    <a href="#" class="logo" onclick="showSection('home')"><i class="fas fa-truck-loading"></i> TU TIENDA</a>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Inicio</a></li>
+            <li><a href="#" onclick="showSection('about')">Quiénes Somos</a></li>
+            <li><a href="#" onclick="showSection('contact')">Contacto</a></li>
+        </ul>
+    </nav>
+    <a class="cart-icon" onclick="toggleModal('cart-modal')">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count">0</span>
+    </a>
 </header>
 
 <div class="container">
 
-<div id="home-page">
-<div class="offer-carousel" id="main-slider">
-<button class="carousel-arrow left" onclick="moveSlide(-1)">&#10094;</button>
-<div class="offer-carousel-inner" id="carousel-inner">
-<div class="offer-slide"><h2>LA MEJOR CALIDAD</h2><p>Materiales resistentes y acabados perfectos.</p><a href="#" class="offer-button" onclick="showPage('products'); return false;">VER PRODUCTOS</a></div>
-<div class="offer-slide"><h2>ENVÍOS RÁPIDOS</h2><p>Recibe tu pedido donde estés.</p><a href="#" class="offer-button" onclick="showPage('contact'); return false;">CONTÁCTANOS</a></div>
-<div class="offer-slide"><h2>GARANTÍA TOTAL</h2><p>Tu confianza es lo más importante.</p><a href="#" class="offer-button" onclick="showPage('about'); return false;">CONÓCENOS</a></div>
-</div>
-<button class="carousel-arrow right" onclick="moveSlide(1)">&#10095;</button>
-</div>
+    <!-- SECCIÓN DE INICIO / TIENDA -->
+    <div id="home-section">
+        <h1>NUESTRA COLECCIÓN</h1>
 
+        <!-- CARRUSEL CON IMÁGENES DE FONDO -->
+        <div class="offer-carousel">
+            <button class="carousel-arrow left" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-arrow right" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+            <div class="offer-carousel-inner" id="offer-track">
+                
+                <!-- SLIDE 1 -->
+                <div class="offer-slide" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80')">
+                    <h2>ENVÍOS GRATIS</h2>
+                    <p>Recibe tu pedido donde estés sin costo adicional</p>
+                    <a href="#" class="offer-button">COMPRAR AHORA</a>
+                </div>
 
-<h1>NUESTRA COLECCIÓN</h1>
-<div class="categories-nav">
-<button class="active" onclick="filterProducts('all')">Todos</button>
-<button onclick="filterProducts('action')">Modelos a Escala</button>
-<button onclick="filterProducts('aventura')">Control Remoto</button>
-<button onclick="filterProducts('musica')">Juguetes</button>
-<button onclick="filterProducts('educativo')">Accesorios</button>
-</div>
+                <!-- SLIDE 2 -->
+                <div class="offer-slide" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=1200&q=80')">
+                    <h2>GARANTÍA TOTAL</h2>
+                    <p>Todos nuestros productos tienen garantía de calidad</p>
+                    <a href="#" class="offer-button">VER PRODUCTOS</a>
+                </div>
 
-<div class="product-grid" id="product-grid"></div>
-</div>
+                <!-- SLIDE 3 -->
+                <div class="offer-slide" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=80')">
+                    <h2>MEJORES PRECIOS</h2>
+                    <p>Calidad y tecnología al mejor costo del mercado</p>
+                    <a href="#" class="offer-button">VER OFERTAS</a>
+                </div>
 
-<!-- PÁGINA DETALLE -->
-<div id="detail-page" style="display:none;">
-<h2>DETALLE DEL PRODUCTO</h2>
-<div class="product-detail-content">
-<div class="product-detail-images">
-<div class="detail-image-slider">
-<div class="detail-slider-track" id="detail-slider-track"></div>
-<button class="detail-slider-arrow detail-arrow-left" onclick="moveDetail(-1)">&#10094;</button>
-<button class="detail-slider-arrow detail-arrow-right" onclick="moveDetail(1)">&#10095;</button>
-</div>
-<div id="detail-thumbnails-container" class="detail-thumbnails"></div>
-<div id="detail-video-container" class="detail-video"></div>
-</div>
-<div class="product-detail-info">
-<h3 id="detail-name"></h3>
-<div class="price" id="detail-price"></div>
-<p id="detail-description"></p>
-<div class="product-detail-actions">
-<button id="detail-add-to-cart-button" onclick="addToCart(currentId)">AÑADIR AL CARRITO</button>
-<button id="detail-buy-now-button" onclick="buyNow()">COMPRAR AHORA</button>
-</div>
-<a href="#" onclick="showPage('home'); return false;" id="back-to-products-button">VOLVER A TIENDA</a>
-</div>
-</div>
-</div>
+            </div>
+        </div>
 
-<!-- PAGINA QUIENES SOMOS -->
-<div id="about-page" style="display:none;">
-<h2>QUIÉNES SOMOS</h2>
-<div class="info-block">
-<p>Somos una empresa dedicada a ofrecer los mejores productos de maquinaria, modelos a escala y juguetes de alta calidad. Nuestra pasión es llevar la ingeniería y la diversión a tu hogar con productos que cumplen con los más altos estándares.</p>
-<p>Con años de experiencia en el mercado, nos destacamos por nuestra seriedad, atención al cliente y por ofrecer siempre lo último en tecnología y diseño.</p>
-</div>
-</div>
+        <!-- CATEGORÍAS -->
+        <div class="categories-nav">
+            <button class="active" onclick="filterProducts('all')">Todos</button>
+            <button onclick="filterProducts('escala')">Modelos a Escala</button>
+            <button onclick="filterProducts('rc')">Control Remoto</button>
+            <button onclick="filterProducts('juguetes')">Juguetes</button>
+            <button onclick="filterProducts('accesorios')">Accesorios</button>
+        </div>
 
-<!-- PAGINA CONTACTO -->
-<div id="contact-page" style="display:none;">
-<h2>CONTACTO</h2>
-<div class="info-block">
-<p><strong>Teléfono / WhatsApp:</strong> +593 999 999 999</p>
-<p><strong>Email:</strong> info@tutienda.com</p>
-<p><strong>Dirección:</strong> Latacunga, Ecuador</p>
-<br>
-<p>¡Escríbenos y con gusto te atenderemos!</p>
-</div>
-</div>
+        <!-- LISTADO DE PRODUCTOS -->
+        <div class="product-grid" id="product-list">
+            <!-- Producto 1 -->
+            <div class="product-card" data-category="escala">
+                <img src="https://via.placeholder.com/300" alt="Cargador Frontal">
+                <h3>Cargador Frontal Profesional</h3>
+                <div class="price">$45.50</div>
+                <div class="product-card-actions">
+                    <button class="details-button" onclick="showDetails('Cargador Frontal Profesional', '45.50', 'https://via.placeholder.com/300', 'Un excelente modelo a escala con gran detalle y resistencia.', ['img1.jpg', 'img2.jpg'], 'https://www.youtube.com/embed/VIDEO_ID')">VER DETALLES</button>
+                    <button class="buy-now-from-list-button" onclick="addToCart('Cargador Frontal', '45.50', 'https://via.placeholder.com/300')">AÑADIR</button>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-card" data-category="rc">
+                <img src="https://via.placeholder.com/300" alt="Excavadora RC">
+                <h3>Excavadora Control Remoto</h3>
+                <div class="price">$120.00</div>
+                <div class="product-card-actions">
+                    <button class="details-button" onclick="showDetails('Excavadora Control Remoto', '120.00', 'https://via.placeholder.com/300', 'Funcionalidad completa con control remoto de alta frecuencia.', ['img1.jpg', 'img2.jpg'], 'https://www.youtube.com/embed/VIDEO_ID')">VER DETALLES</button>
+                    <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA DE DETALLES -->
+    <div id="detail-page">
+        <h2 id="detail-title">Nombre Producto</h2>
+        <div class="product-detail-content">
+            <div class="product-detail-images">
+                <div class="detail-image-slider">
+                    <div class="detail-slider-track" id="detail-slider-track">
+                        <div class="detail-slide"><img class="detail-main-image" id="detail-main-img" src="" alt=""></div>
+                    </div>
+                    <button class="detail-slider-arrow detail-arrow-left" onclick="moveDetailSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <button class="detail-slider-arrow detail-arrow-right" onclick="moveDetailSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="detail-thumbnails" id="detail-thumbnails"></div>
+                <div class="detail-video" id="detail-video-container"></div>
+            </div>
+            <div class="product-detail-info">
+                <div class="price" id="detail-price">$0.00</div>
+                <p id="detail-description">Descripción...</p>
+                <div class="product-detail-actions">
+                    <button id="detail-add-to-cart-button">AÑADIR AL CARRITO</button>
+                    <button id="detail-buy-now-button">COMPRAR AHORA</button>
+                </div>
+                <a href="#" id="back-to-products-button" onclick="showSection('home')">VOLVER A TIENDA</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA QUIÉNES SOMOS -->
+    <div id="about-page">
+        <h2>Quiénes Somos</h2>
+        <p>Somos una empresa dedicada a ofrecer los mejores productos al mejor precio. Con más de 5 años de experiencia en el mercado, nos especializamos en la calidad y el servicio al cliente.</p>
+        <p>Nuestra misión es brindarte una experiencia de compra fácil, segura y rápida. Trabajamos día a día para traerte lo último en tendencias y tecnología con la garantía que solo nosotros te ofrecemos.</p>
+        <div class="info-block">
+            <h3>Nuestros Valores</h3>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Compromiso con la calidad</li>
+                <li><i class="fas fa-check-circle"></i> Responsabilidad y honestidad</li>
+                <li><i class="fas fa-check-circle"></i> Innovación constante</li>
+                <li><i class="fas fa-check-circle"></i> Atención personalizada</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PÁGINA CONTACTO -->
+    <div id="contact-page">
+        <h2>Contacto</h2>
+        <p>Estamos aquí para ayudarte. Si tienes alguna pregunta, duda o sugerencia, no dudes en comunicarte con nosotros.</p>
+        <div class="info-block">
+            <h3>Información de Contacto</h3>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Latacunga, Ecuador</li>
+                <li><i class="fas fa-phone"></i> <strong>Teléfono:</strong> +593 99 999 9999</li>
+                <li><i class="fas fa-envelope"></i> <strong>Email:</strong> hola@tutienda.com</li>
+                <li><i class="fas fa-clock"></i> <strong>Horario:</strong> Lunes a Viernes 9:00 AM - 7:00 PM</li>
+            </ul>
+        </div>
+    </div>
 
 </div>
 
 <!-- MODAL CARRITO -->
 <div id="cart-modal" class="modal">
-<div class="modal-content">
-<span class="close-button" onclick="closeCart()">&times;</span>
-<h2>TU CARRITO</h2>
-<div id="cart-items-container"></div>
-<div class="cart-total">TOTAL: $<span id="cart-total-price">0.00</span></div>
-<button id="proceed-to-checkout" onclick="openCheckout()">FINALIZAR COMPRA</button>
-</div>
+    <div class="modal-content">
+        <span class="close-button" onclick="toggleModal('cart-modal')">&times;</span>
+        <h2>Tu Carrito</h2>
+        <div id="cart-items-container"></div>
+        <div class="cart-total">Total: <span id="cart-total">$0.00</span></div>
+        <button id="proceed-to-checkout">PROCEDER A PAGAR</button>
+    </div>
 </div>
 
 <!-- MODAL CHECKOUT -->
 <div id="checkout-modal" class="modal">
-<div class="modal-content">
-<span class="close-button" onclick="closeCheckout()">&times;</span>
-<h2>DATOS DE ENVÍO</h2>
-<form class="checkout-form" onsubmit="sendOrder(event)">
-<label>NOMBRE COMPLETO</label>
-<input type="text" id="name" required>
-<label>TELÉFONO / WHATSAPP</label>
-<input type="tel" id="phone" required>
-<label>DIRECCIÓN COMPLETA</label>
-<input type="text" id="address" required>
-<div class="checkout-summary">
-<div><span>Subtotal:</span> <span id="subtotal">$0.00</span></div>
-<div><span>Envío:</span> <span>$5.00</span></div>
-<div class="total"><span>TOTAL:</span> <span id="total">$0.00</span></div>
+    <div class="modal-content">
+        <span class="close-button" onclick="toggleModal('checkout-modal')">&times;</span>
+        <h2>Finalizar Compra</h2>
+        <form class="checkout-form" onsubmit="submitOrder(event)">
+            <label>Nombre Completo</label>
+            <input type="text" id="name-input" required>
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="phone-input" required>
+            <label>Dirección de Envío</label>
+            <input type="text" id="address-input" required>
+            <label>Referencia / Nota</label>
+            <input type="text" id="note-input">
+            <div class="checkout-summary">
+                <div><span>Subtotal:</span><span id="summary-subtotal">$0.00</span></div>
+                <div><span>Envío:</span><span id="summary-shipping">$0.00</span></div>
+                <div class="total"><span>TOTAL A PAGAR:</span><span id="summary-total">$0.00</span></div>
+            </div>
+            <button type="submit" id="confirm-checkout">CONFIRMAR COMPRA</button>
+        </form>
+    </div>
 </div>
-<button type="submit" id="confirm-checkout">ENVIAR PEDIDO</button>
-</form>
-</div>
-</div>
+
+<a href="https://wa.me/593999999999" target="_blank" class="whatsapp-fixed-button"><i class="fab fa-whatsapp"></i></a>
 
 <footer>
-<h3>TU MARCA</h3>
-<p>Calidad, Confianza y Seguridad</p>
-<div class="social-links">
-<a href="#"><i class="fab fa-facebook"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="#"><i class="fab fa-tiktok"></i></a>
-</div>
+    <h3>Tu Tienda</h3>
+    <p>© 2025 Todos los derechos reservados.</p>
+    <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
 </footer>
 
-<a href="https://wa.me/593999999999" target="_blank" class="whatsapp-fixed-button">
-<i class="fab fa-whatsapp"></i>
-</a>
-
 <script>
-// SEGURIDAD
-document.addEventListener('keydown',function(e){if(e.key==="F12"||(e.ctrlKey&&e.shiftKey&&e.key==="I")||(e.ctrlKey&&e.shiftKey&&e.key==="J")||(e.ctrlKey&&e.key==="U")){e.preventDefault();return false;}});
+let currentSlide = 0;
+let currentDetailSlide = 0;
+let detailImagesArray = [];
 
-// PRODUCTOS
-const products=[
-{id:1,name:"Cargador Frontal",price:45.50,category:"action",description:"Modelo a escala detallado, ideal para coleccionistas y oficina.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=CARGADOR"]},
-{id:2,name:"Tractor con Remolque",price:62.00,category:"aventura",description:"Totalmente funcional, ruedas resistentes y acabados de primera.",images:["https://via.placeholder.com/400x400/212121/FFC107?text=TRACTOR"]},
-{id:3,name:"Camión Volqueta",price:58.90,category:"action",description:"Diseño realista, cabina abatible y caja basculante.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=VOLQUETA"]},
-{id:4,name:"Excavadora RC",price:120.00,category:"aventura",description:"Control remoto profesional, movimientos hidráulicos reales.",images:["https://via.placeholder.com/400x400/111111/FFC107?text=EXCAVADORA"]},
-{id:5,name:"Set Juguete Niños",price:25.00,category:"musica",description:"Diversión asegurada, material seguro y resistente.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=JUGUETE"]},
-{id:6,name:"Kit Accesorios",price:15.00,category:"educativo",description:"Complementos perfectos para tus modelos y colecciones.",images:["https://via.placeholder.com/400x400/212121/FFFFFF?text=ACCESORIOS"]}
-];
+function moveCarousel(direction) {
+    const track = document.getElementById('offer-track');
+    const slides = track.children.length;
+    currentSlide = (currentSlide + direction + slides) % slides;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
 
-let cart=[],currentSlide=0,currentId=null,currentDetail=0,sliderAuto;
+// Auto avance carrusel
+setInterval(() => moveCarousel(1), 5000);
 
-// FUNCIONES
- 
-function showPage(p){document.querySelectorAll('#home-page,#detail-page,#about-page,#contact-page').forEach(el=>el.style.display='none');if(p=='home'||p=='products'){document.getElementById('home-page').style.display='block'}else{document.getElementById(p).style.display='block'}window.scrollTo(0,0)}
-function openCart(){document.getElementById('cart-modal').classList.add('active');updateCart();}
-function closeCart(){document.getElementById('cart-modal').classList.remove('active');}
-function openCheckout(){closeCart();document.getElementById('checkout-modal').classList.add('active');calculateTotals();}
-function closeCheckout(){document.getElementById('checkout-modal').classList.remove('active');}
+function showSection(section) {
+    document.getElementById('home-section').style.display = section === 'home' ? 'block' : 'none';
+    document.getElementById('detail-page').style.display = 'none';
+    document.getElementById('about-page').style.display = section === 'about' ? 'block' : 'none';
+    document.getElementById('contact-page').style.display = section === 'contact' ? 'block' : 'none';
+    window.scrollTo(0,0);
+}
 
-// SLIDER
-function moveSlide(d){const s=document.querySelectorAll('.offer-slide');currentSlide+=d;if(currentSlide>=s.length)currentSlide=0;if(currentSlide<0)currentSlide=s.length-1;document.getElementById('carousel-inner').style.transform=`translateX(-${currentSlide*100}%)`;}
-function startSlider(){sliderAuto=setInterval(()=>{moveSlide(1);},4000);}
-startSlider();
+function filterProducts(category) {
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
+    });
+}
 
-// SLIDER DETALLE
-function moveDetail(d){const t=document.getElementById('detail-slider-track');const s=t.children;currentDetail+=d;if(currentDetail>=s.length)currentDetail=0;if(currentDetail<0)currentDetail=s.length-1;t.style.transform=`translateX(-${currentDetail*100}%)`;document.querySelectorAll('.detail-thumbnails img').forEach((img,i)=>img.classList.toggle('active-thumbnail',i===currentDetail));}
+function showDetails(title, price, mainImg, description, images, videoUrl) {
+    document.getElementById('detail-title').textContent = title;
+    document.getElementById('detail-price').textContent = '$' + price;
+    document.getElementById('detail-description').textContent = description;
+    document.getElementById('detail-main-img').src = mainImg;
 
-// CARRITO
-function addToCart(id){const item=cart.find(x=>x.id===id);if(item)item.quantity++;else{const p=products.find(x=>x.id===id);cart.push({...p,quantity:1});}updateCounts();updateCart();}
-function buyNow(){addToCart(currentId);openCart();}
-function updateCounts(){document.getElementById('cart-count').textContent=cart.reduce((s,it)=>s+it.quantity,0);}
-function updateCart(){const c=document.getElementById('cart-items-container');c.innerHTML='';let t=0;cart.forEach(it=>{t+=it.price*it.quantity;const d=document.createElement('div');d.className='cart-item';d.innerHTML=`<img src="${it.images[0]}"><span>${it.name}</span><input type="number" value="${it.quantity}" min="1" class="cart-item-quantity" onchange="updateQty(${it.id},this.value)"><span>$${(it.price*it.quantity).toFixed(2)}</span><button class="remove-from-cart" onclick="removeItem(${it.id})">&times;</button>`;c.appendChild(d);});document.getElementById('cart-total-price').textContent=t.toFixed(2);}
-function updateQty(id,qty){const it=cart.find(x=>x.id===id);it.quantity=parseInt(qty);updateCounts();updateCart();}
-function removeItem(id){cart=cart.filter(x=>x.id!==id);updateCounts();updateCart();}
-function calculateTotals(){const sub=cart.reduce((s,it)=>s+(it.price*it.quantity),0);document.getElementById('subtotal').textContent=`$${sub.toFixed(2)}`;document.getElementById('total').textContent=`$${(sub+5).toFixed(2)}`;}
+    detailImagesArray = [mainImg, ...images];
+    const track = document.getElementById('detail-slider-track');
+    const thumbs = document.getElementById('detail-thumbnails');
+    track.innerHTML = '';
+    thumbs.innerHTML = '';
+    detailImagesArray.forEach((img, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'detail-slide';
+        slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="">`;
+        track.appendChild(slide);
+        const thumb = document.createElement('img');
+        thumb.src = img;
+        thumb.onclick = () => goToDetailSlide(index);
+        thumbs.appendChild(thumb);
+    });
+    currentDetailSlide = 0;
+    updateDetailSlide();
 
-// ENVIAR PEDIDO
-function sendOrder(e){e.preventDefault();const name=document.getElementById('name').value;const phone=document.getElementById('phone').value;const addr=document.getElementById('address').value;let msg=`🛒 *PEDIDO - TU MARCA*%0A%0A👤 ${name}%0A📞 ${phone}%0A📍 ${addr}%0A%0A📦 PRODUCTOS:%0A`;cart.forEach(it=>msg+=`• ${it.name} x${it.quantity} $${(it.price*it.quantity).toFixed(2)}%0A`);const total=cart.reduce((s,it)=>s+(it.price*it.quantity),0)+5;msg+=`%0A💵 TOTAL: $${total.toFixed(2)}`;window.open(`https://wa.me/593999999999?text=${msg}`,'_blank');cart=[];updateCounts();closeCheckout();alert('¡Pedido enviado con éxito!');}
+    const videoContainer = document.getElementById('detail-video-container');
+    if(videoUrl && videoUrl.includes('embed')){
+        videoContainer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+    } else {
+        videoContainer.innerHTML = '';
+    }
 
-// MOSTRAR PRODUCTOS
-function createProduct(p){const d=document.createElement('div');d.className='product-card';d.dataset.category=p.category;d.innerHTML=`<img src="${p.images[0]}"><h3>${p.name}</h3><div class="price">$${p.price.toFixed(2)}</div><div class="product-card-actions"><button class="details-button" onclick="viewDetail(${p.id})">VER MÁS</button><button class="buy-now-from-list-button" onclick="addToCart(${p.id})">AÑADIR</button></div>`;return d;}
-function viewDetail(id){currentId=id;const prod=products.find(x=>x.id===id);document.getElementById('detail-name').textContent=prod.name;document.getElementById('detail-price').textContent=`$${prod.price.toFixed(2)}`;document.getElementById('detail-description').textContent=prod.description;const track=document.getElementById('detail-slider-track');const thumbs=document.getElementById('detail-thumbnails-container');track.innerHTML='';thumbs.innerHTML='';currentDetail=0;prod.images.forEach((img,i)=>{const s=document.createElement('div');s.className='detail-slide';s.innerHTML=`<img src="${img}" class="detail-main-image">`;track.appendChild(s);const t=document.createElement('img');t.src=img;t.onclick=()=>moveDetail(i-currentDetail);if(i===0)t.classList.add('active-thumbnail');thumbs.appendChild(t);});showPage('detail-page');}
+    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart (title, price, mainImg);
+    document.getElementById('detail-buy-now-button').onclick = () => {
+        addToCart(title, price, mainImg);
+        toggleModal('cart-modal');
+    };
 
-// FILTRO
-function filterProducts(cat){document.querySelectorAll('.categories-nav button').forEach(btn=>btn.classList.remove('active'));event.target.classList.add('active');document.querySelectorAll('.product-card').forEach(card=>{card.style.display=(cat==='all'||card.dataset.category===cat)?'flex':'none';});}
+    document.getElementById('detail-page').style.display = 'flex';
+    document.getElementById('home-section').style.display = 'none';
+    document.getElementById('about-page').style.display = 'none';
+    document.getElementById('contact-page').style.display = 'none';
+}
+
+function moveDetailSlide(direction) {
+    currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
+    updateDetailSlide();
+}
+
+function updateDetailSlide() {
+    const track = document.getElementById('detail-slider-track');
+    track.style.transform = `translateX(-${currentDetailSlide * 100}%)`;
+    document.querySelectorAll('.detail-thumbnails img').forEach((img, idx) => {
+        img.classList.toggle('active-thumbnail', idx === currentDetailSlide);
+    });
+}
+
+function goToDetailSlide(index) {
+    currentDetailSlide = index;
+    updateDetailSlide();
+}
+
+// LÓGICA DEL CARRITO
+let cart = [];
+
+function addToCart(name, price, img) {
+    const item = cart.find(i => i.name === name);
+    if(item) {
+        item.qty++;
+    } else {
+        cart.push({name, price: parseFloat(price), img, qty: 1});
+    }
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById('cart-count').textContent = count;
+}
+
+function toggleModal(id) {
+    const modal = document.getElementById(id);
+    modal.classList.toggle('active');
+    if(id === 'cart-modal' && modal.classList.contains('active')) {
+        renderCartItems();
+    }
+}
+
+function renderCartItems() {
+    const container = document.getElementById('cart-items-container');
+    container.innerHTML = '';
+    cart.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+            <img src="${item.img}" alt="${item.name}">
+            <div>
+                <h4>${item.name}</h4>
+                <p>$${item.price.toFixed(2)}</p>
+            </div>
+            <input type="number" class="cart-item-quantity" value="${item.qty}" min="1" onchange="updateQty(${idx}, this.value)">
+            <button class="remove-from-cart" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button>
+        `;
+        container.appendChild(div);
+    });
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+}
+
+function updateQty(index, qty) {
+    cart[index].qty = parseInt(qty);
+    updateCartCount();
+    renderCartItems();
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartCount();
+    renderCartItems();
+}
+
+document.getElementById('proceed-to-checkout').onclick = () => {
+    toggleModal('cart-modal');
+    toggleModal('checkout-modal');
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    document.getElementById('summary-subtotal').textContent = '$' + total.toFixed(2);
+    document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
+};
+
+function submitOrder(e) {
+    e.preventDefault();
+    const name = document.getElementById('name-input').value;
+    const phone = document.getElementById('phone-input').value;
+    const address = document.getElementById('address-input').value;
+    const note = document.getElementById('note-input').value;
+    
+    let message = `Hola, quiero hacer un pedido:%0A%0A`;
+    cart.forEach(item => {
+        message += `• ${item.qty}x ${item.name} - $${(item.price * item.qty).toFixed(2)}%0A`;
+    });
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    message += `%0ATotal: $${total.toFixed(2)}%0A%0A`;
+    message += `Datos:%0ANombre: ${name}%0ATeléfono: ${phone}%0ADirección: ${address}%0ANota: ${note}`;
+    
+    window.open(`https://wa.me/593999999999?text=${message}`);
+    cart = [];
+    updateCartCount();
+    toggleModal('checkout-modal');
+    alert('¡Gracias por tu compra! Te llevamos al WhatsApp para confirmar.');
+}
 
 // INICIALIZAR
-document.addEventListener('DOMContentLoaded',()=>{const grid=document.getElementById('product-grid');products.forEach(p=>grid.appendChild(createProduct(p)));});
-
-// SWIPE TACTIL
-let startX=0;
-document.getElementById('main-slider').addEventListener('touchstart',e=>{startX=e.touches[0].clientX;clearInterval(sliderAuto);});
-document.getElementById('main-slider').addEventListener('touchend',e=>{const endX=e.changedTouches[0].clientX;if(startX-endX>50)moveSlide(1);if(endX-startX>50)moveSlide(-1);startSlider();});
+window.onload = () => {
+    showSection('home');
+    updateCartCount();
+};
 </script>
-
 </body>
 </html>
-    
