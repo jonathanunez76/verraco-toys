@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -79,10 +80,9 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .categories-nav button{background:transparent;border:2px solid var(--primary-color);padding:5px 10px;font-size:12px;cursor:pointer;color:var(--dark-color);transition:all .3s ease;border-radius:20px;font-weight:600;white-space:nowrap}
 .categories-nav button:hover,.categories-nav button.active{background: var(--gradient);color:#000;border-color: transparent;box-shadow: 0 3px 10px rgba(0,240,255,0.4)}
 
-/* 📱 CARRUSEL NORMAL */
+/* CARRUSEL */
 .offer-carousel{background:var(--dark-color);padding:0;margin-bottom:15px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,0.2);border-radius:15px;position:relative;overflow:hidden;color:#fff;height:200px;border: 2px solid var(--primary-color)}
 
-/* 💻 EN COMPUTADORA MÁS GRANDE */
 @media screen and (min-width: 768px) {
     .offer-carousel{
         height: 350px !important;
@@ -104,19 +104,13 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 
 .product-grid{display:grid;grid-template-columns: repeat(3, 1fr) !important; gap:8px !important;}
 
-.product-card{background:#fff;border:2px solid transparent;border-radius:12px;box-shadow:0 3px 8px rgba(0,0,0,0.08);overflow:hidden;text-align:center;padding-bottom:8px;transition:all .3s ease;display:flex;flex-direction:column;position:relative}
+.product-card{background:#fff;border:2px solid transparent;border-radius:12px;box-shadow:0 3px 8px rgba(0,0,0,0.08);overflow:hidden;text-align:center;padding-bottom:10px;transition:all .3s ease;display:flex;flex-direction:column;position:relative}
 .product-card:hover{transform:translateY(-3px);box-shadow:0 6px 15px rgba(0,240,255,0.2);border-color: var(--primary-color)}
 .product-card img{width:100%;height:80px;object-fit:contain;display:block;margin:0 auto;padding:8px;background:#f8f8ff}
 .product-card h3{font-size:0.75em;margin:6px 4px;color:var(--dark-color);min-height:30px}
-.product-card .price{font-size:1em;color:var(--accent-color);font-weight:800;margin-bottom:6px}
-.product-card-actions{display:flex;justify-content:center;gap:4px;padding:0 4px;margin-top:auto;flex-wrap:wrap}
-.details-button,.buy-now-from-list-button{padding:4px 6px;border:none;border-radius:12px;cursor:pointer;font-weight:600;transition:all .3s ease;font-size:0.7em}
-.details-button{background:transparent;border:1px solid var(--primary-color);color:var(--primary-color)}
-.details-button:hover{background:var(--primary-color);color:#000}
-.buy-now-from-list-button{background: var(--gradient);color:#000}
-.buy-now-from-list-button:hover{box-shadow: 0 4px 10px rgba(255,0,128,0.4)}
+.product-card .price{font-size:1em;color:var(--accent-color);font-weight:800;margin-bottom:4px}
 
-/* 🏷️ ETIQUETA DE DESCUENTO */
+/* 🏷️ ETIQUETA DE DESCUENTO (ESQUINA IZQUIERDA) */
 .discount-badge {
     position: absolute;
     top: 10px;
@@ -131,24 +125,30 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     z-index: 5;
 }
 
-/* 📦 ETIQUETA DE STOCK */
-.stock-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #28a745;
-    color: #fff;
+/* 📦 ETIQUETA DE STOCK (DEBAJO DEL PRECIO) */
+.stock-status {
     font-size: 0.7em;
     font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    z-index: 5;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+.in-stock {
+    background: #28a745;
+    color: #fff;
 }
 .out-of-stock {
-    background: #dc3545 !important;
-    content: "SIN STOCK";
+    background: #dc3545;
+    color: #fff;
 }
+
+.product-card-actions{display:flex;justify-content:center;gap:4px;padding:0 4px;margin-top:auto;flex-wrap:wrap}
+.details-button,.buy-now-from-list-button{padding:4px 6px;border:none;border-radius:12px;cursor:pointer;font-weight:600;transition:all .3s ease;font-size:0.7em}
+.details-button{background:transparent;border:1px solid var(--primary-color);color:var(--primary-color)}
+.details-button:hover{background:var(--primary-color);color:#000}
+.buy-now-from-list-button{background: var(--gradient);color:#000}
+.buy-now-from-list-button:hover{box-shadow: 0 4px 10px rgba(255,0,128,0.4)}
 
 #detail-page{display:none;background:#fff;padding:15px;box-shadow:0 5px 20px rgba(0,240,255,0.1);margin-bottom:15px;border-radius:15px;flex-direction:column;gap:15px;border:2px solid var(--primary-color)}
 #detail-page h2{text-align:center;font-size:1.6em;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
@@ -192,15 +192,17 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .modal-content{background:#fff;padding:25px;border-radius:15px;width:90%;max-width:500px;position:relative;border:2px solid var(--primary-color)}
 .close-button{color:#aaa;position:absolute;top:10px;right:15px;font-size:24px;font-weight:700;cursor:pointer}
 .close-button:hover{color:var(--dark-color)}
+.modal-content h2{text-align:center;color:var(--dark-color);font-size:1.5em}
+#cart-items-container{max-height:280px;overflow-y:auto;margin-bottom:12px}
 
     
     
     
     
     
-.modal-content h2{text-align:center;color:var(--dark-color);font-size:1.5em}
-#cart-items-container{max-height:280px;overflow-y:auto;margin-bottom:12px}
-.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;font-size:0.95em}
+    
+    
+    .cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;font-size:0.95em }
 .cart-item img{width:50px;height:50px;object-fit:cover;border-radius:8px}
 .cart-item-quantity{width:40px;padding:4px;border:1px solid #ddd;border-radius:4px;text-align:center;font-weight:700;font-size:1em}
 .remove-from-cart{background:none;border:none;color:#d32f2f;font-size:1.1em;cursor:pointer}
@@ -295,10 +297,10 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
     <div class="product-grid" id="product-list">
         <div class="product-card" data-category="escala">
-            <div class="stock-badge">EN STOCK</div>
             <img src="https://via.placeholder.com/300" alt="Cargador Frontal">
             <h3>Cargador Frontal Profesional</h3>
             <div class="price">$45.50</div>
+            <div class="stock-status in-stock">EN STOCK</div>
             <div class="product-card-actions">
                 <button class="details-button" onclick="showDetails('Cargador Frontal Profesional', '45.50', 'https://via.placeholder.com/300', 'Un excelente modelo a escala con gran detalle y resistencia.', ['https://via.placeholder.com/300', 'https://via.placeholder.com/300'], 'https://www.youtube.com/embed/dQw4w9WgXcQ')">VER DETALLES</button>
                 <button class="buy-now-from-list-button" onclick="addToCart('Cargador Frontal', '45.50', 'https://via.placeholder.com/300')">AÑADIR</button>
@@ -306,10 +308,10 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
         </div>
 
         <div class="product-card" data-category="rc">
-            <div class="stock-badge">EN STOCK</div>
             <img src="https://via.placeholder.com/300" alt="Excavadora RC">
             <h3>Excavadora Control Remoto</h3>
             <div class="price">$120.00</div>
+            <div class="stock-status in-stock">EN STOCK</div>
             <div class="product-card-actions">
                 <button class="details-button" onclick="showDetails('Excavadora Control Remoto', '120.00', 'https://via.placeholder.com/300', 'Funcionalidad completa con control remoto de alta frecuencia.', ['https://via.placeholder.com/300', 'https://via.placeholder.com/300'], 'https://www.youtube.com/embed/dQw4w9WgXcQ')">VER DETALLES</button>
                 <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
@@ -318,10 +320,10 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
         <div class="product-card" data-category="juguetes oferta">
             <div class="discount-badge">-20% OFF</div>
-            <div class="stock-badge">EN STOCK</div>
             <img src="https://via.placeholder.com/300" alt="Camión Juguete">
             <h3>Camión de Juguete Básico</h3>
             <div class="price">$25.00</div>
+            <div class="stock-status in-stock">EN STOCK</div>
             <div class="product-card-actions">
                 <button class="details-button" onclick="showDetails('Camión de Juguete', '25.00', 'https://via.placeholder.com/300', 'Divertido y resistente para los más pequeños.', ['https://via.placeholder.com/300'], '')">VER DETALLES</button>
                 <button class="buy-now-from-list-button" onclick="addToCart('Camión Juguete', '25.00', 'https://via.placeholder.com/300')">AÑADIR</button>
@@ -330,10 +332,10 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
         <div class="product-card" data-category="accesorios oferta">
             <div class="discount-badge">-30% OFF</div>
-            <div class="stock-badge out-of-stock">SIN STOCK</div>
             <img src="https://via.placeholder.com/300" alt="Batería">
             <h3>Batería Recargable Extra</h3>
             <div class="price">$15.90</div>
+            <div class="stock-status out-of-stock">SIN STOCK</div>
             <div class="product-card-actions">
                 <button class="details-button" onclick="showDetails('Batería Recargable', '15.90', 'https://via.placeholder.com/300', 'Mayor duración y rendimiento para tus equipos.', ['https://via.placeholder.com/300'], '')">VER DETALLES</button>
                 <button class="buy-now-from-list-button" onclick="addToCart('Batería', '15.90', 'https://via.placeholder.com/300')">AÑADIR</button>
@@ -422,257 +424,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
             <input type="text" id="note-input">
             <div class="checkout-summary">
                 <div><span>Subtotal:</span><span id="summary-subtotal">$0.00</span></div>
-                <div><span>Envío:</span><span id="summary-shipping">$0.00    
-
-
-
-
-
-
+                <div><span>Envío:</span><span id="summary-shipping">$0.00</span></div>
                 <div class="total"><span>TOTAL:</span><span id="summary-total">$0.00</span></div>
             </div>
             <button type="submit" id="confirm-checkout">CONFIRMAR COMPRA</button>
-        </form>
-    </div>
-</div>
-
-<a href="https://wa.me/593999999999" target="_blank" class="whatsapp-fixed-button"><i class="fab fa-whatsapp"></i></a>
-
-<footer>
-    <h3>Tu Tienda</h3>
-    <p>© 2025 Todos los derechos reservados.</p>
-    <div class="social-links">
-        <a href="https://facebook.com/TU_PAGINA" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://instagram.com/TU_PERFIL" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
-    </div>
-</footer>
-
-<script>
-let currentSlide = 0;
-let currentDetailSlide = 0;
-let detailImagesArray = [];
-
-function moveCarousel(direction) {
-    const track = document.getElementById('offer-track');
-    const slides = track.children.length;
-    currentSlide = (currentSlide + direction + slides) % slides;
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-}
-setInterval(() => moveCarousel(1), 5000);
-
-function showSection(section) {
-    document.getElementById('home-section').style.display = 'none';
-    document.getElementById('detail-page').style.display = 'none';
-    document.getElementById('about-page').style.display = 'none';
-    document.getElementById('contact-page').style.display = 'none';
-
-    if(section === 'home') {
-        document.getElementById('home-section').style.display = 'block';
-    } else if(section === 'about') {
-        document.getElementById('about-page').style.display = 'block';
-    } else if(section === 'contact') {
-        document.getElementById('contact-page').style.display = 'block';
-    }
-    
-    // MOVER BARRA AL INICIO Y SUBIR AL TOPE
-    const nav = document.querySelector('.categories-nav');
-    if(nav) nav.scrollLeft = 0;
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-function filterProducts(category, buttonElement) {
-    const cards = document.querySelectorAll('.product-card');
-    cards.forEach(card => {
-        if (category === 'all') {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = card.dataset.category.includes(category) ? 'flex' : 'none';
-        }
-    });
-    document.querySelectorAll('.categories-nav button').forEach(btn => btn.classList.remove('active'));
-    if(buttonElement) buttonElement.classList.add('active');
-}
-
-function showDetails(title, price, mainImg, description, images, videoUrl) {
-    document.getElementById('home-section').style.display = 'none';
-    document.getElementById('detail-page').style.display = 'block';
-    document.getElementById('about-page').style.display = 'none';
-    document.getElementById('contact-page').style.display = 'none';
-    
-    document.getElementById('detail-title').textContent = title;
-    document.getElementById('detail-price').textContent = '$' + price;
-    document.getElementById('detail-description').textContent = description;
-
-    detailImagesArray = [mainImg, ...images];
-    const track = document.getElementById('detail-slider-track');
-    const thumbs = document.getElementById('detail-thumbnails');
-    track.innerHTML = '';
-    thumbs.innerHTML = '';
-    detailImagesArray.forEach((img, index) => {
-        const slide = document.createElement('div');
-        slide.className = 'detail-slide';
-        slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="">`;
-        track.appendChild(slide);
-        
-        const thumb = document.createElement('img');
-        thumb.src = img;
-        thumb.onclick = () => goToDetailSlide(index);
-        thumbs.appendChild(thumb);
-    });
-    currentDetailSlide = 0;
-    updateDetailSlide();
-
-    const videoContainer = document.getElementById('detail-video-container');
-    if(videoUrl && videoUrl.includes('embed')){
-        videoContainer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
-    } else {
-        videoContainer.innerHTML = '';
-    }
-
-    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
-    document.getElementById('detail-buy-now-button').onclick = () => {
-        addToCart(title, price, mainImg);
-        toggleModal('cart-modal');
-    };
-    
-    // IR HACIA ARRIBA AL ENTRAR A DETALLES
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-function moveDetailSlide(direction) {
-    currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
-    updateDetailSlide();
-}
-function updateDetailSlide() {
-    const track = document.getElementById('detail-slider-track');
-    track.style.transform = `translateX(-${currentDetailSlide * 100}%)`;
-    document.querySelectorAll('.detail-thumbnails img').forEach((img, idx) => {
-        img.classList.toggle('active-thumbnail', idx === currentDetailSlide);
-    });
-}
-function goToDetailSlide(index) {
-    currentDetailSlide = index;
-    updateDetailSlide();
-}
-
-// SOPORTE TÁCTIL
-const sliderElement = document.getElementById('detail-slider');
-let startX = 0;
-let endX = 0;
-
-sliderElement.addEventListener('touchstart', e => {
-    startX = e.changedTouches[0].screenX;
-});
-
-sliderElement.addEventListener('touchend', e => {
-    endX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    if (startX - endX > 50) {
-        moveDetailSlide(1);
-    } else if (endX - startX > 50) {
-        moveDetailSlide(-1);
-    }
-}
-
-// CARRITO
-let cart = [];
-
-function addToCart(name, price, img) {
-    const item = cart.find(i => i.name === name);
-    if(item) {
-        item.qty++;
-    } else {
-        cart.push({name, price: parseFloat(price), img, qty: 1});
-    }
-    updateCartCount();
-}
-
-function updateCartCount() {
-    const count = cart.reduce((sum, item) => sum + item.qty, 0);
-    document.getElementById('cart-count').textContent = count;
-}
-
-function toggleModal(id) {
-    const modal = document.getElementById(id);
-    modal.classList.toggle('active');
-    if(id === 'cart-modal' && modal.classList.contains('active')) {
-        renderCart();
-    }
-}
-
-function renderCart() {
-    const container = document.getElementById('cart-items-container');
-    container.innerHTML = '';
-    cart.forEach((item, idx) => {
-        const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `
-            <img src="${item.img}" alt="${item.name}">
-            <div>
-                <h4>${item.name}</h4>
-                <p>$${item.price.toFixed(2)}</p>
-            </div>
-            <input type="number" class="cart-item-quantity" value="${item.qty}" min="1" onchange="updateQty(${idx}, this.value)">
-            <button class="remove-from-cart" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button>
-        `;
-        container.appendChild(div);
-    });
-    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
-}
-
-function updateQty(index, qty) {
-    cart[index].qty = parseInt(qty);
-    updateCartCount();
-    renderCart();
-}
-
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCartCount();
-    renderCart();
-}
-
-document.getElementById('proceed-to-checkout').onclick = () => {
-    toggleModal('cart-modal');
-    toggleModal('checkout-modal');
-    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    document.getElementById('summary-subtotal').textContent = '$' + total.toFixed(2);
-    document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
-};
-
-function submitOrder(e) {
-    e.preventDefault();
-    const name = document.getElementById('name-input').value;
-    const phone = document.getElementById('phone-input').value;
-    const address = document.getElementById('address-input').value;
-    const note = document.getElementById('note-input').value;
-    
-    let msg = `Hola, quiero hacer un pedido:%0A%0A`;
-    cart.forEach(item => {
-        msg += `${item.qty}x ${item.name} - $${(item.price * item.qty).toFixed(2)}%0A`;
-    });
-    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    msg += `%0ATotal: $${total.toFixed(2)}%0A%0A`;
-    msg += `Datos:%0ANombre: ${name}%0ATeléfono: ${phone}%0ADirección: ${address}%0ANota: ${note}`;
-    
-    window.open(`https://wa.me/593999999999?text=${msg}`);
-    cart = [];
-    updateCartCount();
-    toggleModal('checkout-modal');
-    alert('¡Pedido enviado por WhatsApp!');
-}
-
-// INICIALIZAR
-window.onload = () => {
-    showSection('home');
-    updateCartCount();
-};
-</script>
-</body>
-</html>
-                    
