@@ -207,23 +207,25 @@ footer p{font-size:1em;opacity:0.8}
 </div>
 </div>
 
-<!-- PÁGINA QUIÉNES SOMOS -->
+<!-- PAGINA QUIENES SOMOS -->
 <div id="about-page" style="display:none;">
 <h2>QUIÉNES SOMOS</h2>
-<p>Somos una empresa dedicada a la venta de maquinaria a escala, juguetes y accesorios de la más alta calidad. Contamos con años de experiencia y miles de clientes satisfechos que confían en nosotros.</p>
-<br>
-<p>Nuestra misión es ofrecer productos que cumplen con los más altos estándares de seguridad y durabilidad, llevando diversión y calidad a tu hogar.</p>
+<div class="info-block">
+<p>Somos una empresa dedicada a ofrecer los mejores productos de maquinaria, modelos a escala y juguetes de alta calidad. Nuestra pasión es llevar la ingeniería y la diversión a tu hogar con productos que cumplen con los más altos estándares.</p>
+<p>Con años de experiencia en el mercado, nos destacamos por nuestra seriedad, atención al cliente y por ofrecer siempre lo último en tecnología y diseño.</p>
 </div>
 </div>
 
-<!-- PÁGINA CONTACTO -->
+<!-- PAGINA CONTACTO -->
 <div id="contact-page" style="display:none;">
 <h2>CONTACTO</h2>
-<p>¿Tienes preguntas? ¡Escríbenos!</p>
+<div class="info-block">
+<p><strong>Teléfono / WhatsApp:</strong> +593 999 999 999</p>
+<p><strong>Email:</strong> info@tutienda.com</p>
+<p><strong>Dirección:</strong> Latacunga, Ecuador</p>
 <br>
-<p><strong>📞 WhatsApp:</strong> +593 99 999 9999</p>
-<p><strong>📧 Email:</strong> info@tutienda.com</p>
-<p><strong>📍 Ubicación:</strong> Latacunga, Ecuador</p>
+<p>¡Escríbenos y con gusto te atenderemos!</p>
+</div>
 </div>
 
 </div>
@@ -292,6 +294,7 @@ const products=[
 let cart=[],currentSlide=0,currentId=null,currentDetail=0,sliderAuto;
 
 // FUNCIONES
+
 function showPage(p){document.querySelectorAll('#home-page,#detail-page,#about-page,#contact-page').forEach(el=>el.style.display='none');document.getElementById(p==='home'?'home-page':p==='products'?'home-page':p).style.display='block';window.scrollTo(0,0);}
 function openCart(){document.getElementById('cart-modal').classList.add('active');updateCart();}
 function closeCart(){document.getElementById('cart-modal').classList.remove('active');}
