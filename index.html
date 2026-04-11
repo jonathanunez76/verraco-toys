@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Tu Tienda - Maquinaria y Jug</title>
+<title>Tu Tienda - Maquinaria y Juguetes</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
@@ -41,7 +41,33 @@ header{
 .container{max-width:1200px;margin:15px auto;padding:0 10px;flex:1;width:100%}
 h1,h2,h3{color:var(--dark-color);margin-bottom:15px;font-weight:700}
 h1{font-size:1.8em;text-align:center;margin-top:10px;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
-.categories-nav{background-color:var(--light-color);padding:8px;margin-bottom:15px;border-radius:8px;display:flex !important;flex-direction:row !important;flex-wrap:nowrap !important;justify-content:center !important;gap:8px;overflow-x:auto !important;-webkit-overflow-scrolling:touch !important;width:100% !important;border:1px solid #ddd}
+
+/* 🔧 BARRA DE CATEGORÍAS ARREGLADA */
+.categories-nav{
+    background-color:var(--light-color);
+    padding:8px;
+    margin-bottom:15px;
+    border-radius:8px;
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    justify-content:flex-start !important;
+    gap:8px;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    -webkit-overflow-scrolling:touch !important;
+    width:100% !important;
+    border:1px solid #ddd;
+    scroll-behavior:smooth;
+}
+.categories-nav::-webkit-scrollbar {
+    display:none;
+}
+.categories-nav {
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+}
+
 .categories-nav button{background:transparent;border:2px solid var(--primary-color);padding:5px 10px;font-size:12px;cursor:pointer;color:var(--dark-color);transition:all .3s ease;border-radius:20px;font-weight:600;white-space:nowrap}
 .categories-nav button:hover,.categories-nav button.active{background: var(--gradient);color:#000;border-color: transparent;box-shadow: 0 3px 10px rgba(0,240,255,0.4)}
 .offer-carousel{background:var(--dark-color);padding:0;margin-bottom:15px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,0.2);border-radius:15px;position:relative;overflow:hidden;color:#fff;height:220px;border: 2px solid var(--primary-color)}
@@ -58,7 +84,6 @@ h1{font-size:1.8em;text-align:center;margin-top:10px;background: var(--gradient)
 .carousel-arrow.left{left:10px}
 .carousel-arrow.right{right:10px}
 
-/* 📱 CELULAR: PEQUEÑO Y ARMÓNICO */
 .product-grid{display:grid;grid-template-columns: repeat(3, 1fr) !important; gap:8px !important;}
 
 .product-card{background:#fff;border:2px solid transparent;border-radius:12px;box-shadow:0 3px 8px rgba(0,0,0,0.08);overflow:hidden;text-align:center;padding-bottom:8px;transition:all .3s ease;display:flex;flex-direction:column}
@@ -127,17 +152,14 @@ h1{font-size:1.8em;text-align:center;margin-top:10px;background: var(--gradient)
 .checkout-form input{width:100%;padding:12px;margin-bottom:15px;border:1px solid #ddd;border-radius:8px;font-size:1em}
 .checkout-form input:focus{border-color:var(--primary-color);outline:none;box-shadow:0 0 8px rgba(0,240,255,0.3)}
 .checkout-summary{background-color:#f8f8ff;border-radius:8px;padding:15px;margin-top:15px;font-size:1em;border:1px solid #eee}
-.checkout-summary div{display:flex;justify-content:space-between;margin-bottom:8px}
 
-        
-        
-        
-        
-        
-        
-        
-        
-        .checkout-summary .total{font-weight:800;color:var(--accent-color);border-top:2px solid #ddd;padding-top:10px;margin-top:10px;font-size:1.2em}
+    
+    
+    
+    
+    
+    .checkout-summary div{display:flex;justify-content:space-between;margin-bottom:8px}
+.checkout-summary .total{font-weight:800;color:var(--accent-color);border-top:2px solid #ddd;padding-top:10px;margin-top:10px;font-size:1.2em}
 #confirm-checkout{background: var(--gradient);color:#000;padding:14px;border:none;border-radius:25px;width:100%;font-size:1.1em;font-weight:700;cursor:pointer;margin-top:15px}
 
 footer{background:var(--dark-color);color:#fff;padding:25px 20px;text-align:center;margin-top:auto;border-top:2px solid var(--primary-color);width:100%}
@@ -149,7 +171,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
 .whatsapp-fixed-button{position:fixed;bottom:15px;right:15px;background:#25D366;color:#fff;width:50px;height:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.8em;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:99}
 
-/* 💻 EN COMPUTADORA SE VE MÁS GRANDE Y ELEGANTE */
+/* 💻 EN COMPUTADORA SE VE MÁS GRANDE */
 @media screen and (min-width: 768px) {
     body{font-size:18px}
     .logo{font-size:20px}
@@ -356,9 +378,9 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     <h3>Tu Tienda</h3>
     <p>© 2025 Todos los derechos reservados.</p>
     <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="https://facebook.com/TU_PAGINA" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/TU_PERFIL" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
 </footer>
 
@@ -384,23 +406,30 @@ function showSection(section) {
     if(section === 'home') {
         document.getElementById('home-section').style.display = 'block';
     } else if(section === 'about') {
-        document.getElementById('about-page').style.display = 'block';
+        document.getElementById('about-page').style.display = 'block
+
+
+
+
+
+
+
+
+
+
     } else if(section === 'contact') {
         document.getElementById('contact-page').style.display = 'block';
     }
+    // MOVER BARRA AL INICIO
+    const nav = document.querySelector('.categories-nav');
+    if(nav) nav.scrollLeft = 0;
     window.scrollTo(0,0);
 }
 
 function filterProducts(category, buttonElement) {
     const cards = document.querySelectorAll('.product-card');
     cards.forEach(card => {
-       
-            
-            
-            
-            
-            
-            card.style.display = (category=== 'all' || card.dataset.category === category) ? 'flex' : 'none';
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
     });
     document.querySelectorAll('.categories-nav button').forEach(btn => btn.classList.remove('active'));
     if(buttonElement) buttonElement.classList.add('active');
@@ -583,5 +612,14 @@ window.onload = () => {
 };
 </script>
 </body>
-</html>                        
-                         
+</html>
+
+
+
+
+
+
+
+
+
+    
