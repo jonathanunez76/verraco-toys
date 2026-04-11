@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -211,8 +212,8 @@ footer p{font-size:1em;opacity:0.8}
 <div id="about-page" style="display:none;">
 <h2>QUIÉNES SOMOS</h2>
 <div class="info-block">
-<p>Somos una empresa dedicada a ofrecer los mejores productos de maquinaria, modelos a escala y juguetes.</p>
-<p>Con años de experiencia en el mercado, nos destacamos por nuestra seriedad, atención y calidad.</p>
+<p>Somos una empresa dedicada a ofrecer los mejores productos de maquinaria, modelos a escala y juguetes de alta calidad. Nuestra pasión es llevar la ingeniería y la diversión a tu hogar con productos que cumplen con los más altos estándares.</p>
+<p>Con años de experiencia en el mercado, nos destacamos por nuestra seriedad, atención al cliente y por ofrecer siempre lo último en tecnología y diseño.</p>
 </div>
 </div>
 
@@ -227,6 +228,9 @@ footer p{font-size:1em;opacity:0.8}
 <p>¡Escríbenos y con gusto te atenderemos!</p>
 </div>
 </div>
+
+</div>
+
 <!-- MODAL CARRITO -->
 <div id="cart-modal" class="modal">
 <div class="modal-content">
@@ -293,6 +297,7 @@ let cart=[],currentSlide=0,currentId=null,currentDetail=0,sliderAuto;
 // FUNCIONES
  
 function showPage(p){document.querySelectorAll('#home-page,#detail-page,#about-page,#contact-page').forEach(el=>el.style.display='none');if(p=='home'||p=='products'){document.getElementById('home-page').style.display='block'}else{document.getElementById(p).style.display='block'}window.scrollTo(0,0)}
+function openCart(){document.getElementById('cart-modal').classList.add('active');updateCart();}
 function closeCart(){document.getElementById('cart-modal').classList.remove('active');}
 function openCheckout(){closeCart();document.getElementById('checkout-modal').classList.add('active');calculateTotals();}
 function closeCheckout(){document.getElementById('checkout-modal').classList.remove('active');}
