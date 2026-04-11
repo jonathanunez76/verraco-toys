@@ -10,107 +10,117 @@
 :root{--primary-color:#FFC107;--secondary-color:#212121;--accent-color:#FFD000;--dark-color:#111111;--light-color:#f8f8f8}
 *{margin:0;padding:0;box-sizing:border-box}
 html, body {height:100%;display:flex;flex-direction:column}
-body{font-family:'Poppins',sans-serif;background:#fff;color:var(--dark-color);line-height:1.5;font-size:14px;user-select:none;-webkit-tap-highlight-color:transparent}
-header{background:var(--dark-color);padding:10px 15px;box-shadow:0 4px 12px rgba(0,0,0,0.1);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;flex-wrap:nowrap}
-.logo{font-weight:800;font-size:18px;color:var(--primary-color);text-decoration:none;display:flex;align-items:center;gap:5px;text-transform:uppercase}
-.logo i{color:var(--primary-color);font-size:22px}
-.nav-menu ul{list-style:none;margin:0;padding:0;display:flex;gap:8px}
-.nav-menu a{text-decoration:none;color:#fff;padding:6px 10px;transition:all .3s ease;font-weight:600;font-size:12px;border-radius:4px}
+body{font-family:'Poppins',sans-serif;background:#fff;color:var(--dark-color);line-height:1.4;font-size:14px;user-select:none;-webkit-tap-highlight-color:transparent}
+header{background:var(--dark-color);padding:8px 12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;flex-wrap:nowrap}
+.logo{font-weight:800;font-size:16px;color:var(--primary-color);text-decoration:none;display:flex;align-items:center;gap:5px;text-transform:uppercase}
+.logo i{color:var(--primary-color);font-size:20px}
+.nav-menu ul{list-style:none;margin:0;padding:0;display:flex;gap:5px}
+.nav-menu a{text-decoration:none;color:#fff;padding:5px 8px;transition:all .3s ease;font-weight:600;font-size:11px;border-radius:4px}
 .nav-menu a:hover,.nav-menu a.active{background-color:var(--primary-color);color:var(--dark-color)}
-.cart-icon{font-size:18px;text-decoration:none;color:#fff;position:relative;cursor:pointer;transition:transform .3s ease;background:rgba(255,193,7,0.1);padding:6px;border-radius:50%}
+.cart-icon{font-size:16px;text-decoration:none;color:#fff;position:relative;cursor:pointer;transition:transform .3s ease;background:rgba(255,193,7,0.1);padding:5px;border-radius:50%}
 .cart-icon:hover{transform:scale(1.1)}
-.cart-count{background-color:var(--primary-color);color:var(--dark-color);border-radius:50%;padding:1px 5px;font-size:10px;position:absolute;top:-3px;right:-3px;min-width:16px;text-align:center;font-weight:700}
-.container{max-width:1200px;margin:15px auto;padding:0 10px;flex:1;width:100%}
-h1,h2,h3{color:var(--dark-color);margin-bottom:15px;font-weight:700}
-h1{font-size:1.8em;text-align:center;margin-top:15px;color:var(--dark-color)}
+.cart-count{background-color:var(--primary-color);color:var(--dark-color);border-radius:50%;padding:1px 4px;font-size:9px;position:absolute;top:-3px;right:-3px;min-width:14px;text-align:center;font-weight:700}
+.container{max-width:1200px;margin:10px auto;padding:0 8px;flex:1;width:100%}
+h1,h2,h3{color:var(--dark-color);margin-bottom:10px;font-weight:700}
+h1{font-size:1.5em;text-align:center;margin-top:10px;color:var(--dark-color)}
 
-/* 🔽 BARRA HORIZONTAL Y CENTRADA 🔽 */
-.categories-nav{background-color:var(--light-color);padding:8px;text-align:center;margin-bottom:20px;border-radius:8px;display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:center!important;gap:6px;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;width:100%!important;border:1px solid #eee}
-.categories-nav button{background:transparent;border:1px solid #ccc;padding:5px 10px;font-size:11px;cursor:pointer;color:var(--dark-color);transition:all .3s ease;border-radius:4px;font-weight:600;white-space:nowrap}
+/* BARRA HORIZONTAL */
+.categories-nav{background-color:var(--light-color);padding:6px;text-align:center;margin-bottom:15px;border-radius:8px;display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:center!important;gap:5px;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;width:100%!important;border:1px solid #eee}
+.categories-nav button{background:transparent;border:1px solid #ccc;padding:4px 8px;font-size:10px;cursor:pointer;color:var(--dark-color);transition:all .3s ease;border-radius:4px;font-weight:600;white-space:nowrap}
 .categories-nav button:hover,.categories-nav button.active{background:var(--primary-color);border-color:var(--primary-color);color:var(--dark-color)}
-/* 🔼 FIN BARRA 🔼 */
 
-.offer-carousel{background:linear-gradient(135deg,var(--dark-color),#333);padding:25px;margin-bottom:20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.1);border-radius:8px;position:relative;overflow:hidden;color:#fff}
+.offer-carousel{background:linear-gradient(135deg,var(--dark-color),#333);padding:20px;margin-bottom:15px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.1);border-radius:8px;position:relative;overflow:hidden;color:#fff}
 .offer-carousel-inner{display:flex;transition:transform .8s ease}
-.offer-slide{min-width:100%;box-sizing:border-box;padding:15px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.offer-slide h2{font-size:2em;color:var(--primary-color);margin-bottom:8px}
-.offer-slide p{font-size:1em;color:#ddd;margin-bottom:15px}
-.offer-button{background:var(--primary-color);color:var(--dark-color);padding:10px 25px;border:none;border-radius:4px;cursor:pointer;text-decoration:none;display:inline-block;font-size:1em;font-weight:700;transition:all .3s ease;text-transform:uppercase}
+.offer-slide{min-width:100%;box-sizing:border-box;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.offer-slide h2{font-size:1.6em;color:var(--primary-color);margin-bottom:5px}
+.offer-slide p{font-size:0.9em;color:#ddd;margin-bottom:10px}
+.offer-button{background:var(--primary-color);color:var(--dark-color);padding:8px 20px;border:none;border-radius:4px;cursor:pointer;text-decoration:none;display:inline-block;font-size:0.9em;font-weight:700;transition:all .3s ease;text-transform:uppercase}
 .offer-button:hover{background:var(--accent-color);transform:translateY(-2px)}
-.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);background-color:rgba(255,255,255,0.1);color:#fff;border:none;padding:8px 10px;font-size:1.5em;cursor:pointer;border-radius:50%;z-index:10}
-.carousel-arrow.left{left:10px}
-.carousel-arrow.right{right:10px}
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);background-color:rgba(255,255,255,0.1);color:#fff;border:none;padding:6px 8px;font-size:1.2em;cursor:pointer;border-radius:50%;z-index:10}
+.carousel-arrow.left{left:8px}
+.carousel-arrow.right{right:8px}
 
-.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px}
-.product-card{background-color:#fff;border:1px solid #eee;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);overflow:hidden;text-align:center;padding-bottom:15px;transition:all .3s ease;display:flex;flex-direction:column}
-.product-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.1)}
-.product-card img{width:100%;height:120px;object-fit:contain;display:block;margin:0 auto;padding:10px;background:#fafafa}
-.product-card h3{font-size:0.9em;margin:10px 5px;color:var(--dark-color);min-height:40px}
-.product-card .price{font-size:1.2em;color:var(--dark-color);font-weight:800;margin-bottom:10px}
-.product-card-actions{display:flex;justify-content:center;gap:8px;padding:0 8px;margin-top:auto}
-.details-button,.buy-now-from-list-button{padding:7px 12px;border:none;border-radius:4px;cursor:pointer;font-weight:600;transition:all .3s ease;font-size:0.85em}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.product-card{background-color:#fff;border:1px solid #eee;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);overflow:hidden;text-align:center;padding-bottom:12px;transition:all .3s ease;display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+.product-card img{width:100%;height:100px;object-fit:contain;display:block;margin:0 auto;padding:8px;background:#fafafa}
+.product-card h3{font-size:0.85em;margin:8px 4px;color:var(--dark-color);min-height:35px}
+.product-card .price{font-size:1.1em;color:var(--dark-color);font-weight:800;margin-bottom:8px}
+.product-card-actions{display:flex;justify-content:center;gap:6px;padding:0 6px;margin-top:auto}
+.details-button,.buy-now-from-list-button{padding:6px 10px;border:none;border-radius:4px;cursor:pointer;font-weight:600;transition:all .3s ease;font-size:0.8em}
 .details-button{background:transparent;border:1px solid var(--dark-color);color:var(--dark-color)}
 .buy-now-from-list-button{background:var(--primary-color);color:var(--dark-color)}
 
-#detail-page{display:none;background-color:#fff;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,0.05);margin-bottom:20px;border-radius:8px;flex-direction:column;gap:20px;border:1px solid #eee}
-#detail-page h2{text-align:center;font-size:1.5em;color:var(--dark-color)}
-.product-detail-content{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:flex-start}
-.product-detail-images{flex:1 1 45%;min-width:250px;text-align:center}
+#detail-page{display:none;background-color:#fff;padding:15px;box-shadow:0 5px 15px rgba(0,0,0,0.05);margin-bottom:15px;border-radius:8px;flex-direction:column;gap:15px;border:1px solid #eee}
+#detail-page h2{text-align:center;font-size:1.3em;color:var(--dark-color)}
+.product-detail-content{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;align-items:flex-start}
+.product-detail-images{flex:1 1 45%;min-width:220px;text-align:center}
 .detail-image-slider{position:relative;width:100%;overflow:hidden;border-radius:8px;background:#f8f8f8;border:1px solid #eee;touch-action:pan-y}
 .detail-slider-track{display:flex;transition:transform .5s ease;width:100%}
 .detail-slide{min-width:100%;display:flex;align-items:center;justify-content:center}
-.detail-main-image{max-width:100%;max-height:300px;object-fit:contain;padding:15px}
-.detail-slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--dark-color);color:#fff;border:none;width:35px;height:35px;font-size:16px;border-radius:50%;cursor:pointer;z-index:10}
-.detail-arrow-left{left:10px}
-.detail-arrow-right{right:10px}
-.detail-thumbnails{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:10px}
-.detail-thumbnails img{width:60px;height:40px;object-fit:cover;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:all .3s ease}
+.detail-main-image{max-width:100%;max-height:250px;object-fit:contain;padding:10px}
+.detail-slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--dark-color);color:#fff;border:none;width:30px;height:30px;font-size:14px;border-radius:50%;cursor:pointer;z-index:10}
+.detail-arrow-left{left:8px}
+.detail-arrow-right{right:8px}
+.detail-thumbnails{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:8px}
+.detail-thumbnails img{width:50px;height:35px;object-fit:cover;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:all .3s ease}
 .detail-thumbnails img:hover,.detail-thumbnails img.active-thumbnail{border-color:var(--primary-color);transform:scale(1.05)}
-.detail-video{margin-top:15px;border-radius:8px;overflow:hidden}
+.detail-video{margin-top:12px;border-radius:8px;overflow:hidden}
 .detail-video iframe{display:block;width:100%;aspect-ratio:16/9}
-.product-detail-info{flex:1 1 45%;min-width:250px;padding-left:10px}
-.product-detail-info h3{font-size:1.4em;color:var(--dark-color);margin-top:0}
-.product-detail-info .price{font-size:2em;color:var(--dark-color);font-weight:800;margin-bottom:15px}
-.product-detail-info p{font-size:1em;color:#555;margin-bottom:20px;line-height:1.6}
-.product-detail-actions{display:flex;gap:10px;margin-top:15px}
-.product-detail-actions button{flex:1;padding:12px 15px;border:none;border-radius:4px;font-size:1em;font-weight:700;cursor:pointer;transition:all .3s ease}
+.product-detail-info{flex:1 1 45%;min-width:220px;padding-left:8px}
+.product-detail-info h3{font-size:1.2em;color:var(--dark-color);margin-top:0}
+.product-detail-info .price{font-size:1.8em;color:var(--dark-color);font-weight:800;margin-bottom:10px}
+.product-detail-info p{font-size:0.9em;color:#555;margin-bottom:15px;line-height:1.5}
+.product-detail-actions{display:flex;gap:8px;margin-top:12px}
+.product-detail-actions button{flex:1;padding:10px 12px;border:none;border-radius:4px;font-size:0.9em;font-weight:700;cursor:pointer;transition:all .3s ease}
 #detail-add-to-cart-button{background:transparent;border:2px solid var(--dark-color);color:var(--dark-color)}
 #detail-buy-now-button{background:var(--primary-color);color:var(--dark-color)}
-#back-to-products-button{background:transparent;border:2px solid #ccc;color:var(--dark-color);padding:10px 20px;border-radius:4px;margin-top:20px;display:inline-block;text-decoration:none;font-weight:600;font-size:0.9em}
+#back-to-products-button{background:transparent;border:2px solid #ccc;color:var(--dark-color);padding:8px 15px;border-radius:4px;margin-top:15px;display:inline-block;text-decoration:none;font-weight:600;font-size:0.85em}
 
 .modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);justify-content:center;align-items:center}
 .modal.active{display:flex}
-.modal-content{background-color:#fff;padding:25px;border-radius:8px;width:95%;max-width:500px;position:relative;border:1px solid #eee}
-.close-button{color:#aaa;position:absolute;top:10px;right:15px;font-size:24px;font-weight:700;cursor:pointer}
+.modal-content{background-color:#fff;padding:20px;border-radius:8px;width:95%;max-width:450px;position:relative;border:1px solid #eee}
+.close-button{color:#aaa;position:absolute;top:8px;right:12px;font-size:22px;font-weight:700;cursor:pointer}
 .close-button:hover{color:var(--dark-color)}
-.modal-content h2{text-align:center;color:var(--dark-color);font-size:1.3em}
-#cart-items-container{max-height:300px;overflow-y:auto;margin-bottom:15px}
-.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;font-size:0.9em}
-.cart-item img{width:50px;height:50px;object-fit:cover;border-radius:4px}
-.cart-item-quantity{width:40px;padding:4px;border:1px solid #ddd;border-radius:4px;text-align:center;font-weight:700;font-size:0.9em}
-.remove-from-cart{background:none;border:none;color:#d32f2f;font-size:1.2em;cursor:pointer}
-.cart-total{text-align:right;font-size:1.2em;font-weight:800;margin-top:15px}
+.modal-content h2{text-align:center;color:var(--dark-color);font-size:1.2em}
+#cart-items-container{max-height:250px;overflow-y:auto;margin-bottom:12px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee;font-size:0.85em}
+.cart-item img{width:45px;height:45px;object-fit:cover;border-radius:4px}
+.cart-item-quantity{width:35px;padding:3px;border:1px solid #ddd;border-radius:4px;text-align:center;font-weight:700;font-size:0.85em}
+.remove-from-cart{background:none;border:none;color:#d32f2f;font-size:1.1em;cursor:pointer}
+.cart-total{text-align:right;font-size:1.1em;font-weight:800;margin-top:12px}
 .cart-total span{color:var(--dark-color)}
-#proceed-to-checkout{background:var(--primary-color);color:var(--dark-color);padding:12px;border:none;border-radius:4px;width:100%;font-size:1em;font-weight:700;cursor:pointer;margin-top:15px}
-.checkout-form label{display:block;margin-bottom:5px;font-weight:600;font-size:0.9em}
-.checkout-form input{width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:4px;font-size:0.9em}
+#proceed-to-checkout{background:var(--primary-color);color:var(--dark-color);padding:10px;border:none;border-radius:4px;width:100%;font-size:0.95em;font-weight:700;cursor:pointer;margin-top:12px}
+.checkout-form label{display:block;margin-bottom:4px;font-weight:600;font-size:0.85em}
+.checkout-form input{width:100%;padding:8px;margin-bottom:10px;border:1px solid #ddd;border-radius:4px;font-size:0.85em}
 .checkout-form input:focus{border-color:var(--primary-color);outline:none}
-.checkout-summary{background-color:#f8f8f8;border-radius:4px;padding:12px;margin-top:12px;font-size:0.9em}
-.checkout-summary div{display:flex;justify-content:space-between;margin-bottom:6px}
-.checkout-summary .total{font-weight:800;color:var(--dark-color);border-top:2px solid #ddd;padding-top:8px;margin-top:8px;font-size:1.1em}
-#confirm-checkout{background:var(--primary-color);color:var(--dark-color);padding:12px;border:none;border-radius:4px;width:100%;font-size:1em;font-weight:700;cursor:pointer;margin-top:15px}
+.checkout-summary{background-color:#f8f8f8;border-radius:4px;padding:10px;margin-top:10px;font-size:0.85em}
+.checkout-summary div{display:flex;justify-content:space-between;margin-bottom:5px}
+.checkout-summary .total{font-weight:800;color:var(--dark-color);border-top:2px solid #ddd;padding-top:6px;margin-top:6px;font-size:1em}
+#confirm-checkout{background:var(--primary-color);color:var(--dark-color);padding:10px;border:none;border-radius:4px;width:100%;font-size:0.95em;font-weight:700;cursor:pointer;margin-top:12px}
 
-#about-page, #contact-page{padding:20px;max-width:800px;margin:0 auto}
-#about-page p, #contact-page p{font-size:1em;color:#555;margin-bottom:15px;line-height:1.7}
+/* PÁGINAS QUIÉNES SOMOS Y CONTACTO */
+#about-page, #contact-page{display:none;padding:15px;max-width:700px;margin:0 auto;width:100%}
+#about-page h2, #contact-page h2{text-align:center;font-size:1.4em;margin-bottom:15px}
+#about-page p, #contact-page p{font-size:0.95em;color:#555;margin-bottom:10px;line-height:1.6}
 
 /* FOOTER ABAJO FIJO */
-footer{background:var(--dark-color);color:#fff;padding:30px 20px;text-align:center;margin-top:auto}
-footer h3{color:var(--primary-color);font-size:1.5em;margin-bottom:10px}
-footer p{font-size:0.9em;opacity:0.8}
-.social-links a{color:#fff;font-size:1.8em;margin:0 8px;transition:color .3s ease;text-decoration:none}
+footer{background:var(--dark-color);color:#fff;padding:25px 15px;text-align:center;margin-top:auto}
+footer h3{color:var(--primary-color);font-size:1.3em;margin-bottom:8px}
+footer p{font-size:0.85em;opacity:0.8}
+.social-links a{color:#fff;font-size:1.6em;margin:0 6px;transition:color .3s ease;text-decoration:none}
 .social-links a:hover{color:var(--primary-color)}
 
-.whatsapp-fixed-button{position:fixed;bottom:20px;right:20px;background:var(--primary-color);color:var(--dark-color);width:50px;height:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.8em;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.2);z-index:99}
+.whatsapp-fixed-button{position:fixed;bottom:15px;right:15px;background:var(--primary-color);color:var(--dark-color);width:45px;height:45px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.6em;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.2);z-index:99}
+
+/* AJUSTE MÁS PEQUEÑO SOLO PARA CELULARES */
+@media (max-width: 768px) {
+    body {font-size: 12px;}
+    h1 {font-size: 1.3em;}
+    .product-grid {grid-template-columns: repeat(2, 1fr); gap: 10px;}
+    .product-card img {height: 90px;}
+    .categories-nav button {font-size: 9px; padding: 4px 7px;}
+}
 </style>
 </head>
 <body oncontextmenu="return false;">
@@ -131,12 +141,15 @@ footer p{font-size:0.9em;opacity:0.8}
 <div class="container">
 
 <div id="home-page">
-<div class="offer-carousel" id="main-slider">
+
+
+
+ <div class="offer-carousel" id="main-slider">
 <button class="carousel-arrow left" onclick="moveSlide(-1)">&#10094;</button>
 <div class="offer-carousel-inner" id="carousel-inner">
 <div class="offer-slide"><h2>LA MEJOR CALIDAD</h2><p>Materiales resistentes y acabados perfectos.</p><a href="#" class="offer-button" onclick="showPage('products'); return false;">VER PRODUCTOS</a></div>
-<div class="offer-slide"><h2>ENVÍOS A TODO EL PAÍS</h2><p>Recibe tu pedido rápido y seguro.</p><a href="#" class="offer-button" onclick="showPage('contact'); return false;">CONTÁCTANOS</a></div>
-<div class="offer-slide"><h2>GARANTÍA DE SATISFACCIÓN</h2><p>Tu confianza es nuestra prioridad</p><a href="#" class="offer-button" onclick="showPage('about'); return false;">CONÓCENOS</a></div>
+<div class="offer-slide"><h2>ENVÍOS RÁPIDOS</h2><p>Recibe tu pedido donde estés.</p><a href="#" class="offer-button" onclick="showPage('contact'); return false;">CONTÁCTANOS</a></div>
+<div class="offer-slide"><h2>GARANTÍA TOTAL</h2><p>Tu confianza es lo más importante.</p><a href="#" class="offer-button" onclick="showPage('about'); return false;">CONÓCENOS</a></div>
 </div>
 <button class="carousel-arrow right" onclick="moveSlide(1)">&#10095;</button>
 </div>
@@ -153,7 +166,7 @@ footer p{font-size:0.9em;opacity:0.8}
 <div class="product-grid" id="product-grid"></div>
 </div>
 
-<!-- PÁGINA DE DETALLE -->
+<!-- PÁGINA DETALLE -->
 <div id="detail-page" style="display:none;">
 <h2>DETALLE DEL PRODUCTO</h2>
 <div class="product-detail-content">
@@ -182,9 +195,9 @@ footer p{font-size:0.9em;opacity:0.8}
 <!-- PÁGINA QUIÉNES SOMOS -->
 <div id="about-page" style="display:none;">
 <h2>QUIÉNES SOMOS</h2>
-<p>Somos una empresa dedicada a la venta de maquinaria a escala, juguetes y accesorios de la más alta calidad. Contamos con años de experiencia y miles de clientes satisfechos que confían en nosotros.</p>
+<p>Somos una empresa dedicada a la venta de maquinaria a escala, juguetes y accesorios de la más alta calidad. Contamos con años de experiencia y miles de clientes satisfechos.</p>
 <br>
-<p>Nuestra misión es llevar diversión y calidad a tu hogar con productos que cumplen con todos los estándares de seguridad y durabilidad.</p>
+<p>Nuestra misión es ofrecer productos que cumplen con estándares de seguridad y durabilidad, llevando diversión y calidad a tu hogar.</p>
 </div>
 
 <!-- PÁGINA CONTACTO -->
@@ -225,9 +238,9 @@ footer p{font-size:0.9em;opacity:0.8}
 <div class="checkout-summary">
 <div><span>Subtotal:</span> <span id="subtotal">$0.00</span></div>
 <div><span>Envío:</span> <span>$5.00</span></div>
-<div class="total"><span>TOTAL A PAGAR:</span> <span id="total">$0.00</span></div>
+<div class="total"><span>TOTAL:</span> <span id="total">$0.00</span></div>
 </div>
-<button type="submit" id="confirm-checkout">ENVIAR PEDIDO POR WHATSAPP</button>
+<button type="submit" id="confirm-checkout">ENVIAR PEDIDO</button>
 </form>
 </div>
 </div>
@@ -247,17 +260,17 @@ footer p{font-size:0.9em;opacity:0.8}
 </a>
 
 <script>
-// SEGURIDAD EXTREMA
+// SEGURIDAD
 document.addEventListener('keydown',function(e){if(e.key==="F12"||(e.ctrlKey&&e.shiftKey&&e.key==="I")||(e.ctrlKey&&e.shiftKey&&e.key==="J")||(e.ctrlKey&&e.key==="U")){e.preventDefault();return false;}});
 
-// DATOS PRODUCTOS
+// PRODUCTOS
 const products=[
-{id:1,name:"Cargador Frontal",price:45.50,category:"action",description:"Modelo a escala detallado, ideal para coleccionistas y oficina.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=CARGADOR"]},
-{id:2,name:"Tractor con Remolque",price:62.00,category:"aventura",description:"Totalmente funcional, ruedas resistentes y acabados de primera.",images:["https://via.placeholder.com/400x400/212121/FFC107?text=TRACTOR"]},
-{id:3,name:"Camión Volqueta",price:58.90,category:"action",description:"Diseño realista, cabina abatible y caja basculante.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=VOLQUETA"]},
-{id:4,name:"Excavadora RC",price:120.00,category:"aventura",description:"Control remoto profesional, movimientos hidráulicos reales.",images:["https://via.placeholder.com/400x400/111111/FFC107?text=EXCAVADORA"]},
-{id:5,name:"Set Juguete Niños",price:25.00,category:"musica",description:"Diversión asegurada, material seguro y resistente.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=JUGUETE"]},
-{id:6,name:"Kit Accesorios",price:15.00,category:"educativo",description:"Complementos perfectos para tus modelos y colecciones.",images:["https://via.placeholder.com/400x400/212121/FFFFFF?text=ACCESORIOS"]}
+{id:1,name:"Cargador Frontal",price:45.50,category:"action",description:"Modelo a escala detallado.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=CARGADOR"]},
+{id:2,name:"Tractor con Remolque",price:62.00,category:"aventura",description:"Funcional y resistente.",images:["https://via.placeholder.com/400x400/212121/FFC107?text=TRACTOR"]},
+{id:3,name:"Camión Volqueta",price:58.90,category:"action",description:"Diseño realista.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=VOLQUETA"]},
+{id:4,name:"Excavadora RC",price:120.00,category:"aventura",description:"Control remoto profesional.",images:["https://via.placeholder.com/400x400/111111/FFC107?text=EXCAVADORA"]},
+{id:5,name:"Set Juguete Niños",price:25.00,category:"musica",description:"Diversión asegurada.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=JUGUETE"]},
+{id:6,name:"Kit Accesorios",price:15.00,category:"educativo",description:"Complementos perfectos.",images:["https://via.placeholder.com/400x400/212121/FFFFFF?text=ACCESORIOS"]}
 ];
 
 let cart=[],currentSlide=0,currentId=null,currentDetail=0,sliderAuto;
@@ -287,7 +300,7 @@ function removeItem(id){cart=cart.filter(x=>x.id!==id);updateCounts();updateCart
 function calculateTotals(){const sub=cart.reduce((s,it)=>s+(it.price*it.quantity),0);document.getElementById('subtotal').textContent=`$${sub.toFixed(2)}`;document.getElementById('total').textContent=`$${(sub+5).toFixed(2)}`;}
 
 // ENVIAR PEDIDO
-function sendOrder(e){e.preventDefault();const name=document.getElementById('name').value;const phone=document.getElementById('phone').value;const addr=document.getElementById('address').value;let msg=`🛒 *PEDIDO - TU MARCA*%0A%0A`;msg+=`👤 ${name}%0A📞 ${phone}%0A📍 ${addr}%0A%0A`;msg+=`📦 PRODUCTOS:%0A`;cart.forEach(it=>msg+=`• ${it.name} x${it.quantity} $${(it.price*it.quantity).toFixed(2)}%0A`);const total=cart.reduce((s,it)=>s+(it.price*it.quantity),0)+5;msg+=`%0A💵 TOTAL: $${total.toFixed(2)}`;window.open(`https://wa.me/593999999999?text=${msg}`,'_blank');cart=[];updateCounts();closeCheckout();alert('¡Pedido enviado con éxito!');}
+function sendOrder(e){e.preventDefault();const name=document.getElementById('name').value;const phone=document.getElementById('phone').value;const addr=document.getElementById('address').value;let msg=`🛒 *PEDIDO*%0A%0A👤 ${name}%0A📞 ${phone}%0A📍 ${addr}%0A%0A📦 PRODUCTOS:%0A`;cart.forEach(it=>msg+=`• ${it.name} x${it.quantity} $${(it.price*it.quantity).toFixed(2)}%0A`);const total=cart.reduce((s,it)=>s+(it.price*it.quantity),0)+5;msg+=`%0A💵 TOTAL: $${total.toFixed(2)}`;window.open(`https://wa.me/593999999999?text=${msg}`,'_blank');cart=[];updateCounts();closeCheckout();alert('¡Pedido enviado!');}
 
 // MOSTRAR PRODUCTOS
 function createProduct(p){const d=document.createElement('div');d.className='product-card';d.dataset.category=p.category;d.innerHTML=`<img src="${p.images[0]}"><h3>${p.name}</h3><div class="price">$${p.price.toFixed(2)}</div><div class="product-card-actions"><button class="details-button" onclick="viewDetail(${p.id})">VER MÁS</button><button class="buy-now-from-list-button" onclick="addToCart(${p.id})">AÑADIR</button></div>`;return d;}
@@ -299,14 +312,14 @@ function filterProducts(cat){document.querySelectorAll('.categories-nav button')
 // INICIALIZAR
 document.addEventListener('DOMContentLoaded',()=>{const grid=document.getElementById('product-grid');products.forEach(p=>grid.appendChild(createProduct(p)));});
 
-// SWIPE TACTIL
+// SWIPE
 let startX=0;
 document.getElementById('main-slider').addEventListener('touchstart',e=>{startX=e.touches[0].clientX;clearInterval(sliderAuto);});
 document.getElementById('main-slider').addEventListener('touchend',e=>{const endX=e.changedTouches[0].clientX;if(startX-endX>50)moveSlide(1);if(endX-startX>50)moveSlide(-1);startSlider();});
 </script>
 
 </body>
-</html>
+</html>   
     
 
 
