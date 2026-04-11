@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -430,6 +437,19 @@
             gap: 15px;
             margin-top: 20px;
         }
+     
+
+
+
+
+        
+
+
+
+
+
+
+
         .product-detail-actions button {
             flex: 1;
             padding: 15px 20px;
@@ -444,15 +464,6 @@
             background: linear-gradient(45deg, var(--primary-color), #8A84FF);
             color: white;
         }
-
-
-
-
-
-
-
-
-
         #detail-buy-now-button {
             background: linear-gradient(45deg, #28a745, #4cd964);
             color: white;
@@ -491,11 +502,6 @@
             width: 90%;
             max-width: 600px;
             position: relative;
-            animation: modalPop 0.4s ease;
-        }
-        @keyframes modalPop {
-            from {transform: scale(0.8); opacity: 0;}
-            to {transform: scale(1); opacity: 1;}
         }
         .close-button {
             color: #aaa;
@@ -701,7 +707,7 @@
                     <div class="offer-slide">
                         <h2>¡GRANDES DESCUENTOS!</h2>
                         <p>Todos los juguetes con hasta 30% OFF.</p>
-                        <img src="https://via.placeholder.com/800x400/FFD700/FFFFFF?text=OFERTA+1" alt="Oferta">
+                        <img src="https://via.placeholder.com/800x400/FFD700/FFFFFF?text=OFERTA" alt="Oferta">
                         <a href="#" class="offer-button" onclick="showPage('products')">VER PRODUCTOS</a>
                     </div>
                     <div class="offer-slide">
@@ -751,16 +757,13 @@
             <div class="product-detail-content">
                 <div class="product-detail-images">
                     <div class="detail-image-slider" id="detail-image-slider">
-                        <div class="detail-slider-track" id="detail-slider-track">
-                            <!-- Imágenes cargadas por JS -->
-                        </div>
+                        <div class="detail-slider-track" id="detail-slider-track"></div>
                         <button class="detail-slider-arrow detail-arrow-left" onclick="moveDetailSlide(-1)">&#10094;</button>
                         <button class="detail-slider-arrow detail-arrow-right" onclick="moveDetailSlide(1)">&#10095;</button>
                     </div>
                     <div id="detail-thumbnails-container" class="detail-thumbnails"></div>
                     <div id="detail-video-container" class="detail-video"></div>
                 </div>
-                
                 <div class="product-detail-info">
                     <h3 id="detail-name"></h3>
                     <div class="price" id="detail-price"></div>
@@ -774,7 +777,7 @@
                         </button>
                     </div>
                     <a href="#" id="back-to-products-button" onclick="showPage('products'); return false;">
-                        <i class="fas fa-arrow-left"></i> Volver a la Tienda
+                        <i class="fas fa-arrow-left"></i> Volver
                     </a>
                 </div>
             </div>
@@ -786,12 +789,10 @@
     <div id="cart-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="closeCart()">&times;</span>
-            <h2>Tu Carrito de Compras</h2>
+            <h2>Tu Carrito</h2>
             <div id="cart-items-container"></div>
             <div class="cart-total">Total: $<span id="cart-total-price">0.00</span></div>
-            <button id="proceed-to-checkout" onclick="openCheckout()">
-                <i class="fas fa-credit-card"></i> Finalizar Compra
-            </button>
+            <button id="proceed-to-checkout" onclick="openCheckout()">Finalizar Compra</button>
         </div>
     </div>
 
@@ -801,44 +802,33 @@
             <span class="close-button" onclick="closeCheckout()">&times;</span>
             <h2>Información de Envío</h2>
             <form id="checkout-form" onsubmit="submitOrder(event)">
-                <label for="name">Nombre Completo</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Correo Electrónico</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="phone">Teléfono</label>
-                <input type="tel" id="phone" name="phone" required>
-
-                <label for="address">Dirección de Envío</label>
-                <input type="text" id="address" name="address" required>
-
+                <label>Nombre Completo</label>
+                <input type="text" id="name" required>
+                <label>Teléfono</label>
+                <input type="tel" id="phone" required>
+                <label>Dirección</label>
+                <input type="text" id="address" required>
                 <div class="checkout-summary">
                     <div><span>Subtotal:</span> <span id="summary-subtotal">$0.00</span></div>
-                    <div><span>Envío:</span> <span id="summary-shipping">$5.00</span></div>
-                    <div class="total"><span>TOTAL A PAGAR:</span> <span id="summary-total">$0.00</span></div>
+                    <div><span>Envío:</span> <span>$5.00</span></div>
+                    <div class="total"><span>TOTAL:</span> <span id="summary-total">$0.00</span></div>
                 </div>
-
                 <button type="submit" id="confirm-checkout">
-                    <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <h3>Berraco Toy</h3>
-            <p>La mejor tienda online de juguetes. Calidad y diversión asegurada.</p>
+            <p>La mejor tienda online de juguetes.</p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2024 Berraco Toy | Todos los derechos reservados
         </div>
     </footer>
 
@@ -847,15 +837,65 @@
     </a>
 
     <script>
-        // --- DATOS ---
-               // --- DATOS ---
+        // ==============================================
+        //           SISTEMA DE SEGURIDAD
+        // ==============================================
+        
+        // Desactivar clic derecho
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // Desactivar teclas de inspección (F12, Ctrl+U, Ctrl+Shift+I/J)
+        document.addEventListener('keydown', function(e) {
+            if(e.key === "F12" || 
+               (e.ctrlKey && e.shiftKey && e.key === "I") ||
+               (e.ctrlKey && e.shiftKey && e.key === "J") ||
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               (e.ctrlKey && e.key === "U") ||
+               (e.ctrlKey && e.shiftKey && e.key === "C")) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Protección continua para que no se quite
+        setInterval(function() {
+            document.querySelectorAll('*').forEach(el => {
+                el.setAttribute('oncontextmenu', 'return false');
+            });
+        }, 1000);
+
+        // ==============================================
+        //           DATOS Y FUNCIONES
+        // ==============================================
+
         const products = [
             {
                 id: 1,
                 name: "Super Héroe Definitivo",
                 price: 25.99,
                 category: "action",
-                description: "Increíble figura de acción con múltiples puntos de articulación y accesorios exclusivos. Ideal para coleccionistas y niños.",
+                description: "Increíble figura de acción con múltiples puntos de articulación y accesorios exclusivos.",
                 images: [
                     "https://via.placeholder.com/400x400/FF6347/FFFFFF?text=Heroe+1",
                     "https://via.placeholder.com/400x400/4682B4/FFFFFF?text=Heroe+2",
@@ -868,7 +908,7 @@
                 name: "Set Aventura en la Selva",
                 price: 45.50,
                 category: "aventura",
-                description: "Kit completo para exploradores. Incluye tienda de campaña, binoculares y mapa del tesoro. Horas de diversión asegurada.",
+                description: "Kit completo para exploradores. Incluye tienda, binoculares y mapa del tesoro.",
                 images: [
                     "https://via.placeholder.com/400x400/228B22/FFFFFF?text=Selva+1",
                     "https://via.placeholder.com/400x400/8B4513/FFFFFF?text=Selva+2"
@@ -880,7 +920,7 @@
                 name: "Batería Musical RockStar",
                 price: 89.90,
                 category: "musica",
-                description: "Set de batería electrónica con sonidos reales y micrófono incluido. Desarrolla el ritmo y la creatividad musical.",
+                description: "Set de batería con sonidos reales y micrófono. Desarrolla ritmo y creatividad.",
                 images: [
                     "https://via.placeholder.com/400x400/FF1493/FFFFFF?text=Bateria+1",
                     "https://via.placeholder.com/400x400/00CED1/FFFFFF?text=Bateria+2"
@@ -892,7 +932,7 @@
                 name: "Laboratorio de Ciencias",
                 price: 35.00,
                 category: "educativo",
-                description: "Más de 50 experimentos científicos seguros y divertidos. Aprende química y física jugando.",
+                description: "Más de 50 experimentos seguros y divertidos. Aprende jugando.",
                 images: [
                     "https://via.placeholder.com/400x400/9932CC/FFFFFF?text=Ciencia+1"
                 ],
@@ -903,7 +943,7 @@
                 name: "Robot Programable X1",
                 price: 120.00,
                 category: "tecnologia",
-                description: "Robot interactivo que se controla por voz y app. Baila, camina y enseña lógica de programación.",
+                description: "Robot interactivo por voz y app. Baila, camina y enseña programación.",
                 images: [
                     "https://via.placeholder.com/400x400/708090/FFFFFF?text=Robot+1",
                     "https://via.placeholder.com/400x400/2F4F4F/FFFFFF?text=Robot+2"
@@ -915,7 +955,7 @@
                 name: "Pista de Carreras Extrema",
                 price: 55.75,
                 category: "accion",
-                description: "Pista de carreras con loopings y auto incluido. Velocidad y adrenalina pura.",
+                description: "Pista con loopings y auto incluido. Velocidad y adrenalina pura.",
                 images: [
                     "https://via.placeholder.com/400x400/FF4500/FFFFFF?text=Carreras+1"
                 ],
@@ -947,42 +987,22 @@
             window.scrollTo(0, 0);
         }
 
-        let startX = 0;
-        let endX = 0;
-
+        // Controles táctiles
+        let startX = 0; let endX = 0;
         function setupTouchControls() {
-            const slider = document.querySelector('.detail-image-slider');
+            const slider = document.getElementById('detail-image-slider');
             if(slider) {
-                slider.addEventListener('touchstart', handleTouchStart, false);
-                slider.addEventListener('touchmove', handleTouchMove, false);
-                slider.addEventListener('touchend', handleTouchEnd, false);
+                slider.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+                slider.addEventListener('touchmove', e => endX = e.touches[0].clientX);
+                slider.addEventListener('touchend', () => {
+                    if(!startX || !endX) return;
+                    let diff = startX - endX;
+                    if(diff > 50) moveDetailSlide(1);
+                    else if(diff < -50) moveDetailSlide(-1);
+                    startX = endX = 0;
+                });
             }
         }
-
-        function handleTouchStart(e) {
-            startX = e.touches[0].clientX;
-        }
-        function handleTouchMove(e) {
-            endX = e.touches[0].clientX;
-        }
-        function handleTouchEnd() {
-            if (!startX || !endX) return;
-            let diff = startX - endX;
-            if (diff > 50) moveDetailSlide(1);
-            else if (diff < -50) moveDetailSlide(-1);
-            startX = 0; endX = 0;
-        }
-
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('keydown', function(e) {
-            if(e.key === "F12" || 
-               (e.ctrlKey && e.shiftKey && e.key === "I") ||
-               (e.ctrlKey && e.shiftKey && e.key === "J") ||
-               (e.ctrlKey && e.key === "U")) {
-                e.preventDefault();
-                return false;
-            }
-        });
 
         function moveDetailSlide(step) {
             const track = document.getElementById('detail-slider-track');
@@ -1000,83 +1020,56 @@
             });
         }
 
-        function showDetailSlide(index) {
-            currentDetailSlide = index;
-            moveDetailSlide(0);
-        }
-
         function viewDetails(productId) {
             currentProductId = productId;
             currentDetailSlide = 0;
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
+            const p = products.find(x => x.id === productId);
+            if(!p) return;
 
-            document.getElementById('detail-name').textContent = product.name;
-            document.getElementById('detail-price').textContent = '$' + product.price.toFixed(2);
-            document.getElementById('detail-description').textContent = product.description;
+            document.getElementById('detail-name').textContent = p.name;
+            document.getElementById('detail-price').textContent = '$' + p.price.toFixed(2);
+            document.getElementById('detail-description').textContent = p.description;
 
             const track = document.getElementById('detail-slider-track');
             const thumbs = document.getElementById('detail-thumbnails-container');
-            const videoContainer = document.getElementById('detail-video-container');
+            const video = document.getElementById('detail-video-container');
             
-            track.innerHTML = "";
-            thumbs.innerHTML = "";
-            videoContainer.innerHTML = "";
+            track.innerHTML = ""; thumbs.innerHTML = ""; video.innerHTML = "";
 
-            product.images.forEach((img, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'detail-slide';
-                slide.innerHTML = `<img src="${img}" alt="${product.name}" class="detail-main-image">`;
-                track.appendChild(slide);
+            p.images.forEach((img, i) => {
+                let s = document.createElement('div');
+                s.className = 'detail-slide';
+                s.innerHTML = `<img src="${img}" class="detail-main-image">`;
+                track.appendChild(s);
 
-                const thumb = document.createElement('img');
-                thumb.src = img;
-                thumb.alt = "Miniatura";
-                thumb.onclick = () => showDetailSlide(index);
-                if(index === 0) thumb.classList.add('active-thumbnail');
-                thumbs.appendChild(thumb);
+                let t = document.createElement('img');
+                t.src = img;
+                t.onclick = () => moveDetailSlide(i - currentDetailSlide);
+                if(i===0) t.classList.add('active-thumbnail');
+                thumbs.appendChild(t);
             });
 
-            if(product.video) {
-                videoContainer.innerHTML = `<iframe src="${product.video}" frameborder="0" allowfullscreen></iframe>`;
-            }
+            if(p.video) video.innerHTML = `<iframe src="${p.video}" allowfullscreen></iframe>`;
 
             showPage('detail');
         }
 
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const item = cart.find(i => i.id === productId);
-            
-            if(item) {
-                item.quantity++;
-            } else {
-                cart.push({...product, quantity: 1});
-            }
+        function addToCart(id) {
+            let item = cart.find(x => x.id === id);
+            if(item) item.quantity++;
+            else cart.push({...products.find(x=>x.id===id), quantity: 1});
             updateCartCount();
             renderCart();
         }
 
         function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-count').textContent = count;
+            document.getElementById('cart-count').textContent = cart.reduce((s,i)=>s+i.quantity,0);
         }
 
-        function openCart() {
-            renderCart();
-            document.getElementById('cart-modal').classList.add('active');
-        }
-        function closeCart() {
-            document.getElementById('cart-modal').classList.remove('active');
-        }
-        function openCheckout() {
-            closeCart();
-            calculateTotals();
-            document.getElementById('checkout-modal').classList.add('active');
-        }
-        function closeCheckout() {
-            document.getElementById('checkout-modal').classList.remove('active');
-        }
+        function openCart() { renderCart(); document.getElementById('cart-modal').classList.add('active'); }
+        function closeCart() { document.getElementById('cart-modal').classList.remove('active'); }
+        function openCheckout() { closeCart(); calculateTotals(); document.getElementById('checkout-modal').classList.add('active'); }
+        function closeCheckout() { document.getElementById('checkout-modal').classList.remove('active'); }
 
         function renderCart() {
             const container = document.getElementById('cart-items-container');
@@ -1085,16 +1078,13 @@
 
             cart.forEach(item => {
                 total += item.price * item.quantity;
-                
-                const div = document.createElement('div');
+                let div = document.createElement('div');
                 div.className = 'cart-item';
                 div.innerHTML = `
-                    <div class="cart-item-info">
-                        <img src="${item.images[0]}" alt="${item.name}">
-                        <span>${item.name}</span>
-                    </div>
-                    <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" onchange="updateQuantity(${item.id}, this.value)">
-                    <span class="price">$${(item.price * item.quantity).toFixed(2)}</span>
+                    <img src="${item.images[0]}">
+                    <span>${item.name}</span>
+                    <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${item.id}, this.value)">
+                    <span>$${(item.price*item.quantity).toFixed(2)}</span>
                     <button class="remove-from-cart" onclick="removeFromCart(${item.id})">&times;</button>
                 `;
                 container.appendChild(div);
@@ -1104,86 +1094,62 @@
         }
 
         function updateQuantity(id, qty) {
-            const item = cart.find(i => i.id === id);
-            if(item) item.quantity = parseInt(qty);
-            updateCartCount();
-            renderCart();
+            cart.find(i=>i.id===id).quantity = parseInt(qty);
+            updateCartCount(); renderCart();
         }
         function removeFromCart(id) {
-            cart = cart.filter(i => i.id !== id);
-            updateCartCount();
-            renderCart();
+            cart = cart.filter(i=>i.id!==id);
+            updateCartCount(); renderCart();
         }
 
         function calculateTotals() {
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shipping = 5.00;
-            const total = subtotal + shipping;
-
-            document.getElementById('summary-subtotal').textContent = '$' + subtotal.toFixed(2);
-            document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
+            let sub = cart.reduce((s,i)=>s+(i.price*i.quantity),0);
+            document.getElementById('summary-subtotal').textContent = '$'+sub.toFixed(2);
+            document.getElementById('summary-total').textContent = '$'+(sub+5).toFixed(2);
         }
 
-        function submitOrder(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
-            
-            let message = `🛒 *NUEVO PEDIDO - BERRACO TOY*%0A%0A`;
-            message += `👤 *Cliente:* ${name}%0A`;
-            message += `📞 *Teléfono:* ${phone}%0A`;
-            message += `📍 *Dirección:* ${address}%0A%0A`;
-            message += `📦 *Productos:*%0A`;
-            
-            cart.forEach(item => {
-                message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}%0A`;
-            });
+        function submitOrder(e) {
+            e.preventDefault();
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+            let addr = document.getElementById('address').value;
 
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) + 5;
-            message += `%0A💵 *TOTAL A PAGAR: $${total.toFixed(2)}*`;
+            let msg = `🛒 *PEDIDO - BERRACO TOY*%0A%0A`;
+            msg += `👤 ${name}%0A📞 ${phone}%0A📍 ${addr}%0A%0A`;
+            msg += `📦 PRODUCTOS:%0A`;
+            cart.forEach(i => msg += `• ${i.name} x${i.quantity} $${(i.price*i.quantity).toFixed(2)}%0A`);
+            let total = cart.reduce((s,i)=>s+(i.price*i.quantity),0)+5;
+            msg += `%0A💵 TOTAL: $${total.toFixed(2)}`;
 
-            window.open(`https://wa.me/593999999999?text=${message}`, '_blank');
-            
-            cart = [];
-            updateCartCount();
-            closeCheckout();
-            alert('¡Pedido enviado con éxito! Te contactaremos pronto.');
+            window.open(`https://wa.me/593999999999?text=${msg}`,'_blank');
+            cart = []; updateCartCount(); closeCheckout();
+            alert('¡Pedido enviado! Te contactaremos pronto.');
         }
 
-        function buyNowFromDetail() {
-            addToCart(currentProductId);
-            openCart();
-        }
+        function buyNowFromDetail() { addToCart(currentProductId); openCart(); }
 
         function moveSlide(step) {
             const slides = document.querySelectorAll('.offer-slide');
             currentSlide += step;
-            
             if(currentSlide >= slides.length) currentSlide = 0;
-            else if(currentSlide < 0) currentSlide = slides.length - 1;
-
-            document.getElementById('carousel-inner').style.transform = `translateX(-${currentSlide * 100}%)`;
+            if(currentSlide < 0) currentSlide = slides.length -1;
+            document.getElementById('carousel-inner').style.transform = `translateX(-${currentSlide*100}%)`;
         }
+        function startAutoSlide() { setInterval(()=>moveSlide(1), 5000); }
 
-        function startAutoSlide() {
-            setInterval(() => moveSlide(1), 5000);
-        }
-
-        function createProductCard(product) {
-            const div = document.createElement('div');
+        function createCard(p) {
+            let div = document.createElement('div');
             div.className = 'product-card';
-            div.dataset.category = product.category;
+            div.dataset.category = p.category;
             div.innerHTML = `
-                <img src="${product.images[0]}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <div class="price">$${product.price.toFixed(2)}</div>
+                <img src="${p.images[0]}">
+                <h3>${p.name}</h3>
+                <div class="price">$${p.price.toFixed(2)}</div>
                 <div class="product-card-actions">
-                    <button class="details-button" onclick="viewDetails(${product.id})">
-                        <i class="fas fa-eye"></i> Ver Detalles
+                    <button class="details-button" onclick="viewDetails(${p.id})">
+                        <i class="fas fa-eye"></i> Ver
                     </button>
-                    <button class="buy-now-from-list-button" onclick="addToCart(${product.id})">
+                    <button class="buy-now-from-list-button" onclick="addToCart(${p.id})">
                         <i class="fas fa-shopping-cart"></i> Añadir
                     </button>
                 </div>
@@ -1192,50 +1158,29 @@
         }
 
         function renderProducts() {
-            const homeGrid = document.getElementById('home-product-grid');
-            const mainGrid = document.getElementById('main-product-grid');
-            homeGrid.innerHTML = "";
-            mainGrid.innerHTML = "";
-
-            products.forEach(product => {
-                const card = createProductCard(product);
-                homeGrid.appendChild(card.cloneNode(true));
-                mainGrid.appendChild(card);
+            let home = document.getElementById('home-product-grid');
+            let shop = document.getElementById('main-product-grid');
+            home.innerHTML = ""; shop.innerHTML = "";
+            products.forEach(p => {
+                let c = createCard(p);
+                home.appendChild(c.cloneNode(true));
+                shop.appendChild(c);
             });
         }
 
-        function filterProducts(category) {
-            const grids = [
-                document.getElementById('home-product-grid'),
-                document.getElementById('main-product-grid')
-            ];
-
-            grids.forEach(grid => {
-                const cards = grid.children;
-                for(let card of cards) {
-                    if(category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
+        function filterProducts(cat) {
+            document.querySelectorAll('.product-card').forEach(card => {
+                if(cat === 'all' || card.dataset.category === cat) card.style.display = 'flex';
+                else card.style.display = 'none';
             });
-
-            document.querySelectorAll('.categories-nav button').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.querySelectorAll('.categories-nav button').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
         }
-
-        setInterval(function() {
-            document.querySelectorAll('*').forEach(el => {
-                el.setAttribute('oncontextmenu', 'return false');
-            });
-        }, 1000);
 
     </script>
 
 </body>
 </html>
-        
-        
+
+               
+            
