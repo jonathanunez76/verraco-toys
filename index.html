@@ -205,19 +205,21 @@ footer p{font-size:1em;opacity:0.8}
 <!-- PÁGINA QUIÉNES SOMOS -->
 <div id="about-page" style="display:none;">
 <h2>QUIÉNES SOMOS</h2>
-<p>Somos una empresa dedicada a la venta de maquinaria a escala, juguetes y accesorios de la más alta calidad. Contamos con años de experiencia y miles de clientes satisfechos que confían en nosotros.</p>
+<p>Somos una empresa dedicada a la venta de maquinaria a escala, juguetes y accesorios de la más alta calidad. Contamos con años de experiencia y miles de clientes satisfechos que confían en nosotros para llevar la mejor diversión y calidad a sus hogares.</p>
 <br>
-<p>Nuestra misión es ofrecer productos que cumplen con los más altos estándares de seguridad y durabilidad, llevando diversión y calidad a tu hogar.</p>
+<p>Nuestra misión es ofrecer productos que cumplen con los más altos estándares de seguridad y durabilidad. Trabajamos día a día para brindarte un excelente servicio y productos que superen tus expectativas. ¡Gracias por elegirnos!</p>
 </div>
 
 <!-- PÁGINA CONTACTO -->
 <div id="contact-page" style="display:none;">
 <h2>CONTACTO</h2>
-<p>¿Tienes preguntas? ¡Escríbenos!</p>
+<p>¿Tienes preguntas o necesitas más información? ¡Escríbenos!</p>
 <br>
 <p><strong>📞 WhatsApp:</strong> +593 99 999 9999</p>
 <p><strong>📧 Email:</strong> info@tutienda.com</p>
-<p><strong>📍 Ubicación:</strong> Latacunga, Ecuador</p>
+<p><strong>📍 Ubicación:</strong> Latacunga, Cotopaxi, Ecuador</p>
+<br>
+<p>Estamos listos para atenderte y ayudarte con tu compra.</p>
 </div>
 
 </div>
@@ -325,8 +327,13 @@ document.addEventListener('DOMContentLoaded',()=>{const grid=document.getElement
 // SWIPE TACTIL
 let startX=0;
 document.getElementById('main-slider').addEventListener('touchstart',e=>{startX=e.touches[0].clientX;clearInterval(sliderAuto);});
-document.getElementById('main-slider').addEventListener('touchend',e=>{const endX=e.changedTouches[0].clientX;if(startX-endX>50)moveSlide(1);if(endX-startX>50)moveSlide(-1);startSlider();});
-</script>
+document.getElementById('main-slider').addEventListener('touchend',e=>{const endX=e.changedTouches[0].clientX;if(startX-endX>50)moveSlide(1);if(endX-startX>50)moveSlide(-1);startSlider();
+
+
+
+
+
+    </script>
 
 </body>
 </html>
