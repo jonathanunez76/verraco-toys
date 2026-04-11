@@ -131,6 +131,11 @@ footer p{font-size:1em;opacity:0.8}
     .offer-carousel {padding: 15px !important; margin-bottom: 12px !important;}
     .offer-slide h2 {font-size: 1.6em !important;}
     .offer-slide p {font-size: 0.9em !important;}
+
+
+
+
+
     .offer-button {padding: 7px 18px !important; font-size: 0.95em !important;}
     .carousel-arrow {font-size: 1.4em !important; padding: 6px 8px !important;}
 }
@@ -205,21 +210,19 @@ footer p{font-size:1em;opacity:0.8}
 <!-- PÁGINA QUIÉNES SOMOS -->
 <div id="about-page" style="display:none;">
 <h2>QUIÉNES SOMOS</h2>
-<p>Somos una empresa dedicada a la venta de maquinaria a escala, juguetes y accesorios de la más alta calidad. Contamos con años de experiencia y miles de clientes satisfechos que confían en nosotros para llevar la mejor diversión y calidad a sus hogares.</p>
+<p>Somos una empresa dedicada a la venta de maquinaria a escala, juguetes y accesorios de la más alta calidad. Contamos con años de experiencia y miles de clientes satisfechos que confían en nosotros.</p>
 <br>
-<p>Nuestra misión es ofrecer productos que cumplen con los más altos estándares de seguridad y durabilidad. Trabajamos día a día para brindarte un excelente servicio y productos que superen tus expectativas. ¡Gracias por elegirnos!</p>
+<p>Nuestra misión es ofrecer productos que cumplen con los más altos estándares de seguridad y durabilidad, llevando diversión y calidad a tu hogar.</p>
 </div>
 
 <!-- PÁGINA CONTACTO -->
 <div id="contact-page" style="display:none;">
 <h2>CONTACTO</h2>
-<p>¿Tienes preguntas o necesitas más información? ¡Escríbenos!</p>
+<p>¿Tienes preguntas? ¡Escríbenos!</p>
 <br>
 <p><strong>📞 WhatsApp:</strong> +593 99 999 9999</p>
 <p><strong>📧 Email:</strong> info@tutienda.com</p>
-<p><strong>📍 Ubicación:</strong> Latacunga, Cotopaxi, Ecuador</p>
-<br>
-<p>Estamos listos para atenderte y ayudarte con tu compra.</p>
+<p><strong>📍 Ubicación:</strong> Latacunga, Ecuador</p>
 </div>
 
 </div>
@@ -327,13 +330,9 @@ document.addEventListener('DOMContentLoaded',()=>{const grid=document.getElement
 // SWIPE TACTIL
 let startX=0;
 document.getElementById('main-slider').addEventListener('touchstart',e=>{startX=e.touches[0].clientX;clearInterval(sliderAuto);});
-document.getElementById('main-slider').addEventListener('touchend',e=>{const endX=e.changedTouches[0].clientX;if(startX-endX>50)moveSlide(1);if(endX-startX>50)moveSlide(-1);startSlider();
-
-
-
-
-
-    </script>
+document.getElementById('main-slider').addEventListener('touchend',e=>{const endX=e.changedTouches[0].clientX;if(startX-endX>50)moveSlide(1);if(endX-startX>50)moveSlide(-1);startSlider();});
+</script>
 
 </body>
 </html>
+    
