@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,20 +30,20 @@
 <div id="home-page">
 <div class="offer-carousel" id="main-slider">
 <button class="carousel-arrow left" onclick="moveSlide(-1)">&#10094;</button>
+                                                                                                                       
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="offer-carousel-inner" id="carousel-inner">
+
+
+
+
+
+
+
+
+
+
+
+<div class="offer-carousel-inner" id="carousel-inner">
 <div class="offer-slide"><h2>LA MEJOR CALIDAD</h2><p>Materiales resistentes y acabados perfectos.</p><img src="https://via.placeholder.com/800x400/FFC107/111111?text=CALIDAD" alt="Calidad"><a href="#" class="offer-button" onclick="showPage('products')">VER CATÁLOGO</a></div>
 <div class="offer-slide"><h2>TIEMPOS DE ENTREGA RÁPIDO</h2><p>Recibe tus productos en tiempo record con seguridad.</p><img src="https://via.placeholder.com/800x400/212121/FFFFFF?text=ENVIO+RAPIDO" alt="Envío"><a href="#" class="offer-button" onclick="showPage('products')">COMPRAR AHORA</a></div>
 <div class="offer-slide"><h2>LA MEJOR ATENCIÓN</h2><p>Asesoramiento personalizado antes y después de la compra.</p><img src="https://via.placeholder.com/800x400/FFC107/111111?text=ATENCION" alt="Atención"><a href="#" class="offer-button" onclick="showPage('products')">CONÓCENOS</a></div>
@@ -118,7 +117,7 @@
 <div class="info-block">
 <p><strong>Teléfono / WhatsApp:</strong> +593 999 999 999</p>
 <p><strong>Email:</strong> info@tutienda.com</p>
-<p><strong>Dirección:</strong> Tu Ciudad, Ecuador</p>
+<p><strong>Dirección:</strong> Latacunga, Ecuador</p>
 <br>
 <p>¡Escríbenos y con gusto te atenderemos!</p>
 </div>
@@ -178,12 +177,14 @@
 document.addEventListener('keydown',function(e){if(e.key==="F12"||(e.ctrlKey&&e.shiftKey&&e.key==="I")||(e.ctrlKey&&e.shiftKey&&e.key==="J")||(e.ctrlKey&&e.key==="U")){e.preventDefault();return false;}});
 setInterval(function(){document.querySelectorAll('*').forEach(function(el){el.setAttribute('oncontextmenu','return false');});},1000);
 
-// VARIABLES
+// VARIABLES Y DATOS
 const products=[
 {id:1,name:"Cargador Frontal",price:45.50,category:"action",description:"Modelo a escala de alta calidad, ideal para coleccionistas y oficina.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=CARGADOR"]},
 {id:2,name:"Tractor con Remolque",price:62.00,category:"aventura",description:"Totalmente funcional, ruedas resistentes y gran diseño.",images:["https://via.placeholder.com/400x400/212121/FFC107?text=TRACTOR"]},
 {id:3,name:"Camión Volqueta",price:58.90,category:"action",description:"Detalle realista, cabina abatible y caja basculante.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=VOLQUETA"]},
-{id:4,name:"Excavadora RC",price:120.00,category:"aventura",description:"Control remoto profesional, movimientos hidráulicos reales.",images:["https://via.placeholder.com/400x400/111111/FFC107?text=EXCAVADORA"]}
+{id:4,name:"Excavadora RC",price:120.00,category:"aventura",description:"Control remoto profesional, movimientos hidráulicos reales.",images:["https://via.placeholder.com/400x400/111111/FFC107?text=EXCAVADORA"]},
+{id:5,name:"Set Juguete Niños",price:25.00,category:"musica",description:"Divertido set para los más pequeños, seguro y resistente.",images:["https://via.placeholder.com/400x400/FFC107/111111?text=JUGUETE"]},
+{id:6,name:"Kit Accesorios",price:15.00,category:"educativo",description:"Complementos perfectos para tus modelos y colecciones.",images:["https://via.placeholder.com/400x400/212121/FFFFFF?text=ACCESORIOS"]}
 ];
 
 let cart=[],currentSlide=0,currentId=null,currentDetail=0,sliderAuto;
@@ -195,7 +196,7 @@ function closeCart(){document.getElementById('cart-modal').classList.remove('act
 function openCheckout(){closeCart();document.getElementById('checkout-modal').classList.add('active');calculateTotals();}
 function closeCheckout(){document.getElementById('checkout-modal').classList.remove('active');}
 
-// SLIDER AUTOMATICO Y TACTIL
+// SLIDER PRINCIPAL
 function moveSlide(d){const s=document.querySelectorAll('.offer-slide');currentSlide+=d;if(currentSlide>=s.length)currentSlide=0;if(currentSlide<0)currentSlide=s.length-1;document.getElementById('carousel-inner').style.transform=`translateX(-${currentSlide*100}%)`;}
 function startSlider(){sliderAuto=setInterval(()=>{moveSlide(1);},4000);}
 startSlider();
@@ -212,12 +213,14 @@ function updateQty(id,qty){const it=cart.find(x=>x.id===id);it.quantity=parseInt
 function removeItem(id){cart=cart.filter(x=>x.id!==id);updateCounts();updateCart();}
 function calculateTotals(){const sub=cart.reduce((s,it)=>s+(it.price*it.quantity),0);document.getElementById('subtotal').textContent=`$${sub.toFixed(2)}`;document.getElementById('total').textContent=`$${(sub+5).toFixed(2)}`;}
 
-// ENVIAR WHATSAPP
-function sendOrder(e){e.preventDefault();const name=document.getElementById('name').value;const phone=document.getElementById('phone').value;const addr=document.getElementById('address').value;let msg=`🛒 *PEDIDO - TU MARCA*%0A%0A`;msg+=`👤 ${name}%0A📞 ${phone}%0A📍 ${addr}%0A%0A`;msg+=`📦 PRODUCTOS:%0A`;cart.forEach(it=>msg+=`• ${it.name} x${it.quantity} $${(it.price*it.quantity).toFixed(2)}%0A`);const total=cart.reduce((s,it)=>s+(it.price*it.quantity),0)+5;msg+=`%0A💵 TOTAL: $${total.toFixed(2)}`;window.open(`https://wa.me/593999999999?text=${msg}`,'_blank');cart=[];updateCounts();closeCheckout();alert('¡Pedido enviado!');}
+// ENVIAR PEDIDO
+function sendOrder(e){e.preventDefault();const name=document.getElementById('name').value;const phone=document.getElementById('phone').value;const addr=document.getElementById('address').value;let msg=`🛒 *PEDIDO - TU MARCA*%0A%0A`;msg+=`👤 ${name}%0A📞 ${phone}%0A📍 ${addr}%0A%0A`;msg+=`📦 PRODUCTOS:%0A`;cart.forEach(it=>msg+=`• ${it.name} x${it.quantity} $${(it.price*it.quantity).toFixed(2)}%0A`);const total=cart.reduce((s,it)=>s+(it.price*it.quantity),0)+5;msg+=`%0A💵 TOTAL: $${total.toFixed(2)}`;window.open(`https://wa.me/593999999999?text=${msg}`,'_blank');cart=[];updateCounts();closeCheckout();alert('¡Pedido enviado con éxito!');}
 
 // MOSTRAR PRODUCTOS
 function createProduct(p){const d=document.createElement('div');d.className='product-card';d.dataset.category=p.category;d.innerHTML=`<img src="${p.images[0]}"><h3>${p.name}</h3><div class="price">$${p.price.toFixed(2)}</div><div class="product-card-actions"><button class="details-button" onclick="viewDetail(${p.id})">VER MÁS</button><button class="buy-now-from-list-button" onclick="addToCart(${p.id})">AÑADIR</button></div>`;return d;}
-function viewDetail(id){currentId=id;const prod=products.find(x=>x.id===id);document.getElementById('detail-name').textContent=prod.name;document.getElementById('detail-price').textContent=`$${prod.price.toFixed(2)}`;document.getElementById('detail-description').textContent=prod.description;const track=document.getElementById('detail-slider-track');const thumbs=document.getElementById('detail-thumbnails-container');track.innerHTML='';thumbs.innerHTML='';currentDetail=0;prod.images.forEach((img,i)=>{const s=document.createElement('div');s.className='detail-slide';s.innerHTML=`<img src="${img}" class="detail-main-image">`;track.appendChild(s);const t=document.createElement('img');t.src=img;t.onclick=()=>moveDetail(i-currentDetail);thumbs.appendChild(t);});document.querySelectorAll('#home-page,#product-list-page,#product-detail-page').forEach(el=>el.style.display='none');document.getElementById('product-detail-page').style.display='block';}
+function viewDetail(id){currentId=id;const prod=products.find(x=>x.id===id);document.getElementById('detail-name').textContent=prod.name;document.getElementById('detail-price').textContent=`$${prod.price.toFixed(2)}`;document.getElementById('detail-description').textContent=prod.description;const track=document.getElementById('detail-slider-track');const thumbs=document.getElementById('detail-thumbnails-container');const video=document.getElementById('detail-video-container');track.innerHTML='';thumbs.innerHTML='';video.innerHTML='';currentDetail=0;prod.images.forEach((img,i)=>{const s=document.createElement('div');s.className='detail-slide';s.innerHTML=`<img src="${img}" class="detail-main-image">`;track.appendChild(s);const t=document.createElement('img');t.src=img;t.onclick=()=>moveDetail(i-currentDetail);if(i===0)t.classList.add('active-thumbnail');thumbs.appendChild(t);});showPage('detail');}
+
+// FILTRO CATEGORIAS - FUNCION CORREGIDA
 function filterProducts(cat){document.querySelectorAll('.categories-nav button').forEach(btn=>btn.classList.remove('active'));event.target.classList.add('active');document.querySelectorAll('.product-card').forEach(card=>{card.style.display=(cat==='all'||card.dataset.category===cat)?'flex':'none';});}
 
 // INICIALIZAR
@@ -232,4 +235,8 @@ document.getElementById('main-slider').addEventListener('touchend',e=>{const end
 </body>
 </html>
     
-   
+                                                                                                                       
+                                                                                                                       
+                                                                                                                       
+                                                                                                                       
+                                                                                                                       
