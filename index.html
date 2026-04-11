@@ -145,13 +145,14 @@ footer p{font-size:1em;opacity:0.8}
 <body oncontextmenu="return false;">
 
 <header>
-<a href="#" class="logo" onclick="showPage('home'); return false;"><i class="fas fa-truck"></i> TU MARCA</a>
+<header>
+<a href="#" class="logo" onclick="showPage('home')"><i class="fas fa-truck"></i> TU MARCA</a>
 <nav class="nav-menu">
 <ul>
-<li><a href="#" onclick="showPage('home'); return false;">Inicio</a></li>
-<li><a href="#" onclick="showPage('products'); return false;">Tienda</a></li>
-<li><a href="#" onclick="showPage('about'); return false;">Quiénes Somos</a></li>
-<li><a href="#" onclick="showPage('contact'); return false;">Contacto</a></li>
+<li><a href="#" onclick="showPage('home')">Inicio</a></li>
+<li><a href="#" onclick="showPage('products')">Tienda</a></li>
+<li><a href="#" onclick="showPage('about')">Quiénes Somos</a></li>
+<li><a href="#" onclick="showPage('contact')">Contacto</a></li>
 </ul>
 </nav>
 <div class="cart-icon" onclick="openCart()"><i class="fas fa-shopping-cart"></i><span class="cart-count" id="cart-count">0</span></div>
@@ -171,6 +172,19 @@ footer p{font-size:1em;opacity:0.8}
 </div>
 
 
+ 
+            <h1>Nuestra Selección Especial</h1>
+            <div class="categories-nav">
+                <button class="active" onclick="filterProducts('all')">Todos</button>
+                <button onclick="filterProducts('action')">Acción</button>
+                <button onclick="filterProducts('aventura')">Aventura</button>
+                <button onclick="filterProducts('musica')">Música</button>
+                <button onclick="filterProducts('educativo')">Educativos</button>
+            </div>
+
+            <div class="product-grid" id="home-product-grid"></div>
+        </div>
+
         <!-- PÁGINA DE LISTADO -->
         <div id="product-list-page" style="display: none;">
 
@@ -179,20 +193,18 @@ footer p{font-size:1em;opacity:0.8}
 
 
 
-
-
-<h1>NUESTRA COLECCIÓN</h1>
-<div class="categories-nav">
-<button class="active" onclick="filterProducts('all')">Todos</button>
-<button onclick="filterProducts('action')">Modelos a Escala</button>
-<button onclick="filterProducts('aventura')">Control Remoto</button>
-<button onclick="filterProducts('musica')">Juguetes</button>
-<button onclick="filterProducts('educativo')">Accesorios</button>
-</div>
-
-<div class="product-grid" id="product-grid"></div>
-</div>
-
+                        <h1>Nuestros Productos</h1>
+            <div class="categories-nav">
+                <button class="active" onclick="filterProducts('all')">Todos</button>
+                <button onclick="filterProducts('action')">Acción</button>
+                <button onclick="filterProducts('aventura')">Aventura</button>
+                <button onclick="filterProducts('musica')">Música</button>
+                <button onclick="filterProducts('educativo')">Educativos</button>
+            </div>
+            <div class="product-grid" id="main-product-grid">
+                <!-- Productos cargados por JS -->
+            </div>
+        </div>
 <!-- PÁGINA DETALLE -->
 <div id="detail-page" style="display:none;">
 <h2>DETALLE DEL PRODUCTO</h2>
