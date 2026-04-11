@@ -1,3 +1,5 @@
+
+    
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -58,7 +60,7 @@ h1{font-size:2.2em;text-align:center;margin-top:15px;background: var(--gradient)
 .carousel-arrow.left{left:15px}
 .carousel-arrow.right{right:15px}
 
-/* 📱 AQUÍ ESTÁ EL CAMBIO: SIEMPRE 3 PRODUCTOS EN CELULAR */
+/* CONFIGURADO PARA 3 PRODUCTOS EN CELULAR */
 .product-grid{display:grid;grid-template-columns: repeat(3, 1fr) !important; gap:10px !important;}
 
 .product-card{background:#fff;border:2px solid transparent;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.08);overflow:hidden;text-align:center;padding-bottom:10px;transition:all .3s ease;display:flex;flex-direction:column}
@@ -126,8 +128,7 @@ h1{font-size:2.2em;text-align:center;margin-top:15px;background: var(--gradient)
 .checkout-form label{display:block;margin-bottom:5px;font-weight:600;font-size:0.95em}
 .checkout-form input{width:100%;padding:12px;margin-bottom:15px;border:1px solid #ddd;border-radius:8px;font-size:1em}
 .checkout-form input:focus{border-color:var(--primary-color);outline:none;box-shadow:0 0 10px rgba(0,240,255,0.3)}
-.checkout-summary{background-color:#f8f8ff;border-radius:8px;padding:15px;margin-top:15px;font-size:0.95em;border:1px solid #eee}
-.checkout-summary div{display:flex;justify-content:space-between;margin-bottom:8px}
+.checkout-summary{background-color:#f8f8ff;border-radius:8px;padding:15px;margin-top:15px;font-size:0.95em;border:1px solid #
 
 
 
@@ -388,10 +389,15 @@ function filterProducts(category, buttonElement) {
 }
 
 function showDetails(title, price, mainImg, description, images, videoUrl) {
+    // PRIMERO MOSTRAR LA PÁGINA DE DETALLES
     document.getElementById('detail-page').style.display = 'flex';
     
     document.getElementById('detail-title').textContent = title;
     document.getElementById('detail-price').textContent = '$' + price;
+
+
+
+
 
 
 
@@ -430,6 +436,7 @@ function showDetails(title, price, mainImg, description, images, videoUrl) {
         toggleModal('cart-modal');
     };
 
+    // OCULTAR LAS DEMÁS SECCIONES PARA QUE SE VEA SOLO DETALLES
     document.getElementById('home-section').style.display = 'none';
     document.getElementById('about-page').style.display = 'none';
     document.getElementById('contact-page').style.display = 'none';
@@ -495,11 +502,11 @@ function toggleModal(id) {
     const modal = document.getElementById(id);
     modal.classList.toggle('active');
     if(id === 'cart-modal' && modal.classList.contains('active')) {
-        renderCart();
+        renderCartItems();
     }
 }
 
-function renderCart() {
+function renderCartItems() {
     const container = document.getElementById('cart-items-container');
     container.innerHTML = '';
     cart.forEach((item, idx) => {
@@ -511,8 +518,8 @@ function renderCart() {
                 <h4>${item.name}</h4>
                 <p>$${item.price.toFixed(2)}</p>
             </div>
-            <input type="number" value="${item.qty}" min="1" onchange="updateQty(${idx}, this.value)">
-            <button class="remove-from-cart" onclick="removeItem(${idx})"><i class="fas fa-trash"></i></button>
+            <input type="number" class="cart-item-quantity" value="${item.qty}" min="1" onchange="updateQty(${idx}, this.value)">
+            <button class="remove-from-cart" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button>
         `;
         container.appendChild(div);
     });
@@ -523,13 +530,13 @@ function renderCart() {
 function updateQty(index, qty) {
     cart[index].qty = parseInt(qty);
     updateCartCount();
-    renderCart();
+    renderCartItems();
 }
 
-function removeItem(index) {
+function removeFromCart(index) {
     cart.splice(index, 1);
     updateCartCount();
-    renderCart();
+    renderCartItems();
 }
 
 document.getElementById('proceed-to-checkout').onclick = () => {
@@ -547,19 +554,19 @@ function submitOrder(e) {
     const address = document.getElementById('address-input').value;
     const note = document.getElementById('note-input').value;
     
-    let msg = `Hola, quiero hacer un pedido:%0A%0A`;
+    let message = `Hola, quiero hacer un pedido:%0A%0A`;
     cart.forEach(item => {
-        msg += `${item.qty}x ${item.name} - $${(item.price * item.qty).toFixed(2)}%0A`;
+        message += `• ${item.qty}x ${item.name} - $${(item.price * item.qty).toFixed(2)}%0A`;
     });
     const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    msg += `%0ATotal: $${total.toFixed(2)}%0A%0A`;
-    msg += `Datos:%0ANombre: ${name}%0ATeléfono: ${phone}%0ADirección: ${address}%0ANota: ${note}`;
+    message += `%0ATotal: $${total.toFixed(2)}%0A%0A`;
+    message += `Datos:%0ANombre: ${name}%0ATeléfono: ${phone}%0ADirección: ${address}%0ANota: ${note}`;
     
-    window.open(`https://wa.me/593999999999?text=${msg}`);
+    window.open(`https://wa.me/593999999999?text=${message}`);
     cart = [];
     updateCartCount();
     toggleModal('checkout-modal');
-    alert('¡Pedido enviado por WhatsApp!');
+    alert('¡Gracias por tu compra! Te llevamos a WhatsApp.');
 }
 
 // INICIALIZAR
@@ -570,7 +577,7 @@ window.onload = () => {
 </script>
 </body>
 </html>
-    
+
 
 
 
