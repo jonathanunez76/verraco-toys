@@ -230,20 +230,32 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
 .whatsapp-fixed-button{position:fixed;bottom:15px;right:15px;background:#25D366;color:#fff;width:50px;height:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.8em;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:99}
 
+/* 💻 EN COMPUTADORA SE VE MÁS GRANDE */
 @media screen and (min-width: 768px) {
     body{font-size:18px}
     .logo{font-size:20px}
     .logo i{font-size:24px}
+
+     /* 📝 AQUÍ ESTÁ LO DE LAS LETRAS MÁS GRANDES */
     .nav-menu a{font-size:25px;padding:10px 16px}
     h1{font-size:2.2em}
-   .categories-nav button{font-size:14px;padding:8px 15px;white-space:nowrap;}
-   .categories-nav{justify-content:center;flex-wrap:wrap;gap:8px;}
+    
+   .categories-nav button{font-size:13px;padding:6px 12px;white-space:nowrap;}
+  .categories-nav{justify-content:center;flex-wrap:nowrap;gap:6px;}
+    
     .product-card h3{font-size:0.95em}
     .product-card .price{font-size:1.2em}
    .details-button, .buy-now-from-list-button{font-size:0.9em}
+
+ /* 🛒 AQUÍ LO NUEVO PARA EL CARRITO */
     .cart-icon {font-size: 40px !important;}
     .cart-count {font-size: 14px !important; padding: 3px 8px !important;}
-    .nav-menu ul{gap: 200px !important;}
+
+  /* 🔀 MÁS SEPARACIÓN ENTRE BOTONES DEL MENÚ */
+    .nav-menu ul{gap: 100px !important;}
+
+    
+ /* 🖼️ AQUÍ ESTÁ LO DEL CUADRO GRANDE */
     .offer-carousel { height: 550px !important; }
 }
 </style>
