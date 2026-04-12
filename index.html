@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -47,7 +47,7 @@ header{
 h1,h2,h3{color:var(--dark-color);margin-bottom:15px;font-weight:700}
 h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 
-/* ✅ BARRA DE CATEGORÍAS - CENTRADA Y ARREGLADA */
+/* ✅ BARRA DE CATEGORÍAS - ARREGLADA PARA QUE QUEDE CENTRADA EN PC */
 .categories-nav{
     background-color:var(--light-color);
     padding:8px;
@@ -55,8 +55,8 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     border-radius:8px;
     display:flex !important;
     flex-direction:row !important;
-    flex-wrap:nowrap !important;
-    justify-content:center !important;
+    flex-wrap:wrap !important;
+    justify-content:flex-start !important;
     gap:8px;
     overflow-x:auto !important;
     overflow-y:hidden !important;
@@ -166,7 +166,7 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .product-detail-info{flex:1 1 45%;min-width:280px;padding-left:10px}
 .product-detail-info .price{font-size:2em;color:var(--accent-color);font-weight:800;margin-bottom:10px}
 
-/* ✅ TEXTO UNO SOBRE OTRO */
+/* ✅ TEXTO UNO SOBRE OTRO - ARREGLADO */
 .product-detail-info p{font-size:1em;color:#555;margin-bottom:15px;line-height:1.6; white-space: pre-line;}
 
 .product-detail-actions{display:flex;gap:10px;margin-top:15px}
@@ -192,10 +192,11 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .modal-content{background:#fff;padding:25px;border-radius:15px;width:90%;max-width:500px;position:relative;border:2px solid var(--primary-color)}
 .close-button{color:#aaa;position:absolute;top:10px;right:15px;font-size:24px;font-weight:700;cursor:pointer}
 
-  
-  
-  
-  .close-button:hover{color:var(---dark-color}
+
+
+
+
+.close-button:hover{color:var(--dark-color)}
 .modal-content h2{text-align:center;color:var(--dark-color);font-size:1.5em}
 #cart-items-container{max-height:280px;overflow-y:auto;margin-bottom:15px}
 
@@ -228,14 +229,13 @@ footer p{margin:5px 0}
     .product-grid{grid-template-columns:1fr 1fr !important}
 }
 </style>
-                              
 
 
 
 
 
 
-</head>
+ </head>
 <body>
 
 <header>
@@ -250,7 +250,6 @@ footer p{margin:5px 0}
     <a href="#" class="cart-icon" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span class="cart-count" id="cart-count">0</span></a>
 </header>
 
-<!-- CARRUSEL DE OFERTAS -->
 <div class="offer-carousel">
     <div class="offer-carousel-inner" id="offer-track">
         <div class="offer-slide" style="background-image: url('');">
@@ -263,7 +262,6 @@ footer p{margin:5px 0}
     <button class="carousel-arrow right" onclick="moveCarousel(1)">&#10095;</button>
 </div>
 
-<!-- BARRA DE CATEGORÍAS -->
 <div class="categories-nav">
     <button class="category-button active" data-category="all">TODOS</button>
     <button class="category-button" data-category="excavadoras">EXCAVADORAS</button>
@@ -292,7 +290,6 @@ footer p{margin:5px 0}
         </div>
     </section>
 
-    <!-- PÁGINA DE DETALLES -->
     <div id="detail-page" style="display:none;">
         <h2 id="detail-title"></h2>
         <div class="product-detail-content">
@@ -317,7 +314,6 @@ footer p{margin:5px 0}
         </div>
     </div>
 
-    <!-- PÁGINA SOBRE NOSOTROS -->
     <div id="about-page" style="display:none;">
         <h2>Quiénes Somos</h2>
         <p>En Verraco Toys, somos más que una tienda de juguetes; somos creadores de sueños y facilitadores de sonrisas. Desde nuestra fundación en Ambato, Ecuador, nos hemos dedicado a ofrecer una selección única de juguetes teledirigidos, figuras coleccionables y juegos didácticos que inspiran la imaginación y fomentan el aprendizaje.</p>
@@ -333,7 +329,6 @@ footer p{margin:5px 0}
         </div>
     </div>
 
-    <!-- PÁGINA DE CONTACTO -->
     <div id="contact-page" style="display:none;">
         <h2>Contacto</h2>
         <p>Estamos aquí para ayudarte. Si tienes alguna pregunta, no dudes en comunicarte con nosotros.</p>
@@ -349,7 +344,6 @@ footer p{margin:5px 0}
     </div>
 </main>
 
-<!-- MODAL DEL CARRITO -->
 <div id="cart-modal" class="modal">
     <div class="modal-content">
         <span class="close-button" onclick="toggleModal('cart-modal')">&times;</span>
@@ -360,7 +354,6 @@ footer p{margin:5px 0}
     </div>
 </div>
 
-<!-- MODAL DE FINALIZAR COMPRA -->
 <div id="checkout-modal" class="modal">
     <div class="modal-content">
         <span class="close-button" onclick="toggleModal('checkout-modal')">&times;</span>
@@ -401,7 +394,6 @@ let currentSlide = 0;
 let currentDetailSlide = 0;
 let detailImagesArray = [];
 
-// FUNCIONES DEL CARRUSEL PRINCIPAL
 function moveCarousel(direction) {
     const track = document.getElementById('offer-track');
     const slides = track.children.length;
@@ -410,7 +402,6 @@ function moveCarousel(direction) {
 }
 setInterval(() => moveCarousel(1), 5000);
 
-// MOSTRAR SECCIONES
 function showSection(section) {
     document.getElementById('home-section').style.display = 'none';
     document.getElementById('detail-page').style.display = 'none';
@@ -430,7 +421,6 @@ function showSection(section) {
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// FILTRAR PRODUCTOS
 function filterProducts(category, buttonElement) {
     const cards = document.querySelectorAll('.product-card');
     cards.forEach(card => {
@@ -444,7 +434,6 @@ function filterProducts(category, buttonElement) {
     if(buttonElement) buttonElement.classList.add('active');
 }
 
-// ✅ FUNCIÓN VER DETALLES - ARREGLADA PARA VIMEO
 function showDetails(title, price, mainImg, description, images, videoUrl) {
     document.getElementById('home-section').style.display = 'none';
     document.getElementById('detail-page').style.display = 'block';
@@ -474,7 +463,6 @@ function showDetails(title, price, mainImg, description, images, videoUrl) {
     currentDetailSlide = 0;
     updateDetailSlide();
 
-    // ✅ CÓDIGO PARA VIMEO
     const videoContainer = document.getElementById('detail-video-container');
     if(videoUrl && videoUrl.length > 0) {
         let finalUrl = videoUrl;
@@ -512,13 +500,9 @@ function goToDetailSlide(index) {
     updateDetailSlide();
 }
 
-// SOPORTE TÁCTIL
 const sliderElement = document.getElementById('detail-slider');
 let startX = 0;
 let endX = 0;
-
-
-
 
 sliderElement.addEventListener('touchstart', e => {
     startX = e.changedTouches[0].screenX;
@@ -537,14 +521,14 @@ function handleSwipe() {
     }
 }
 
-// CARRITO
 let cart = [];
 
 function addToCart(name, price, img) {
     const item = cart.find(i => i.name === name);
     if(item) {
         item.qty++;
-    } else {
+    } else
+  {
         cart.push({name, price: parseFloat(price), img, qty: 1});
     }
     updateCartCount();
@@ -634,4 +618,5 @@ window.onload = () => {
 </script>
 </body>
 </html>
-  
+
+ 
