@@ -537,55 +537,69 @@ function filterProducts(category, buttonElement) {
     if(buttonElement) buttonElement.classList.add('active');
 }
 
-function showDetails(title, price, mainImg, description, images, videoUrl, stockStatus) {
+function showDetails(title, price, mainImg, description, images, videoUrl,stockStatus) {
+    document.getElementById('home-section').style.display = 'none';
+    document.getElementById('detail-page').style.display = 'block';
+    document.getElementById('about-page').style.display = 'none';
+    document.getElementById('contact-page').style.display = 'none';
+
     document.getElementById('detail-title').textContent = title;
-    document.getElementById('detail-price').textContent = price;
+   document.getElementById('detail-price').textContent = '$' + price + '   |   ' + stockStatus;
+document.getElementById('detail-price').style.textAlign = 'center';
+
+if(stockStatus == 'EN STOCK'){
+    document.getElementById('detail-price').style.color = 'green';
+} else {
     document.getElementById('detail-price').style.color = 'red';
+}
     document.getElementById('detail-description').innerHTML = description;
 
-    // Cargar imágenes
-    const imagesContainer = document.getElementById('detail-images');
-    imagesContainer.innerHTML = `<img src="${mainImg}" alt="${title}" style="width:100%; height:auto; margin-bottom:10px;">`;
-    if (images && images.length > 0) {
-        images.forEach(img => {
-            imagesContainer.innerHTML += `<img src="${img}" alt="${title}" style="width:100%; height:auto; margin-bottom:10px;">`;
-        });
-    }
+    
 
-    // Cargar video
+
+    detailImagesArray = [mainImg, ...images];
+    const track = document.getElementById('detail-slider-track');
+    const thumbs = document.getElementById('detail-thumbnails');
+    track.innerHTML = '';
+    thumbs.innerHTML = '';
+    detailImagesArray.forEach((img, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'detail-slide';
+        slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="">`;
+        track.appendChild(slide);
+        
+        const thumb = document.createElement('img');
+        thumb.src = img;
+        thumb.onclick = () => goToDetailSlide(index);
+        thumbs.appendChild(thumb);
+    });
+    currentDetailSlide = 0;
+    updateDetailSlide();
+
+
+    
     const videoContainer = document.getElementById('detail-video-container');
-    if (videoUrl) {
-        videoContainer.innerHTML = `<video controls style="width:100%; height:auto;"><source src="${videoUrl}" type="video/mp4">Tu navegador no soporta videos.</video>`;
+    if(videoUrl && videoUrl.length > 0) {
+        let finalUrl = videoUrl;
+        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+            const id = videoUrl.split('/').pop();
+            finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+        }
+        videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
     } else {
         videoContainer.innerHTML = '';
     }
 
-    // Botones y stock
-    document.querySelector('.details-buttons').style.display = 'flex';
-    document.getElementById('stock-status').textContent = stockStatus ? "✅ Producto disponible" : "❌ Agotado";
-    document.getElementById('stock-status').style.color = stockStatus ? "green" : "red";
-
+    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
+    document.getElementById('detail-buy-now-button').onclick = () => {
+        addToCart(title, price, mainImg);
+        toggleModal('cart-modal');
+    };
+    
     window.scrollTo({top: 0, behavior: 'smooth'});
 
-    // 🆕 ORDENAMOS SIN BORRAR NADA
-    const page = document.getElementById('detail-page');
-    const imagesDiv = document.getElementById('detail-images');
-    const videoDiv = document.getElementById('detail-video-container');
-    const descDiv = document.getElementById('detail-description');
-
-    // Creamos contenedor para imagen y video
-    const mediaBox = document.createElement('div');
-    mediaBox.style.display = 'flex';
-    mediaBox.style.gap = '20px';
-    mediaBox.style.width = '100%';
-
-    // Movemos imagen y video al contenedor
-    mediaBox.appendChild(imagesDiv);
-    mediaBox.appendChild(videoDiv);
-
-    // Insertamos el contenedor JUSTO ANTES de la descripción
-    page.insertBefore(mediaBox, descDiv);
 }
+
 function moveDetailSlide(direction) {
     currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
     updateDetailSlide();
