@@ -272,29 +272,33 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
  /* 🖼️ AQUÍ ESTÁ LO DEL CUADRO GRANDE */
     .offer-carousel { height: 550px !important; }
 
-
-  /* 🆕 AGREGAS ESTO AL FINAL */
-    .detail-content {
-        display: flex !important;
+    /* 🆕 PEGAS ESTO AQUÍ */
+    #detail-page {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
         gap: 20px !important;
         align-items: flex-start !important;
     }
 
-    .detail-images {
-        width: 50% !important;
+    #detail-images {
+        width: 100% !important;
     }
 
-    .detail-video {
-        width: 50% !important;
+    #detail-video {
+        width: 100% !important;
+        margin-top: 0 !important;
     }
 
-    .detail-description {
+    #detail-description,
+    #detail-price,
+    .details-buttons {
+        grid-column: 1 / -1 !important;
         width: 100% !important;
         margin-top: 20px !important;
     }
+    /* 🆕 HASTA AQUÍ */
 
-}
-    
+}  
 
 </style>
 </head>
