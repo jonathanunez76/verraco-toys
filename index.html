@@ -273,30 +273,25 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     .offer-carousel { height: 550px !important; }
 
     /* 🆕 PEGAS ESTO AQUÍ */
-    #detail-page {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 20px !important;
-        align-items: flex-start !important;
+     #detail-page {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
     }
 
-    #detail-images {
-        width: 100% !important;
+    .detail-images {
+        width: 48% !important;
     }
 
-    #detail-video {
-        width: 100% !important;
-        margin-top: 0 !important;
+    .detail-video {
+        width: 48% !important;
     }
 
-    #detail-description,
-    #detail-price,
-    .details-buttons {
-        grid-column: 1 / -1 !important;
+    #detail-description {
         width: 100% !important;
-        margin-top: 20px !important;
+        margin-top: 30px !important;
     }
-    /* 🆕 HASTA AQUÍ */
 
 }  
 
