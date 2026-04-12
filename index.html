@@ -597,6 +597,28 @@ if(stockStatus == 'EN STOCK'){
     };
     
     window.scrollTo({top: 0, behavior: 'smooth'});
+
+  // 🆕 AQUÍ EMPIEZA LO NUEVO
+    const page = document.getElementById('detail-page');
+    const imagesDiv = document.getElementById('detail-images');
+    const videoDiv = document.getElementById('detail-video');
+    const descDiv = document.getElementById('detail-description');
+
+    const mediaWrapper = document.createElement('div');
+    mediaWrapper.style.display = 'flex';
+    mediaWrapper.style.gap = '20px';
+    mediaWrapper.appendChild(imagesDiv);
+    mediaWrapper.appendChild(videoDiv);
+
+    page.innerHTML = '';
+    page.appendChild(mediaWrapper);
+    page.appendChild(descDiv);
+    // 🆕 HASTA AQUÍ
+
+} // <-- AQUÍ SE CIERRA LA FUNCIÓN
+
+
+    
 }
 
 function moveDetailSlide(direction) {
