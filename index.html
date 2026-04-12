@@ -545,7 +545,7 @@ function showDetails(title, price, mainImg, description, images, videoUrl) {
     updateDetailSlide();
 
     const videoContainer = document.getElementById('detail-video-container');
-    if(videoUrl && videoUrl.includes('embed')){
+   if(videoUrl && (videoUrl.includes('embed') || videoUrl.includes('vimeo')))
         videoContainer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
     } else {
         videoContainer.innerHTML = '';
