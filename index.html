@@ -533,9 +533,10 @@ function showDetails(title, price, mainImg, description, images, videoUrl,stockS
     document.getElementById('detail-page').style.display = 'block';
     document.getElementById('about-page').style.display = 'none';
     document.getElementById('contact-page').style.display = 'none';
-    
+
     document.getElementById('detail-title').textContent = title;
     document.getElementById('detail-price').textContent = '$' + price;
+    document.getElementById('detail-description').innerHTML = description;
 // ✅ AQUÍ AGREGAS LO DEL STOCK ✅
 document.getElementById('detail-stock').textContent = stockStatus;
 if(stockStatus === 'EN STOCK'){
@@ -547,7 +548,7 @@ if(stockStatus === 'EN STOCK'){
 
 
     
-    document.getElementById('detail-description').innerHTML = description;
+
 
     detailImagesArray = [mainImg, ...images];
     const track = document.getElementById('detail-slider-track');
