@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -48,7 +47,7 @@ header{
 h1,h2,h3{color:var(--dark-color);margin-bottom:15px;font-weight:700}
 h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 
-/* BARRA DE CATEGORÍAS */
+/* ✅ BARRA DE CATEGORÍAS - ARREGLADA PARA QUE QUEDE CENTRADA EN PC */
 .categories-nav{
     background-color:var(--light-color);
     padding:8px;
@@ -56,7 +55,7 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     border-radius:8px;
     display:flex !important;
     flex-direction:row !important;
-    flex-wrap:nowrap !important;
+    flex-wrap:wrap !important;
     justify-content:flex-start !important;
     gap:8px;
     overflow-x:auto !important;
@@ -110,25 +109,23 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .product-card h3{font-size:0.75em;margin:6px 4px;color:var(--dark-color);min-height:30px}
 .product-card .price{font-size:1em;color:var(--accent-color);font-weight:800;margin-bottom:4px}
 
-/* 🏷️ ETIQUETA DE DESCUENTO (ESQUINA IZQUIERDA) */
+/* 🏷️ ETIQUETA DE DESCUENTO */
 .discount-badge {
     position: absolute;
     top: 8px;
     left: 8px;
     background: var(--accent-color);
     color: #fff;
-    font-size: 0.6em; /* Más pequeña */
+    font-size: 0.6em;
     font-weight: 800;
-    padding: 2px 6px; /* Menos relleno */
+    padding: 2px 6px;
     border-radius: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     z-index: 5;
 }
 
-/* 📦 ETIQUETA DE STOCK (DEBAJO DEL PRECIO) */
-
 .stock-status {
-    font-size: 0.6em; /* Más pequeña */
+    font-size: 0.6em;
     font-weight: 800;
     padding: 2px 6px;
     border-radius: 10px;
@@ -169,7 +166,10 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .detail-video iframe{display:block;width:100%;height:auto;aspect-ratio:16/9}
 .product-detail-info{flex:1 1 45%;min-width:280px;padding-left:10px}
 .product-detail-info .price{font-size:2em;color:var(--accent-color);font-weight:800;margin-bottom:10px}
-.product-detail-info p{font-size:1em;color:#555;margin-bottom:15px;line-height:1.6}
+
+/* ✅ TEXTO UNO SOBRE OTRO - ARREGLADO */
+.product-detail-info p{font-size:1em;color:#555;margin-bottom:15px;line-height:1.6; white-space: pre-line;}
+
 .product-detail-actions{display:flex;gap:10px;margin-top:15px}
 .product-detail-actions button{flex:1;padding:12px 15px;border:none;border-radius:25px;font-size:1em;font-weight:700;cursor:pointer;transition:all .3s ease}
 #detail-add-to-cart-button{background:transparent;border:2px solid var(--primary-color);color:var(--primary-color)}
@@ -194,13 +194,14 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .close-button{color:#aaa;position:absolute;top:10px;right:15px;font-size:24px;font-weight:700;cursor:pointer}
 .close-button:hover{color:var(--dark-color)}
 .modal-content h2{text-align:center;color:var(--dark-color);font-size:1.5em}
-#cart-items-container{max-height:280px;overflow-y:auto;margin-bottom:12px}
 
     
     
     
     
     
+    #max-height:280px;overflow-y:auto;margin-bottom:12px}
+
 .cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;font-size:0.95em }
 .cart-item img{width:50px;height:50px;object-fit:cover;border-radius:8px}
 .cart-item-quantity{width:40px;padding:4px;border:1px solid #ddd;border-radius:4px;text-align:center;font-weight:700;font-size:1em}
@@ -223,32 +224,20 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
 .whatsapp-fixed-button{position:fixed;bottom:15px;right:15px;background:#25D366;color:#fff;width:50px;height:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.8em;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:99}
 
-/* 💻 EN COMPUTADORA SE VE MÁS GRANDE */
 @media screen and (min-width: 768px) {
     body{font-size:18px}
     .logo{font-size:20px}
     .logo i{font-size:24px}
-
-     /* 📝 AQUÍ ESTÁ LO DE LAS LETRAS MÁS GRANDES */
     .nav-menu a{font-size:25px;padding:10px 16px}
     h1{font-size:2.2em}
-    
    .categories-nav button{font-size:13px;padding:5px 10px;white-space:nowrap;}
    .categories-nav{justify-content:center;flex-wrap:wrap;gap:8px;}
-    
     .product-card h3{font-size:0.95em}
     .product-card .price{font-size:1.2em}
    .details-button, .buy-now-from-list-button{font-size:0.9em}
-
- /* 🛒 AQUÍ LO NUEVO PARA EL CARRITO */
     .cart-icon {font-size: 40px !important;}
     .cart-count {font-size: 14px !important; padding: 3px 8px !important;}
-
-  /* 🔀 MÁS SEPARACIÓN ENTRE BOTONES DEL MENÚ */
     .nav-menu ul{gap: 200px !important;}
-
-    
- /* 🖼️ AQUÍ ESTÁ LO DEL CUADRO GRANDE */
     .offer-carousel { height: 550px !important; }
 }
 </style>
@@ -310,7 +299,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
          <button onclick="filterProducts('rcc', this)">AVIONES RC</button>
          <button onclick="filterProducts('rccc', this)">MOTOS COLECCIONABLES </button>
          <button onclick="filterProducts('rcccc', this)">PISTOLAS DE BURBUJAS </button>
-         <button onclick="filterProducts('rccccc', this)">PISTOLAS DEAGUA </button>
+         <button onclick="filterProducts('rccccc', this)">PISTOLAS DE AGUA </button>
         <button onclick="filterProducts('oferta', this)">🔥 Ofertas</button>
     </div>
 
@@ -319,10 +308,10 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
             <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true" alt="CRAWLER RC FORD BRONCO ">
             <h3>WLTOYS  104020 FORD BRONCO</h3>
             <div class="price">$550</div>
-            <div class="stock-status in-stock">EN STOCK</div                                   
+            <div class="stock-status in-stock">EN STOCK</div>                                   
             <div class="product-card-actions">
-                  <button class="details-button" onclick="showDetails('Excavadora Control Remoto', '120.00', 'https://via.placeholder.com/300', 'Funcionalidad completa con control remoto de alta frecuencia.', ['https://via.placeholder.com/300', 'https://via.placeholder.com/300'], 'https://www.youtube.com/embed/dQw4w9WgXcQ')">VER DETALLES</button>
-                <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
+                <button class="details-button" onclick="showDetails('CRAWLER RC FORD BRONCO', '550',   'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true',['ESCALA: 1:8', 'CARROCERÍA: PLÁSTICO ABS DURADERO', 'INCLUYE: EL PAQUETE ORIGINAL BOX, BATERÍAS, INSTRUCCIONES DE FUNCIONAMIENTO, CONTROLADOR REMOTO, CABLE USB, OTROS', 'TRANSMISIÓN: METAL (4WD)', 'AMORTIGUACIÓN: AMORTIGUADORES METÁLICOS DE ALTA TENACIDAD', 'RUEDAS: CAUCHO RESISTENTE AL DESGASTE', 'BATERIA: LIPO 11.1V (Polímero de Litio)', 'CONTROL de 2.4GHz', 'VELOCIDAD: 100 KM/H', 'CHASIS: PLACA DE ALUMINIO', 'FUENTE DE ALIMENTACION: ELECTRICO', 'ESTADO DEL EMBALAJE: LISTO PARA USAR', 'MATERIAL: METAL, PLÁSTICO', 'RANGO DE EDAD: DE 8 A 13 AÑOS, 14 AÑOS Y HASTA'], 'https://www.youtube.com/embed/dQw4w9WgXcQ')">VER DETALLES</button>
+                <button class="buy-now-from-list-button" onclick="addToCart('CRAWLER RC FORD BRONCO', '550', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true')">AÑADIR</button>
             </div>
         </div>
 
@@ -389,36 +378,38 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
 <div id="about-page">
     <h2>Quiénes Somos</h2>
-   
-                <p>En Verraco Toys, somos más que una tienda de juguetes; somos creadores de sueños y facilitadores de sonrisas. Desde nuestra fundación en Ambato, Ecuador, nos hemos dedicado a ofrecer una selección única de juguetes teledirigidos, figuras coleccionables y juegos didácticos que inspiran la imaginación y fomentan el aprendizaje.</p>
-                <p>Nuestra misión es proporcionar productos de alta calidad que no solo entretengan, sino que también contribuyan al desarrollo de habilidades en niños y jóvenes. Creemos firmemente en el poder del juego para educar, innovar y unir a las familias.</p>
-                <p>Cada juguete en nuestro catálogo es cuidadosamente seleccionado, asegurando que cumpla con los más altos estándares de seguridad y durabilidad. Nos enorgullece ser un referente en el mercado local, gracias a la confianza y la alegría que hemos compartido con nuestros clientes.</p>
-                <p>¡Únete a la familia Verraco Toys y descubre un mundo de diversión y aventura!</p>
-       
+    <p>En Verraco Toys, somos más que una tienda de juguetes; somos creadores de sueños y facilitadores de sonrisas. Desde nuestra fundación en Ambato, Ecuador, nos hemos dedicado a ofrecer una selección única de juguetes teledirigidos, figuras coleccionables y juegos didácticos que inspiran la imaginación y fomentan el aprendizaje.</p>
+    <p>Nuestra misión es proporcionar productos de alta calidad que no solo entretengan, sino que también contribuyan al desarrollo de habilidades en niños y jóvenes. Creemos firmemente en el poder del juego para educar, innovar y unir a las familias.</p>
+    <p>Cada juguete en nuestro catálogo es cuidadosamente seleccionado, asegurando que cumpla con los más altos estándares de seguridad y durabilidad. Nos enorgullece ser un referente en el mercado local, gracias a la confianza y la alegría que hemos compartido con nuestros clientes.</p>
+    <p>¡Únete a la familia Verraco Toys y descubre un mundo de diversión y aventura!</p>
     <div class="info-block">
-        <h3>Nuestros Valores</h3>
-        <ul>
-            <li><i class="fas fa-check-circle"></i> Compromiso con la calidad</li>
-            <li><i class="fas fa-check-circle"></i> Responsabilidad y honestidad</li>
-            <li><i class="fas fa-check-circle"></i> Innovación constante</li>
-            <li><i class="fas fa-check-circle"></i> Atención personalizada</li>
-        </ul>
-    </div>
-</div>
+        <h3>Nuestros Valores</h3
 
-<div id="contact-page">
-    <h2>Contacto</h2>
-    <p>Estamos aquí para ayudarte. Si tienes alguna pregunta, no dudes en comunicarte con nosotros.</p>
-    <div class="info-block">
-        <h3>Información de Contacto</h3>
+        
+        
+        
         <ul>
-            <li><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Ambato, Ecuador</li>
-            <li><i class="fas fa-phone"></i> <strong>Teléfono:</strong> +593 963 057 078</li>
-            <li><i class="fas fa-envelope"></i> <strong>Email:</strong> verracotoys45@gmail.com</li>
-            <li><i class="fas fa-clock"></i> <strong>Horario:</strong> Lunes a Viernes 9:00 AM - 7:00 PM</li>
-        </ul>
+                <li><i class="fas fa-check-circle"></i> Compromiso con la calidad</li>
+                <li><i class="fas fa-check-circle"></i> Responsabilidad y honestidad</li>
+                <li><i class="fas fa-check-circle"></i> Innovación constante</li>
+                <li><i class="fas fa-check-circle"></i> Atención personalizada</li>
+            </ul>
+        </div>
     </div>
-</div>
+
+    <div id="contact-page">
+        <h2>Contacto</h2>
+        <p>Estamos aquí para ayudarte. Si tienes alguna pregunta, no dudes en comunicarte con nosotros.</p>
+        <div class="info-block">
+            <h3>Información de Contacto</h3>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Ambato, Ecuador</li>
+                <li><i class="fas fa-phone"></i> <strong>Teléfono:</strong> +593 963 057 078</li>
+                <li><i class="fas fa-envelope"></i> <strong>Email:</strong> verracotoys45@gmail.com</li>
+                <li><i class="fas fa-clock"></i> <strong>Horario:</strong> Lunes a Viernes 9:00 AM - 7:00 PM</li>
+            </ul>
+        </div>
+    </div>
 
 </div>
 
@@ -451,10 +442,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
                 <div class="total"><span>TOTAL:</span><span id="summary-total">$0.00</span></div>
             </div>
             <button type="submit" id="confirm-checkout">CONFIRMAR COMPRA</button>
-
-
-
-  </form>
+        </form>
     </div>
 </div>
 
@@ -462,7 +450,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
 <footer>
     <h3>BERRACOTOYS</h3>
-    <p>© 2025 BERRACOTOYS.  Todos los derechos reservados.</p>
+    <p>©️ 2025 BERRACOTOYS. Todos los derechos reservados.</p>
     <div class="social-links">
         <a href="https://facebook.com/TU_PAGINA" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://instagram.com/TU_PERFIL" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -545,8 +533,13 @@ function showDetails(title, price, mainImg, description, images, videoUrl) {
     updateDetailSlide();
 
     const videoContainer = document.getElementById('detail-video-container');
-    if(videoUrl && videoUrl.includes('embed')){
-        videoContainer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+    if(videoUrl && videoUrl.length > 0) {
+        let finalUrl = videoUrl;
+        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+            const id = videoUrl.split('/').pop();
+            finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+        }
+        videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
     } else {
         videoContainer.innerHTML = '';
     }
@@ -576,7 +569,6 @@ function goToDetailSlide(index) {
     updateDetailSlide();
 }
 
-// SOPORTE TÁCTIL
 const sliderElement = document.getElementById('detail-slider');
 let startX = 0;
 let endX = 0;
@@ -598,7 +590,6 @@ function handleSwipe() {
     }
 }
 
-// CARRITO
 let cart = [];
 
 function addToCart(name, price, img) {
@@ -694,5 +685,5 @@ window.onload = () => {
 };
 </script>
 </body>
-</html>         
-        
+</html>
+    
