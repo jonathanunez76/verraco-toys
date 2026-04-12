@@ -582,24 +582,7 @@ function showDetails(title, price, mainImg, description, images, videoUrl,stockS
     
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
-// ✅ CÓDIGO NUEVO PARA STOCK ✅
-if(stockStatus === 'DISPONIBLE'){
-    document.getElementById('detail-add-to-cart-button').disabled = false;
-    document.getElementById('detail-add-to-cart-button').style.opacity = '1';
-    document.getElementById('detail-add-to-cart-button').textContent = 'AÑADIR AL CARRITO';
 
-    document.getElementById('detail-buy-now-button').disabled = false;
-    document.getElementById('detail-buy-now-button').style.opacity = '1';
-    document.getElementById('detail-buy-now-button').textContent = 'COMPRAR AHORA';
-} else {
-    document.getElementById('detail-add-to-cart-button').disabled = true;
-    document.getElementById('detail-add-to-cart-button').style.opacity = '0.5';
-    document.getElementById('detail-add-to-cart-button').textContent = 'AGOTADO';
-
-    document.getElementById('detail-buy-now-button').disabled = true;
-    document.getElementById('detail-buy-now-button').style.opacity = '0.5';
-    document.getElementById('detail-buy-now-button').textContent = 'NO DISPONIBLE';
-}
 function moveDetailSlide(direction) {
     currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
     updateDetailSlide();
