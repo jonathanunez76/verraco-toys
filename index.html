@@ -567,28 +567,24 @@ function showDetails(title, price, mainImg, description, images, videoUrl, stock
 
     window.scrollTo({top: 0, behavior: 'smooth'});
 
-    // 🆕 ORDENAMOS: IMAGEN Y VIDEO ARRIBA, DESCRIPCIÓN ABAJO
+    // 🆕 ORDENAMOS SIN BORRAR NADA
     const page = document.getElementById('detail-page');
     const imagesDiv = document.getElementById('detail-images');
     const videoDiv = document.getElementById('detail-video-container');
     const descDiv = document.getElementById('detail-description');
-    const priceDiv = document.getElementById('detail-price');
-    const buttonsDiv = document.querySelector('.details-buttons');
 
-    // Juntamos imagen y video
+    // Creamos contenedor para imagen y video
     const mediaBox = document.createElement('div');
     mediaBox.style.display = 'flex';
     mediaBox.style.gap = '20px';
     mediaBox.style.width = '100%';
+
+    // Movemos imagen y video al contenedor
     mediaBox.appendChild(imagesDiv);
     mediaBox.appendChild(videoDiv);
 
-    // Limpiamos y armamos TODO en orden
-    page.innerHTML = '';
-    page.appendChild(mediaBox);    // 👈 ARRIBA: Imagen y Video
-    page.appendChild(priceDiv);   // 👈 LUEGO: Precio
-    page.appendChild(descDiv);    // 👈 LUEGO: Descripción
-    page.appendChild(buttonsDiv); // 👈 AL FINAL: Botones
+    // Insertamos el contenedor JUSTO ANTES de la descripción
+    page.insertBefore(mediaBox, descDiv);
 }
 function moveDetailSlide(direction) {
     currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
