@@ -321,7 +321,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
             <div class="price">$550</div>
             <div class="stock-status in-stock">EN STOCK</div                                   
             <div class="product-card-actions">
-                 <button class="details-button" onclick="showDetails('Excavadora Control Remoto', '120.00', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', 'Funcionalidad completa con control remoto de alta frecuencia.', ['https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H646cfe20de6a43388b9179776970ffbdY%20(1).jpg?raw=true'], 'https://player.vimeo.com/video/1177095678?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479')">VER DETALLES</button>
+                 <button class="details-button" onclick="showDetails('Excavadora Control Remoto', '120.00', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', 'Funcionalidad completa con control remoto de alta frecuencia.', ['https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H646cfe20de6a43388b9179776970ffbdY%20(1).jpg?raw=true'], 'https://player.vimeo.com/video/1177095678?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;embed')">VER DETALLES</button>
                 <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
             </div>
         </div>
@@ -545,7 +545,7 @@ function showDetails(title, price, mainImg, description, images, videoUrl) {
     updateDetailSlide();
 
     const videoContainer = document.getElementById('detail-video-container');
-   if(videoUrl && (videoUrl.includes('embed') || videoUrl.includes('vimeo')))
+   if(videoUrl && videoUrl.includes('embed'))
         videoContainer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
     } else {
         videoContainer.innerHTML = '';
