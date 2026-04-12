@@ -1,5 +1,4 @@
-
-              <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -48,7 +47,7 @@ header{
 h1,h2,h3{color:var(--dark-color);margin-bottom:15px;font-weight:700}
 h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 
-/* BARRA DE CATEGORÍAS - ARREGLADA PARA QUE ENTREN TODAS LAS LETRAS */
+/* ✅ BARRA DE CATEGORÍAS - CENTRADA Y ARREGLADA */
 .categories-nav{
     background-color:var(--light-color);
     padding:8px;
@@ -57,7 +56,7 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     display:flex !important;
     flex-direction:row !important;
     flex-wrap:nowrap !important;
-    justify-content:flex-start !important;
+    justify-content:center !important;
     gap:8px;
     overflow-x:auto !important;
     overflow-y:hidden !important;
@@ -68,8 +67,7 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 }
 @media screen and (min-width: 768px) {
     .categories-nav{
-        justify-content:flex-start !important;
-        flex-wrap:nowrap !important;
+        justify-content:center !important;
     }
 }
 .categories-nav::-webkit-scrollbar {display:none}
@@ -167,7 +165,10 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .detail-video iframe{display:block;width:100%;height:auto;aspect-ratio:16/9}
 .product-detail-info{flex:1 1 45%;min-width:280px;padding-left:10px}
 .product-detail-info .price{font-size:2em;color:var(--accent-color);font-weight:800;margin-bottom:10px}
-.product-detail-info p{font-size:1em;color:#555;margin-bottom:15px;line-height:1.6; white-space: pre-line;} /* AQUÍ SE ARREGLA LO DE 1 SOBRE OTRO */
+
+/* ✅ TEXTO UNO SOBRE OTRO */
+.product-detail-info p{font-size:1em;color:#555;margin-bottom:15px;line-height:1.6; white-space: pre-line;}
+
 .product-detail-actions{display:flex;gap:10px;margin-top:15px}
 .product-detail-actions button{flex:1;padding:12px 15px;border:none;border-radius:25px;font-size:1em;font-weight:700;cursor:pointer;transition:all .3s ease}
 #detail-add-to-cart-button{background:transparent;border:2px solid var(--primary-color);color:var(--primary-color)}
@@ -189,53 +190,61 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;background-color:rgba(15,15,30,0.7);justify-content:center;align-items:center}
 .modal.active{display:flex}
 .modal-content{background:#fff;padding:25px;border-radius:15px;width:90%;max-width:500px;position:relative;border:2px solid var(--primary-color)}
-.close-button{color:#aaa;position:absolute;top:10px;right:10px;font-size:2em;font-weight:bold}
-.close-button:hover,.close-button:focus{color:#000;text-decoration:none;cursor:pointer}
-.modal-body{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.close-button{color:#aaa;position:absolute;top:10px;right:15px;font-size:24px;font-weight:700;cursor:pointer}
 
-    
+  
+  
+  
+  .close-button:hover{color:var(---dark-color}
+.modal-content h2{text-align:center;color:var(--dark-color);font-size:1.5em}
+#cart-items-container{max-height:280px;overflow-y:auto;margin-bottom:15px}
+
+.modal-image{flex:1 1 300px;text-align:center}
+.modal-image img{max-width:100%;border-radius:10px}
+.modal-info{flex:1 1 300px}
+.modal-info h3{color:var(--dark-color);margin-bottom:10px;font-size:1.5em}
+.modal-info .price{font-size:1.8em;color:var(--accent-color);font-weight:800;margin:10px 0}
+.modal-info p{color:#555;line-height:1.6;margin-bottom:15px; white-space: pre-line;}
+.modal-info ul{list-style:none;padding:0}
+.modal-info li{background:#f8f8ff;padding:8px;margin-bottom:5px;border-radius:8px;color:var(--dark-color)}
+.modal-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.modal-button{padding:10px 20px;border:none;border-radius:25px;font-weight:700;cursor:pointer;transition:all .3s ease;text-decoration:none;display:inline-block}
+.modal-button.primary{background: var(--gradient);color:#000}
+.modal-button.secondary{background:transparent;border:2px solid var(--primary-color);color:var(--primary-color)}
+
+footer{background:var(--dark-color);color:#fff;text-align:center;padding:15px;margin-top:auto;font-size:0.9em}
+footer p{margin:5px 0}
+.social-links{margin-top:10px}
+.social-links a{color:var(--primary-color);font-size:1.5em;margin:0 10px;transition:color .3s ease}
+.social-links a:hover{color:var(--accent-color)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    header{flex-direction:column;gap:10px;text-align:center}
+    .nav-menu ul{justify-content:center}
+    .product-grid{grid-template-columns: repeat(2, 1fr) !important;}
+}
+@media(max-width:480px){
+    .product-grid{grid-template-columns:1fr 1fr !important}
+}
+</style>
+                              
 
 
-        .modal-image{flex:1 1 300px;text-align:center}
-        .modal-image img{max-width:100%;border-radius:10px}
-        .modal-info{flex:1 1 300px}
-        .modal-info h3{color:var(--dark-color);margin-bottom:10px;font-size:1.5em}
-        .modal-info .price{font-size:1.8em;color:var(--accent-color);font-weight:800;margin:10px 0}
-        .modal-info p{color:#555;line-height:1.6;margin-bottom:15px; white-space: pre-line;}
-        .modal-info ul{list-style:none;padding:0}
-        .modal-info li{background:#f8f8ff;padding:8px;margin-bottom:5px;border-radius:8px;color:var(--dark-color)}
-        .modal-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
-        .modal-button{padding:10px 20px;border:none;border-radius:25px;font-weight:700;cursor:pointer;transition:all .3s ease;text-decoration:none;display:inline-block}
-        .modal-button.primary{background: var(--gradient);color:#000}
-        .modal-button.secondary{background:transparent;border:2px solid var(--primary-color);color:var(--primary-color)}
 
-        footer{background:var(--dark-color);color:#fff;text-align:center;padding:15px;margin-top:auto;font-size:0.9em}
-        footer p{margin:5px 0}
-        .social-links{margin-top:10px}
-        .social-links a{color:var(--primary-color);font-size:1.5em;margin:0 10px;transition:color .3s ease}
-        .social-links a:hover{color:var(--accent-color)}
 
-        /* RESPONSIVE */
-        @media(max-width:768px){
-            header{flex-direction:column;gap:10px;text-align:center}
-            .nav-menu ul{justify-content:center}
-            .product-grid{grid-template-columns: repeat(2, 1fr) !important;}
-        }
-        @media(max-width:480px){
-            .product-grid{grid-template-columns:1fr 1fr !important}
-        }
-    </style>
+
+
 </head>
 <body>
 
 <header>
-    <a href="#" class="logo" onclick="showSection('products')"><i class="fas fa-truck-loading"></i> BERRACOTOYS</a>
+    <a href="#" class="logo" onclick="showSection('home')"><i class="fas fa-truck-loading"></i> BERRACOTOYS</a>
     <nav class="nav-menu">
         <ul>
-            <li><a href="#" class="nav-link active" onclick="showSection('products')">INICIO</a></li>
+            <li><a href="#" class="nav-link active" onclick="showSection('home')">INICIO</a></li>
             <li><a href="#" class="nav-link" onclick="showSection('about')">NOSOTROS</a></li>
             <li><a href="#" class="nav-link" onclick="showSection('contact')">CONTACTO</a></li>
-            <li><a href="#" class="nav-link" onclick="showSection('products')">PRODUCTOS</a></li>
         </ul>
     </nav>
     <a href="#" class="cart-icon" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span class="cart-count" id="cart-count">0</span></a>
@@ -243,13 +252,15 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 
 <!-- CARRUSEL DE OFERTAS -->
 <div class="offer-carousel">
-    <div class="offer-carousel-inner">
+    <div class="offer-carousel-inner" id="offer-track">
         <div class="offer-slide" style="background-image: url('');">
             <h2>¡BIENVENIDOS!</h2>
             <p>La mejor calidad en maquinaria y juguetes a tu alcance.</p>
-            <a href="#" class="offer-button" onclick="showSection('products')">VER CATÁLOGO</a>
+            <a href="#" class="offer-button" onclick="showSection('home')">VER CATÁLOGO</a>
         </div>
     </div>
+    <button class="carousel-arrow left" onclick="moveCarousel(-1)">&#10094;</button>
+    <button class="carousel-arrow right" onclick="moveCarousel(1)">&#10095;</button>
 </div>
 
 <!-- BARRA DE CATEGORÍAS -->
@@ -265,11 +276,10 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 </div>
 
 <main class="container">
-    <section id="products-section">
+    <section id="home-section">
         <h1>NUESTROS PRODUCTOS</h1>
         <div class="product-grid" id="product-list">
 
-            <!-- PRODUCTO ARREGLADO CON VIMEO Y TEXTO UNO SOBRE OTRO -->
             <div class="product-card" data-category="vehiculos">
                 <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec8-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true" alt="Crawler">
                 <h3>CRAWLER RC FORD BRONCO</h3>
@@ -288,11 +298,12 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
         <div class="product-detail-content">
             <div class="product-detail-images">
                 <div class="detail-image-slider" id="detail-slider">
-                    <div class="detail-slider-track" id="detail-track"></div>
-                    <button class="detail-slider-arrow detail-arrow-left" id="detail-arrow-left">&#10094;</button>
-                    <button class="detail-slider-arrow detail-arrow-right" id="detail-arrow-right">&#10095;</button>
+                    <div class="detail-slider-track" id="detail-slider-track"></div>
+                    <button class="detail-slider-arrow detail-arrow-left" onclick="moveDetailSlide(-1)">&#10094;</button>
+                    <button class="detail-slider-arrow detail-arrow-right" onclick="moveDetailSlide(1)">&#10095;</button>
                 </div>
                 <div class="detail-thumbnails" id="detail-thumbnails"></div>
+                <div class="detail-video" id="detail-video-container"></div>
             </div>
             <div class="product-detail-info">
                 <div class="price" id="detail-price"></div>
@@ -301,31 +312,38 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
                     <button id="detail-add-to-cart-button">AGREGAR AL CARRITO</button>
                     <button id="detail-buy-now-button">COMPRAR AHORA</button>
                 </div>
+                <a href="#" id="back-to-products-button" onclick="showSection('home')">VOLVER A TIENDA</a>
             </div>
         </div>
-        <a href="#" id="back-to-products-button" onclick="showSection('products')">VOLVER A PRODUCTOS</a>
     </div>
 
     <!-- PÁGINA SOBRE NOSOTROS -->
     <div id="about-page" style="display:none;">
-        <h2>SOBRE NOSOTROS</h2>
-        <p>Somos una empresa dedicada a la venta de maquinaria y juguetes a control remoto de la más alta calidad.</p>
+        <h2>Quiénes Somos</h2>
+        <p>En Verraco Toys, somos más que una tienda de juguetes; somos creadores de sueños y facilitadores de sonrisas. Desde nuestra fundación en Ambato, Ecuador, nos hemos dedicado a ofrecer una selección única de juguetes teledirigidos, figuras coleccionables y juegos didácticos que inspiran la imaginación y fomentan el aprendizaje.</p>
+        <p>Nuestra misión es proporcionar productos de alta calidad que no solo entretengan, sino que también contribuyan al desarrollo de habilidades en niños y jóvenes. Creemos firmemente en el poder del juego para educar, innovar y unir a las familias.</p>
         <div class="info-block">
-            <h3>Nuestra Misión</h3>
-            <p>Llevar diversión y tecnología a todas las edades con productos resistentes y funcionales.</p>
+            <h3>Nuestros Valores</h3>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Compromiso con la calidad</li>
+                <li><i class="fas fa-check-circle"></i> Responsabilidad y honestidad</li>
+                <li><i class="fas fa-check-circle"></i> Innovación constante</li>
+                <li><i class="fas fa-check-circle"></i> Atención personalizada</li>
+            </ul>
         </div>
     </div>
 
     <!-- PÁGINA DE CONTACTO -->
     <div id="contact-page" style="display:none;">
-        <h2>CONTACTO</h2>
-        <p>¿Tienes preguntas? ¡Escríbenos!</p>
+        <h2>Contacto</h2>
+        <p>Estamos aquí para ayudarte. Si tienes alguna pregunta, no dudes en comunicarte con nosotros.</p>
         <div class="info-block">
-            <h3>Redes Sociales y Ubicación</h3>
+            <h3>Información de Contacto</h3>
             <ul>
-                <li><i class="fab fa-whatsapp"></i> WhatsApp: +593 999999999</li>
-                <li><i class="fab fa-instagram"></i> Instagram: @verracotoys</li>
-                <li><i class="fas fa-map-marker-alt"></i> Ubicación: Latacunga, Ecuador</li>
+                <li><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Ambato, Ecuador</li>
+                <li><i class="fas fa-phone"></i> <strong>Teléfono:</strong> +593 963 057 078</li>
+                <li><i class="fas fa-envelope"></i> <strong>Email:</strong> verracotoys45@gmail.com</li>
+                <li><i class="fas fa-clock"></i> <strong>Horario:</strong> Lunes a Viernes 9:00 AM - 7:00 PM</li>
             </ul>
         </div>
     </div>
@@ -334,162 +352,286 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 <!-- MODAL DEL CARRITO -->
 <div id="cart-modal" class="modal">
     <div class="modal-content">
-        <span class="close-button" id="close-cart">&times;</span>
-        <h2>TU CARRITO</h2>
-        <div id="cart-items"></div>
-        <h3 id="cart-total"></h3>
-        <div class="modal-actions">
-            <button class="modal-button secondary" id="clear-cart">VACIAR CARRITO</button>
-            <button class="modal-button primary" id="checkout">FINALIZAR COMPRA</button>
-        </div>
+        <span class="close-button" onclick="toggleModal('cart-modal')">&times;</span>
+        <h2>Tu Carrito</h2>
+        <div id="cart-items-container"></div>
+        <div class="cart-total">Total: <span id="cart-total">$0.00</span></div>
+        <button id="proceed-to-checkout">PROCEDER A PAGAR</button>
     </div>
 </div>
 
+<!-- MODAL DE FINALIZAR COMPRA -->
+<div id="checkout-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="toggleModal('checkout-modal')">&times;</span>
+        <h2>Finalizar Compra</h2>
+        <form class="checkout-form" onsubmit="submitOrder(event)">
+            <label>Nombre Completo</label>
+            <input type="text" id="name-input" required>
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="phone-input" required>
+            <label>Dirección de Envío</label>
+            <input type="text" id="address-input" required>
+            <label>Referencia / Nota</label>
+            <input type="text" id="note-input">
+            <div class="checkout-summary">
+                <div><span>Subtotal:</span><span id="summary-subtotal">$0.00</span></div>
+                <div><span>Envío:</span><span id="summary-shipping">$6.00</span></div>
+                <div class="total"><span>TOTAL:</span><span id="summary-total">$0.00</span></div>
+            </div>
+            <button type="submit" id="confirm-checkout">CONFIRMAR COMPRA</button>
+        </form>
+    </div>
+</div>
+
+<a href="https://wa.me/593963057078" target="_blank" class="whatsapp-fixed-button"><i class="fab fa-whatsapp"></i></a>
+
 <footer>
-    <p>&copy; 2025 BERRACOTOYS - Todos los derechos reservados</p>
+    <h3>BERRACOTOYS</h3>
+    <p>©️ 2025 BERRACOTOYS. Todos los derechos reservados.</p>
     <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com/TU_PAGINA" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/TU_PERFIL" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
 </footer>
 
 <script>
-    let cart = [];
-    let currentSlide = 0;
+let currentSlide = 0;
+let currentDetailSlide = 0;
+let detailImagesArray = [];
 
-    // MOSTRAR SECCIONES
-    function showSection(sectionId) {
-        document.getElementById('products-section').style.display = sectionId === 'products' ? 'block' : 'none';
-        document.getElementById('detail-page').style.display = 'none';
-        document.getElementById('about-page').style.display = sectionId === 'about' ? 'block' : 'none';
-        document.getElementById('contact-page').style.display = sectionId === 'contact' ? 'block' : 'none';
-        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-        if(sectionId === 'products') document.querySelector('.nav-link').classList.add('active');
+// FUNCIONES DEL CARRUSEL PRINCIPAL
+function moveCarousel(direction) {
+    const track = document.getElementById('offer-track');
+    const slides = track.children.length;
+    currentSlide = (currentSlide + direction + slides) % slides;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+setInterval(() => moveCarousel(1), 5000);
+
+// MOSTRAR SECCIONES
+function showSection(section) {
+    document.getElementById('home-section').style.display = 'none';
+    document.getElementById('detail-page').style.display = 'none';
+    document.getElementById('about-page').style.display = 'none';
+    document.getElementById('contact-page').style.display = 'none';
+
+    if(section === 'home') {
+        document.getElementById('home-section').style.display = 'block';
+    } else if(section === 'about') {
+        document.getElementById('about-page').style.display = 'block';
+    } else if(section === 'contact') {
+        document.getElementById('contact-page').style.display = 'block';
     }
+    
+    const nav = document.querySelector('.categories-nav');
+    if(nav) nav.scrollLeft = 0;
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
 
-    // ✅ FUNCIÓN VER DETALLES ARREGLADA PARA VIMEO
-    function showDetails(nombre, precio, imagen, descripcion, features, medios) {
-        document.getElementById('detail-title').textContent = nombre;
-        document.getElementById('detail-price').textContent = '$' + precio;
-        document.getElementById('detail-description').textContent = descripcion;
-
-        const track = document.getElementById('detail-track');
-        const thumbs = document.getElementById('detail-thumbnails');
-        track.innerHTML = '';
-        thumbs.innerHTML = '';
-
-        if(medios && medios.length > 0) {
-            medios.forEach((src, index) => {
-                // ✅ AQUÍ RECONOCE VIMEO
-                if(src.includes('player.vimeo.com')) {
-                    const slide = document.createElement('div');
-                    slide.className = 'detail-slide';
-                    slide.innerHTML = `<iframe src="${src}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>`;
-                    track.appendChild(slide);
-                } else {
-                    const slide = document.createElement('div');
-                    slide.className = 'detail-slide';
-                    slide.innerHTML = `<img src="${src}" alt="${nombre}" class="detail-main-image">`;
-                    track.appendChild(slide);
-                }
-
-                const thumb = document.createElement('img');
-                thumb.src = src;
-                thumb.onclick = () => goToSlide(index);
-                thumbs.appendChild(thumb);
-            });
+// FILTRAR PRODUCTOS
+function filterProducts(category, buttonElement) {
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+        if (category === 'all') {
+            card.style.display = 'flex';
         } else {
-            const slide = document.createElement('div');
-            slide.className = 'detail-slide';
-            slide.innerHTML = `<img src="${imagen}" alt="${nombre}" class="detail-main-image">`;
-            track.appendChild(slide);
+            card.style.display = card.dataset.category.includes(category) ? 'flex' : 'none';
         }
+    });
+    document.querySelectorAll('.categories-nav button').forEach(btn => btn.classList.remove('active'));
+    if(buttonElement) buttonElement.classList.add('active');
+}
 
-        document.getElementById('products-section').style.display = 'none';
-        document.getElementById('detail-page').style.display = 'block';
-        currentSlide = 0;
-        updateSlider();
+// ✅ FUNCIÓN VER DETALLES - ARREGLADA PARA VIMEO
+function showDetails(title, price, mainImg, description, images, videoUrl) {
+    document.getElementById('home-section').style.display = 'none';
+    document.getElementById('detail-page').style.display = 'block';
+    document.getElementById('about-page').style.display = 'none';
+    document.getElementById('contact-page').style.display = 'none';
+    
+    document.getElementById('detail-title').textContent = title;
+    document.getElementById('detail-price').textContent = '$' + price;
+    document.getElementById('detail-description').textContent = description;
+
+    detailImagesArray = [mainImg, ...images];
+    const track = document.getElementById('detail-slider-track');
+    const thumbs = document.getElementById('detail-thumbnails');
+    track.innerHTML = '';
+    thumbs.innerHTML = '';
+    detailImagesArray.forEach((img, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'detail-slide';
+        slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="">`;
+        track.appendChild(slide);
+        
+        const thumb = document.createElement('img');
+        thumb.src = img;
+        thumb.onclick = () => goToDetailSlide(index);
+        thumbs.appendChild(thumb);
+    });
+    currentDetailSlide = 0;
+    updateDetailSlide();
+
+    // ✅ CÓDIGO PARA VIMEO
+    const videoContainer = document.getElementById('detail-video-container');
+    if(videoUrl && videoUrl.length > 0) {
+        let finalUrl = videoUrl;
+        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+            const id = videoUrl.split('/').pop();
+            finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+        }
+        videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+    } else {
+        videoContainer.innerHTML = '';
     }
 
-    // FUNCIONES DEL SLIDER
-    function updateSlider() {
-        const track = document.getElementById('detail-track');
-        track.style.transform = `translateX(-${currentSlide * 100}%)`;
-        document.querySelectorAll('.detail-thumbnails img').forEach((img, idx) => {
-            img.classList.toggle('active-thumbnail', idx === currentSlide);
-        });
-    }
-    function goToSlide(index) {
-        currentSlide = index;
-        updateSlider();
-    }
-    document.getElementById('detail-arrow-left').addEventListener('click', () => {
-        if(currentSlide > 0) {
-            currentSlide--;
-            updateSlider();
-        }
-    });
-    document.getElementById('detail-arrow-right').addEventListener('click', () => {
-        const slides = document.querySelectorAll('#detail-track .detail-slide').length;
-        if(currentSlide < slides - 1) {
-            currentSlide++;
-            updateSlider();
-        }
-    });
-
-    // CARRITO
-    document.getElementById('cart-toggle').addEventListener('click', () => {
-        document.getElementById('cart-modal').classList.add('active');
-        renderCart();
-    });
-    document.getElementById('close-cart').addEventListener('click', () => {
-        document.getElementById('cart-modal').classList.remove('active');
-    });
-
-    function renderCart() {
-        const container = document.getElementById('cart-items');
-        const totalEl = document.getElementById('cart-total');
-        container.innerHTML = '';
-        let total = 0;
-        if(cart.length === 0) {
-            container.innerHTML = '<p>El carrito está vacío</p>';
-            totalEl.textContent = '';
-        } else {
-            cart.forEach((item, idx) => {
-                total += parseFloat(item.precio);
-                const div = document.createElement('div');
-                div.innerHTML = `<p>${item.nombre} - $${item.precio}</p>`;
-                container.appendChild(div);
-            });
-            totalEl.textContent = `Total: $${total.toFixed(2)}`;
-        }
-        document.getElementById('cart-count').textContent = cart.length;
-    }
-
-    document.getElementById('clear-cart').addEventListener('click', () => {
-        cart = [];
-        renderCart();
-    });
-
-    document.getElementById('checkout').addEventListener('click', () => {
-        if(cart.length === 0) {
-            alert('El carrito está vacío');
-            return;
-        }
-        alert('Compra finalizada. ¡Gracias!');
-        cart = [];
-        renderCart();
-        document.getElementById('cart-modal').classList.remove('active');
-    });
-
-    // INICIALIZAR
-    window.onload = function() {
-        showSection('products');
+    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
+    document.getElementById('detail-buy-now-button').onclick = () => {
+        addToCart(title, price, mainImg);
+        toggleModal('cart-modal');
     };
-</script>
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
 
+function moveDetailSlide(direction) {
+    currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
+    updateDetailSlide();
+}
+function updateDetailSlide() {
+    const track = document.getElementById('detail-slider-track');
+    track.style.transform = `translateX(-${currentDetailSlide * 100}%)`;
+    document.querySelectorAll('.detail-thumbnails img').forEach((img, idx) => {
+        img.classList.toggle('active-thumbnail', idx === currentDetailSlide);
+    });
+}
+function goToDetailSlide(index) {
+    currentDetailSlide = index;
+    updateDetailSlide();
+}
+
+// SOPORTE TÁCTIL
+const sliderElement = document.getElementById('detail-slider');
+let startX = 0;
+let endX = 0;
+
+
+
+
+sliderElement.addEventListener('touchstart', e => {
+    startX = e.changedTouches[0].screenX;
+});
+
+sliderElement.addEventListener('touchend', e => {
+    endX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    if (startX - endX > 50) {
+        moveDetailSlide(1);
+    } else if (endX - startX > 50) {
+        moveDetailSlide(-1);
+    }
+}
+
+// CARRITO
+let cart = [];
+
+function addToCart(name, price, img) {
+    const item = cart.find(i => i.name === name);
+    if(item) {
+        item.qty++;
+    } else {
+        cart.push({name, price: parseFloat(price), img, qty: 1});
+    }
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById('cart-count').textContent = count;
+}
+
+function toggleModal(id) {
+    const modal = document.getElementById(id);
+    modal.classList.toggle('active');
+    if(id === 'cart-modal' && modal.classList.contains('active')) {
+        renderCart();
+    }
+}
+
+function renderCart() {
+    const container = document.getElementById('cart-items-container');
+    container.innerHTML = '';
+    cart.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+            <img src="${item.img}" alt="${item.name}">
+            <div>
+                <h4>${item.name}</h4>
+                <p>$${item.price.toFixed(2)}</p>
+            </div>
+            <input type="number" class="cart-item-quantity" value="${item.qty}" min="1" onchange="updateQty(${idx}, this.value)">
+            <button class="remove-from-cart" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button>
+        `;
+        container.appendChild(div);
+    });
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+}
+
+function updateQty(index, qty) {
+    cart[index].qty = parseInt(qty);
+    updateCartCount();
+    renderCart();
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartCount();
+    renderCart();
+}
+
+document.getElementById('proceed-to-checkout').onclick = () => {
+    toggleModal('cart-modal');
+    toggleModal('checkout-modal');
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    document.getElementById('summary-subtotal').textContent = '$' + total.toFixed(2);
+    document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
+};
+
+function submitOrder(e) {
+    e.preventDefault();
+    const name = document.getElementById('name-input').value;
+    const phone = document.getElementById('phone-input').value;
+    const address = document.getElementById('address-input').value;
+    const note = document.getElementById('note-input').value;
+    
+    let msg = `Hola, quiero hacer un pedido:%0A%0A`;
+    cart.forEach(item => {
+        msg += `${item.qty}x ${item.name} - $${(item.price * item.qty).toFixed(2)}%0A`;
+    });
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    msg += `%0ATotal: $${total.toFixed(2)}%0A%0A`;
+    msg += `Datos:%0ANombre: ${name}%0ATeléfono: ${phone}%0ADirección: ${address}%0ANota: ${note}`;
+    
+    window.open(`https://wa.me/593963057078?text=${msg}`);
+    cart = [];
+    updateCartCount();
+    toggleModal('checkout-modal');
+    alert('¡Pedido enviado por WhatsApp!');
+}
+
+// INICIALIZAR
+window.onload = () => {
+    showSection('home');
+    updateCartCount();
+};
+</script>
 </body>
 </html>
-
-              
+  
