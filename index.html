@@ -554,8 +554,15 @@ if(stockStatus == 'EN STOCK'){
 }
     document.getElementById('detail-description').innerHTML = description;
 document.getElementById('detail-description').style.lineHeight = '1.5';
-document.getElementById('detail-images').style.maxHeight = '45%';
-document.getElementById('detail-video-container').style.maxHeight = '55%';
+// 🆕 SOLO ESTO PARA QUE APAREZCAN Y SE VEAN CHIQUITAS
+document.getElementById('detail-images').style.width = '45%';
+document.getElementById('detail-images').style.height = 'auto';
+document.getElementById('detail-images').style.display = 'block';
+
+document.getElementById('detail-video-container').style.width = '100%';
+document.getElementById('detail-video-container').style.height = 'auto';
+document.getElementById('detail-video-container').style.display = 'block';
+
 
 
 
