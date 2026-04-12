@@ -554,14 +554,15 @@ if(stockStatus == 'EN STOCK'){
 }
     document.getElementById('detail-description').innerHTML = description;
 document.getElementById('detail-description').style.lineHeight = '1.5';
-// 🆕 SOLO ESTO PARA QUE APAREZCAN Y SE VEAN CHIQUITAS
+// PARA QUE APAREZCAN LAS IMÁGENES
+document.getElementById('detail-images').style.display = 'flex';
 document.getElementById('detail-images').style.width = '45%';
-document.getElementById('detail-images').style.height = 'auto';
-document.getElementById('detail-images').style.display = 'block';
+document.getElementById('detail-images').style.minHeight = '300px';
 
-document.getElementById('detail-video-container').style.width = '100%';
-document.getElementById('detail-video-container').style.height = 'auto';
+// PARA QUE APAREZCA EL VIDEO
 document.getElementById('detail-video-container').style.display = 'block';
+document.getElementById('detail-video-container').style.width = '100%';
+document.getElementById('detail-video-container').style.minHeight = '200px';
 
 
 
