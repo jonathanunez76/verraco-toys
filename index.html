@@ -254,8 +254,22 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     .nav-menu a{font-size: 18px;padding:8px 100px}
     h1{font-size:2.2em}
     
-   .categories-nav button{font-size:20px;padding:40px 60px}
-  .categories-nav{justify-content:center;flex-wrap:nowrap;gap:50px;}
+   ..categories-nav button{
+  font-size: 22px !important; /* ¡Este es el que hace las letras grandes y forzadas! */
+  padding: 8px 15px; /* Relleno razonable para que el botón no sea excesivamente grande */
+  white-space: nowrap; /* Mantiene el texto en una sola línea */
+  border: 1px solid #ccc; /* Agregando un borde para que se vea como botón */
+  border-radius: 15px; /* Bordes redondeados */
+  background-color: #f0f0f0; /* Color de fondo claro */
+  color: #333; /* Color de texto oscuro para contraste */
+}
+ .categories-nav{
+  display: flex; /* Para que los botones se coloquen uno al lado del otro */
+  justify-content:center; /* Centra los botones horizontalmente */
+  flex-wrap:nowrap; /* Evita que los botones salten a la siguiente línea */
+  gap:20px; /* Espacio entre cada botón de categoría */
+  overflow-x: auto; /* Permite desplazamiento horizontal si hay demasiados botones */
+}
     
     .product-card h3{font-size:0.95em}
     .product-card .price{font-size:1.2em}
