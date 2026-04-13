@@ -553,16 +553,7 @@ if(stockStatus == 'EN STOCK'){
     document.getElementById('detail-price').style.color = 'red';
 }
     document.getElementById('detail-description').innerHTML = description;
-document.getElementById('detail-description').style.lineHeight = '1.5';
-// PARA QUE APAREZCAN LAS IMÁGENES
-document.getElementById('detail-images').style.display = 'flex';
-document.getElementById('detail-images').style.width = '45%';
-document.getElementById('detail-images').style.minHeight = '300px';
-
-// PARA QUE APAREZCA EL VIDEO
-document.getElementById('detail-video-container').style.display = 'block';
-document.getElementById('detail-video-container').style.width = '100%';
-document.getElementById('detail-video-container').style.minHeight = '200px';
+document.getElementById('detail-description').style.lineHeight = '100%';
 
 
 
@@ -575,7 +566,7 @@ document.getElementById('detail-video-container').style.minHeight = '200px';
     detailImagesArray.forEach((img, index) => {
         const slide = document.createElement('div');
         slide.className = 'detail-slide';
-        slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="">`;
+          slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="" style="width:100%; height:auto; max-height:400px; object-fit:contain;">``;
         track.appendChild(slide);
         
         const thumb = document.createElement('img');
