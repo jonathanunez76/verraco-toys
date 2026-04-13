@@ -109,12 +109,12 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .product-grid{display:grid;grid-template-columns: repeat(3, 1fr) !important; gap:8px !important;}
 
 .product-card{background:#fff;border:2px solid transparent;border-radius:12px;box-shadow:0 3px 8px rgba(0,0,0,0.08);overflow:hidden;text-align:center;padding-bottom:10px;transition:all .3s ease;display:flex;flex-direction:column;}
-
+    
 .product-card:hover{transform:translateY(-3px);box-shadow:0 6px 15px rgba(0,240,255,0.2);border-color: var(--primary-color)}
 
     
-.product-card img{width:100%;height:auto;min-height:180px;object-fit:contain;display:block;margin:0 auto;padding:8px}    
-.product-card h3{font-size:0.75em;margin:6px 4px;color:var(--dark-color);min-height:30px}
+.product-card img{width:100%;height:auto;min-height:180px;object-fit:contain;display:block;margin:0 auto;padding:8px}
+    .product-card h3{font-size:0.75em;margin:6px 4px;color:var(--dark-color);min-height:30px}
 .product-card .price{font-size:1em;color:var(--accent-color);font-weight:800;margin-bottom:4px}
 
 /* 🏷️ ETIQUETA DE DESCUENTO */
@@ -277,6 +277,53 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
  
 }  
+
+
+
+  /* ***** AJUSTES PARA EL CUADRO DEL PRODUCTO (la "tarjeta" completa) EN PANTALLAS GRANDES ***** */
+  .product-card{
+    /* Mantenemos estas propiedades porque ya las tenías y aseguran un buen layout flexbox */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ¡IMPORTANTE! Esto distribuye el contenido y evita que se vea apretado */
+    align-items: center;
+
+    /* --- AQUÍ ES DONDE REDUCIMOS LA ALTURA DEL CUADRO EN LA COMPUTADORA --- */
+    /* Empieza con 400px como altura mínima del cuadro */
+    min-height: 400px;
+    /* Y 450px como altura máxima para que no se estire demasiado */
+    max-height: 450px;
+
+    /* Puedes ajustar este padding si quieres más o menos espacio en los bordes del cuadro */
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* ***** AJUSTES PARA LA IMAGEN DENTRO DEL CUADRO EN PANTALLAS GRANDES ***** */
+  .product-card img{
+    width: 100%;       /* Mantenemos el 100% de ancho */
+    height: auto;      /* Mantenemos altura automática */
+    object-fit: contain; /* Mantenemos object-fit: contain para que la imagen quepa */
+    display: block;
+    margin: 0 auto;
+    padding: 8px;      /* Puedes ajustar este padding si la imagen se ve muy pegada */
+
+    /* --- AQUI AJUSTAMOS LA ALTURA MÍNIMA DE LA IMAGEN PARA QUE CUBRA EL ~75% DEL CUADRO --- */
+    /* Si el cuadro tiene 400px de min-height, el 75% es 300px. */
+    /* Prueba con 300px. Si quieres la imagen más pequeña, baja este valor. */
+    min-height: 300px;
+    /* Para que no se estire de más, ajustamos también una max-height */
+    max-height: 330px; /* Un poco más que el min-height, para dar flexibilidad */
+  }
+
+}
+
+
+
+
+
+
+    
 
 </style>
 </head>
