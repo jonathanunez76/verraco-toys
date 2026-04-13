@@ -566,8 +566,7 @@ document.getElementById('detail-description').style.lineHeight = '100%';
     detailImagesArray.forEach((img, index) => {
         const slide = document.createElement('div');
      slide.className = 'detail-slide';
-    slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="">`;
-    track.appendChild(slide);
+    slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="" style="width:80%; margin:auto; display:block;">`;
         
         const thumb = document.createElement('img');
         thumb.src = img;
