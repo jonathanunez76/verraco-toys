@@ -303,16 +303,11 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
   .product-card img{
     width: 115%;       /* Mantenemos el 100% de ancho */
     height: auto;      /* Mantenemos altura automática */
-    object-fit: contain; /* Mantenemos object-fit: contain para que la imagen quepa */
+    object-fit: cover; /* Mantenemos object-fit: contain para que la imagen quepa */
     display: block;
     margin: 0 auto;
     padding: 8px;      /* Puedes ajustar este padding si la imagen se ve muy pegada */
- min-height: 300px;
-max-height: 330px;
 
-
-
-      
     /* --- AQUI AJUSTAMOS LA ALTURA MÍNIMA DE LA IMAGEN PARA QUE CUBRA EL ~75% DEL CUADRO --- */
     /* Si el cuadro tiene 400px de min-height, el 75% es 300px. */
     /* Prueba con 300px. Si quieres la imagen más pequeña, baja este valor. */
