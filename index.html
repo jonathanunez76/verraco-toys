@@ -413,8 +413,26 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     padding: 3px 0; /* <--- Reducimos el padding interno del botón */
    font-size: 0.6em; /* <--- Letra más pequeña para los botones */
   }
+  /* Adaptación a móviles */
+        @media (max-width: 468px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
 
-}
+            .search-bar {
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-banner h1 {
+                font-size: 2rem;
+            }
+        }
 </style>
 </head>
 <body>
