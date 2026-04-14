@@ -555,9 +555,459 @@ footer p{margin:0}
     <!-- Mensaje de Alerta -->
     <div id="alert-message" class="alert-message"></div>
 
-    <script>
-        // EL CÓDIGO JAVASCRIPT VA AQUÍ (en la siguiente respuesta)
-    </script>
+ <script>
+let currentSlide = 0;
+let currentDetailSlide = 0;
+let detailImagesArray = [];
+let products = []; // Array para almacenar tus productos
+
+// Función para mover el carrusel principal
+function moveCarousel(direction) {
+    const track = document.getElementById('offer-track');
+    if (!track) return;
+    const slides = track.children.length;
+    currentSlide = (currentSlide + direction + slides) % slides;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+// Intervalo para el carrusel automático
+setInterval(() => moveCarousel(1), 5000);
+
+// Función para mostrar secciones (Inicio, Nosotros, Contacto, Detalles)
+function showSection(section) {
+    document.getElementById('home-section').style.display = 'none';
+    document.getElementById('detail-page').style.display = 'none';
+    document.getElementById('about-page').style.display = 'none';
+    document.getElementById('contact-page').style.display = 'none';
+
+    if(section === 'home') {
+        document.getElementById('home-section').style.display = 'block';
+        filterProducts('all', document.querySelector('.categories-nav button:first-child')); // Asegura que se muestren todos al volver a Home
+    } else if(section === 'about') {
+        document.getElementById('about-page').style.display = 'block';
+    } else if(section === 'contact') {
+        document.getElementById('contact-page').style.display = 'block';
+    }
+    
+    // Resetea el scroll de categorías y lleva al inicio de la página
+    const nav = document.querySelector('.categories-nav');
+    if(nav) nav.scrollLeft = 0;
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Función para filtrar productos por categoría
+function filterProducts(category, buttonElement) {
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+        if (category === 'all') {
+            card.style.display = 'flex';
+        } else {
+            // Asegúrate de que los datos de categoría en el HTML sean consistentes (ej. "maquinaria,electronicos")
+            const productCategories = card.dataset.category ? card.dataset.category.split(',') : [];
+            card.style.display = productCategories.includes(category) ? 'flex' : 'none';
+        }
+    });
+    // Actualiza la clase activa de los botones de categoría
+    document.querySelectorAll('.categories-nav button').forEach(btn => btn.classList.remove('active'));
+    if(buttonElement) buttonElement.classList.add('active');
+}
+
+// Función para mostrar los detalles de un producto
+function showDetails(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) {
+        console.error('Producto no encontrado:', productId);
+        return;
+    }
+
+    document.getElementById('home-section').style.display = 'none';
+    document.getElementById('detail-page').style.display = 'block';
+    document.getElementById('about-page').style.display = 'none';
+    document.getElementById('contact-page').style.display = 'none';
+
+    document.getElementById('detail-title').textContent = product.name;
+    
+    // Formato del precio y stock
+    const detailPriceElement = document.getElementById('detail-price');
+    const stockClass = product.stockStatus === 'EN STOCK' ? 'in-stock' : 'out-of-stock';
+    detailPriceElement.innerHTML = `<span>$${parseFloat(product.price).toFixed(2)}</span> <span class="stock-status ${stockClass}">${product.stockStatus}</span>`;
+    
+    document.getElementById('detail-description').innerHTML = product.description;
+    
+    detailImagesArray = [product.image, ...product.additionalImages];
+    const track = document.getElementById('detail-slider-track');
+    const thumbs = document.getElementById('detail-thumbnails');
+    track.innerHTML = '';
+    thumbs.innerHTML = '';
+
+    detailImagesArray.forEach((img, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'detail-slide';
+        slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="${product.name}">`;
+        track.appendChild(slide);
+        
+        const thumb = document.createElement('img');
+        thumb.src = img;
+        thumb.alt = `Miniatura ${index + 1} de ${product.name}`;
+        thumb.onclick = () => goToDetailSlide(index);
+        thumbs.appendChild(thumb);
+    });
+    currentDetailSlide = 0;
+    updateDetailSlide();
+
+    const videoContainer = document.getElementById('detail-video-container');
+    if (product.videoUrl && product.videoUrl.length > 0) {
+        let finalUrl = '';
+        if (product.videoUrl.includes('vimeo.com/') && !product.videoUrl.includes('player.vimeo.com')) {
+            // Vimeo
+            const id = product.videoUrl.split('/').pop();
+            finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+        } else if (product.videoUrl.includes('youtube.com/watch?v=')) {
+            // YouTube (watch?v=)
+            const url = new URL(product.videoUrl);
+            const videoId = url.searchParams.get('v');
+            finalUrl = `https://www.youtube.com/embed/${videoId}`;
+        } else if (product.videoUrl.includes('youtu.be/')) {
+            // YouTube (youtu.be/)
+            const videoId = product.videoUrl.split('youtu.be/')[1].split('?')[0];
+            finalUrl = `https://www.youtube.com/embed/${videoId}`;
+        } else if (product.videoUrl.includes('drive.google.com/file/d/')) {
+            // ✅ Google Drive
+            const idMatch = product.videoUrl.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+            if (idMatch && idMatch[1]) {
+                const fileId = idMatch[1];
+                // Esta es la URL de embed más fiable para Google Drive
+                finalUrl = `https://drive.google.com/file/d/${fileId}/preview`; 
+            } else {
+                console.warn('No se pudo extraer el ID del archivo de Google Drive de la URL:', product.videoUrl);
+            }
+        }
+        
+        if (finalUrl) {
+            // Si es un video de Google Drive, el iframe puede necesitar ajustes específicos
+            let iframeHtml = '';
+            if (product.videoUrl.includes('drive.google.com/file/d/')) {
+                iframeHtml = `<iframe src="${finalUrl}" width="100%" height="auto" style="border: none;" allowfullscreen></iframe>`;
+            } else {
+                iframeHtml = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+            }
+            videoContainer.innerHTML = iframeHtml;
+        } else {
+            videoContainer.innerHTML = '';
+        }
+    } else {
+        videoContainer.innerHTML = '';
+    }
+
+    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(product.id, product.name, product.price, product.image);
+    // Enlace directo a WhatsApp con el producto
+    const whatsappMessage = encodeURIComponent(`Hola, me interesa el producto "${product.name}" ($${parseFloat(product.price).toFixed(2)}).`);
+    document.getElementById('detail-buy-now-button').onclick = () => window.open(`https://wa.me/593987654321?text=${whatsappMessage}`, '_blank');
+
+    window.scrollTo({top: 0, behavior: 'smooth'}); // Vuelve al inicio de la página de detalles
+}
+
+// Funciones para el slider de imágenes de detalles
+function moveDetailSlide(direction) {
+    const track = document.getElementById('detail-slider-track');
+    const slides = detailImagesArray.length;
+    currentDetailSlide = (currentDetailSlide + direction + slides) % slides;
+    updateDetailSlide();
+}
+
+function goToDetailSlide(index) {
+    currentDetailSlide = index;
+    updateDetailSlide();
+}
+
+function updateDetailSlide() {
+    const track = document.getElementById('detail-slider-track');
+    const thumbs = document.querySelectorAll('.detail-thumbnails img');
+    if (track) {
+        track.style.transform = `translateX(-${currentDetailSlide * 100}%)`;
+    }
+    thumbs.forEach((thumb, index) => {
+        if (index === currentDetailSlide) {
+            thumb.classList.add('active-thumbnail');
+        } else {
+            thumb.classList.remove('active-thumbnail');
+        }
+    });
+}
+
+// Carrito de compras
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cart-count').textContent = count;
+}
+
+function addToCart(productId, name, price, image) {
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ id: productId, name, price, image, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    showAlert('Producto añadido al carrito!', 'success');
+}
+
+function removeItemFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    renderCartItems();
+}
+
+function renderCartItems() {
+    const cartItemsElement = document.getElementById('cart-items');
+    const cartTotalElement = document.getElementById('cart-total');
+    cartItemsElement.innerHTML = '';
+    let total = 0;
+
+    if (cart.length === 0) {
+        cartItemsElement.innerHTML = '<li>El carrito está vacío.</li>';
+    } else {
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <span>${item.name} x ${item.quantity}</span>
+                <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                <button onclick="removeItemFromCart('${item.id}')" style="background:none; border:none; color:var(--accent-color); font-size:1.2em; cursor:pointer;"><i class="fas fa-trash"></i></button>
+            `;
+            cartItemsElement.appendChild(li);
+        });
+    }
+    cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
+}
+
+function toggleCartModal() {
+    const cartModal = document.getElementById('cart-modal');
+    if (cartModal.style.display === 'block') {
+        cartModal.style.display = 'none';
+    } else {
+        cartModal.style.display = 'block';
+        renderCartItems();
+    }
+}
+
+// Alerta de mensaje
+let alertTimeout;
+function showAlert(message, type = 'info') {
+    const alertBox = document.getElementById('alert-message');
+    alertBox.textContent = message;
+    alertBox.className = `alert-message show ${type}`; // Añadir clase de tipo si se desea estilizar por tipo
+    clearTimeout(alertTimeout);
+    alertTimeout = setTimeout(() => {
+        alertBox.classList.remove('show');
+    }, 3000);
+}
+
+// Función para cargar y mostrar productos
+function loadProducts() {
+    // ESTE ES EL ARRAY DONDE DEFINES TUS PRODUCTOS
+    products = [
+        {
+            id: 'prod001',
+            name: 'Excavadora Gigante',
+            price: 120.00,
+            image: 'https://via.placeholder.com/300x200/00F0FF/FFFFFF?text=Excavadora+Gigante',
+            category: 'maquinaria,vehiculos',
+            description: '<span>¡Una réplica impresionante de una excavadora real!</span> <span>Detalles intrincados, movimientos realistas y durabilidad para horas de juego.</span> <span>Ideal para coleccionistas y niños mayores de 8 años.</span>',
+            additionalImages: [
+                'https://via.placeholder.com/300x200/00F0FF/FFFFFF?text=Excavadora+Gigante+2',
+                'https://via.placeholder.com/300x200/00F0FF/FFFFFF?text=Excavadora+Gigante+3'
+            ],
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Ejemplo YouTube
+            stockStatus: 'EN STOCK'
+        },
+        {
+            id: 'prod002',
+            name: 'Robot Interactivo',
+            price: 75.50,
+            image: 'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo',
+            category: 'juguetes,electronicos',
+            description: '<span>Este robot inteligente interactúa contigo, baila y responde a comandos de voz.</span> <span>Fomenta la creatividad y el aprendizaje en niños.</span> <span>Batería recargable y modos de juego variados.</span>',
+            additionalImages: [
+                'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo+2',
+                'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo+3'
+            ],
+            videoUrl: 'https://vimeo.com/76979871', // Ejemplo Vimeo
+            stockStatus: 'AGOTADO'
+        },
+        {
+            id: 'prod003',
+            name: 'Set de Herramientas Infantil',
+            price: 35.00,
+            image: 'https://via.placeholder.com/300x200/1A1A2E/FFFFFF?text=Set+Herramientas',
+            category: 'juguetes,herramientas',
+            description: '<span>Un completo set de herramientas de juguete, seguro y educativo para los pequeños constructores.</span> <span>Incluye martillo, destornillador, sierra y más.</span> <span>Materiales no tóxicos y resistentes.</span>',
+            additionalImages: [
+                'https://via.placeholder.com/300x200/1A1A2E/FFFFFF?text=Set+Herramientas+2'
+            ],
+            videoUrl: 'https://drive.google.com/file/d/1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ/view?usp=sharing', // ✅ EJEMPLO GOOGLE DRIVE - DEBES REEMPLAZAR ID
+            stockStatus: 'EN STOCK'
+        },
+        {
+            id: 'prod004',
+            name: 'Camioneta 4x4 a Control Remoto',
+            price: 95.00,
+            image: 'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Camioneta+4x4',
+            category: 'juguetes,vehiculos',
+            description: '<span>Potente camioneta 4x4 a control remoto, ideal para todo tipo de terrenos.</span> <span>Gran velocidad y suspensión independiente para una experiencia de conducción emocionante.</span> <span>Batería de larga duración.</span>',
+            additionalImages: [
+                'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Camioneta+4x4+2'
+            ],
+            videoUrl: '', // Sin video
+            stockStatus: 'EN STOCK'
+        },
+        // Añade más productos aquí
+        {
+            id: 'prod005',
+            name: 'Figura de Acción "El Constructor"',
+            price: 25.99,
+            image: 'https://via.placeholder.com/300x200/2ECC71/FFFFFF?text=Constructor',
+            category: 'juguetes,figuras',
+            description: '<span>Figura de acción articul
+
+
+
+
+   },
+        {
+
+                
+             id: 'prod005',
+            name: 'Figura de Acción "El Constructor"',
+            price: 25.99,
+            image: 'https://via.placeholder.com/300x200/2ECC71/FFFFFF?text=Constructor',
+            category: 'juguetes,figuras',
+            description: '<span>Figura de acción articulada con accesorios de construcción.</span> <span>Fomenta el juego imaginativo y la narración de historias.</span> <span>Materiales resistentes y seguros para niños.</span>',
+            additionalImages: [
+                'https://via.placeholder.com/300x200/2ECC71/FFFFFF?text=Constructor+2'
+            ],
+            videoUrl: '', // Sin video
+            stockStatus: 'EN STOCK'
+        },
+        {
+            id: 'prod006',
+            name: 'Drone de Carga Pequeño',
+            price: 150.00,
+            image: 'https://via.placeholder.com/300x200/FFD700/FFFFFF?text=Drone+Carga',
+            category: 'electronicos',
+            description: '<span>Mini drone con capacidad de carga para pequeños objetos.</span> <span>Ideal para iniciarse en el mundo de los drones de transporte.</span> <span>Fácil de manejar y con buena autonomía.</span>',
+            additionalImages: [
+                'https://via.placeholder.com/300x200/FFD700/FFFFFF?text=Drone+Carga+2'
+            ],
+            videoUrl: 'https://drive.google.com/file/d/1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ/view?usp=sharing', // Reemplaza con ID de tu video en Drive
+            stockStatus: 'AGOTADO'
+        },
+        {
+            id: 'prod007',
+            name: 'Mini Retroexcavadora',
+            price: 85.00,
+            image: 'https://via.placeholder.com/300x200/8A2BE2/FFFFFF?text=Mini+Retroexcavadora',
+            category: 'maquinaria,juguetes',
+            description: '<span>Réplica a escala de una retroexcavadora, con pala funcional.</span> <span>Fabricada en metal y plástico de alta resistencia.</span> <span>Perfecta para juegos en areneros o en casa.</span>',
+            additionalImages: [
+                'https://via.placeholder.com/300x200/8A2BE2/FFFFFF?text=Mini+Retroexcavadora+2'
+            ],
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Otro ejemplo de YouTube
+            stockStatus: 'EN STOCK'
+        },
+        {
+            id: 'prod008',
+            name: 'Kit de Robótica para Niños',
+            price: 60.00,
+            image: 'https://via.placeholder.com/300x200/00CED1/FFFFFF?text=Kit+Robotica',
+            category: 'juguetes,electronicos',
+            description: '<span>Introduce a tus hijos al mundo de la robótica y la programación.</span> <span>Construye varios modelos de robots con este kit educativo.</span> <span>Incluye guía paso a paso y componentes seguros.</span>',
+            additionalImages: [
+                'https://via.placeholder.com/300x200/00CED1/FFFFFF?text=Kit+Robotica+2'
+            ],
+            videoUrl: 'https://drive.google.com/file/d/1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ/view?usp=sharing', // Otro ejemplo de Google Drive
+            stockStatus: 'EN STOCK'
+        },
+    ];
+
+    const productGrid = document.getElementById('product-grid');
+    if (!productGrid) return; // Asegúrate de que el contenedor exista
+
+    productGrid.innerHTML = ''; // Limpiar el grid antes de cargar
+
+    products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.dataset.category = product.category; // Añadir categorías al dataset
+        productCard.innerHTML = `
+            ${product.discount ? `<span class="discount-badge">${product.discount}% OFF</span>` : ''}
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p class="price">$${parseFloat(product.price).toFixed(2)}</p>
+            <span class="stock-status ${product.stockStatus === 'EN STOCK' ? 'in-stock' : 'out-of-stock'}">${product.stockStatus}</span>
+            <div class="product-card-actions">
+                <button class="details-button" onclick="showDetails('${product.id}')"><i class="fas fa-info-circle"></i> Detalles</button>
+                <button class="buy-now-from-list-button" onclick="addToCart('${product.id}', '${product.name}', ${product.price}, '${product.image}')"><i class="fas fa-cart-plus"></i> Añadir</button>
+            </div>
+        `;
+        productGrid.appendChild(productCard);
+    });
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    loadProducts(); // Carga los productos al iniciar
+    updateCartCount(); // Actualiza el contador del carrito
+    // Inicializa el primer botón de categoría como activo
+    const firstCategoryBtn = document.querySelector('.categories-nav button');
+    if(firstCategoryBtn) firstCategoryBtn.classList.add('active');
+
+    // Cerrar modal del carrito haciendo clic fuera
+    const cartModal = document.getElementById('cart-modal');
+    if (cartModal) {
+        cartModal.addEventListener('click', (event) => {
+            if (event.target === cartModal) {
+                toggleCartModal();
+            }
+        });
+    }
+
+    // Funcionalidad de Comprar Ahora del carrito al hacer clic en el botón de pago
+    const checkoutButton = document.querySelector('.checkout-button');
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', () => {
+            if (cart.length === 0) {
+                showAlert('Tu carrito está vacío.', 'info');
+                return;
+            }
+            let whatsappMessage = "Hola, quisiera realizar un pedido con los siguientes productos:\n\n";
+            let total = 0;
+            cart.forEach(item => {
+                whatsappMessage += `- ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+                total += item.price * item.quantity;
+            });
+            whatsappMessage += `\nTotal: $${total.toFixed(2)}\n\n`;
+            whatsappMessage += "Por favor, indícame cómo puedo proceder con el pago y el envío.";
+            
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            window.open(`https://wa.me/593987654321?text=${encodedMessage}`, '_blank');
+            
+            // Opcional: Vaciar el carrito después de enviar el mensaje
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+            toggleCartModal();
+            showAlert('Pedido enviado a WhatsApp! Te contactaremos pronto.', 'success');
+        });
+    }
+});
+
+</script>
 </body>
 </html>
     
