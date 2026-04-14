@@ -357,27 +357,40 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
   
   /* ******** La imagen del producto (product-card img) ******** */
   .product-card img {
-    width: 100%;
-    height: auto; /* Mantener la proporción es importante */
-    object-fit: contain; /* Para que no se corte y quepa bien */
-    padding: 0px; /* <--- QUITAMOS EL PADDING DE LA IMAGEN para que ocupe menos espacio */
-    margin-bottom: 0px; /* <--- ESTO PEGA LA IMAGEN AL NOMBRE */
+    width: 100%; /* Deja este */
+    height: auto; /* Deja este */
+    object-fit: contain; /* Deja este */
 
-    /* Papi, estos valores son clave para que la imagen sea más pequeña */
-    min-height: 40px;  /* <-- Empieza aquí. Baja para hacer la imagen más baja. */
-    max-height: 60px; /* <-- Empieza aquí. Baja para hacer la imagen más baja. */
-    display: block;
-    margin-left: auto; /* Reemplazo margin: 0 auto; para no afectar margin-bottom */
-    margin-right: auto;
+    margin-bottom: 0px !important;    /* <--- ¡CERO Y FUERZA! */
+    padding: 0px !important;          /* <--- ¡CERO Y FUERZA! */
+    line-height: 0 !important;        /* <--- ¡CERO Y FUERZA! */
+    vertical-align: top !important;   /* <--- CAMBIADO A 'top' para ver si es mejor que 'middle' */
+
+    /* Tus valores de altura de imagen, que deben ser pequeños para celular */
+    min-height: 40px !important; /* <--- Fuerza la altura mínima, por si las moscas */
+    max-height: 60px !important; /* <--- Fuerza la altura máxima */
+
+    display: block; /* Deja este */
+    margin-left: auto; /* Deja este */
+    margin-right: auto; /* Deja este */
   }
 
   /* ******** Elementos dentro de la tarjeta: TEXTOS Y BOTONES ******** */
   /* Vamos a reducir los tamaños de fuente y márgenes para que todo quepa */
-
   .product-card h3 { /* Título del producto */
-    font-size: 0.6em; /* <--- Hacemos la letra más pequeña */
-    margin: 0px 0;    /* <--- ESTO PEGA EL NOMBRE A LA IMAGEN Y AL PRECIO */
-    line-height: 1.1; /* <--- Aseguramos que el espacio entre líneas sea mínimo */
+    font-size: 0.6em !important;   /* <--- ¡Cambiamos a 0.6em y FUERZA! */
+
+    margin-top: 0px !important;      /* <--- ¡CERO Y FUERZA! */
+    margin-bottom: 0px !important;   /* <--- ¡CERO Y FUERZA! (para que se pegue al precio) */
+    padding-top: 0px !important;     /* <--- ¡CERO Y FUERZA! por si acaso */
+    padding-bottom: 0px !important;  /* <--- ¡CERO Y FUERZA! por si acaso */
+
+    line-height: 1 !important;       /* <--- ¡UNO Y FUERZA! */
+    min-height: 0px !important;      /* <--- ¡CERO Y FUERZA! */
+
+    /* Y para que el texto no se vaya tan largo, aunque no es el problema del espacio */
+    word-break: break-all; /* Esto intentará romper palabras largas si es necesario */
+    white-space: normal; /* Asegura que el texto se ajuste */
   }
 
   .product-card .price { /* Precio */
