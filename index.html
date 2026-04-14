@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+
+    <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -169,7 +171,7 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .details-button{background:transparent;border:1px solid var(--primary-color);color:var(--primary-color)}
 .details-button:hover{background:var(--primary-color);color:#000}
 .buy-now-from-list-button{background: var(--gradient);color:#000}
-.buy-now-from-list-button:hover{box-shadow: 0 4px 10px rgba(255,0,128,0.4)}
+.buy-now-from-list-button:hover{box-shadow:0 4px 10px rgba(255,0,128,0.4)}
 
 /* --- INICIO DE AJUSTES PARA LA PÁGINA DE DETALLES --- */
 #detail-page{
@@ -189,14 +191,14 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 10px; /* ✅ Menos margen inferior para el título en detalles */
+    margin-bottom: 10px; /* 🆕 Menos margen inferior para el título en detalles */
 }
 
 /* Flexbox para el contenido principal de detalles (imágenes + info) */
 .product-detail-content{
     display:flex;
     flex-wrap:wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
-    gap:15px; /* ✅ Espacio entre los bloques reducido */
+    gap:15px; /* 🆕 Espacio entre los bloques reducido */
     justify-content:center;
     align-items:flex-start;
     flex-direction: column; /* Por defecto, apilados en móvil */
@@ -214,17 +216,17 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     position: relative;
     width: 100%;
     max-width: 600px; /* Mantener un máximo para que no se vea gigantesco en desktop */
-    height: 250px; /* ✅ Altura fija para el slider principal en móvil */
+    height: 250px; /* 🆕 Altura fija para el slider principal en móvil */
     overflow: hidden;
     border-radius: 15px;
     margin: auto;
     margin-bottom: 10px; /* Espacio entre la imagen grande y las miniaturas */
 }
-.detail-slider-track { display: flex; transition: transform 0.5s ease; height: 100%; width: 100%;} /* ✅ Altura 100% */
-.detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; height: 100%;} /* ✅ Altura 100% */
+.detail-slider-track { display: flex; transition: transform 0.5s ease; height: 100%; width: 100%;} /* 🆕 Altura 100% */
+.detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; height: 100%;} /* 🆕 Altura 100% */
 .detail-main-image{
     width:100%;
-    height:100%; /* ✅ La imagen ahora ocupa el 100% del alto de su contenedor */
+    height:100%; /* 🆕 La imagen ahora ocupa el 100% del alto de su contenedor */
     object-fit:contain; /* Contener la imagen dentro del espacio */
     padding:0;
 }
@@ -232,41 +234,42 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    background:rgba(0,240,255,0.2); /* ✅ Cambiado para que combine con otros elementos */
+    background:rgba(0,240,255,0.2); /* 🆕 Cambiado para que combine con otros elementos */
     color:var(--primary-color);
     border:none;
-    width:30px; /* ✅ Flechas más pequeñas */
-    height:30px; /* ✅ Flechas más pequeñas */
-    font-size:1.2em;
+    width:30px; /* 🆕 Flechas
 
 
 
 
 
 
-/* ✅ Tamaño de ícono más pequeño */
+
+más pequeñas */
+    height:30px; /* 🆕 Flechas más pequeñas */
+    font-size:1.2em; /* 🆕 Tamaño de ícono más pequeño */
     border-radius:50%;
     cursor:pointer;
     z-index:10;
     border: 1px solid var(--primary-color)
 }
-.detail-arrow-left{left:8px} /* ✅ Ajuste de posición */
-.detail-arrow-right{right:8px} /* ✅ Ajuste de posición */
+.detail-arrow-left{left:8px} /* 🆕 Ajuste de posición */
+.detail-arrow-right{right:8px} /* 🆕 Ajuste de posición */
 
 /* Miniaturas */
 .detail-thumbnails{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:5px; /* ✅ Espacio entre miniaturas reducido */
-    margin-top: 5px; /* ✅ Espacio reducido */
-    margin-bottom: 10px; /* ✅ Espacio reducido */
+    gap:5px; /* 🆕 Espacio entre miniaturas reducido */
+    margin-top: 5px; /* 🆕 Espacio reducido */
+    margin-bottom: 10px; /* 🆕 Espacio reducido */
 }
 .detail-thumbnails img{
-    width:50px; /* ✅ Miniaturas más pequeñas */
-    height:38px; /* ✅ Miniaturas más pequeñas */
+    width:50px; /* 🆕 Miniaturas más pequeñas */
+    height:38px; /* 🆕 Miniaturas más pequeñas */
     object-fit:cover;
-    border-radius:6px; /* ✅ Bordes un poco menos redondeados */
+    border-radius:6px; /* 🆕 Bordes un poco menos redondeados */
     cursor:pointer;
     border:2px solid transparent;
     transition:all .3s ease
@@ -286,50 +289,50 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     width:100%;
     height:auto;
     aspect-ratio:16/9; /* Mantiene la proporción 16:9 */
-    min-height: 180px; /* ✅ Altura mínima para el video en móvil */
+    min-height: 180px; /* 🆕 Altura mínima para el video en móvil */
 }
 
 /* Columna de información del producto */
 .product-detail-info{
     flex:1 1 100%; /* Ocupa todo el ancho en móvil */
     min-width: unset; /* Reiniciar min-width */
-    padding-left:0; /* ✅ Sin padding lateral en móvil */
-    padding-top: 5px; /* ✅ Pequeño padding superior */
+    padding-left:0; /* 🆕 Sin padding lateral en móvil */
+    padding-top: 5px; /* 🆕 Pequeño padding superior */
 }
 .product-detail-info .price{
-    font-size:1.6em; /* ✅ Precio un poco más pequeño en móvil */
-    margin-bottom:8px; /* ✅ Menos margen */
-    text-align: center; /* ✅ Centrar precio y stock */
+    font-size:1.6em; /* 🆕 Precio un poco más pequeño en móvil */
+    margin-bottom:8px; /* 🆕 Menos margen */
+    text-align: center; /* 🆕 Centrar precio y stock */
 }
 .product-detail-info p{
-    font-size:0.9em; /* ✅ Descripción más pequeña */
+    font-size:0.9em; /* 🆕 Descripción más pequeña */
     color:#555;
-    margin-bottom:10px; /* ✅ Menos margen */
-    line-height:1.6; /* ✅ Espaciado de línea un poco más compacto */
+    margin-bottom:10px; /* 🆕 Menos margen */
+    line-height:1.6; /* 🆕 Espaciado de línea un poco más compacto */
 }
 .product-detail-info p span {
     display: block;
-    margin-bottom: 3px; /* ✅ Menos margen entre líneas de descripción */
+    margin-bottom: 3px; /* 🆕 Menos margen entre líneas de descripción */
 }
 .product-detail-actions{
     display:flex;
-    gap:8px; /* ✅ Espacio reducido entre botones */
-    margin-top:10px; /* ✅ Menos margen */
-    flex-wrap: wrap; /* ✅ Permite que los botones se envuelvan */
-    justify-content: center; /* ✅ Centrar botones */
+    gap:8px; /* 🆕 Espacio reducido entre botones */
+    margin-top:10px; /* 🆕 Menos margen */
+    flex-wrap: wrap; /* 🆕 Permite que los botones se envuelvan */
+    justify-content: center; /* 🆕 Centrar botones */
 }
 .product-detail-actions button{
-    flex:1 1 auto; /* ✅ Los botones se adaptan y crecen */
-    min-width: 120px; /* ✅ Ancho mínimo para que no sean demasiado pequeños */
-    padding:10px 12px; /* ✅ Padding reducido */
-    border-radius:20px; /* ✅ Menos redondeado */
-    font-size:0.9em; /* ✅ Texto de botón más pequeño */
+    flex:1 1 auto; /* 🆕 Los botones se adaptan y crecen */
+    min-width: 120px; /* 🆕 Ancho mínimo para que no sean demasiado pequeños */
+    padding:10px 12px; /* 🆕 Padding reducido */
+    border-radius:20px; /* 🆕 Menos redondeado */
+    font-size:0.9em; /* 🆕 Texto de botón más pequeño */
 }
 #back-to-products-button{
-    padding:8px 15px; /* ✅ Padding reducido */
-    border-radius:20px; /* ✅ Menos redondeado */
-    margin-top:10px; /* ✅ Menos margen */
-    font-size:0.9em; /* ✅ Texto de botón más pequeño */
+    padding:8px 15px; /* 🆕 Padding reducido */
+    border-radius:20px; /* 🆕 Menos redondeado */
+    margin-top:10px; /* 🆕 Menos margen */
+    font-size:0.9em; /* 🆕 Texto de botón más pequeño */
 }
 
 /* 💻 MEDIA QUERIES PARA PANTALLAS MÁS GRANDES (Desktop) */
@@ -343,7 +346,7 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
         min-width:280px; /* Vuelve al min-width de desktop */
     }
     .detail-image-slider {
-        height: 400px; /* ✅ Altura para desktop */
+        height: 400px; /* 🆕 Altura para desktop */
     }
     .product-detail-info{
         flex:1 1 45%; /* Vuelve al tamaño normal de desktop */
@@ -402,8 +405,7 @@ footer p{margin:0}
 .content-page a:hover{text-decoration:underline}
 
 </style>
-
-
+</head>
 <body>
 
     <header>
@@ -503,7 +505,17 @@ footer p{margin:0}
         <!-- SECCIÓN NOSOTROS -->
         <section id="about-page" class="content-page">
             <h2>Sobre Nosotros</h2>
-            <p>En **BERRACOTOYS**, somos más que una tienda; somos un sueño hecho realidad para coleccionistas y aficionados a la maquinaria y los juguetes. Con años de experiencia en el mercado, nos especializamos en ofrecer productos de alta calidad que combinan durabilidad, diseño innovador y la última tecnología.</p>
+            <p>En **BERRACOTOYS**, somos más que una tienda; somos un sueño hecho realidad para coleccionistas y aficionados a la maquinaria y los juguetes. Con años de experiencia en el mercado, nos especializamos en ofrecer productos de alta calidad que combinan durabilidad, diseño innovador y la última tecnología
+
+
+
+
+
+
+
+
+
+.`
             <p>Nuestra misión es sencilla: **"Conectar la pasión con la perfección."** Creemos que cada artículo que ofrecemos no solo es un objeto, sino una pieza de imaginación, un motor de aprendizaje o un valioso elemento para tu colección.</p>
             <p>Nos enorgullecemos de nuestro catálogo cuidadosamente seleccionado, que incluye desde impresionantes réplicas de maquinaria pesada hasta los juguetes más ingeniosos y divertidos del mercado. Trabajamos con marcas reconocidas mundialmente y pequeños artesanos para garantizar que cada compra sea una experiencia única y satisfactoria.</p>
             <p>¡Únete a la familia BERRACOTOYS y descubre un mundo donde la calidad y la diversión se encuentran!</p>
@@ -555,7 +567,7 @@ footer p{margin:0}
     <!-- Mensaje de Alerta -->
     <div id="alert-message" class="alert-message"></div>
 
- <script>
+    <script>
 let currentSlide = 0;
 let currentDetailSlide = 0;
 let detailImagesArray = [];
@@ -826,8 +838,14 @@ function loadProducts() {
             stockStatus: 'EN STOCK'
         },
         {
+        
+            
+            
+            
+            
+            
             id: 'prod002',
-            name: 'Robot Interactivo',
+            name: 'Robot Inter  activo',
             price: 75.50,
             image: 'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo',
             category: 'juguetes,electronicos',
@@ -868,20 +886,6 @@ function loadProducts() {
         // Añade más productos aquí
         {
             id: 'prod005',
-            name: 'Figura de Acción "El Constructor"',
-            price: 25.99,
-            image: 'https://via.placeholder.com/300x200/2ECC71/FFFFFF?text=Constructor',
-            category: 'juguetes,figuras',
-            description: '<span>Figura de acción articul
-
-
-
-
-   },
-        {
-
-                
-             id: 'prod005',
             name: 'Figura de Acción "El Constructor"',
             price: 25.99,
             image: 'https://via.placeholder.com/300x200/2ECC71/FFFFFF?text=Constructor',
@@ -1009,6 +1013,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 </body>
-</html>
-    
-    
+</html>    
