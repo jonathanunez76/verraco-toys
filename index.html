@@ -189,6 +189,17 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .product-detail-content{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:flex-start}
 .product-detail-images{flex:1 1 45%;min-width:280px;text-align:center}
 .detail-image-slider { position: relative; width: 100%; max-width: 600px; height: 600px; overflow: hidden; border-radius: 15px; margin: auto; }  
+      /* --- Media Query para Teléfonos Móviles (se añade al final o en tu sección de móviles) --- */
+@media (max-width: 768px) { 
+    .detail-image-slider {
+        height: auto; /* Esta es la clave para móviles */
+    }
+    .detail-main-image { /* Aseguramos que la imagen también se ajuste */
+        height: auto;
+        width: 100%;
+    }
+    /* ... otros estilos específicos para móvil ... */
+}
     .detail-slider-track { display: flex; transition: transform 0.5s ease; width: 100%; }
 .detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; max-width: 450px; margin: auto; }
 .detail-main-image{width:100%; height:100%; object-fit:cover;padding:0;}    
