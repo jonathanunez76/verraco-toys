@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -176,13 +175,13 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .detail-slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--dark-color);color:var(--primary-color);border:none;width:35px;height:35px;font-size:16px;border-radius:50%;cursor:pointer;z-index:10;border: 1px solid var(--primary-color)}
 .detail-arrow-left{left:10px}
 .detail-arrow-right{right:10px}
-.detail-thumbnails{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin-top:0px; margin-bottom: 0px;}
-    .detail-thumbnails img{width:60px;height:45px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all .3s ease}
+.detail-thumbnails{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin-top:0px}
+.detail-thumbnails img{width:60px;height:45px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all .3s ease}
 .detail-thumbnails img:hover,.detail-thumbnails img.active-thumbnail{border-color:var(--accent-color);transform:scale(1.05);box-shadow: 0 0 8px var(--accent-color)}
 
 /* 🎥 VIDEO VIMEO */
-.detail-video{margin-top:0px; margin-bottom:0px; border-radius:15px;overflow:hidden;border:2px solid var(--primary-color)}
-    .detail-video iframe{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.detail-video{margin-top:15px;border-radius:15px;overflow:hidden;border: 2px solid var(--primary-color)}
+.detail-video iframe{display:block;width:100%;height:auto;aspect-ratio:16/9}
 
 .product-detail-info{flex:1 1 45%;min-width:280px;padding-left:10px}
 .product-detail-info .price{font-size:2em;color:var(--accent-color);font-weight:800;margin-bottom:10px}
@@ -394,18 +393,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     padding: 3px 0; /* <--- Reducimos el padding interno del botón */
    font-size: 0.6em; /* <--- Letra más pequeña para los botones */
   }
- .detail-main-image { /* Usa la clase o ID correcta de tu imagen grande */
-        margin-bottom: 5px !important; /* Prueba con un valor pequeño */
-    }
 
-    /* O para reducir el margen superior de las miniaturas */
-    .detail-thumbnails { /* Usa la clase o ID correcta de tu contenedor de miniaturas */
-        margin-top: 5px !important; /* Prueba con un valor pequeño */
-    }
-
-    /* Si el contenedor del video es el que está metiendo espacio entre ambos */
-    .detail-video { /* Usa la clase o ID correcta de tu contenedor de video */
-        margin-bottom: 5px !important;
 }
 </style>
 </head>
@@ -477,7 +465,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
             <div class="price">$550</div>
             <div class="stock-status in-stock">EN STOCK</div>                                   
             <div class="product-card-actions">
-              <button class="details-button" onclick="showDetails('CRAWLER RC FORD BRONCO',  '       550',   'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', '✔ ESCALA: 1:8<br>✔ INCLUYE: EL PAQUETE ORIGINAL BOX, BATERÍAS, INSTRUCCIONES DE FUNCIONAMIENTO, CONTROLADOR REMOTO, CABLE USB, OTROS<br>✔ ESTRUCTURA Y TRANSMISIÓN: METAL (4WD)<br>✔ AMORTIGUACIÓN: AMORTIGUADORES METÁLICOS<br>✔ RUEDAS: CAUCHO RESISTENTE AL DESGASTE<br>✔ BATERIA: LIPO 11.1 V 4000-5000MAH 3S (Polimero de Litio)<br>✔ CONTROL de 2.4GHz<br>✔ VELOCIDAD: 100 KM/H<br>✔ CHASIS: PLACA INFERIOR DE ALEACIÓN DE ALUMINIO<br>✔ FUENTE DE ALIMENTACION: ELECTRICO<br>✔ ESTADO DEL EMBALAJE: LISTO PARA USAR<br>✔ MATERIAL: METAL,PLASTICO<br>✔ RANGO DE EDAD: DE 8 A 13 AÑOS, 14 AÑOS Y HASTA', ['https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H646cfe20de6a43388b9179776970ffbdY%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20(1).jpg?raw=true', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20(1).jpg?raw=true' ], 'https://player.vimeo.com/video/1177095678?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', 'EN STOCK' )">VER DETALLES</button>
+              <button class="details-button" onclick="showDetails('CRAWLER RC FORD BRONCO',  '       550',   'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', '✔ ESCALA: 1:8<br>✔ INCLUYE: EL PAQUETE ORIGINAL BOX, BATERÍAS, INSTRUCCIONES DE FUNCIONAMIENTO, CONTROLADOR REMOTO, CABLE USB, OTROS<br>✔ ESTRUCTURA Y TRANSMISIÓN: METAL (4WD)<br>✔ AMORTIGUACIÓN: AMORTIGUADORES METÁLICOS<br>✔ RUEDAS: CAUCHO RESISTENTE AL DESGASTE<br>✔ BATERIA: LIPO 11.1 V 4000-5000MAH 3S (Polimero de Litio)<br>✔ CONTROL de 2.4GHz<br>✔ VELOCIDAD: 100 KM/H<br>✔ CHASIS: PLACA INFERIOR DE ALEACIÓN DE ALUMINIO<br>✔ FUENTE DE ALIMENTACION: ELECTRICO<br>✔ ESTADO DEL EMBALAJE: LISTO PARA USAR<br>✔ MATERIAL: METAL,PLASTICO<br>✔ RANGO DE EDAD: DE 8 A 13 AÑOS, 14 AÑOS Y HASTA', ['https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H646cfe20de6a43388b9179776970ffbdY%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20(1).jpg?raw=true', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20(1).jpg?raw=true' ], '', 'EN STOCK' )">VER DETALLES</button>
                
                 <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
             </div>
@@ -710,26 +698,57 @@ track.appendChild(slide);
 
 
     
-    const videoContainer = document.getElementById('detail-video-container');
-    if(videoUrl && videoUrl.length > 0) {
-        let finalUrl = videoUrl;
-        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
-            const id = videoUrl.split('/').pop();
-            finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+   // ... (código anterior) ...
+
+// Línea 701: Inicialización del contenedor de video
+const videoContainer = document.getElementById('detail-video-container');
+
+// Línea 702: Condición para verificar si hay una URL de video
+if (videoUrl && videoUrl.length > 0) {
+    let finalUrl = videoUrl; // Inicialmente, usamos la URL tal cual
+
+    // --- Lógica para videos de Vimeo (tu código existente) ---
+    if (videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+        const id = videoUrl.split('/').pop();
+        finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+    } 
+    // --- INICIO DE LA NUEVA LÓGICA PARA VIDEOS DE GOOGLE DRIVE ---
+    else if (videoUrl.includes('drive.google.com/file/d/')) {
+        // Expresión regular para extraer el ID del video de Google Drive.
+        // El ID es la parte alfanumérica entre '/d/' y '/view' o cualquier otro delimitador.
+        const match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        
+        if (match && match[1]) {
+            const driveId = match[1];
+            // Construimos la URL final para incrustar, usando el ID y '/preview'
+            finalUrl = `https://drive.google.com/file/d/${driveId}/preview`;
+        } else {
+            // Si por alguna razón no podemos extraer el ID,
+            // usamos la URL original y esperamos que Google Drive la maneje (menos fiable)
+            finalUrl = videoUrl; 
         }
-videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height 800px; object-fit:contain;"></iframe>`;    } else {
-        videoContainer.innerHTML = '';
     }
+    // --- FIN DE LA NUEVA LÓGICA PARA VIDEOS DE GOOGLE DRIVE ---
 
-    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
-    document.getElementById('detail-buy-now-button').onclick = () => {
-        addToCart(title, price, mainImg);
-        toggleModal('cart-modal');
-    };
+    // Línea 708: Insertamos el iframe en el contenedor con la URL final
+    // Hemos añadido "allowfullscreen" para mayor compatibilidad y "style" para que sea responsivo por defecto.
+    videoContainer.innerHTML = `
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+            <iframe src="${finalUrl}" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen" 
+                    allowfullscreen 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;">
+            </iframe>
+        </div>
+    `;
     
-    window.scrollTo({top: 0, behavior: 'smooth'});
-
+} else {
+    // Si no hay URL de video, el contenedor se vacía
+    videoContainer.innerHTML = '';
 }
+
+// ... (resto de tu código: add-to-cart, buy-now-button, scroll) ...
 
 function moveDetailSlide(direction) {
     currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
