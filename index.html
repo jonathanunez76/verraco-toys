@@ -69,8 +69,8 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     .categories-nav{
     justify-content:center !important;
     flex-wrap:nowrap !important;
-    width: 100% !important;
-    margin: 0 auto !important;
+    width: 100% !important;  /* 🆕 ESTA LÍNEA */
+    margin: 0 auto !important; /* 🆕 ESTA LÍNEA */
 }
     .categories-nav button{
         font-size:16px !important;
@@ -106,16 +106,9 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .carousel-arrow.left{left:10px}
 .carousel-arrow.right{right:10px}
 
-.product-grid{display:grid;grid-template-columns: repeat(2, 1fr); gap:8px;} /* 🆕 2 columnas en mobile */
+.product-grid{display:grid;grid-template-columns: repeat(3, 1fr); gap:8px;}
 
-@media screen and (min-width: 768px) {
-    .product-grid{
-        grid-template-columns: repeat(3, 1fr); /* 🆕 3 columnas en desktop */
-    }
-}
-
-
-.product-card{background:#fff;border:2px solid transparent;border-radius:12px;box-shadow:0 3px 8px rgba(0,0,0,0.08);overflow:hidden;text-align:center;padding-bottom:10px;transition:all .3s ease;display:flex;flex-direction:column; position: relative;} /* 🆕 Añadido position relative para el badge */
+.product-card{background:#fff;border:2px solid transparent;border-radius:12px;box-shadow:0 3px 8px rgba(0,0,0,0.08);overflow:hidden;text-align:center;padding-bottom:10px;transition:all .3s ease;display:flex;flex-direction:column;}
     
 .product-card:hover{transform:translateY(-3px);box-shadow:0 6px 15px rgba(0,240,255,0.2);border-color: var(--primary-color)}
 
@@ -169,435 +162,469 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .details-button{background:transparent;border:1px solid var(--primary-color);color:var(--primary-color)}
 .details-button:hover{background:var(--primary-color);color:#000}
 .buy-now-from-list-button{background: var(--gradient);color:#000}
-.buy-now-from-list-button:hover{box-shadow:0 4px 10px rgba(255,0,128,0.4)}
+.buy-now-from-list-button:hover{box-shadow: 0 4px 10px rgba(255,0,128,0.4)}
 
-/* --- INICIO DE AJUSTES PARA LA PÁGINA DE DETALLES --- */
-#detail-page{
-    display:none;
-    background:#fff;
-    padding:15px;
-    box-shadow:0 5px 20px rgba(0,240,255,0.1);
-    margin-bottom:15px;
-    border-radius:15px;
-    flex-direction:column;
-    gap:15px;
-    border:2px solid var(--primary-color);
-}
-#detail-page h2{
-    text-align:center;
-    font-size:1.6em;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px; /* 🆕 Menos margen inferior para el título en detalles */
-}
-
-/* Flexbox para el contenido principal de detalles (imágenes + info) */
-.product-detail-content{
-    display:flex;
-    flex-wrap:wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
-    gap:15px; /* 🆕 Espacio entre los bloques reducido */
-    justify-content:center;
-    align-items:flex-start;
-    flex-direction: column; /* Por defecto, apilados en móvil */
-}
-
-/* Columna de imágenes y video */
-.product-detail-images{
-    flex:1 1 100%; /* Ocupa todo el ancho en móvil */
-    min-width: unset; /* Quitar el min-width fijo para mobile, dejar que se adapte */
-    text-align:center;
-}
-
-/* Contenedor del slider principal de imágenes */
-.detail-image-slider {
-    position: relative;
-    width: 100%;
-    max-width: 600px; /* Mantener un máximo para que no se vea gigantesco en desktop */
-    height: 250px; /* 🆕 Altura fija para el slider principal en móvil */
-    overflow: hidden;
-    border-radius: 15px;
-    margin: auto;
-    margin-bottom: 10px; /* Espacio entre la imagen grande y las miniaturas */
-} /* <-- ¡ESTA LLAVE DE CIERRE ES LA CLAVE! */
-.detail-slider-track { display: flex; transition: transform 0.5s ease; height: 100%; width: 100%;}
-.detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; height: 100%;}
-.detail-main-image{
-    width:100%;
-    height:100%; /* 🆕 La imagen ahora ocupa el 100% del alto de su contenedor */
-    object-fit:contain; /* Contener la imagen dentro del espacio */
-    padding:0;
-}
-.detail-slider-arrow{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    background-color:rgba(0,0,0,0.5);
-    color:#fff;
-    border:none;
-    padding:8px;
-    border-radius:50%;
-    cursor:pointer;
-    z-index:10;
-}
+#detail-page{display:none;background:#fff;padding:15px;box-shadow:0 5px 20px rgba(0,240,255,0.1);margin-bottom:15px;border-radius:15px;flex-direction:column;gap:15px;border:2px solid var(--primary-color)}
+#detail-page h2{text-align:center;font-size:1.6em;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+.product-detail-content{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:flex-start}
+.product-detail-images{flex:1 1 45%;min-width:280px;text-align:center}
+.detail-image-slider { position: relative; width: 100%; max-width: 600px; height: 600px; overflow: hidden; border-radius: 15px; margin: auto; }  
+    .detail-slider-track { display: flex; transition: transform 0.5s ease; width: 100%; }
+.detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; max-width: 450px; margin: auto; }
+.detail-main-image{width:100%; height:100%; object-fit:cover;padding:0;}    
+.detail-slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--dark-color);color:var(--primary-color);border:none;width:35px;height:35px;font-size:16px;border-radius:50%;cursor:pointer;z-index:10;border: 1px solid var(--primary-color)}
 .detail-arrow-left{left:10px}
 .detail-arrow-right{right:10px}
-
-/* Miniaturas */
-.detail-thumbnails{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:10px;
-}
-.detail-thumbnails img{
-    width:70px;
-    height:50px;
-    object-fit:cover;
-    border-radius:8px;
-    cursor:pointer;
-    border:2px solid transparent;
-    transition:all .3s ease
-}
+.detail-thumbnails{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin-top:0px}
+.detail-thumbnails img{width:60px;height:45px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all .3s ease}
 .detail-thumbnails img:hover,.detail-thumbnails img.active-thumbnail{border-color:var(--accent-color);transform:scale(1.05);box-shadow: 0 0 8px var(--accent-color)}
 
-/* Contenedor del video */
-.detail-video{
-    margin-top:15px;
-    margin-bottom:15px;
-    border-radius:15px;
-    overflow:hidden;
-    border: 2px solid var(--primary-color);
-}
-.detail-video iframe{
-    display:block;
-    width:100%;
-    height:auto;
-    aspect-ratio:16/9; /* Mantiene la proporción 16:9 */
-    min-height: 200px; /* Altura mínima para el video */
-}
+/* 🎥 VIDEO VIMEO */
+.detail-video{margin-top:15px;border-radius:15px;overflow:hidden;border: 2px solid var(--primary-color)}
+.detail-video iframe{display:block;width:100%;height:auto;aspect-ratio:16/9}
 
-/* Columna de información del producto */
-.product-detail-info{
-    flex:1 1 100%; /* Ocupa todo el ancho en móvil */
-    padding-left:0;
-}
-.product-detail-info .price{
-    font-size:1.8em;
-    font-weight:700;
-    margin-bottom:10px;
-    color:var(--dark-color);
-    text-align: center; /* Centrar precio y stock en móvil */
-}
+.product-detail-info{flex:1 1 45%;min-width:280px;padding-left:10px}
+.product-detail-info .price{font-size:2em;color:var(--accent-color);font-weight:800;margin-bottom:10px}
+
+/* ✅ TEXTO UNO SOBRE OTRO - ARREGLADO */
 .product-detail-info p{
-    font-size:0.9em;
+    font-size:1em;
     color:#555;
     margin-bottom:15px;
-    line-height:1.6;
+    line-height:1.8;
 }
-.product-detail-info p span { /* Para las líneas de la descripción */
-    display: block; /* Cada span en una nueva línea */
-    margin-bottom: 5px; /* Espacio entre las líneas */
+.product-detail-info p span {
+    display: block;
+    margin-bottom: 5px;
 }
+.product-detail-actions{display:flex;gap:10px;margin-top:15px}
+.product-detail-actions button{flex:1;padding:12px 15px;border:none;border-radius:25px;font-size:1em;font-weight:700;cursor:pointer;transition:all .3s ease}
+#detail-add-to-cart-button{background:transparent;border:2px solid var(--primary-color);color:var(--primary-color)}
+#detail-add-to-cart-button:hover{background:var(--primary-color);color:#000}
+#detail-buy-now-button{background: var(--gradient);color:#000}
+#detail-buy-now-button:hover{box-shadow: 0 5px 15px rgba(255,0,128,0.4)}
+#back-to-products-button{background:transparent;border:2px solid #ccc;color:var(--dark-color);padding:10px 20px;border-radius:25px;margin-top:15px;display:inline-block;text-decoration:none;font-weight:600;font-size:1em}
+#back-to-products-button:hover{border-color: var(--dark-color)}
 
-.product-detail-actions{
-    display:flex;
-    gap:10px;
-    margin-top:15px;
-    flex-wrap: wrap; /* Los botones se envuelven en pantallas pequeñas */
-    justify-content: center; /* Centrar botones en móvil */
-}
-.product-detail-actions button{
-    flex:1 1 auto; /* Los botones se adaptan y crecen */
-    min-width: 130px; /* Ancho mínimo para que no sean demasiado pequeños */
-    padding:10px 15px;
-    border:none;
-    border-radius:25px;
-    cursor:pointer;
-    font-size:1em;
-    font-weight:700;
-    transition:all .3s ease;
-    background:var(--gradient);
-    color:#000;
-    box-shadow:0 4px 10px rgba(0,240,255,0.3);
-}
-.product-detail-actions button:hover{box-shadow:0 6px 15px rgba(255,0,128,0.4);transform:translateY(-2px)}
-#back-to-products-button{
-    display:block;
-    width:fit-content;
-    margin:20px auto 0 auto;
-    background:var(--secondary-color);
-    color:#fff;
-    padding:10px 20px;
-    border-radius:25px;
-    text-decoration:none;
-    font-weight:600;
-    transition:all .3s ease;
-    font-size:0.9em;
-}
-#back-to-products-button:hover{background:var(--dark-color);box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+#about-page, #contact-page{display:none;padding:20px;max-width:800px;margin:0 auto;width:100%}
+#about-page h2, #contact-page h2{text-align:center;font-size:1.8em;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+#about-page p, #contact-page p{font-size:1em;color:#555;margin-bottom:12px;line-height:1.7}
+.info-block{background:#f9f9f9;padding:18px;border-radius:15px;margin-top:15px;border:1px solid #eee}
+.info-block h3{color:var(--primary-color);margin-bottom:12px;font-size:1.3em}
+.info-block ul{list-style:none;padding:0}
+.info-block li{padding:6px 0;font-size:1em;border-bottom:1px solid #eee}
+.info-block li i{color:var(--accent-color);margin-right:10px;width:20px}
 
-/* 💻 MEDIA QUERIES PARA PANTALLAS MÁS GRANDES (Desktop) */
-@media screen and (min-width: 768px) {
-    .product-detail-content{
-        flex-direction: row; /* En desktop, en fila */
-        gap:30px; /* Espacio normal en desktop */
-    }
-    .product-detail-images{
-        flex:1 1 45%; /* Vuelve al tamaño normal de desktop */
-        min-width:280px; /* Vuelve al min-width de desktop */
-    }
-    .detail-image-slider {
-        height: 400px; /* 🆕 Altura para desktop */
-    }
-    .product-detail-info{
-        flex:1 1 45%; /* Vuelve al tamaño normal de desktop */
-        padding-left:10px; /* Vuelve el padding lateral */
-    }
-    .product-detail-info .price{
-        font-size:2em; /* Tamaño normal de precio en desktop */
-        text-align: left; /* Alinear a la izquierda en desktop */
-    }
-    .product-detail-info p{
-        font-size:1em; /* Tamaño normal de descripción en desktop */
-    }
-    .product-detail-actions button{
-        flex:1; /* Retorna al flex original */
-        min-width: unset; /* Sin ancho mínimo en desktop */
-        padding:12px 15px; /* Padding original */
-        border-radius:25px; /* Redondeado original */
-        font-size:1em; /* Tamaño de texto original */
-    }
-    .detail-video iframe{
-        min-height: 300px; /* Altura mínima para desktop */
-    }
-}
-/* --- FIN DE AJUSTES PARA LA PÁGINA DE DETALLES --- */
+.modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;background-color:rgba(15,15,30,0.7);justify-content:center;align-items:center}
+.modal.active{display:flex}
+.modal-content{background:#fff;padding:25px;border-radius:15px;width:90%;max-width:500px;position:relative;border:2px solid var(--primary-color)}
+.close-button{color:#aaa;position:absolute;top:10px;right:15px;font-size:24px;font-weight:700;cursor:pointer}
+.close-button:hover{color:var(--dark-color)}
 
-/* Modales */
-.modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.6);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-.modal-content{background-color:var(--light-color);margin:10% auto;padding:25px;border:1px solid #888;width:90%;max-width:500px;border-radius:15px;box-shadow:0 8px 30px rgba(0,240,255,0.4);position:relative}
-.modal-content h2{color:var(--secondary-color);margin-bottom:20px;text-align:center;font-size:1.5em}
-.close-button{color:#aaa;float:right;font-size:28px;font-weight:bold;position:absolute;top:10px;right:20px;cursor:pointer}
-.close-button:hover,.close-button:focus{color:var(--accent-color);text-decoration:none;cursor:pointer}
 
-/* Carrito */
-#cart-items-container{list-style:none;padding:0;max-height:300px;overflow-y:auto;margin-bottom:20px}
-#cart-items-container li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #ddd;font-size:0.95em}
-#cart-items-container li:last-child{border-bottom:none}
-#cart-items-container li img{width:50px;height:50px;object-fit:cover;margin-right:10px;border-radius:8px}
-.cart-total{text-align:right;font-size:1.2em;font-weight:bold;margin-bottom:20px}
-#proceed-to-checkout{background:var(--gradient);color:#000;padding:12px 25px;border:none;border-radius:25px;cursor:pointer;font-size:1.1em;font-weight:700;display:block;width:fit-content;margin:0 auto;transition:all .3s ease}
-#proceed-to-checkout:hover{box-shadow:0 6px 20px rgba(255,0,128,0.4);transform:translateY(-2px)}
 
-/* Checkout */
-.checkout-form label{display:block;margin-bottom:5px;font-weight:600;color:var(--dark-color)}
-.checkout-form input[type="text"],.checkout-form input[type="tel"]{width:100%;padding:10px;margin-bottom:15px;border:1px solid #ddd;border-radius:8px;font-size:1em}
-.checkout-summary{border-top:1px solid #eee;padding-top:15px;margin-top:20px;font-size:1.1em}
+              
+.modal-content h2{text-align:center;color:var(--dark-color);font-size:1.5em}
+#cart-items-container{max-height:280px;overflow-y:auto;margin-bottom:12px}
+
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;font-size:0.95em }
+.cart-item img{width:50px;height:50px;object-fit:cover;border-radius:8px}
+.cart-item-quantity{width:40px;padding:4px;border:1px solid #ddd;border-radius:4px;text-align:center;font-weight:700;font-size:1em}
+.remove-from-cart{background:none;border:none;color:#d32f2f;font-size:1.1em;cursor:pointer}
+.cart-total{text-align:right;font-size:1.2em;font-weight:800;margin-top:12px;color:var(--accent-color)}
+#proceed-to-checkout{background: var(--gradient);color:#000;padding:12px;border:none;border-radius:25px;width:100%;font-size:1em;font-weight:700;cursor:pointer;margin-top:12px}
+.checkout-form label{display:block;margin-bottom:4px;font-weight:600;font-size:0.95em}
+.checkout-form input{width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:8px;font-size:1em}
+.checkout-summary{background:#f8f9fa;border-radius:10px;padding:15px;margin-top:15px}
 .checkout-summary div{display:flex;justify-content:space-between;margin-bottom:8px}
-.checkout-summary .total{font-weight:700;color:var(--accent-color);font-size:1.2em}
-#confirm-checkout{background:var(--secondary-color);color:#fff;padding:12px 25px;border:none;border-radius:25px;cursor:pointer;font-size:1.1em;font-weight:700;display:block;width:fit-content;margin:20px auto 0 auto;transition:all .3s ease}
-#confirm-checkout:hover{background:var(--dark-color);box-shadow:0 6px 20px rgba(0,0,0,0.3);transform:translateY(-2px)}
+.checkout-summary .total{font-weight:800;color:var(--accent-color);border-top:2px solid #ddd;padding-top:10px;margin-top:10px;font-size:1.2em}
+#confirm-checkout{background: var(--gradient);color:#000;padding:14px;border:none;border-radius:25px;width:100%;font-size:1.1em;font-weight:700;cursor:pointer;margin-top:15px}
 
-/* Fixed WhatsApp button */
-.whatsapp-fixed-button{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;font-size:2em;width:50px;height:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,0.2);z-index:100;transition:transform .3s ease}
-.whatsapp-fixed-button:hover{transform:scale(1.1)}
+footer{background:var(--dark-color);color:#fff;padding:25px 20px;text-align:center;margin-top:auto;border-top:2px solid var(--primary-color);width:100%}
+footer h3{color:var(--primary-color);font-size:1.6em;margin-bottom:10px}
+footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
+.social-links{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
+.social-links a{color:#fff;font-size:2em;margin:0 5px;transition:color .3s ease;text-decoration:none}
+.social-links a:hover{color:var(--primary-color)}
 
-/* Footer */
-footer{background:var(--dark-color);color:var(--light-color);text-align:center;padding:15px 10px;font-size:0.8em;margin-top:auto;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px}
-footer h3{color:var(--primary-color);margin:0;font-size:1.2em}
-footer p{margin:0}
-.social-links a{color:var(--primary-color);margin:0 8px;font-size:1.2em;transition:color .3s ease}
-.social-links a:hover{color:var(--accent-color)}
+.whatsapp-fixed-button{position:fixed;bottom:15px;right:15px;background:#25D366;color:#fff;width:50px;height:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.8em;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:99}
 
-/* About and Contact Page (Simple styling) */
-#about-page, #contact-page{
-    display:none;
-    background:#fff;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.1);
-    margin-bottom:15px;
-    border:2px solid var(--primary-color);
+/* 💻 EN COMPUTADORA SE VE MÁS GRANDE */
+@media screen and (min-width: 768px) {
+    body{font-size:18px}
+    .logo{font-size:20px}
+    .logo i{font-size:24px}
+   /* 🆕 AGREGAS ESTO */
+    .container{
+        max-width:95% !important;
+        width:95% !important;
+        margin: 0 auto !important;
+    }
+
+     /* 📝 AQUÍ ESTÁ LO DE LAS LETRAS MÁS GRANDES */
+    .nav-menu a{font-size: 18px;padding:8px 100px}
+    h1{font-size:2.2em}
+    
+ .categories-nav button{font-size:16px;padding:8px 60px}
+.categories-nav{justify-content:center;flex-wrap:nowrap;gap:10px;}
+    
+    .product-card h3{font-size:0.95em}
+    .product-card .price{font-size:1.2em}
+   .details-button, .buy-now-from-list-button{font-size:0.9em}
+
+ /* 🛒 AQUÍ LO NUEVO PARA EL CARRITO */
+    .cart-icon {font-size: 40px !important;}
+    .cart-count {font-size: 14px !important; padding: 3px 8px !important;}
+
+  /* 🔀 MÁS SEPARACIÓN ENTRE BOTONES DEL MENÚ */
+    .nav-menu ul{gap: 30px !important;}
+
+    
+ /* 🖼️ AQUÍ ESTÁ LO DEL CUADRO GRANDE */
+    .offer-carousel { height:450px !important; }
+
+ 
+  /* ***** AJUSTES PARA EL CUADRO DEL PRODUCTO (la "tarjeta" completa) EN PANTALLAS GRANDES ***** */
+  .product-card{
+    /* Mantenemos estas propiedades porque ya las tenías y aseguran un buen layout flexbox */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ¡IMPORTANTE! Esto distribuye el contenido y evita que se vea apretado */
+    align-items: center;
+
+    /* --- AQUÍ ES DONDE REDUCIMOS LA ALTURA DEL CUADRO EN LA COMPUTADORA --- */
+    /* Empieza con 400px como altura mínima del cuadro */
+    min-height: 500px;
+    /* Y 450px como altura máxima para que no se estire demasiado */
+    max-height: 580px;
+
+    /* Puedes ajustar este padding si quieres más o menos espacio en los bordes del cuadro */
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+  
+  /* ***** AJUSTES PARA LA IMAGEN DENTRO DEL CUADRO EN PANTALLAS GRANDES ***** */
+  .product-card img{
+    width: 100%;       /* Mantenemos el 100% de ancho */
+    height: auto;      /* Mantenemos altura automática */
+    object-fit: cover; /* Mantenemos object-fit: contain para que la imagen quepa */
+    display: block;
+    margin: 0 auto;
+    padding: 8px;      /* Puedes ajustar este padding si la imagen se ve muy pegada */
+
+    /* --- AQUI AJUSTAMOS LA ALTURA MÍNIMA DE LA IMAGEN PARA QUE CUBRA EL ~75% DEL CUADRO --- */
+    /* Si el cuadro tiene 400px de min-height, el 75% es 300px. */
+    /* Prueba con 300px. Si quieres la imagen más pequeña, baja este valor. */
+    min-height: 400px;
+    /* Para que no se estire de más, ajustamos también una max-height */
+    max-height: 480px; /* Un poco más que el min-height, para dar flexibilidad */
+
+
+
+      
+  }
+
+
+
+  /* ******** Contenedor de todos los productos (product-grid) ******** */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Esto asegura tus 3 columnas */
+    gap: 5px; /* Reducimos el espacio entre los cuadros un poco más */
+    padding: 3px; /* Reducimos el padding general del grid */
+  }
+
+  /* ******** La tarjeta individual del producto (product-card) ******** */
+   .product-card{
+    /* Mantenemos estas propiedades porque ya las tenías y aseguran un buen layout flexbox */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ¡IMPORTANTE! Esto distribuye el contenido y evita que se vea apretado */
+    align-items: center;
+
+    /* --- AQUÍ ES DONDE REDUCIMOS LA ALTURA DEL CUADRO EN LA COMPUTADORA --- */
+    /* Empieza con 400px como altura mínima del cuadro */
+    min-height:20px;
+    /* Y 450px como altura máxima para que no se estire demasiado */
+    max-height: 50px;
+
+    /* Puedes ajustar este padding si quieres más o menos espacio en los bordes del cuadro */
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+  
+  /* ******** La imagen del producto (product-card img) ******** */
+  .product-card img {
+    width: 100%; /* Deja este */
+    height: auto; /* Deja este */
+    object-fit: contain; /* Deja este */
+
+    margin-bottom: 0px !important;    /* <--- ¡CERO Y FUERZA! */
+    padding: 0px !important;          /* <--- ¡CERO Y FUERZA! */
+    line-height: 0 !important;        /* <--- ¡CERO Y FUERZA! */
+    vertical-align: top !important;   /* <--- CAMBIADO A 'top' para ver si es mejor que 'middle' */
+
+    /* Tus valores de altura de imagen, que deben ser pequeños para celular */
+    min-height: 20px !important; /* <--- Fuerza la altura mínima, por si las moscas */
+    max-height: 40px !important; /* <--- Fuerza la altura máxima */
+
+    display: block; /* Deja este */
+    margin-left: auto; /* Deja este */
+    margin-right: auto; /* Deja este */
+  }
+
+
+  .product-card .price { /* Precio */
+    font-size: 0.8em; /* <--- Letra más pequeña para el precio */
+    margin-top: 0px;  /* <--- ESTO PEGA EL PRECIO AL NOMBRE */
+    margin-bottom: 0px; /* <--- ESTO PEGA EL PRECIO AL SIGUIENTE ELEMENTO */
+  }
+
+  .product-card .stock-status { /* "EN STOCK" */
+    font-size: 0.5em; /* <--- Letra aún más pequeña */
+    margin-bottom: 0px; /* <--- Pegamos esto al botón */
+  }
+
+  /* Botones: "VER DETALLES" y "AÑADIR" */
+  .product-card .details-button,
+  .product-card .add-to-cart-button { /* Asumo que tienes un ".buy-now-button" también si te di uno antes */
+    width: 95%; /* Que ocupe casi todo el ancho */
+    margin-top: 2px; /* Un pequeño margen arriba para separarlo del "EN STOCK" */
+    padding: 3px 0; /* <--- Reducimos el padding interno del botón */
+   font-size: 0.6em; /* <--- Letra más pequeña para los botones */
+  }
+
 }
-#about-page h2, #contact-page h2{text-align:center;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
-#about-page p, #contact-page p{margin-bottom:15px}
-#about-page ul, #contact-page ul{list-style:none;padding-left:0;margin-bottom:15px}
-#about-page ul li, #contact-page ul li{margin-bottom:8px}
-#about-page a, #contact-page a{color:var(--primary-color);text-decoration:none;font-weight:600}
-#about-page a:hover, #contact-page a:hover{text-decoration:underline}
-.info-block{background-color:var(--light-color);padding:15px;border-radius:10px;margin-top:20px;border:1px solid #eee}
-.info-block h3{color:var(--secondary-color);margin-bottom:10px;font-size:1.2em}
-.info-block ul li i{margin-right:8px;color:var(--accent-color)}
 </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo" onclick="showSection('home')">
-            <i class="fas fa-robot"></i> BERRACOTOYS
-        </a>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="#" class="active" onclick="showSection('home')">Inicio</a></li>
-                <li><a href="#" onclick="showSection('about')">Nosotros</a></li>
-                <li><a href="#" onclick="showSection('contact')">Contacto</a></li>
-            </ul>
-        </nav>
-        <div class="cart-icon" onclick="toggleModal('cart-modal')">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-count" id="cart-count">0</span>
+<header>
+    <a href="#" class="logo" onclick="showSection('home')"><i class="fas fa-truck-loading"></i> BERRACOTOYS</a>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Inicio</a></li>
+            <li><a href="#" onclick="showSection('about')">Quiénes Somos</a></li>
+            <li><a href="#" onclick="showSection('contact')">Contacto</a></li>
+        </ul>
+    </nav>
+    <a class="cart-icon" onclick="toggleModal('cart-modal')">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count">0</span>
+    </a>
+</header>
+
+<div class="container">
+
+<div id="home-section">
+    <h1>BERRACOTOYS</h1>
+
+    <div class="offer-carousel">
+        <button class="carousel-arrow left" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-arrow right" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="offer-carousel-inner" id="offer-track">
+            
+            <div class="offer-slide" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80')">
+                <h2>ENVÍOS GRATIS</h2>
+                <p>Recibe tu pedido donde estés</p>
+                <button class="offer-button" onclick="showSection('home')">COMPRAR AHORA</button>
+            </div>
+
+            <div class="offer-slide" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=1200&q=80')">
+                <h2>GARANTÍA TOTAL</h2>
+                <p>Productos de alta calidad</p>
+                <button class="offer-button" onclick="filterProducts('all', document.querySelector('.categories-nav button'))">VER PRODUCTOS</button>
+            </div>
+
+            <div class="offer-slide" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=80')">
+                <h2>MEJORES PRECIOS</h2>
+               <p>La mejor tecnología y precio</p>
+                <button class="offer-button" onclick="filterProducts('ofertas', document.querySelectorAll('.categories-nav button')[9])">VER OFERTAS</button>
+            </div>
+
         </div>
-    </header>
+    </div>
+  <h1>NUESTRA COLECCIÓN</h1>
+    <div class="categories-nav">
+        <button class="active" onclick="filterProducts('all', this)">Todos</button>
+        <button onclick="filterProducts('escala', this)">COCHE CRAWLERS 4X4</button>
+        <button onclick="filterProducts('rc', this)">COCHES BUGGYS VELOCIDAD</button>
+        <button onclick="filterProducts('juguetes', this)">COCHES DRIFTS</button>
+        <button onclick="filterProducts('accesorios', this)">TRAILERS </button>
+         <button onclick="filterProducts('avion', this)">AVIONES RC</button>
+         <button onclick="filterProducts('motos', this)">MOTOS COLECCIONABLES </button>
+         <button onclick="filterProducts('burgujas', this)">PISTOLAS DE BURBUJAS </button>
+         <button onclick="filterProducts('agua', this)">PISTOLAS DE AGUA </button>
+        <button onclick="filterProducts('oferts', this)">🔥 Ofertas</button>
+    </div>
 
-    <main class="container">
-        
-        <!-- SECCIÓN DE INICIO (HOME) -->
-        <section id="home-section" style="display:block;">
-            <h1>NUESTRA COLECCIÓN</h1>
-
-            <!-- Carrusel de Ofertas -->
-            <div class="offer-carousel">
-                <div class="offer-carousel-inner" id="offer-track">
-                    <div class="offer-slide" style="background-image: url('https://via.placeholder.com/800x400/00F0FF/FFFFFF?text=Oferta+1');">
-                        <h2>¡Descuentos de Locura!</h2>
-                        <p>Descubre nuestras promociones especiales por tiempo limitado.</p>
-                        <a href="#" class="offer-button">Ver Ofertas</a>
-                    </div>
-                    <div class="offer-slide" style="background-image: url('https://via.placeholder.com/800x400/FF0080/FFFFFF?text=Nueva+Coleccion');">
-                        <h2>Nueva Colección Maquinaria</h2>
-                        <p>Los modelos más recientes ya disponibles. ¡No te los pierdas!</p>
-                        <a href="#" class="offer-button">Explorar</a>
-                    </div>
-                    <div class="offer-slide" style="background-image: url('https://via.placeholder.com/800x400/1A1A2E/FFFFFF?text=Juguetes+Premium');">
-                        <h2>Juguetes Premium</h2>
-                        <p>Calidad y diversión garantizadas para los pequeños ingenieros.</p>
-                        <a href="#" class="offer-button">Comprar Ahora</a>
-                    </div>
-                </div>
-                <button class="carousel-arrow left" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-arrow right" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="product-grid" id="product-list">
+        <div class="product-card" data-category="escala ofertas">
+            <img src="https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true" alt="CRAWLER RC FORD BRONCO ">
+            <h3>WLTOYS  104020 FORD BRONCO</h3>
+            <div class="price">$550</div>
+            <div class="stock-status in-stock">EN STOCK</div>                                   
+            <div class="product-card-actions">
+              <button class="details-button" onclick="showDetails('CRAWLER RC FORD BRONCO',  '       550',   'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', '✔ ESCALA: 1:8<br>✔ INCLUYE: EL PAQUETE ORIGINAL BOX, BATERÍAS, INSTRUCCIONES DE FUNCIONAMIENTO, CONTROLADOR REMOTO, CABLE USB, OTROS<br>✔ ESTRUCTURA Y TRANSMISIÓN: METAL (4WD)<br>✔ AMORTIGUACIÓN: AMORTIGUADORES METÁLICOS<br>✔ RUEDAS: CAUCHO RESISTENTE AL DESGASTE<br>✔ BATERIA: LIPO 11.1 V 4000-5000MAH 3S (Polimero de Litio)<br>✔ CONTROL de 2.4GHz<br>✔ VELOCIDAD: 100 KM/H<br>✔ CHASIS: PLACA INFERIOR DE ALEACIÓN DE ALUMINIO<br>✔ FUENTE DE ALIMENTACION: ELECTRICO<br>✔ ESTADO DEL EMBALAJE: LISTO PARA USAR<br>✔ MATERIAL: METAL,PLASTICO<br>✔ RANGO DE EDAD: DE 8 A 13 AÑOS, 14 AÑOS Y HASTA', ['https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H646cfe20de6a43388b9179776970ffbdY%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20(1).jpg?raw=true', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20(1).jpg?raw=true' ], 'https://player.vimeo.com/video/1177095678?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', 'EN STOCK' )">VER DETALLES</button>
+               
+                <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
             </div>
-
-            <!-- Barra de Categorías -->
-            <div class="categories-nav">
-                <button class="active" onclick="filterProducts('all', this)">Todos</button>
-                <button onclick="filterProducts('escala', this)">COCHE CRAWLERS 4X4</button>
-                <button onclick="filterProducts('rc', this)">COCHES BUGGYS VELOCIDAD</button>
-                <button onclick="filterProducts('drifts', this)">COCHES DRIFTS</button>
-                <button onclick="filterProducts('trailers', this)">TRAILERS </button>
-                <button onclick="filterProducts('avion', this)">AVIONES RC</button>
-                <button onclick="filterProducts('motos', this)">MOTOS COLECCIONABLES </button>
-                <button onclick="filterProducts('burbujas', this)">PISTOLAS DE BURBUJAS </button>
-                <button onclick="filterProducts('agua', this)">PISTOLAS DE AGUA </button>
-                <button onclick="filterProducts('ofertas', this)">🔥 Ofertas</button>
-            </div>
-
-            <!-- Cuadrícula de Productos -->
-            <div class="product-grid" id="product-list">
-                <!-- Los productos se cargarán aquí desde JavaScript -->
-            </div>
-        </section>
-
-        <!-- SECCIÓN DE DETALLES DEL PRODUCTO -->
-        <section id="detail-page" style="display:none;">
-            <h2 id="detail-title">Nombre Producto</h2>
-            <div class="product-detail-content">
-                <div class="product-detail-images">
-                    <div class="detail-image-slider" id="detail-slider">
-                        <div class="detail-slider-track" id="detail-slider-track"></div>
-                        <button class="detail-slider-arrow detail-arrow-left" onclick="moveDetailSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-                        <button class="detail-slider-arrow detail-arrow-right" onclick="moveDetailSlide(1)"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                    <div class="detail-thumbnails" id="detail-thumbnails"></div>
-                    <div class="detail-video" id="detail-video-container"></div>
-                </div>
-                <div class="product-detail-info">
-                    <div class="price" id="detail-price">$0.00</div>
-                    <p id="detail-description">Descripción...</p>
-                    <div class="product-detail-actions">
-                        <button id="detail-add-to-cart-button">AÑADIR AL CARRITO</button>
-                        <button id="detail-buy-now-button">COMPRAR AHORA</button>
-                    </div>
-                    <a href="#" id="back-to-products-button" onclick="showSection('home')">VOLVER A TIENDA</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN QUIÉNES SOMOS -->
-        <section id="about-page" style="display:none;">
-            <h2>Quiénes Somos</h2>
-            <p>En BERRACOTOYS, somos más que una tienda de juguetes; somos creadores de sueños y facilitadores de sonrisas. Desde nuestra fundación en Ecuador, nos hemos dedicado a ofrecer una selección única de juguetes teledirigidos, figuras coleccionables y juegos didácticos que inspiran la imaginación y fomentan el aprendizaje.</p>
-            <p>Nuestra misión es sencilla: **"Conectar la pasión con la perfección."** Creemos que cada artículo que ofrecemos no solo es un objeto, sino una pieza de imaginación, un motor de aprendizaje o un valioso elemento para tu colección.</p>
-            <p>Nos enorgullecemos de nuestro catálogo cuidadosamente seleccionado, que incluye desde impresionantes réplicas de maquinaria pesada hasta los juguetes más ingeniosos y divertidos del mercado. Trabajamos con marcas reconocidas mundialmente y pequeños artesanos para garantizar que cada compra sea una experiencia única y satisfactoria.</p>
-            <p>¡Únete a la familia BERRACOTOYS y descubre un mundo donde la calidad y la diversión se encuentran!</p>
-        </section>
-
-        <!-- SECCIÓN CONTACTO -->
-        <section id="contact-page" style="display:none;">
-            <h2>Contáctanos</h2>
-            <p>¿Tienes alguna pregunta, sugerencia o necesitas ayuda con tu pedido? En BERRACOTOYS, estamos siempre listos para escucharte. Puedes contactarnos a través de los siguientes medios:</p>
-            <ul>
-                <li><i class="fas fa-envelope"></i> <strong>Correo Electrónico:</strong> <a href="mailto:info@berracotoys.com">info@berracotoys.com</a></li>
-                <li><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/593987654321?text=Hola,%20me%20interesan%20sus%20productos" target="_blank">+593 987 654 321</a></li>
-                <li><i class="fas fa-phone-alt"></i> <strong>Teléfono:</strong> <a href="tel:+5932234567">02-234-567</a></li>
-                <li><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Av. Principal y Calle Secundaria, Quito, Ecuador</li>
-            </ul>
-            <p>También puedes seguirnos en nuestras redes sociales para estar al tanto de las últimas novedades y ofertas:</p>
-            <div class="social-links" style="text-align:center; margin-top:20px;">
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-            </div>
-            <p style="text-align:center; margin-top:20px;">¡Esperamos tu mensaje!</p>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2023 BERRACOTOYS. Todos los derechos reservados.</p>
-        <div class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+              
         </div>
-    </footer>
 
-    <!-- Modal del Carrito de Compras -->
-    <div id="cart-modal" class="cart-modal">
-        <div class="cart-content">
-            <span class="close-button" onclick="toggleCartModal()">&times;</span>
-            <h2>Tu Carrito de Compras</h2>
-            <ul id="cart-items">
-                <!-- Los elementos del carrito se cargarán aquí -->
+        <div class="product-card" data-category="rc">
+            <img src="https://via.placeholder.com/300" alt="Excavadora RC">
+            <h3>Excavadora Control Remoto</h3>
+            <div class="price">$120.00</div>
+            <div class="stock-status in-stock">EN STOCK</div>
+            <div class="product-card-actions">
+                <button class="details-button" onclick="showDetails('Excavadora Control Remoto', '120.00', 'https://via.placeholder.com/300', 'Funcionalidad completa con control remoto de alta frecuencia.', ['https://via.placeholder.com/300', 'https://via.placeholder.com/300'], 'https://www.youtube.com/embed/dQw4w9WgXcQ')">VER DETALLES</button>
+                <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="burbujas ofertas">
+            <div class="discount-badge">-20% OFF</div>
+            <img src="https://via.placeholder.com/300" alt="Camión Juguete">
+            <h3>Camión de Juguete Básico</h3>
+            <div class="price">$25.00</div>
+            <div class="stock-status in-stock">EN STOCK</div>
+            <div class="product-card-actions">
+                <button class="details-button" onclick="showDetails('Camión de Juguete', '25.00', 'https://via.placeholder.com/300', 'Divertido y resistente para los más pequeños.', ['https://via.placeholder.com/300'], '')">VER DETALLES</button>
+                <button class="buy-now-from-list-button" onclick="addToCart('Camión Juguete', '25.00', 'https://via.placeholder.com/300')">AÑADIR</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="agua ofertas">
+            <div class="discount-badge">-30% OFF</div>
+            <img src="https://via.placeholder.com/300" alt="Batería">
+            <h3>Batería Recargable Extra</h3>
+            <div class="price">$15.90</div>
+            <div class="stock-status out-of-stock">SIN STOCK</div>
+            <div class="product-card-actions">
+                <button class="details-button" onclick="showDetails('Batería Recargable', '15.90', 'https://via.placeholder.com/300', 'Mayor duración y rendimiento para tus equipos.', ['https://via.placeholder.com/300'], '')">VER DETALLES</button>
+                <button class="buy-now-from-list-button" onclick="addToCart('Batería', '15.90', 'https://via.placeholder.com/300')">AÑADIR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="detail-page">
+    <h2 id="detail-title">Nombre Producto</h2>
+    <div class="product-detail-content">
+        <div class="product-detail-images">
+            <div class="detail-image-slider" id="detail-slider">
+                <div class="detail-slider-track" id="detail-slider-track"></div>
+                <button class="detail-slider-arrow detail-arrow-left" onclick="moveDetailSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="detail-slider-arrow detail-arrow-right" onclick="moveDetailSlide(1)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="detail-thumbnails" id="detail-thumbnails"></div>
+            <div class="detail-video" id="detail-video-container"></div>
+        </div>
+        <div class="product-detail-info">
+            <div class="price" id="detail-price">$0.00</div>
+            <p id="detail-description">Descripción...</p>
+            <div class="product-detail-actions">
+                <button id="detail-add-to-cart-button">AÑADIR AL CARRITO</button>
+                <button id="detail-buy-now-button">COMPRAR AHORA</button>
+            </div>
+            <a href="#" id="back-to-products-button" onclick="showSection('home')">VOLVER A TIENDA</a>
+        </div>
+    </div>
+</div>
+
+<div id="about-page">
+    <h2>Quiénes Somos</h2>
+    <p>En Verraco Toys, somos más que una tienda de juguetes; somos creadores de sueños y facilitadores de sonrisas. Desde nuestra fundación en Ambato, Ecuador, nos hemos dedicado a ofrecer una selección única de juguetes teledirigidos, figuras coleccionables y juegos didácticos que inspiran la imaginación y fomentan el aprendizaje.</p>
+    <p>Nuestra misión es proporcionar productos de alta calidad que no solo entretengan, sino que también contribuyan al desarrollo de habilidades en niños y jóvenes. Creemos firmemente en el poder del juego para educar, innovar y unir a las familias.</p>
+    <p>Cada juguete en nuestro catálogo es cuidadosamente seleccionado, asegurando que cumpla con los más altos estándares de seguridad y durabilidad. Nos enorgullece ser un referente en el mercado local, gracias a la confianza y la alegría que hemos compartido con nuestros clientes.</p>
+     <p>¡Únete a la familia Verraco Toys y descubre un mundo de diversión y aventura!</p>
+       
+    <div class="info-block">
+        <h3>Nuestros Valores</h3>
+        <ul>
+                <li><i class="fas fa-check-circle"></i> Compromiso con la calidad</li>
+                <li><i class="fas fa-check-circle"></i> Responsabilidad y honestidad</li>
+                <li><i class="fas fa-check-circle"></i> Innovación constante</li>
+                <li><i class="fas fa-check-circle"></i> Atención personalizada</li>
             </ul>
-            <p id="cart-total">Total: $0.00</p>
-            <button class="checkout-button"><i class="fab fa-whatsapp"></i> Proceder a Pagar</button>
         </div>
     </div>
 
-    <!-- Mensaje de Alerta -->
-    <div id="alert-message" class="alert-message"></div>
+    <div id="contact-page">
+        <h2>Contacto</h2>
+        <p>Estamos aquí para ayudarte. Si tienes alguna pregunta, no dudes en comunicarte con nosotros.</p>
+        <div class="info-block">
+            <h3>Información de Contacto</h3>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Ambato, Ecuador</li>
+                <li><i class="fas fa-phone"></i> <strong>Teléfono:</strong> +593 963 057 078</li>
+                <li><i class="fas fa-envelope"></i> <strong>Email:</strong> verracotoys45@gmail.com</li>
+                <li><i class="fas fa-clock"></i> <strong>Horario:</strong> Lunes a Viernes 9:00 AM - 7:00 PM</li>
+            </ul>
+        </div>
+    </div>
 
-    <script>
+</div>
+
+<div id="cart-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="toggleModal('cart-modal')">&times;</span>
+        <h2>Tu Carrito</h2>
+        <div id="cart-items-container"></div>
+        <div class="cart-total">Total: <span id="cart-total">$0.00</span></div>
+        <button id="proceed-to-checkout">PROCEDER A PAGAR</button>
+    </div>
+</div>
+
+<div id="checkout-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="toggleModal('checkout-modal')">&times;</span>
+        <h2>Finalizar Compra</h2>
+        <form class="checkout-form" onsubmit="submitOrder(event)">
+            <label>Nombre Completo</label>
+            <input type="text" id="name-input" required>
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="phone-input" required>
+            <label>Dirección de Envío</label>
+            <input type="text" id="address-input" required>
+            <label>Referencia / Nota</label>
+            <input type="text" id="note-input">
+            <div class="checkout-summary">
+                <div><span>Subtotal:</span><span id="summary-subtotal">$0.00</span></div>
+                <div><span>Envío:</span><span id="summary-shipping">$6.00</span></div>
+                <div class="total"><span>TOTAL:</span><span id="summary-total">$0.00</span></div>
+            </div>
+            <button type="submit" id="confirm-checkout">CONFIRMAR COMPRA</button>
+        </form>
+    </div>
+</div>
+
+<a href="https://wa.me/593963057078" target="_blank" class="whatsapp-fixed-button"><i class="fab fa-whatsapp"></i></a>
+
+<footer>
+    <h3>BERRACOTOYS</h3>
+    <p>©️ 2025 BERRACOTOYS. Todos los derechos reservados.</p>
+    <div class="social-links">
+        <a href="https://facebook.com/TU_PAGINA" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/TU_PERFIL" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+</footer>
+
+<script>
 let currentSlide = 0;
 let currentDetailSlide = 0;
 let detailImagesArray = [];
-let products = []; // Array para almacenar tus productos
 
-// Función para mover el carrusel principal
 function moveCarousel(direction) {
     const track = document.getElementById('offer-track');
-    if (!track) return;
     const slides = track.children.length;
     currentSlide = (currentSlide + direction + slides) % slides;
     track.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
-// Intervalo para el carrusel automático
 setInterval(() => moveCarousel(1), 5000);
 
-// Función para mostrar secciones (Inicio, Nosotros, Contacto, Detalles)
 function showSection(section) {
     document.getElementById('home-section').style.display = 'none';
     document.getElementById('detail-page').style.display = 'none';
@@ -606,80 +633,72 @@ function showSection(section) {
 
     if(section === 'home') {
         document.getElementById('home-section').style.display = 'block';
-        filterProducts('all', document.querySelector('.categories-nav button:first-child')); // Asegura que se muestren todos al volver a Home
     } else if(section === 'about') {
         document.getElementById('about-page').style.display = 'block';
     } else if(section === 'contact') {
         document.getElementById('contact-page').style.display = 'block';
     }
     
-    // Resetea el scroll de categorías y lleva al inicio de la página
     const nav = document.querySelector('.categories-nav');
     if(nav) nav.scrollLeft = 0;
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// Función para filtrar productos por categoría
 function filterProducts(category, buttonElement) {
     const cards = document.querySelectorAll('.product-card');
     cards.forEach(card => {
         if (category === 'all') {
             card.style.display = 'flex';
         } else {
-            // Asegúrate de que los datos de categoría en el HTML sean consistentes (ej. "maquinaria,electronicos")
-            const productCategories = card.dataset.category ? card.dataset.category.split(',') : [];
-            card.style.display = productCategories.includes(category) ? 'flex' : 'none';
+            card.style.display = card.dataset.category.includes(category) ? 'flex' : 'none';
         }
     });
-    // Actualiza la clase activa de los botones de categoría
     document.querySelectorAll('.categories-nav button').forEach(btn => btn.classList.remove('active'));
     if(buttonElement) buttonElement.classList.add('active');
 }
 
-// Función para mostrar los detalles de un producto
-function showDetails(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) {
-        console.error('Producto no encontrado:', productId);
-        return;
-    }
-
+function showDetails(title, price, mainImg, description, images, videoUrl,stockStatus) {
     document.getElementById('home-section').style.display = 'none';
     document.getElementById('detail-page').style.display = 'block';
     document.getElementById('about-page').style.display = 'none';
     document.getElementById('contact-page').style.display = 'none';
 
-    document.getElementById('detail-title').textContent = product.name;
-    
-    // Formato del precio y stock
-    const detailPriceElement = document.getElementById('detail-price');
-    const stockClass = product.stockStatus === 'EN STOCK' ? 'in-stock' : 'out-of-stock';
-    detailPriceElement.innerHTML = `<span>$${parseFloat(product.price).toFixed(2)}</span> <span class="stock-status ${stockClass}">${product.stockStatus}</span>`;
-    
-    document.getElementById('detail-description').innerHTML = product.description;
-    
-    detailImagesArray = [product.image, ...product.additionalImages];
+    document.getElementById('detail-title').textContent = title;
+   document.getElementById('detail-price').textContent = '$' + price + '   |   ' + stockStatus;
+document.getElementById('detail-price').style.textAlign = 'center';
+
+if(stockStatus == 'EN STOCK'){
+    document.getElementById('detail-price').style.color = 'green';
+} else {
+    document.getElementById('detail-price').style.color = 'red';
+}
+    document.getElementById('detail-description').innerHTML = description;
+
+document.getElementById('detail-description').style.lineHeight = '400%';
+
+
+
+    detailImagesArray = [mainImg, ...images];
     const track = document.getElementById('detail-slider-track');
     const thumbs = document.getElementById('detail-thumbnails');
     track.innerHTML = '';
     thumbs.innerHTML = '';
-
     detailImagesArray.forEach((img, index) => {
         const slide = document.createElement('div');
-        slide.className = 'detail-slide';
-        slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="${product.name}">`;
-        track.appendChild(slide);
-        
+  slide.className = 'detail-slide';
+slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="">`;
+track.appendChild(slide);
         const thumb = document.createElement('img');
         thumb.src = img;
-        thumb.alt = `Miniatura ${index + 1} de ${product.name}`;
         thumb.onclick = () => goToDetailSlide(index);
         thumbs.appendChild(thumb);
     });
     currentDetailSlide = 0;
     updateDetailSlide();
 
-    const videoContainer = document.getElementById('detail-video-container');
+
+    
+  const videoContainer = document.getElementById('detail-video-container');
     if (product.videoUrl && product.videoUrl.length > 0) {
         let finalUrl = '';
         if (product.videoUrl.includes('vimeo.com/') && !product.videoUrl.includes('player.vimeo.com')) {
@@ -731,294 +750,137 @@ function showDetails(productId) {
     window.scrollTo({top: 0, behavior: 'smooth'}); // Vuelve al inicio de la página de detalles
 }
 
-// Funciones para el slider de imágenes de detalles
+
 function moveDetailSlide(direction) {
-    const track = document.getElementById('detail-slider-track');
-    const slides = detailImagesArray.length;
-    currentDetailSlide = (currentDetailSlide + direction + slides) % slides;
+    currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
     updateDetailSlide();
 }
-
+function updateDetailSlide() {
+    const track = document.getElementById('detail-slider-track');
+    track.style.transform = `translateX(-${currentDetailSlide * 100}%)`;
+    document.querySelectorAll('.detail-thumbnails img').forEach((img, idx) => {
+        img.classList.toggle('active-thumbnail', idx === currentDetailSlide);
+    });
+}
 function goToDetailSlide(index) {
     currentDetailSlide = index;
     updateDetailSlide();
 }
 
-function updateDetailSlide() {
-    const track = document.getElementById('detail-slider-track');
-    const thumbs = document.querySelectorAll('.detail-thumbnails img');
-    if (track) {
-        track.style.transform = `translateX(-${currentDetailSlide * 100}%)`;
+const sliderElement = document.getElementById('detail-slider');
+let startX = 0;
+let endX = 0;
+
+sliderElement.addEventListener('touchstart', e => {
+    startX = e.changedTouches[0].screenX;
+});
+
+sliderElement.addEventListener('touchend', e => {
+    endX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    if (startX - endX > 50) {
+        moveDetailSlide(1);
+    } else if (endX - startX > 50) {
+        moveDetailSlide(-1);
     }
-    thumbs.forEach((thumb, index) => {
-        if (index === currentDetailSlide) {
-            thumb.classList.add('active-thumbnail');
-        } else {
-            thumb.classList.remove('active-thumbnail');
-        }
-    });
 }
 
-// Carrito de compras
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let cart = [];
+
+function addToCart(name, price, img) {
+    const item = cart.find(i => i.name === name);
+    if(item) {
+        item.qty++;
+    } else {
+        cart.push({name, price: parseFloat(price), img, qty: 1});
+    }
+    updateCartCount();
+}
 
 function updateCartCount() {
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
     document.getElementById('cart-count').textContent = count;
 }
 
-function addToCart(productId, name, price, image) {
-    const existingItem = cart.find(item => item.id === productId);
-    if (existingItem) {
-        existingItem.quantity++;
-    } else {
-        cart.push({ id: productId, name, price, image, quantity: 1 });
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-    showAlert('Producto añadido al carrito!', 'success');
-}
-
-function removeItemFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-    renderCartItems();
-}
-
-function renderCartItems() {
-    const cartItemsElement = document.getElementById('cart-items');
-    const cartTotalElement = document.getElementById('cart-total');
-    cartItemsElement.innerHTML = '';
-    let total = 0;
-
-    if (cart.length === 0) {
-        cartItemsElement.innerHTML = '<li>El carrito está vacío.</li>';
-    } else {
-        cart.forEach(item => {
-            total += item.price * item.quantity;
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <img src="${item.image}" alt="${item.name}">
-                <span>${item.name} x ${item.quantity}</span>
-                <span>$${(item.price * item.quantity).toFixed(2)}</span>
-                <button onclick="removeItemFromCart('${item.id}')" style="background:none; border:none; color:var(--accent-color); font-size:1.2em; cursor:pointer;"><i class="fas fa-trash"></i></button>
-            `;
-            cartItemsElement.appendChild(li);
-        });
-    }
-    cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
-}
-
-// Función para abrir/cerrar el modal del carrito
-function toggleCartModal() {
-    const cartModal = document.getElementById('cart-modal');
-    if (cartModal.style.display === 'block') {
-        cartModal.style.display = 'none';
-    } else {
-        cartModal.style.display = 'block';
-        renderCartItems(); // Renderiza los ítems cada vez que se abre
+function toggleModal(id) {
+    const modal = document.getElementById(id);
+    modal.classList.toggle('active');
+    if(id === 'cart-modal' && modal.classList.contains('active')) {
+        renderCart();
     }
 }
 
-// Función para mostrar mensajes de alerta
-function showAlert(message, type = 'info') {
-    const alertBox = document.getElementById('alert-message');
-    alertBox.textContent = message;
-    alertBox.className = `alert-message ${type}`; // Clase para estilos (success, error, info)
-    alertBox.style.display = 'block';
-    setTimeout(() => {
-        alertBox.style.display = 'none';
-    }, 3000); // Ocultar después de 3 segundos
-}
-
-// Carga inicial de productos (simulados por ahora)
-function loadProducts() {
-    // Aquí puedes cargar tus productos desde una API o definirlos directamente
-    products = [
-        {
-            id: 'prod001',
-            name: 'Excavadora a Control Remoto (WLToys 144001)',
-            price: 120.00,
-            image: 'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Excavadora+RC',
-            category: 'maquinaria,rc,ofertas',
-            description: '<span>Excavadora de juguete a control remoto con funciones completas.</span> <span>Ideal para niños y coleccionistas.</span> <span>Movimientos realistas y alta durabilidad.</span>',
-            additionalImages: [
-                'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Excavadora+RC+2',
-                'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Excavadora+RC+3'
-            ],
-            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Ejemplo YouTube
-            stockStatus: 'EN STOCK',
-            discount: 10
-        },
-        {
-            id: 'prod002',
-            name: 'Robot Interactivo AlphaBot',
-            price: 75.50,
-            image: 'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo',
-            category: 'juguetes,electronicos',
-            description: '<span>Este robot inteligente interactúa contigo, baila y responde a comandos de voz.</span> <span>Fomenta la creatividad y el aprendizaje en niños.</span> <span>Batería recargable y modos de juego variados.</span>',
-            additionalImages: [
-                'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo+2',
-                'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo+3'
-            ],
-            videoUrl: 'https://player.vimeo.com/video/76979871', // Ejemplo Vimeo
-            stockStatus: 'AGOTADO'
-        },
-        {
-            id: 'prod003',
-            name: 'Set de Herramientas Infantil',
-            price: 35.00,
-            image: 'https://via.placeholder.com/300x200/1A1A2E/FFFFFF?text=Set+Herramientas',
-            category: 'juguetes,herramientas',
-            description: '<span>Un completo set de herramientas de juguete, seguro y educativo para los pequeños constructores.</span> <span>Incluye martillo, destornillador, sierra y más.</span> <span>Materiales no tóxicos y resistentes.</span>',
-            additionalImages: [
-                'https://via.placeholder.com/300x200/1A1A2E/FFFFFF?text=Set+Herramientas+2'
-            ],
-            videoUrl: 'https://drive.google.com/file/d/1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ/view?usp=sharing', // ✅ EJEMPLO GOOGLE DRIVE - DEBES REEMPLAZAR ID REAL
-            stockStatus: 'EN STOCK'
-        },
-        {
-            id: 'prod004',
-            name: 'Camioneta 4x4 a Control Remoto',
-            price: 95.00,
-            image: 'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Camioneta+4x4',
-            category: 'juguetes,vehiculos',
-            description: '<span>Potente camioneta 4x4 a control remoto, ideal para todo tipo de terrenos.</span> <span>Gran velocidad y suspensión independiente para una experiencia de conducción emocionante.</span> <span>Batería de larga duración.</span>',
-            additionalImages: [
-                'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Camioneta+4x4+2'
-            ],
-            videoUrl: '', // Sin video
-            stockStatus: 'EN STOCK'
-        },
-        {
-            id: 'prod005',
-            name: 'Figura de Acción "El Constructor"',
-            price: 25.99,
-            image: 'https://via.placeholder.com/300x200/2ECC71/FFFFFF?text=Constructor',
-            category: 'juguetes,figuras',
-            description: '<span>Figura de acción articulada con accesorios de construcción.</span> <span>Fomenta el juego imaginativo y la narración de historias.</span> <span>Materiales resistentes y seguros para niños.</span>',
-            additionalImages: [
-                'https://via.placeholder.com/300x200/2ECC71/FFFFFF?text=Constructor+2'
-            ],
-            videoUrl: '', // Sin video
-            stockStatus: 'EN STOCK'
-        },
-        {
-            id: 'prod006',
-            name: 'Drone de Carga Pequeño',
-            price: 150.00,
-            image: 'https://via.placeholder.com/300x200/FFD700/FFFFFF?text=Drone+Carga',
-            category: 'electronicos',
-            description: '<span>Mini drone con capacidad de carga para pequeños objetos.</span> <span>Ideal para iniciarse en el mundo de los drones de transporte.</span> <span>Fácil de manejar y con buena autonomía.</span>',
-            additionalImages: [
-                'https://via.placeholder.com/300x200/FFD700/FFFFFF?text=Drone+Carga+2'
-            ],
-            videoUrl: 'https://drive.google.com/file/d/1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ/view?usp=sharing', // Reemplaza con ID de tu video en Drive
-            stockStatus: 'AGOTADO'
-        },
-        {
-            id: 'prod007',
-            name: 'Mini Retroexcavadora',
-            price: 85.00,
-            image: 'https://via.placeholder.com/300x200/8A2BE2/FFFFFF?text=Mini+Retroexcavadora',
-            category: 'maquinaria,juguetes',
-            description: '<span>Réplica a escala de una retroexcavadora, con pala funcional.</span> <span>Fabricada en metal y plástico de alta resistencia.</span> <span>Perfecta para juegos en areneros o en casa.</span>',
-            additionalImages: [
-                'https://via.placeholder.com/300x200/8A2BE2/FFFFFF?text=Mini+Retroexcavadora+2'
-            ],
-            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Otro ejemplo de YouTube
-            stockStatus: 'EN STOCK'
-        },
-        {
-            id: 'prod008',
-            name: 'Kit de Robótica para Niños',
-            price: 60.00,
-            image: 'https://via.placeholder.com/300x200/00CED1/FFFFFF?text=Kit+Robotica',
-            category: 'juguetes,electronicos',
-            description: '<span>Introduce a tus hijos al mundo de la robótica y la programación.</span> <span>Construye varios modelos de robots con este kit educativo.</span> <span>Incluye guía paso a paso y componentes seguros.</span>',
-            additionalImages: [
-                'https://via.placeholder.com/300x200/00CED1/FFFFFF?text=Kit+Robotica+2'
-            ],
-            videoUrl: 'https://drive.google.com/file/d/1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ/view?usp=sharing', // Otro ejemplo de Google Drive
-            stockStatus: 'EN STOCK'
-        },
-    ];
-
-    const productGrid = document.getElementById('product-list'); // ✅ ID cambiado a product-list
-    if (!productGrid) return; // Asegúrate de que el contenedor exista
-
-    productGrid.innerHTML = ''; // Limpiar el grid antes de cargar
-
-    products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.dataset.category = product.category; // Añadir categorías al dataset
-        productCard.innerHTML = `
-            ${product.discount ? `<span class="discount-badge">${product.discount}% OFF</span>` : ''}
-            <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p class="price">$${parseFloat(product.price).toFixed(2)}</p>
-            <span class="stock-status ${product.stockStatus === 'EN STOCK' ? 'in-stock' : 'out-of-stock'}">${product.stockStatus}</span>
-            <div class="product-card-actions">
-                <button class="details-button" onclick="showDetails('${product.id}')"><i class="fas fa-info-circle"></i> Detalles</button>
-                <button class="buy-now-from-list-button" onclick="addToCart('${product.id}', '${product.name}', ${product.price}, '${product.image}')"><i class="fas fa-cart-plus"></i> Añadir</button>
+function renderCart() {
+    const container = document.getElementById('cart-items-container');
+    container.innerHTML = '';
+    cart.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+            <img src="${item.img}" alt="${item.name}">
+            <div>
+                <h4>${item.name}</h4>
+                <p>$${item.price.toFixed(2)}</p>
             </div>
+            <input type="number" class="cart-item-quantity" value="${item.qty}" min="1" onchange="updateQty(${idx}, this.value)">
+            <button class="remove-from-cart" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button>
         `;
-        productGrid.appendChild(productCard);
+        container.appendChild(div);
     });
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
 }
 
-// Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
-    loadProducts(); // Carga los productos al iniciar
-    updateCartCount(); // Actualiza el contador del carrito
-    // Inicializa el primer botón de categoría como activo
-    const firstCategoryBtn = document.querySelector('.categories-nav button');
-    if(firstCategoryBtn) firstCategoryBtn.classList.add('active');
+function updateQty(index, qty) {
+    cart[index].qty = parseInt(qty);
+    updateCartCount();
+    renderCart();
+}
 
-    // Cerrar modal del carrito haciendo clic fuera
-    const cartModal = document.getElementById('cart-modal');
-    if (cartModal) {
-        cartModal.addEventListener('click', (event) => {
-            if (event.target === cartModal) {
-                toggleCartModal();
-            }
-        });
-    }
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartCount();
+    renderCart();
+}
 
-    // Funcionalidad de Comprar Ahora del carrito al hacer clic en el botón de pago
-    const checkoutButton = document.querySelector('.checkout-button');
-    if (checkoutButton) {
-        checkoutButton.addEventListener('click', () => {
-            if (cart.length === 0) {
-                showAlert('Tu carrito está vacío.', 'info');
-                return;
-            }
-            let whatsappMessage = "Hola, quisiera realizar un pedido con los siguientes productos:\n\n";
-            let total = 0;
-            cart.forEach(item => {
-                whatsappMessage += `- ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
-                total += item.price * item.quantity;
-            });
-            whatsappMessage += `\nTotal: $${total.toFixed(2)}\n\n`;
-            whatsappMessage += "Por favor, indícame cómo puedo proceder con el pago y el envío.";
-            
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            window.open(`https://wa.me/593987654321?text=${encodedMessage}`, '_blank');
-            
-            // Opcional: Vaciar el carrito después de enviar el mensaje
-            cart = [];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            renderCartItems();
-            toggleCartModal();
-            showAlert('Pedido enviado a WhatsApp! Te contactaremos pronto.', 'success');
-        });
-    }
-});
+document.getElementById('proceed-to-checkout').onclick = () => {
+    toggleModal('cart-modal');
+    toggleModal('checkout-modal');
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    document.getElementById('summary-subtotal').textContent = '$' + total.toFixed(2);
+    document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
+};
 
+function submitOrder(e) {
+    e.preventDefault();
+    const name = document.getElementById('name-input').value;
+    const phone = document.getElementById('phone-input').value;
+    const address = document.getElementById('address-input').value;
+    const note = document.getElementById('note-input').value;
+    
+    let msg = `Hola, quiero hacer un pedido:%0A%0A`;
+    cart.forEach(item => {
+        msg += `${item.qty}x ${item.name} - $${(item.price * item.qty).toFixed(2)}%0A`;
+    });
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    msg += `%0ATotal: $${total.toFixed(2)}%0A%0A`;
+    msg += `Datos:%0ANombre: ${name}%0ATeléfono: ${phone}%0ADirección: ${address}%0ANota: ${note}`;
+    
+    window.open(`https://wa.me/593963057078?text=${msg}`);
+    cart = [];
+    updateCartCount();
+    toggleModal('checkout-modal');
+    alert('¡Pedido enviado por WhatsApp!');
+}
+
+// INICIALIZAR
+window.onload = () => {
+    showSection('home');
+    updateCartCount();
+};
 </script>
 </body>
-</html>
-    
+</html>    
