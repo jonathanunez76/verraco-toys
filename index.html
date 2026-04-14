@@ -395,28 +395,20 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     padding: 3px 0; /* <--- Reducimos el padding interno del botón */
    font-size: 0.6em; /* <--- Letra más pequeña para los botones */
 
-#detail-page {
-    padding: 5px !important; /* Un pequeño padding general para los lados, puedes ajustar */
-    margin: 0px !important;  /* ¡CERO MARGENES GENERALES EN LA PÁGINA DE DETALLE! */
-  }
+@media (max-width: 768px) {
 
-  /* Título H2 de la página de detalle (ej. el nombre del producto) */
-  #detail-page h2 {
-    font-size: 1.2em !important; /* Reduce el tamaño del título */
-    margin-top: 5px !important;  /* Pequeño margen superior para separar un poco del borde/nav */
-    margin-bottom: 5px !important; /* Pequeño margen inferior */
-    padding: 0px !important;
-  }
+  /* ******** CÓDIGO CRÍTICO PARA PEGAR LA IMAGEN GRANDE A LAS PEQUEÑAS ******** */
 
   /* Contenedor de la imagen principal (el slider donde está la foto grande) */
   .detail-image-slider {
-    height: 250px !important;      /* <--- ALTURA DE LA IMAGEN GRANDE EN CELULARES. Ajusta si quieres más/menos alto. */
+    /* Mantenemos una altura razonable para la imagen grande en celular */
+    height: 250px !important;      /* Puedes ajustar este valor si quieres que sea un poco más alta o más baja */
     
-    /* ¡ESTO ES CLAVE PARA PEGARLA A LAS MINIATURAS! */
-    margin-bottom: 0px !important; /* <--- ¡CERO MARGEN ABAJO PARA LA IMAGEN GRANDE! */
-    padding-bottom: 0px !important;/* <--- ¡CERO PADDING ABAJO PARA LA IMAGEN GRANDE! */
+    /* ¡ESTO ES LO MÁS IMPORTANTE PARA ELIMINAR EL ESPACIO ABAJO DE LA IMAGEN GRANDE! */
+    margin-bottom: 0px !important; /* <--- ¡CERO MARGEN ABAJO! ESTO LA Pega a las miniaturas. */
+    padding-bottom: 0px !important;/* <--- ¡CERO PADDING ABAJO! */
 
-    /* Resto de márgenes y paddings a cero para asegurar */
+    /* Nos aseguramos que no haya otros márgenes ni paddings que la separen */
     margin-top: 0px !important;
     padding-top: 0px !important;
     margin-left: auto !important;
@@ -424,7 +416,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     padding-left: 0px !important;
     padding-right: 0px !important;
 
-    /* Otras propiedades para que se vea bien */
+    /* Otras propiedades necesarias */
     max-width: 100% !important;
     overflow: hidden !important;
     border-radius: 0 !important;
@@ -439,28 +431,21 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     padding: 0px !important;
   }
 
-  /* El track del slider (si lo usas para animar, etc.) */
-  .detail-slider-track {
-    flex-flow: row !important; /* Si tu slider es horizontal, déjalo en 'row' */
-    margin: 0px !important;
-    padding: 0px !important;
-    gap: 0px !important;
-  }
-
   /* Contenedor general de los contenidos (donde están las imágenes, descripción, etc.) */
+  /* Si este contenedor tiene un "gap" entre sus elementos, lo eliminamos */
   .product-detail-content {
-    gap: 0px !important;           /* <--- ¡CERO ESPACIO ENTRE LAS SECCIONES HIJAS! */
+    gap: 0px !important;           /* <--- ¡CERO ESPACIO ENTRE SECCIONES HIJAS! */
     margin: 0px !important;
     padding: 0px !important;
   }
 
   /* Contenedor de las miniaturas (las imágenes chiquitas) */
   .detail-thumbnails {
-    /* ¡ESTO ES CLAVE PARA PEGAR LAS MINIATURAS A LA IMAGEN GRANDE! */
-    margin-top: 0px !important;    /* <--- ¡CERO MARGEN ARRIBA DE LAS MINIATURAS! */
-    padding-top: 0px !important;   /* <--- ¡CERO PADDING ARRIBA DE LAS MINIATURAS! */
+    /* ¡ESTO ES LO MÁS IMPORTANTE PARA ELIMINAR EL ESPACIO ARRIBA DE LAS MINIATURAS! */
+    margin-top: 0px !important;    /* <--- ¡CERO MARGEN ARRIBA! ESTO LAS Pega a la imagen grande. */
+    padding-top: 0px !important;   /* <--- ¡CERO PADDING ARRIBA! */
 
-    /* Resto de márgenes y paddings a cero */
+    /* Nos aseguramos que no haya otros márgenes ni paddings que las separen */
     margin-bottom: 0px !important;
     padding-bottom: 0px !important;
     margin-left: auto !important;
@@ -483,53 +468,36 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     height: 35px !important;       /* Alto de la miniatura */
   }
 
-
-  /* ******** 2. ESTILOS PARA LA DESCRIPCIÓN DEL PRODUCTO (MÁS COMPACTA) ******** */
-
-  /* Selecciona el contenedor de la descripción si tiene una clase específica */
-  .product-description { /* <--- ¡SI TIENES UN DIV O SECCIÓN CON ESTA CLASE PARA LA DESCRIPCIÓN, ÚSALO! */
-    margin: 0px !important;        /* Cero márgenes alrededor de la descripción */
-    padding: 5px !important;       /* Pequeño padding lateral para que el texto no se pegue a los bordes */
-    font-size: 0.9em !important;   /* Letra un poco más pequeña en general */
-    line-height: 1.3 !important;   /* Reduce el espacio entre líneas de texto */
-  }
-
-  /* Para párrafos dentro de la descripción (si usas <p> directamente o dentro de .product-description) */
-  .product-description p,
-  #detail-page p { /* Incluyo #detail-page p por si no tienes un contenedor .product-description */
-    margin-top: 0px !important;
-    margin-bottom: 5px !important; /* Un pequeño margen inferior para separar párrafos */
+  /*
+    OPCIONAL: Si necesitas que el precio/stock también se pegue aún más al bloque de imágenes,
+    o si quieres que la descripción se pegue más al precio/stock, puedes usar esto:
+  */
+  .product-detail-info .price,
+  .product-detail-info .stock-status {
+    margin-top: 0px !important;    /* Cero margen arriba */
+    margin-bottom: 0px !important; /* Cero margen abajo */
     padding: 0px !important;
-    line-height: 1.3 !important;
   }
 
-  /* Para listas (<ul>, <ol>) dentro de la descripción */
+  .product-description { /* Si tienes un contenedor .product-description */
+    margin-top: 0px !important;    /* Cero margen arriba */
+    padding-top: 0px !important;   /* Cero padding arriba */
+  }
+
+  /* Para párrafos y listas si aún ves espacio después del precio/stock */
+  .product-description p,
   .product-description ul,
   .product-description ol,
-  #detail-page ul,
-  #detail-page ol {
+  .product-description li {
     margin-top: 0px !important;
-    margin-bottom: 5px !important; /* Un pequeño margen inferior para separar listas */
-    padding-left: 20px !important; /* Ajusta el padding para las viñetas */
-  }
-
-  /* Para elementos de lista (<li>) dentro de la descripción */
-  .product-description li,
-  #detail-page li {
-    margin-top: 0px !important;
-    margin-bottom: 3px !important; /* <--- ¡ESTO ES CLAVE! Reduce el espacio entre cada punto de la lista */
-    padding: 0px !important;
-    line-height: 1.3 !important;   /* Reduce el espacio entre líneas en los puntos de la lista */
-  }
-
-  /* Si los checkmarks son íconos y están en un span o i */
-  .product-description .fa-check-square, /* O la clase de tu ícono de check */
-  #detail-page .fa-check-square {
-    margin-right: 5px !important; /* Pequeño margen entre el check y el texto */
+    margin-bottom: 0px !important; /* Cero margen entre elementos de descripción */
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    line-height: 1.2 !important;   /* Líneas más pegadas */
   }
 
 
-} <--- Cierre de la @media query */
+} /* <--- ¡Este es el CIERRE FINAL de la media query! */
 
     
 
