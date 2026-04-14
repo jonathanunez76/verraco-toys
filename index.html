@@ -106,7 +106,7 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .carousel-arrow.left{left:10px}
 .carousel-arrow.right{right:10px}
 
-.product-grid{display:grid;grid-template-columns: repeat(3, 1fr) !important; gap:8px !important;}
+.product-grid{display:grid;grid-template-columns: repeat(3, 1fr) !important; gap:8px;}
 
 .product-card{background:#fff;border:2px solid transparent;border-radius:12px;box-shadow:0 3px 8px rgba(0,0,0,0.08);overflow:hidden;text-align:center;padding-bottom:10px;transition:all .3s ease;display:flex;flex-direction:column;}
     
@@ -319,7 +319,88 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 }
 
 
+@media (max-width: 768px) {
 
+  /* ******** Contenedor de todos los productos (product-grid) ******** */
+  /* NO CAMBIAMOS LAS 3 COLUMNAS AQUÍ, PERO ASEGURAMOS EL ESPACIO */
+  .product-grid {
+    display: grid; /* Aseguramos que siga siendo grid */
+    /* grid-template-columns: repeat(3, 1fr); <--- NO LO PONEMOS AQUÍ para que use el valor global de 3 columnas */
+    gap: 8px; /* Mismo gap que el de la PC, o puedes ajustarlo si quieres un poco más o menos */
+    padding: 5px; /* Un padding un poco más pequeño para dejar más espacio a los productos */
+    /* Si ves que necesitas más espacio entre las columnas, puedes poner un gap más grande aquí */
+  }
+
+  /* ******** La tarjeta individual del producto (product-card) ******** */
+  .product-card {
+    /* Aquí es donde achicamos el largo del cuadro, Papi */
+    min-height: 250px; /* <-- PAPI, PRUEBA CON ESTE VALOR. AJÚSTALO HASTA QUE TE GUSTE EL LARGO MINIMO */
+    max-height: 300px; /* <-- PAPI, PRUEBA CON ESTE VALOR. AJÚSTALO HASTA QUE TE GUSTE EL LARGO MAXIMO */
+
+    /* Puedes ajustar un poco el padding si se ve muy apretado */
+    padding: 8px;
+
+    /* Asegúrate de que las propiedades de flexbox estén aquí para la organización interna */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Para que el contenido interno se distribuya bien */
+    align-items: center; /* Para centrar el contenido horizontalmente */
+
+    /* Otros estilos que tengas para la tarjeta */
+    background: #fff;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  /* ******** La imagen del producto (product-card img) ******** */
+  .product-card img {
+    width: 100%;       /* Ocupa todo el ancho disponible en su cuadro */
+    height: auto;      /* Mantiene la proporción de la imagen */
+
+    object-fit: contain; /* Para que se vea la imagen completa dentro del espacio, sin cortarse */
+                         /* Si prefieres que se corte pero llene el espacio, usa 'cover' */
+
+    display: block;
+    margin: 0 auto;
+    padding: 2px; /* Un padding más pequeño para la imagen */
+
+    /* Ajustamos el tamaño de la imagen para que quepa dentro del cuadro más pequeño */
+    min-height: 80px;  /* <-- PAPI, AJUSTA ESTE VALOR para la altura mínima de la imagen */
+    max-height: 120px; /* <-- PAPI, AJUSTA ESTE VALOR para la altura máxima de la imagen */
+  }
+
+  /* ******** Otros elementos dentro de la tarjeta para que quepan bien ******** */
+  /* Ajustar tamaños de fuente para que no se salgan o se vean muy grandes */
+  .product-card h3 { /* Si este es el título del producto */
+    font-size: 0.8em;
+    margin: 4px 0;
+  }
+
+  .product-card .price {
+    font-size: 1em; /* Un poco más pequeño para que quepa */
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .product-card .stock-status {
+    font-size: 0.7em;
+    margin-bottom: 4px;
+  }
+
+  /* Botones más pequeños */
+  .product-card .details-button,
+  .product-card .buy-now-button,
+  .product-card .add-to-cart-button {
+    width: 90%; /* Que el botón no ocupe todo el ancho si se ve muy pegado */
+    margin-top: 2px;
+    padding: 6px 0;
+    font-size: 0.75em;
+  }
+
+}
 
 
     
