@@ -307,9 +307,9 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     /* --- AQUI AJUSTAMOS LA ALTURA MÍNIMA DE LA IMAGEN PARA QUE CUBRA EL ~75% DEL CUADRO --- */
     /* Si el cuadro tiene 400px de min-height, el 75% es 300px. */
     /* Prueba con 300px. Si quieres la imagen más pequeña, baja este valor. */
-    min-height: 400px;
+    min-height: 1000px;
     /* Para que no se estire de más, ajustamos también una max-height */
-    max-height: 430px; /* Un poco más que el min-height, para dar flexibilidad */
+    max-height: 1500px; /* Un poco más que el min-height, para dar flexibilidad */
 
 
 
@@ -319,56 +319,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 }
 
 
-@media (max-width: 768px) {
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 15px;
-    padding: 10px;
-  }
 
-  .product-card {
-    width: 90%;
-    margin: 0 auto;
-    padding: 15px;
-    min-height: 480px;
-    max-height: 550px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .product-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-    padding: 5px;
-    min-height: 300px;
-    max-height: 380px;
-  }
-
-  .product-card .price {
-    font-size: 1.5em;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  .product-card .stock-status {
-    margin-bottom: 8px;
-  }
-
-  .product-card .details-button,
-  .product-card .buy-now-button,
-  .product-card .add-to-cart-button {
-    width: 100%;
-    margin-top: 5px;
-    padding: 10px 0;
-    font-size: 1em;
-  }
-}
 
 
     
