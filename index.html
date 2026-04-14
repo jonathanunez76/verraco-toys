@@ -222,12 +222,22 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 #back-to-products-button:hover{border-color: var(--dark-color)}
 
 #about-page, #contact-page{display:none;padding:20px;max-width:800px;margin:0 auto;width:100%}
-@media (max-width: 768px) { /* Esto aplica solo para pantallas de 768px o menos */
+@media (max-width: 768px) {
   #detail-page {
-    max-width: 85%; /* Puedes ajustar este porcentaje (ej. 80%, 90%) para el ancho que desees */
-    margin-left: auto;            /* Centra el contenedor horizontalmente */
-    margin-right: auto;           /* Centra el contenedor horizontalmente */
+    max-width: 85%; /* Ajusta este ancho, ej. 80%, 90% */
+    margin: auto;   /* Centra el contenedor */
+    padding: 8px;   /* Ajusta este relleno, ej. 5px, 10px */
+    gap: 8px;       /* Ajusta este espacio entre elementos (si #detail-page es flex/grid) */
   }
+
+  /* Si alguna imagen es muy alta, EJEMPLO: */
+  .detail-main-image { /* Cambia .detail-main-image por tu clase/ID real */
+    max-height: 200px; /* Ajusta esta altura, ej. 250px */
+    object-fit: contain;
+  }
+  /* Si el video sigue siendo muy alto, ajusta el 'padding-bottom' de .video-responsive si es necesario */
+  /* .video-responsive { padding-bottom: 60%; } */
+}
     }  
 #about-page h2, #contact-page h2{text-align:center;font-size:1.8em;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 #about-page p, #contact-page p{font-size:1em;color:#555;margin-bottom:12px;line-height:1.7}
