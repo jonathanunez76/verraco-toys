@@ -898,7 +898,8 @@ function stopVideoOnNavigation() {
 
 const navigationButtons = document.querySelectorAll(
     'a[onclick^="showSection("]',
-);
+
+ );
 
 
 navigationButtons.forEach(button => {
@@ -909,8 +910,7 @@ navigationButtons.forEach(button => {
 window.addEventListener('beforeunload', stopVideoOnNavigation); // Para navegadores de escritorio
 window.addEventListener('pagehide', stopVideoOnNavigation);     // Más fiable para dispositivos móviles (lo ideal)
 
-      }
-
+  
       
 // INICIALIZAR
 window.onload = () => {
