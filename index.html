@@ -886,9 +886,7 @@ function submitOrder(e) {
     toggleModal('checkout-modal');
     alert('¡Pedido enviado por WhatsApp!');
 }
-// --- INICIO DEL CÓDIGO A AÑADIR/INTEGRAR ---
-
-// Función para detener el video al salir de la página de detalles
+/
 function stopVideoOnNavigation() {
     const videoContainerElement = document.getElementById('detail-video-container'); // Obtiene el div contenedor del video
     if (videoContainerElement) {
@@ -897,22 +895,12 @@ function stopVideoOnNavigation() {
     }
 }
 
-// *** ¡MUY IMPORTANTE: CONFIGURA ESTOS SELECTORES CON LOS REALES DE TU HTML! ***
-// Esto es lo que le dice al código qué elementos (botones, enlaces, etc.) deben activar el stop del video.
-//
-// EJEMPLO:
-// Si tu logo principal es un enlace con ID "main-header-logo": '#main-header-logo'
-// Si tienes un botón "Volver a la tienda" con CLASE "btn-return-shop": '.btn-return-shop'
-// Si tienes un simple enlace a la raíz de tu sitio como <a href="/">Inicio</a>: 'a[href="/"]'
-//
-// Puedes combinar varios selectores separándolos por comas dentro de las comillas:
-// const navigationButtons = document.querySelectorAll('#main-header-logo, .btn-return-shop, a[href="/"]');
 
 const navigationButtons = document.querySelectorAll(
-    'a[onclick^="showSection("]'
+    'a[onclick^="showSection("]',
 );
 
-// Asigna la función 'stopVideoOnNavigation' a los eventos de clic de esos elementos
+
 navigationButtons.forEach(button => {
     button.addEventListener('click', stopVideoOnNavigation);
 });
