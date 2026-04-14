@@ -415,8 +415,10 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
   }
   /* Adaptación a móviles */
    @media (max-width: 768px) { /* Para pantallas móviles */
-    .main-product-image {
-        margin-bottom: 20px; /* Mucho más pequeño en móvil */
+    .offer-carousel {
+        height: auto !important; /* <--- ¡Ponlo así! Con auto y con !important para asegurarnos */
+        /* También puedes considerar ajustar márgenes si hay alguno que esté contribuyendo */
+        margin-bottom: 20px; /* Ejemplo: un pequeño margen para separar */
     }
 }
 
