@@ -465,7 +465,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
             <div class="price">$550</div>
             <div class="stock-status in-stock">EN STOCK</div>                                   
             <div class="product-card-actions">
-              <button class="details-button" onclick="showDetails('CRAWLER RC FORD BRONCO',  '       550',   'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', '✔ ESCALA: 1:8<br>✔ INCLUYE: EL PAQUETE ORIGINAL BOX, BATERÍAS, INSTRUCCIONES DE FUNCIONAMIENTO, CONTROLADOR REMOTO, CABLE USB, OTROS<br>✔ ESTRUCTURA Y TRANSMISIÓN: METAL (4WD)<br>✔ AMORTIGUACIÓN: AMORTIGUADORES METÁLICOS<br>✔ RUEDAS: CAUCHO RESISTENTE AL DESGASTE<br>✔ BATERIA: LIPO 11.1 V 4000-5000MAH 3S (Polimero de Litio)<br>✔ CONTROL de 2.4GHz<br>✔ VELOCIDAD: 100 KM/H<br>✔ CHASIS: PLACA INFERIOR DE ALEACIÓN DE ALUMINIO<br>✔ FUENTE DE ALIMENTACION: ELECTRICO<br>✔ ESTADO DEL EMBALAJE: LISTO PARA USAR<br>✔ MATERIAL: METAL,PLASTICO<br>✔ RANGO DE EDAD: DE 8 A 13 AÑOS, 14 AÑOS Y HASTA', ['https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H646cfe20de6a43388b9179776970ffbdY%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20(1).jpg?raw=true', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20(1).jpg?raw=true' ], '', 'EN STOCK' )">VER DETALLES</button>
+              <button class="details-button" onclick="showDetails('CRAWLER RC FORD BRONCO',  '       550',   'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', '✔ ESCALA: 1:8<br>✔ INCLUYE: EL PAQUETE ORIGINAL BOX, BATERÍAS, INSTRUCCIONES DE FUNCIONAMIENTO, CONTROLADOR REMOTO, CABLE USB, OTROS<br>✔ ESTRUCTURA Y TRANSMISIÓN: METAL (4WD)<br>✔ AMORTIGUACIÓN: AMORTIGUADORES METÁLICOS<br>✔ RUEDAS: CAUCHO RESISTENTE AL DESGASTE<br>✔ BATERIA: LIPO 11.1 V 4000-5000MAH 3S (Polimero de Litio)<br>✔ CONTROL de 2.4GHz<br>✔ VELOCIDAD: 100 KM/H<br>✔ CHASIS: PLACA INFERIOR DE ALEACIÓN DE ALUMINIO<br>✔ FUENTE DE ALIMENTACION: ELECTRICO<br>✔ ESTADO DEL EMBALAJE: LISTO PARA USAR<br>✔ MATERIAL: METAL,PLASTICO<br>✔ RANGO DE EDAD: DE 8 A 13 AÑOS, 14 AÑOS Y HASTA', ['https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H646cfe20de6a43388b9179776970ffbdY%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20(1).jpg?raw=true', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20(1).jpg?raw=true' ], 'https://drive.google.com/file/d/1S0MN5r1-TnCbdJopve7tnIOygYirGH5f/view', 'EN STOCK' )">VER DETALLES</button>
                
                 <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
             </div>
@@ -698,57 +698,25 @@ track.appendChild(slide);
 
 
     
-   // ... (código anterior) ...
+// ... (código anterior a la línea 701) ...
 
-// Línea 701: Inicialización del contenedor de video
 const videoContainer = document.getElementById('detail-video-container');
 
-// Línea 702: Condición para verificar si hay una URL de video
 if (videoUrl && videoUrl.length > 0) {
-    let finalUrl = videoUrl; // Inicialmente, usamos la URL tal cual
+    let finalUrl = videoUrl;
 
-    // --- Lógica para videos de Vimeo (tu código existente) ---
     if (videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
         const id = videoUrl.split('/').pop();
         finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
-    } 
-    // --- INICIO DE LA NUEVA LÓGICA PARA VIDEOS DE GOOGLE DRIVE ---
-    else if (videoUrl.includes('drive.google.com/file/d/')) {
-        // Expresión regular para extraer el ID del video de Google Drive.
-        // El ID es la parte alfanumérica entre '/d/' y '/view' o cualquier otro delimitador.
-        const match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
-        
-        if (match && match[1]) {
-            const driveId = match[1];
-            // Construimos la URL final para incrustar, usando el ID y '/preview'
-            finalUrl = `https://drive.google.com/file/d/${driveId}/preview`;
-        } else {
-            // Si por alguna razón no podemos extraer el ID,
-            // usamos la URL original y esperamos que Google Drive la maneje (menos fiable)
-            finalUrl = videoUrl; 
-        }
     }
-    // --- FIN DE LA NUEVA LÓGICA PARA VIDEOS DE GOOGLE DRIVE ---
 
-    // Línea 708: Insertamos el iframe en el contenedor con la URL final
-    // Hemos añadido "allowfullscreen" para mayor compatibilidad y "style" para que sea responsivo por defecto.
-    videoContainer.innerHTML = `
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-            <iframe src="${finalUrl}" 
-                    frameborder="0" 
-                    allow="autoplay; fullscreen" 
-                    allowfullscreen 
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;">
-            </iframe>
-        </div>
-    `;
-    
-} else {
-    // Si no hay URL de video, el contenedor se vacía
-    videoContainer.innerHTML = '';
+    videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height:100%;"></iframe>`;
+    // Esta línea estaba en tu código original en la imagen,
+    // si causaba problemas (por ejemplo, borrando el iframe),
+    // es probable que debas eliminarla incluso en el código original.
+    // videoContainer.innerHTML = '';
 }
 
-// ... (resto de tu código: add-to-cart, buy-now-button, scroll) ...
 
 function moveDetailSlide(direction) {
     currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
