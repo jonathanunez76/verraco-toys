@@ -274,7 +274,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     
  /* 🖼️ AQUÍ ESTÁ LO DEL CUADRO GRANDE */
     .offer-carousel { height: 450px !important; }
-
+}
  
   /* ***** AJUSTES PARA EL CUADRO DEL PRODUCTO (la "tarjeta" completa) EN PANTALLAS GRANDES ***** */
   .product-card{
@@ -294,7 +294,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     padding-top: 10px;
     padding-bottom: 10px;
 
-
+  }
   /* ***** AJUSTES PARA LA IMAGEN DENTRO DEL CUADRO EN PANTALLAS GRANDES ***** */
   .product-card img{
     width: 100%;       /* Mantenemos el 100% de ancho */
@@ -310,12 +310,34 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     min-height: 400px;
     /* Para que no se estire de más, ajustamos también una max-height */
     max-height: 430px; /* Un poco más que el min-height, para dar flexibilidad */
+
+
+
+      
   }
 
 }
 
 
+@media (max-width: 768px) {
 
+  .product-card {
+    min-height: auto;
+    max-height: none;
+    height: auto;
+    /* width: 90%; */
+    /* margin: 0 auto; */
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    min-height: auto;
+    max-height: 200px; /* <--- Ajusta este valor para tu celular */
+  }
+
+} 
 
 
 
