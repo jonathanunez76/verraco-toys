@@ -12,7 +12,7 @@
         img-src 'self' data: https:;
         font-src 'self' https:;
         connect-src 'self' https:;
-        frame-src 'self' https://www.whatsapp.com https://www.youtube.com https://player.vimeo.com https://drive.google.com;
+        frame-src 'self' https://www.whatsapp.com https://www.youtube.com https://player.vimeo.com https://drive.google.com/file/d/${fileId}/preview`; 
         media-src 'self' https: data:;
         object-src 'none';
         base-uri 'self';
@@ -717,40 +717,26 @@ track.appendChild(slide);
     updateDetailSlide();
 
 
-          const videoContainer = document.getElementById('detail-video-container');
-    videoContainer.innerHTML = ''; // Limpiar el contenedor de video al inicio
-
-    if (product.videoUrl && product.videoUrl.length > 0) {
-        let finalUrl = '';
-        let isGoogleDrive = false; // Bandera para Google Drive, siempre true aquí
-
-        // Lógica exclusiva para Google Drive
-        if (product.videoUrl.includes('drive.google.com/file/d/')) {
-            const idMatch = product.videoUrl.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
-            if (idMatch && idMatch[1]) {
-                const fileId = idMatch[1];
-                finalUrl = `https://drive.google.com/file/d/${fileId}/preview`; // Convierte a formato preview
-                isGoogleDrive = true; // Confirma que es Google Drive
-            } else {
-                console.warn('No se pudo extraer el ID del archivo de Google Drive de la URL:', product.videoUrl);
-            }
+      const videoContainer = document.getElementById('detail-video-container');
+    if(videoUrl && videoUrl.length > 0) {
+        let finalUrl = videoUrl;
+        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+            const id = videoUrl.split('/').pop();
+            finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
         }
-        // Puedes añadir una condición para URLs de Google Drive con /embed/ si también usas ese formato
-        else if (product.videoUrl.includes('drive.google.com/embed/')) {
-            finalUrl = product.videoUrl; // Si ya es /embed/, la usa directamente
-            isGoogleDrive = true;
-        }
-        
-        // Generar el iframe con la finalUrl que se haya determinado (solo para Google Drive aquí)
-        if (finalUrl) {
-            // Usa el estilo específico para Google Drive (sin borde)
-            const iframeHtml = `<iframe src="${finalUrl}" width="100%" height="auto" style="border: none;" allowfullscreen></iframe>`;
-            videoContainer.innerHTML = iframeHtml;
-        }
-    } else {
-        videoContainer.innerHTML = ''; // Si no hay videoUrl, o no es de Google Drive, el contenedor queda vacío
+videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height 800px; object-fit:contain;"></iframe>`;    } else {
+        videoContainer.innerHTML = '';
     }
 
+    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
+    document.getElementById('detail-buy-now-button').onclick = () => {
+        addToCart(title, price, mainImg);
+        toggleModal('cart-modal');
+    };
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
+
+}
 function moveDetailSlide(direction) {
     currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
     updateDetailSlide();
