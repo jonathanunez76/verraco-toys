@@ -731,26 +731,37 @@ track.appendChild(slide);
     updateDetailSlide();
 
 
-      const videoContainer = document.getElementById('detail-video-container');
-    if(videoUrl && videoUrl.length > 0) {
-        let finalUrl = videoUrl;
-        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
-            const id = videoUrl.split('/').pop();
-            finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
-        }
-videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height 800px; object-fit:contain;"></iframe>`;    } else {
-        videoContainer.innerHTML = '';
+
+// Líneas 734-740: Tu lógica para construir finalUrl (Vimeo)
+const videoContainer = document.getElementById('detail-video-container');
+if (videoUrl && videoUrl.length > 0) {
+    let finalUrl = videoUrl;
+    if (videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+        const id = videoUrl.split('/').pop();
+        finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
     }
 
-    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
-    document.getElementById('detail-buy-now-button').onclick = () => {
-        addToCart(title, price, mainImg);
-        toggleModal('cart-modal');
-    };
-    
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    // --- LÍNEA 741 MODIFICADA: Creación del iframe ---
+    // Se elimina el 'height: 800px;' fijo para ajuste automático.
+    // Se añade 'id="currentVideoPlayer"' al iframe.
+    videoContainer.innerHTML = `<iframe id="currentVideoPlayer" src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; object-fit:contain;"></iframe>`;
 
+    // --- LÍNEA 742 (videoContainer.innerHTML = '';) DEBE HABER SIDO BORRADA ---
+    // Si aún la tienes, BÓRRALA COMPLETAMENTE de tu código.
 }
+
+// Líneas 744-748: Tus botones de agregar al carrito y modal
+document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
+document.getElementById('detail-buy-now-button').onclick = () => {
+    addToCart(title, price, mainImg);
+    toggleModal('cart-modal');
+};
+
+// Línea 751-752: Tu scroll a la parte superior
+window.scrollTo({top: 0, behavior: 'smooth'});
+
+
+
 function moveDetailSlide(direction) {
     currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
     updateDetailSlide();
