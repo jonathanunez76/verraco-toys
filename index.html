@@ -164,47 +164,195 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .buy-now-from-list-button{background: var(--gradient);color:#000}
 .buy-now-from-list-button:hover{box-shadow: 0 4px 10px rgba(255,0,128,0.4)}
 
-#detail-page{display:none;background:#fff;padding:15px;box-shadow:0 5px 20px rgba(0,240,255,0.1);margin-bottom:15px;border-radius:15px;flex-direction:column;gap:15px;border:2px solid var(--primary-color)}
-#detail-page h2{text-align:center;font-size:1.6em;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
-.product-detail-content{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:flex-start}
-.product-detail-images{flex:1 1 45%;min-width:280px;text-align:center}
-.detail-image-slider { position: relative; width: 100%; max-width: 600px; height: 600px; overflow: hidden; border-radius: 15px; margin: auto; }  
-    .detail-slider-track { display: flex; transition: transform 0.5s ease; width: 100%; }
-.detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; max-width: 450px; margin: auto; }
-.detail-main-image{width:100%; height:100%; object-fit:cover;padding:0;}    
-.detail-slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--dark-color);color:var(--primary-color);border:none;width:35px;height:35px;font-size:16px;border-radius:50%;cursor:pointer;z-index:10;border: 1px solid var(--primary-color)}
-.detail-arrow-left{left:10px}
-.detail-arrow-right{right:10px}
-.detail-thumbnails{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin-top:0px}
-.detail-thumbnails img{width:60px;height:45px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all .3s ease}
+/* --- INICIO DE AJUSTES PARA LA PÁGINA DE DETALLES --- */
+#detail-page{
+    display:none;
+    background:#fff;
+    padding:15px;
+    box-shadow:0 5px 20px rgba(0,240,255,0.1);
+    margin-bottom:15px;
+    border-radius:15px;
+    flex-direction:column;
+    gap:15px;
+    border:2px solid var(--primary-color);
+}
+#detail-page h2{
+    text-align:center;
+    font-size:1.6em;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px; /* 🆕 Menos margen inferior para el título en detalles */
+}
+
+/* Flexbox para el contenido principal de detalles (imágenes + info) */
+.product-detail-content{
+    display:flex;
+    flex-wrap:wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    gap:15px; /* 🆕 Espacio entre los bloques reducido */
+    justify-content:center;
+    align-items:flex-start;
+    flex-direction: column; /* Por defecto, apilados en móvil */
+}
+
+/* Columna de imágenes y video */
+.product-detail-images{
+    flex:1 1 100%; /* Ocupa todo el ancho en móvil */
+    min-width: unset; /* Quitar el min-width fijo para mobile, dejar que se adapte */
+    text-align:center;
+}
+
+/* Contenedor del slider principal de imágenes */
+.detail-image-slider {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Mantener un máximo para que no se vea gigantesco en desktop */
+    height: 250px; /* 🆕 Altura fija para el slider principal en móvil */
+    overflow: hidden;
+    border-radius: 15px;
+    margin: auto;
+    margin-bottom: 10px; /* Espacio entre la imagen grande y las miniaturas */
+}
+.detail-slider-track { display: flex; transition: transform 0.5s ease; height: 100%; width: 100%;} /* 🆕 Altura 100% */
+.detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; height: 100%;} /* 🆕 Altura 100% */
+.detail-main-image{
+    width:100%;
+    height:100%; /* 🆕 La imagen ahora ocupa el 100% del alto de su contenedor */
+    object-fit:contain; /* Contener la imagen dentro del espacio */
+    padding:0;
+}
+.detail-slider-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,240,255,0.2); /* 🆕 Cambiado para que combine con otros elementos */
+    color:var(--primary-color);
+    border:none;
+    width:30px; /* 🆕 Flechas más pequeñas */
+    height:30px; /* 🆕 Flechas más pequeñas */
+    font-size:1.2em; /* 🆕 Tamaño de ícono más pequeño */
+    border-radius:50%;
+    cursor:pointer;
+    z-index:10;
+    border: 1px solid var(--primary-color)
+}
+.detail-arrow-left{left:8px} /* 🆕 Ajuste de posición */
+.detail-arrow-right{right:8px} /* 🆕 Ajuste de posición */
+
+/* Miniaturas */
+.detail-thumbnails{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:5px; /* 🆕 Espacio entre miniaturas reducido */
+    margin-top: 5px; /* 🆕 Espacio reducido */
+    margin-bottom: 10px; /* 🆕 Espacio reducido */
+}
+.detail-thumbnails img{
+    width:50px; /* 🆕 Miniaturas más pequeñas */
+    height:38px; /* 🆕 Miniaturas más pequeñas */
+    object-fit:cover;
+    border-radius:6px; /* 🆕 Bordes un poco menos redondeados */
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:all .3s ease
+}
 .detail-thumbnails img:hover,.detail-thumbnails img.active-thumbnail{border-color:var(--accent-color);transform:scale(1.05);box-shadow: 0 0 8px var(--accent-color)}
 
-/* 🎥 VIDEO VIMEO */
-.detail-video{margin-top:15px;border-radius:15px;overflow:hidden;border: 2px solid var(--primary-color)}
-.detail-video iframe{display:block;width:100%;height:auto;aspect-ratio:16/9}
+/* Contenedor del video */
+.detail-video{
+    margin-top:0px; /* Reiniciado, el espacio lo dará .detail-thumbnails margin-bottom */
+    margin-bottom:15px; /* Espacio antes de la info o botón */
+    border-radius:15px;
+    overflow:hidden;
+    border: 2px solid var(--primary-color);
+}
+.detail-video iframe{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:16/9; /* Mantiene la proporción 16:9 */
+    min-height: 180px; /* 🆕 Altura mínima para el video en móvil */
+}
 
-.product-detail-info{flex:1 1 45%;min-width:280px;padding-left:10px}
-.product-detail-info .price{font-size:2em;color:var(--accent-color);font-weight:800;margin-bottom:10px}
-
-/* ✅ TEXTO UNO SOBRE OTRO - ARREGLADO */
+/* Columna de información del producto */
+.product-detail-info{
+    flex:1 1 100%; /* Ocupa todo el ancho en móvil */
+    min-width: unset; /* Reiniciar min-width */
+    padding-left:0; /* 🆕 Sin padding lateral en móvil */
+    padding-top: 5px; /* 🆕 Pequeño padding superior */
+}
+.product-detail-info .price{
+    font-size:1.6em; /* 🆕 Precio un poco más pequeño en móvil */
+    margin-bottom:8px; /* 🆕 Menos margen */
+    text-align: center; /* 🆕 Centrar precio y stock */
+}
 .product-detail-info p{
-    font-size:1em;
+    font-size:0.9em; /* 🆕 Descripción más pequeña */
     color:#555;
-    margin-bottom:15px;
-    line-height:1.8;
+    margin-bottom:10px; /* 🆕 Menos margen */
+    line-height:1.6; /* 🆕 Espaciado de línea un poco más compacto */
 }
 .product-detail-info p span {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 3px; /* 🆕 Menos margen entre líneas de descripción */
 }
-.product-detail-actions{display:flex;gap:10px;margin-top:15px}
-.product-detail-actions button{flex:1;padding:12px 15px;border:none;border-radius:25px;font-size:1em;font-weight:700;cursor:pointer;transition:all .3s ease}
-#detail-add-to-cart-button{background:transparent;border:2px solid var(--primary-color);color:var(--primary-color)}
-#detail-add-to-cart-button:hover{background:var(--primary-color);color:#000}
-#detail-buy-now-button{background: var(--gradient);color:#000}
-#detail-buy-now-button:hover{box-shadow: 0 5px 15px rgba(255,0,128,0.4)}
-#back-to-products-button{background:transparent;border:2px solid #ccc;color:var(--dark-color);padding:10px 20px;border-radius:25px;margin-top:15px;display:inline-block;text-decoration:none;font-weight:600;font-size:1em}
-#back-to-products-button:hover{border-color: var(--dark-color)}
+.product-detail-actions{
+    display:flex;
+    gap:8px; /* 🆕 Espacio reducido entre botones */
+    margin-top:10px; /* 🆕 Menos margen */
+    flex-wrap: wrap; /* 🆕 Permite que los botones se envuelvan */
+    justify-content: center; /* 🆕 Centrar botones */
+}
+.product-detail-actions button{
+    flex:1 1 auto; /* 🆕 Los botones se adaptan y crecen */
+    min-width: 120px; /* 🆕 Ancho mínimo para que no sean demasiado pequeños */
+    padding:10px 12px; /* 🆕 Padding reducido */
+    border-radius:20px; /* 🆕 Menos redondeado */
+    font-size:0.9em; /* 🆕 Texto de botón más pequeño */
+}
+#back-to-products-button{
+    padding:8px 15px; /* 🆕 Padding reducido */
+    border-radius:20px; /* 🆕 Menos redondeado */
+    margin-top:10px; /* 🆕 Menos margen */
+    font-size:0.9em; /* 🆕 Texto de botón más pequeño */
+}
+
+/* 💻 MEDIA QUERIES PARA PANTALLAS MÁS GRANDES (Desktop) */
+@media screen and (min-width: 768px) {
+    .product-detail-content{
+        flex-direction: row; /* En desktop, en fila */
+        gap:30px; /* Espacio normal en desktop */
+    }
+    .product-detail-images{
+        flex:1 1 45%; /* Vuelve al tamaño normal de desktop */
+        min-width:280px; /* Vuelve al min-width de desktop */
+    }
+    .detail-image-slider {
+        height: 400px; /* 🆕 Altura para desktop */
+    }
+    .product-detail-info{
+        flex:1 1 45%; /* Vuelve al tamaño normal de desktop */
+        padding-left:10px; /* Vuelve el padding lateral */
+    }
+    .product-detail-info .price{
+        font-size:2em; /* Tamaño normal de precio en desktop */
+        text-align: left; /* Alinear a la izquierda en desktop */
+    }
+    .product-detail-info p{
+        font-size:1em; /* Tamaño normal de descripción en desktop */
+    }
+    .product-detail-actions button{
+        flex:1; /* Retorna al flex original */
+        min-width: unset; /* Sin ancho mínimo en desktop */
+        padding:12px 15px; /* Padding original */
+        border-radius:25px; /* Redondeado original */
+        font-size:1em; /* Tamaño de texto original */
+    }
+    .detail-video iframe{
+        min-height: 300px; /* Altura mínima para desktop */
+    }
+}#back-to-products-button:hover{border-color: var(--dark-color)}
 
 #about-page, #contact-page{display:none;padding:20px;max-width:800px;margin:0 auto;width:100%}
 #about-page h2, #contact-page h2{text-align:center;font-size:1.8em;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
@@ -657,27 +805,23 @@ function filterProducts(category, buttonElement) {
     if(buttonElement) buttonElement.classList.add('active');
 }
 
-function showDetails(title, price, mainImg, description, images, videoUrl,stockStatus) {
+function showDetails(title, price, mainImg, description, images, videoUrl, stockStatus) {
     document.getElementById('home-section').style.display = 'none';
     document.getElementById('detail-page').style.display = 'block';
     document.getElementById('about-page').style.display = 'none';
     document.getElementById('contact-page').style.display = 'none';
 
     document.getElementById('detail-title').textContent = title;
-   document.getElementById('detail-price').textContent = '$' + price + '   |   ' + stockStatus;
-document.getElementById('detail-price').style.textAlign = 'center';
-
-if(stockStatus == 'EN STOCK'){
-    document.getElementById('detail-price').style.color = 'green';
-} else {
-    document.getElementById('detail-price').style.color = 'red';
-}
+    
+    // Formato del precio y stock
+    const detailPriceElement = document.getElementById('detail-price');
+    detailPriceElement.innerHTML = `<span>$${parseFloat(price).toFixed(2)}</span> <span class="${stockStatus === 'EN STOCK' ? 'in-stock' : 'out-of-stock'}">${stockStatus}</span>`;
+    detailPriceElement.style.textAlign = 'center';
+    
     document.getElementById('detail-description').innerHTML = description;
-
-document.getElementById('detail-description').style.lineHeight = '400%';
-
-
-
+    // Asegura que cada párrafo de la descripción sea un bloque para un mejor formato
+    document.getElementById('detail-description').style.lineHeight = 'normal'; // Resetear, el CSS ya maneja el span
+    
     detailImagesArray = [mainImg, ...images];
     const track = document.getElementById('detail-slider-track');
     const thumbs = document.getElementById('detail-thumbnails');
@@ -685,34 +829,64 @@ document.getElementById('detail-description').style.lineHeight = '400%';
     thumbs.innerHTML = '';
     detailImagesArray.forEach((img, index) => {
         const slide = document.createElement('div');
-  slide.className = 'detail-slide';
-slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="">`;
-track.appendChild(slide);
+        slide.className = 'detail-slide';
+        slide.innerHTML = `<img class="detail-main-image" src="${img}" alt="${title}">`;
+        track.appendChild(slide);
+        
         const thumb = document.createElement('img');
         thumb.src = img;
+        thumb.alt = `Miniatura ${index + 1} de ${title}`;
         thumb.onclick = () => goToDetailSlide(index);
         thumbs.appendChild(thumb);
     });
     currentDetailSlide = 0;
     updateDetailSlide();
 
-
-    
     const videoContainer = document.getElementById('detail-video-container');
-    if(videoUrl && videoUrl.length > 0) {
+    if (videoUrl && videoUrl.length > 0) {
         let finalUrl = videoUrl;
-        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+        // Manejo de Vimeo
+        if (videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
             const id = videoUrl.split('/').pop();
             finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+        } 
+        // 🆕 Manejo de Google Drive
+        else if (videoUrl.includes('drive.google.com/file/d/')) {
+            const idMatch = videoUrl.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+            if (idMatch && idMatch[1]) {
+                const fileId = idMatch[1];
+                finalUrl = `https://www.youtube.com/embed/videoseries?list=${fileId}&hl=es`; // Ejemplo, la URL de embed de Google Drive es compleja.
+                // Para videos directos de Google Drive, la URL de embed es diferente.
+                // Una forma común es: `https://drive.google.com/file/d/${fileId}/preview`
+                // O usar Google Docs Viewer para reproducir:
+                finalUrl = `https://docs.google.com/file/d/${fileId}/preview`;
+            } else {
+                console.warn('No se pudo extraer el ID del archivo de Google Drive de la URL:', videoUrl);
+                finalUrl = ''; // Si no se puede parsear, no mostrar video
+            }
         }
-videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height 800px; object-fit:contain;"></iframe>`;    } else {
+        // Manejo de YouTube (si tienes un embed de YouTube)
+        else if (videoUrl.includes('youtube.com/watch?v=')) {
+            const url = new URL(videoUrl);
+            const videoId = url.searchParams.get('v');
+            finalUrl = `https://www.youtube.com/embed/${videoId}`;
+        }
+         else if (videoUrl.includes('youtu.be/')) {
+            const videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
+            finalUrl = `https://www.youtube.com/embed/${videoId}`;
+        }
+
+        if (finalUrl) {
+            videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+        } else {
+            videoContainer.innerHTML = '';
+        }
+    } else {
         videoContainer.innerHTML = '';
     }
 
     document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
-    document.getElementById('detail-buy-now-button').onclick = () => {
-        addToCart(title, price, mainImg);
-        toggleModal('cart-modal');
+    document.getElementById('detail-buy-now-button').onclick
     };
     
     window.scrollTo({top: 0, behavior: 'smooth'});
