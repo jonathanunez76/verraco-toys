@@ -222,6 +222,13 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 #back-to-products-button:hover{border-color: var(--dark-color)}
 
 #about-page, #contact-page{display:none;padding:20px;max-width:800px;margin:0 auto;width:100%}
+@media (max-width: 768px) { /* Esto aplica solo para pantallas de 768px o menos */
+  #detail-page {
+    max-width: 85%; /* Puedes ajustar este porcentaje (ej. 80%, 90%) para el ancho que desees */
+    margin-left: auto;            /* Centra el contenedor horizontalmente */
+    margin-right: auto;           /* Centra el contenedor horizontalmente */
+  }
+    }  
 #about-page h2, #contact-page h2{text-align:center;font-size:1.8em;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 #about-page p, #contact-page p{font-size:1em;color:#555;margin-bottom:12px;line-height:1.7}
 .info-block{background:#f9f9f9;padding:18px;border-radius:15px;margin-top:15px;border:1px solid #eee}
