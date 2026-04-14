@@ -717,59 +717,26 @@ track.appendChild(slide);
     updateDetailSlide();
 
 
-    
-  const videoContainer = document.getElementById('detail-video-container');
-    if (product.videoUrl && product.videoUrl.length > 0) {
-        let finalUrl = '';
-        if (product.videoUrl.includes('vimeo.com/') && !product.videoUrl.includes('player.vimeo.com')) {
-            // Vimeo
-            const id = product.videoUrl.split('/').pop();
+       const videoContainer = document.getElementById('detail-video-container');
+    if(videoUrl && videoUrl.length > 0) {
+        let finalUrl = videoUrl;
+        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+            const id = videoUrl.split('/').pop();
             finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
-        } else if (product.videoUrl.includes('youtube.com/watch?v=')) {
-            // YouTube (watch?v=)
-            const url = new URL(product.videoUrl);
-            const videoId = url.searchParams.get('v');
-            finalUrl = `https://www.youtube.com/embed/${videoId}`;
-        } else if (product.videoUrl.includes('youtu.be/')) {
-            // YouTube (youtu.be/)
-            const videoId = product.videoUrl.split('youtu.be/')[1].split('?')[0];
-            finalUrl = `https://www.youtube.com/embed/${videoId}`;
-        } else if (product.videoUrl.includes('drive.google.com/file/d/')) {
-            // ✅ Google Drive
-            const idMatch = product.videoUrl.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
-            if (idMatch && idMatch[1]) {
-                const fileId = idMatch[1];
-                // Esta es la URL de embed más fiable para Google Drive
-                finalUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-            } else {
-                console.warn('No se pudo extraer el ID del archivo de Google Drive de la URL:', product.videoUrl);
-            }
         }
-        
-        if (finalUrl) {
-            // Si es un video de Google Drive, el iframe puede necesitar ajustes específicos
-            let iframeHtml = '';
-            if (product.videoUrl.includes('drive.google.com/file/d/')) {
-                iframeHtml = `<iframe src="${finalUrl}" width="100%" height="auto" style="border: none;" allowfullscreen></iframe>`;
-            } else {
-                iframeHtml = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
-            }
-            videoContainer.innerHTML = iframeHtml;
-        } else {
-            videoContainer.innerHTML = '';
-        }
-    } else {
+videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height 800px; object-fit:contain;"></iframe>`;    } else {
         videoContainer.innerHTML = '';
     }
 
-    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(product.id, product.name, product.price, product.image);
-    // Enlace directo a WhatsApp con el producto
-    const whatsappMessage = encodeURIComponent(`Hola, me interesa el producto "${product.name}" ($${parseFloat(product.price).toFixed(2)}).`);
-    document.getElementById('detail-buy-now-button').onclick = () => window.open(`https://wa.me/593987654321?text=${whatsappMessage}`, '_blank');
+    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
+    document.getElementById('detail-buy-now-button').onclick = () => {
+        addToCart(title, price, mainImg);
+        toggleModal('cart-modal');
+    };
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
 
-    window.scrollTo({top: 0, behavior: 'smooth'}); // Vuelve al inicio de la página de detalles
 }
-
 
 function moveDetailSlide(direction) {
     currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
