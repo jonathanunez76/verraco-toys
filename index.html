@@ -399,46 +399,66 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
 
 
-  /* ******** PARA REDUCIR EL LARGO (ALTURA) DE LA IMAGEN GRANDE EN EL CELULAR ******** */
 
+  /* ******** PARA QUE LA IMAGEN GRANDE NO ESTIRE Y TODO SE PEGUE EN EL CELULAR ******** */
+
+  /* Contenedor principal de la imagen grande (el carrusel en sí) */
   .detail-image-slider {
-    height: 250px !important; /* <--- ¡ESTO ES LO CLAVE, PAPI! Cambia 250px por el largo que quieras. */
-                              /* Prueba con 200px, 180px, etc. hasta que te guste. */
-    overflow: hidden !important; /* Esto es para que si la imagen es más grande, se corte y no se salga. */
+    height: 250px !important;      /* <--- LARGO (ALTURA) TOTAL de la sección de la imagen grande. Ajusta este valor si quieres un cuadro más chato o más alto. */
     margin: 0px !important;
     padding: 0px !important;
-    width: 100% !important; /* Asegura que ocupe todo el ancho */
-    border-radius: 0 !important; /* Por si tiene bordes redondeados, los quita para que se vea cuadrada en celular */
+    width: 100% !important;
+    overflow: hidden !important;   /* Recorta si algo se sale, importante para "object-fit: contain" */
+    border-radius: 0 !important;
     box-sizing: border-box !important;
   }
 
-  /* Esto asegura que la imagen DENTRO del slider se ajuste al nuevo largo */
+  /* Cada "slide" individual que contiene una imagen grande */
+  .detail-slide {
+    min-width: 100%;               /* Ocupa el 100% del ancho */
+    display: flex;                 /* Para centrar la imagen */
+    justify-content: center;       /* Centra horizontalmente */
+    align-items: center;           /* Centra verticalmente */
+    height: 100%;                  /* Ocupa todo el alto del .detail-image-slider */
+    max-width: none !important;    /* <--- ¡CRÍTICO! Anula cualquier max-width que estiraba la imagen */
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* La imagen grande en sí */
   .detail-main-image {
-    width: 100% !important;
-    height: 100% !important; /* <--- Esto hace que la imagen ocupe el nuevo height de 250px (o el que pongas). */
-    object-fit: cover !important; /* Esto es crucial para que la imagen no se estire y se vea bien (se recorta si es necesario). */
+    width: auto !important;        /* <--- ¡CRÍTICO! Permite que la imagen use su ancho natural (o se ajuste al alto) */
+    height: 100% !important;       /* Ocupa todo el alto disponible sin estirarse */
+    object-fit: contain !important;/* <--- ¡CRÍTICO! La imagen se escala para caber COMPLETAMENTE en el contenedor sin recortarse ni estirarse. Puede dejar espacios en blanco. */
+    max-width: 100% !important;    /* Asegura que no se salga del ancho disponible */
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Esto quita el espacio general entre el bloque de imágenes y el bloque de descripción */
+  .product-detail-content {
+    gap: 0px !important;
     margin: 0px !important;
     padding: 0px !important;
   }
 
-
-  /* ******** Y PARA ASEGURAR QUE TODO LO DEMÁS SE PEGUE COMO QUERÍAS ******** */
-
-  /* Esto quita el espacio entre el slider y las miniaturas/descripción */
-  .product-detail-content {
-    gap: 0px !important;
-  }
-
-  /* Para que las miniaturas se peguen a la imagen grande */
+  /* Esto asegura que las miniaturas se peguen a la imagen grande */
   .detail-thumbnails {
     margin-top: 0px !important;
     padding-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 3px !important; /* Pequeño espacio entre miniaturas, puedes poner 0px si las quieres pegadas entre sí */
   }
 
   /* Para que la descripción no tenga tanto espacio */
   .product-detail-info {
       margin: 0px !important;
-      padding: 5px !important; /* Ajusta este padding si quieres más espacio a los lados del texto */
+      padding: 5px !important; /* Ajusta este padding si quieres más o menos espacio a los lados del texto de la descripción */
+      font-size: 0.9em !important;
   }
   .product-detail-info p,
   .product-detail-info ul,
@@ -450,8 +470,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
       padding: 0px !important;
   }
 
-
-  /* BOMBA NUCLEAR DE RESET (por si algo se resiste al pegado general) */
+  /* Y para asegurarnos de que no haya otros márgenes/paddings raros empujando */
   #detail-page > *,
   .product-detail-images > * {
     margin-top: 0px !important; margin-bottom: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important;
@@ -460,7 +479,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
       padding-top: 0px !important; margin-top: 0px !important;
   }
 
-} /* <--- CIERRE DE LA MEDIA QUERY */
+} /* <--- CIERRE DE LA MEDIA QUERY */Y */
 </style>
 </head>
 <body>
