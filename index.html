@@ -114,7 +114,15 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 
     
 .product-card img{width:100%;height:auto;min-height:180px;object-fit:contain;display:block;margin:0 auto;padding:8px}
-    .product-card h3{font-size:0.75em;margin:6px 4px;color:var(--dark-color);min-height:30px}
+
+    
+     .product-card h3 { /* Título del producto */
+    font-size: 0.6em; /* <--- PAPI, REDUCE ESTE NÚMERO (ej. 0.6em o 0.5em) para que la letra sea más pequeña */
+    margin: 0px 0 !important;    /* <--- PAPI, PON ESTO EN 0px 0 y AÑÁDELE !important */
+    line-height: 1 !important;   /* <--- PAPI, PON ESTO EN 1 y AÑÁDELE !important */
+    min-height: 0px !important;  /* <--- PAPI, AÑADE ESTA LÍNEA (si no existe) y ponla en 0px y !important */
+  }
+    
 .product-card .price{font-size:1em;color:var(--accent-color);font-weight:800;margin-bottom:4px}
 
 /* 🏷️ ETIQUETA DE DESCUENTO */
