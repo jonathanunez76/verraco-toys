@@ -171,7 +171,8 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .detail-image-slider { position: relative; width: 100%; max-width: 600px; height: 600px; overflow: hidden; border-radius: 15px; margin: auto; }  
     .detail-slider-track { display: flex; transition: transform 0.5s ease; width: 100%; }
 .detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; max-width: 450px; margin: auto; }
-    .detail-main-image{width:100%;height:100%;object-fit:cover;padding:0;}
+.detail-main-image{width:100% !important; height:auto !important; object-fit:contain !important; padding:0 !important; max-height:200px !important;}
+    
 .detail-slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--dark-color);color:var(--primary-color);border:none;width:35px;height:35px;font-size:16px;border-radius:50%;cursor:pointer;z-index:10;border: 1px solid var(--primary-color)}
 .detail-arrow-left{left:10px}
 .detail-arrow-right{right:10px}
@@ -394,92 +395,9 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
     margin-top: 2px; /* Un pequeño margen arriba para separarlo del "EN STOCK" */
     padding: 3px 0; /* <--- Reducimos el padding interno del botón */
    font-size: 0.6em; /* <--- Letra más pequeña para los botones */
-
-
-
-
-
-
-  /* ******** PARA QUE LA IMAGEN GRANDE NO ESTIRE Y TODO SE PEGUE EN EL CELULAR ******** */
-
-  /* Contenedor principal de la imagen grande (el carrusel en sí) */
-  .detail-image-slider {
-    height: 250px !important;      /* <--- LARGO (ALTURA) TOTAL de la sección de la imagen grande. Ajusta este valor si quieres un cuadro más chato o más alto. */
-    margin: 0px !important;
-    padding: 0px !important;
-    width: 100% !important;
-    overflow: hidden !important;   /* Recorta si algo se sale, importante para "object-fit: contain" */
-    border-radius: 0 !important;
-    box-sizing: border-box !important;
   }
 
-  /* Cada "slide" individual que contiene una imagen grande */
-  .detail-slide {
-    min-width: 100%;               /* Ocupa el 100% del ancho */
-    display: flex;                 /* Para centrar la imagen */
-    justify-content: center;       /* Centra horizontalmente */
-    align-items: center;           /* Centra verticalmente */
-    height: 100%;                  /* Ocupa todo el alto del .detail-image-slider */
-    max-width: none !important;    /* <--- ¡CRÍTICO! Anula cualquier max-width que estiraba la imagen */
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  /* La imagen grande en sí */
-  .detail-main-image {
-    width: auto !important;        /* <--- ¡CRÍTICO! Permite que la imagen use su ancho natural (o se ajuste al alto) */
-    height: 100% !important;       /* Ocupa todo el alto disponible sin estirarse */
-    object-fit: contain !important;/* <--- ¡CRÍTICO! La imagen se escala para caber COMPLETAMENTE en el contenedor sin recortarse ni estirarse. Puede dejar espacios en blanco. */
-    max-width: 100% !important;    /* Asegura que no se salga del ancho disponible */
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* Esto quita el espacio general entre el bloque de imágenes y el bloque de descripción */
-  .product-detail-content {
-    gap: 0px !important;
-    margin: 0px !important;
-    padding: 0px !important;
-  }
-
-  /* Esto asegura que las miniaturas se peguen a la imagen grande */
-  .detail-thumbnails {
-    margin-top: 0px !important;
-    padding-top: 0px !important;
-    margin-bottom: 0px !important;
-    padding-bottom: 0px !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 3px !important; /* Pequeño espacio entre miniaturas, puedes poner 0px si las quieres pegadas entre sí */
-  }
-
-  /* Para que la descripción no tenga tanto espacio */
-  .product-detail-info {
-      margin: 0px !important;
-      padding: 5px !important; /* Ajusta este padding si quieres más o menos espacio a los lados del texto de la descripción */
-      font-size: 0.9em !important;
-  }
-  .product-detail-info p,
-  .product-detail-info ul,
-  .product-detail-info ol,
-  .product-detail-info li {
-      line-height: 1.3 !important; /* Menos espacio entre líneas */
-      margin-bottom: 3px !important; /* Menos espacio entre párrafos/listas */
-      margin-top: 0px !important;
-      padding: 0px !important;
-  }
-
-  /* Y para asegurarnos de que no haya otros márgenes/paddings raros empujando */
-  #detail-page > *,
-  .product-detail-images > * {
-    margin-top: 0px !important; margin-bottom: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important;
-  }
-  #detail-page {
-      padding-top: 0px !important; margin-top: 0px !important;
-  }
-
-} /* <--- CIERRE DE LA MEDIA QUERY */Y */
+}
 </style>
 </head>
 <body>
