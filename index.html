@@ -1,6 +1,4 @@
-
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -221,9 +219,9 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     border-radius: 15px;
     margin: auto;
     margin-bottom: 10px; /* Espacio entre la imagen grande y las miniaturas */
-}
-.detail-slider-track { display: flex; transition: transform 0.5s ease; height: 100%; width: 100%;} /* 🆕 Altura 100% */
-.detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; height: 100%;} /* 🆕 Altura 100% */
+} /* <-- ¡ESTA LLAVE DE CIERRE ES LA CLAVE! */
+.detail-slider-track { display: flex; transition: transform 0.5s ease; height: 100%; width: 100%;}
+.detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; height: 100%;}
 .detail-main-image{
     width:100%;
     height:100%; /* 🆕 La imagen ahora ocupa el 100% del alto de su contenedor */
@@ -234,42 +232,30 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    background:rgba(0,240,255,0.2); /* 🆕 Cambiado para que combine con otros elementos */
-    color:var(--primary-color);
+    background-color:rgba(0,0,0,0.5);
+    color:#fff;
     border:none;
-    width:30px; /* 🆕 Flechas
-
-
-
-
-
-
-
-más pequeñas */
-    height:30px; /* 🆕 Flechas más pequeñas */
-    font-size:1.2em; /* 🆕 Tamaño de ícono más pequeño */
+    padding:8px;
     border-radius:50%;
     cursor:pointer;
     z-index:10;
-    border: 1px solid var(--primary-color)
 }
-.detail-arrow-left{left:8px} /* 🆕 Ajuste de posición */
-.detail-arrow-right{right:8px} /* 🆕 Ajuste de posición */
+.detail-arrow-left{left:10px}
+.detail-arrow-right{right:10px}
 
 /* Miniaturas */
 .detail-thumbnails{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:5px; /* 🆕 Espacio entre miniaturas reducido */
-    margin-top: 5px; /* 🆕 Espacio reducido */
-    margin-bottom: 10px; /* 🆕 Espacio reducido */
+    gap:8px;
+    margin-top:10px;
 }
 .detail-thumbnails img{
-    width:50px; /* 🆕 Miniaturas más pequeñas */
-    height:38px; /* 🆕 Miniaturas más pequeñas */
+    width:70px;
+    height:50px;
     object-fit:cover;
-    border-radius:6px; /* 🆕 Bordes un poco menos redondeados */
+    border-radius:8px;
     cursor:pointer;
     border:2px solid transparent;
     transition:all .3s ease
@@ -278,8 +264,8 @@ más pequeñas */
 
 /* Contenedor del video */
 .detail-video{
-    margin-top:0px; /* Reiniciado, el espacio lo dará .detail-thumbnails margin-bottom */
-    margin-bottom:15px; /* Espacio antes de la info o botón */
+    margin-top:15px;
+    margin-bottom:15px;
     border-radius:15px;
     overflow:hidden;
     border: 2px solid var(--primary-color);
@@ -289,51 +275,68 @@ más pequeñas */
     width:100%;
     height:auto;
     aspect-ratio:16/9; /* Mantiene la proporción 16:9 */
-    min-height: 180px; /* 🆕 Altura mínima para el video en móvil */
+    min-height: 200px; /* Altura mínima para el video */
 }
 
 /* Columna de información del producto */
 .product-detail-info{
     flex:1 1 100%; /* Ocupa todo el ancho en móvil */
-    min-width: unset; /* Reiniciar min-width */
-    padding-left:0; /* 🆕 Sin padding lateral en móvil */
-    padding-top: 5px; /* 🆕 Pequeño padding superior */
+    padding-left:0;
 }
 .product-detail-info .price{
-    font-size:1.6em; /* 🆕 Precio un poco más pequeño en móvil */
-    margin-bottom:8px; /* 🆕 Menos margen */
-    text-align: center; /* 🆕 Centrar precio y stock */
+    font-size:1.8em;
+    font-weight:700;
+    margin-bottom:10px;
+    color:var(--dark-color);
+    text-align: center; /* Centrar precio y stock en móvil */
 }
 .product-detail-info p{
-    font-size:0.9em; /* 🆕 Descripción más pequeña */
+    font-size:0.9em;
     color:#555;
-    margin-bottom:10px; /* 🆕 Menos margen */
-    line-height:1.6; /* 🆕 Espaciado de línea un poco más compacto */
+    margin-bottom:15px;
+    line-height:1.6;
 }
-.product-detail-info p span {
-    display: block;
-    margin-bottom: 3px; /* 🆕 Menos margen entre líneas de descripción */
+.product-detail-info p span { /* Para las líneas de la descripción */
+    display: block; /* Cada span en una nueva línea */
+    margin-bottom: 5px; /* Espacio entre las líneas */
 }
+
 .product-detail-actions{
     display:flex;
-    gap:8px; /* 🆕 Espacio reducido entre botones */
-    margin-top:10px; /* 🆕 Menos margen */
-    flex-wrap: wrap; /* 🆕 Permite que los botones se envuelvan */
-    justify-content: center; /* 🆕 Centrar botones */
+    gap:10px;
+    margin-top:15px;
+    flex-wrap: wrap; /* Los botones se envuelven en pantallas pequeñas */
+    justify-content: center; /* Centrar botones en móvil */
 }
 .product-detail-actions button{
-    flex:1 1 auto; /* 🆕 Los botones se adaptan y crecen */
-    min-width: 120px; /* 🆕 Ancho mínimo para que no sean demasiado pequeños */
-    padding:10px 12px; /* 🆕 Padding reducido */
-    border-radius:20px; /* 🆕 Menos redondeado */
-    font-size:0.9em; /* 🆕 Texto de botón más pequeño */
+    flex:1 1 auto; /* Los botones se adaptan y crecen */
+    min-width: 130px; /* Ancho mínimo para que no sean demasiado pequeños */
+    padding:10px 15px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:1em;
+    font-weight:700;
+    transition:all .3s ease;
+    background:var(--gradient);
+    color:#000;
+    box-shadow:0 4px 10px rgba(0,240,255,0.3);
 }
+.product-detail-actions button:hover{box-shadow:0 6px 15px rgba(255,0,128,0.4);transform:translateY(-2px)}
 #back-to-products-button{
-    padding:8px 15px; /* 🆕 Padding reducido */
-    border-radius:20px; /* 🆕 Menos redondeado */
-    margin-top:10px; /* 🆕 Menos margen */
-    font-size:0.9em; /* 🆕 Texto de botón más pequeño */
+    display:block;
+    width:fit-content;
+    margin:20px auto 0 auto;
+    background:var(--secondary-color);
+    color:#fff;
+    padding:10px 20px;
+    border-radius:25px;
+    text-decoration:none;
+    font-weight:600;
+    transition:all .3s ease;
+    font-size:0.9em;
 }
+#back-to-products-button:hover{background:var(--dark-color);box-shadow:0 4px 10px rgba(0,0,0,0.3)}
 
 /* 💻 MEDIA QUERIES PARA PANTALLAS MÁS GRANDES (Desktop) */
 @media screen and (min-width: 768px) {
@@ -370,40 +373,63 @@ más pequeñas */
         min-height: 300px; /* Altura mínima para desktop */
     }
 }
+/* --- FIN DE AJUSTES PARA LA PÁGINA DE DETALLES --- */
+
+/* Modales */
+.modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.6);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.modal-content{background-color:var(--light-color);margin:10% auto;padding:25px;border:1px solid #888;width:90%;max-width:500px;border-radius:15px;box-shadow:0 8px 30px rgba(0,240,255,0.4);position:relative}
+.modal-content h2{color:var(--secondary-color);margin-bottom:20px;text-align:center;font-size:1.5em}
+.close-button{color:#aaa;float:right;font-size:28px;font-weight:bold;position:absolute;top:10px;right:20px;cursor:pointer}
+.close-button:hover,.close-button:focus{color:var(--accent-color);text-decoration:none;cursor:pointer}
+
+/* Carrito */
+#cart-items-container{list-style:none;padding:0;max-height:300px;overflow-y:auto;margin-bottom:20px}
+#cart-items-container li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #ddd;font-size:0.95em}
+#cart-items-container li:last-child{border-bottom:none}
+#cart-items-container li img{width:50px;height:50px;object-fit:cover;margin-right:10px;border-radius:8px}
+.cart-total{text-align:right;font-size:1.2em;font-weight:bold;margin-bottom:20px}
+#proceed-to-checkout{background:var(--gradient);color:#000;padding:12px 25px;border:none;border-radius:25px;cursor:pointer;font-size:1.1em;font-weight:700;display:block;width:fit-content;margin:0 auto;transition:all .3s ease}
+#proceed-to-checkout:hover{box-shadow:0 6px 20px rgba(255,0,128,0.4);transform:translateY(-2px)}
+
+/* Checkout */
+.checkout-form label{display:block;margin-bottom:5px;font-weight:600;color:var(--dark-color)}
+.checkout-form input[type="text"],.checkout-form input[type="tel"]{width:100%;padding:10px;margin-bottom:15px;border:1px solid #ddd;border-radius:8px;font-size:1em}
+.checkout-summary{border-top:1px solid #eee;padding-top:15px;margin-top:20px;font-size:1.1em}
+.checkout-summary div{display:flex;justify-content:space-between;margin-bottom:8px}
+.checkout-summary .total{font-weight:700;color:var(--accent-color);font-size:1.2em}
+#confirm-checkout{background:var(--secondary-color);color:#fff;padding:12px 25px;border:none;border-radius:25px;cursor:pointer;font-size:1.1em;font-weight:700;display:block;width:fit-content;margin:20px auto 0 auto;transition:all .3s ease}
+#confirm-checkout:hover{background:var(--dark-color);box-shadow:0 6px 20px rgba(0,0,0,0.3);transform:translateY(-2px)}
+
+/* Fixed WhatsApp button */
+.whatsapp-fixed-button{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;font-size:2em;width:50px;height:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,0.2);z-index:100;transition:transform .3s ease}
+.whatsapp-fixed-button:hover{transform:scale(1.1)}
 
 /* Footer */
 footer{background:var(--dark-color);color:var(--light-color);text-align:center;padding:15px 10px;font-size:0.8em;margin-top:auto;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px}
+footer h3{color:var(--primary-color);margin:0;font-size:1.2em}
 footer p{margin:0}
 .social-links a{color:var(--primary-color);margin:0 8px;font-size:1.2em;transition:color .3s ease}
 .social-links a:hover{color:var(--accent-color)}
 
-/* Cart Modal */
-.cart-modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.6);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-.cart-content{background-color:var(--light-color);margin:10% auto;padding:25px;border:1px solid #888;width:90%;max-width:500px;border-radius:15px;box-shadow:0 8px 30px rgba(0,240,255,0.4);position:relative}
-.cart-content h2{color:var(--secondary-color);margin-bottom:20px;text-align:center;font-size:1.5em}
-.close-button{color:#aaa;float:right;font-size:28px;font-weight:bold;position:absolute;top:10px;right:20px;cursor:pointer}
-.close-button:hover,.close-button:focus{color:var(--accent-color);text-decoration:none;cursor:pointer}
-#cart-items{list-style:none;padding:0;max-height:300px;overflow-y:auto;margin-bottom:20px}
-#cart-items li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #ddd;font-size:0.95em}
-#cart-items li:last-child{border-bottom:none}
-#cart-items li img{width:50px;height:50px;object-fit:cover;margin-right:10px;border-radius:8px}
-#cart-total{text-align:right;font-size:1.2em;font-weight:bold;margin-bottom:20px}
-.checkout-button{background:var(--gradient);color:#000;padding:12px 25px;border:none;border-radius:25px;cursor:pointer;font-size:1.1em;font-weight:700;display:block;width:fit-content;margin:0 auto;transition:all .3s ease}
-.checkout-button:hover{box-shadow:0 6px 20px rgba(255,0,128,0.4);transform:translateY(-2px)}
-
-/* Alert Message */
-.alert-message{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:#fff;padding:10px 20px;border-radius:8px;z-index:1000;opacity:0;transition:opacity 0.5s ease-in-out;font-size:0.9em}
-.alert-message.show{opacity:1}
-
 /* About and Contact Page (Simple styling) */
-.content-page{display:none;background:#fff;padding:25px;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,0.1);margin-bottom:15px;border:2px solid var(--primary-color)}
-.content-page h2{text-align:center;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
-.content-page p{margin-bottom:15px}
-.content-page ul{list-style:none;padding-left:0;margin-bottom:15px}
-.content-page ul li{margin-bottom:8px}
-.content-page a{color:var(--primary-color);text-decoration:none;font-weight:600}
-.content-page a:hover{text-decoration:underline}
-
+#about-page, #contact-page{
+    display:none;
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    margin-bottom:15px;
+    border:2px solid var(--primary-color);
+}
+#about-page h2, #contact-page h2{text-align:center;background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+#about-page p, #contact-page p{margin-bottom:15px}
+#about-page ul, #contact-page ul{list-style:none;padding-left:0;margin-bottom:15px}
+#about-page ul li, #contact-page ul li{margin-bottom:8px}
+#about-page a, #contact-page a{color:var(--primary-color);text-decoration:none;font-weight:600}
+#about-page a:hover, #contact-page a:hover{text-decoration:underline}
+.info-block{background-color:var(--light-color);padding:15px;border-radius:10px;margin-top:20px;border:1px solid #eee}
+.info-block h3{color:var(--secondary-color);margin-bottom:10px;font-size:1.2em}
+.info-block ul li i{margin-right:8px;color:var(--accent-color)}
 </style>
 </head>
 <body>
@@ -419,7 +445,7 @@ footer p{margin:0}
                 <li><a href="#" onclick="showSection('contact')">Contacto</a></li>
             </ul>
         </nav>
-        <div class="cart-icon" onclick="toggleCartModal()">
+        <div class="cart-icon" onclick="toggleModal('cart-modal')">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-count" id="cart-count">0</span>
         </div>
@@ -429,7 +455,7 @@ footer p{margin:0}
         
         <!-- SECCIÓN DE INICIO (HOME) -->
         <section id="home-section" style="display:block;">
-            <h1>Bienvenido a BERRACOTOYS</h1>
+            <h1>NUESTRA COLECCIÓN</h1>
 
             <!-- Carrusel de Ofertas -->
             <div class="offer-carousel">
@@ -437,17 +463,17 @@ footer p{margin:0}
                     <div class="offer-slide" style="background-image: url('https://via.placeholder.com/800x400/00F0FF/FFFFFF?text=Oferta+1');">
                         <h2>¡Descuentos de Locura!</h2>
                         <p>Descubre nuestras promociones especiales por tiempo limitado.</p>
-                        <a href="#products" class="offer-button">Ver Ofertas</a>
+                        <a href="#" class="offer-button">Ver Ofertas</a>
                     </div>
                     <div class="offer-slide" style="background-image: url('https://via.placeholder.com/800x400/FF0080/FFFFFF?text=Nueva+Coleccion');">
                         <h2>Nueva Colección Maquinaria</h2>
                         <p>Los modelos más recientes ya disponibles. ¡No te los pierdas!</p>
-                        <a href="#products" class="offer-button">Explorar</a>
+                        <a href="#" class="offer-button">Explorar</a>
                     </div>
                     <div class="offer-slide" style="background-image: url('https://via.placeholder.com/800x400/1A1A2E/FFFFFF?text=Juguetes+Premium');">
                         <h2>Juguetes Premium</h2>
                         <p>Calidad y diversión garantizadas para los pequeños ingenieros.</p>
-                        <a href="#products" class="offer-button">Comprar Ahora</a>
+                        <a href="#" class="offer-button">Comprar Ahora</a>
                     </div>
                 </div>
                 <button class="carousel-arrow left" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
@@ -457,72 +483,59 @@ footer p{margin:0}
             <!-- Barra de Categorías -->
             <div class="categories-nav">
                 <button class="active" onclick="filterProducts('all', this)">Todos</button>
-                <button onclick="filterProducts('maquinaria', this)">Maquinaria</button>
-                <button onclick="filterProducts('juguetes', this)">Juguetes</button>
-                <button onclick="filterProducts('electronicos', this)">Electrónicos</button>
-                <button onclick="filterProducts('herramientas', this)">Herramientas</button>
-                <button onclick="filterProducts('vehiculos', this)">Vehículos</button>
-                <button onclick="filterProducts('figuras', this)">Figuras</button>
+                <button onclick="filterProducts('escala', this)">COCHE CRAWLERS 4X4</button>
+                <button onclick="filterProducts('rc', this)">COCHES BUGGYS VELOCIDAD</button>
+                <button onclick="filterProducts('drifts', this)">COCHES DRIFTS</button>
+                <button onclick="filterProducts('trailers', this)">TRAILERS </button>
+                <button onclick="filterProducts('avion', this)">AVIONES RC</button>
+                <button onclick="filterProducts('motos', this)">MOTOS COLECCIONABLES </button>
+                <button onclick="filterProducts('burbujas', this)">PISTOLAS DE BURBUJAS </button>
+                <button onclick="filterProducts('agua', this)">PISTOLAS DE AGUA </button>
+                <button onclick="filterProducts('ofertas', this)">🔥 Ofertas</button>
             </div>
 
             <!-- Cuadrícula de Productos -->
-            <div class="product-grid" id="product-grid">
-                <!-- Los productos se cargarán aquí con JavaScript -->
+            <div class="product-grid" id="product-list">
+                <!-- Los productos se cargarán aquí desde JavaScript -->
             </div>
         </section>
 
         <!-- SECCIÓN DE DETALLES DEL PRODUCTO -->
         <section id="detail-page" style="display:none;">
-            <h2 id="detail-title">Nombre del Producto en Detalle</h2>
+            <h2 id="detail-title">Nombre Producto</h2>
             <div class="product-detail-content">
                 <div class="product-detail-images">
-                    <div class="detail-image-slider">
-                        <div class="detail-slider-track" id="detail-slider-track">
-                            <!-- Imágenes detalladas se cargarán aquí -->
-                        </div>
+                    <div class="detail-image-slider" id="detail-slider">
+                        <div class="detail-slider-track" id="detail-slider-track"></div>
                         <button class="detail-slider-arrow detail-arrow-left" onclick="moveDetailSlide(-1)"><i class="fas fa-chevron-left"></i></button>
                         <button class="detail-slider-arrow detail-arrow-right" onclick="moveDetailSlide(1)"><i class="fas fa-chevron-right"></i></button>
                     </div>
-                    <div class="detail-thumbnails" id="detail-thumbnails">
-                        <!-- Miniaturas se cargarán aquí -->
-                    </div>
-                    <div class="detail-video" id="detail-video-container">
-                        <!-- Video se cargará aquí -->
-                    </div>
+                    <div class="detail-thumbnails" id="detail-thumbnails"></div>
+                    <div class="detail-video" id="detail-video-container"></div>
                 </div>
                 <div class="product-detail-info">
-                    <div class="price" id="detail-price"></div>
-                    <p id="detail-description">Descripción detallada del producto.</p>
+                    <div class="price" id="detail-price">$0.00</div>
+                    <p id="detail-description">Descripción...</p>
                     <div class="product-detail-actions">
-                        <button id="detail-add-to-cart-button" class="buy-now-from-list-button"><i class="fas fa-cart-plus"></i> Añadir al Carrito</button>
-                        <button id="detail-buy-now-button" class="buy-now-from-list-button"><i class="fab fa-whatsapp"></i> Comprar Ahora</button>
+                        <button id="detail-add-to-cart-button">AÑADIR AL CARRITO</button>
+                        <button id="detail-buy-now-button">COMPRAR AHORA</button>
                     </div>
+                    <a href="#" id="back-to-products-button" onclick="showSection('home')">VOLVER A TIENDA</a>
                 </div>
             </div>
-            <button id="back-to-products-button" class="buy-now-from-list-button" onclick="showSection('home')"><i class="fas fa-arrow-left"></i> Volver a Productos</button>
         </section>
 
-        <!-- SECCIÓN NOSOTROS -->
-        <section id="about-page" class="content-page">
-            <h2>Sobre Nosotros</h2>
-            <p>En **BERRACOTOYS**, somos más que una tienda; somos un sueño hecho realidad para coleccionistas y aficionados a la maquinaria y los juguetes. Con años de experiencia en el mercado, nos especializamos en ofrecer productos de alta calidad que combinan durabilidad, diseño innovador y la última tecnología
-
-
-
-
-
-
-
-
-
-.`
+        <!-- SECCIÓN QUIÉNES SOMOS -->
+        <section id="about-page" style="display:none;">
+            <h2>Quiénes Somos</h2>
+            <p>En BERRACOTOYS, somos más que una tienda de juguetes; somos creadores de sueños y facilitadores de sonrisas. Desde nuestra fundación en Ecuador, nos hemos dedicado a ofrecer una selección única de juguetes teledirigidos, figuras coleccionables y juegos didácticos que inspiran la imaginación y fomentan el aprendizaje.</p>
             <p>Nuestra misión es sencilla: **"Conectar la pasión con la perfección."** Creemos que cada artículo que ofrecemos no solo es un objeto, sino una pieza de imaginación, un motor de aprendizaje o un valioso elemento para tu colección.</p>
             <p>Nos enorgullecemos de nuestro catálogo cuidadosamente seleccionado, que incluye desde impresionantes réplicas de maquinaria pesada hasta los juguetes más ingeniosos y divertidos del mercado. Trabajamos con marcas reconocidas mundialmente y pequeños artesanos para garantizar que cada compra sea una experiencia única y satisfactoria.</p>
             <p>¡Únete a la familia BERRACOTOYS y descubre un mundo donde la calidad y la diversión se encuentran!</p>
         </section>
 
         <!-- SECCIÓN CONTACTO -->
-        <section id="contact-page" class="content-page">
+        <section id="contact-page" style="display:none;">
             <h2>Contáctanos</h2>
             <p>¿Tienes alguna pregunta, sugerencia o necesitas ayuda con tu pedido? En BERRACOTOYS, estamos siempre listos para escucharte. Puedes contactarnos a través de los siguientes medios:</p>
             <ul>
@@ -688,7 +701,7 @@ function showDetails(productId) {
             if (idMatch && idMatch[1]) {
                 const fileId = idMatch[1];
                 // Esta es la URL de embed más fiable para Google Drive
-                finalUrl = `https://drive.google.com/file/d/${fileId}/preview`; 
+                finalUrl = `https://drive.google.com/file/d/${fileId}/preview`;
             } else {
                 console.warn('No se pudo extraer el ID del archivo de Google Drive de la URL:', product.videoUrl);
             }
@@ -797,55 +810,50 @@ function renderCartItems() {
     cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
 }
 
+// Función para abrir/cerrar el modal del carrito
 function toggleCartModal() {
     const cartModal = document.getElementById('cart-modal');
     if (cartModal.style.display === 'block') {
         cartModal.style.display = 'none';
     } else {
         cartModal.style.display = 'block';
-        renderCartItems();
+        renderCartItems(); // Renderiza los ítems cada vez que se abre
     }
 }
 
-// Alerta de mensaje
-let alertTimeout;
+// Función para mostrar mensajes de alerta
 function showAlert(message, type = 'info') {
     const alertBox = document.getElementById('alert-message');
     alertBox.textContent = message;
-    alertBox.className = `alert-message show ${type}`; // Añadir clase de tipo si se desea estilizar por tipo
-    clearTimeout(alertTimeout);
-    alertTimeout = setTimeout(() => {
-        alertBox.classList.remove('show');
-    }, 3000);
+    alertBox.className = `alert-message ${type}`; // Clase para estilos (success, error, info)
+    alertBox.style.display = 'block';
+    setTimeout(() => {
+        alertBox.style.display = 'none';
+    }, 3000); // Ocultar después de 3 segundos
 }
 
-// Función para cargar y mostrar productos
+// Carga inicial de productos (simulados por ahora)
 function loadProducts() {
-    // ESTE ES EL ARRAY DONDE DEFINES TUS PRODUCTOS
+    // Aquí puedes cargar tus productos desde una API o definirlos directamente
     products = [
         {
             id: 'prod001',
-            name: 'Excavadora Gigante',
+            name: 'Excavadora a Control Remoto (WLToys 144001)',
             price: 120.00,
-            image: 'https://via.placeholder.com/300x200/00F0FF/FFFFFF?text=Excavadora+Gigante',
-            category: 'maquinaria,vehiculos',
-            description: '<span>¡Una réplica impresionante de una excavadora real!</span> <span>Detalles intrincados, movimientos realistas y durabilidad para horas de juego.</span> <span>Ideal para coleccionistas y niños mayores de 8 años.</span>',
+            image: 'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Excavadora+RC',
+            category: 'maquinaria,rc,ofertas',
+            description: '<span>Excavadora de juguete a control remoto con funciones completas.</span> <span>Ideal para niños y coleccionistas.</span> <span>Movimientos realistas y alta durabilidad.</span>',
             additionalImages: [
-                'https://via.placeholder.com/300x200/00F0FF/FFFFFF?text=Excavadora+Gigante+2',
-                'https://via.placeholder.com/300x200/00F0FF/FFFFFF?text=Excavadora+Gigante+3'
+                'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Excavadora+RC+2',
+                'https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Excavadora+RC+3'
             ],
             videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Ejemplo YouTube
-            stockStatus: 'EN STOCK'
+            stockStatus: 'EN STOCK',
+            discount: 10
         },
         {
-        
-            
-            
-            
-            
-            
             id: 'prod002',
-            name: 'Robot Inter  activo',
+            name: 'Robot Interactivo AlphaBot',
             price: 75.50,
             image: 'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo',
             category: 'juguetes,electronicos',
@@ -854,7 +862,7 @@ function loadProducts() {
                 'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo+2',
                 'https://via.placeholder.com/300x200/FF0080/FFFFFF?text=Robot+Interactivo+3'
             ],
-            videoUrl: 'https://vimeo.com/76979871', // Ejemplo Vimeo
+            videoUrl: 'https://player.vimeo.com/video/76979871', // Ejemplo Vimeo
             stockStatus: 'AGOTADO'
         },
         {
@@ -867,7 +875,7 @@ function loadProducts() {
             additionalImages: [
                 'https://via.placeholder.com/300x200/1A1A2E/FFFFFF?text=Set+Herramientas+2'
             ],
-            videoUrl: 'https://drive.google.com/file/d/1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ/view?usp=sharing', // ✅ EJEMPLO GOOGLE DRIVE - DEBES REEMPLAZAR ID
+            videoUrl: 'https://drive.google.com/file/d/1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ1_sQ/view?usp=sharing', // ✅ EJEMPLO GOOGLE DRIVE - DEBES REEMPLAZAR ID REAL
             stockStatus: 'EN STOCK'
         },
         {
@@ -883,7 +891,6 @@ function loadProducts() {
             videoUrl: '', // Sin video
             stockStatus: 'EN STOCK'
         },
-        // Añade más productos aquí
         {
             id: 'prod005',
             name: 'Figura de Acción "El Constructor"',
@@ -938,7 +945,7 @@ function loadProducts() {
         },
     ];
 
-    const productGrid = document.getElementById('product-grid');
+    const productGrid = document.getElementById('product-list'); // ✅ ID cambiado a product-list
     if (!productGrid) return; // Asegúrate de que el contenedor exista
 
     productGrid.innerHTML = ''; // Limpiar el grid antes de cargar
@@ -1013,4 +1020,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 </body>
-</html>    
+</html>
+    
