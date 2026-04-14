@@ -318,89 +318,84 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
 }
 
-
 @media (max-width: 768px) {
 
   /* ******** Contenedor de todos los productos (product-grid) ******** */
-  /* NO CAMBIAMOS LAS 3 COLUMNAS AQUÍ, PERO ASEGURAMOS EL ESPACIO */
   .product-grid {
-    display: grid; /* Aseguramos que siga siendo grid */
-    /* grid-template-columns: repeat(3, 1fr); <--- NO LO PONEMOS AQUÍ para que use el valor global de 3 columnas */
-    gap: 8px; /* Mismo gap que el de la PC, o puedes ajustarlo si quieres un poco más o menos */
-    padding: 5px; /* Un padding un poco más pequeño para dejar más espacio a los productos */
-    /* Si ves que necesitas más espacio entre las columnas, puedes poner un gap más grande aquí */
-  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Esto asegura tus 3 columnas */
+    gap: 5px; /* Reducimos el espacio entre los cuadros un poco más */
+    padding: 3px; /* Reducimos el padding general del grid */
+  }
 
   /* ******** La tarjeta individual del producto (product-card) ******** */
   .product-card {
-    /* Aquí es donde achicamos el largo del cuadro, Papi */
-    min-height: 60px; /* <-- PAPI, PRUEBA CON ESTE VALOR. AJÚSTALO HASTA QUE TE GUSTE EL LARGO MINIMO */
-    max-height: 100px; /* <-- PAPI, PRUEBA CON ESTE VALOR. AJÚSTALO HASTA QUE TE GUSTE EL LARGO MAXIMO */
+    /* Papi, estos valores son clave para acortar el cuadro completo */
+    min-height: 140px; /* <-- Empieza aquí. Baja para acortar más. */
+    max-height: 180px; /* <-- Empieza aquí. Baja para acortar más. */
 
-    /* Puedes ajustar un poco el padding si se ve muy apretado */
-    padding: 8px;
+    padding: 5px; /* <-- Reducimos el padding interno del cuadro */
 
-    /* Asegúrate de que las propiedades de flexbox estén aquí para la organización interna */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Para que el contenido interno se distribuya bien */
-    align-items: center; /* Para centrar el contenido horizontalmente */
+    justify-content: space-between; /* Esto es bueno para distribuir el contenido */
+    align-items: center;
 
-    /* Otros estilos que tengas para la tarjeta */
+    /* Asegúrate de que el resto de tus estilos estén aquí (background, border, etc.) */
     background: #fff;
     border: 2px solid transparent;
     border-radius: 12px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-    overflow: hidden;
+    overflow: hidden; /* Importante para que nada se salga */
     text-align: center;
-  
-  /* ******** La imagen del producto (product-card img) ******** */
-  .product-card img {
-    width: 100%;       /* Ocupa todo el ancho disponible en su cuadro */
-    height: auto;      /* Mantiene la proporción de la imagen */
-
-    object-fit: contain; /* Para que se vea la imagen completa dentro del espacio, sin cortarse */
-                         /* Si prefieres que se corte pero llene el espacio, usa 'cover' */
-
-    display: block;
-    margin: 0 auto;
-    padding: 2px; /* Un padding más pequeño para la imagen */
-
-    /* Ajustamos el tamaño de la imagen para que quepa dentro del cuadro más pequeño */
-    min-height: 80px;  /* <-- PAPI, AJUSTA ESTE VALOR para la altura mínima de la imagen */
-    max-height: 120px; /* <-- PAPI, AJUSTA ESTE VALOR para la altura máxima de la imagen */
-  
-
-  /* ******** Otros elementos dentro de la tarjeta para que quepan bien ******** */
-  /* Ajustar tamaños de fuente para que no se salgan o se vean muy grandes */
-  .product-card h3 { /* Si este es el título del producto */
-    font-size: 0.8em;
-    margin: 4px 0;
-  
-
-  .product-card .price {
-    font-size: 1em; /* Un poco más pequeño para que quepa */
-    margin-top: 2px;
-    margin-bottom: 2px;
-  
-
-  .product-card .stock-status {
-    font-size: 0.7em;
-    margin-bottom: 4px;
-  
-
-  /* Botones más pequeños */
-  .product-card .details-button,
-  .product-card .buy-now-button,
-  .product-card .add-to-cart-button {
-    width: 90%; /* Que el botón no ocupe todo el ancho si se ve muy pegado */
-    margin-top: 2px;
-    padding: 6px 0;
-    font-size: 0.75em;
   }
 
-}
+  /* ******** La imagen del producto (product-card img) ******** */
+  .product-card img {
+    width: 100%;
+    height: auto; /* Mantener la proporción es importante */
+    object-fit: contain; /* Para que no se corte y quepa bien */
+    padding: 0px; /* <--- QUITAMOS EL PADDING DE LA IMAGEN para que ocupe menos espacio */
+    margin-bottom: 0px; /* <--- ESTO PEGA LA IMAGEN AL NOMBRE */
 
+    /* Papi, estos valores son clave para que la imagen sea más pequeña */
+    min-height: 40px;  /* <-- Empieza aquí. Baja para hacer la imagen más baja. */
+    max-height: 60px; /* <-- Empieza aquí. Baja para hacer la imagen más baja. */
+    display: block;
+    margin-left: auto; /* Reemplazo margin: 0 auto; para no afectar margin-bottom */
+    margin-right: auto;
+  }
+
+  /* ******** Elementos dentro de la tarjeta: TEXTOS Y BOTONES ******** */
+  /* Vamos a reducir los tamaños de fuente y márgenes para que todo quepa */
+
+  .product-card h3 { /* Título del producto */
+    font-size: 0.6em; /* <--- Hacemos la letra más pequeña */
+    margin: 0px 0;    /* <--- ESTO PEGA EL NOMBRE A LA IMAGEN Y AL PRECIO */
+    line-height: 1.1; /* <--- Aseguramos que el espacio entre líneas sea mínimo */
+  }
+
+  .product-card .price { /* Precio */
+    font-size: 0.8em; /* <--- Letra más pequeña para el precio */
+    margin-top: 0px;  /* <--- ESTO PEGA EL PRECIO AL NOMBRE */
+    margin-bottom: 0px; /* <--- ESTO PEGA EL PRECIO AL SIGUIENTE ELEMENTO */
+  }
+
+  .product-card .stock-status { /* "EN STOCK" */
+    font-size: 0.5em; /* <--- Letra aún más pequeña */
+    margin-bottom: 0px; /* <--- Pegamos esto al botón */
+  }
+
+  /* Botones: "VER DETALLES" y "AÑADIR" */
+  .product-card .details-button,
+  .product-card .add-to-cart-button { /* Asumo que tienes un ".buy-now-button" también si te di uno antes */
+    width: 95%; /* Que ocupe casi todo el ancho */
+    margin-top: 2px; /* Un pequeño margen arriba para separarlo del "EN STOCK" */
+    padding: 3px 0; /* <--- Reducimos el padding interno del botón */
+    font-size: 0.6em; /* <--- Letra más pequeña para los botones */
+  }
+
+} /* <--- Cierre de la @media query */
 
     
 
