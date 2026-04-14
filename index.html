@@ -116,12 +116,12 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .product-card img{width:100%;height:auto;min-height:180px;object-fit:contain;display:block;margin:0 auto;padding:8px}
 
     
-     .product-card h3 { /* Título del producto */
-    font-size: 0.6em; /* <--- PAPI, REDUCE ESTE NÚMERO (ej. 0.6em o 0.5em) para que la letra sea más pequeña */
-    margin: 0px 0 !important;    /* <--- PAPI, PON ESTO EN 0px 0 y AÑÁDELE !important */
-    line-height: 1 !important;   /* <--- PAPI, PON ESTO EN 1 y AÑÁDELE !important */
-    min-height: 0px !important;  /* <--- PAPI, AÑADE ESTA LÍNEA (si no existe) y ponla en 0px y !important */
-  }
+    .product-card h3 {
+  font-size: 0.75em;
+  margin: 6px 4px; /* Esto significa 6px arriba/abajo y 4px izquierda/derecha */
+  color: var(--dark-color);
+  min-height: 30px;
+}
     
 .product-card .price{font-size:1em;color:var(--accent-color);font-weight:800;margin-bottom:4px}
 
@@ -337,27 +337,24 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
   }
 
   /* ******** La tarjeta individual del producto (product-card) ******** */
-  .product-card {
-    /* Papi, estos valores son clave para acortar el cuadro completo */
-    min-height: 140px; /* <-- Empieza aquí. Baja para acortar más. */
-    max-height: 180px; /* <-- Empieza aquí. Baja para acortar más. */
-
-    padding: 5px; /* <-- Reducimos el padding interno del cuadro */
-
+   .product-card{
+    /* Mantenemos estas propiedades porque ya las tenías y aseguran un buen layout flexbox */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Esto es bueno para distribuir el contenido */
+    justify-content: space-between; /* ¡IMPORTANTE! Esto distribuye el contenido y evita que se vea apretado */
     align-items: center;
 
-    /* Asegúrate de que el resto de tus estilos estén aquí (background, border, etc.) */
-    background: #fff;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-    overflow: hidden; /* Importante para que nada se salga */
-    text-align: center;
-  }
+    /* --- AQUÍ ES DONDE REDUCIMOS LA ALTURA DEL CUADRO EN LA COMPUTADORA --- */
+    /* Empieza con 400px como altura mínima del cuadro */
+    min-height: 140px;
+    /* Y 450px como altura máxima para que no se estire demasiado */
+    max-height: 180px;
 
+    /* Puedes ajustar este padding si quieres más o menos espacio en los bordes del cuadro */
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+  
   /* ******** La imagen del producto (product-card img) ******** */
   .product-card img {
     width: 100%;
