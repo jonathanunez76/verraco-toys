@@ -1,26 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-      <!-- 🔒 MEDIDAS DE SEGURIDAD OBLIGATORIAS -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self' https:;
-        script-src 'self' 'unsafe-inline';
-        style-src 'self' 'unsafe-inline' https:;
-        img-src 'self' data: https:;
-        font-src 'self' https:;
-        connect-src 'self' https:;
-        frame-src 'self' https://www.whatsapp.com https://www.youtube.com https://player.vimeo.com https://drive.google.com; 
-        media-src 'self' https: data:;
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-    ">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="X-UA-Compatible" content="IE=edge">
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>BERRACOTOYS - Maquinaria y Juguetes</title>
@@ -189,6 +169,7 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
 .product-detail-content{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:flex-start}
 .product-detail-images{flex:1 1 45%;min-width:280px;text-align:center}
 .detail-image-slider { position: relative; width: 100%; max-width: 600px; height: 600px; overflow: hidden; border-radius: 15px; margin: auto; }  
+   
       /* --- Media Query para Teléfonos Móviles (se añade al final o en tu sección de móviles) --- */
 @media (max-width: 768px) { 
     .detail-image-slider {
@@ -200,7 +181,10 @@ h1{font-size:1.6em;text-align:center;margin-top:10px;background: var(--gradient)
     }
     /* ... otros estilos específicos para móvil ... */
 }
-    .detail-slider-track { display: flex; transition: transform 0.5s ease; width: 100%; }
+
+
+
+ .detail-slider-track { display: flex; transition: transform 0.5s ease; width: 100%; }
 .detail-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; max-width: 450px; margin: auto; }
 .detail-main-image{width:100%; height:100%; object-fit:cover;padding:0;}    
 .detail-slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--dark-color);color:var(--primary-color);border:none;width:35px;height:35px;font-size:16px;border-radius:50%;cursor:pointer;z-index:10;border: 1px solid var(--primary-color)}
@@ -312,7 +296,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
     
  /* 🖼️ AQUÍ ESTÁ LO DEL CUADRO GRANDE */
-    .offer-carousel { height:50px ; }
+    .offer-carousel { height:450px !important; }
 
  
   /* ***** AJUSTES PARA EL CUADRO DEL PRODUCTO (la "tarjeta" completa) EN PANTALLAS GRANDES ***** */
@@ -426,9 +410,6 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
   }
 
 }
-
-  
-
 </style>
 </head>
 <body>
@@ -512,7 +493,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
             <div class="price">$120.00</div>
             <div class="stock-status in-stock">EN STOCK</div>
             <div class="product-card-actions">
-                <button class="details-button" onclick="showDetails('Excavadora Control Remoto', '120.00', 'https://via.placeholder.com/300', 'Funcionalidad completa con control remoto de alta frecuencia.', ['https://via.placeholder.com/300', 'https://via.placeholder.com/300'], 'https://drive.google.com/file/d/1S0MN5r1-TnCbdJopve7tnIOygYirGH5f/view?usp=sharing')">VER DETALLES</button>
+                <button class="details-button" onclick="showDetails('Excavadora Control Remoto', '120.00', 'https://via.placeholder.com/300', 'Funcionalidad completa con control remoto de alta frecuencia.', ['https://via.placeholder.com/300', 'https://via.placeholder.com/300'], 'https://www.youtube.com/embed/dQw4w9WgXcQ')">VER DETALLES</button>
                 <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
             </div>
         </div>
@@ -708,7 +689,7 @@ if(stockStatus == 'EN STOCK'){
 }
     document.getElementById('detail-description').innerHTML = description;
 
-document.getElementById('detail-description').style.lineHeight = '280%';
+document.getElementById('detail-description').style.lineHeight = '400%';
 
 
 
@@ -731,34 +712,25 @@ track.appendChild(slide);
     updateDetailSlide();
 
 
-
-// Líneas 734-740: Tu lógica para construir finalUrl (Vimeo)
-const videoContainer = document.getElementById('detail-video-container');
-if (videoUrl && videoUrl.length > 0) {
-    let finalUrl = videoUrl;
-    if (videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
-        const id = videoUrl.split('/').pop();
-        finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+    
+    const videoContainer = document.getElementById('detail-video-container');
+    if(videoUrl && videoUrl.length > 0) {
+        let finalUrl = videoUrl;
+        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+            const id = videoUrl.split('/').pop();
+            finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+        }
+videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height 800px; object-fit:contain;"></iframe>`;    } else {
+        videoContainer.innerHTML = '';
     }
 
-    // --- LÍNEA 741 MODIFICADA: Creación del iframe ---
-    // Se elimina el 'height: 800px;' fijo para ajuste automático.
-    // Se añade 'id="currentVideoPlayer"' al iframe.
-    videoContainer.innerHTML = `<iframe id="currentVideoPlayer" src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; object-fit:contain;"></iframe>`;
-
-    // --- LÍNEA 742 (videoContainer.innerHTML = '';) DEBE HABER SIDO BORRADA ---
-    // Si aún la tienes, BÓRRALA COMPLETAMENTE de tu código.
-}
-
-// Líneas 744-748: Tus botones de agregar al carrito y modal
-document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
-document.getElementById('detail-buy-now-button').onclick = () => {
-    addToCart(title, price, mainImg);
-    toggleModal('cart-modal');
-};
-
-// Línea 751-752: Tu scroll a la parte superior
-window.scrollTo({top: 0, behavior: 'smooth'});
+    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
+    document.getElementById('detail-buy-now-button').onclick = () => {
+        addToCart(title, price, mainImg);
+        toggleModal('cart-modal');
+    };
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
 
 }
 
@@ -887,31 +859,6 @@ function submitOrder(e) {
     alert('¡Pedido enviado por WhatsApp!');
 }
 
-function stopVideoOnNavigation() {
-    const videoContainerElement = document.getElementById('detail-video-container'); // Obtiene el div contenedor del video
-    if (videoContainerElement) {
-        videoContainerElement.innerHTML = ''; // Elimina todo el contenido (incluido el iframe) del contenedor
-        console.log('Video pausado y eliminado del DOM al salir de la página de detalles.'); // Para depuración en consola
-    }
-}
-
-
-const navigationButtons = document.querySelectorAll(
-    'a[onclick^="showSection("]',
-
- );
-
-
-navigationButtons.forEach(button => {
-    button.addEventListener('click', stopVideoOnNavigation);
-});
-
-// También detén el video si el usuario sale de la página por otros medios (ej. cierra pestaña, usa el botón atrás del navegador)
-window.addEventListener('beforeunload', stopVideoOnNavigation); // Para navegadores de escritorio
-window.addEventListener('pagehide', stopVideoOnNavigation);     // Más fiable para dispositivos móviles (lo ideal)
-
-  
-      
 // INICIALIZAR
 window.onload = () => {
     showSection('home');
@@ -919,4 +866,4 @@ window.onload = () => {
 };
 </script>
 </body>
-</html>    
+</html>   
