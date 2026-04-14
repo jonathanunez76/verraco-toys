@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -465,7 +466,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
             <div class="price">$550</div>
             <div class="stock-status in-stock">EN STOCK</div>                                   
             <div class="product-card-actions">
-              <button class="details-button" onclick="showDetails('CRAWLER RC FORD BRONCO',  '       550',   'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', '✔ ESCALA: 1:8<br>✔ INCLUYE: EL PAQUETE ORIGINAL BOX, BATERÍAS, INSTRUCCIONES DE FUNCIONAMIENTO, CONTROLADOR REMOTO, CABLE USB, OTROS<br>✔ ESTRUCTURA Y TRANSMISIÓN: METAL (4WD)<br>✔ AMORTIGUACIÓN: AMORTIGUADORES METÁLICOS<br>✔ RUEDAS: CAUCHO RESISTENTE AL DESGASTE<br>✔ BATERIA: LIPO 11.1 V 4000-5000MAH 3S (Polimero de Litio)<br>✔ CONTROL de 2.4GHz<br>✔ VELOCIDAD: 100 KM/H<br>✔ CHASIS: PLACA INFERIOR DE ALEACIÓN DE ALUMINIO<br>✔ FUENTE DE ALIMENTACION: ELECTRICO<br>✔ ESTADO DEL EMBALAJE: LISTO PARA USAR<br>✔ MATERIAL: METAL,PLASTICO<br>✔ RANGO DE EDAD: DE 8 A 13 AÑOS, 14 AÑOS Y HASTA', ['https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H646cfe20de6a43388b9179776970ffbdY%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20(1).jpg?raw=true', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20(1).jpg?raw=true' ], 'https://drive.google.com/file/d/1S0MN5r1-TnCbdJopve7tnIOygYirGH5f/view', 'EN STOCK' )">VER DETALLES</button>
+              <button class="details-button" onclick="showDetails('CRAWLER RC FORD BRONCO',  '       550',   'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/348c1ec0-dd87-4d8b-be9f-9d4747cc8a44.jpg?raw=true', '✔ ESCALA: 1:8<br>✔ INCLUYE: EL PAQUETE ORIGINAL BOX, BATERÍAS, INSTRUCCIONES DE FUNCIONAMIENTO, CONTROLADOR REMOTO, CABLE USB, OTROS<br>✔ ESTRUCTURA Y TRANSMISIÓN: METAL (4WD)<br>✔ AMORTIGUACIÓN: AMORTIGUADORES METÁLICOS<br>✔ RUEDAS: CAUCHO RESISTENTE AL DESGASTE<br>✔ BATERIA: LIPO 11.1 V 4000-5000MAH 3S (Polimero de Litio)<br>✔ CONTROL de 2.4GHz<br>✔ VELOCIDAD: 100 KM/H<br>✔ CHASIS: PLACA INFERIOR DE ALEACIÓN DE ALUMINIO<br>✔ FUENTE DE ALIMENTACION: ELECTRICO<br>✔ ESTADO DEL EMBALAJE: LISTO PARA USAR<br>✔ MATERIAL: METAL,PLASTICO<br>✔ RANGO DE EDAD: DE 8 A 13 AÑOS, 14 AÑOS Y HASTA', ['https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H646cfe20de6a43388b9179776970ffbdY%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H7759f8faf5004ad89ecdaf97e426b508d%20(1).jpg?raw=true','https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H8d1f4c80ed264c3fbef45b217fa7ecc5b%20(1)%20(1).jpg?raw=true', 'https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H98f7f27ba938462b8dbb19b8102dfa42c%20(1).jpg?raw=true' ], 'https://player.vimeo.com/video/1177095678?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479', 'EN STOCK' )">VER DETALLES</button>
                
                 <button class="buy-now-from-list-button" onclick="addToCart('Excavadora RC', '120.00', 'https://via.placeholder.com/300')">AÑADIR</button>
             </div>
@@ -698,25 +699,26 @@ track.appendChild(slide);
 
 
     
-// ... (código anterior a la línea 701) ...
-
-const videoContainer = document.getElementById('detail-video-container');
-
-if (videoUrl && videoUrl.length > 0) {
-    let finalUrl = videoUrl;
-
-    if (videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
-        const id = videoUrl.split('/').pop();
-        finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+    const videoContainer = document.getElementById('detail-video-container');
+    if(videoUrl && videoUrl.length > 0) {
+        let finalUrl = videoUrl;
+        if(videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
+            const id = videoUrl.split('/').pop();
+            finalUrl = `https://player.vimeo.com/video/${id}?autoplay=0`;
+        }
+videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height 800px; object-fit:contain;"></iframe>`;    } else {
+        videoContainer.innerHTML = '';
     }
 
-    videoContainer.innerHTML = `<iframe src="${finalUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height:100%;"></iframe>`;
-    // Esta línea estaba en tu código original en la imagen,
-    // si causaba problemas (por ejemplo, borrando el iframe),
-    // es probable que debas eliminarla incluso en el código original.
-    // videoContainer.innerHTML = '';
-}
+    document.getElementById('detail-add-to-cart-button').onclick = () => addToCart(title, price, mainImg);
+    document.getElementById('detail-buy-now-button').onclick = () => {
+        addToCart(title, price, mainImg);
+        toggleModal('cart-modal');
+    };
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
 
+}
 
 function moveDetailSlide(direction) {
     currentDetailSlide = (currentDetailSlide + direction + detailImagesArray.length) % detailImagesArray.length;
