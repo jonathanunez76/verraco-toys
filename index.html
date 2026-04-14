@@ -397,61 +397,61 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
 
 
-  /* ******** PARA LAS IMÁGENES (GRANDE Y PEQUEÑAS) QUE SE PEGUE TODO EN EL CELULAR ******** */
 
-  /* Esto hace que el contenedor principal de la imagen grande NO tenga márgenes/paddings */
+
+  /* ******** PARA REDUCIR EL LARGO (ALTURA) DE LA IMAGEN GRANDE EN EL CELULAR ******** */
+
   .detail-image-slider {
+    height: 250px !important; /* <--- ¡ESTO ES LO CLAVE, PAPI! Cambia 250px por el largo que quieras. */
+                              /* Prueba con 200px, 180px, etc. hasta que te guste. */
+    overflow: hidden !important; /* Esto es para que si la imagen es más grande, se corte y no se salga. */
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 100% !important; /* Asegura que ocupe todo el ancho */
+    border-radius: 0 !important; /* Por si tiene bordes redondeados, los quita para que se vea cuadrada en celular */
+    box-sizing: border-box !important;
+  }
+
+  /* Esto asegura que la imagen DENTRO del slider se ajuste al nuevo largo */
+  .detail-main-image {
+    width: 100% !important;
+    height: 100% !important; /* <--- Esto hace que la imagen ocupe el nuevo height de 250px (o el que pongas). */
+    object-fit: cover !important; /* Esto es crucial para que la imagen no se estire y se vea bien (se recorta si es necesario). */
     margin: 0px !important;
     padding: 0px !important;
   }
 
-  /* Esto asegura que el contenedor de las miniaturas se pegue arriba (a la imagen grande) */
+
+  /* ******** Y PARA ASEGURAR QUE TODO LO DEMÁS SE PEGUE COMO QUERÍAS ******** */
+
+  /* Esto quita el espacio entre el slider y las miniaturas/descripción */
+  .product-detail-content {
+    gap: 0px !important;
+  }
+
+  /* Para que las miniaturas se peguen a la imagen grande */
   .detail-thumbnails {
     margin-top: 0px !important;
     padding-top: 0px !important;
   }
 
-  /* Esto hace que el espacio general entre el bloque de imágenes y el bloque de descripción sea CERO */
-  .product-detail-content {
-    gap: 0px !important;
-  }
-
-
-  /* ******** PARA LA DESCRIPCIÓN (COMPACTA) EN EL CELULAR ******** */
-
-  /* Esto quita márgenes y paddings del contenedor de la descripción */
+  /* Para que la descripción no tenga tanto espacio */
   .product-detail-info {
       margin: 0px !important;
-      padding: 5px !important; /* Puedes dejar 5px de padding para que el texto no se pegue tanto a los bordes de la pantalla */
+      padding: 5px !important; /* Ajusta este padding si quieres más espacio a los lados del texto */
   }
-
-  /* Esto compacta los párrafos de la descripción */
-  .product-detail-info p {
-      line-height: 1.3 !important; /* <--- Esto reduce el espacio entre líneas */
-      margin-bottom: 3px !important; /* <--- Esto reduce el espacio entre párrafos */
-      margin-top: 0px !important;
-      padding: 0px !important;
-  }
-
-  /* Si tienes listas (viñetas) en la descripción, esto las compacta también */
+  .product-detail-info p,
   .product-detail-info ul,
-  .product-detail-info ol {
-      line-height: 1.3 !important;
-      margin-bottom: 3px !important;
-      margin-top: 0px !important;
-      padding-left: 20px !important;
-      padding-top: 0px !important;
-      padding-bottom: 0px !important;
-  }
+  .product-detail-info ol,
   .product-detail-info li {
-      line-height: 1.3 !important;
-      margin-bottom: 2px !important;
+      line-height: 1.3 !important; /* Menos espacio entre líneas */
+      margin-bottom: 3px !important; /* Menos espacio entre párrafos/listas */
       margin-top: 0px !important;
       padding: 0px !important;
   }
 
-  /* BOMBA NUCLEAR (por si algo se resiste) */
-  /* Esto elimina todos los márgenes y paddings de los elementos directamente dentro de #detail-page y .product-detail-images */
+
+  /* BOMBA NUCLEAR DE RESET (por si algo se resiste al pegado general) */
   #detail-page > *,
   .product-detail-images > * {
     margin-top: 0px !important; margin-bottom: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important;
@@ -460,9 +460,7 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
       padding-top: 0px !important; margin-top: 0px !important;
   }
 
-
 } /* <--- CIERRE DE LA MEDIA QUERY */
-
 </style>
 </head>
 <body>
