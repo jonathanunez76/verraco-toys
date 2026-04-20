@@ -690,13 +690,20 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
             <input type="text" id="name-input" required>
             <label>Teléfono / WhatsApp</label>
             <input type="tel" id="phone-input" required>
-            <label>Dirección de Envío</label>
-            <input type="text" id="address-input" required>
-            <label>Referencia / Nota</label>
-            <input type="text" id="note-input">
+                  <label>Dirección de Envío</label>
+        <input type="text" id="address-input" required>
+
+        <label for="province-select">Provincia</label>
+        <select id="province-select" required>
+            <option value="">Selecciona tu provincia</option>
+            <!-- Las opciones para cada provincia se generarán automáticamente con JavaScript -->
+        </select>
+
+        <label>Referencia / Nota</label>
+        <input type="text" id="note-input">
             <div class="checkout-summary">
                 <div><span>Subtotal:</span><span id="summary-subtotal">$0.00</span></div>
-                <div><span>Envío:</span><span id="summary-shipping">$6.00</span></div>
+                <div><span>Envío:</span><span id="summary-shipping">$0.00</span></div>
                 <div class="total"><span>TOTAL:</span><span id="summary-total">$0.00</span></div>
             </div>
             <button type="submit" id="confirm-checkout">CONFIRMAR COMPRA</button>
@@ -916,13 +923,109 @@ function removeFromCart(index) {
     renderCart();
 }
 
+// ... (Tu código existente hasta la línea 924, que incluye removeFromCart)
+
+// ----------------------------------------------------------------------
+// AQUI ES DONDE DEBES PEGAR EL CÓDIGO NUEVO
+// (Es decir, después de la línea 924 y antes de la línea 926 de tu imagen)
+// ----------------------------------------------------------------------
+
+// --- 1. Definición de las tarifas de envío por provincia ---
+const SHIPPING_COSTS_BY_PROVINCE = {
+    "AZUAY": 7.50,
+    "BOLIVAR": 8.00,
+    "CAÑAR": 7.50,
+    "CARCHI": 9.00,
+    "CHIMBORAZO": 6.50,
+    "COTOPAXI": 5.00,
+    "EL ORO": 9.00,
+    "ESMERALDAS": 10.00,
+    "GALAPAGOS": 15.00,
+    "GUAYAS": 8.00,
+    "IMBABURA": 7.00,
+    "LOJA": 8.50,
+    "LOS RIOS": 8.00,
+    "MANABI": 8.50,
+    "MORONA SANTIAGO": 11.00,
+    "NAPO": 9.50,
+    "ORELLANA": 10.50,
+    "PASTAZA": 9.50,
+    "PICHINCHA": 6.00,
+    "SANTA ELENA": 9.00,
+    "SANTO DOMINGO DE LOS TSACHILAS": 7.00,
+    "SUCUMBIOS": 10.50,
+    "TUNGURAHUA": 6.00,
+    "ZAMORA CHINCHIPE": 10.00,
+    "DEFAULT_SHIPPING": 7.00
+};
+
+// --- 2. Función para llenar el <select> de provincias ---
+function populateProvincesDropdown() {
+    const provinceSelect = document.getElementById('province-select');
+
+    while (provinceSelect.options.length > 1) {
+        provinceSelect.remove(1);
+    }
+
+    const sortedProvinces = Object.keys(SHIPPING_COSTS_BY_PROVINCE)
+                                 .filter(key => key !== "DEFAULT_SHIPPING")
+                                 .sort();
+
+    sortedProvinces.forEach(provinceName => {
+        const option = document.createElement('option');
+        option.value = provinceName;
+        option.textContent = provinceName.charAt(0).toUpperCase() + provinceName.slice(1).toLowerCase();
+        provinceSelect.appendChild(option);
+    });
+}
+
+// --- 3. Función para calcular el costo de envío basado en la provincia seleccionada ---
+function calculateShippingCost() {
+    const provinceSelect = document.getElementById('province-select');
+    const selectedProvince = provinceSelect.value;
+
+    if (selectedProvince && SHIPPING_COSTS_BY_PROVINCE[selectedProvince]) {
+        return SHIPPING_COSTS_BY_PROVINCE[selectedProvince];
+    }
+    return SHIPPING_COSTS_BY_PROVINCE.DEFAULT_SHIPPING;
+}
+
+// --- 4. Función para actualizar la visualización del TOTAL en el modal ---
+function updateFinalTotalDisplay() {
+    const subtotalText = document.getElementById('summary-subtotal').textContent;
+    const shippingText = document.getElementById('summary-shipping').textContent;
+
+    const subtotalValue = parseFloat(subtotalText.replace('$', ''));
+    const shippingValue = parseFloat(shippingText.replace('$', '') || '0');
+
+    const finalTotal = subtotalValue + shippingValue;
+    document.getElementById('summary-total').textContent = '$' + finalTotal.toFixed(2);
+}
+
+// ----------------------------------------------------------------------
+// MODIFICACIÓN del evento 'onclick' para "proceed-to-checkout"
+// ESTE BLOQUE DEBES REEMPLAZARLO COMPLETAMENTE por el que ya tienes en la línea 926
+// hasta la línea 932 de tu código.
+// ----------------------------------------------------------------------
 document.getElementById('proceed-to-checkout').onclick = () => {
     toggleModal('cart-modal');
     toggleModal('checkout-modal');
-    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    document.getElementById('summary-subtotal').textContent = '$' + total.toFixed(2);
-    document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
+
+    // Asegurarse de que el dropdown de provincias esté lleno
+    populateProvincesDropdown();
+
+    const subtotalAmount = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    document.getElementById('summary-subtotal').textContent = '$' + subtotalAmount.toFixed(2);
+
+    // Calcular y mostrar el envío inicial (por defecto o si ya seleccionó algo)
+    const shippingAmount = calculateShippingCost();
+    document.getElementById('summary-shipping').textContent = '$' + shippingAmount.toFixed(2);
+
+    // Actualizar el total final
+    updateFinalTotalDisplay();
 };
+
+
 
 function submitOrder(e) {
     e.preventDefault();
@@ -976,6 +1079,24 @@ window.onload = () => {
     showSection('home');
     updateCartCount();
 };
+// ----------------------------------------------------------------------
+// Event Listener para la carga del documento y para los cambios en el selector de provincia
+// PEGA ESTE BLOQUE AL FINAL DE TU ARCHIVO JAVASCRIPT, después de submitOrder, etc.
+// ----------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    // Llenar el dropdown de provincias al cargar la página inicialmente
+    populateProvincesDropdown();
+
+    const provinceSelect = document.getElementById('province-select');
+    // Añadir un 'event listener' al selector de provincia.
+    // Cada vez que el usuario cambie la selección, se recalculará el envío y el total.
+    provinceSelect.addEventListener('change', () => {
+        const newShippingAmount = calculateShippingCost();
+        document.getElementById('summary-shipping').textContent = '$' + newShippingAmount.toFixed(2);
+        updateFinalTotalDisplay();
+    });
+});
+    
 </script>
 </body>
 </html>   
