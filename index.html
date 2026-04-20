@@ -427,6 +427,43 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
   }
 
 }
+  /* Estilos para el campo de selección de provincia */
+.province-selector-style {
+    /* Propiedades de caja (ajusta estas para que coincidan con tus inputs existentes) */
+    width: 100%; /* O el ancho que desees, por ejemplo, el mismo que tus inputs */
+    padding: 10px 15px; /* Ajusta el padding para que coincida con tus inputs */
+    border: 1px solid #cccccc; /* Color de borde para que coincida con tus inputs */
+    border-radius: 5px; /* Bordes redondeados para que coincida con tus inputs */
+    box-sizing: border-box; /* Importante para el cálculo del ancho */
+    margin-bottom: 15px; /* Espacio debajo del campo */
+    
+    /* Propiedades de texto para que se vea más estético (grueso y negro) */
+    font-family: inherit; /* Usa la misma fuente que el resto de tu diseño */
+    font-size: 16px; /* Ajusta el tamaño de la fuente para que coincida con tus inputs */
+    font-weight: bold; /* Esto hará el texto seleccionado más grueso */
+    color: #000000; /* Color de texto negro */
+    
+    /* Para que el <select> se vea como un <input> de texto, eliminando la flecha nativa */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #ffffff; /* Fondo blanco */
+    
+    /* Flecha personalizada para el <select> (en SVG) */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-5.4H18.6c-5%200-9.3%201.8-13.2%205.4A17.6%2017.6%200%200%200%200%2082.2c0%204.8%201.8%209.3%205.4%2013.2l128%20127.9c3.6%203.6%208%205.4%2013.2%205.4s9.6-1.8%2013.2-5.4L287%2095.4a17.6%2017.6%200%200%200%205.4-13.2c0-4.9-1.8-9.4-5.4-13.2z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center; /* Posiciona la flecha */
+    background-size: 10px; /* Tamaño de la flecha */
+}
+
+/* Estilos para las opciones individuales dentro del <select> */
+.province-selector-style option {
+    font-family: inherit;
+    font-size: 16px; /* Para que coincida con el tamaño del texto del campo */
+    font-weight: normal; /* Las opciones suelen ser de peso normal, no negrita */
+    color: #333333; /* Un color oscuro para el texto de las opciones */
+    background-color: #ffffff; /* Fondo blanco para las opciones */
+}    
 </style>
 </head>
 <body>
@@ -693,11 +730,11 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
                   <label>Dirección de Envío</label>
         <input type="text" id="address-input" required>
 
-        <label for="province-select">Provincia</label>
-        <select id="province-select" required>
-            <option value="">Selecciona tu provincia</option>
-            <!-- Las opciones para cada provincia se generarán automáticamente con JavaScript -->
-        </select>
+     <label for="province-select">Provincia</label>
+<select id="province-select" class="province-selector-style" required>
+    <option value="">Selecciona tu provincia</option>
+    <!-- Las opciones se generarán dinámicamente con JavaScript -->
+</select>
 
         <label>Referencia / Nota</label>
         <input type="text" id="note-input">
