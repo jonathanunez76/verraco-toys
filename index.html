@@ -725,8 +725,11 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
         <form class="checkout-form" onsubmit="submitOrder(event)">
             <label>Nombre Completo</label>
             <input type="text" id="name-input" required>
+            <label>Número de Identidad / Cédula</label>
+<input type="text" id="identification-input" class="form-field" required>
+
             <label>Teléfono / WhatsApp</label>
-            <input type="tel" id="phone-input" required>
+            <input type="text" id="phone-input" required>
                   <label>Dirección de Envío</label>
         <input type="text" id="address-input" required>
 
@@ -1067,6 +1070,7 @@ document.getElementById('proceed-to-checkout').onclick = () => {
 function submitOrder(e) {
     e.preventDefault();
     const name = document.getElementById('name-input').value;
+     const identification = document.getElementById('identification-input').value; 
     const phone = document.getElementById('phone-input').value;
     const address = document.getElementById('address-input').value;
     const note = document.getElementById('note-input').value;
