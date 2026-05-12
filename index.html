@@ -493,32 +493,37 @@ footer p{font-size:1em;opacity:0.8;margin-bottom:10px}
 
 <div id="home-section">
     <h1>BERRACOTOYS</h1>
+<div class="offer-carousel">
+    <button class="carousel-arrow left" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-arrow right" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="offer-carousel-inner" id="offer-track">
 
-    <div class="offer-carousel">
-        <button class="carousel-arrow left" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
-        <button class="carousel-arrow right" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
-        <div class="offer-carousel-inner" id="offer-track">
-            
-            <div class="offer-slide" style="background-image: url('https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H86e62c49658445a48b767e9ee5cbce3cs.jpg?raw=true')">
-                <h2>ENVÍOS GRATIS</h2>
-                <p>Recibe tu pedido donde estés</p>
-                <button class="offer-button" onclick="showSection('home')">COMPRAR AHORA</button>
-            </div>
-
-            <div class="offer-slide" style="background-image: url('https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H9a1893fefb9d41efa1637b10fca4c9fc8.jpg?raw=true')">
-                <h2>GARANTÍA TOTAL</h2>
-                <p>Productos de alta calidad</p>
-                <button class="offer-button" onclick="filterProducts('all', document.querySelector('.categories-nav button'))">VER PRODUCTOS</button>
-            </div>
-
-            <div class="offer-slide" style="background-image: url('https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hac950f613e5c4cfc805dcffae35f2263y%20(1).jpg?raw=true')">
-                <h2>MEJORES PRECIOS</h2>
-               <p>La mejor tecnología y precio</p>
-                <button class="offer-button" onclick="filterProducts('ofertas', document.querySelectorAll('.categories-nav button')[9])">VER OFERTAS</button>
-            </div>
-
+        <!-- Primer Slide: ENVIOS GRATIS -->
+        <div class="offer-slide" style="background-image: url('https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H86e62c49658445a48b767e9ee5cbce3cs.jpg?raw=true'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+            <h2>ENVÍOS GRATIS</h2>
+            <p>Recibe tu pedido donde estés</p>
+            <button class="offer-button" onclick="showSection('home')">COMPRAR AHORA</button>
         </div>
+
+        <!-- Segundo Slide: GARANTÍA TOTAL -->
+        <div class="offer-slide" style="background-image: url('https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/H9a1893fefb9d41efa1637b10fca4c9fc8.jpg?raw=true'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+            <h2>GARANTÍA TOTAL</h2>
+            <p>Productos de alta calidad</p>
+            <button class="offer-button" onclick="filterProducts('all', document.querySelector('.categories-nav button'))">VER PRODUCTOS</button>
+        </div>
+
+        <!-- Tercer Slide: MEJORES PRECIOS -->
+        <div class="offer-slide" style="background-image: url('https://github.com/jonathanunez76/verraco-toys/blob/main/imagenes/Hac950f613e5c4cfc805dcffae35f2263%20(1).jpg?raw=true'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+            <h2>MEJORES PRECIOS</h2>
+            <p>La mejor tecnología y precio</p>
+            <button class="offer-button" onclick="filterProducts('ofertas', document.querySelectorAll('.categories-nav button')[9])">VER OFERTAS</button>
+        </div>
+
     </div>
+</div>
+
+
+
   <h1>NUESTRA COLECCIÓN</h1>
     <div class="categories-nav">
         <button class="active" onclick="filterProducts('all', this)">Todos</button>
